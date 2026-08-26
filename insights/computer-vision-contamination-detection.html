@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Computer-Vision Contamination Detection Across Two Kingdoms | Orr Biologicals</title>
+<meta name="description" content="The shared visual vocabulary problem: why mushroom mycelium and algae culture both defeat naive accuracy claims, and what honest flagging looks like.">
+<link rel="canonical" href="https://orrbiologicals.com/insights/computer-vision-contamination-detection">
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<meta property="og:title" content="Computer-Vision Contamination Detection Across Two Kingdoms">
+<meta property="og:description" content="The shared visual vocabulary problem: why mushroom mycelium and algae culture both defeat naive accuracy claims, and what honest flagging looks like.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://orrbiologicals.com/insights/computer-vision-contamination-detection">
+<meta property="og:image" content="https://orrbiologicals.com/assets/og.png">
+<meta property="article:published_time" content="2026-08-15">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Computer-Vision Contamination Detection Across Two Kingdoms","description":"The shared visual vocabulary problem: why mushroom mycelium and algae culture both defeat naive accuracy claims, and what honest flagging looks like.","datePublished":"2026-08-15","author":{"@type":"Organization","name":"Orr Biologicals","url":"https://orrbiologicals.com/"},"publisher":{"@type":"Organization","name":"Orr Biologicals","url":"https://orrbiologicals.com/"},"mainEntityOfPage":"https://orrbiologicals.com/insights/computer-vision-contamination-detection"}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..700&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,0..560&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/extras.css">
+</head>
+<body class="art-body">
+<div class="art-shell">
+  <nav class="art-top" aria-label="Breadcrumb">
+    <a href="/">← Orr Biologicals</a>
+    <span style="color:#57705f">orrbiologicals.com/insights/computer-vision-contamination-detection</span>
+  </nav>
+  <p class="art-cat">AI + Biology · Field note</p>
+  <h1>Computer-Vision Contamination Detection Across Two Kingdoms</h1>
+  <p class="art-meta">By Orr Biologicals · August 14, 2026</p>
+  <div class="prose">
+
+  <p class="dek">Everyone wants the camera to say 'mold.' The engineering truth is that it should say 'look here' â€” and that the second sentence is worth more than the first.</p>
+  <div class="keyfacts"><div class="h">Key facts</div><ul><li>Molds and healthy cultures share visual features; texture and context are the real signal</li><li>On-device detection is framed as flagging anomalies for human review, not diagnosis</li><li>Detection reliability depends on lighting, camera angle, strain, and growth stage</li><li>Every flagged event can be logged as a labeled example, improving future detection under human supervision</li></ul></div>
+  <div class="prose"><p>Contamination is the cost center of every cultivation project, and it has one property that makes it irresistible to automate: it is visible. A green blot in the green culture, a fuzz that was not there yesterday, a slick of liquid where the casing should be dry â€” these are things the eye catches. If the eye can catch them, the argument goes, a camera can catch them faster and never blink. The argument is correct up to a point, and the point is exactly where the words start to matter.</p><p>The honest problem is that vision-based contamination detection is a classification task with unusually cruel classes. A healthy mushroom culture and a contaminated one share most of their visual vocabulary: white mycelium, cream caps, brown substrate. The differences live in texture statistics, color temperature shifts of a few percent, growth rate over hours, and the three-dimensional shape of the colony as the camera angle sees it. The same camera that classifies a healthy pin set perfectly on Tuesday misclassifies it on Thursday, because the lighting changed with the weather and the stage of growth looks different under it. The standard framing â€” "detects mold with X% accuracy" â€” is a snapshot of one lighting rig, one strain, one lens, wearing a lab coat.</p><p>That is why the Orr systems describe the vision module the way it actually works: an experimental detector that flags anomalies for human review. It is trained to notice that a region of the culture has changed in a way the model finds unusual â€” that is a tractable, honest problem, and it is genuinely useful. A flagged frame is a timestamped, stored instruction to open the chamber and look, which is the intervention that actually saves crops. The human reviews, decides, and acts; the model's flag has already earned its keep by converting "I might have missed it" into "look now."</p><p>The design protects the honesty. Frames are processed on-device and never leave it by default. Flags are logged with their images and the surrounding telemetry â€” temperature, humidity, airflow â€” so the review happens with evidence. And every reviewed flag can be recorded as a labeled example, which slowly improves the detector's training set under human supervision: the model gets better specifically in the hands of the people who caught its mistakes, which is the only kind of improvement that is safe to trust.</p><p>The boundaries are stated, not buried. The vision module does not replace sterile technique; it does not clear cultures for consumption; it is not a medical device. A grower who treats "no flag" as "no contamination" has misunderstood the system it was built to be. What the module offers is a second pair of tireless eyes with a terrible memory and a good logbook â€” and, because it flags rather than diagnoses, the person who matters stays in the loop.</p><p>For the chamber-side implementation, including the camera rig and the flag lifecycle, see <a href="computer-vision-mushroom-cultivation.html">Computer Vision for Mushroom Cultivation</a> and the <a href="docs.html">docs</a>.</p></div>
+  <div class="article-foot">
+    <a class="btn btn-ghost" href="articles.html">All articles</a>
+    <a class="btn btn-primary" href="mycophyte.html#sim">Watch the vision module in the sim <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+  </div>
+
+  </div>
+  <nav class="art-foot" aria-label="Related">
+    <a href="/insights/digital-twin-droop-steele-model">A Digital Twin Built on Droop and Steele</a>
+    <a href="/insights/control-loop-architecture">Control Loop Architecture for Living Systems</a>
+    <a href="/insights/bounded-autonomy-safe-ai-proposals">Bounded Autonomy</a>
+    <a href="/game/">Play Algae Living</a>
+    <a href="/#system">The Algaephyte system</a>
+    <a href="/insights/">All field notes</a>
+  </nav>
+</div>
+</body>
+</html>

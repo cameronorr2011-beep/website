@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A Federated Learning Network for Algae Reactors | Orr Biologicals</title>
+<meta name="description" content="Sharing fitted twin parameters instead of images or traces: MQTT topics, bounds-checking, last-will obituaries and vandal-resistant averaging.">
+<link rel="canonical" href="https://orrbiologicals.com/insights/federated-learning-network">
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<meta property="og:title" content="A Federated Learning Network for Algae Reactors">
+<meta property="og:description" content="Sharing fitted twin parameters instead of images or traces: MQTT topics, bounds-checking, last-will obituaries and vandal-resistant averaging.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://orrbiologicals.com/insights/federated-learning-network">
+<meta property="og:image" content="https://orrbiologicals.com/assets/og.png">
+<meta property="article:published_time" content="2026-08-17">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"A Federated Learning Network for Algae Reactors","description":"Sharing fitted twin parameters instead of images or traces: MQTT topics, bounds-checking, last-will obituaries and vandal-resistant averaging.","datePublished":"2026-08-17","author":{"@type":"Organization","name":"Orr Biologicals","url":"https://orrbiologicals.com/"},"publisher":{"@type":"Organization","name":"Orr Biologicals","url":"https://orrbiologicals.com/"},"mainEntityOfPage":"https://orrbiologicals.com/insights/federated-learning-network"}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..700&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,0..560&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/extras.css">
+</head>
+<body class="art-body">
+<div class="art-shell">
+  <nav class="art-top" aria-label="Breadcrumb">
+    <a href="/">← Orr Biologicals</a>
+    <span style="color:#57705f">orrbiologicals.com/insights/federated-learning-network</span>
+  </nav>
+  <p class="art-cat">AI + Biology · Field note</p>
+  <h1>A Federated Learning Network for Algae Reactors</h1>
+  <p class="art-meta">By Orr Biologicals · August 16, 2026</p>
+  <div class="prose">
+
+      <p class="dek">Reactors trade the learned parameters of their digital twins â€” never raw culture data â€” so the network converges on a strainâ€™s productive regime faster than any one reactor could alone.</p>
+      <div class="keyfacts"><div class="h">Key facts</div><ul><li>Only learned twin parameters cross the network â€” six floats plus a performance score, never raw telemetry</li><li>Federated Averaging weights each reactor by its performance and how much calibration data backs it</li><li>Incoming global parameters are finite- and bounds-checked before they can touch a live twin</li><li>Runs over MQTT with no cloud, and works with as few as two reactors</li></ul></div>
+      <div class="prose"><p>A single reactor learns slowly. AlgaePhyte calibrates its digital twin from the culture in front of it â€” nudging the modelâ€™s parameters until its forecasts match what the sensors actually report â€” but one reactor only ever sees one culture, under one set of conditions. PhycoNet is the network layer that lets a fleet of reactors pool what each has learned. The design constraint is strict: reactors help each other converge on a strainâ€™s productive regime without ever exchanging raw culture data.</p><p>What travels between reactors is not telemetry. Each reactor shares only the learned parameters of its twin â€” six numbers: the maximum growth rate (Âµmax), the optimal light level (I_opt, the peak of Steeleâ€™s light curve), a loss/death rate, the optimal temperature and pH (the peaks of the bell-shaped response curves), and the maximum nutrient-uptake rate (vmax) that feeds Droopâ€™s cell-quota term. Alongside them go two bookkeeping figures: a performance score and the number of data points behind the calibration. No sensor logs, no images, no pH-and-temperature history ever leave the Pi. Privacy here is a property of the format, not a promise â€” there is simply nothing in a payload but a handful of floats.</p><p>Aggregation uses Federated Averaging (FedAvg). An aggregator â€” a laptop or a small server, not a cloud service â€” subscribes over MQTT, collects the latest parameter set from each reactor, computes a weighted average, and publishes that global model back to every reactor. The whole exchange is local: it runs on a home network with no internet, and it works with as few as two reactors, scaling up from there. Each reactor merges the returned global model into its own twin as a warm start, then keeps calibrating against its own culture.</p><p>The averaging is weighted, not uniform. Each reactorâ€™s contribution is scaled by its performance score times the amount of calibration data behind it, so a reactor that is growing well and has observed a lot pulls the global model harder than one that is barely started or struggling. The performance score is deliberately simple: the slope of recent biomass over time â€” roughly grams per liter per day â€” normalized to a 0â€“1 range. Parameters are only comparable when reactors cultivate the same strain toward the same goal; averaging a high-density production run against a strain held at slow maintenance growth would blur two different optima into one that fits neither.</p><p>The most important code in the module is the part that distrusts the network. A global model arrives over a topic any node can publish to, so a corrupt or malicious payload â€” Âµmax as NaN, I_opt as zero â€” is perfectly valid JSON and would quietly poison the twin. Because AlgaePhyteâ€™s Layer-2 safety gate uses that same twin to simulate and veto proposed actions, a poisoned model would not merely forecast nonsense; it could defeat the gate that is supposed to catch nonsense. So every incoming parameter is checked for being finite and within physical bounds before it is allowed anywhere near a live twin, and anything out of range is dropped. The validated parameters are then applied on the main loopâ€™s next tick rather than from the network thread, so the swap never races the ODE integrator mid-simulation.</p><p>PhycoNet is deliberately modest about what it changes. It accelerates calibration; it does not take control. A shared model only ever adjusts the twinâ€™s parameters â€” it never issues a command, and every proposed action still passes through the same deterministic hard limits and twin-checked safety gate on the local reactor. Shared learning is a suggestion the network offers; the reactor in front of you always has the last word. Like the rest of AlgaePhyte, it is open-source, non-commercial, and built to be studied â€” the point is to let a small, distributed community of growers learn faster together than any of them could alone.</p></div>
+      <div class="article-foot">
+        <a class="btn btn-ghost" href="articles.html">All AlgaePhyte articles</a>
+        <a class="btn btn-primary" href="contact.html">Reserve a reactor <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+    
+  </div>
+  <nav class="art-foot" aria-label="Related">
+    <a href="/insights/digital-twin-droop-steele-model">A Digital Twin Built on Droop and Steele</a>
+    <a href="/insights/control-loop-architecture">Control Loop Architecture for Living Systems</a>
+    <a href="/insights/bounded-autonomy-safe-ai-proposals">Bounded Autonomy</a>
+    <a href="/game/">Play Algae Living</a>
+    <a href="/#system">The Algaephyte system</a>
+    <a href="/insights/">All field notes</a>
+  </nav>
+</div>
+</body>
+</html>

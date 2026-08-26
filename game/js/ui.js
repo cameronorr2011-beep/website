@@ -1,5 +1,5 @@
 /* HUD bindings, panels (evolve/build/lab/reactor), toasts */
-import { CFG } from "./config.js";
+import { CFG, ACH } from "./config.js";
 import { fx } from "./evolution.js";
 
 const $ = (id) => document.getElementById(id);
@@ -53,6 +53,13 @@ export function createUI(S, sim, reactor, actions) {
       }).join("");
       $("evoList").querySelectorAll("[data-evo]").forEach((b) =>
         b.addEventListener("click", () => actions.evolve(b.dataset.evo)));
+      const owned = ACH.filter((a) => S.achievements.includes(a.id));
+      const achHtml = ACH.map((a) => {
+        const got = S.achievements.includes(a.id);
+        return `<div class="evo-item" style="opacity:${got ? 1 : 0.45}"><div><b>${got ? "🏅" : "🔒"} ${a.name}</b><small>${a.desc}</small></div></div>`;
+      }).join("");
+      $("evoList").insertAdjacentHTML("beforeend",
+        `<h3 style="margin:16px 0 10px;font-size:13px;color:#8fb09a">Achievements · ${owned.length}/${ACH.length}</h3>${achHtml}`);
     }
     if (id === "pBuild") {
       $("bldList").innerHTML = Object.entries(CFG.buildings).map(([k, b]) => {

@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Control Loop Architecture for Living Systems | Orr Biologicals</title>
+<meta name="description" content="Sense → twin → propose → verify → act. The layered loop architecture that lets software participate in biology without ever owning the pumps.">
+<link rel="canonical" href="https://orrbiologicals.com/insights/control-loop-architecture">
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<meta property="og:title" content="Control Loop Architecture for Living Systems">
+<meta property="og:description" content="Sense → twin → propose → verify → act. The layered loop architecture that lets software participate in biology without ever owning the pumps.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://orrbiologicals.com/insights/control-loop-architecture">
+<meta property="og:image" content="https://orrbiologicals.com/assets/og.png">
+<meta property="article:published_time" content="2026-07-26">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Control Loop Architecture for Living Systems","description":"Sense → twin → propose → verify → act. The layered loop architecture that lets software participate in biology without ever owning the pumps.","datePublished":"2026-07-26","author":{"@type":"Organization","name":"Orr Biologicals","url":"https://orrbiologicals.com/"},"publisher":{"@type":"Organization","name":"Orr Biologicals","url":"https://orrbiologicals.com/"},"mainEntityOfPage":"https://orrbiologicals.com/insights/control-loop-architecture"}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..700&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,0..560&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/extras.css">
+</head>
+<body class="art-body">
+<div class="art-shell">
+  <nav class="art-top" aria-label="Breadcrumb">
+    <a href="/">← Orr Biologicals</a>
+    <span style="color:#57705f">orrbiologicals.com/insights/control-loop-architecture</span>
+  </nav>
+  <p class="art-cat">AI + Biology · Field note</p>
+  <h1>Control Loop Architecture for Living Systems</h1>
+  <p class="art-meta">By Orr Biologicals · July 25, 2026</p>
+  <div class="prose">
+
+      <p class="dek">How AlgaePhyte closes the loop around a living spirulina culture on a single Raspberry Pi, and why every decision passes through a safety gate that fails closed.</p>
+      <div class="keyfacts"><div class="h">Key facts</div><ul><li>Six sensors are sampled on a roughly 60-second cadence; the analog channels go through an MCP3008 ADC and everything is messaged internally over MQTT.</li><li>Every proposed action passes a two-layer gate, first deterministic hard limits and then a digital-twin simulation, and the gate fails closed when anything is uncertain.</li><li>Firmware clamps and a physical emergency-stop button are independent backstops the AI cannot reach or override.</li><li>When the internet drops, a lightweight rule-based strategy runs on the Pi itself so the culture is never left unattended.</li></ul></div>
+      <div class="prose"><p>AlgaePhyte runs a closed control loop around a living culture of Arthrospira, the helical cyanobacterium sold as spirulina. The loop has five stages that repeat continuously: sense the reactor, model where it is heading, decide on one small intervention, verify that the intervention is safe, and only then act. The whole cycle runs on a Raspberry Pi Zero 2W, and its guiding rule is simple. The AI proposes; it never acts unchecked. Understanding the loop means understanding what happens between a sensor reading and a pump turning on.</p><p>The sense stage is the foundation. AlgaePhyte reads six signals: pH, temperature from a DS18B20 OneWire probe, light from a BH1750 lux sensor, optical density as a turbidity proxy, dissolved oxygen, and total dissolved solids. The analog signals reach the Pi through an MCP3008 analog-to-digital converter, while the temperature and light sensors ride OneWire and I2C. Telemetry is sampled on a roughly one-minute cadence and moved between processes over MQTT, an internal message bus that keeps the sensor listener, the controller, and the dashboard loosely coupled. Each reading is timestamped and appended to history, because the model and the memory both depend on a clean time series.</p><p>The model stage is a physics-based digital twin that forecasts growth rather than guessing at it. Its core is Droop&#x27;s cell-quota model, mu = mu_max times (1 minus Q0 over Q), which ties growth rate to how much nitrogen the cells have actually stored rather than to nutrient concentration alone. Around that it layers Steele&#x27;s light function, where growth climbs to an optimum and then falls under photoinhibition; Beer-Lambert attenuation, which captures how a dense culture shades itself; and bell-shaped response curves for temperature and pH plus a dissolved-oxygen inhibition term. The twin periodically recalibrates its parameters against real logged data so its forecast tracks this specific reactor, not a textbook average.</p><p>The decide stage is where the AI brain runs. It receives a current sensor snapshot, the twin&#x27;s forward forecast, a memory of how similar past states played out, and the operator&#x27;s stated goal, and it returns exactly one action as a small JSON object. The vocabulary is deliberately narrow: pulse nutrient, adjust light, adjust temperature, add bicarbonate, run a clean cycle, inoculate, harvest, drive the air pump, set the LED color, capture an image, or do nothing. Evaluation runs on a fixed, configurable cadence and fires immediately whenever a sensor alarm trips, so a fast excursion does not have to wait for the next scheduled tick.</p><p>The verify stage is the two-layer safety gate, and it is the part that makes autonomy defensible. Layer one is a deterministic hard-limit check: the proposed pH setpoint must sit inside the safe alkaline band of roughly 8.5 to 10.5, temperature and light setpoints must fall within their configured ranges, and every dose has a hard cap on grams or milliliters or seconds of pump run time. Layer two applies the proposal to the digital twin and simulates the outcome; if the move is predicted to produce negative or negligible growth, or to push pH out of the safe band, it is rejected. If either layer cannot confirm that a move is safe, it fails closed and the action does not happen.</p><p>Only an approved proposal reaches the act stage, where it becomes an MQTT command to a specific actuator: a nutrient, bicarbonate, wash, or inoculation dosing pump, the air pump, the heater, or the RGB LED. Two backstops sit below the software the AI can touch. The microcontroller firmware enforces its own hard-coded clamps regardless of what the Pi commands, and a physical emergency-stop button cuts actuation outright. These are independent of the model and of each other by design, so a bug in the twin or a bad parameter cannot translate into an unbounded action on the culture.</p><p>The loop also has to survive losing its connection. When the Pi goes offline, a lightweight rule-based strategy takes over locally after a short offline window, keeping pH, temperature, and light inside safe bands so the culture is never unattended. It is intentionally conservative rather than clever, and every action it takes still passes the same hard-limit and simulation gate. When connectivity returns, the fuller decision path resumes without a handoff gap.</p><p>What ties the architecture together is that spirulina&#x27;s own biology carries part of the load. The high culture pH that this loop maintains is also a passive biosecurity defense, since most contaminants cannot tolerate a strongly alkaline soda-lake chemistry. The controller&#x27;s job is to hold that environment steady and nudge it toward productivity, not to chase aggressive setpoints. AlgaePhyte is an experimental, open-source, educational project, and the loop is built to be legible: every reading, every proposal, and every gate decision is logged, so a curious grower can trace exactly why the reactor did what it did.</p></div>
+      <div class="article-foot">
+        <a class="btn btn-ghost" href="articles.html">All AlgaePhyte articles</a>
+        <a class="btn btn-primary" href="contact.html">Reserve a reactor <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+    
+  </div>
+  <nav class="art-foot" aria-label="Related">
+    <a href="/insights/digital-twin-droop-steele-model">A Digital Twin Built on Droop and Steele</a>
+    <a href="/insights/bounded-autonomy-safe-ai-proposals">Bounded Autonomy</a>
+    <a href="/insights/how-main-keeps-culture-safe">How Algaephyte Keeps Your Culture Safe</a>
+    <a href="/game/">Play Algae Living</a>
+    <a href="/#system">The Algaephyte system</a>
+    <a href="/insights/">All field notes</a>
+  </nav>
+</div>
+</body>
+</html>

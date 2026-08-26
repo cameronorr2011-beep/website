@@ -1,4 +1,4 @@
-export const CFG = {
+﻿export const CFG = {
   world: { w: 3600, h: 3600 },
   tick: 1000 / 30,
   player: { r: 9, speed: 92, hp: 100 },
@@ -33,7 +33,7 @@ export const CFG = {
   },
   upgrades: {
     led:     { name: "High-efficiency LEDs", desc: "+25% light energy",            costs: [40, 90, 170],  fx: [1.25, 1.5, 1.85] },
-    co2:     { name: "CO₂ injection",        desc: "+carbon particles & growth",   costs: [50, 110, 200], fx: [1.2, 1.45, 1.75] },
+    co2:     { name: "COâ‚‚ injection",        desc: "+carbon particles & growth",   costs: [50, 110, 200], fx: [1.2, 1.45, 1.75] },
     mix:     { name: "Circulation pump",     desc: "+speed, even nutrients",       costs: [35, 80, 150],  fx: [1.15, 1.35, 1.6] },
     sensor:  { name: "Sensor suite",         desc: "reveals threats + EP gain",    costs: [30, 70, 140],  fx: [1.15, 1.3, 1.5] },
     harvest: { name: "Auto-harvester",       desc: "passive biomass income",       costs: [60, 130, 240], fx: [0.02, 0.05, 0.09] },
@@ -55,3 +55,12 @@ export const CFG = {
     { id: "col3",   branch: "Colony",         name: "Specialized cells",      cost: 30, req: "col2", fx: { epGain: 1.25 } },
   ],
 };
+
+export const ACH = [
+    { id: "evolved",   name: "First Evolution",       desc: "Spend EP on a trait" },
+    { id: "builder",   name: "Architect",             desc: "Place your first structure" },
+    { id: "colony",    name: "Colony Founder",        desc: "Grow to 6 cells" },
+    { id: "ecosystem", name: "Ecosystem Manager",     desc: "Grow to 16 cells" },
+    { id: "operator",  name: "Reactor Operator",      desc: "Take over reactor operations" },
+    { id: "survivor",  name: "The Culture Remembers", desc: "Regrow after losing your cell" },
+];

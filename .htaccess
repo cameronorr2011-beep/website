@@ -1,4 +1,4 @@
-# Orr Biologicals — orrbiologicals.com
+﻿# Orr Biologicals â€” orrbiologicals.com
 # Canonical host: https://orrbiologicals.com (non-www, HTTPS)
 
 ErrorDocument 404 /404.html
@@ -26,9 +26,12 @@ Redirect 301 /photobioreactor-ai-optimization          /insights/photobioreactor
 Redirect 301 /digital-twins-biological-cultivation     /insights/digital-twins-biological-cultivation
 Redirect 301 /spirulina-is-a-cyanobacterium            /insights/spirulina-is-a-cyanobacterium
 Redirect 301 /articles                                 /insights/
+Redirect 301 /control-loop-architecture                /insights/control-loop-architecture
+Redirect 301 /ai-controlled-mushroom-cultivation       /insights/ai-controlled-mushroom-cultivation
+Redirect 301 /computer-vision-mushroom-cultivation     /insights/computer-vision-mushroom-cultivation
 Redirect 301 /cultivation                              /insights/
-Redirect 301 /reading-your-culture                     /insights/
-Redirect 301 /winter-home-growing-warmth               /insights/how-to-start-home-spirulina-culture
+Redirect 301 /reading-your-culture                     /insights/reading-your-culture
+Redirect 301 /winter-home-growing-warmth               /insights/winter-home-growing-warmth
 
 # Product / concept equivalents on the rebuilt homepage
 Redirect 301 /research                                 /#system
@@ -36,19 +39,19 @@ Redirect 301 /technology                               /#stack
 Redirect 301 /projects                                 /#stack
 Redirect 301 /lab                                      /game/
 Redirect 301 /algaephyte                               /
-Redirect 301 /what-is-main-plain-language              /#system
+Redirect 301 /what-is-main-plain-language              /insights/what-is-main-plain-language
 Redirect 301 /control-loop-architecture                /#system
-Redirect 301 /alkalinity-as-a-control-variable         /#system
-Redirect 301 /dissolved-oxygen-stress-signal           /#system
-Redirect 301 /six-culture-signals-main-senses          /#signals
-Redirect 301 /digital-twin-droop-steele-model          /#twin
-Redirect 301 /bounded-autonomy-safe-ai-proposals       /#safety
-Redirect 301 /how-main-keeps-culture-safe              /#safety
-Redirect 301 /vision-contamination-detection           /#instrument
-Redirect 301 /computer-vision-contamination-detection  /#instrument
+Redirect 301 /alkalinity-as-a-control-variable         /insights/alkalinity-as-a-control-variable
+Redirect 301 /dissolved-oxygen-stress-signal           /insights/dissolved-oxygen-stress-signal
+Redirect 301 /six-culture-signals-main-senses          /insights/six-culture-signals-main-senses
+Redirect 301 /digital-twin-droop-steele-model          /insights/digital-twin-droop-steele-model
+Redirect 301 /bounded-autonomy-safe-ai-proposals       /insights/bounded-autonomy-safe-ai-proposals
+Redirect 301 /how-main-keeps-culture-safe              /insights/how-main-keeps-culture-safe
+Redirect 301 /vision-contamination-detection           /insights/vision-contamination-detection
+Redirect 301 /computer-vision-contamination-detection  /insights/computer-vision-contamination-detection
 Redirect 301 /computer-vision-mushroom-cultivation     /#instrument
-Redirect 301 /edge-ai-biological-systems               /#instrument
-Redirect 301 /federated-learning-network               /#mesh
+Redirect 301 /edge-ai-biological-systems               /insights/edge-ai-biological-systems
+Redirect 301 /federated-learning-network               /insights/federated-learning-network
 Redirect 301 /federated-learning-biotech               /#mesh
 Redirect 301 /troubleshooting                          /#faults
 Redirect 301 /faq                                      /#faq

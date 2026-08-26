@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI-Controlled Mushroom Cultivation | Orr Biologicals</title>
+<meta name="description" content="Inside Mycophyte: microclimate control, twin-guided decisions and bounded autonomy applied to fruiting chambers instead of photobioreactors.">
+<link rel="canonical" href="https://orrbiologicals.com/insights/ai-controlled-mushroom-cultivation">
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<meta property="og:title" content="AI-Controlled Mushroom Cultivation">
+<meta property="og:description" content="Inside Mycophyte: microclimate control, twin-guided decisions and bounded autonomy applied to fruiting chambers instead of photobioreactors.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://orrbiologicals.com/insights/ai-controlled-mushroom-cultivation">
+<meta property="og:image" content="https://orrbiologicals.com/assets/og.png">
+<meta property="article:published_time" content="2026-08-19">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"AI-Controlled Mushroom Cultivation","description":"Inside Mycophyte: microclimate control, twin-guided decisions and bounded autonomy applied to fruiting chambers instead of photobioreactors.","datePublished":"2026-08-19","author":{"@type":"Organization","name":"Orr Biologicals","url":"https://orrbiologicals.com/"},"publisher":{"@type":"Organization","name":"Orr Biologicals","url":"https://orrbiologicals.com/"},"mainEntityOfPage":"https://orrbiologicals.com/insights/ai-controlled-mushroom-cultivation"}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..700&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,0..560&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/extras.css">
+</head>
+<body class="art-body">
+<div class="art-shell">
+  <nav class="art-top" aria-label="Breadcrumb">
+    <a href="/">← Orr Biologicals</a>
+    <span style="color:#57705f">orrbiologicals.com/insights/ai-controlled-mushroom-cultivation</span>
+  </nav>
+  <p class="art-cat">Mycology · Field note</p>
+  <h1>AI-Controlled Mushroom Cultivation</h1>
+  <p class="art-meta">By Orr Biologicals · August 18, 2026</p>
+  <div class="prose">
+
+  <p class="dek">Fruiting bodies are triggered by precise microclimate events. An on-device model can hold those conditions steady â€” and predict when the next event is coming.</p>
+  <div class="keyfacts"><div class="h">Key facts</div><ul>
+    <li>Mushroom fruiting is triggered by environmental cues: humidity shifts, COâ‚‚ drawdown, temperature changes â€” all of which a chamber can measure</li>
+    <li>Mycophyte closes the loop on temperature, humidity, airflow and COâ‚‚ using sensors plus a lightweight on-device model</li>
+    <li>The model is a digital twin: it simulates the chamber forward before any actuator moves</li>
+    <li>No claim of validated yield improvement is made here â€” control repeatability is the goal, and data is the proof</li>
+  </ul></div>
+  <div class="prose">
+    <p>Growing mushrooms well has never been a matter of watering on schedule. It is a matter of timing microclimate events: a spike in humidity that triggers pinning, a drawdown of COâ‚‚ that keeps stems short and caps broad, a temperature step that primes the next flush. In a house, those events arrive when the weather allows. In a chamber, they arrive when you command them. The difference between "sometimes" and "repeatably" is control â€” and control is exactly the problem AI systems are good at, when they are wired to the world honestly.</p>
+    <p>The first step is measurement. A chamber holds air, and air has four quantities that matter: temperature, humidity, COâ‚‚ concentration, and movement (airflow). Add substrate moisture and you have five variables that interact continuously â€” evaporating moisture cools the air and raises humidity, fans pull humidity down while they pull COâ‚‚ out, a heater dries what the fogger just made wet. Each interaction is small and fast enough to outpace a human checking twice a day, which is why manual growing is really manual guesswork.</p>
+    <p>Mycophyte's firmware samples these channels a few times a minute. Every reading is time-stamped and logged locally; nothing leaves the device until an explicit publish. From the stream, a small quantized model maintains a latent state â€” a compact description of "what the chamber is doing right now." This is where a purely rule-based controller would already be fine, and indeed the failsafe controller is purely rule-based: hard bands, hysteresis, no learning. The model layer adds the part rules cannot: prediction.</p>
+    <p>The digital twin is a forward simulation of the chamber: given the current state and a candidate action (fan on for 90 seconds, fogger pulse, heater at 40%), it projects the next hours â€” will humidity crash past the dew point when the fan cycles? Will COâ‚‚ climb high enough to stretch the stems? Proposals that fail the projection are never applied. The AI proposes; the twin verifies; the rules enforce. This three-layer structure is the entire safety story, and it fails closed: any uncertain reading resolves to "do nothing."</p>
+    <p>None of this requires a cloud. The whole loop â€” sensing, modeling, predicting, acting â€” runs on a microcontroller and, when camera inference is enabled, an optional pocket accelerator. Latency is milliseconds, not milliseconds-plus-a-round-trip. A chamber behind a flaky network behaves identically to one online, except it stops publishing.</p>
+    <p>The honest part: an AI-controlled chamber is not a claim that mushrooms grow faster. It is a claim that the conditions you set are the conditions that hold â€” that a spike to 97% humidity at 3 a.m. happens when you schedule it, and that the crop's response becomes a dataset instead of a memory. For a hobbyist that means fewer ruined flushes. For a lab it means replicates that are actually comparable. And because every device runs the same open firmware, the dataset is shareable â€” a point we pick up in the articles on <a href="federated-learning-biotech.html">federated learning</a> and <a href="computer-vision-contamination-detection.html">contamination detection</a>.</p>
+    <p>If you want to feel the loop before you build it, the <a href="mycophyte.html#sim">chamber simulation</a> on the Mycophyte page runs the same control logic in your browser â€” drive humidity too high with the fans off and watch what the model flags.</p>
+  </div>
+  <div class="article-foot">
+    <a class="btn btn-ghost" href="articles.html">All articles</a>
+    <a class="btn btn-primary" href="mycophyte.html">Meet Mycophyte <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+  </div>
+
+  </div>
+  <nav class="art-foot" aria-label="Related">
+    <a href="/insights/computer-vision-mushroom-cultivation">Computer Vision for Mushroom Cultivation</a>
+    <a href="/insights/alkalinity-as-a-control-variable">Alkalinity as a Control Variable</a>
+    <a href="/insights/reading-your-culture">Reading Your Culture</a>
+    <a href="/game/">Play Algae Living</a>
+    <a href="/#system">The Algaephyte system</a>
+    <a href="/insights/">All field notes</a>
+  </nav>
+</div>
+</body>
+</html>

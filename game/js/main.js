@@ -1,4 +1,4 @@
-import { CFG } from "./config.js";
+import { CFG, ACH } from "./config.js";
 import { freshState, loadGame, saveGame } from "./save.js";
 import { fx } from "./evolution.js";
 import { createSim } from "./sim.js";
@@ -12,7 +12,7 @@ import { createAudio } from "./audio.js";
 const S = loadGame() || freshState();
 const sim = createSim(S);
 sim.zones = (await import("./world.js")).makeZones();
-sim.view = { x: S.player.x, y: S.player.y, zoom: 1, w: innerWidth, h: innerHeight, mode: "micro" };
+sim.view = { x: S.player.x, y: S.player.y, zoom: 1, w: innerWidth, h: innerHeight, mode: "micro", quality: "high" };
 Object.defineProperty(sim, "mode", { get() { return this.view.mode; }, set(m) { this.view.mode = m; } });
 sim.state = S;
 
@@ -23,11 +23,19 @@ const audio = createAudio();
 if (S.muted) audio.toggleMute();
 
 let armedBuild = null;
+function unlock(id) {
+  if (S.achievements.includes(id)) return;
+  S.achievements.push(id);
+  const a = ACH.find((x) => x.id === id);
+  if (a) ui.toast("🏅 " + a.name);
+  audio.blip(980, .18);
+}
 const ui = createUI(S, sim, reactor, {
   evolve(id) {
     const t = CFG.evo.find((e) => e.id === id);
     if (!t || S.evo.includes(id) || S.ep < t.cost) return;
     S.ep -= t.cost; S.evo.push(id); audio.blip(880, .16);
+    unlock("evolved");
     if (id === "def3") S.player.flagella = 1.6;
     ui.toast("Evolved: " + t.name);
     ui.open("pEvolve");
@@ -62,6 +70,7 @@ function place(wx, wy) {
   if (S.energy < cost) return;
   S.energy -= cost;
   S.buildings.push({ kind: armedBuild.kind, x: wx, y: wy });
+  unlock("builder");
   ui.toast(CFG.buildings[armedBuild.kind].name + " established");
   armedBuild = null; audio.blip(440, .18);
 }
@@ -93,25 +102,33 @@ addEventListener("keydown", (e) => { if (e.key.toLowerCase() === "m") $("btnMute
 
 function toggleView() {
   sim.mode = sim.mode === "micro" ? "reactor" : "micro";
+  if (sim.mode === "reactor") unlock("operator");
   $("btnReactor").textContent = sim.mode === "micro" ? "Reactor" : "Micro";
   $("viewTag").textContent = sim.mode === "micro" ? "microscopic view · drag to swim" : "reactor view · operations panel open";
   if (sim.mode === "reactor") ui.open("pReactor"); else ui.closeAll();
   audio.bubble();
 }
 
-/* death */
 sim.on("death", () => {
   audio.blip(140, .5, .09);
   $("deadOverlay").classList.remove("hidden");
 });
+$("btnRespawn").addEventListener("click", () => {
+  $("deadOverlay").classList.add("hidden");
+  sim.respawn(); sim.view.x = S.player.x; sim.view.y = S.player.y;
+  unlock("survivor");
+});
 sim.on("discover", (m) => { ui.toast("🔬 " + m); audio.blip(760, .2); });
 
-/* main loop — fixed-step sim @30Hz, rAF render */
-let last = performance.now(), acc = 0, kbAcc = 0;
+/* main loop — fixed-step sim @30Hz, rAF render, adaptive quality */
+let last = performance.now(), acc = 0, kbAcc = 0, emaDt = 1 / 60;
 function loop(tNow) {
   requestAnimationFrame(loop);
   let dt = Math.min(0.1, (tNow - last) / 1000);
   last = tNow;
+  emaDt = emaDt * 0.95 + dt * 0.05;
+  const q = emaDt > 0.026 ? "low" : "high";
+  if (q !== sim.view.quality) { sim.view.quality = q; sim.setQuality(q); }
   acc += dt; kbAcc += dt;
   while (acc >= 1 / 30) {
     acc -= 1 / 30;
@@ -120,7 +137,12 @@ function loop(tNow) {
     events.update(1 / 30);
   }
   renderer.draw(0, tNow);
-  if ((kbAcc += dt) > 0.15) { kbAcc = 0; ui.hud(); }
+  if ((kbAcc += dt) > 0.15) {
+    kbAcc = 0; ui.hud();
+    const pop = sim.algae.length + 1;
+    if (pop >= 6) unlock("colony");
+    if (pop >= 16) unlock("ecosystem");
+  }
 }
 requestAnimationFrame(loop);
 

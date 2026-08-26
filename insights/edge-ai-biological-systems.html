@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Edge AI for Biological Systems | Orr Biologicals</title>
+<meta name="description" content="Why vision inference belongs on-device at ~2 W: latency, privacy of your lab bench, and the reliability story cloud loops cannot tell.">
+<link rel="canonical" href="https://orrbiologicals.com/insights/edge-ai-biological-systems">
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<meta property="og:title" content="Edge AI for Biological Systems">
+<meta property="og:description" content="Why vision inference belongs on-device at ~2 W: latency, privacy of your lab bench, and the reliability story cloud loops cannot tell.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://orrbiologicals.com/insights/edge-ai-biological-systems">
+<meta property="og:image" content="https://orrbiologicals.com/assets/og.png">
+<meta property="article:published_time" content="2026-08-08">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Edge AI for Biological Systems","description":"Why vision inference belongs on-device at ~2 W: latency, privacy of your lab bench, and the reliability story cloud loops cannot tell.","datePublished":"2026-08-08","author":{"@type":"Organization","name":"Orr Biologicals","url":"https://orrbiologicals.com/"},"publisher":{"@type":"Organization","name":"Orr Biologicals","url":"https://orrbiologicals.com/"},"mainEntityOfPage":"https://orrbiologicals.com/insights/edge-ai-biological-systems"}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..700&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,0..560&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/extras.css">
+</head>
+<body class="art-body">
+<div class="art-shell">
+  <nav class="art-top" aria-label="Breadcrumb">
+    <a href="/">← Orr Biologicals</a>
+    <span style="color:#57705f">orrbiologicals.com/insights/edge-ai-biological-systems</span>
+  </nav>
+  <p class="art-cat">AI + Biology · Field note</p>
+  <h1>Edge AI for Biological Systems</h1>
+  <p class="art-meta">By Orr Biologicals · August 7, 2026</p>
+  <div class="prose">
+
+  <p class="dek">The cloud is someone else's computer, on someone else's network, with someone else's uptime. For a living culture, that is three reasons too many.</p>
+  <div class="keyfacts"><div class="h">Key facts</div><ul><li>Edge AI runs inference on the device, milliseconds from the sensors</li><li>Control decisions never depend on network availability</li><li>Raw data â€” sensor logs, camera frames â€” can stay on-device by default</li><li>Small quantized models fit on microcontrollers and pocket accelerators</li></ul></div>
+  <div class="prose"><p>Ten years ago, "AI" in a product pitch almost always meant the cloud: sensors uploaded, a server reasoned, results came back. For biological cultivation that architecture fails on three axes at once. Latency: a condensation event does not wait for a round trip. Reliability: a culture must be controlled at 2 a.m. during an ISP outage. Privacy: a lab's grow data is its research capital, and uploading it by default is a decision, not a feature. Edge AI â€” inference on the device itself â€” is how a closed loop stays closed.</p><p>Consider what a single control decision costs in each architecture. Cloud: sample the sensor, publish over MQTT, broker routes, server infers, command routes back, actuator applies â€” a chain of network hops where any one failure turns the loop into an open one. Edge: sample, infer on the microcontroller in milliseconds, apply. The difference is not speed on a good day; it is behavior on a bad one. When the network dies, a cloud controller is blind and mute; an edge controller does not notice, because the network was never in the loop.</p><p>The hardware reality is friendlier than the marketing suggests. A quantized digital-twin model for a chamber or reactor is a few hundred kilobytes â€” it fits comfortably on an RP2040 or ESP32-class board, and the fastest path to the camera-based vision module is a small USB accelerator that costs about as much as a good dinner. The models are trained on a workstation and distilled down to what the device needs; the device never pretends to be a training rig.</p><p>Privacy on the edge is structural rather than aspirational. In Mycophyte, camera frames are processed on-device and never leave it by default; in AlgaePhyte, sensor logs stay local, and what the federated network receives is the twin's tuned parameters, bounds-checked and signed. Sharing becomes an explicit act instead of an architectural accident â€” a posture that matters to a lab protecting protocols and to a hobbyist who simply doesn't want their kitchen photographed.</p><p>Edge does not mean isolated. Devices still publish telemetry and join federated rounds over MQTT when they choose to; the edge is what keeps those joins optional. The design principle is worth stating plainly: <em>the network should enhance a controller that already works, never be the reason it works.</em> That single sentence explains the failsafe architecture â€” deterministic local rules underneath everything â€” and it is the answer we give anyone who asks why the intelligence lives in the box.</p><p>For a deeper look at the trade-offs, the <a href="docs.html">docs</a> cover the inference stack and MQTT topics, and <a href="federated-learning-biotech.html">the federated learning article</a> covers what happens when edge devices choose to learn from each other.</p></div>
+  <div class="article-foot">
+    <a class="btn btn-ghost" href="articles.html">All articles</a>
+    <a class="btn btn-primary" href="how-it-works.html">See the architecture <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+  </div>
+
+  </div>
+  <nav class="art-foot" aria-label="Related">
+    <a href="/insights/digital-twin-droop-steele-model">A Digital Twin Built on Droop and Steele</a>
+    <a href="/insights/control-loop-architecture">Control Loop Architecture for Living Systems</a>
+    <a href="/insights/bounded-autonomy-safe-ai-proposals">Bounded Autonomy</a>
+    <a href="/game/">Play Algae Living</a>
+    <a href="/#system">The Algaephyte system</a>
+    <a href="/insights/">All field notes</a>
+  </nav>
+</div>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vision-Based Contamination Detection, Honestly | Orr Biologicals</title>
+<meta name="description" content="What a microscope camera can and cannot classify: healthy helix vs fragment vs not-spirulina — flags that hold pumps, never ones that open them.">
+<link rel="canonical" href="https://orrbiologicals.com/insights/vision-contamination-detection">
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<meta property="og:title" content="Vision-Based Contamination Detection, Honestly">
+<meta property="og:description" content="What a microscope camera can and cannot classify: healthy helix vs fragment vs not-spirulina — flags that hold pumps, never ones that open them.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://orrbiologicals.com/insights/vision-contamination-detection">
+<meta property="og:image" content="https://orrbiologicals.com/assets/og.png">
+<meta property="article:published_time" content="2026-08-12">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Vision-Based Contamination Detection, Honestly","description":"What a microscope camera can and cannot classify: healthy helix vs fragment vs not-spirulina — flags that hold pumps, never ones that open them.","datePublished":"2026-08-12","author":{"@type":"Organization","name":"Orr Biologicals","url":"https://orrbiologicals.com/"},"publisher":{"@type":"Organization","name":"Orr Biologicals","url":"https://orrbiologicals.com/"},"mainEntityOfPage":"https://orrbiologicals.com/insights/vision-contamination-detection"}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..700&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,0..560&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/extras.css">
+</head>
+<body class="art-body">
+<div class="art-shell">
+  <nav class="art-top" aria-label="Breadcrumb">
+    <a href="/">← Orr Biologicals</a>
+    <span style="color:#57705f">orrbiologicals.com/insights/vision-contamination-detection</span>
+  </nav>
+  <p class="art-cat">AI + Biology · Field note</p>
+  <h1>Vision-Based Contamination Detection, Honestly</h1>
+  <p class="art-meta">By Orr Biologicals · August 11, 2026</p>
+  <div class="prose">
+
+      <p class="dek">AlgaePhyte&#x27;s six numeric sensors describe the water; an optional camera describes the cells â€” and a picture catches the contamination, stress, and morphology that numbers alone smear into noise.</p>
+      <div class="keyfacts"><div class="h">Key facts</div><ul><li>Spirulina&#x27;s helical, filamentous shape is a visual fingerprint â€” a camera can confirm a healthy culture and flag uncoiling, yellowing, or foreign cells that no bulk sensor reading captures.</li><li>Vision catches contamination early: a grazer or green-algae bloom shows up as foreign shapes and motion in pixels well before it moves pH, OD, or TDS.</li><li>The ESP32-CAM (OV2640) only captures frames; the heavier analysis runs locally and offline on the Pi Zero 2W, so no image ever leaves the reactor.</li><li>An image-based optical-density proxy uses the same Beer-Lambert attenuation as the turbidity probe, giving a second, self-checking estimate of biomass.</li></ul></div>
+      <div class="prose"><p>Every one of AlgaePhyte&#x27;s six numeric sensors measures the water, not the organism. pH, temperature, dissolved oxygen, TDS, light, and optical density are exquisitely sensitive to the chemistry and physics of the culture, but they are all bulk averages â€” a single number standing in for billions of cells. They can tell you the pond is alkaline and warm and slowly getting denser; they cannot tell you whether the things growing in it are actually spirulina. That blind spot is exactly what the optional ESP32-CAM is built to cover. Where a probe reports a scalar, a camera reports a scene, and a scene carries shape, color, and texture that no single number can encode.</p><p>Arthrospira has one of the most recognizable silhouettes in the microbial world: a blue-green trichome â€” the technical name for the filament â€” coiled into a regular open helix, a living spring a fraction of a millimeter long. A healthy, well-lit, well-fed culture is dominated by these tight, uniform spirals, and the first job of vision is simple positive confirmation that they are there and thriving. The second job is to read their body language. When a culture is stressed â€” too hot, too bright, short on nitrogen â€” trichomes often uncoil toward straight filaments, fragment more aggressively, or fade from deep teal toward a sickly yellow-green as phycocyanin and chlorophyll degrade. That drift from coiled-and-blue to straight-and-pale shows up in an image long before it becomes a decisive swing in any probe reading, and it is precisely the kind of gradual morphological change that bulk numbers blur into noise.</p><p>The higher-stakes job is spotting what should not be there at all. Spirulina&#x27;s natural defense is its habitat â€” soda-lake pH near 10 poisons most invaders â€” but nothing is perfect, and the classic intruders each have a distinct look. Round, unicellular green algae like Chlorella; boat-shaped diatoms; darting ciliates and other protozoa; and the real villains, grazers such as rotifers and amoebae that physically eat the crop. A camera catches a grazer bloom or a green-algae takeover as foreign shapes and motion while the water chemistry still looks fine, because a modest contaminant population barely moves pH, TDS, or optical density. By the time the numbers do react â€” the tell-tale unexpected fall in pH, often with a foul smell as the culture crashes â€” the contamination is already advanced. Vision buys back the days between &quot;something looks wrong&quot; and &quot;the chemistry has tipped,&quot; which is often the difference between a rinse-and-recover and a total dump.</p><p>The camera also earns its keep on the mundane task of gauging biomass. Because a dense culture absorbs and scatters light, the average brightness of a backlit frame falls as cell concentration rises â€” the same Beer-Lambert attenuation that AlgaePhyte&#x27;s turbidity probe relies on, only measured in pixels instead of a photodiode. That yields an independent, image-based optical-density proxy AlgaePhyte can cross-check against the dedicated OD sensor. When the two agree, confidence in the density estimate goes up; when they diverge, it is a strong hint that one of them is wrong â€” typically a biofilm or bubble film fouling the optical probe, or wall-growth skewing the camera. A second, physically different way of seeing density turns a single point of failure into a self-checking pair.</p><p>The hardware is deliberately humble. The ESP32-CAM pairs a small OV2640 sensor with Wi-Fi on a board that costs a few dollars, fitted with a close-focus macro lens and lit from behind by an LED â€” or by AlgaePhyte&#x27;s own RGB actuator â€” to resolve the helical filaments at near-microscope scale. The ESP32 itself does little more than capture JPEG frames and ship them over Wi-Fi or MQTT to the Raspberry Pi Zero 2W, where the actual analysis runs: lightweight classical computer vision such as blob detection, color histograms, and shape and texture filters tuned to the helix, plus a small quantized neural net where it fits. Crucially, all of it runs on the Pi, on-site and offline â€” no image has to leave the reactor, which keeps the system private and keeps it working when the internet does not. Honest engineering matters here: the air pump throws bubbles that can masquerade as round cells, and drifting debris can look alive, so the pipeline leans on motion cues, focus, and multiple frames to avoid crying wolf.</p><p>None of this replaces the numbers; it argues with them. AlgaePhyte treats vision and the six probes as complementary evidence streams â€” the sensors continuous, quantitative, and fast, the images slower but rich in structure â€” and fuses them into a single read on culture health. A vision flag can act as a prior on the physics-based digital twin: if the classifier reports foreign cells or a collapsing morphology, AlgaePhyte can down-weight optimistic growth forecasts and bias its two-layer safety gate toward caution, refusing aggressive moves and surfacing the concern to the grower. It might recommend reinforcing the culture&#x27;s alkaline defense â€” replenishing the bicarbonate buffer that holds the water in the high-pH range where spirulina outcompetes its rivals â€” or an early harvest to salvage biomass before the culture crashes. As always, vision only informs; the AI proposes and the safety gate disposes, and no camera frame ever drives a pump on its own.</p><p>The camera is an optional add-on for a reason: AlgaePhyte runs perfectly well on six senses, and vision is a second opinion rather than a life-support system. But it is a genuinely independent opinion, and that is the point â€” the failure modes of a chemistry probe and a camera rarely overlap, so the pair catches more than the sum of its parts. For a home grower learning to read a culture, it is also simply a wonderful window; watching your own spirulina coil and drift across a screen teaches more about what a thriving culture looks like than any spec sheet ever could. That is the whole spirit of the project â€” putting the tools of a research lab, and the understanding that comes with them, within reach of anyone curious enough to look.</p></div>
+      <div class="article-foot">
+        <a class="btn btn-ghost" href="articles.html">All AlgaePhyte articles</a>
+        <a class="btn btn-primary" href="contact.html">Reserve a reactor <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+    
+  </div>
+  <nav class="art-foot" aria-label="Related">
+    <a href="/insights/digital-twin-droop-steele-model">A Digital Twin Built on Droop and Steele</a>
+    <a href="/insights/control-loop-architecture">Control Loop Architecture for Living Systems</a>
+    <a href="/insights/bounded-autonomy-safe-ai-proposals">Bounded Autonomy</a>
+    <a href="/game/">Play Algae Living</a>
+    <a href="/#system">The Algaephyte system</a>
+    <a href="/insights/">All field notes</a>
+  </nav>
+</div>
+</body>
+</html>

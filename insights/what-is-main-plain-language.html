@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What Is Algaephyte? (Plain Language) | Orr Biologicals</title>
+<meta name="description" content="No-jargon tour of an AI-tended photobioreactor: what it senses, how it decides, why every proposal passes gates, and what the human still owns.">
+<link rel="canonical" href="https://orrbiologicals.com/insights/what-is-main-plain-language">
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<meta property="og:title" content="What Is Algaephyte? (Plain Language)">
+<meta property="og:description" content="No-jargon tour of an AI-tended photobioreactor: what it senses, how it decides, why every proposal passes gates, and what the human still owns.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://orrbiologicals.com/insights/what-is-main-plain-language">
+<meta property="og:image" content="https://orrbiologicals.com/assets/og.png">
+<meta property="article:published_time" content="2026-08-04">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"What Is Algaephyte? (Plain Language)","description":"No-jargon tour of an AI-tended photobioreactor: what it senses, how it decides, why every proposal passes gates, and what the human still owns.","datePublished":"2026-08-04","author":{"@type":"Organization","name":"Orr Biologicals","url":"https://orrbiologicals.com/"},"publisher":{"@type":"Organization","name":"Orr Biologicals","url":"https://orrbiologicals.com/"},"mainEntityOfPage":"https://orrbiologicals.com/insights/what-is-main-plain-language"}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..700&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,0..560&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/extras.css">
+</head>
+<body class="art-body">
+<div class="art-shell">
+  <nav class="art-top" aria-label="Breadcrumb">
+    <a href="/">← Orr Biologicals</a>
+    <span style="color:#57705f">orrbiologicals.com/insights/what-is-main-plain-language</span>
+  </nav>
+  <p class="art-cat">AI + Biology · Field note</p>
+  <h1>What Is Algaephyte? (Plain Language)</h1>
+  <p class="art-meta">By Orr Biologicals · August 3, 2026</p>
+  <div class="prose">
+
+      <p class="dek">AlgaePhyte is a small AI that tends a living spirulina culture, reading its water minute by minute and making careful, double-checked corrections so the culture is never left to guesswork.</p>
+      <div class="keyfacts"><div class="h">Key facts</div><ul><li>AlgaePhyte is a Raspberry Pi that watches six live readings (pH, temperature, light, density, dissolved oxygen, and dissolved salts) and makes small corrections</li><li>It never acts blindly: every move is checked against hard limits and a physics-based simulation, and it fails closed, doing nothing when unsure</li><li>Reactors share what they learn as tuned settings through a network called PhycoNet, never your raw sensor logs or camera images</li><li>It is an open-source, educational, non-commercial project, not a health or medical product</li></ul></div>
+      <div class="prose"><p>AlgaePhyte stands for Microalgae Artificial Intelligence Network, but the plain-language version is simpler: it is a small computer that grows spirulina for you and keeps an eye on it around the clock. Spirulina is a microscopic, spiral-shaped cyanobacterium (a photosynthetic microbe) that lives in warm, very alkaline water. Keeping it healthy means holding several conditions in balance at once, and those conditions drift all day as the culture drinks in light, feeds, and grows. AlgaePhyte&#x27;s job is to notice that drift early and correct it gently, so a living culture is never left to guesswork.</p><p>AlgaePhyte senses its culture through six simple readings, taken about once a minute. It measures pH (how alkaline the water is), temperature, and light. It watches density, meaning how thick and green the culture has grown, which is really a measure of how much spirulina is now in the water. And it tracks dissolved oxygen (the oxygen the culture gives off as it photosynthesizes) and TDS, the total dissolved salts and nutrients. An optional tiny camera can add a microscope-style view to catch contamination and help estimate density. None of these numbers mean much on their own. AlgaePhyte&#x27;s value is in reading them together, the way an experienced grower can glance at a jar and simply know something is off.</p><p>When a reading drifts, AlgaePhyte can respond with a few careful actions. It can dose bicarbonate, which is the culture&#x27;s carbon source and its natural pH buffer rolled into one. That one matters because when the pH climbs too high, it usually means the culture has eaten through its available carbon and needs a top-up. AlgaePhyte can also add liquid nutrient, run an air pump to stir the culture and let built-up oxygen escape, switch on a heater, or adjust the light. The moves are deliberately small. AlgaePhyte nudges the culture back toward comfortable; it does not yank it.</p><p>Before it makes any move, AlgaePhyte thinks ahead using what engineers call a digital twin, a physics-based simulation that behaves like a virtual copy of your culture. It draws on the well-understood biology of how spirulina responds to light, warmth, alkalinity, and oxygen to forecast what the next day of growth should look like, and whether a proposed action would genuinely help. This is where some of spirulina&#x27;s quirks show up. More light, for instance, is not always better: past a certain brightness the culture is harmed rather than helped, so AlgaePhyte aims for a productive middle band instead of just turning the lights up.</p><p>The most important thing to understand about AlgaePhyte is that the AI only proposes; it never acts unchecked. Every suggested action passes through two safety layers: a set of fixed hard limits that no action may cross, and a simulation check that blocks any move predicted to stall growth or push the water out of its safe range. The system fails closed, which means when it is unsure, it does nothing rather than gamble with the culture. Beneath the software sit independent backstops, including limits built into the low-level firmware and a physical emergency-stop button you can press by hand. And if the internet drops, a simpler set of rules keeps running on the device itself, so the culture is never left unattended.</p><p>AlgaePhyte reactors can also learn from one another through a network called PhycoNet. When one reactor works out a better way to keep a particular strain happy, it shares only the lessons, meaning the tuned settings its simulation has learned, and never your raw sensor logs or camera images. Any settings arriving from the network are checked for sensible values before they are ever allowed to touch a live culture. The idea is that the whole network gets steadily better at growing spirulina, while each grower&#x27;s own data stays their own.</p><p>A note on what AlgaePhyte is and is not. It is an experimental, open-source, educational project, built and shared in the belief that science should be open to everyone, and it is run as a non-commercial effort by a young creator. It is a tool for learning how a living culture behaves and how careful automation can look after it. It is not a health or medical product, and it makes no promises about what spirulina can do for you. If you want to follow along or ask questions, the project lives on YouTube at @OrrBiologicals, and you can reach the team at service@orrbiologicals.com.</p></div>
+      <div class="article-foot">
+        <a class="btn btn-ghost" href="articles.html">All AlgaePhyte articles</a>
+        <a class="btn btn-primary" href="contact.html">Reserve a reactor <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+    
+  </div>
+  <nav class="art-foot" aria-label="Related">
+    <a href="/insights/digital-twin-droop-steele-model">A Digital Twin Built on Droop and Steele</a>
+    <a href="/insights/control-loop-architecture">Control Loop Architecture for Living Systems</a>
+    <a href="/insights/bounded-autonomy-safe-ai-proposals">Bounded Autonomy</a>
+    <a href="/game/">Play Algae Living</a>
+    <a href="/#system">The Algaephyte system</a>
+    <a href="/insights/">All field notes</a>
+  </nav>
+</div>
+</body>
+</html>

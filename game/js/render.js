@@ -25,6 +25,7 @@ export function createRenderer(canvas, S, sim, reactor) {
   /* ============ MICRO VIEW ============ */
   function drawMicro(v, tNow) {
     const P = S.player;
+    const lowQ = v.quality === "low";
     // camera follows player smoothly
     const k = 0.08;
     v.x += (P.x - v.x) * k;
@@ -40,17 +41,19 @@ export function createRenderer(canvas, S, sim, reactor) {
     ctx.scale(v.zoom, v.zoom);
     ctx.translate(-v.x, -v.y);
 
-    // light shafts
-    ctx.globalAlpha = 0.05 + Math.sin(tNow / 2400) * 0.02;
-    for (let i = 0; i < 5; i++) {
-      ctx.fillStyle = "#cfe8b8";
-      ctx.save();
-      ctx.translate((i * 700 + ((tNow / 60) % 700)) % CFG.world.w, 0);
-      ctx.rotate(0.3);
-      ctx.fillRect(0, -400, 90 + i * 30, CFG.world.h * 1.6);
-      ctx.restore();
+    // light shafts (skipped in low quality mode)
+    if (!lowQ) {
+      ctx.globalAlpha = 0.05 + Math.sin(tNow / 2400) * 0.02;
+      for (let i = 0; i < 5; i++) {
+        ctx.fillStyle = "#cfe8b8";
+        ctx.save();
+        ctx.translate((i * 700 + ((tNow / 60) % 700)) % CFG.world.w, 0);
+        ctx.rotate(0.3);
+        ctx.fillRect(0, -400, 90 + i * 30, CFG.world.h * 1.6);
+        ctx.restore();
+      }
+      ctx.globalAlpha = 1;
     }
-    ctx.globalAlpha = 1;
 
     // zone auras
     for (const z of sim.zones) {
@@ -93,9 +96,10 @@ export function createRenderer(canvas, S, sim, reactor) {
     drawCell(P2.x, P2.y, P2.r * P2.size, P2.hue, 1, tNow, P2.flagella);
     ctx.shadowBlur = 0;
 
-    // bubbles rising
+    // bubbles rising (fewer on low quality)
     ctx.strokeStyle = "rgba(210,235,215,.25)";
-    for (let i = 0; i < 18; i++) {
+    const nBub = lowQ ? 8 : 18;
+    for (let i = 0; i < nBub; i++) {
       const bx = ((i * 467 + tNow / 14) % CFG.world.w);
       const by = CFG.world.h - ((tNow / 6 + i * 313) % CFG.world.h);
       ctx.beginPath(); ctx.arc(bx, by, 2 + (i % 4), 0, 7); ctx.stroke();

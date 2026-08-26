@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dissolved Oxygen as a Stress Signal | Orr Biologicals</title>
+<meta name="description" content="Afternoon oxygen plateaus explained: supersaturation, self-poisoning of photosynthesis, and how a twin treats DO as a state variable rather than a footnote.">
+<link rel="canonical" href="https://orrbiologicals.com/insights/dissolved-oxygen-stress-signal">
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<meta property="og:title" content="Dissolved Oxygen as a Stress Signal">
+<meta property="og:description" content="Afternoon oxygen plateaus explained: supersaturation, self-poisoning of photosynthesis, and how a twin treats DO as a state variable rather than a footnote.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://orrbiologicals.com/insights/dissolved-oxygen-stress-signal">
+<meta property="og:image" content="https://orrbiologicals.com/assets/og.png">
+<meta property="article:published_time" content="2026-07-19">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Dissolved Oxygen as a Stress Signal","description":"Afternoon oxygen plateaus explained: supersaturation, self-poisoning of photosynthesis, and how a twin treats DO as a state variable rather than a footnote.","datePublished":"2026-07-19","author":{"@type":"Organization","name":"Orr Biologicals","url":"https://orrbiologicals.com/"},"publisher":{"@type":"Organization","name":"Orr Biologicals","url":"https://orrbiologicals.com/"},"mainEntityOfPage":"https://orrbiologicals.com/insights/dissolved-oxygen-stress-signal"}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..700&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,0..560&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/extras.css">
+</head>
+<body class="art-body">
+<div class="art-shell">
+  <nav class="art-top" aria-label="Breadcrumb">
+    <a href="/">← Orr Biologicals</a>
+    <span style="color:#57705f">orrbiologicals.com/insights/dissolved-oxygen-stress-signal</span>
+  </nav>
+  <p class="art-cat">Photobioreactors · Field note</p>
+  <h1>Dissolved Oxygen as a Stress Signal</h1>
+  <p class="art-meta">By Orr Biologicals · July 18, 2026</p>
+  <div class="prose">
+
+      <p class="dek">In a bright, dense culture, photosynthetic oxygen can supersaturate to levels that inhibit the very growth that produced it.</p>
+      <div class="keyfacts"><div class="h">Key facts</div><ul><li>Dense, lit cultures can supersaturate O2 far above 100% air saturation</li><li>High O2 drives photorespiration and reactive-oxygen stress, cutting productivity</li><li>Aeration and mixing strip excess O2; AlgaePhyte&#x27;s model penalizes growth above ~300% sat</li></ul></div>
+      <div class="prose"><p>Oxygen is the product of photosynthesis, and it is easy to assume more of it means a healthier culture. In a photobioreactor, the opposite can be true. Photosynthesis splits water and releases O2 inside the vessel; a dense, brightly lit culture generates O2 faster than it can escape, so dissolved oxygen can climb well above air saturation â€” 200%, 300%, or more is routinely reported in productive closed reactors.</p><p>That excess oxygen harms growth two ways. It fuels photorespiration â€” Rubisco, which fixes CO2, also reacts with O2, wasting energy when the O2-to-CO2 ratio rises. And high O2 with strong light promotes reactive oxygen species that damage the photosynthetic apparatus, compounding photoinhibition. The culture is poisoned by its own success.</p><p>AlgaePhyteâ€™s digital twin encodes this: its dissolved-oxygen term leaves growth unaffected up to a threshold â€” configured near 300% saturation in the Spirulina preset â€” then applies a smoothly increasing penalty. The practical remedy is physical: mixing and aeration strip excess O2 (and bring carbon to the cells and keep filaments suspended). Read this way, sustained supersaturation says the culture is over-lit or under-mixed relative to its density â€” and the fix is more turbulence, not more light.</p></div>
+      <div class="article-foot">
+        <a class="btn btn-ghost" href="articles.html">All AlgaePhyte articles</a>
+        <a class="btn btn-primary" href="contact.html">Reserve a reactor <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+    
+  </div>
+  <nav class="art-foot" aria-label="Related">
+    <a href="/insights/alkalinity-as-a-control-variable">Alkalinity as a Control Variable</a>
+    <a href="/insights/six-culture-signals-main-senses">Six Culture Signals</a>
+    <a href="/insights/reading-your-culture">Reading Your Culture</a>
+    <a href="/game/">Play Algae Living</a>
+    <a href="/#system">The Algaephyte system</a>
+    <a href="/insights/">All field notes</a>
+  </nav>
+</div>
+</body>
+</html>

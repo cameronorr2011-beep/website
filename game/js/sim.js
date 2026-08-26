@@ -10,6 +10,7 @@ export function createSim(S) {
   const near = [];
   let target = { x: S.player.x, y: S.player.y };
   const listeners = { toast: [], death: [], discover: [] };
+  let quality = "high";
 
   seedInitial();
 
@@ -20,7 +21,8 @@ export function createSim(S) {
     refill(pool);
   }
   function refill(extra = 0) {
-    refillNutrients(pool, CFG.counts.nutrients + extra);
+    const base = Math.round(CFG.counts.nutrients * (quality === "low" ? 0.55 : 1));
+    refillNutrients(pool, base + extra);
   }
   function on(evt, fn) { listeners[evt].push(fn); }
   function emit(evt, arg) { for (const fn of listeners[evt]) fn(arg); }
@@ -189,6 +191,7 @@ export function createSim(S) {
     algae, bact, pool, zones: null,
     step,
     setTarget,
+    setQuality(q) { quality = q; },
     on,
     get target() { return target; },
     respawn() {
