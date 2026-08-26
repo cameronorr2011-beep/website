@@ -3,12 +3,30 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Algaephyte — Orr Biologicals</title>
-<meta name="description" content="Algaephyte by Orr Biologicals — a self-tending photobioreactor. Digital twin, Edge TPU, MQTT mesh. Six sensors, a physics twin, and pumps that are not allowed to move until three gates agree.">
+<title>Algaephyte — AI Spirulina Photobioreactor | Orr Biologicals</title>
+<meta name="description" content="Algaephyte by Orr Biologicals — a self-tending photobioreactor for home and lab Spirulina cultivation. Digital twin, edge-AI vision, MQTT mesh. Six sensors, a physics model, and pumps that are not allowed to move until three safety gates agree.">
 <meta name="theme-color" content="#050705">
-<meta property="og:title" content="Algaephyte — Orr Biologicals">
+<link rel="canonical" href="https://orrbiologicals.com/">
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<meta property="og:title" content="Algaephyte — AI Spirulina Photobioreactor | Orr Biologicals">
 <meta property="og:description" content="A living production system that learns how to stay productive. Vessel, sensors, edge vision, digital twin, control firmware and federated learning — one instrument.">
 <meta property="og:type" content="website">
+<meta property="og:url" content="https://orrbiologicals.com/">
+<meta property="og:image" content="https://orrbiologicals.com/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="Orr Biologicals">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Algaephyte — AI Spirulina Photobioreactor | Orr Biologicals">
+<meta name="twitter:description" content="Vessel, sensors, edge vision, digital twin, control firmware and federated learning — engineered as one instrument for reliable microalgae cultivation.">
+<meta name="twitter:image" content="https://orrbiologicals.com/assets/og.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+{"@type":"Organization","@id":"https://orrbiologicals.com/#org","name":"Orr Biologicals","url":"https://orrbiologicals.com/","email":"service@orrbiologicals.com","logo":"https://orrbiologicals.com/assets/og.png","description":"Orr Biologicals builds Algaephyte, an AI-tended Spirulina photobioreactor combining a physics digital twin, edge computer vision and federated learning."},
+{"@type":"WebSite","@id":"https://orrbiologicals.com/#site","url":"https://orrbiologicals.com/","name":"Orr Biologicals","publisher":{"@id":"https://orrbiologicals.com/#org"}},
+{"@type":"Product","@id":"https://orrbiologicals.com/#algaephyte","name":"Algaephyte","description":"A full-stack automated photobioreactor for Arthrospira (Spirulina) cultivation: sensor suite, Droop/Steele digital twin, Edge TPU contamination vision, three-gate safety firmware and a federated MQTT mesh.","brand":{"@id":"https://orrbiologicals.com/#org"},"url":"https://orrbiologicals.com/","offers":{"@type":"Offer","availability":"https://schema.org/PreOrder","offerStatus":"https://schema.org/PreOrder","priceCurrency":"USD","description":"Controlled pilot deployments — inquiry only"}}]}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:opsz,ital,wght@8..60,0,400;8..60,0,500;8..60,1,400&display=swap" rel="stylesheet">
@@ -30,6 +48,7 @@
   <link rel="stylesheet" href="css/deploy.css">
   <link rel="stylesheet" href="css/footer.css">
   <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/extras.css">
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
@@ -52,6 +71,8 @@
       <a href="#journal">Journal</a>
       <a href="#faults">Faults</a>
       <a href="#faq">FAQ</a>
+      <a href="/insights/">Insights</a>
+      <a href="/game/">Game</a>
       <a class="btn-white" href="#deploy">Pilot access</a>
     </nav>
     <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
@@ -64,6 +85,8 @@
   <a href="#journal">Journal</a>
   <a href="#faults">Faults</a>
   <a href="#faq">FAQ</a>
+  <a href="/insights/">Insights</a>
+  <a href="/game/">Game</a>
   <a href="#deploy">Pilot access</a>
 </div>
 
@@ -92,6 +115,25 @@
 <div class="ticker" aria-hidden="true">
   <div class="marquee-track" id="tickerTrack"></div>
 </div>
+<!-- ============ GAME TEASER ============ -->
+<section class="section dark" id="play" aria-label="Algae Living game">
+  <div class="wrap game-teaser section-reveal">
+    <div class="gt-copy">
+      <p class="eyebrow">Interactive · free · in-browser</p>
+      <h2 class="h-display" style="max-width:14ch">Be the culture.</h2>
+      <p class="lede">Start as one cell of <em>Arthrospira</em> inside a living photobioreactor. Forage light, outgrow bacterial grazers, evolve your lineage, build a colony — and take over operation of the reactor itself. A playable model of everything on this page.</p>
+      <div class="hero-cta">
+        <a class="btn-white" href="/game/">Play Algae Living</a>
+        <a class="btn-ghost" href="/insights/">Read the field notes</a>
+      </div>
+    </div>
+    <div class="gt-visual" aria-hidden="true">
+      <span class="gcell c1"></span><span class="gcell c2"></span><span class="gcell c3"></span>
+      <span class="gbub b1"></span><span class="gbub b2"></span><span class="gbub b3"></span><span class="gbub b4"></span>
+      <span class="glowfield"></span>
+    </div>
+  </div>
+</section>
 <!-- ============ SIMULATION ============ -->
 <section class="section" id="simulation">
   <div class="wrap">
@@ -364,14 +406,15 @@
     <div class="section-reveal">
       <p class="eyebrow">Pilot access · deployment inquiry</p>
       <h2 class="h-display">Deploy Algaephyte</h2>
-      <p class="lede" style="margin-top:24px">Algaephyte is entering controlled pilot deployments across research, production and education. Tell us the environment, intended scale and organism goal. This opens a deployment inquiry to service@orrbiologicals.com.</p>
+      <p class="lede" style="margin-top:24px">Algaephyte is entering controlled pilot deployments across research, production and education. Tell us the environment, intended scale and organism goal, and we will reply from service@orrbiologicals.com.</p>
     </div>
-    <form class="deploy section-reveal" id="deployForm">
-      <div class="field"><label for="fName">Name / organization</label><input id="fName" type="text" placeholder="Name or organization"></div>
-      <div class="field"><label for="fPlace">Location</label><input id="fPlace" type="text" placeholder="City, country"></div>
-      <div class="field"><label for="fGrow">Cultivation objective</label><textarea id="fGrow" placeholder="Classroom column, greenhouse mesh node, feed for filter feeders…"></textarea></div>
-      <div class="field" style="display:none" aria-hidden="true"><label for="fHp">Leave blank</label><input id="fHp" type="text" tabindex="-1" autocomplete="off"></div>
-      <button class="btn-white" type="submit">Open deployment inquiry</button>
+    <form class="deploy section-reveal" id="deployForm" novalidate>
+      <div class="field"><label for="fName">Name / organization</label><input id="fName" name="name" type="text" placeholder="Name or organization" required></div>
+      <div class="field"><label for="fPlace">Location</label><input id="fPlace" name="location" type="text" placeholder="City, country" required></div>
+      <div class="field"><label for="fGrow">Cultivation objective</label><textarea id="fGrow" name="objective" placeholder="Classroom column, greenhouse mesh node, feed for filter feeders…" required></textarea></div>
+      <div class="field" style="display:none" aria-hidden="true"><label for="fHp">Leave blank</label><input id="fHp" name="_gotcha" type="text" tabindex="-1" autocomplete="off"></div>
+      <p id="formStatus" role="status" aria-live="polite" style="min-height:1.4em;font-size:.9rem;margin:0 0 12px;color:#5ad07a"></p>
+      <button class="btn-white" type="submit">Send deployment inquiry</button>
     </form>
   </div>
 </section>
@@ -405,8 +448,17 @@
         <a href="#journal">Journal</a><br>
         <a href="#faults">Troubleshooting</a><br>
         <a href="#faq">FAQ</a><br>
+        <a href="/game/">Algae Living (game)</a><br>
         <a href="#deploy">Pilot access</a><br>
         <a href="https://www.youtube.com/@OrrBiologicals" target="_blank" rel="noreferrer">YouTube</a>
+      </div>
+      <div>
+        <div class="col-t">Field notes</div>
+        <a href="/insights/">All insights</a><br>
+        <a href="/insights/how-to-start-home-spirulina-culture">Grow Spirulina at home</a><br>
+        <a href="/insights/zarrouk-medium-and-nutrients">Zarrouk medium</a><br>
+        <a href="/insights/harvesting-and-using-fresh-spirulina">Harvesting</a><br>
+        <a href="/insights/troubleshooting-contamination-crashes">Contamination</a>
       </div>
     </div>
     <div style="font-size:13px;line-height:2.1">

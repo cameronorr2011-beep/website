@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Digital Twins for Biological Cultivation | Orr Biologicals</title>
+<meta name="description" content="What a digital twin of a living culture actually is: state variables, counterfactual testing of actions, and why simulation-first beats actuate-first.">
+<link rel="canonical" href="https://orrbiologicals.com/insights/digital-twins-biological-cultivation">
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<meta property="og:title" content="Digital Twins for Biological Cultivation">
+<meta property="og:description" content="What a digital twin of a living culture actually is: state variables, counterfactual testing of actions, and why simulation-first beats actuate-first.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://orrbiologicals.com/insights/digital-twins-biological-cultivation">
+<meta property="og:image" content="https://orrbiologicals.com/assets/og.png">
+<meta property="article:published_time" content="2026-08-10">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Digital Twins for Biological Cultivation","description":"What a digital twin of a living culture actually is: state variables, counterfactual testing of actions, and why simulation-first beats actuate-first.","datePublished":"2026-08-10","author":{"@type":"Organization","name":"Orr Biologicals","url":"https://orrbiologicals.com/"},"publisher":{"@type":"Organization","name":"Orr Biologicals","url":"https://orrbiologicals.com/"},"mainEntityOfPage":"https://orrbiologicals.com/insights/digital-twins-biological-cultivation"}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..700&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,0..560&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/extras.css">
+</head>
+<body class="art-body">
+<div class="art-shell">
+  <nav class="art-top" aria-label="Breadcrumb">
+    <a href="/">← Orr Biologicals</a>
+    <span style="color:#57705f">orrbiologicals.com/insights/digital-twins-biological-cultivation</span>
+  </nav>
+  <p class="art-cat">AI + Biology · Field note</p>
+  <h1>Digital Twins for Biological Cultivation</h1>
+  <p class="art-meta">By Orr Biologicals · August 9, 2026</p>
+  <div class="prose">
+
+  <p class="dek">A twin is not a dashboard. It is a forward simulation of the biology you control â€” and on a $9 microcontroller, that changes what automation is allowed to do.</p>
+  <div class="keyfacts"><div class="h">Key facts</div><ul><li>A digital twin is a model of the living system that can be simulated forward in time</li><li>The twin is explicit: named equations with learned parameters, not an unreadable black box</li><li>Every proposed control action is simulated before it is applied; predicted harm blocks it</li><li>Twins are calibrated per device and per strain â€” defaults are starting points, not truth</li></ul></div>
+  <div class="prose"><p>The term digital twin has been attached to everything from building dashboards to industrial fantasy. Strip the marketing away and a digital twin is one specific thing: a model of a physical system that you can simulate forward in time, fast enough to ask "what happens if I do X?" before doing it. In biological cultivation that question is worth asking constantly, because the system is alive, the answer changes every hour, and the cost of a wrong answer is a culture.</p><p>In AlgaePhyte's photobioreactor, the twin is built from biology that has been studied for decades. Growth is modeled as the product of independent factors, each with a published form: Droop's cell-quota kinetics for nutrient uptake, Steele's curve for the light response with its photoinhibition penalty above the optimum, Beer-Lambert attenuation for self-shading in a dense culture, bell-shaped temperature and pH responses, and a dissolved-oxygen inhibition term for the supersaturated conditions a bright reactor creates. Multiply the factors, and the twin produces a growth-rate forecast â€” not a number a spreadsheet could guess, but a consequence of the biology.</p><p>In Mycophyte's chamber, the same idea wears different clothes. The dynamics there are hygrometric and thermal rather than photosynthetic: humidity decays toward ambient air, fans strip moisture and COâ‚‚ together, foggers add the first while doing nothing for the second. The twin models those couplings â€” dew point, ventilation exchange rates, the temperature drop that evaporation causes â€” and uses them to answer the chamber's actual question: if I run the fan for ninety seconds, do I crash humidity past the dew point at dawn?</p><p>The design rule we hold to is that the twin must be <em>explicit</em>. Its equations have names you can look up and parameters you can inspect. That is a deliberate rejection of the "throw a neural net at it" approach to control. A black-box model can be right and still be useless, because when it is wrong there is no way to know which term is lying. An explicit twin is debuggable: if the forecast is bad, you can isolate whether the humidity decay rate or the COâ‚‚ respiration term is off, correct it, and move on.</p><p>None of this needs a data center. The twin runs on a Raspberry Pi Zero in the reactor and on an RP2040-class board in the chamber, stepping the simulation every few seconds against fresh sensor readings. The models are small by design â€” a few hundred kilobytes â€” which is what makes federated learning over MQTT practical, because the thing that travels between devices is the twin's tuned parameters, not anyone's raw data.</p><p>The honest caveat: a twin is a model, and a model is a simplification. The open simulations on the AlgaePhyte and Mycophyte pages run these same equations so you can feel how they respond â€” but a simulation is not a validation. The only validation is the culture itself, which is why every device logs everything and publishes nothing without permission.</p></div>
+  <div class="article-foot">
+    <a class="btn btn-ghost" href="articles.html">All articles</a>
+    <a class="btn btn-primary" href="how-it-works.html">See the architecture <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+  </div>
+
+  </div>
+  <nav class="art-foot" aria-label="Related">
+    <a href="/insights/photobioreactor-ai-optimization">AI Optimization in Photobioreactors</a>
+    <a href="/insights/how-to-start-home-spirulina-culture">How to Start a Home Spirulina Culture (Without Guesswork)</a>
+    <a href="/insights/harvesting-and-using-fresh-spirulina">Harvesting and Using Fresh Spirulina</a>
+    <a href="/game/">Play Algae Living</a>
+    <a href="/#system">The Algaephyte system</a>
+    <a href="/insights/">All field notes</a>
+  </nav>
+</div>
+</body>
+</html>

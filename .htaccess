@@ -1,0 +1,83 @@
+# Orr Biologicals — orrbiologicals.com
+# Canonical host: https://orrbiologicals.com (non-www, HTTPS)
+
+ErrorDocument 404 /404.html
+
+Options -Indexes
+
+<IfModule mod_rewrite.c>
+RewriteEngine On
+
+# --- canonical host: force https + non-www ---------------------------------
+RewriteCond %{HTTPS} !=on [OR]
+RewriteCond %{HTTP_HOST} ^www\. [NC]
+RewriteCond %{HTTP_HOST} ^(?:www\.)?(.+)$ [NC]
+RewriteRule ^ https://%1%{REQUEST_URI} [R=301,L]
+
+# --- legacy URL migration (pre-rebuild site) -------------------------------
+# Content restored as articles
+Redirect 301 /how-to-start-home-spirulina-culture      /insights/how-to-start-home-spirulina-culture
+Redirect 301 /harvesting-and-using-fresh-spirulina     /insights/harvesting-and-using-fresh-spirulina
+Redirect 301 /zarrouk-medium-and-nutrients             /insights/zarrouk-medium-and-nutrients
+Redirect 301 /light-temperature-mixing                 /insights/light-temperature-mixing
+Redirect 301 /troubleshooting-contamination-crashes    /insights/troubleshooting-contamination-crashes
+Redirect 301 /troubleshooting-ph-and-carbon            /insights/troubleshooting-ph-and-carbon
+Redirect 301 /photobioreactor-ai-optimization          /insights/photobioreactor-ai-optimization
+Redirect 301 /digital-twins-biological-cultivation     /insights/digital-twins-biological-cultivation
+Redirect 301 /spirulina-is-a-cyanobacterium            /insights/spirulina-is-a-cyanobacterium
+Redirect 301 /articles                                 /insights/
+Redirect 301 /cultivation                              /insights/
+Redirect 301 /reading-your-culture                     /insights/
+Redirect 301 /winter-home-growing-warmth               /insights/how-to-start-home-spirulina-culture
+
+# Product / concept equivalents on the rebuilt homepage
+Redirect 301 /research                                 /#system
+Redirect 301 /technology                               /#stack
+Redirect 301 /projects                                 /#stack
+Redirect 301 /algaephyte                               /
+Redirect 301 /what-is-main-plain-language              /#system
+Redirect 301 /control-loop-architecture                /#system
+Redirect 301 /alkalinity-as-a-control-variable         /#system
+Redirect 301 /dissolved-oxygen-stress-signal           /#system
+Redirect 301 /six-culture-signals-main-senses          /#signals
+Redirect 301 /digital-twin-droop-steele-model          /#twin
+Redirect 301 /bounded-autonomy-safe-ai-proposals       /#safety
+Redirect 301 /how-main-keeps-culture-safe              /#safety
+Redirect 301 /vision-contamination-detection           /#instrument
+Redirect 301 /computer-vision-contamination-detection  /#instrument
+Redirect 301 /computer-vision-mushroom-cultivation     /#instrument
+Redirect 301 /edge-ai-biological-systems               /#instrument
+Redirect 301 /federated-learning-network               /#mesh
+Redirect 301 /federated-learning-biotech               /#mesh
+Redirect 301 /troubleshooting                          /#faults
+Redirect 301 /faq                                      /#faq
+Redirect 301 /docs                                     /#journal
+Redirect 301 /main-dashboard                           /#simulation
+Redirect 301 /pbr_simulation                           /#simulation
+Redirect 301 /contact                                  /#deploy
+Redirect 301 /shop                                     /#deploy
+Redirect 301 /about                                    /
+Redirect 301 /mycophyte                                /
+
+# --- clean URLs: serve /slug -> slug.html (internal), and 301 the reverse --
+RewriteCond %{THE_REQUEST} \s/([^\s?]+)\.html[\s?] [NC]
+RewriteRule ^ /%1 [R=301,L]
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.html -f
+RewriteCond %{REQUEST_URI} !\.[A-Za-z0-9]+$
+RewriteRule ^(.*)$ $1.html [L]
+</IfModule>
+
+<IfModule mod_deflate.c>
+AddOutputFilterByType DEFLATE text/html text/css text/javascript application/javascript application/json image/svg+xml text/xml application/xml
+</IfModule>
+
+<IfModule mod_expires.c>
+ExpiresActive On
+ExpiresByType image/jpeg "access plus 30 days"
+ExpiresByType image/png "access plus 30 days"
+ExpiresByType image/svg+xml "access plus 30 days"
+ExpiresByType text/css "access plus 7 days"
+ExpiresByType application/javascript "access plus 7 days"
+</IfModule>

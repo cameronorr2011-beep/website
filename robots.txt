@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /sections/
+Disallow: /build.ps1
+Disallow: /README.md
+
+Sitemap: https://orrbiologicals.com/sitemap.xml

@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Optimization in Photobioreactors: Propose, Then Verify | Orr Biologicals</title>
+<meta name="description" content="How AI belongs in an algae photobioreactor: bounded proposals checked by hard limits and a physics twin — never direct control of pumps.">
+<link rel="canonical" href="https://orrbiologicals.com/insights/photobioreactor-ai-optimization">
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<meta property="og:title" content="AI Optimization in Photobioreactors: Propose, Then Verify">
+<meta property="og:description" content="How AI belongs in an algae photobioreactor: bounded proposals checked by hard limits and a physics twin — never direct control of pumps.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://orrbiologicals.com/insights/photobioreactor-ai-optimization">
+<meta property="og:image" content="https://orrbiologicals.com/assets/og.png">
+<meta property="article:published_time" content="2026-08-06">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"AI Optimization in Photobioreactors: Propose, Then Verify","description":"How AI belongs in an algae photobioreactor: bounded proposals checked by hard limits and a physics twin — never direct control of pumps.","datePublished":"2026-08-06","author":{"@type":"Organization","name":"Orr Biologicals","url":"https://orrbiologicals.com/"},"publisher":{"@type":"Organization","name":"Orr Biologicals","url":"https://orrbiologicals.com/"},"mainEntityOfPage":"https://orrbiologicals.com/insights/photobioreactor-ai-optimization"}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..700&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,0..560&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/extras.css">
+</head>
+<body class="art-body">
+<div class="art-shell">
+  <nav class="art-top" aria-label="Breadcrumb">
+    <a href="/">← Orr Biologicals</a>
+    <span style="color:#57705f">orrbiologicals.com/insights/photobioreactor-ai-optimization</span>
+  </nav>
+  <p class="art-cat">AI + Biology · Field note</p>
+  <h1>AI Optimization in Photobioreactors: Propose, Then Verify</h1>
+  <p class="art-meta">By Orr Biologicals · August 5, 2026</p>
+  <div class="prose">
+
+  <p class="dek">A photobioreactor is a light-to-biomass machine with one vicious paradox: the brighter you shine it, the harder its inhabitants fight back.</p>
+  <div class="keyfacts"><div class="h">Key facts</div><ul><li>Optimization means holding the culture at its productive regime, not maximizing any single dial</li><li>Steele's curve describes the light optimum â€” and the photoinhibition penalty above it</li><li>Beer-Lambert self-shading means the optimal surface light depends on culture density</li><li>Dissolved oxygen supersaturation can inhibit the growth that produced it</li></ul></div>
+  <div class="prose"><p>In a photobioreactor, the goal is simple to state and hard to hit: maximize biomass per unit of time, per unit of light, per unit of labor. The trouble is that every one of those units argues with the others. More light means more photosynthesis until it means photoinhibition. More density means more cells per liter until it means each cell sees almost nothing. More aeration relieves oxygen stress until it strips the carbon you paid to put in. An AI in this loop is not a magical farmer; it is a controller that can hold a knife-edge equilibrium the human hand cannot hold for forty days straight.</p><p>The first edge is light. Photosynthetic organisms respond to light through what is called the Steele curve: growth rises with intensity up to an optimum, then falls as the excess energy damages the reaction centers â€” photoinhibition. In a dense culture there is a second curve hiding inside the first: Beer-Lambert attenuation means the cells at the surface see almost all the light while the cells in the core see almost none, so the <em>effective</em> light at the optimum depends on the culture's own density. AlgaePhyte's twin computes this coupling continuously â€” the same surface intensity that is perfect at low density is toxic at high density, because the average cell is suddenly much closer to the lamp.</p><p>The second edge is carbon. Spirulina eats bicarbonate, and bicarbonate is also the culture's pH buffer â€” dosing it feeds the cells and steadies the pH at once, which is why the reactor controls alkalinity rather than acidity. Miss the timing and the pH climbs with photosynthesis, the dissolved inorganic carbon drops, and growth stalls exactly when the light was perfect. The twin watches pH, light, and density together, because separately they each lie.</p><p>The third edge is oxygen, the quiet assassin. A bright, dense culture produces oxygen faster than it leaves the water, and supersaturated dissolved oxygen inhibits the very carboxylation that produced it. The air pump is not there for mixing alone; it is the oxygen relief valve. In auto mode the reactor runs the pump on a dissolved-oxygen threshold â€” the kind of rule a human can learn and forget, and a controller never forgets.</p><p>What the AI actually optimizes, then, is not any single variable but the joint position of the culture: light at the density-adjusted optimum, carbon and pH coupled, oxygen vented before it bites. The safety architecture keeps this honest â€” every proposed dose is simulated through the twin first, and any action that would push pH out of band or predictably stall growth is blocked before it reaches a pump.</p><p>You can feel the optimization problem in your browser: the <a href="../index.html#sim">AlgaePhyte simulation</a> on the homepage runs these same equations. Push the light slider past the optimum and watch photoinhibition cut the simulated growth rate. The shape of that response is not decoration â€” it is the reason the reactor reasons at all.</p></div>
+  <div class="article-foot">
+    <a class="btn btn-ghost" href="articles.html">All articles</a>
+    <a class="btn btn-primary" href="../index.html#sim">Drive the reactor simulation <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+  </div>
+
+  </div>
+  <nav class="art-foot" aria-label="Related">
+    <a href="/insights/digital-twins-biological-cultivation">Digital Twins for Biological Cultivation</a>
+    <a href="/insights/how-to-start-home-spirulina-culture">How to Start a Home Spirulina Culture (Without Guesswork)</a>
+    <a href="/insights/harvesting-and-using-fresh-spirulina">Harvesting and Using Fresh Spirulina</a>
+    <a href="/game/">Play Algae Living</a>
+    <a href="/#system">The Algaephyte system</a>
+    <a href="/insights/">All field notes</a>
+  </nav>
+</div>
+</body>
+</html>
