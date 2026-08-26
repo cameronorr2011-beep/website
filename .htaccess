@@ -34,6 +34,7 @@ Redirect 301 /winter-home-growing-warmth               /insights/how-to-start-ho
 Redirect 301 /research                                 /#system
 Redirect 301 /technology                               /#stack
 Redirect 301 /projects                                 /#stack
+Redirect 301 /lab                                      /game/
 Redirect 301 /algaephyte                               /
 Redirect 301 /what-is-main-plain-language              /#system
 Redirect 301 /control-loop-architecture                /#system
