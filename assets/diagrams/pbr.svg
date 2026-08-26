@@ -1,0 +1,112 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 660" role="img" aria-labelledby="t d">
+  <title id="t">Photobioreactor system diagram</title>
+  <desc id="d">Schematic of a photobioreactor with lighting, CO2, temperature, pH, nutrients, mixing, optical density and growth monitoring zones</desc>
+  <defs>
+    <linearGradient id="liq" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2E9E70" stop-opacity=".85"/>
+      <stop offset="1" stop-color="#155C3E" stop-opacity=".92"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="540" height="660" fill="#101B17"/>
+
+  <!-- vessel body (base layer) -->
+  <rect x="180" y="120" width="180" height="400" rx="16" fill="#0B1712" stroke="#3ECF8E" stroke-opacity=".5" stroke-width="1.6"/>
+  <rect x="186" y="196" width="168" height="318" rx="12" fill="url(#liq)"/>
+  <path d="M186 196 h168" stroke="#8CE8BC" stroke-opacity=".55" stroke-width="1.4"/>
+  <rect x="190" y="128" width="12" height="384" rx="6" fill="#E7EFEB" opacity=".08"/>
+  <rect x="168" y="92" width="204" height="36" rx="10" fill="#13221C" stroke="#3ECF8E" stroke-opacity=".5" stroke-width="1.2"/>
+
+  <!-- ============ ZONE 01 · LIGHTING ============ -->
+  <g class="pbr-zone" id="z-light">
+    <g class="z-body">
+      <rect x="120" y="180" width="22" height="250" rx="6" fill="#0F231B" stroke="#57B8D6" stroke-opacity=".6" stroke-width="1.2"/>
+      <rect x="398" y="180" width="22" height="250" rx="6" fill="#0F231B" stroke="#57B8D6" stroke-opacity=".6" stroke-width="1.2"/>
+      <g stroke="#57B8D6" stroke-opacity=".55" stroke-width="2"><path d="M142 205 v56 M142 270 v56 M142 335 v56 M398 205 v56 M398 270 v56 M398 335 v56"/></g>
+      <g stroke="#57B8D6" stroke-opacity=".13" stroke-width="1" fill="none"><path d="M164 220 q112 -16 224 0 M164 300 q112 -16 224 0 M164 380 q112 -16 224 0"/></g>
+    </g>
+    <text class="z-label" x="270" y="112" text-anchor="middle">01 · LIGHTING</text>
+  </g>
+
+  <!-- ============ ZONE 04 · pH ============ -->
+  <g class="pbr-zone" id="z-ph">
+    <g class="z-body">
+      <rect x="238" y="60" width="11" height="140" rx="4" fill="#0F231B" stroke="#57B8D6" stroke-opacity=".6" stroke-width="1.2"/>
+      <circle cx="243.5" cy="76" r="2.6" fill="#57B8D6"/>
+      <path d="M243.5 200 q-2 26 0 46" stroke="#57B8D6" stroke-opacity=".4" stroke-width="1.2" fill="none"/>
+    </g>
+    <text class="z-label" x="243" y="48" text-anchor="middle">04 · PH</text>
+  </g>
+
+  <!-- ============ ZONE 05 · NUTRIENTS ============ -->
+  <g class="pbr-zone" id="z-nutrients">
+    <g class="z-body">
+      <path d="M300 128 h40" stroke="#D9A441" stroke-opacity=".7" stroke-width="2"/>
+      <rect x="336" y="112" width="14" height="20" rx="3" fill="none" stroke="#D9A441" stroke-opacity=".7" stroke-width="1.4"/>
+      <path d="M343 132 v14" stroke="#D9A441" stroke-opacity=".7" stroke-width="1.8"/>
+      <circle cx="343" cy="152" r="2.4" fill="#D9A441" opacity=".7"/>
+    </g>
+    <text class="z-label" x="384" y="112">05 · NUTRIENTS</text>
+  </g>
+
+  <!-- ============ ZONE 03 · TEMPERATURE ============ -->
+  <g class="pbr-zone" id="z-temp">
+    <g class="z-body">
+      <rect x="316" y="70" width="10" height="130" rx="4" fill="#0F231B" stroke="#E7EFEB" stroke-opacity=".35" stroke-width="1.1"/>
+      <rect x="318.5" y="120" width="5" height="72" rx="2.5" fill="#57B8D6" opacity=".6"/>
+    </g>
+    <text class="z-label" x="322" y="48" text-anchor="middle">03 · TEMPERATURE</text>
+  </g>
+
+  <!-- ============ ZONE 07 · OPTICAL DENSITY ============ -->
+  <g class="pbr-zone" id="z-od">
+    <g class="z-body">
+      <rect x="348" y="330" width="24" height="40" rx="6" fill="#0F231B" stroke="#3ECF8E" stroke-opacity=".6" stroke-width="1.2"/>
+      <circle cx="360" cy="350" r="3.2" fill="#3ECF8E"/>
+      <circle cx="360" cy="362" r="3.2" fill="#3ECF8E" opacity=".6"/>
+    </g>
+    <text class="z-label" x="394" y="332">07 · OPTICAL DENSITY</text>
+  </g>
+
+  <!-- ============ ZONE 06 · MIXING ============ -->
+  <g class="pbr-zone" id="z-mix">
+    <g class="z-body">
+      <path d="M410 500 h46" stroke="#3ECF8E" stroke-opacity=".6" stroke-width="2.4"/>
+      <path d="M456 500 v-40 h-16" stroke="#3ECF8E" stroke-opacity=".6" stroke-width="2" fill="none"/>
+      <circle cx="456" cy="446" r="6" fill="none" stroke="#3ECF8E" stroke-opacity=".7" stroke-width="1.6"/>
+      <path d="M452 446 a4 4 0 0 1 8 0" fill="#3ECF8E" opacity=".7"/>
+      <ellipse cx="270" cy="508" rx="34" ry="6" fill="none" stroke="#3ECF8E" stroke-opacity=".5" stroke-width="1.4"/>
+    </g>
+    <text class="z-label" x="440" y="540" text-anchor="middle">06 · MIXING</text>
+  </g>
+
+  <!-- ============ ZONE 02 · CO2 ============ -->
+  <g class="pbr-zone" id="z-co2">
+    <g class="z-body">
+      <path d="M180 560 h160" stroke="#57B8D6" stroke-opacity=".5" stroke-width="1.6"/>
+      <path d="M200 560 v-18 h30" stroke="#57B8D6" stroke-opacity=".55" stroke-width="1.8" fill="none"/>
+      <g fill="#BDF5D9" opacity=".5">
+        <circle cx="216" cy="500" r="3.4"/><circle cx="238" cy="470" r="2.8"/><circle cx="206" cy="540" r="2.4"/>
+        <circle cx="250" cy="500" r="2.2"/><circle cx="224" cy="448" r="2"/>
+      </g>
+      <circle cx="230" cy="566" r="3" fill="#57B8D6" opacity=".6"/>
+    </g>
+    <text class="z-label" x="200" y="596" text-anchor="middle">02 · CO₂ SUPPLY</text>
+  </g>
+
+  <!-- ============ ZONE 08 · GROWTH RATE ============ -->
+  <g class="pbr-zone" id="z-growth">
+    <g class="z-body">
+      <rect x="56" y="420" width="92" height="64" rx="8" fill="#0F231B" stroke="#3ECF8E" stroke-opacity=".5" stroke-width="1.1"/>
+      <g stroke="#3ECF8E" stroke-opacity=".55" stroke-width="1.1"><path d="M66 466 v-38 M66 466 h72"/></g>
+      <path d="M72 450 l14 -16 12 10 18 -24 20 -4" fill="none" stroke="#8CE8BC" stroke-width="2"/>
+      <circle cx="136" cy="416" r="2.6" fill="#8CE8BC"/>
+    </g>
+    <text class="z-label" x="102" y="510" text-anchor="middle">08 · GROWTH RATE</text>
+  </g>
+
+  <!-- bubbles inside liquid -->
+  <g fill="#BDF5D9" opacity=".3">
+    <circle cx="230" cy="300" r="3"/><circle cx="300" cy="340" r="2.6"/><circle cx="260" cy="420" r="3.4"/>
+  </g>
+</svg>

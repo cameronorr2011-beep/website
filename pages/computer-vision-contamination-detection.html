@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Computer-Vision Contamination Detection â€” Orr Biologicals</title>
+<meta name="description" content="Detecting mold by eye, by culture, and by camera â€” and the honest difference between flagging an anomaly and diagnosing it.">
+<link rel="canonical" href="https://orrbiologicals.com/computer-vision-contamination-detection">
+<meta property="og:type" content="article"><meta property="og:title" content="Computer-Vision Contamination Detection â€” Orr Biologicals">
+<meta property="og:description" content="Detecting mold by eye, by culture, and by camera â€” and the honest difference between flagging an anomaly and diagnosing it."><meta property="og:url" content="https://orrbiologicals.com/computer-vision-contamination-detection">
+<meta property="og:site_name" content="Orr Biologicals"><meta property="og:image" content="https://orrbiologicals.com/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#04100e">
+<link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iOCIgZmlsbD0iIzA0MTAwZSIvPjxwYXRoIGQ9Ik0xNiA0IHE5IDYgLTQgMTAgcS0xMyA0IDQgMTAgcTkgNCAtMyA0IiBmaWxsPSJub25lIiBzdHJva2U9IiMzM2U2YWQiIHN0cm9rZS13aWR0aD0iMi4yIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz48Y2lyY2xlIGN4PSIxNiIgY3k9IjE2IiByPSIxLjYiIGZpbGw9IiM1N2YwZDYiLz48L3N2Zz4K">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../css/site.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "@id": "https://orrbiologicals.com/#org", "name": "Orr Biologicals", "url": "https://orrbiologicals.com"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Computer-Vision Contamination Detection", "description": "Detecting mold by eye, by culture, and by camera â€” and the honest difference between flagging an anomaly and diagnosing it.", "datePublished": "2026-08-15", "author": {"@id": "https://orrbiologicals.com/#org"}, "publisher": {"@id": "https://orrbiologicals.com/#org"}, "mainEntityOfPage": "https://orrbiologicals.com/computer-vision-contamination-detection", "articleSection": "Technical"}</script>
+</head>
+<body class="phyto">
+<a class="skip" href="#main">Skip to content</a><div class="veil" aria-hidden="true"><svg class="veil-mark" viewBox="0 0 22 34" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" style="color:var(--teal)"><path d="M11 1 q7 5 -3 8 q-10 3 3 8 q10 5 -3 8 q-7 3 3 7"/></svg></div><canvas id="ambient" aria-hidden="true"></canvas><div class="pbar" aria-hidden="true"></div>
+<header class="nav"><div class="nav-in">
+  <a class="wm" href="../index.html" aria-label="Orr Biologicals â€” home"><svg viewBox="0 0 22 34" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M11 1 q7 5 -3 8 q-10 3 3 8 q10 5 -3 8 q-7 3 3 7"/></svg><span><b>Orr Biologicals</b><small>THE LIBRARY</small></span></a>
+  <nav class="nav-links" aria-label="Primary">
+    <a href="../index.html">AlgaePhyte</a>
+    <a href="mycophyte.html">Mycophyte</a>
+    <a href="how-it-works.html">How it works</a>
+    <a href="articles.html" style="color:var(--teal)">Articles</a>
+    <a href="docs.html">Docs</a>
+    <a class="btn btn-primary btn-sm" href="contact.html">Get in touch</a>
+  </nav>
+  <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false"><span></span></button>
+</div></header>
+<main id="main"><article class="article-wrap">
+  <a class="back" href="articles.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg> All articles</a>
+  <div class="abanner"><svg viewBox="0 0 900 210" preserveAspectRatio="xMidYMid slice" style="color:var(--teal)">
+    <g fill="currentColor" opacity="0.5"><circle cx="120" cy="140" r="3"/><circle cx="240" cy="70" r="2.5"/><circle cx="420" cy="150" r="3.5"/><circle cx="560" cy="60" r="2.5"/><circle cx="700" cy="130" r="3"/><circle cx="820" cy="80" r="2.5"/></g>
+    <g fill="none" stroke="currentColor" stroke-width="1.4" opacity="0.4"><path d="M80,170 q60,-40 120,0 t120,0 t120,0 t120,0 t120,0"/><path d="M160,60 q60,-30 120,0 t120,0 t120,0"/></g></svg>
+    <span class="tag">Technical</span></div>
+  <div class="amE"><span class="c">Technical</span><span>6 min read</span></div>
+  <h1>Computer-Vision Contamination Detection</h1>
+  <p class="dek">Everyone wants the camera to say 'mold.' The engineering truth is that it should say 'look here' â€” and that the second sentence is worth more than the first.</p>
+  <div class="keyfacts"><div class="h">Key facts</div><ul><li>Molds and healthy cultures share visual features; texture and context are the real signal</li><li>On-device detection is framed as flagging anomalies for human review, not diagnosis</li><li>Detection reliability depends on lighting, camera angle, strain, and growth stage</li><li>Every flagged event can be logged as a labeled example, improving future detection under human supervision</li></ul></div>
+  <div class="prose"><p>Contamination is the cost center of every cultivation project, and it has one property that makes it irresistible to automate: it is visible. A green blot in the green culture, a fuzz that was not there yesterday, a slick of liquid where the casing should be dry â€” these are things the eye catches. If the eye can catch them, the argument goes, a camera can catch them faster and never blink. The argument is correct up to a point, and the point is exactly where the words start to matter.</p><p>The honest problem is that vision-based contamination detection is a classification task with unusually cruel classes. A healthy mushroom culture and a contaminated one share most of their visual vocabulary: white mycelium, cream caps, brown substrate. The differences live in texture statistics, color temperature shifts of a few percent, growth rate over hours, and the three-dimensional shape of the colony as the camera angle sees it. The same camera that classifies a healthy pin set perfectly on Tuesday misclassifies it on Thursday, because the lighting changed with the weather and the stage of growth looks different under it. The standard framing â€” "detects mold with X% accuracy" â€” is a snapshot of one lighting rig, one strain, one lens, wearing a lab coat.</p><p>That is why the Orr systems describe the vision module the way it actually works: an experimental detector that flags anomalies for human review. It is trained to notice that a region of the culture has changed in a way the model finds unusual â€” that is a tractable, honest problem, and it is genuinely useful. A flagged frame is a timestamped, stored instruction to open the chamber and look, which is the intervention that actually saves crops. The human reviews, decides, and acts; the model's flag has already earned its keep by converting "I might have missed it" into "look now."</p><p>The design protects the honesty. Frames are processed on-device and never leave it by default. Flags are logged with their images and the surrounding telemetry â€” temperature, humidity, airflow â€” so the review happens with evidence. And every reviewed flag can be recorded as a labeled example, which slowly improves the detector's training set under human supervision: the model gets better specifically in the hands of the people who caught its mistakes, which is the only kind of improvement that is safe to trust.</p><p>The boundaries are stated, not buried. The vision module does not replace sterile technique; it does not clear cultures for consumption; it is not a medical device. A grower who treats "no flag" as "no contamination" has misunderstood the system it was built to be. What the module offers is a second pair of tireless eyes with a terrible memory and a good logbook â€” and, because it flags rather than diagnoses, the person who matters stays in the loop.</p><p>For the chamber-side implementation, including the camera rig and the flag lifecycle, see <a href="computer-vision-mushroom-cultivation.html">Computer Vision for Mushroom Cultivation</a> and the <a href="docs.html">docs</a>.</p></div>
+  <div class="article-foot">
+    <a class="btn btn-ghost" href="articles.html">All articles</a>
+    <a class="btn btn-primary" href="mycophyte.html#sim">Watch the vision module in the sim <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+  </div>
+</article>
+<section class="band" style="padding-top:0"><div class="shell">
+  <div class="sec-head"><div class="kicker">Keep reading</div></div>
+  <div class="grid grid-2">
+    <a class="acard rv" href="computer-vision-mushroom-cultivation.html">
+      <div class="meta"><span>Mycophyte Â· Technical</span><span class="rt">Read</span></div>
+      <h3>Computer Vision for Mushroom Cultivation</h3>
+      <p class="dek">What a lightweight detector can and cannot see in a chamber.</p>
+      <span class="more">Read the article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+    </a>
+    <a class="acard rv" href="ai-controlled-mushroom-cultivation.html">
+      <div class="meta"><span>Mycophyte Â· Technical</span><span class="rt">Read</span></div>
+      <h3>AI-Controlled Mushroom Cultivation</h3>
+      <p class="dek">Microclimate as a control problem, solved on-device.</p>
+      <span class="more">Read the article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+    </a>
+  </div>
+</div></section></main>
+<footer class="footer"><div class="shell">
+  <div class="footer-grid">
+  <div><a class="wm" href="../index.html"><svg viewBox="0 0 22 34" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M11 1 q7 5 -3 8 q-10 3 3 8 q10 5 -3 8 q-7 3 3 7"/></svg><span><b>Orr Biologicals</b><small>ALGAEPHYTE Â· MYCOPHYTE</small></span></a>
+    <p>Open-source AI-assisted cultivation systems â€” photobioreactors and mushroom grow chambers â€” built in the open.</p></div>
+  <div class="col"><h5>Products</h5>
+    <a href="../index.html">AlgaePhyte</a><a href="mycophyte.html">Mycophyte</a><a href="how-it-works.html">How it works</a><a href="docs.html">Docs</a></div>
+  <div class="col"><h5>Learn</h5>
+    <a href="articles.html">Articles</a><a href="faq.html">FAQ</a><a href="troubleshooting.html">Troubleshooting</a><a href="about.html">About</a></div>
+  <div class="col"><h5>Project</h5>
+    <a href="contact.html">Contact</a><a href="mailto:service@orrbiologicals.com">service@orrbiologicals.com</a><a href="privacy.html">Privacy</a><a href="disclaimer.html">Disclaimer</a></div>
+</div>
+<div class="foot-bar"><span>Â© 2026 Orr Biologicals Â· Educational Â· Open-source</span>
+  <span><a href="privacy.html">Privacy Policy</a> Â· <a href="disclaimer.html">Disclaimer</a></span></div>
+</div></footer>
+<script src="../js/site.js"></script>
+</body>
+</html>

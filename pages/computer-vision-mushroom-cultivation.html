@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Computer Vision for Mushroom Cultivation â€” Orr Biologicals</title>
+<meta name="description" content="Cameras in the grow chamber: what a lightweight detector can and cannot see, and why every flag is a prompt for human eyes.">
+<link rel="canonical" href="https://orrbiologicals.com/computer-vision-mushroom-cultivation">
+<meta property="og:type" content="article"><meta property="og:title" content="Computer Vision for Mushroom Cultivation â€” Orr Biologicals">
+<meta property="og:description" content="Cameras in the grow chamber: what a lightweight detector can and cannot see, and why every flag is a prompt for human eyes."><meta property="og:url" content="https://orrbiologicals.com/computer-vision-mushroom-cultivation">
+<meta property="og:site_name" content="Orr Biologicals"><meta property="og:image" content="https://orrbiologicals.com/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0d0906">
+<link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iOCIgZmlsbD0iIzBkMDkwNiIvPjxwYXRoIGQ9Ik0xNiA2IGM2IDAgMTAgNSA5IDExIGMtMSA2LTUgOS0xMCA5IGwtNCAwIGwwIDAgYzEtNiA0LTkgOS0xMSBsMSAwIGMwIDIgMSAzIDIgNCB6IiBmaWxsPSIjZjBhODNhIi8+PC9zdmc+Cg==">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../css/site.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "@id": "https://orrbiologicals.com/#org", "name": "Orr Biologicals", "url": "https://orrbiologicals.com"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Computer Vision for Mushroom Cultivation", "description": "Cameras in the grow chamber: what a lightweight detector can and cannot see, and why every flag is a prompt for human eyes.", "datePublished": "2026-08-15", "author": {"@id": "https://orrbiologicals.com/#org"}, "publisher": {"@id": "https://orrbiologicals.com/#org"}, "mainEntityOfPage": "https://orrbiologicals.com/computer-vision-mushroom-cultivation", "articleSection": "Mycophyte Â· Technical"}</script>
+</head>
+<body class="myco">
+<a class="skip" href="#main">Skip to content</a><div class="veil" aria-hidden="true"><svg class="veil-mark" viewBox="0 0 22 34" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" style="color:var(--teal)"><path d="M11 1 q7 5 -3 8 q-10 3 3 8 q10 5 -3 8 q-7 3 3 7"/></svg></div><canvas id="ambient" aria-hidden="true"></canvas><div class="pbar" aria-hidden="true"></div>
+<header class="nav"><div class="nav-in">
+  <a class="wm" href="../index.html" aria-label="Orr Biologicals â€” home"><svg viewBox="0 0 22 34" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M11 1 q7 5 -3 8 q-10 3 3 8 q10 5 -3 8 q-7 3 3 7"/></svg><span><b>Orr Biologicals</b><small>THE LIBRARY</small></span></a>
+  <nav class="nav-links" aria-label="Primary">
+    <a href="../index.html">AlgaePhyte</a>
+    <a href="mycophyte.html">Mycophyte</a>
+    <a href="how-it-works.html">How it works</a>
+    <a href="articles.html" style="color:var(--teal)">Articles</a>
+    <a href="docs.html">Docs</a>
+    <a class="btn btn-primary btn-sm" href="contact.html">Get in touch</a>
+  </nav>
+  <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false"><span></span></button>
+</div></header>
+<main id="main"><article class="article-wrap">
+  <a class="back" href="articles.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg> All articles</a>
+  <div class="abanner"><svg viewBox="0 0 900 210" preserveAspectRatio="xMidYMid slice" style="color:var(--teal)">
+    <g fill="currentColor" opacity="0.5"><circle cx="120" cy="140" r="3"/><circle cx="240" cy="70" r="2.5"/><circle cx="420" cy="150" r="3.5"/><circle cx="560" cy="60" r="2.5"/><circle cx="700" cy="130" r="3"/><circle cx="820" cy="80" r="2.5"/></g>
+    <g fill="none" stroke="currentColor" stroke-width="1.4" opacity="0.4"><path d="M80,170 q60,-40 120,0 t120,0 t120,0 t120,0 t120,0"/><path d="M160,60 q60,-30 120,0 t120,0 t120,0"/></g></svg>
+    <span class="tag">Mycophyte Â· Technical</span></div>
+  <div class="amE"><span class="c">Mycophyte Â· Technical</span><span>5 min read</span></div>
+  <h1>Computer Vision for Mushroom Cultivation</h1>
+  <p class="dek">A camera adds a sense the sensors don't have: sight. The honest version of that sentence is longer, and worth reading.</p>
+  <div class="keyfacts"><div class="h">Key facts</div><ul><li>Numeric sensors measure air; a camera measures appearance</li><li>The experimental vision module uses a lightweight YOLO-class detector running on-device</li><li>Detection flags anomalies as prompts for human review â€” it does not diagnose mold</li><li>Detection reliability depends on lighting, camera angle, strain, and stage of growth</li></ul></div>
+  <div class="prose"><p>Four sensors tell a Mycophyte chamber everything about its air. They tell it nothing about its mushrooms. A camera changes that: it can watch the crop the way a grower does, by appearance. But appearance is subtle, lighting is fickle, and the difference between "healthy pin set" and "the beginning of something bad" is exactly the difference a computer is worst at â€” which is why the vision module is framed honestly as an experimental flagging system, not a diagnostic oracle.</p><p>The hardware is deliberately modest: a USB camera pointing at the shelves, frames captured on a schedule, inference run on the device by a lightweight object detector from the YOLO family (or faster, with a pocket TPU). The detector is trained for chamber-relevant classes â€” mushrooms at various stages, substrate, casing, and anomalies. When it finds something it wasn't asked to see, or finds the substrate changing in an unexpected way, it records a flag. The flag is a message to a human: "look at this, right now." It is not a verdict.</p><p>Why the caution is warranted: molds and healthy mycelium share a visual vocabulary. Both are white fuzz to a first approximation; the differences are texture, color temperature, growth rate, and context â€” and some molds are expert at looking like something else. A detector can learn to separate them on a fixed camera with fixed lighting and a fixed strain; the moment any of those change, the detector's error rate rises and its "confidence" becomes less trustworthy. Any product that promises to "diagnose mold from a photo" is selling the demo, not the deployment.</p><p>What vision reliably adds is surveillance and history. The module can notice that a region of the casing changed color between Tuesday and Wednesday in a way the human eye, looking twice a day, would miss. It can count pins and track canopy development over a flush, which is genuinely useful data for a lab comparing strains. It can log an image of every anomaly event so the human review happens with evidence, not memory. These are real capabilities, and they compound: every flagged-and-reviewed image can be logged as a labeled example, slowly improving the detector's training set under human supervision.</p><p>There is also the question of what the images contain, which is a privacy question. Frames are processed on-device and never leave it by default. A grower who opts into sharing training examples does so explicitly, per image. The federated learning layer shares model updates, not frames â€” a separation documented in the <a href="docs.html">docs</a>.</p><p>The practical takeaway for anyone building this at home: mount the camera once and never move it, light the chamber from a fixed angle, and treat every flag as an instruction to open the chamber and look. The day the detector is right about an anomaly you didn't see â€” that is the day the vision module earns its place. Until then, it is a diligent intern who is wrong sometimes, and the system is built on the assumption that it will be.</p></div>
+  <div class="article-foot">
+    <a class="btn btn-ghost" href="articles.html">All articles</a>
+    <a class="btn btn-primary" href="mycophyte.html#sim">Try the chamber simulation <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+  </div>
+</article>
+<section class="band" style="padding-top:0"><div class="shell">
+  <div class="sec-head"><div class="kicker">Keep reading</div></div>
+  <div class="grid grid-2">
+    <a class="acard rv" href="computer-vision-contamination-detection.html">
+      <div class="meta"><span>Technical</span><span class="rt">Read</span></div>
+      <h3>Computer-Vision Contamination Detection</h3>
+      <p class="dek">Flagging an anomaly is not diagnosing it â€” and that distinction keeps cultures safe.</p>
+      <span class="more">Read the article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+    </a>
+    <a class="acard rv" href="ai-controlled-mushroom-cultivation.html">
+      <div class="meta"><span>Mycophyte Â· Technical</span><span class="rt">Read</span></div>
+      <h3>AI-Controlled Mushroom Cultivation</h3>
+      <p class="dek">How an on-device model turns microclimate into a repeatable harvest.</p>
+      <span class="more">Read the article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+    </a>
+  </div>
+</div></section></main>
+<footer class="footer"><div class="shell">
+  <div class="footer-grid">
+  <div><a class="wm" href="../index.html"><svg viewBox="0 0 22 34" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M11 1 q7 5 -3 8 q-10 3 3 8 q10 5 -3 8 q-7 3 3 7"/></svg><span><b>Orr Biologicals</b><small>ALGAEPHYTE Â· MYCOPHYTE</small></span></a>
+    <p>Open-source AI-assisted cultivation systems â€” photobioreactors and mushroom grow chambers â€” built in the open.</p></div>
+  <div class="col"><h5>Products</h5>
+    <a href="../index.html">AlgaePhyte</a><a href="mycophyte.html">Mycophyte</a><a href="how-it-works.html">How it works</a><a href="docs.html">Docs</a></div>
+  <div class="col"><h5>Learn</h5>
+    <a href="articles.html">Articles</a><a href="faq.html">FAQ</a><a href="troubleshooting.html">Troubleshooting</a><a href="about.html">About</a></div>
+  <div class="col"><h5>Project</h5>
+    <a href="contact.html">Contact</a><a href="mailto:service@orrbiologicals.com">service@orrbiologicals.com</a><a href="privacy.html">Privacy</a><a href="disclaimer.html">Disclaimer</a></div>
+</div>
+<div class="foot-bar"><span>Â© 2026 Orr Biologicals Â· Educational Â· Open-source</span>
+  <span><a href="privacy.html">Privacy Policy</a> Â· <a href="disclaimer.html">Disclaimer</a></span></div>
+</div></footer>
+<script src="../js/site.js"></script>
+</body>
+</html>

@@ -1,0 +1,810 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What Is MAIN? A Plain-Language Guide — Orr Biologicals</title>
+<meta name="description" content="MAIN is a small, open-source AI that grows spirulina, reading pH, light, and more, then making careful, double-checked adjustments. Here is how it works.">
+<link rel="canonical" href="https://orrbiologicals.com/what-is-main-plain-language">
+<meta property="og:type" content="website"><meta property="og:title" content="What Is MAIN? A Plain-Language Guide — Orr Biologicals">
+<meta property="og:description" content="MAIN is a small, open-source AI that grows spirulina, reading pH, light, and more, then making careful, double-checked adjustments. Here is how it works."><meta property="og:url" content="https://orrbiologicals.com/what-is-main-plain-language">
+<meta property="og:site_name" content="Orr Biologicals"><meta property="og:image" content="https://orrbiologicals.com/assets/og.png">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://orrbiologicals.com/assets/og.png">
+<meta name="theme-color" content="#04100e">
+<link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+CiAgPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iOCIgZmlsbD0iIzA0MTAwZSIvPgogIDxwYXRoIGQ9Ik0xNiA0IHE5IDYgLTQgMTAgcS0xMyA0IDQgMTAgcTkgNCAtMyA0IiBmaWxsPSJub25lIiBzdHJva2U9IiMzM2U2YWQiIHN0cm9rZS13aWR0aD0iMi4yIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KICA8Y2lyY2xlIGN4PSIxNiIgY3k9IjE2IiByPSIxLjYiIGZpbGw9IiM1N2YwZDYiLz4KPC9zdmc+Cg==">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>/* Orr Biologicals — design system
+   Two moods on a shared component system:
+   • default (dark cinematic lab) — homepage + MAIN technical
+   • .warm (cozy winter, petrichor) — /cultivation + growing guides            */
+
+:root{
+  --bg:#04100e; --bg2:#071a16; --panel:#0a221d; --panel2:#0c2a24;
+  --ink:#eaf6f1; --ink2:#bfe0d6; --muted:#84aaa1; --line:rgba(120,220,190,.14);
+  --teal:#33e6ad; --teal2:#22c896; --teal-deep:#0c8f74; --cyan:#57f0d6;
+  --accent:var(--teal); --accent-ink:#032019;
+  --glow:0 0 60px rgba(45,220,170,.18);
+  --radius:18px; --radius-lg:26px;
+  --maxw:1180px; --gutter:clamp(18px,5vw,44px);
+  --font:'Space Grotesk',system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+  --serif:'Fraunces','Iowan Old Style',Georgia,'Times New Roman',serif;
+  --mono:'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+  --ease:cubic-bezier(.22,.61,.36,1);
+  --sp:clamp(72px,11vw,148px);
+}
+.warm{
+  --bg:#120f0b; --bg2:#181009; --panel:#20160e; --panel2:#271a10;
+  --ink:#f6ecdf; --ink2:#e3cdb2; --muted:#b79a7f; --line:rgba(240,190,120,.16);
+  --teal:#f2a25a; --teal2:#e08a3c; --teal-deep:#b26a26; --cyan:#8fd0d8;
+  --accent:#f2a25a; --accent-ink:#241206;
+  --glow:0 0 60px rgba(240,160,90,.16);
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{
+  margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);
+  font-size:clamp(15.5px,1.05vw,17px);line-height:1.65;letter-spacing:.005em;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden;
+}
+body.locked{overflow:hidden}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+h1,h2,h3,h4{margin:0;line-height:1.06;letter-spacing:-.02em;font-weight:600}
+p{margin:0 0 1em}
+::selection{background:var(--teal);color:var(--accent-ink)}
+:focus-visible{outline:2px solid var(--teal);outline-offset:3px;border-radius:6px}
+
+.shell{max-width:var(--maxw);margin:0 auto;padding:0 var(--gutter)}
+.kicker{font-family:var(--mono);font-size:.72rem;letter-spacing:.34em;text-transform:uppercase;color:var(--teal);margin:0 0 18px}
+.muted{color:var(--muted)}
+.serif{font-family:var(--serif);font-weight:400}
+.skip{position:fixed;left:-999px;top:8px;z-index:200;background:var(--teal);color:var(--accent-ink);padding:10px 16px;border-radius:10px}
+.skip:focus{left:12px}
+
+/* veil / switch-on */
+.veil{position:fixed;inset:0;z-index:120;background:var(--bg);display:grid;place-items:center;transition:opacity .7s var(--ease),visibility .7s}
+.veil.done{opacity:0;visibility:hidden;pointer-events:none}
+.veil-mark{width:34px;height:52px;opacity:.85;animation:breathe 2.2s var(--ease) infinite}
+@keyframes breathe{0%,100%{opacity:.35;transform:scale(.96)}50%{opacity:.95;transform:scale(1.04)}}
+@media (prefers-reduced-motion:reduce){.veil-mark{animation:none}}
+
+/* scroll progress */
+.pbar{position:fixed;left:0;top:0;height:2px;width:0;z-index:110;background:linear-gradient(90deg,var(--teal-deep),var(--teal),var(--cyan));box-shadow:0 0 12px var(--teal)}
+
+/* nav */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;transition:transform .4s var(--ease),background .4s,backdrop-filter .4s,border-color .4s;border-bottom:1px solid transparent}
+.nav.solid{background:color-mix(in srgb,var(--bg) 72%,transparent);backdrop-filter:blur(14px) saturate(1.3);border-bottom-color:var(--line)}
+.nav.hide{transform:translateY(-104%)}
+.nav-in{max-width:var(--maxw);margin:0 auto;padding:14px var(--gutter);display:flex;align-items:center;justify-content:space-between;gap:20px}
+.wm{display:flex;align-items:center;gap:11px;font-weight:600;letter-spacing:-.01em}
+.wm svg{width:22px;height:34px;color:var(--teal)}
+.wm b{font-size:1.02rem}.wm small{display:block;font-family:var(--mono);font-size:.6rem;letter-spacing:.24em;color:var(--muted)}
+.nav-links{display:flex;align-items:center;gap:28px}
+.nav-links a{font-size:.92rem;color:var(--ink2);position:relative;padding:6px 0;transition:color .25s}
+.nav-links a:hover{color:var(--ink)}
+.nav-links a:not(.btn)::after{content:"";position:absolute;left:0;bottom:0;height:1px;width:0;background:var(--teal);transition:width .3s var(--ease)}
+.nav-links a:not(.btn):hover::after{width:100%}
+.nav-toggle{display:none;width:44px;height:40px;background:none;border:1px solid var(--line);border-radius:11px;cursor:pointer;position:relative}
+.nav-toggle span,.nav-toggle span::before,.nav-toggle span::after{content:"";position:absolute;left:11px;width:22px;height:2px;background:var(--ink);transition:.3s var(--ease)}
+.nav-toggle span{top:19px}.nav-toggle span::before{top:-7px}.nav-toggle span::after{top:7px}
+.nav.open .nav-toggle span{background:transparent}
+.nav.open .nav-toggle span::before{transform:translateY(7px) rotate(45deg)}
+.nav.open .nav-toggle span::after{transform:translateY(-7px) rotate(-45deg)}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 26px;border-radius:100px;font-weight:600;font-size:.94rem;
+  border:1px solid transparent;cursor:pointer;transition:transform .3s var(--ease),box-shadow .3s,background .3s,color .3s;will-change:transform}
+.btn-primary{background:var(--teal);color:var(--accent-ink);box-shadow:0 10px 34px -12px var(--teal)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 18px 44px -12px var(--teal)}
+.btn-ghost{background:color-mix(in srgb,var(--ink) 5%,transparent);color:var(--ink);border-color:var(--line);backdrop-filter:blur(6px)}
+.btn-ghost:hover{transform:translateY(-2px);border-color:var(--teal);color:var(--ink)}
+.btn svg{width:16px;height:16px}
+.btn-sm{padding:9px 16px;font-size:.82rem}
+
+/* hero */
+.hero{position:relative;min-height:100svh;min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden}
+#scene{position:absolute;inset:0;width:100%;height:100%;display:block;z-index:0}
+#scene.no-webgl{background:radial-gradient(60% 55% at 50% 42%,rgba(40,210,160,.28),transparent 70%),var(--bg)}
+.hero-grad{position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(180deg,color-mix(in srgb,var(--bg) 55%,transparent) 0%,transparent 22%,transparent 60%,var(--bg) 99%)}
+.hero-in{position:relative;z-index:2;max-width:var(--maxw);margin:0 auto;width:100%;padding:0 var(--gutter) clamp(40px,8vh,90px)}
+.hero h1{font-size:clamp(2.6rem,7.4vw,6.2rem);font-weight:600;letter-spacing:-.035em;max-width:16ch}
+.hero h1 em{font-style:normal;font-family:var(--serif);color:var(--teal)}
+.hero-sub{margin-top:22px;max-width:52ch;font-size:clamp(1rem,1.5vw,1.22rem);color:var(--ink2)}
+.hero-top{position:relative;z-index:2;flex:1;display:flex;align-items:flex-start;padding-top:clamp(120px,16vh,190px)}
+.hero-top .kicker{margin:0 auto;max-width:var(--maxw);width:100%;padding:0 var(--gutter)}
+.scrollhint{display:flex;align-items:center;gap:12px;margin-top:34px;font-family:var(--mono);font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.scrollhint .line{width:46px;height:1px;background:linear-gradient(90deg,var(--teal),transparent);position:relative;overflow:hidden}
+.scrollhint .line::after{content:"";position:absolute;inset:0;width:40%;background:var(--teal);animation:sweep 2.4s var(--ease) infinite}
+@keyframes sweep{0%{transform:translateX(-100%)}100%{transform:translateX(300%)}}
+@media (prefers-reduced-motion:reduce){.scrollhint .line::after{animation:none}}
+
+/* branch fork */
+.fork{position:relative;z-index:3;padding:var(--sp) 0}
+.fork-intro{text-align:center;max-width:44ch;margin:0 auto 44px}
+.fork-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;max-width:920px;margin:0 auto}
+.choice{position:relative;display:block;padding:34px 30px;border:1px solid var(--line);border-radius:var(--radius-lg);
+  background:linear-gradient(180deg,var(--panel),var(--bg2));overflow:hidden;cursor:pointer;transition:transform .4s var(--ease),border-color .4s,box-shadow .4s;text-align:left;width:100%;color:inherit;font:inherit}
+.choice::before{content:"";position:absolute;inset:0;background:radial-gradient(120% 80% at 50% 0%,color-mix(in srgb,var(--teal) 16%,transparent),transparent 60%);opacity:0;transition:opacity .4s}
+.choice:hover{transform:translateY(-4px);border-color:color-mix(in srgb,var(--teal) 50%,transparent);box-shadow:0 30px 60px -30px rgba(0,0,0,.7)}
+.choice:hover::before{opacity:1}
+.choice .tag{font-family:var(--mono);font-size:.68rem;letter-spacing:.24em;text-transform:uppercase;color:var(--teal)}
+.choice h3,.choice .ch-h{display:block;font-size:1.5rem;margin:14px 0 10px;font-weight:600;letter-spacing:-.02em;line-height:1.1;color:var(--ink)}
+.choice p,.choice .ch-p{display:block;color:var(--muted);margin:0 0 20px;font-size:.96rem}
+.choice .go{display:inline-flex;align-items:center;gap:9px;font-weight:600;color:var(--ink)}
+.choice .go svg{width:16px;height:16px;transition:transform .3s var(--ease)}
+.choice:hover .go svg{transform:translateX(5px)}
+
+/* sections */
+section{position:relative}
+.band{padding:var(--sp) 0}
+.sec-head{max-width:66ch;margin:0 0 clamp(34px,6vw,64px)}
+.sec-head h2{font-size:clamp(1.9rem,4.4vw,3.3rem);font-weight:600}
+.sec-head p{margin-top:18px;color:var(--ink2);font-size:1.08rem}
+.center{text-align:center;margin-left:auto;margin-right:auto}
+
+/* MAIN reveal panel — visible by default; the "cells part" plays on scroll-in */
+.reveal-panel{opacity:1}
+html:not(.js) .reveal-panel .main-hero,html:not(.js) .reveal-panel .pillars,html:not(.js) .reveal-panel .readout-wrap{clip-path:none;opacity:1}
+.main-hero{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(30px,5vw,70px);align-items:center}
+.main-hero .lead{font-size:clamp(1.05rem,1.5vw,1.25rem);color:var(--ink2)}
+.chip{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--teal);border:1px solid var(--line);border-radius:100px;padding:7px 14px;margin-bottom:22px}
+.chip .dot{width:7px;height:7px;border-radius:50%;background:var(--teal);box-shadow:0 0 10px var(--teal);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+@media (prefers-reduced-motion:reduce){.chip .dot{animation:none}}
+
+.pillars{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:56px}
+.pillar{padding:26px 22px;border:1px solid var(--line);border-radius:var(--radius);background:color-mix(in srgb,var(--panel) 60%,transparent);transition:transform .4s var(--ease),border-color .4s}
+.pillar:hover{transform:translateY(-4px);border-color:color-mix(in srgb,var(--teal) 40%,transparent)}
+.pillar .n{font-family:var(--mono);font-size:.7rem;color:var(--teal);letter-spacing:.2em}
+.pillar h4{font-size:1.14rem;margin:14px 0 9px}
+.pillar p{color:var(--muted);font-size:.9rem;margin:0}
+
+/* live telemetry readout */
+.readout{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;margin-top:14px}
+.readout .cell{background:var(--panel);padding:22px 20px}
+.readout .lab{font-family:var(--mono);font-size:.64rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.readout .val{font-family:var(--mono);font-size:1.7rem;font-weight:500;color:var(--teal);margin-top:8px;letter-spacing:-.02em}
+.readout .val .u{font-size:.8rem;color:var(--muted);margin-left:4px}
+
+/* article grids + cards */
+.grid{display:grid;gap:20px}
+.grid-3{grid-template-columns:repeat(3,1fr)}
+.grid-2{grid-template-columns:repeat(2,1fr)}
+.acard{display:flex;flex-direction:column;padding:28px 26px;border:1px solid var(--line);border-radius:var(--radius-lg);
+  background:linear-gradient(180deg,var(--panel),var(--bg2));transition:transform .4s var(--ease),border-color .4s,box-shadow .4s;height:100%}
+.acard:hover{transform:translateY(-5px);border-color:color-mix(in srgb,var(--teal) 44%,transparent);box-shadow:0 30px 60px -34px rgba(0,0,0,.75)}
+.acard .meta{display:flex;justify-content:space-between;align-items:center;font-family:var(--mono);font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--teal)}
+.acard .meta .rt{color:var(--muted)}
+.acard h3{font-size:1.32rem;margin:16px 0 12px;letter-spacing:-.02em}
+.acard .dek{color:var(--muted);font-size:.95rem;flex:1}
+.acard .more{margin-top:20px;display:inline-flex;align-items:center;gap:8px;font-weight:600;color:var(--ink);font-size:.9rem}
+.acard .more svg{width:15px;height:15px;transition:transform .3s var(--ease)}
+.acard:hover .more svg{transform:translateX(5px)}
+.acard.tech{--edge:var(--teal)}
+.acard .badge{align-self:flex-start;font-family:var(--mono);font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;padding:5px 11px;border-radius:100px;border:1px solid var(--line);color:var(--teal);margin-bottom:4px}
+
+/* article page */
+.article-wrap{max-width:760px;margin:0 auto;padding:calc(96px + var(--sp)/2) var(--gutter) var(--sp)}
+.article-wrap .back{font-family:var(--mono);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);display:inline-flex;gap:8px;align-items:center;margin-bottom:30px}
+.article-wrap .back:hover{color:var(--teal)}
+.article-wrap h1{font-size:clamp(2rem,4.6vw,3.2rem);letter-spacing:-.03em;margin-bottom:18px}
+.article-wrap .dek{font-size:1.22rem;color:var(--ink2);margin-bottom:26px;font-family:var(--serif)}
+.article-wrap .amE{display:flex;gap:16px;font-family:var(--mono);font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);padding-bottom:26px;border-bottom:1px solid var(--line);margin-bottom:34px}
+.article-wrap .amE .c{color:var(--teal)}
+.keyfacts{border:1px solid var(--line);border-left:3px solid var(--teal);border-radius:14px;background:color-mix(in srgb,var(--panel) 55%,transparent);padding:22px 26px;margin:0 0 34px}
+.keyfacts .h{font-family:var(--mono);font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:var(--teal);margin-bottom:12px}
+.keyfacts ul{margin:0;padding-left:20px}
+.keyfacts li{margin:7px 0;color:var(--ink2)}
+.prose p{font-size:1.08rem;line-height:1.78;margin:0 0 1.4em;color:var(--ink2)}
+.prose p:first-of-type::first-letter{font-family:var(--serif);font-size:3.4em;line-height:.8;float:left;padding:6px 12px 0 0;color:var(--teal)}
+.article-foot{margin-top:52px;padding-top:30px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;align-items:center}
+
+/* youtube */
+.yt{display:grid;grid-template-columns:1.1fr .9fr;gap:34px;align-items:center}
+.yt-lite{position:relative;aspect-ratio:16/9;border-radius:var(--radius-lg);overflow:hidden;border:1px solid var(--line);cursor:pointer;background:#000}
+.yt-poster{position:absolute;inset:0;display:grid;place-items:center;
+  background:radial-gradient(80% 90% at 50% 20%,rgba(45,220,170,.30),transparent 60%),linear-gradient(160deg,#06231d,#03100d);transition:transform .5s var(--ease)}
+.yt-lite:hover .yt-poster{transform:scale(1.04)}
+.yt-play{width:76px;height:76px;border-radius:50%;background:color-mix(in srgb,var(--bg) 30%,transparent);backdrop-filter:blur(6px);border:1px solid var(--line);display:grid;place-items:center;transition:transform .3s var(--ease),background .3s}
+.yt-lite:hover .yt-play{transform:scale(1.08);background:var(--teal)}
+.yt-play svg{width:26px;height:26px;color:var(--ink);margin-left:4px;transition:color .3s}
+.yt-lite:hover .yt-play svg{color:var(--accent-ink)}
+.yt-cap{position:absolute;left:0;right:0;bottom:0;padding:16px 20px;font-size:.86rem;color:var(--ink);background:linear-gradient(0deg,rgba(0,0,0,.7),transparent);font-weight:500}
+.yt-lite iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.yt-mini{display:flex;gap:12px;margin-top:16px}
+.yt-mini .m{flex:1;aspect-ratio:16/10;border-radius:12px;border:1px solid var(--line);cursor:pointer;position:relative;overflow:hidden;background:linear-gradient(160deg,#06231d,#03100d)}
+.yt-mini .m .yt-play{width:44px;height:44px}.yt-mini .m .yt-play svg{width:16px;height:16px}
+
+/* preorder */
+.preorder{position:relative;border:1px solid var(--line);border-radius:var(--radius-lg);overflow:hidden;
+  background:radial-gradient(120% 130% at 50% 0%,color-mix(in srgb,var(--teal) 12%,transparent),transparent 55%),linear-gradient(180deg,var(--panel),var(--bg2));
+  padding:clamp(40px,7vw,80px) var(--gutter);text-align:center}
+.preorder h2{font-size:clamp(2rem,5vw,3.4rem)}
+.preorder p{max-width:52ch;margin:18px auto 30px;color:var(--ink2)}
+
+/* reassurance cards (cultivation) */
+.reassure{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.reassure .r{padding:26px 24px;border:1px solid var(--line);border-radius:var(--radius);background:color-mix(in srgb,var(--panel) 55%,transparent)}
+.reassure .r .ic{width:40px;height:40px;border-radius:11px;display:grid;place-items:center;background:color-mix(in srgb,var(--teal) 14%,transparent);color:var(--teal);margin-bottom:16px}
+.reassure .r h4{font-size:1.12rem;margin-bottom:8px}
+.reassure .r p{color:var(--muted);font-size:.92rem;margin:0}
+
+/* cultivation hero (warm) */
+.chero{position:relative;min-height:88svh;display:flex;align-items:center;overflow:hidden;isolation:isolate}
+.chero .glow{position:absolute;inset:0;z-index:-1;
+  background:radial-gradient(70% 60% at 22% 24%,rgba(242,162,90,.22),transparent 60%),radial-gradient(60% 60% at 88% 80%,rgba(120,180,190,.12),transparent 60%),linear-gradient(180deg,var(--bg),var(--bg2))}
+.chero .rain{position:absolute;inset:0;z-index:-1;opacity:.5;pointer-events:none}
+.chero-in{max-width:var(--maxw);margin:0 auto;width:100%;padding:120px var(--gutter) 60px}
+.chero h1{font-size:clamp(2.6rem,6.6vw,5.4rem);letter-spacing:-.035em;max-width:15ch}
+.chero h1 em{font-style:normal;font-family:var(--serif);color:var(--teal)}
+.chero .lede{margin-top:22px;max-width:50ch;font-size:clamp(1.05rem,1.5vw,1.28rem);color:var(--ink2)}
+
+/* footer */
+.footer{border-top:1px solid var(--line);padding:clamp(52px,7vw,80px) 0 40px;background:var(--bg2)}
+.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:34px}
+.footer .wm{margin-bottom:16px}
+.footer p{color:var(--muted);font-size:.9rem;max-width:34ch}
+.footer .col h5{font-family:var(--mono);font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin:0 0 16px}
+.footer .col a{display:block;color:var(--ink2);font-size:.92rem;margin:9px 0;transition:color .25s}
+.footer .col a:hover{color:var(--teal)}
+.foot-bar{max-width:var(--maxw);margin:38px auto 0;padding:22px var(--gutter) 0;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;font-size:.8rem;color:var(--muted)}
+.foot-bar a:hover{color:var(--teal)}
+
+/* legal pages */
+.legal{max-width:800px;margin:0 auto;padding:calc(96px + var(--sp)/2) var(--gutter) var(--sp)}
+.legal h1{font-size:clamp(2rem,4.6vw,3rem);margin-bottom:10px}
+.legal .upd{font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:26px}
+.legal .intro{font-size:1.1rem;color:var(--ink2);border-left:3px solid var(--teal);padding-left:20px;margin-bottom:38px}
+.legal h2{font-size:1.34rem;margin:38px 0 12px;color:var(--ink)}
+.legal p{color:var(--ink2);margin:0 0 1em}
+.callout{border:1px solid var(--line);border-radius:14px;background:color-mix(in srgb,var(--panel) 55%,transparent);padding:20px 24px;margin:26px 0}
+
+/* ================= rich visual components ================= */
+/* cultivation kitchen scene */
+.chero{overflow:hidden}
+.chero-media{position:absolute;right:0;top:0;bottom:0;width:54%;max-width:900px;z-index:-1;pointer-events:none}
+.chero-media img{width:100%;height:100%;object-fit:cover;object-position:60% center;opacity:.92;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 26%,#000 100%);mask-image:linear-gradient(90deg,transparent,#000 26%,#000 100%)}
+.kitchen-card{border-radius:var(--radius-lg);overflow:hidden;border:1px solid var(--line);box-shadow:0 40px 90px -50px rgba(0,0,0,.9);position:relative}
+.kitchen-card img{width:100%;display:block}
+.kitchen-card figcaption{position:absolute;left:0;right:0;bottom:0;padding:20px 22px;font-size:.9rem;color:var(--ink);
+  background:linear-gradient(0deg,rgba(0,0,0,.72),transparent);font-weight:500}
+
+/* MAIN instrument cluster */
+.instrument{position:relative;border:1px solid var(--line);border-radius:var(--radius-lg);
+  background:linear-gradient(180deg,color-mix(in srgb,var(--panel) 70%,transparent),var(--bg2));padding:26px;overflow:hidden}
+.instrument::before{content:"";position:absolute;inset:0;background:radial-gradient(120% 80% at 70% 0%,color-mix(in srgb,var(--teal) 10%,transparent),transparent 60%);pointer-events:none}
+.instrument .r-svg{width:100%;height:auto;display:block;position:relative}
+.inst-cap{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;
+  font-family:var(--mono);font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.inst-cap .live{display:inline-flex;align-items:center;gap:7px;color:var(--teal)}
+.inst-cap .live .d{width:7px;height:7px;border-radius:50%;background:var(--teal);box-shadow:0 0 10px var(--teal);animation:pulse 1.8s infinite}
+
+/* sensor gauges */
+.gauge-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-top:22px}
+.gauge{border:1px solid var(--line);border-radius:14px;background:color-mix(in srgb,var(--panel) 55%,transparent);
+  padding:16px 12px;text-align:center;transition:transform .4s var(--ease),border-color .4s}
+.gauge:hover{transform:translateY(-4px);border-color:color-mix(in srgb,var(--teal) 40%,transparent)}
+.gauge svg{width:64px;height:64px;display:block;margin:0 auto 8px}
+.gauge .track{fill:none;stroke:var(--line);stroke-width:6}
+.gauge .arc{fill:none;stroke:var(--teal);stroke-width:6;stroke-linecap:round;transition:stroke-dashoffset 1.2s var(--ease)}
+.gauge .gv{font-family:var(--mono);font-size:1.02rem;color:var(--ink);font-weight:500;line-height:1}
+.gauge .gl{font-family:var(--mono);font-size:.56rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:5px}
+
+/* growth forecast sparkline */
+.growth{margin-top:20px;border-top:1px solid var(--line);padding-top:18px}
+.growth-head{display:flex;justify-content:space-between;font-family:var(--mono);font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+.growth-head b{color:var(--teal);font-weight:500}
+.spark{width:100%;height:90px;display:block}
+.spark .area{fill:url(#sparkfill)}
+.spark .line{fill:none;stroke:var(--teal);stroke-width:2.5;stroke-linecap:round;
+  stroke-dasharray:1200;stroke-dashoffset:1200}
+.spark.in .line{animation:draw 1.8s var(--ease) forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+.spark .dot{fill:var(--cyan)}
+.spark.in .dot{animation:pulse 2s infinite 1.6s}
+
+/* reactor cutaway animated bits */
+.r-bub{animation:rise 3.4s linear infinite}
+.r-bub2{animation:rise 4.2s linear infinite .8s}
+.r-bub3{animation:rise 3.8s linear infinite 1.6s}
+@keyframes rise{0%{transform:translateY(0);opacity:0}12%{opacity:.9}100%{transform:translateY(-118px);opacity:0}}
+.r-node{transform-box:fill-box;transform-origin:center}
+.r-node circle.p{animation:node 2.4s ease-in-out infinite}
+@keyframes node{0%,100%{opacity:.4;r:3}50%{opacity:1;r:5}}
+
+/* article category banner */
+.abanner{position:relative;height:210px;border-radius:var(--radius-lg);overflow:hidden;margin:0 0 34px;border:1px solid var(--line);
+  background:radial-gradient(90% 140% at 20% 0%,color-mix(in srgb,var(--teal) 22%,transparent),transparent 60%),linear-gradient(120deg,var(--panel),var(--bg2))}
+.abanner svg{position:absolute;inset:0;width:100%;height:100%;opacity:.5}
+.abanner .tag{position:absolute;left:24px;bottom:20px;font-family:var(--mono);font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:var(--teal);
+  background:color-mix(in srgb,var(--bg) 55%,transparent);padding:7px 13px;border-radius:100px;border:1px solid var(--line);backdrop-filter:blur(6px)}
+
+/* HUD marks on hero */
+.hud{position:absolute;inset:0;z-index:2;pointer-events:none}
+.hud i{position:absolute;width:16px;height:16px;border:1px solid color-mix(in srgb,var(--teal) 45%,transparent);opacity:.6}
+.hud i.tl{top:96px;left:var(--gutter);border-right:0;border-bottom:0}
+.hud i.tr{top:96px;right:var(--gutter);border-left:0;border-bottom:0}
+.hud i.bl{bottom:22px;left:var(--gutter);border-right:0;border-top:0}
+.hud i.br{bottom:22px;right:var(--gutter);border-left:0;border-top:0}
+.hud .tick{position:absolute;top:50%;right:calc(var(--gutter) - 2px);transform:translateY(-50%);font-family:var(--mono);font-size:.56rem;letter-spacing:.24em;color:var(--muted);writing-mode:vertical-rl;opacity:.5}
+
+/* tilt cards */
+[data-tilt]{transition:transform .3s var(--ease);transform-style:preserve-3d}
+
+/* cursor glow (fine pointers) */
+.cursor-glow{position:fixed;top:0;left:0;width:340px;height:340px;border-radius:50%;pointer-events:none;z-index:3;transform:translate(-50%,-50%);
+  background:radial-gradient(circle,color-mix(in srgb,var(--teal) 9%,transparent),transparent 62%);opacity:0;transition:opacity .4s;mix-blend-mode:screen}
+body.hascursor .cursor-glow{opacity:1}
+
+/* scrolling code column (subtle, technical section) */
+.codewall{position:absolute;inset:0;overflow:hidden;z-index:0;pointer-events:none;opacity:.06;mask-image:linear-gradient(180deg,transparent,#000 20%,#000 80%,transparent)}
+.codewall pre{font-family:var(--mono);font-size:11px;line-height:1.7;color:var(--teal);margin:0;white-space:pre;animation:codescroll 40s linear infinite}
+@keyframes codescroll{from{transform:translateY(0)}to{transform:translateY(-50%)}}
+@media (prefers-reduced-motion:reduce){.r-bub,.r-bub2,.r-bub3,.spark .line,.codewall pre,.r-node circle.p{animation:none}.spark .line{stroke-dashoffset:0}}
+
+@media (max-width:900px){.gauge-grid{grid-template-columns:repeat(3,1fr)}.chero-media{width:100%;opacity:.35}}
+@media (max-width:560px){.gauge-grid{grid-template-columns:repeat(2,1fr)}}
+
+/* ---- ambient living background (drifting Spirulina filaments) ---- */
+#ambient{position:fixed;inset:0;width:100vw;height:100vh;z-index:0;pointer-events:none}
+.nav,main,.footer{position:relative;z-index:1}
+/* pulsing aurora glow behind the reserve + cultivation blocks */
+.preorder::after,.chero .glow::after{content:"";position:absolute;pointer-events:none;z-index:0;
+  width:min(70vw,760px);height:min(70vw,760px);border-radius:50%;top:-24%;left:50%;transform:translateX(-50%);
+  background:radial-gradient(circle,color-mix(in srgb,var(--teal) 12%,transparent),transparent 68%);
+  filter:blur(34px);animation:aurora 13s ease-in-out infinite}
+.preorder>*{position:relative;z-index:1}
+@keyframes aurora{0%,100%{opacity:.45;transform:translateX(-50%) scale(1)}50%{opacity:.9;transform:translateX(-47%) scale(1.14)}}
+/* gentle float for accent chips/marks */
+.float{animation:floaty 7s ease-in-out infinite}
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+/* animated draw-in line on section kickers */
+.kicker{position:relative}
+.rv.in .kicker::after,.sec-head.rv.in .kicker::after{content:"";display:inline-block;width:34px;height:1px;margin-left:14px;vertical-align:middle;background:var(--teal);animation:drawx .8s var(--ease) both}
+@keyframes drawx{from{width:0;opacity:0}to{width:34px;opacity:1}}
+/* decorative filament divider */
+.filament-div{height:60px;margin:0 auto;max-width:var(--maxw);opacity:.5;color:var(--teal)}
+@media (prefers-reduced-motion:reduce){.preorder::after,.chero .glow::after,.float{animation:none}}
+
+/* fork "ebb in from the sides" reveal */
+.ebb{opacity:0;transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.ebb-l{transform:translateX(-64px)}
+.ebb-r{transform:translateX(64px)}
+.ebb.in{opacity:1;transform:none}
+.fork.chosen .fork-grid{opacity:.35;transform:scale(.98);transition:opacity .6s var(--ease),transform .6s var(--ease);pointer-events:none}
+.fork.chosen .fork-intro{opacity:.4;transition:opacity .6s}
+@media (prefers-reduced-motion:reduce){.ebb{opacity:1!important;transform:none!important}}
+
+/* "cells part" reveal on the MAIN panel */
+.reveal-panel .main-hero,.reveal-panel .pillars,.reveal-panel .readout-wrap{clip-path:inset(0 44% 0 44%);opacity:0;transition:clip-path 1.1s var(--ease),opacity .9s var(--ease)}
+.reveal-panel.parted .main-hero{clip-path:inset(0 0 0 0);opacity:1;transition-delay:.12s}
+.reveal-panel.parted .readout-wrap{clip-path:inset(0 0 0 0);opacity:1;transition-delay:.28s}
+.reveal-panel.parted .pillars{clip-path:inset(0 0 0 0);opacity:1;transition-delay:.42s}
+@media (prefers-reduced-motion:reduce){.reveal-panel .main-hero,.reveal-panel .pillars,.reveal-panel .readout-wrap{clip-path:none;opacity:1;transition:none}}
+
+/* reveal-on-scroll */
+.rv{opacity:0;transform:translateY(26px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.rv.in{opacity:1;transform:none}
+.rv.d1{transition-delay:.08s}.rv.d2{transition-delay:.16s}.rv.d3{transition-delay:.24s}.rv.d4{transition-delay:.32s}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1!important;transform:none!important;transition:none}}
+
+/* responsive */
+@media (max-width:960px){
+  .nav-links{position:fixed;inset:64px 0 auto 0;flex-direction:column;align-items:flex-start;gap:4px;padding:20px var(--gutter) 26px;
+    background:color-mix(in srgb,var(--bg) 94%,transparent);backdrop-filter:blur(16px);border-bottom:1px solid var(--line);
+    transform:translateY(-8px);opacity:0;pointer-events:none;transition:.3s var(--ease)}
+  .nav.open .nav-links{transform:none;opacity:1;pointer-events:auto}
+  .nav-links a{width:100%;padding:12px 0;font-size:1.05rem}
+  .nav-toggle{display:block}
+  .main-hero{grid-template-columns:1fr;gap:34px}
+  .pillars{grid-template-columns:repeat(2,1fr)}
+  .grid-3{grid-template-columns:1fr 1fr}
+  .yt{grid-template-columns:1fr}
+  .reassure{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr 1fr}
+  .readout{grid-template-columns:1fr}
+}
+@media (max-width:620px){
+  .fork-grid{grid-template-columns:1fr}
+  .grid-3,.grid-2{grid-template-columns:1fr}
+  .pillars{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr}
+  .reveal-panel.open{max-height:9000px}
+  .prose p:first-of-type::first-letter{font-size:2.8em}
+}
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "@id": "https://orrbiologicals.com/#org", "name": "Orr Biologicals", "url": "https://orrbiologicals.com", "sameAs": ["https://www.youtube.com/@OrrBiologicals"], "logo": "https://orrbiologicals.com/assets/og.png", "description": "Open-source, educational, non-commercial autonomous photobioreactor (MAIN) and federated learning network (PhycoNet) for Spirulina."}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "What Is MAIN? A Plain-Language Guide", "description": "MAIN is a small, open-source AI that grows spirulina, reading pH, light, and more, then making careful, double-checked adjustments. Here is how it works.", "datePublished": "2026-07-10", "dateModified": "2026-07-10", "author": {"@id": "https://orrbiologicals.com/#org"}, "publisher": {"@id": "https://orrbiologicals.com/#org"}, "image": ["https://orrbiologicals.com/assets/og.png"], "mainEntityOfPage": "https://orrbiologicals.com/what-is-main-plain-language", "articleSection": "MAIN · Explained"}</script>
+</head>
+<body class="main">
+<a class="skip" href="#main">Skip to content</a><div class="veil" aria-hidden="true"><svg class="veil-mark" viewBox="0 0 22 34" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" style="color:var(--teal)"><path d="M11 1 q7 5 -3 8 q-10 3 3 8 q10 5 -3 8 q-7 3 3 7"/></svg></div><canvas id="ambient" aria-hidden="true"></canvas><div class="pbar" aria-hidden="true"></div>
+<header class="nav"><div class="nav-in">
+      <a class="wm" href="/" aria-label="Orr Biologicals — home"><svg viewBox="0 0 22 34" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M11 1 q7 5 -3 8 q-10 3 3 8 q10 5 -3 8 q-7 3 3 7"/></svg><span><b>Orr Biologicals</b><small>MAIN · PHYCONET</small></span></a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="/#mind" style="color:var(--teal)">MAIN</a>
+        <a href="/blog">Articles</a>
+        <a href="/cultivation">Grow at Home</a>
+        <a href="/lab">The Lab</a>
+        <a class="btn btn-primary btn-sm" href="/#reserve">Reserve</a>
+      </nav>
+      <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false"><span></span></button>
+    </div></header>
+<main id="main"><article class="article-wrap">
+      <a class="back" href="/#tech"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg> All MAIN articles</a>
+      <div class="abanner"><svg viewBox="0 0 900 210" preserveAspectRatio="xMidYMid slice" style="color:var(--teal)"><path d="M-20,30 q60,-26 120,0 t120,0 t120,0" fill="none" stroke="currentColor" stroke-width="1.4" opacity="0.5"/><path d="M70,67 q60,-26 120,0 t120,0 t120,0" fill="none" stroke="currentColor" stroke-width="1.4" opacity="0.45"/><path d="M160,104 q60,-26 120,0 t120,0 t120,0" fill="none" stroke="currentColor" stroke-width="1.4" opacity="0.4"/><path d="M250,141 q60,-26 120,0 t120,0 t120,0" fill="none" stroke="currentColor" stroke-width="1.4" opacity="0.35"/>
+      <g fill="currentColor" opacity="0.5"><circle cx="120" cy="70" r="3"/><circle cx="360" cy="150" r="2.5"/><circle cx="620" cy="60" r="3.5"/><circle cx="780" cy="140" r="2.5"/></g></svg>
+      <span class="tag">MAIN · Explained</span></div>
+      <div class="amE"><span class="c">MAIN · Explained</span><span>5 min read</span></div>
+      <h1>What Is MAIN? A Plain-Language Guide</h1>
+      <p class="dek">MAIN is a small AI that tends a living spirulina culture, reading its water minute by minute and making careful, double-checked corrections so the culture is never left to guesswork.</p>
+      <div class="keyfacts"><div class="h">Key facts</div><ul><li>MAIN is a Raspberry Pi that watches six live readings (pH, temperature, light, density, dissolved oxygen, and dissolved salts) and makes small corrections</li><li>It never acts blindly: every move is checked against hard limits and a physics-based simulation, and it fails closed, doing nothing when unsure</li><li>Reactors share what they learn as tuned settings through a network called PhycoNet, never your raw sensor logs or camera images</li><li>It is an open-source, educational, non-commercial project, not a health or medical product</li></ul></div>
+      <div class="prose"><p>MAIN stands for Microalgae Artificial Intelligence Network, but the plain-language version is simpler: it is a small computer that grows spirulina for you and keeps an eye on it around the clock. Spirulina is a microscopic, spiral-shaped cyanobacterium (a photosynthetic microbe) that lives in warm, very alkaline water. Keeping it healthy means holding several conditions in balance at once, and those conditions drift all day as the culture drinks in light, feeds, and grows. MAIN&#x27;s job is to notice that drift early and correct it gently, so a living culture is never left to guesswork.</p><p>MAIN senses its culture through six simple readings, taken about once a minute. It measures pH (how alkaline the water is), temperature, and light. It watches density, meaning how thick and green the culture has grown, which is really a measure of how much spirulina is now in the water. And it tracks dissolved oxygen (the oxygen the culture gives off as it photosynthesizes) and TDS, the total dissolved salts and nutrients. An optional tiny camera can add a microscope-style view to catch contamination and help estimate density. None of these numbers mean much on their own. MAIN&#x27;s value is in reading them together, the way an experienced grower can glance at a jar and simply know something is off.</p><p>When a reading drifts, MAIN can respond with a few careful actions. It can dose bicarbonate, which is the culture&#x27;s carbon source and its natural pH buffer rolled into one. That one matters because when the pH climbs too high, it usually means the culture has eaten through its available carbon and needs a top-up. MAIN can also add liquid nutrient, run an air pump to stir the culture and let built-up oxygen escape, switch on a heater, or adjust the light. The moves are deliberately small. MAIN nudges the culture back toward comfortable; it does not yank it.</p><p>Before it makes any move, MAIN thinks ahead using what engineers call a digital twin, a physics-based simulation that behaves like a virtual copy of your culture. It draws on the well-understood biology of how spirulina responds to light, warmth, alkalinity, and oxygen to forecast what the next day of growth should look like, and whether a proposed action would genuinely help. This is where some of spirulina&#x27;s quirks show up. More light, for instance, is not always better: past a certain brightness the culture is harmed rather than helped, so MAIN aims for a productive middle band instead of just turning the lights up.</p><p>The most important thing to understand about MAIN is that the AI only proposes; it never acts unchecked. Every suggested action passes through two safety layers: a set of fixed hard limits that no action may cross, and a simulation check that blocks any move predicted to stall growth or push the water out of its safe range. The system fails closed, which means when it is unsure, it does nothing rather than gamble with the culture. Beneath the software sit independent backstops, including limits built into the low-level firmware and a physical emergency-stop button you can press by hand. And if the internet drops, a simpler set of rules keeps running on the device itself, so the culture is never left unattended.</p><p>MAIN reactors can also learn from one another through a network called PhycoNet. When one reactor works out a better way to keep a particular strain happy, it shares only the lessons, meaning the tuned settings its simulation has learned, and never your raw sensor logs or camera images. Any settings arriving from the network are checked for sensible values before they are ever allowed to touch a live culture. The idea is that the whole network gets steadily better at growing spirulina, while each grower&#x27;s own data stays their own.</p><p>A note on what MAIN is and is not. It is an experimental, open-source, educational project, built and shared in the belief that science should be open to everyone, and it is run as a non-commercial effort by a young creator. It is a tool for learning how a living culture behaves and how careful automation can look after it. It is not a health or medical product, and it makes no promises about what spirulina can do for you. If you want to follow along or ask questions, the project lives on YouTube at @OrrBiologicals, and you can reach the team at service@orrbiologicals.com.</p></div>
+      <div class="article-foot">
+        <a class="btn btn-ghost" href="/#tech">All MAIN articles</a>
+        <a class="btn btn-primary" href="/#reserve">Reserve a reactor <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+    </article>
+    <section class="band" style="padding-top:0"><div class="shell">
+      <div class="sec-head"><div class="kicker">Keep reading</div></div>
+      <div class="grid grid-2"><a class="acard rv" href="/spirulina-is-a-cyanobacterium">
+      <div class="meta"><span>MAIN · Explained</span><span class="rt">4 min</span></div>
+      <h3>Why Spirulina Is a Cyanobacterium, Not an Alga</h3>
+      <p class="dek">Spirulina is a photosynthetic bacterium, not a plant-like alga — and that single fact reshapes how you feed, buffer, and protect the culture.</p>
+      <span class="more">Read the article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+    </a><a class="acard rv" href="/how-main-keeps-culture-safe">
+      <div class="meta"><span>MAIN · Explained</span><span class="rt">4 min</span></div>
+      <h3>How MAIN Keeps Your Culture Safe</h3>
+      <p class="dek">MAIN&#x27;s AI is allowed to suggest changes, never to make them on its own — every move clears two independent safety checks, with hardware limits and a physical stop button behind them.</p>
+      <span class="more">Read the article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+    </a></div>
+    </div></section></main>
+<footer class="footer"><div class="shell"><div class="footer-grid">
+      <div><a class="wm" href="/"><svg viewBox="0 0 22 34" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M11 1 q7 5 -3 8 q-10 3 3 8 q10 5 -3 8 q-7 3 3 7"/></svg><span><b>Orr Biologicals</b><small>MAIN · PHYCONET</small></span></a>
+        <p>An open-source, non-commercial, educational project — an autonomous photobioreactor and a network that learns to grow Spirulina, built in the open by a young maker who believes science should be open to everyone.</p></div>
+      <div class="col"><h5>Explore</h5>
+        <a href="/#tech">How MAIN works</a><a href="/#mind">The onboard mind</a><a href="/cultivation">Grow at home</a><a href="/blog">All articles</a><a href="/lab">The Aura Lab · game</a></div>
+      <div class="col"><h5>Guides</h5>
+        <a href="/cultivation#guides">Cultivation guides</a><a href="/how-to-start-home-spirulina-culture">Start a culture</a><a href="/troubleshooting-ph-and-carbon">Troubleshooting</a></div>
+      <div class="col"><h5>Project</h5>
+        <a href="mailto:service@orrbiologicals.com">service@orrbiologicals.com</a><a href="https://www.youtube.com/@OrrBiologicals" target="_blank" rel="noopener noreferrer">@OrrBiologicals</a><a href="/privacy">Privacy</a><a href="/disclaimer">Disclaimer</a></div>
+    </div>
+    <div class="foot-bar"><span>© 2026 Orr Biologicals · Educational · Non-commercial · Open-source</span>
+      <span><a href="/privacy">Privacy Policy</a> · <a href="/disclaimer">Disclaimer</a></span></div>
+    </div></footer>
+<script>
+/* Orr Biologicals — ambient living background.
+   A lightweight 2D canvas of drifting, beaded Spirulina filaments + soft cells,
+   themed per palette (teal on dark, amber on warm). Subtle, behind all content.
+   Perf-safe: DPR clamp, pause when hidden, reduced-motion => one static frame. */
+(function () {
+  "use strict";
+  var c = document.getElementById("ambient");
+  if (!c) return;
+  var ctx = c.getContext("2d");
+  if (!ctx) return;
+  var reduce =
+    (window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches) ||
+    (navigator.connection && navigator.connection.saveData);
+
+  var warm = document.body.classList.contains("warm");
+  var COL = warm ? [242, 162, 90] : [51, 230, 173];
+  var COL2 = warm ? [200, 120, 60] : [40, 180, 150];
+
+  var DPR = Math.min(window.devicePixelRatio || 1, 1.6);
+  var W = 0, H = 0;
+  function resize() {
+    DPR = Math.min(window.devicePixelRatio || 1, 1.6);
+    W = window.innerWidth;
+    H = window.innerHeight;
+    c.width = Math.floor(W * DPR); c.height = Math.floor(H * DPR);
+    ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+  }
+  window.addEventListener("resize", resize, { passive: true });
+  resize();
+
+  function rnd(i, s) { var x = Math.sin(i * 12.9898 + s * 78.233) * 43758.5453; return x - Math.floor(x); }
+
+  var N = W < 720 ? 12 : 22;
+  var strands = [];
+  for (var i = 0; i < N; i++) {
+    strands.push({
+      x: rnd(i, 1) * W,
+      y: rnd(i, 2) * H,
+      len: 160 + rnd(i, 3) * 300,
+      amp: 10 + rnd(i, 4) * 26,
+      freq: 0.03 + rnd(i, 5) * 0.05,
+      phase: rnd(i, 6) * 6.28,
+      vy: (rnd(i, 7) - 0.5) * 0.24,
+      vx: (rnd(i, 8) - 0.5) * 0.14,
+      rot: (rnd(i, 9) - 0.5) * 0.6,
+      sp: 0.004 + rnd(i, 10) * 0.006,
+      a: 0.12 + rnd(i, 11) * 0.24,
+      sc: 0.8 + rnd(i, 12) * 1.0
+    });
+  }
+  var CN = W < 720 ? 22 : 46;
+  var cells = [];
+  for (var j = 0; j < CN; j++) {
+    cells.push({ x: rnd(j, 21) * W, y: rnd(j, 22) * H, r: 1.4 + rnd(j, 23) * 4,
+      vy: (rnd(j, 24) - 0.5) * 0.2, vx: (rnd(j, 25) - 0.5) * 0.12, a: 0.08 + rnd(j, 26) * 0.2 });
+  }
+
+  function drawStrand(s, t) {
+    var beads = Math.max(8, Math.floor(s.len / 12));
+    ctx.save();
+    ctx.translate(s.x, s.y);
+    ctx.rotate(s.rot);
+    ctx.beginPath();
+    for (var k = 0; k <= beads; k++) {
+      var px = (k / beads - 0.5) * s.len;
+      var py = Math.sin(k * s.freq * 12 + s.phase + t * s.sp * 60) * s.amp;
+      if (k === 0) ctx.moveTo(px, py); else ctx.lineTo(px, py);
+    }
+    ctx.strokeStyle = "rgba(" + COL[0] + "," + COL[1] + "," + COL[2] + "," + s.a + ")";
+    ctx.lineWidth = 1.9 * s.sc; ctx.lineCap = "round";
+    ctx.stroke();
+    // beads (cells) along the filament
+    for (var b = 0; b <= beads; b += 2) {
+      var bx = (b / beads - 0.5) * s.len;
+      var by = Math.sin(b * s.freq * 12 + s.phase + t * s.sp * 60) * s.amp;
+      ctx.beginPath();
+      ctx.arc(bx, by, 2.1 * s.sc, 0, 6.283);
+      ctx.fillStyle = "rgba(" + COL2[0] + "," + COL2[1] + "," + COL2[2] + "," + (s.a * 1.5) + ")";
+      ctx.fill();
+    }
+    ctx.restore();
+  }
+
+  function frame(now) {
+    if (!running) return;
+    requestAnimationFrame(frame);
+    if (hidden) return;
+    var t = (now || 0) / 1000;
+    ctx.clearRect(0, 0, W, H);
+    ctx.globalCompositeOperation = "lighter";
+    for (var i = 0; i < strands.length; i++) {
+      var s = strands[i];
+      s.y += s.vy; s.x += s.vx; s.phase += s.sp;
+      if (s.y < -160) s.y = H + 160; if (s.y > H + 160) s.y = -160;
+      if (s.x < -300) s.x = W + 300; if (s.x > W + 300) s.x = -300;
+      drawStrand(s, t);
+    }
+    for (var j = 0; j < cells.length; j++) {
+      var cc = cells[j];
+      cc.y += cc.vy; cc.x += cc.vx;
+      if (cc.y < -10) cc.y = H + 10; if (cc.y > H + 10) cc.y = -10;
+      if (cc.x < -10) cc.x = W + 10; if (cc.x > W + 10) cc.x = -10;
+      ctx.beginPath();
+      var g = ctx.createRadialGradient(cc.x, cc.y, 0, cc.x, cc.y, cc.r * 4);
+      g.addColorStop(0, "rgba(" + COL[0] + "," + COL[1] + "," + COL[2] + "," + cc.a + ")");
+      g.addColorStop(1, "rgba(" + COL[0] + "," + COL[1] + "," + COL[2] + ",0)");
+      ctx.fillStyle = g;
+      ctx.arc(cc.x, cc.y, cc.r * 4, 0, 6.283); ctx.fill();
+    }
+    ctx.globalCompositeOperation = "source-over";
+  }
+
+  var running = true, hidden = false;
+  document.addEventListener("visibilitychange", function () { hidden = document.hidden; });
+
+  if (reduce) { // one static frame, no loop
+    var s0;
+    ctx.globalCompositeOperation = "lighter";
+    for (var i = 0; i < strands.length; i++) drawStrand(strands[i], 0);
+    ctx.globalCompositeOperation = "source-over";
+  } else {
+    requestAnimationFrame(frame);
+  }
+})();
+
+</script>
+<script>
+/* Orr Biologicals — interactions. Vanilla, dependency-free, reduced-motion aware. */
+(function () {
+  "use strict";
+  var root = document.documentElement;
+  root.classList.add("js");
+  var reduce =
+    (window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches) ||
+    (navigator.connection && navigator.connection.saveData);
+
+  /* ---- switch-on: never wait on fonts/images ---- */
+  (function () {
+    var lit = false;
+    function go() {
+      if (lit) return; lit = true;
+      var v = document.querySelector(".veil");
+      if (v) setTimeout(function () { v.classList.add("done"); }, reduce ? 0 : 260);
+    }
+    if (document.readyState !== "loading") setTimeout(go, reduce ? 0 : 100);
+    else document.addEventListener("DOMContentLoaded", function () { setTimeout(go, reduce ? 0 : 100); });
+    addEventListener("load", go); setTimeout(go, 1600);
+  })();
+
+  function ready(fn) { document.readyState !== "loading" ? fn() : document.addEventListener("DOMContentLoaded", fn); }
+
+  ready(function () {
+    /* ---- nav: solid + hide-on-scroll-down + progress ---- */
+    var nav = document.querySelector(".nav"), pbar = document.querySelector(".pbar");
+    var lastY = 0, ticking = false, docH = 1;
+    function measure() { docH = Math.max(1, root.scrollHeight - innerHeight); }
+    measure(); addEventListener("resize", measure, { passive: true });
+
+    var hero = document.querySelector(".hero");
+    function onScroll() {
+      var y = scrollY || root.scrollTop;
+      if (pbar) pbar.style.width = (Math.min(y / docH, 1) * 100) + "%";
+      if (nav) {
+        if (y > 40) nav.classList.add("solid"); else nav.classList.remove("solid");
+        if (y > 260 && y > lastY + 6) nav.classList.add("hide");
+        else if (y < lastY - 6 || y < 260) nav.classList.remove("hide");
+      }
+      // drive the reactor scene while the hero is in view
+      if (hero && window.Reactor) {
+        var hp = Math.min(1, y / innerHeight);
+        Reactor.setScroll(hp);
+        Reactor.setGather(smooth(0.08, 0.62, hp));
+      }
+      if (!reduce && hero && y < innerHeight * 1.25) {
+        var hin = document.querySelector(".hero-in");
+        if (hin) hin.style.transform = "translateY(" + (y * 0.14).toFixed(1) + "px)";
+      }
+      lastY = y; ticking = false;
+    }
+    function smooth(a, b, x) { x = Math.max(0, Math.min(1, (x - a) / (b - a))); return x * x * (3 - 2 * x); }
+    addEventListener("scroll", function () { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
+    onScroll();
+
+    /* ---- mobile nav ---- */
+    if (nav) {
+      var tg = nav.querySelector(".nav-toggle");
+      if (tg) tg.addEventListener("click", function () {
+        var o = nav.classList.toggle("open");
+        tg.setAttribute("aria-expanded", o);
+      });
+      nav.querySelectorAll(".nav-links a").forEach(function (a) {
+        a.addEventListener("click", function () { nav.classList.remove("open"); });
+      });
+    }
+
+    /* ---- reveal on scroll (.rv fade-up, .ebb slide-in) ---- */
+    var io = "IntersectionObserver" in window
+      ? new IntersectionObserver(function (es) {
+          es.forEach(function (en) {
+            if (en.isIntersecting) {
+              if (en.target.hasAttribute("data-count")) settle(en.target);
+              en.target.classList.add("in"); io.unobserve(en.target);
+            }
+          });
+        }, { rootMargin: "0px 0px -8% 0px", threshold: 0.16 })
+      : null;
+    function obs(el) { io ? io.observe(el) : (el.classList.add("in"), el.hasAttribute("data-count") && settle(el)); }
+    document.querySelectorAll(".rv,.ebb,[data-count]").forEach(obs);
+
+    /* ---- instrument cluster: fill gauges + draw sparkline on view ---- */
+    function fireViz(el) {
+      el.querySelectorAll(".spark").forEach(function (s) { s.classList.add("in"); });
+      el.querySelectorAll(".arc").forEach(function (a) { a.style.strokeDashoffset = a.getAttribute("data-off"); });
+    }
+    var viz = "IntersectionObserver" in window
+      ? new IntersectionObserver(function (es) { es.forEach(function (en) { if (en.isIntersecting) { fireViz(en.target); viz.unobserve(en.target); } }); }, { threshold: 0.25 })
+      : null;
+    document.querySelectorAll(".instrument,.gauge-grid").forEach(function (el) { viz ? viz.observe(el) : fireViz(el); });
+    // failsafe: nothing stays hidden
+    setTimeout(function () {
+      document.querySelectorAll(".rv:not(.in),.ebb:not(.in)").forEach(function (e) { e.classList.add("in"); });
+    }, 2600);
+
+    /* ---- counter settle ---- */
+    function settle(el) {
+      if (el.dataset.settled) return; el.dataset.settled = "1";
+      var target = parseFloat(el.getAttribute("data-count")), dec = (el.getAttribute("data-dec") | 0);
+      var suffix = el.getAttribute("data-suffix") || "";
+      if (isNaN(target)) return;
+      if (reduce) { el.textContent = target.toFixed(dec) + suffix; return; }
+      var t0 = null, dur = 1100;
+      requestAnimationFrame(function step(ts) {
+        if (!t0) t0 = ts;
+        var p = Math.min((ts - t0) / dur, 1), e = 1 - Math.pow(1 - p, 3);
+        el.textContent = (target * e).toFixed(dec) + suffix;
+        if (p < 1) requestAnimationFrame(step); else el.textContent = target.toFixed(dec) + suffix;
+      });
+    }
+
+    /* ---- live telemetry flicker on the MAIN readout ---- */
+    if (!reduce) {
+      document.querySelectorAll("[data-live]").forEach(function (el) {
+        var base = parseFloat(el.getAttribute("data-live")), dec = (el.getAttribute("data-dec") | 0);
+        var jitter = parseFloat(el.getAttribute("data-jit") || "0.01");
+        setInterval(function () {
+          if (document.hidden) return;
+          var j = base * (1 + (Math.random() - 0.5) * 2 * jitter);
+          el.firstChild ? (el.childNodes[0].nodeValue = j.toFixed(dec)) : (el.textContent = j.toFixed(dec));
+        }, 1500 + Math.random() * 900);
+      });
+    }
+
+    /* ---- the fork: advanced reveals MAIN (cells part), beginner navigates ---- */
+    var adv = document.getElementById("advBtn");
+    var panel = document.getElementById("mainReveal");
+    if (panel) {
+      // the MAIN content is always present; the "cells part" plays when it scrolls into view
+      var pio = "IntersectionObserver" in window
+        ? new IntersectionObserver(function (es) {
+            es.forEach(function (en) {
+              if (en.isIntersecting) { en.target.classList.add("parted"); if (window.Reactor) Reactor.setReveal(1); pio.unobserve(en.target); }
+            });
+          }, { threshold: 0.2 })
+        : null;
+      pio ? pio.observe(panel) : panel.classList.add("parted");
+    }
+    if (adv && panel) {
+      adv.addEventListener("click", function () {
+        panel.classList.add("parted");
+        adv.setAttribute("aria-expanded", "true");
+        if (window.Reactor) Reactor.setReveal(1);
+        panel.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
+        var h = panel.querySelector("h2"); if (h) { h.setAttribute("tabindex", "-1"); h.focus({ preventScroll: true }); }
+      });
+    }
+
+    /* ---- YouTube lite-embeds: click facade -> load iframe ---- */
+    document.querySelectorAll(".yt-lite,.yt-mini .m").forEach(function (box) {
+      box.addEventListener("click", function () {
+        var id = box.getAttribute("data-yt"); if (!id || box.dataset.loaded) return;
+        box.dataset.loaded = "1";
+        var f = document.createElement("iframe");
+        f.setAttribute("allow", "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture");
+        f.setAttribute("allowfullscreen", "");
+        f.setAttribute("title", "Orr Biologicals on YouTube");
+        f.src = "https://www.youtube-nocookie.com/embed/" + id + "?autoplay=1&rel=0&modestbranding=1";
+        box.appendChild(f);
+      });
+      box.setAttribute("role", "button");
+      box.setAttribute("tabindex", "0");
+      box.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); box.click(); } });
+    });
+
+    /* ---- pointer flourishes: cursor glow, tilt, magnetic (fine pointers) ---- */
+    var fine = matchMedia && matchMedia("(pointer:fine)").matches && innerWidth >= 900;
+    if (fine && !reduce) {
+      var cg = document.createElement("div"); cg.className = "cursor-glow"; document.body.appendChild(cg);
+      addEventListener("pointermove", function (e) {
+        document.body.classList.add("hascursor");
+        cg.style.left = e.clientX + "px"; cg.style.top = e.clientY + "px";
+      }, { passive: true });
+      document.querySelectorAll(".acard").forEach(function (c) {
+        c.addEventListener("pointermove", function (e) {
+          var r = c.getBoundingClientRect(), px = (e.clientX - r.left) / r.width - 0.5, py = (e.clientY - r.top) / r.height - 0.5;
+          c.style.transform = "perspective(820px) rotateY(" + (px * 5).toFixed(2) + "deg) rotateX(" + (-py * 5).toFixed(2) + "deg) translateY(-5px)";
+        });
+        c.addEventListener("pointerleave", function () { c.style.transform = ""; });
+      });
+      document.querySelectorAll(".btn-primary").forEach(function (b) {
+        b.addEventListener("pointermove", function (e) {
+          var r = b.getBoundingClientRect();
+          b.style.transform = "translate(" + ((e.clientX - r.left - r.width / 2) * 0.2).toFixed(1) + "px," + ((e.clientY - r.top - r.height / 2) * 0.28).toFixed(1) + "px)";
+        });
+        b.addEventListener("pointerleave", function () { b.style.transform = ""; });
+      });
+    }
+
+    /* ---- article expand (hub pages, optional) ---- */
+    document.querySelectorAll("[data-expand]").forEach(function (a) {
+      var body = a.querySelector(".xbody"), btn = a.querySelector(".xtog");
+      if (btn && body) btn.addEventListener("click", function () {
+        var open = a.hasAttribute("open");
+        if (open) { a.removeAttribute("open"); body.style.maxHeight = null; btn.setAttribute("aria-expanded", "false"); }
+        else { a.setAttribute("open", ""); body.style.maxHeight = body.scrollHeight + "px"; btn.setAttribute("aria-expanded", "true"); }
+      });
+    });
+  });
+})();
+
+</script>
+</body>
+</html>

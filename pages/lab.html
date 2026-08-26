@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Lab — Orr Biologicals</title>
+<meta name="description" content="The Lab is an educational, client-side Spirulina photobioreactor simulation from Orr Biologicals.">
+<link rel="canonical" href="https://orrbiologicals.com/lab">
+<meta name="theme-color" content="#050708">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23050708'/%3E%3Cpath d='M16 24V13M16 16.5c-4-.7-5.6-4.2-1.7-5.9 3.4-1.5 4.9 1.9 1.7 4.4M16 20c3.8-.5 5-3.6 1.5-5.1-3.1-1.3-4.4 1.8-1.5 2.9' fill='none' stroke='%233ECF8E' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/lab.css">
+</head>
+<body class="lab-page">
+<a class="skip" href="#main">Skip to content</a>
+<header class="nav"><div class="shell nav-inner">
+  <a class="brand" href="/" aria-label="Orr Biologicals — home">
+    <span class="brand-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" style="color:var(--green)"><path d="M12 20V7M12 11c-3.4-.6-4.8-3.6-1.5-5 2.9-1.3 4.2 1.6 1.5 3.7M12 15c3.2-.4 4.2-3 1.3-4.3-2.6-1.1-3.7 1.8-1.3 2.9"/></svg></span>
+    <span class="brand-text"><b>Orr Biologicals</b><small>Biotechnology</small></span>
+  </a>
+  <nav class="nav-links" aria-label="Primary">
+    <a href="/">Home</a>
+    <a href="/research">Research</a>
+    <a href="/technology">Technology</a>
+    <a href="/projects">Projects</a>
+    <a href="/insights">Insights</a>
+    <a href="/lab" class="active">The Lab</a>
+    <a href="/about">About</a>
+    <a href="/contact">Contact</a>
+  </nav>
+  <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false"><span></span></button>
+</div></header>
+
+<main id="main" class="lab-main">
+  <section class="lab-intro"><div class="shell lab-shell">
+    <div class="lab-heading">
+      <div class="eyebrow">Interactive research environment</div>
+      <h1>THE LAB</h1>
+      <p>Build a culture. Test a hypothesis. Teach the machine.</p>
+    </div>
+    <div class="lab-status"><span class="status-dot"></span><span>SIMULATION ONLINE</span><small>LOCAL / CLIENT-SIDE</small></div>
+  </div></section>
+
+  <section class="lab-workspace"><div class="shell lab-shell">
+    <div class="lab-toolbar panel">
+      <div class="toolbar-group">
+        <span class="toolbar-label">SIMULATION TIME</span>
+        <strong id="sim-time">00:00:00</strong>
+      </div>
+      <div class="toolbar-group toolbar-controls">
+        <button class="lab-btn lab-btn-primary" id="play-toggle" type="button"><span class="icon">▶</span><span>PLAY</span></button>
+        <div class="segmented" role="group" aria-label="Simulation speed">
+          <button type="button" data-speed="1" class="active">1×</button>
+          <button type="button" data-speed="2">2×</button>
+          <button type="button" data-speed="5">5×</button>
+          <button type="button" data-speed="10">10×</button>
+        </div>
+        <button class="icon-btn" id="save-game" type="button" title="Save simulation" aria-label="Save simulation">↓</button>
+        <button class="icon-btn" id="reset-game" type="button" title="Reset simulation" aria-label="Reset simulation">↺</button>
+      </div>
+    </div>
+
+    <div class="lab-grid lab-grid-top">
+      <section class="panel reactor-panel">
+        <div class="panel-head"><div><span class="panel-kicker">01 · OBSERVE</span><h2>PHOTOBIOREACTOR</h2></div><span class="sim-badge">SIMULATED</span></div>
+        <div class="reactor-stage">
+          <svg class="reactor-svg" viewBox="0 0 460 520" role="img" aria-label="Simulated Spirulina photobioreactor">
+            <defs>
+              <linearGradient id="glass" x1="0" x2="1"><stop stop-color="#8ddcc1" stop-opacity=".2"/><stop offset=".22" stop-color="#fff" stop-opacity=".05"/><stop offset=".8" stop-color="#1a7760" stop-opacity=".08"/><stop offset="1" stop-color="#8ddcc1" stop-opacity=".22"/></linearGradient>
+              <linearGradient id="culture" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#67d59b" stop-opacity=".48"/><stop offset="1" stop-color="#0f5c48" stop-opacity=".88"/></linearGradient>
+              <filter id="reactor-glow"><feGaussianBlur stdDeviation="8" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+              <clipPath id="vessel-clip"><rect x="116" y="92" width="228" height="340" rx="26"/></clipPath>
+            </defs>
+            <g class="reactor-grid"><path d="M52 108H408M52 178H408M52 248H408M52 318H408M52 388H408"/><path d="M72 70V452M142 70V452M212 70V452M282 70V452M352 70V452"/></g>
+            <path class="light-beam" d="M72 108v290M388 108v290"/>
+            <g class="vessel-shadow"><rect x="104" y="80" width="252" height="368" rx="34"/></g>
+            <g clip-path="url(#vessel-clip)"><rect id="culture-fill" x="116" y="198" width="228" height="234" fill="url(#culture)"/><path id="culture-surface" d="M116 198 Q170 185 230 198 T344 198" fill="none" stroke="#b8f3d5" stroke-opacity=".7"/>
+              <g id="particle-layer"></g><g id="bubble-layer"></g><path class="flow-line flow-a" d="M138 390 C180 350 280 420 326 350"/><path class="flow-line flow-b" d="M146 300 C202 350 272 260 330 310"/>
+            </g>
+            <rect x="116" y="92" width="228" height="340" rx="26" fill="url(#glass)" stroke="#9adfc6" stroke-opacity=".52"/>
+            <rect x="128" y="105" width="12" height="310" rx="6" fill="#fff" opacity=".09"/>
+            <rect x="164" y="62" width="132" height="30" rx="8" fill="#12231c" stroke="#3ecf8e" stroke-opacity=".5"/>
+            <path d="M230 62V36" stroke="#3ecf8e" stroke-opacity=".7"/><circle cx="230" cy="30" r="7" fill="#0a1510" stroke="#3ecf8e"/>
+            <path d="M176 432v36M284 432v36" stroke="#6a9280" stroke-opacity=".7" stroke-width="3"/><path d="M148 468h164" stroke="#6a9280" stroke-opacity=".7"/>
+            <g class="reactor-labels"><text x="20" y="106">LIGHT</text><text x="20" y="126" id="reactor-light-label">58%</text><text x="362" y="106">OD</text><text x="362" y="126" id="reactor-od-label">0.38</text><text x="20" y="414">MIX</text><text x="20" y="434" id="reactor-mix-label">62%</text><text x="362" y="414">O₂</text><text x="362" y="434" id="reactor-o2-label">74%</text></g>
+          </svg>
+          <div class="reactor-caption"><span><i class="legend-dot green"></i>active culture</span><span><i class="legend-dot cyan"></i>sensor field</span><span><i class="legend-dot amber"></i>air / carbon</span></div>
+        </div>
+      </section>
+
+      <section class="panel controls-panel">
+        <div class="panel-head"><div><span class="panel-kicker">02 · CONTROL</span><h2>ENVIRONMENT</h2></div><span class="sim-badge">SIMULATED</span></div>
+        <div class="control-list">
+          <label class="range-control"><span><b>LIGHT</b><output id="light-out">58%</output></span><input id="light-control" type="range" min="0" max="100" value="58"><small>Photon flux intensity</small></label>
+          <label class="range-control"><span><b>MIXING</b><output id="mixing-out">62%</output></span><input id="mixing-control" type="range" min="0" max="100" value="62"><small>Circulation velocity</small></label>
+          <label class="range-control"><span><b>AERATION</b><output id="aeration-out">48%</output></span><input id="aeration-control" type="range" min="0" max="100" value="48"><small>Gas transfer / bubbles</small></label>
+          <label class="range-control"><span><b>TEMPERATURE</b><output id="temperature-out">30.0°C</output></span><input id="temperature-control" type="range" min="20" max="38" step="0.1" value="30"><small>Culture temperature</small></label>
+          <label class="range-control"><span><b>CARBON</b><output id="carbon-out">55%</output></span><input id="carbon-control" type="range" min="0" max="100" value="55"><small>Available inorganic carbon</small></label>
+          <label class="range-control"><span><b>NUTRIENTS</b><output id="nutrients-out">72%</output></span><input id="nutrients-control" type="range" min="0" max="100" value="72"><small>Medium availability</small></label>
+        </div>
+        <div class="control-foot"><span>Actuators are simulated</span><span class="signal-live"><i></i>LIVE</span></div>
+      </section>
+    </div>
+
+    <section class="panel sensor-panel">
+      <div class="panel-head"><div><span class="panel-kicker">03 · MEASURE</span><h2>SENSOR ARRAY</h2></div><span class="sim-badge">ALL OUTPUT SIMULATED</span></div>
+      <div class="sensor-grid">
+        <article class="sensor-card"><div class="sensor-top"><span>pH</span><span class="sensor-status" id="ph-status">STABLE</span></div><strong id="ph-reading">9.15</strong><small>alkalinity index</small><canvas id="ph-graph" aria-label="pH history"></canvas></article>
+        <article class="sensor-card"><div class="sensor-top"><span>TEMPERATURE</span><span class="sensor-status" id="temp-status">OPTIMAL</span></div><strong id="temp-reading">30.0°C</strong><small>thermal state</small><canvas id="temp-graph" aria-label="Temperature history"></canvas></article>
+        <article class="sensor-card"><div class="sensor-top"><span>LIGHT</span><span class="sensor-status" id="light-status">NOMINAL</span></div><strong id="light-reading">58%</strong><small>relative photon flux</small><canvas id="light-graph" aria-label="Light history"></canvas></article>
+        <article class="sensor-card"><div class="sensor-top"><span>OPTICAL DENSITY</span><span class="sensor-status" id="od-status">RISING</span></div><strong id="od-reading">0.38</strong><small>biomass proxy · OD</small><canvas id="od-graph" aria-label="Optical density history"></canvas></article>
+        <article class="sensor-card"><div class="sensor-top"><span>DISSOLVED OXYGEN</span><span class="sensor-status" id="oxygen-status">HEALTHY</span></div><strong id="oxygen-reading">74%</strong><small>saturation estimate</small><canvas id="oxygen-graph" aria-label="Dissolved oxygen history"></canvas></article>
+        <article class="sensor-card"><div class="sensor-top"><span>TDS</span><span class="sensor-status" id="tds-status">NOMINAL</span></div><strong id="tds-reading">712 ppm</strong><small>total dissolved solids</small><canvas id="tds-graph" aria-label="TDS history"></canvas></article>
+      </div>
+    </section>
+
+    <div class="lab-grid lab-grid-middle">
+      <section class="panel hypothesis-panel">
+        <div class="panel-head"><div><span class="panel-kicker">04 · HYPOTHESIZE</span><h2>MAIN</h2></div><span class="sim-badge">ASSISTANT · SIMULATED</span></div>
+        <p class="main-intro">MAIN analyzes the current simulated sensor state and offers weighted hypotheses. The operator chooses the next test.</p>
+        <div class="hypothesis-list" id="hypothesis-list"></div>
+        <div class="main-interpretation" id="main-interpretation">Culture is inside a workable operating window. Run an experiment to teach the model more.</div>
+      </section>
+
+      <section class="panel twin-panel">
+        <div class="panel-head"><div><span class="panel-kicker">05 · ANALYZE</span><h2>DIGITAL TWIN</h2></div><span class="unlock-pill" id="twin-unlock">LOCKED · 10 RP</span></div>
+        <div class="twin-locked" id="twin-locked"><span class="lock-mark">◇</span><strong>Model layer awaiting research</strong><p>Complete experiments to unlock a prediction overlay and error tracking.</p><button class="lab-btn" id="unlock-twin" type="button">UNLOCK DIGITAL TWIN</button></div>
+        <div class="twin-content is-hidden" id="twin-content"><div class="twin-legend"><span><i class="legend-line green"></i>simulation</span><span><i class="legend-line cyan"></i>digital twin</span></div><canvas id="twin-graph" aria-label="Simulation and digital twin curves"></canvas><div class="twin-stats"><span>prediction error <b id="twin-error">18.4%</b></span><span>model confidence <b id="twin-confidence">61%</b></span></div></div>
+      </section>
+    </div>
+
+    <div class="lab-grid lab-grid-bottom">
+      <section class="panel experiment-panel">
+        <div class="panel-head"><div><span class="panel-kicker">06 · EXPERIMENT</span><h2>EXPERIMENT DESIGNER</h2></div><span class="sim-badge">LOCAL NOTEBOOK</span></div>
+        <form id="experiment-form" class="experiment-form">
+          <label><span>VARIABLE</span><select id="experiment-variable"><option value="light">Light</option><option value="temperature">Temperature</option><option value="carbon">Carbon</option><option value="nutrients">Nutrients</option><option value="mixing">Mixing</option><option value="aeration">Aeration</option></select></label>
+          <label><span>STARTING CONDITION</span><select id="experiment-start"><option value="current">Current condition</option><option value="low">Low condition</option><option value="high">High condition</option></select></label>
+          <label><span>TREATMENT</span><select id="experiment-treatment"><option value="increase">Increase by 15%</option><option value="decrease">Decrease by 15%</option><option value="pulse">Pulse variable</option></select></label>
+          <label><span>DURATION</span><select id="experiment-duration"><option value="6">6 simulation hours</option><option value="12">12 simulation hours</option><option value="24">24 simulation hours</option><option value="48">48 simulation hours</option></select></label>
+          <button class="lab-btn lab-btn-primary run-btn" type="submit">RUN EXPERIMENT <span>→</span></button>
+        </form>
+        <p class="form-note" id="experiment-status">Experiments alter the simulation and are stored in this browser.</p>
+      </section>
+
+      <section class="panel notebook-panel">
+        <div class="panel-head"><div><span class="panel-kicker">07 · RECORD</span><h2>LAB NOTEBOOK</h2></div><span class="count-pill" id="experiment-count">0 RUNS</span></div>
+        <div class="notebook-list" id="notebook-list"><div class="empty-state">No experiments recorded yet.<br><span>Design a test to start the notebook.</span></div></div>
+      </section>
+    </div>
+
+    <section class="panel research-panel">
+      <div class="panel-head"><div><span class="panel-kicker">08 · OPTIMIZE</span><h2>RESEARCH TREE</h2></div><span class="research-points"><b id="research-points">0</b> RP</span></div>
+      <div class="research-grid" id="research-grid"></div>
+    </section>
+
+    <section class="panel achievement-panel">
+      <div class="panel-head"><div><span class="panel-kicker">09 · MILESTONES</span><h2>ACHIEVEMENTS</h2></div><span class="count-pill" id="achievement-count">0 / 7</span></div>
+      <div class="achievement-grid" id="achievement-grid"></div>
+    </section>
+
+    <section class="panel phyconet-panel">
+      <div class="panel-head"><div><span class="panel-kicker">10 · NETWORK</span><h2>PHYCONET</h2></div><span class="unlock-pill" id="phyconet-unlock">LOCKED · 40 RP</span></div>
+      <div class="network-locked" id="network-locked"><span class="lock-mark">⌁</span><strong>Distributed cultivation is a late-game concept</strong><p>Unlock PHYCONET to compare four simulated reactors and share model learning across the network.</p><button class="lab-btn" id="unlock-phyconet" type="button">UNLOCK PHYCONET</button></div>
+      <div class="network-content is-hidden" id="network-content"><svg id="network-svg" viewBox="0 0 900 220" role="img" aria-label="Four connected simulated reactor nodes"><path class="network-path" d="M130 110H770M270 110L430 55M270 110L430 165M630 110L470 55M630 110L470 165"/><g class="network-node" data-node="0" transform="translate(70 55)"><circle r="56"/><text y="-4">REACTOR 01</text><small y="16">PRIMARY</small></g><g class="network-node" data-node="1" transform="translate(430 55)"><circle r="56"/><text y="-4">REACTOR 02</text><small y="16">REMOTE A</small></g><g class="network-node" data-node="2" transform="translate(430 165)"><circle r="56"/><text y="-4">REACTOR 03</text><small y="16">REMOTE B</small></g><g class="network-node" data-node="3" transform="translate(790 110)"><circle r="56"/><text y="-4">REACTOR 04</text><small y="16">REMOTE C</small></g><g class="network-packet"><circle r="4"/></g></svg><div class="network-stats"><span>connected nodes <b>04</b></span><span>shared learning <b id="network-learning">0%</b></span><span>data status <b class="good">SIMULATED</b></span></div></div>
+    </section>
+
+    <div class="lab-disclaimer"><span class="sim-badge">SIMULATED</span><span>Educational model only. Equations and outputs are simplified and are not experimentally validated or suitable for real cultivation decisions.</span></div>
+  </div></section>
+</main>
+
+<footer class="footer lab-footer"><div class="shell">
+  <div class="footer-bottom" style="margin-top:0">
+    <span>© 2026 Orr Biologicals · THE LAB</span>
+    <span><a href="/privacy">Privacy Policy</a> · <a href="/terms">Terms</a></span>
+  </div>
+</div></footer>
+<script src="/js/main.js"></script>
+<script src="/js/lab.js"></script>
+</body>
+</html>

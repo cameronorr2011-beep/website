@@ -1,0 +1,10 @@
+# Orr Biologicals — Algaephyte (static site)
+# Used by GitHub Pages (Jekyll). This site is plain HTML/CSS/JS;
+# Jekyll is only used to serve the files, not to generate content.
+title: "Orr Biologicals — Algaephyte"
+description: "Open-source, AI-powered algae cultivation systems."
+url: "https://orrbiologicals.com"
+include:
+  - _config.yml
+exclude:
+  - README.md

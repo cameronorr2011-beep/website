@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FAQ â€” Orr Biologicals</title>
+<meta name="description" content="Answers about AlgaePhyte, Mycophyte, sensors, MQTT, camera vision, federated learning, safety and starting out.">
+<link rel="canonical" href="https://orrbiologicals.com/faq">
+<meta property="og:type" content="website"><meta property="og:title" content="FAQ â€” Orr Biologicals">
+<meta property="og:description" content="Answers about AlgaePhyte, Mycophyte, sensors, MQTT, camera vision, federated learning, safety and starting out."><meta property="og:url" content="https://orrbiologicals.com/faq">
+<meta property="og:site_name" content="Orr Biologicals"><meta property="og:image" content="https://orrbiologicals.com/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#04100e">
+<link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iOCIgZmlsbD0iIzA0MTAwZSIvPjxwYXRoIGQ9Ik0xNiA0IHE5IDYgLTQgMTAgcS0xMyA0IDQgMTAgcTkgNCAtMyA0IiBmaWxsPSJub25lIiBzdHJva2U9IiMzM2U2YWQiIHN0cm9rZS13aWR0aD0iMi4yIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz48Y2lyY2xlIGN4PSIxNiIgY3k9IjE2IiByPSIxLjYiIGZpbGw9IiM1N2YwZDYiLz48L3N2Zz4K">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../css/site.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "@id": "https://orrbiologicals.com/#org", "name": "Orr Biologicals", "url": "https://orrbiologicals.com", "description": "Open-source AI-assisted cultivation systems: AlgaePhyte photobioreactor and Mycophyte mushroom chamber."}</script>
+<script type="application/ld+json">[object Object]</script>
+</head>
+<body class="phyto">
+<a class="skip" href="#main">Skip to content</a><div class="veil" aria-hidden="true"><svg class="veil-mark" viewBox="0 0 22 34" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" style="color:var(--teal)"><path d="M11 1 q7 5 -3 8 q-10 3 3 8 q10 5 -3 8 q-7 3 3 7"/></svg></div><canvas id="ambient" aria-hidden="true"></canvas><div class="pbar" aria-hidden="true"></div>
+<header class="nav"><div class="nav-in">
+  <a class="wm" href="../index.html" aria-label="Orr Biologicals â€” home"><svg viewBox="0 0 22 34" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M11 1 q7 5 -3 8 q-10 3 3 8 q10 5 -3 8 q-7 3 3 7"/></svg><span><b>Orr Biologicals</b><small>THE LIBRARY</small></span></a>
+  <nav class="nav-links" aria-label="Primary">
+    <a href="../index.html">AlgaePhyte</a>
+    <a href="mycophyte.html">Mycophyte</a>
+    <a href="how-it-works.html">How it works</a>
+    <a href="articles.html">Articles</a>
+    <a href="docs.html">Docs</a>
+    <a class="btn btn-primary btn-sm" href="contact.html">Get in touch</a>
+  </nav>
+  <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false"><span></span></button>
+</div></header>
+<main id="main"><section class="band" style="padding-top:calc(96px + var(--sp)/2)"><div class="shell">
+      <div class="sec-head"><div class="kicker">Questions, answered honestly</div>
+        <h1 style="font-size:clamp(2.2rem,5.4vw,3.9rem)">Frequently asked questions</h1>
+        <p class="lede">Short answers about both platforms. If yours isn't here, the <a href="troubleshooting.html">troubleshooting guide</a> covers failures, and the <a href="docs.html">docs</a> cover builds.</p></div>
+      <div class="faq" id="faq">
+        <details class="faq-item"><summary><span class="ix">01</span><span>What exactly are AlgaePhyte and Mycophyte?</span></summary><div class="a"><p><b>AlgaePhyte</b> (formerly MAIN) is an open-source, AI-assisted photobioreactor for growing Spirulina â€” it senses pH, temperature, light, optical density, dissolved oxygen and conductivity, models the culture with a digital twin, and proposes safe control actions. <b>Mycophyte</b> is the newer sibling: an open-source AI-assisted mushroom grow chamber with a target bill of materials under $300. Both are educational, open-source projects â€” they are not consumer appliances or medical devices.</p></div></details>
+        <details class="faq-item"><summary><span class="ix">02</span><span>Is the AI really in control?</span></summary><div class="a"><p>The AI <em>proposes</em>; rules and a simulated twin <em>verify</em>; you <em>decide</em> what to allow. Every control action must clear a deterministic rule gate and a forward simulation of the chamber or reactor before it can be applied. If anything is uncertain, the system fails closed â€” it does nothing.</p></div></details>
+        <details class="faq-item"><summary><span class="ix">03</span><span>Do the systems work offline?</span></summary><div class="a"><p>Yes. Sensing, modeling, prediction and actuation all run on the device itself. The network is used only for telemetry, federated model updates and (optionally) remote monitoring. If the network drops, the chamber or reactor simply keeps running its local loops.</p></div></details>
+        <details class="faq-item"><summary><span class="ix">04</span><span>What data leaves the device?</span></summary><div class="a"><p>By default, nothing. Sensor logs, camera frames and history stay on-device. If you opt into the federated network, only signed, bounds-checked model parameter updates are published â€” never raw readings or images. See <a href="privacy.html">Privacy</a> for details.</p></div></details>
+        <details class="faq-item"><summary><span class="ix">05</span><span>How is humidity controlled in Mycophyte?</span></summary><div class="a"><p>The chamber closes the loop on relative humidity using a fogger (up), a fan (down) and a heater (which also dries). The controller watches dew point to avoid condensation on the walls and fruit, and pulses rather than runs actuators continuously.</p></div></details>
+        <details class="faq-item"><summary><span class="ix">06</span><span>What sensors does Mycophyte need?</span></summary><div class="a"><p>The core set: temperature + humidity, COâ‚‚, and airflow. Optional: a camera for the experimental vision module, a load cell for substrate weight, and per-shelf mini-climate sensors.</p></div></details>
+        <details class="faq-item"><summary><span class="ix">07</span><span>Can I run Mycophyte without a COâ‚‚ sensor?</span></summary><div class="a"><p>Yes. COâ‚‚ is modeled from airflow and a default respiration estimate, and the control loop runs on fans alone. Adding the sensor turns COâ‚‚ control on; everything degrades gracefully.</p></div></details>
+        <details class="faq-item"><summary><span class="ix">08</span><span>What sensors does AlgaePhyte need?</span></summary><div class="a"><p>pH, temperature, light, optical density (OD), dissolved oxygen and conductivity (TDS). All are standard analog or IÂ²C probes; the docs list tested part numbers and wiring.</p></div></details>
+        <details class="faq-item"><summary><span class="ix">09</span><span>What camera does the vision module use?</span></summary><div class="a"><p>A standard USB or ESP32-CAM module. Inference runs on-device (optionally on a small USB accelerator). The detector flags anomalies for human review â€” it does not diagnose mold or contamination. Every flag includes the stored image and surrounding telemetry.</p></div></details>
+        <details class="faq-item"><summary><span class="ix">10</span><span>What does 'federated learning' mean here?</span></summary><div class="a"><p>Devices share only model parameter updates â€” not data. The aggregator averages updates into a shared twin model and distributes it back. Updates are signed and bounds-checked. It is not magic: privacy improves but is not absolute, and the aggregator is a trust point. Details in <a href="federated-learning-biotech.html">this article</a>.</p></div></details>
+        <details class="faq-item"><summary><span class="ix">11</span><span>How accurate are the simulations on this site?</span></summary><div class="a"><p>The browser simulations run the same physics models as the firmware (Steele light curve, Beer-Lambert attenuation, bell-shaped temperature/pH responses, hygrometric chamber dynamics). They are illustrative â€” they show how the control logic behaves, not validated experimental data.</p></div></details>
+        <details class="faq-item"><summary><span class="ix">12</span><span>Do you claim specific yields or harvest weights?</span></summary><div class="a"><p>No. We deliberately do not publish yield or growth-rate numbers that we cannot back with rigorous, controlled data. The goal is control repeatability: the conditions you set are the conditions that hold. Any claims we add later will cite real experiments.</p></div></details>
+        <details class="faq-item"><summary><span class="ix">13</span><span>What does it cost to build?</span></summary><div class="a"><p>Mycophyte's target bill of materials is under $300 (not counting the chamber itself). AlgaePhyte is a Raspberry Pi-class build with hobby-grade sensors; the docs include full BOM tables with tested part numbers.</p></div></details>
+        <details class="faq-item"><summary><span class="ix">14</span><span>What microcontrollers are supported?</span></summary><div class="a"><p>AlgaePhyte runs on a Raspberry Pi (the twin model is a few hundred kilobytes). Mycophyte's core loop runs on RP2040-class boards; the camera path uses a small USB accelerator. Both use MQTT for telemetry.</p></div></details>
+        <details class="faq-item"><summary><span class="ix">15</span><span>Can I grow other organisms with these systems?</span></summary><div class="a"><p>The hardware is organism-agnostic; the models are not. The digital twin parameters are tuned per organism and per strain, and must be re-calibrated for anything else. The safety gates will reject actions outside the calibrated envelope.</p></div></details>
+        <details class="faq-item"><summary><span class="ix">16</span><span>Is this food-safe? Is it a medical device?</span></summary><div class="a"><p>Neither system is certified food-grade or a medical device. Growing food requires you to follow local food-safety rules, and we publish explicit food-safety guidance. The vision module is an experimental flagging aid, not a contamination clearance system.</p></div></details>
+        <details class="faq-item"><summary><span class="ix">17</span><span>What happens if a sensor fails?</span></summary><div class="a"><p>The controller detects implausible readings and enters a degraded mode: it stops closed-loop control on that channel and alerts you. Failsafe rules keep actuators in safe positions. See <a href="troubleshooting.html">Troubleshooting</a>.</p></div></details>
+        <details class="faq-item"><summary><span class="ix">18</span><span>How do I reset the system?</span></summary><div class="a"><p>Physical power-cycle resets the device; a long-press on the onboard button clears the paired network state. Firmware updates are applied over USB or OTA with a signed image; the previous version is always kept for rollback.</p></div></details>
+        <details class="faq-item"><summary><span class="ix">19</span><span>Can I monitor remotely?</span></summary><div class="a"><p>Yes, if you choose: the device publishes MQTT telemetry to a broker you configure (or our reference broker). Monitoring is read-only by default; control commands require your authentication.</p></div></details>
+        <details class="faq-item"><summary><span class="ix">20</span><span>Where do I start?</span></summary><div class="a"><p>Read <a href="docs.html">the docs</a>, try the simulations on the <a href="mycophyte.html#sim">Mycophyte</a> and <a href="../index.html#sim">AlgaePhyte</a> pages, then pick a starter BOM. The community answers build questions via <a href="contact.html">contact</a>.</p></div></details>
+      </div>
+      <div class="callout" style="max-width:820px;margin:48px auto 0">
+        <div class="h">Still stuck?</div>
+        <p style="margin:0">Describe the symptom and what you've tried via <a href="contact.html">contact</a>, or ask in the community. Include a photo of your setup and the current readings if you can â€” it halves the time to an answer.</p>
+      </div>
+    </div></section><footer class="footer"><div class="shell"><div class="footer-grid">
+  <div><a class="wm" href="../index.html"><svg viewBox="0 0 22 34" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M11 1 q7 5 -3 8 q-10 3 3 8 q10 5 -3 8 q-7 3 3 7"/></svg><span><b>Orr Biologicals</b><small>ALGAEPHYTE Â· MYCOPHYTE</small></span></a>
+    <p>Open-source AI-assisted cultivation systems â€” photobioreactors and mushroom grow chambers â€” built in the open.</p></div>
+  <div class="col"><h5>Products</h5>
+    <a href="../index.html">AlgaePhyte</a><a href="mycophyte.html">Mycophyte</a><a href="how-it-works.html">How it works</a><a href="docs.html">Docs</a></div>
+  <div class="col"><h5>Learn</h5>
+    <a href="articles.html">Articles</a><a href="faq.html">FAQ</a><a href="troubleshooting.html">Troubleshooting</a><a href="about.html">About</a></div>
+  <div class="col"><h5>Project</h5>
+    <a href="contact.html">Contact</a><a href="mailto:service@orrbiologicals.com">service@orrbiologicals.com</a><a href="privacy.html">Privacy</a><a href="disclaimer.html">Disclaimer</a></div>
+</div>
+<div class="foot-bar"><span>Â© 2026 Orr Biologicals Â· Educational Â· Open-source</span>
+  <span><a href="privacy.html">Privacy Policy</a> Â· <a href="disclaimer.html">Disclaimer</a></span></div>
+</div></footer>
+<script src="../js/site.js"></script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 420" role="img" aria-label="Algaephyte — Spirulina photobioreactor system">
+  <defs>
+    <linearGradient id="aliq" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2E9E70" stop-opacity=".8"/>
+      <stop offset="1" stop-color="#155C3E" stop-opacity=".9"/>
+    </linearGradient>
+    <radialGradient id="abg" cx=".5" cy=".4" r=".8">
+      <stop offset="0" stop-color="#0E1C16"/>
+      <stop offset="1" stop-color="#0A1310"/>
+    </radialGradient>
+  </defs>
+  <rect width="420" height="420" fill="url(#abg)"/>
+  <ellipse cx="210" cy="372" rx="130" ry="12" fill="#3ECF8E" opacity=".05"/>
+
+  <!-- light panels -->
+  <rect x="74" y="140" width="20" height="180" rx="5" fill="#0F231B" stroke="#57B8D6" stroke-opacity=".45" stroke-width="1"/>
+  <rect x="326" y="140" width="20" height="180" rx="5" fill="#0F231B" stroke="#57B8D6" stroke-opacity=".45" stroke-width="1"/>
+  <g stroke="#57B8D6" stroke-opacity=".4" stroke-width="1.6">
+    <path d="M94 165 v44 M94 218 v44 M326 165 v44 M326 218 v44"/>
+  </g>
+
+  <!-- vessel -->
+  <rect x="150" y="96" width="120" height="252" rx="14" fill="#0B1712" stroke="#3ECF8E" stroke-opacity=".5" stroke-width="1.4"/>
+  <rect x="155" y="148" width="110" height="194" rx="10" fill="url(#aliq)"/>
+  <path d="M155 148 h110" stroke="#8CE8BC" stroke-opacity=".5" stroke-width="1.2"/>
+  <g fill="#BDF5D9" opacity=".32"><circle cx="188" cy="240" r="2.8"/><circle cx="216" cy="280" r="2.2"/><circle cx="238" cy="220" r="3.2"/></g>
+  <rect x="160" y="104" width="9" height="236" rx="4" fill="#E7EFEB" opacity=".07"/>
+
+  <!-- head + sensors -->
+  <rect x="142" y="76" width="136" height="26" rx="8" fill="#13221C" stroke="#3ECF8E" stroke-opacity=".45" stroke-width="1.1"/>
+  <rect x="170" y="58" width="9" height="20" rx="3" fill="#0F231B" stroke="#57B8D6" stroke-opacity=".5"/>
+  <rect x="196" y="62" width="8" height="16" rx="3" fill="#0F231B" stroke="#57B8D6" stroke-opacity=".5"/>
+  <circle cx="174.5" cy="64" r="1.8" fill="#57B8D6"/>
+  <rect x="244" y="64" width="14" height="14" rx="3" fill="none" stroke="#3ECF8E" stroke-opacity=".5"/>
+  <path d="M251 78 v16" stroke="#3ECF8E" stroke-opacity=".5" stroke-width="1.6"/>
+
+  <!-- control node -->
+  <rect x="60" y="320" width="86" height="52" rx="8" fill="#0F231B" stroke="#3ECF8E" stroke-opacity=".45" stroke-width="1.1"/>
+  <rect x="60" y="320" width="86" height="3" fill="#3ECF8E" opacity=".6"/>
+  <path d="M72 344 h26 M72 356 h18" stroke="#8CE8BC" stroke-opacity=".6" stroke-width="2" stroke-linecap="round"/>
+  <circle cx="126" cy="350" r="4.5" fill="none" stroke="#3ECF8E" stroke-width="1.4"/>
+  <circle cx="126" cy="350" r="2" fill="#3ECF8E"/>
+  <path d="M146 346 h26 M146 358 h16" stroke="#3ECF8E" stroke-opacity=".35" stroke-width="1.6" stroke-linecap="round"/>
+  <path d="M210 372 v-22" stroke="#3ECF8E" stroke-opacity=".4" stroke-width="1.4"/>
+
+  <!-- base -->
+  <rect x="166" y="348" width="88" height="14" rx="6" fill="#13221C" stroke="#3ECF8E" stroke-opacity=".35" stroke-width="1"/>
+</svg>

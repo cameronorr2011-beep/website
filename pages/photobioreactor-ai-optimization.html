@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Photobioreactor AI Optimization â€” Orr Biologicals</title>
+<meta name="description" content="Light, carbon, mixing, temperature: what optimization actually means in a photobioreactor, and why photoinhibition is the first limit you meet.">
+<link rel="canonical" href="https://orrbiologicals.com/photobioreactor-ai-optimization">
+<meta property="og:type" content="article"><meta property="og:title" content="Photobioreactor AI Optimization â€” Orr Biologicals">
+<meta property="og:description" content="Light, carbon, mixing, temperature: what optimization actually means in a photobioreactor, and why photoinhibition is the first limit you meet."><meta property="og:url" content="https://orrbiologicals.com/photobioreactor-ai-optimization">
+<meta property="og:site_name" content="Orr Biologicals"><meta property="og:image" content="https://orrbiologicals.com/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#04100e">
+<link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iOCIgZmlsbD0iIzA0MTAwZSIvPjxwYXRoIGQ9Ik0xNiA0IHE5IDYgLTQgMTAgcS0xMyA0IDQgMTAgcTkgNCAtMyA0IiBmaWxsPSJub25lIiBzdHJva2U9IiMzM2U2YWQiIHN0cm9rZS13aWR0aD0iMi4yIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz48Y2lyY2xlIGN4PSIxNiIgY3k9IjE2IiByPSIxLjYiIGZpbGw9IiM1N2YwZDYiLz48L3N2Zz4K">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../css/site.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "@id": "https://orrbiologicals.com/#org", "name": "Orr Biologicals", "url": "https://orrbiologicals.com"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Photobioreactor AI Optimization", "description": "Light, carbon, mixing, temperature: what optimization actually means in a photobioreactor, and why photoinhibition is the first limit you meet.", "datePublished": "2026-08-15", "author": {"@id": "https://orrbiologicals.com/#org"}, "publisher": {"@id": "https://orrbiologicals.com/#org"}, "mainEntityOfPage": "https://orrbiologicals.com/photobioreactor-ai-optimization", "articleSection": "AlgaePhyte Â· Technical"}</script>
+</head>
+<body class="phyto">
+<a class="skip" href="#main">Skip to content</a><div class="veil" aria-hidden="true"><svg class="veil-mark" viewBox="0 0 22 34" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" style="color:var(--teal)"><path d="M11 1 q7 5 -3 8 q-10 3 3 8 q10 5 -3 8 q-7 3 3 7"/></svg></div><canvas id="ambient" aria-hidden="true"></canvas><div class="pbar" aria-hidden="true"></div>
+<header class="nav"><div class="nav-in">
+  <a class="wm" href="../index.html" aria-label="Orr Biologicals â€” home"><svg viewBox="0 0 22 34" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M11 1 q7 5 -3 8 q-10 3 3 8 q10 5 -3 8 q-7 3 3 7"/></svg><span><b>Orr Biologicals</b><small>THE LIBRARY</small></span></a>
+  <nav class="nav-links" aria-label="Primary">
+    <a href="../index.html">AlgaePhyte</a>
+    <a href="mycophyte.html">Mycophyte</a>
+    <a href="how-it-works.html">How it works</a>
+    <a href="articles.html" style="color:var(--teal)">Articles</a>
+    <a href="docs.html">Docs</a>
+    <a class="btn btn-primary btn-sm" href="contact.html">Get in touch</a>
+  </nav>
+  <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false"><span></span></button>
+</div></header>
+<main id="main"><article class="article-wrap">
+  <a class="back" href="articles.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg> All articles</a>
+  <div class="abanner"><svg viewBox="0 0 900 210" preserveAspectRatio="xMidYMid slice" style="color:var(--teal)">
+    <g fill="currentColor" opacity="0.5"><circle cx="120" cy="140" r="3"/><circle cx="240" cy="70" r="2.5"/><circle cx="420" cy="150" r="3.5"/><circle cx="560" cy="60" r="2.5"/><circle cx="700" cy="130" r="3"/><circle cx="820" cy="80" r="2.5"/></g>
+    <g fill="none" stroke="currentColor" stroke-width="1.4" opacity="0.4"><path d="M80,170 q60,-40 120,0 t120,0 t120,0 t120,0 t120,0"/><path d="M160,60 q60,-30 120,0 t120,0 t120,0"/></g></svg>
+    <span class="tag">AlgaePhyte Â· Technical</span></div>
+  <div class="amE"><span class="c">AlgaePhyte Â· Technical</span><span>6 min read</span></div>
+  <h1>Photobioreactor AI Optimization</h1>
+  <p class="dek">A photobioreactor is a light-to-biomass machine with one vicious paradox: the brighter you shine it, the harder its inhabitants fight back.</p>
+  <div class="keyfacts"><div class="h">Key facts</div><ul><li>Optimization means holding the culture at its productive regime, not maximizing any single dial</li><li>Steele's curve describes the light optimum â€” and the photoinhibition penalty above it</li><li>Beer-Lambert self-shading means the optimal surface light depends on culture density</li><li>Dissolved oxygen supersaturation can inhibit the growth that produced it</li></ul></div>
+  <div class="prose"><p>In a photobioreactor, the goal is simple to state and hard to hit: maximize biomass per unit of time, per unit of light, per unit of labor. The trouble is that every one of those units argues with the others. More light means more photosynthesis until it means photoinhibition. More density means more cells per liter until it means each cell sees almost nothing. More aeration relieves oxygen stress until it strips the carbon you paid to put in. An AI in this loop is not a magical farmer; it is a controller that can hold a knife-edge equilibrium the human hand cannot hold for forty days straight.</p><p>The first edge is light. Photosynthetic organisms respond to light through what is called the Steele curve: growth rises with intensity up to an optimum, then falls as the excess energy damages the reaction centers â€” photoinhibition. In a dense culture there is a second curve hiding inside the first: Beer-Lambert attenuation means the cells at the surface see almost all the light while the cells in the core see almost none, so the <em>effective</em> light at the optimum depends on the culture's own density. AlgaePhyte's twin computes this coupling continuously â€” the same surface intensity that is perfect at low density is toxic at high density, because the average cell is suddenly much closer to the lamp.</p><p>The second edge is carbon. Spirulina eats bicarbonate, and bicarbonate is also the culture's pH buffer â€” dosing it feeds the cells and steadies the pH at once, which is why the reactor controls alkalinity rather than acidity. Miss the timing and the pH climbs with photosynthesis, the dissolved inorganic carbon drops, and growth stalls exactly when the light was perfect. The twin watches pH, light, and density together, because separately they each lie.</p><p>The third edge is oxygen, the quiet assassin. A bright, dense culture produces oxygen faster than it leaves the water, and supersaturated dissolved oxygen inhibits the very carboxylation that produced it. The air pump is not there for mixing alone; it is the oxygen relief valve. In auto mode the reactor runs the pump on a dissolved-oxygen threshold â€” the kind of rule a human can learn and forget, and a controller never forgets.</p><p>What the AI actually optimizes, then, is not any single variable but the joint position of the culture: light at the density-adjusted optimum, carbon and pH coupled, oxygen vented before it bites. The safety architecture keeps this honest â€” every proposed dose is simulated through the twin first, and any action that would push pH out of band or predictably stall growth is blocked before it reaches a pump.</p><p>You can feel the optimization problem in your browser: the <a href="../index.html#sim">AlgaePhyte simulation</a> on the homepage runs these same equations. Push the light slider past the optimum and watch photoinhibition cut the simulated growth rate. The shape of that response is not decoration â€” it is the reason the reactor reasons at all.</p></div>
+  <div class="article-foot">
+    <a class="btn btn-ghost" href="articles.html">All articles</a>
+    <a class="btn btn-primary" href="../index.html#sim">Drive the reactor simulation <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+  </div>
+</article>
+<section class="band" style="padding-top:0"><div class="shell">
+  <div class="sec-head"><div class="kicker">Keep reading</div></div>
+  <div class="grid grid-2">
+    <a class="acard rv" href="digital-twins-biological-cultivation.html">
+      <div class="meta"><span>Technical</span><span class="rt">Read</span></div>
+      <h3>Digital Twins in Biological Cultivation</h3>
+      <p class="dek">A forward simulation of the biology you control.</p>
+      <span class="more">Read the article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+    </a>
+    <a class="acard rv" href="dissolved-oxygen-stress-signal.html">
+      <div class="meta"><span>AlgaePhyte Â· Technical</span><span class="rt">Read</span></div>
+      <h3>Dissolved Oxygen: When Photosynthesis Poisons Itself</h3>
+      <p class="dek">The quiet assassin inside a bright, dense culture.</p>
+      <span class="more">Read the article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+    </a>
+  </div>
+</div></section></main>
+<footer class="footer"><div class="shell">
+  <div class="footer-grid">
+  <div><a class="wm" href="../index.html"><svg viewBox="0 0 22 34" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M11 1 q7 5 -3 8 q-10 3 3 8 q10 5 -3 8 q-7 3 3 7"/></svg><span><b>Orr Biologicals</b><small>ALGAEPHYTE Â· MYCOPHYTE</small></span></a>
+    <p>Open-source AI-assisted cultivation systems â€” photobioreactors and mushroom grow chambers â€” built in the open.</p></div>
+  <div class="col"><h5>Products</h5>
+    <a href="../index.html">AlgaePhyte</a><a href="mycophyte.html">Mycophyte</a><a href="how-it-works.html">How it works</a><a href="docs.html">Docs</a></div>
+  <div class="col"><h5>Learn</h5>
+    <a href="articles.html">Articles</a><a href="faq.html">FAQ</a><a href="troubleshooting.html">Troubleshooting</a><a href="about.html">About</a></div>
+  <div class="col"><h5>Project</h5>
+    <a href="contact.html">Contact</a><a href="mailto:service@orrbiologicals.com">service@orrbiologicals.com</a><a href="privacy.html">Privacy</a><a href="disclaimer.html">Disclaimer</a></div>
+</div>
+<div class="foot-bar"><span>Â© 2026 Orr Biologicals Â· Educational Â· Open-source</span>
+  <span><a href="privacy.html">Privacy Policy</a> Â· <a href="disclaimer.html">Disclaimer</a></span></div>
+</div></footer>
+<script src="../js/site.js"></script>
+</body>
+</html>

@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How it works â€” the AlgaePhyte &amp; Mycophyte architecture | Orr Biologicals</title>
+<meta name="description" content="The sensing, edge-AI, digital-twin, prediction and control architecture shared by AlgaePhyte and Mycophyte, plus how federated learning over MQTT improves every connected system.">
+<link rel="canonical" href="https://orrbiologicals.com/how-it-works">
+<meta property="og:type" content="article"><meta property="og:title" content="How it works â€” the architecture">
+<meta property="og:description" content="Sensors â†’ edge AI â†’ digital twin â†’ prediction â†’ control. One closed loop, five stages, and a federated network on top."><meta property="og:url" content="https://orrbiologicals.com/how-it-works">
+<meta property="og:site_name" content="Orr Biologicals"><meta property="og:image" content="https://orrbiologicals.com/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#04100e">
+<link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iOCIgZmlsbD0iIzA0MTAwZSIvPjxwYXRoIGQ9Ik0xNiA0IHE5IDYgLTQgMTAgcS0xMyA0IDQgMTAgcTkgNCAtMyA0IiBmaWxsPSJub25lIiBzdHJva2U9IiMzM2U2YWQiIHN0cm9rZS13aWR0aD0iMi4yIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz48Y2lyY2xlIGN4PSIxNiIgY3k9IjE2IiByPSIxLjYiIGZpbGw9IiM1N2YwZDYiLz48L3N2Zz4K">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../css/site.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "@id": "https://orrbiologicals.com/#org", "name": "Orr Biologicals", "url": "https://orrbiologicals.com", "logo": "https://orrbiologicals.com/assets/og.png", "description": "Open-source AI-assisted biological cultivation systems."}</script>
+</head>
+<body class="phyto">
+<a class="skip" href="#main">Skip to content</a><div class="veil" aria-hidden="true"><svg class="veil-mark" viewBox="0 0 22 34" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" style="color:var(--teal)"><path d="M11 1 q7 5 -3 8 q-10 3 3 8 q10 5 -3 8 q-7 3 3 7"/></svg></div><canvas id="ambient" aria-hidden="true"></canvas><div class="pbar" aria-hidden="true"></div>
+<header class="nav"><div class="nav-in">
+  <a class="wm" href="../index.html" aria-label="Orr Biologicals â€” home"><svg viewBox="0 0 22 34" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M11 1 q7 5 -3 8 q-10 3 3 8 q10 5 -3 8 q-7 3 3 7"/></svg><span><b>Orr Biologicals</b><small>ARCHITECTURE</small></span></a>
+  <nav class="nav-links" aria-label="Primary">
+    <a href="../index.html">AlgaePhyte</a>
+    <a href="mycophyte.html">Mycophyte</a>
+    <a href="how-it-works.html" style="color:var(--teal)">How it works</a>
+    <a href="articles.html">Articles</a>
+    <a href="docs.html">Docs</a>
+    <a class="btn btn-primary btn-sm" href="contact.html">Get in touch</a>
+  </nav>
+  <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false"><span></span></button>
+</div></header>
+<main id="main">
+  <section class="band" style="padding-top:calc(96px + var(--sp)/3)">
+    <div class="shell">
+      <div class="kicker rv">The architecture Â· shared by both platforms</div>
+      <h1 class="rv" style="font-size:clamp(2.6rem,6.6vw,5rem);letter-spacing:-.035em;max-width:18ch">One loop. Five stages. <em style="font-style:normal;font-family:var(--serif);color:var(--teal)">Zero guessing.</em></h1>
+      <p class="lede rv d1" style="margin-top:22px;max-width:56ch">AlgaePhyte and Mycophyte run the same closed loop: physical system â†’ sensors â†’ edge AI â†’ digital twin â†’ prediction â†’ control action â†’ physical system. The loop below animates in real time, the way it runs on every device.</p>
+    </div>
+  </section>
+
+  <section class="band" id="loop" style="padding-top:0"><div class="shell">
+    <div class="diagram rv">
+      <svg id="loop-diagram" viewBox="0 0 900 400" role="img" aria-label="Closed control loop: chamber, sensors, edge AI, digital twin, prediction, control, and back to chamber">
+        <defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="rgba(120,220,190,.4)"/></marker></defs>
+        <g id="links"></g>
+        <g id="nodes"></g>
+        <g id="packets"></g>
+      </svg>
+      <div class="cap"><span>SENSE â†’ MODEL â†’ DECIDE â†’ VERIFY â†’ ACT</span><span class="live"><span class="d"></span> loop running</span></div>
+    </div>
+    <p class="muted rv" style="margin-top:16px;font-size:.85rem">Illustrative diagram of the control topology. Sampling rates, buses, and message formats are specified in the <a href="docs.html" style="color:var(--teal)">docs</a>.</p>
+  </div></section>
+
+  <section class="band" style="padding-top:0"><div class="shell">
+    <div class="grid grid-3">
+      <div class="callout rv" style="margin:0"><div class="h">Stage 1 Â· Physical system</div>
+        <p style="margin:0;font-size:.95rem">The chamber or reactor itself â€” the mass, air, light, and water the whole loop exists to serve. This is the only stage that is not software.</p></div>
+      <div class="callout rv d1" style="margin:0"><div class="h">Stage 2 Â· Sensors</div>
+        <p style="margin:0;font-size:.95rem">Temperature, humidity, COâ‚‚, pH, optical density, dissolved oxygen, TDS, and substrate moisture are sampled a few times per minute over IÂ²C and 1-Wire, time-stamped, and held in a small ring buffer.</p></div>
+      <div class="callout rv d2" style="margin:0"><div class="h">Stage 3 Â· Edge AI</div>
+        <p style="margin:0;font-size:.95rem">A quantized model on the microcontroller (or a pocket TPU for camera work) fuses the sensor stream into a compact latent state: what the culture is doing right now, not just what the sensors read.</p></div>
+      <div class="callout rv" style="margin:0"><div class="h">Stage 4 Â· Digital twin</div>
+        <p style="margin:0;font-size:.95rem">The latent state feeds a twin that simulates the biology forward â€” Droop and Steele curves in the reactor, humidity/dew-point dynamics in the chamber â€” producing a forecast the controller can reason about.</p></div>
+      <div class="callout rv d1" style="margin:0"><div class="h">Stage 5 Â· Prediction</div>
+        <p style="margin:0;font-size:.95rem">Every proposed action is run through the twin first: if the forecast says a bicarbonate dose would overshoot pH, or a fan cycle would crash humidity, the action is rejected before it touches hardware.</p></div>
+      <div class="callout rv d2" style="margin:0"><div class="h">Stage 6 Â· Control + safety gate</div>
+        <p style="margin:0;font-size:.95rem">Approved actions drive relays through deterministic hard limits, then firmware clamps, then a physical e-stop. Each layer is independent of the AI â€” the AI proposes, the rules enforce.</p></div>
+    </div>
+  </div></section>
+
+  <section class="band" style="padding-top:0"><div class="shell">
+    <div class="two-col">
+      <div class="rv">
+        <div class="kicker">The safety gate Â· fails closed</div>
+        <h2 style="font-size:clamp(1.7rem,3.8vw,2.6rem)">The AI can propose. It cannot act unchecked.</h2>
+        <p style="color:var(--ink2)">Every control action passes three independent gates. If any gate cannot answer, the answer is no. This is what "fails closed" means: an uncertain model, a NaN reading, a dropped MQTT frame â€” all resolve to "do nothing" rather than "do something."</p>
+        <ul style="padding-left:20px;color:var(--ink2)">
+          <li><strong style="color:var(--ink)">Gate 1 â€” Deterministic rules:</strong> hard limits on every actuator (duty cycles, durations, sensor ranges) checked before anything else.</li>
+          <li><strong style="color:var(--ink)">Gate 2 â€” Twin simulation:</strong> the proposed action is simulated; predicted harm blocks it.</li>
+          <li><strong style="color:var(--ink)">Gate 3 â€” Hardware:</strong> firmware clamps on the MCU and a physical emergency stop that bypasses all software.</li>
+        </ul>
+      </div>
+      <div class="rv d1">
+        <pre style="background:color-mix(in srgb,var(--panel) 70%,transparent);border:1px solid var(--line);border-radius:14px;padding:18px 20px;overflow:auto;margin:0"><code>def validate_with_simulation(proposal, state, env):
+    ok, reason = validate_hard_limits(proposal)
+    if not ok:
+        return False, reason
+    ph1 = env["ph"] + 0.06 * (proposal.value / volume_l)
+    if ph1 &gt; limits.ph_max:                     # over-alkalinity guard
+        return False, f"resulting pH {ph1:.2f} exceeds safe max"
+    growth = twin.predict_growth(state, light=env["light"],
+                                 temp=env["temp"], ph=ph1, do=env["do"])
+    if not math.isfinite(growth):               # fail closed on NaN
+        return False, "predicted growth is not finite; blocking"
+    return growth &gt;= threshold, "approved"
+
+# Droop cell-quota + Steele light + Beer-Lambert self-shading
+mu = mu_max * (1.0 - Q0/Q) * steele(I_avg) * bell(T) * bell(pH)</code></pre>
+      </div>
+    </div>
+  </div></section>
+
+  <section class="band" id="federated"><div class="shell">
+    <div class="sec-head rv"><div class="kicker">Federated learning over MQTT</div>
+      <h2>The fleet learns; your data stays yours</h2>
+      <p>Every connected system trains its own twin locally. What travels between nodes is the <em style="color:var(--ink)">parameter update</em> â€” small, signed, versioned â€” not the sensor logs or camera frames they were trained on. Watch the schematic below: watch the twin errors shrink round by round.</p></div>
+    <div class="diagram rv">
+      <canvas id="net-viz" aria-label="Federated learning visualization: devices exchange model updates with a central aggregator" role="img"></canvas>
+      <div class="cap"><span id="net-round" style="color:var(--teal)">Round 0</span><span>convergence <b id="net-conv" style="color:var(--teal);font-weight:500">â€”</b></span></div>
+    </div>
+    <p class="muted rv" id="net-offline" style="margin-top:14px;font-size:.85rem">Watch what happens when a device drops offline â€” its chamber keeps running on local rules, and it rejoins with an update when the network returns.</p>
+    <div class="grid grid-2" style="margin-top:30px">
+      <div class="callout rv" style="margin:0"><div class="h">Honest framing</div>
+        <p style="margin:0;font-size:.95rem">Federated learning reduces data exposure; it is not a privacy guarantee. Update packets contain learned parameters that can leak information under adversarial analysis, and the aggregation server is a trust point. Standard cryptanalysis assumptions and your own threat model apply.</p></div>
+      <div class="callout rv d1" style="margin:0"><div class="h">Offline behavior</div>
+        <p style="margin:0;font-size:.95rem">Each node keeps a deterministic rule-based controller that maintains the climate within safe bands when the network is unreachable. On reconnect, telemetry replays first, then the node requests the latest aggregated model â€” and publishes its own pending update.</p></div>
+    </div>
+  </div></section>
+
+  <section class="band" style="padding-top:0"><div class="shell">
+    <div class="cta rv">
+      <div class="kicker center">Next</div>
+      <h2>Dig into the documentation</h2>
+      <p>The full architecture â€” wiring, MQTT topics, twin math, calibration, and simulation models â€” is published in the open docs.</p>
+      <a class="btn btn-primary" href="docs.html">Open the docs <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+  </div></section>
+</main>
+<footer class="footer"><div class="shell"><div class="footer-grid">
+  <div><a class="wm" href="../index.html"><svg viewBox="0 0 22 34" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M11 1 q7 5 -3 8 q-10 3 3 8 q10 5 -3 8 q-7 3 3 7"/></svg><span><b>Orr Biologicals</b><small>ALGAEPHYTE Â· MYCOPHYTE</small></span></a>
+    <p>Open-source AI-assisted cultivation systems â€” photobioreactors and mushroom grow chambers â€” built in the open.</p></div>
+  <div class="col"><h5>Products</h5>
+    <a href="../index.html">AlgaePhyte</a><a href="mycophyte.html">Mycophyte</a><a href="how-it-works.html">How it works</a><a href="docs.html">Docs</a></div>
+  <div class="col"><h5>Learn</h5>
+    <a href="articles.html">Articles</a><a href="faq.html">FAQ</a><a href="troubleshooting.html">Troubleshooting</a><a href="about.html">About</a></div>
+  <div class="col"><h5>Project</h5>
+    <a href="contact.html">Contact</a><a href="mailto:service@orrbiologicals.com">service@orrbiologicals.com</a><a href="privacy.html">Privacy</a><a href="disclaimer.html">Disclaimer</a></div>
+</div>
+<div class="foot-bar"><span>Â© 2026 Orr Biologicals Â· Educational Â· Open-source</span>
+  <span><a href="privacy.html">Privacy Policy</a> Â· <a href="disclaimer.html">Disclaimer</a></span></div>
+</div></footer>
+<script src="../js/site.js"></script>
+<script src="../js/sims/core.js"></script>
+<script src="../js/sims/network-sim.js"></script>
+<script>
+/* animated closed-loop diagram */
+(function () {
+  "use strict";
+  var svg = document.getElementById("loop-diagram");
+  if (!svg) return;
+  var NS = function (tag) { return document.createElementNS("http://www.w3.org/2000/svg", tag); };
+  var nodesDef = [
+    { id: "PHYSICAL", label: "PHYSICAL\nSYSTEM", x: 450, y: 46 },
+    { id: "SENSORS", label: "SENSORS", x: 636, y: 106 },
+    { id: "EDGE AI", label: "EDGE AI", x: 636, y: 240 },
+    { id: "TWIN", label: "DIGITAL TWIN", x: 450, y: 300 },
+    { id: "PREDICT", label: "PREDICTION", x: 264, y: 240 },
+    { id: "CONTROL", label: "CONTROL + GATE", x: 264, y: 106 }
+  ];
+  var nodesG = document.getElementById("nodes"), linksG = document.getElementById("links"), packetsG = document.getElementById("packets");
+  var rects = {}, centers = {};
+  nodesDef.forEach(function (n, i) {
+    var g = NS("g");
+    var r = NS("rect");
+    r.setAttribute("x", n.x - 62); r.setAttribute("y", n.y - 22);
+    r.setAttribute("width", 124); r.setAttribute("height", 44); r.setAttribute("rx", 12);
+    r.setAttribute("class", "dn");
+    g.appendChild(r);
+    var t = NS("text");
+    t.setAttribute("x", n.x); t.setAttribute("y", n.y + 4);
+    t.setAttribute("text-anchor", "middle"); t.setAttribute("class", "dlbl");
+    t.textContent = n.label;
+    g.appendChild(t);
+    g.setAttribute("id", "node-" + i);
+    nodesG.appendChild(g);
+    rects[i] = r;
+    centers[i] = { x: n.x, y: n.y };
+  });
+  /* links: 5 -> 0 -> 1 -> 2 -> 3 -> 4 -> 5 */
+  var order = [0, 1, 2, 3, 4, 5, 0];
+  for (var k = 0; k < order.length - 1; k++) {
+    var a = centers[order[k]], b = centers[order[k + 1]];
+    var line = NS("line");
+    line.setAttribute("x1", a.x); line.setAttribute("y1", a.y + (k === 0 ? 22 : k === order.length - 2 ? -22 : 0));
+    line.setAttribute("x2", b.x); line.setAttribute("y2", b.y + (k === 0 ? -22 : 0));
+    line.setAttribute("class", "dlink");
+    if (k === 0) line.setAttribute("marker-end", "url(#arrow)");
+    linksG.appendChild(line);
+  }
+  var reduce = matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var dot = NS("circle");
+  dot.setAttribute("r", "5"); dot.setAttribute("class", "dpulse");
+  packetsG.appendChild(dot);
+  var seg = 0, t = 0, state = 0;
+  var reduce2 = reduce;
+  function step() {
+    var a = centers[order[seg]], b = centers[order[seg + 1]];
+    var x1 = a.x, y1 = a.y + (seg === 0 ? 22 : 0);
+    var x2 = b.x, y2 = b.y + (seg === order.length - 2 ? -22 : 0);
+    t += 0.018;
+    var e = t * t * (3 - 2 * t);
+    dot.setAttribute("cx", x1 + (x2 - x1) * e);
+    dot.setAttribute("cy", y1 + (y2 - y1) * e);
+    if (t >= 1) { t = 0; seg++; if (seg >= order.length - 1) seg = 0; }
+    state += 0.004;
+    if (state >= 1) state = 0;
+  }
+  function highlight() {
+    for (var i = 0; i < rects.length; i++) rects[i].setAttribute("class", "dn" + (i === order[seg] ? " on" : ""));
+  }
+  if (reduce2) { highlight(); return; }
+  setInterval(function () {
+    if (document.hidden) return;
+    step(); highlight();
+  }, 33);
+})();
+
+/* federated learning viz */
+(function () {
+  var cv = document.getElementById("net-viz");
+  if (!cv) return;
+  var viz = new window.OrrNetViz(cv, {
+    roundEl: document.getElementById("net-round"),
+    convEl: document.getElementById("net-conv"),
+    offlineEl: document.getElementById("net-offline"),
+    labels: ["Chamber 01", "Chamber 02", "Reactor 03", "Chamber 04", "Reactor 05", "Chamber 06"]
+  });
+  viz.start();
+})();
+</script>
+</body>
+</html>

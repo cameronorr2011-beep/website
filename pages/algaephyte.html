@@ -1,0 +1,1362 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MAIN — How It Works: The Complete Architecture of an Autonomous Spirulina Reactor</title>
+<meta name="description" content="A deep technical dive into MAIN: the AI pipeline, digital twin, safety gate, ChromaDB memory, federated learning, and every subsystem that keeps a living Spirulina culture alive and thriving.">
+<meta property="og:type" content="website"><meta property="og:title" content="MAIN — How It Works">
+<meta property="og:description" content="Deep technical dive into the autonomous photobioreactor: AI pipeline, digital twin, safety gate, ChromaDB memory, and federated learning.">
+<meta name="theme-color" content="#04100e">
+<link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iOCIgZmlsbD0iIzA0MTAwZSIvPjxwYXRoIGQ9Ik0xNiA0IHE5IDYgLTQgMTAgcS0xMyA0IDQgMTAgcTkgNCAtMyA0IiBmaWxsPSJub25lIiBzdHJva2U9IiMzM2U2YWQiIHN0cm9rZS13aWR0aD0iMi4yIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz48Y2lyY2xlIGN4PSIxNiIgY3k9IjE2IiByPSIxLjYiIGZpbGw9IiM1N2YwZDYiLz48L3N2Zz4=">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --bg:#04100e; --bg2:#071a16; --panel:#0a221d; --panel2:#0c2a24;
+  --ink:#eaf6f1; --ink2:#bfe0d6; --muted:#84aaa1; --line:rgba(120,220,190,.14);
+  --teal:#33e6ad; --teal2:#22c896; --teal-deep:#0c8f74; --cyan:#57f0d6;
+  --amber:#f2a25a; --amber2:#e08a3c; --red:#ff5e5e; --blue:#5ea3ff; --purple:#b57bee;
+  --accent:var(--teal); --accent-ink:#032019;
+  --glow:0 0 60px rgba(45,220,170,.18);
+  --radius:18px; --radius-lg:26px;
+  --maxw:1180px; --gutter:clamp(18px,5vw,44px);
+  --font:'Space Grotesk',system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+  --serif:'Fraunces','Iowan Old Style',Georgia,'Times New Roman',serif;
+  --mono:'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+  --ease:cubic-bezier(.22,.61,.36,1);
+  --sp:clamp(72px,11vw,148px);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{
+  margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);
+  font-size:clamp(15.5px,1.05vw,17px);line-height:1.65;letter-spacing:.005em;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden;
+}
+body.locked{overflow:hidden}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+h1,h2,h3,h4{margin:0;line-height:1.06;letter-spacing:-.02em;font-weight:600}
+p{margin:0 0 1em}
+::selection{background:var(--teal);color:var(--accent-ink)}
+:focus-visible{outline:2px solid var(--teal);outline-offset:3px;border-radius:6px}
+
+.shell{max-width:var(--maxw);margin:0 auto;padding:0 var(--gutter)}
+.kicker{font-family:var(--mono);font-size:.72rem;letter-spacing:.34em;text-transform:uppercase;color:var(--teal);margin:0 0 18px}
+.muted{color:var(--muted)}
+.serif{font-family:var(--serif);font-weight:400}
+.skip{position:fixed;left:-999px;top:8px;z-index:200;background:var(--teal);color:var(--accent-ink);padding:10px 16px;border-radius:10px}
+.skip:focus{left:12px}
+
+.veil{position:fixed;inset:0;z-index:120;background:var(--bg);display:grid;place-items:center;transition:opacity .7s var(--ease),visibility .7s}
+.veil.done{opacity:0;visibility:hidden;pointer-events:none}
+.veil-mark{width:34px;height:52px;opacity:.85;animation:breathe 2.2s var(--ease) infinite}
+@keyframes breathe{0%,100%{opacity:.35;transform:scale(.96)}50%{opacity:.95;transform:scale(1.04)}}
+@media (prefers-reduced-motion:reduce){.veil-mark{animation:none}}
+
+.pbar{position:fixed;left:0;top:0;height:2.5px;width:0;z-index:110;background:linear-gradient(90deg,var(--teal-deep),var(--teal),var(--cyan));box-shadow:0 0 12px var(--teal);transition:width .1s linear}
+
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;transition:transform .4s var(--ease),background .4s,backdrop-filter .4s,border-color .4s;border-bottom:1px solid transparent}
+.nav.solid{background:color-mix(in srgb,var(--bg) 78%,transparent);backdrop-filter:blur(16px) saturate(1.3);border-bottom-color:var(--line)}
+.nav.hide{transform:translateY(-104%)}
+.nav-in{max-width:var(--maxw);margin:0 auto;padding:14px var(--gutter);display:flex;align-items:center;justify-content:space-between;gap:20px}
+.wm{display:flex;align-items:center;gap:11px;font-weight:600;letter-spacing:-.01em}
+.wm svg{width:22px;height:34px;color:var(--teal)}
+.wm b{font-size:1.02rem}.wm small{display:block;font-family:var(--mono);font-size:.6rem;letter-spacing:.24em;color:var(--muted)}
+.nav-links{display:flex;align-items:center;gap:28px}
+.nav-links a{font-size:.92rem;color:var(--ink2);position:relative;padding:6px 0;transition:color .25s}
+.nav-links a:hover{color:var(--ink)}
+.nav-links a:not(.btn)::after{content:"";position:absolute;left:0;bottom:0;height:1px;width:0;background:var(--teal);transition:width .3s var(--ease)}
+.nav-links a:not(.btn):hover::after{width:100%}
+.nav-toggle{display:none;width:44px;height:40px;background:none;border:1px solid var(--line);border-radius:11px;cursor:pointer;position:relative}
+.nav-toggle span,.nav-toggle span::before,.nav-toggle span::after{content:"";position:absolute;left:11px;width:22px;height:2px;background:var(--ink);transition:.3s var(--ease)}
+.nav-toggle span{top:19px}.nav-toggle span::before{top:-7px}.nav-toggle span::after{top:7px}
+.nav.open .nav-toggle span{background:transparent}
+.nav.open .nav-toggle span::before{transform:translateY(7px) rotate(45deg)}
+.nav.open .nav-toggle span::after{transform:translateY(-7px) rotate(-45deg)}
+
+.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 26px;border-radius:100px;font-weight:600;font-size:.94rem;border:1px solid transparent;cursor:pointer;transition:transform .3s var(--ease),box-shadow .3s,background .3s,color .3s;will-change:transform}
+.btn-primary{background:var(--teal);color:var(--accent-ink);box-shadow:0 10px 34px -12px var(--teal)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 18px 44px -12px var(--teal)}
+.btn-ghost{background:color-mix(in srgb,var(--ink) 5%,transparent);color:var(--ink);border-color:var(--line);backdrop-filter:blur(6px)}
+.btn-ghost:hover{transform:translateY(-2px);border-color:var(--teal);color:var(--ink)}
+.btn svg{width:16px;height:16px}
+.btn-sm{padding:9px 16px;font-size:.82rem}
+
+/* hero */
+.hero{position:relative;min-height:100svh;min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden}
+#scene{position:absolute;inset:0;width:100%;height:100%;display:block;z-index:0}
+#scene.no-webgl{background:radial-gradient(60% 55% at 50% 42%,rgba(40,210,160,.28),transparent 70%),var(--bg)}
+.hero-grad{position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(180deg,color-mix(in srgb,var(--bg) 55%,transparent) 0%,transparent 22%,transparent 60%,var(--bg) 99%)}
+.hero-in{position:relative;z-index:2;max-width:var(--maxw);margin:0 auto;width:100%;padding:0 var(--gutter) clamp(40px,8vh,90px)}
+.hero h1{font-size:clamp(2.6rem,7.4vw,6.2rem);font-weight:600;letter-spacing:-.035em;max-width:16ch}
+.hero h1 em{font-style:normal;font-family:var(--serif);color:var(--teal)}
+.hero-sub{margin-top:22px;max-width:52ch;font-size:clamp(1rem,1.5vw,1.22rem);color:var(--ink2)}
+.hero-top{position:relative;z-index:2;flex:1;display:flex;align-items:flex-start;padding-top:clamp(120px,16vh,190px)}
+.hero-top .kicker{margin:0 auto;max-width:var(--maxw);width:100%;padding:0 var(--gutter)}
+.scrollhint{display:flex;align-items:center;gap:12px;margin-top:34px;font-family:var(--mono);font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.scrollhint .line{width:46px;height:1px;background:linear-gradient(90deg,var(--teal),transparent);position:relative;overflow:hidden}
+.scrollhint .line::after{content:"";position:absolute;inset:0;width:40%;background:var(--teal);animation:sweep 2.4s var(--ease) infinite}
+@keyframes sweep{0%{transform:translateX(-100%)}100%{transform:translateX(300%)}}
+@media (prefers-reduced-motion:reduce){.scrollhint .line::after{animation:none}}
+
+/* sections */
+section{position:relative}
+.band{padding:var(--sp) 0}
+.sec-head{max-width:66ch;margin:0 0 clamp(34px,6vw,64px)}
+.sec-head h2{font-size:clamp(1.9rem,4.4vw,3.3rem);font-weight:600}
+.sec-head p{margin-top:18px;color:var(--ink2);font-size:1.08rem}
+.center{text-align:center;margin-left:auto;margin-right:auto}
+
+.chip{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--teal);border:1px solid var(--line);border-radius:100px;padding:7px 14px;margin-bottom:22px}
+.chip .dot{width:7px;height:7px;border-radius:50%;background:var(--teal);box-shadow:0 0 10px var(--teal);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+@media (prefers-reduced-motion:reduce){.chip .dot{animation:none}}
+
+/* pillars */
+.pillars{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:56px}
+.pillar{padding:26px 22px;border:1px solid var(--line);border-radius:var(--radius);background:color-mix(in srgb,var(--panel) 60%,transparent);transition:transform .4s var(--ease),border-color .4s,box-shadow .4s}
+.pillar:hover{transform:translateY(-4px);border-color:color-mix(in srgb,var(--teal) 40%,transparent);box-shadow:0 20px 40px -18px rgba(0,0,0,.6)}
+.pillar .n{font-family:var(--mono);font-size:.7rem;color:var(--teal);letter-spacing:.2em}
+.pillar h4{font-size:1.14rem;margin:14px 0 9px}
+.pillar p{color:var(--muted);font-size:.9rem;margin:0}
+
+/* instrument */
+.instrument{position:relative;border:1px solid var(--line);border-radius:var(--radius-lg);background:linear-gradient(180deg,color-mix(in srgb,var(--panel) 70%,transparent),var(--bg2));padding:26px;overflow:hidden}
+.instrument::before{content:"";position:absolute;inset:0;background:radial-gradient(120% 80% at 70% 0%,color-mix(in srgb,var(--teal) 10%,transparent),transparent 60%);pointer-events:none}
+.inst-cap{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;font-family:var(--mono);font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.inst-cap .live{display:inline-flex;align-items:center;gap:7px;color:var(--teal)}
+.inst-cap .live .d{width:7px;height:7px;border-radius:50%;background:var(--teal);box-shadow:0 0 10px var(--teal);animation:pulse 1.8s infinite}
+
+/* gauges */
+.gauge-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-top:22px}
+.gauge{border:1px solid var(--line);border-radius:14px;background:color-mix(in srgb,var(--panel) 55%,transparent);padding:16px 12px;text-align:center;transition:transform .4s var(--ease),border-color .4s,box-shadow .4s}
+.gauge:hover{transform:translateY(-4px);border-color:color-mix(in srgb,var(--teal) 40%,transparent);box-shadow:0 16px 40px -20px rgba(0,0,0,.6)}
+.gauge.alarm{border-color:color-mix(in srgb,var(--red) 60%,transparent);animation:alarm-glow 1.2s infinite}
+@keyframes alarm-glow{0%,100%{box-shadow:0 0 0 rgba(255,94,94,0)}50%{box-shadow:0 0 28px rgba(255,94,94,.25)}}
+.gauge svg{width:64px;height:64px;display:block;margin:0 auto 8px}
+.gauge .track{fill:none;stroke:var(--line);stroke-width:6}
+.gauge .arc{fill:none;stroke:var(--teal);stroke-width:6;stroke-linecap:round;transition:stroke-dashoffset 1.2s var(--ease)}
+.gauge .gv{font-family:var(--mono);font-size:1.02rem;color:var(--ink);font-weight:500;line-height:1;transition:color .3s}
+.gauge .gl{font-family:var(--mono);font-size:.56rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:5px}
+.gauge .trend{position:absolute;top:8px;right:10px;font-size:.6rem;font-family:var(--mono)}
+.gauge .trend.up{color:var(--teal)}.gauge .trend.down{color:var(--red)}
+
+/* AI pipeline */
+.ai-pipeline{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:28px;position:relative}
+.pipeline-step{position:relative;padding:22px 16px;border:1px solid var(--line);border-radius:var(--radius);text-align:center;background:color-mix(in srgb,var(--panel) 50%,transparent);transition:transform .4s var(--ease),border-color .4s,box-shadow .4s;cursor:pointer}
+.pipeline-step:hover{transform:translateY(-4px);border-color:color-mix(in srgb,var(--teal) 44%,transparent);box-shadow:0 20px 40px -20px rgba(0,0,0,.6)}
+.pipeline-step .step-num{font-family:var(--mono);font-size:.7rem;color:var(--teal);letter-spacing:.2em;margin-bottom:8px}
+.pipeline-step .step-icon{width:44px;height:44px;margin:0 auto 10px;border-radius:50%;display:grid;place-items:center;background:color-mix(in srgb,var(--teal) 15%,transparent);color:var(--teal)}
+.pipeline-step .step-label{font-size:.85rem;font-weight:600;margin-bottom:6px}
+.pipeline-step .step-desc{font-size:.7rem;color:var(--muted);line-height:1.4}
+.pipeline-step.active{border-color:var(--teal);box-shadow:0 0 24px rgba(51,230,173,.15)}
+.pipeline-step.active .step-icon{background:color-mix(in srgb,var(--teal) 30%,transparent)}
+
+/* ai thinking */
+.ai-thinking{display:flex;align-items:center;gap:6px;padding:10px 16px;border-radius:100px;border:1px solid var(--line);background:color-mix(in srgb,var(--panel) 60%,transparent);font-family:var(--mono);font-size:.62rem;letter-spacing:.14em;color:var(--teal)}
+.ai-thinking .dot{width:5px;height:5px;border-radius:50%;background:var(--teal)}
+.ai-thinking .dot:nth-child(2){animation:think-dot 1.4s infinite .2s}
+.ai-thinking .dot:nth-child(3){animation:think-dot 1.4s infinite .4s}
+.ai-thinking .dot:nth-child(4){animation:think-dot 1.4s infinite .6s}
+@keyframes think-dot{0%,60%,100%{opacity:.2;transform:scale(.8)}30%{opacity:1;transform:scale(1.3)}}
+
+/* safety gate */
+.safety-gate{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:22px}
+.safety-layer{padding:20px 22px;border:1px solid var(--line);border-radius:var(--radius);background:color-mix(in srgb,var(--panel) 50%,transparent);position:relative;overflow:hidden;transition:border-color .4s,box-shadow .4s}
+.safety-layer:hover{border-color:color-mix(in srgb,var(--teal) 40%,transparent);box-shadow:0 16px 40px -20px rgba(0,0,0,.6)}
+.safety-layer .layer-num{font-family:var(--mono);font-size:.6rem;letter-spacing:.2em;color:var(--teal);text-transform:uppercase}
+.safety-layer h4{font-size:1.04rem;margin:8px 0 6px}
+.safety-layer p{color:var(--muted);font-size:.82rem;margin:0}
+.safety-layer .status{position:absolute;right:20px;top:20px;width:12px;height:12px;border-radius:50%;transition:background .5s}
+.safety-layer .status.pass{background:var(--teal);box-shadow:0 0 14px var(--teal)}
+.safety-layer .status.fail{background:var(--red);box-shadow:0 0 14px var(--red);animation:pulse .8s infinite}
+
+/* growth sparkline */
+.growth{margin-top:20px;border-top:1px solid var(--line);padding-top:18px}
+.growth-head{display:flex;justify-content:space-between;font-family:var(--mono);font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+.growth-head b{color:var(--teal);font-weight:500}
+.spark{width:100%;height:90px;display:block}
+.spark .area{fill:url(#sparkfill)}
+.spark .line{fill:none;stroke:var(--teal);stroke-width:2.5;stroke-linecap:round;stroke-dasharray:1200;stroke-dashoffset:1200}
+.spark.in .line{animation:draw 1.8s var(--ease) forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+.spark .dot{fill:var(--cyan)}
+
+/* grids + cards */
+.grid{display:grid;gap:20px}
+.grid-3{grid-template-columns:repeat(3,1fr)}
+.grid-2{grid-template-columns:repeat(2,1fr)}
+.acard{display:flex;flex-direction:column;padding:28px 26px;border:1px solid var(--line);border-radius:var(--radius-lg);background:linear-gradient(180deg,var(--panel),var(--bg2));transition:transform .4s var(--ease),border-color .4s,box-shadow .4s;height:100%}
+.acard:hover{transform:translateY(-5px);border-color:color-mix(in srgb,var(--teal) 44%,transparent);box-shadow:0 30px 60px -34px rgba(0,0,0,.75)}
+.acard .meta{display:flex;justify-content:space-between;align-items:center;font-family:var(--mono);font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--teal)}
+.acard .meta .rt{color:var(--muted)}
+.acard h3{font-size:1.32rem;margin:16px 0 12px;letter-spacing:-.02em}
+.acard .dek{color:var(--muted);font-size:.95rem;flex:1}
+.acard .more{margin-top:20px;display:inline-flex;align-items:center;gap:8px;font-weight:600;color:var(--ink);font-size:.9rem}
+.acard .more svg{width:15px;height:15px;transition:transform .3s var(--ease)}
+.acard:hover .more svg{transform:translateX(5px)}
+
+/* architecture diagram */
+.arch-diagram{position:relative;border:1px solid var(--line);border-radius:var(--radius-lg);padding:30px 20px 20px;background:linear-gradient(180deg,var(--panel),var(--bg2))}
+.arch-row{display:flex;justify-content:center;align-items:center;gap:16px;margin-bottom:20px;flex-wrap:wrap}
+.arch-box{padding:14px 18px;border:1px solid var(--line);border-radius:12px;font-family:var(--mono);font-size:.62rem;letter-spacing:.1em;text-align:center;background:color-mix(in srgb,var(--panel) 60%,transparent);transition:transform .3s var(--ease),border-color .3s,box-shadow .3s}
+.arch-box:hover{transform:translateY(-3px);border-color:var(--teal);box-shadow:0 12px 28px -12px rgba(51,230,173,.15)}
+.arch-box.lab{color:var(--muted)}
+.arch-box.teal{color:var(--teal);border-color:color-mix(in srgb,var(--teal) 40%,transparent)}
+.arch-box.amber{color:var(--amber);border-color:color-mix(in srgb,var(--amber) 40%,transparent)}
+.arch-box.blue{color:var(--blue);border-color:color-mix(in srgb,var(--blue) 40%,transparent)}
+.arch-box.red{color:var(--red);border-color:color-mix(in srgb,var(--red) 40%,transparent)}
+.arch-box.purple{color:var(--purple);border-color:color-mix(in srgb,var(--purple) 40%,transparent)}
+.arch-arrow{text-align:center;color:var(--muted);font-size:.7rem;margin-bottom:16px}
+.arch-arrow svg{width:16px;height:16px;display:block;margin:0 auto 4px}
+
+/* memory nodes */
+.memory-section{border:1px solid var(--line);border-radius:var(--radius-lg);background:linear-gradient(135deg,var(--panel),var(--bg2));padding:26px;position:relative;overflow:hidden;margin-top:22px}
+.memory-nodes{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+.memory-node{padding:8px 14px;border-radius:100px;font-family:var(--mono);font-size:.6rem;letter-spacing:.12em;border:1px solid var(--line);background:color-mix(in srgb,var(--teal) 8%,transparent);color:var(--ink2);transition:transform .3s var(--ease),border-color .3s,box-shadow .3s}
+.memory-node:hover{transform:translateY(-2px);border-color:var(--teal);box-shadow:0 8px 20px -8px rgba(51,230,173,.2)}
+.memory-node .mem-delta{color:var(--teal);font-weight:500}
+
+/* decision log */
+.decision-log{max-height:300px;overflow-y:auto;border:1px solid var(--line);border-radius:var(--radius);background:var(--bg2)}
+.decision-log .log-entry{padding:12px 16px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:12px;font-size:.82rem}
+.decision-log .log-entry:last-child{border-bottom:0}
+.decision-log .log-time{font-family:var(--mono);font-size:.6rem;color:var(--muted);white-space:nowrap}
+.decision-log .log-action{font-family:var(--mono);font-weight:600;color:var(--teal);min-width:120px}
+.decision-log .log-status{font-family:var(--mono);font-size:.6rem;padding:3px 8px;border-radius:100px}
+.decision-log .log-status.approved{background:color-mix(in srgb,var(--teal) 20%,transparent);color:var(--teal)}
+.decision-log .log-status.blocked{background:color-mix(in srgb,var(--red) 20%,transparent);color:var(--red)}
+
+/* health ring */
+.health-ring-wrap{display:flex;align-items:center;gap:20px;padding:18px 22px;border:1px solid var(--line);border-radius:var(--radius);background:color-mix(in srgb,var(--panel) 50%,transparent)}
+.health-ring{position:relative;width:90px;height:90px;flex-shrink:0}
+.health-ring svg{width:100%;height:100%;transform:rotate(-90deg)}
+.health-ring .bg-ring{fill:none;stroke:var(--line);stroke-width:8}
+.health-ring .fg-ring{fill:none;stroke:var(--teal);stroke-width:8;stroke-linecap:round;transition:stroke-dashoffset 1.2s var(--ease),stroke .6s}
+.health-ring .score-text{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--mono);font-size:1.4rem;font-weight:600;color:var(--ink)}
+.health-info .hi-label{font-family:var(--mono);font-size:.58rem;letter-spacing:.2em;color:var(--muted);text-transform:uppercase}
+.health-info .hi-status{font-size:1.1rem;font-weight:600;margin:4px 0}
+.health-info .hi-detail{font-size:.78rem;color:var(--muted)}
+
+/* estop */
+.estop-section{text-align:center;padding:40px 20px;border:2px dashed var(--line);border-radius:var(--radius-lg)}
+.estop-btn{display:inline-flex;align-items:center;justify-content:center;width:100px;height:100px;border-radius:50%;background:color-mix(in srgb,var(--red) 25%,transparent);border:3px solid var(--red);color:var(--red);font-family:var(--mono);font-size:.7rem;letter-spacing:.2em;cursor:pointer;transition:transform .3s var(--ease),box-shadow .3s,background .3s;position:relative}
+.estop-btn:hover{transform:scale(1.08);box-shadow:0 0 48px rgba(255,94,94,.3);background:color-mix(in srgb,var(--red) 40%,transparent)}
+.estop-btn:active{transform:scale(.95)}
+.estop-btn.pressed{background:var(--red);box-shadow:0 0 60px rgba(255,94,94,.5);animation:estop-flash .5s infinite}
+@keyframes estop-flash{0%,100%{background:var(--red)}50%{background:#c03030}}
+
+/* federated map */
+.fed-map{position:relative;height:220px;border:1px solid var(--line);border-radius:var(--radius-lg);background:radial-gradient(60% 50% at 50% 50%,color-mix(in srgb,var(--teal) 6%,transparent),transparent 80%),var(--bg2)}
+.fed-map .node{position:absolute;width:10px;height:10px;border-radius:50%;background:var(--teal);box-shadow:0 0 16px var(--teal)}
+.fed-map .node.central{width:16px;height:16px;left:50%;top:50%;transform:translate(-50%,-50%);background:var(--cyan);box-shadow:0 0 28px var(--cyan)}
+.fed-map .line{position:absolute;height:1px;background:linear-gradient(90deg,var(--teal),transparent);transform-origin:left center;opacity:.25;animation:fade-line 3s ease-in-out infinite}
+@keyframes fade-line{0%,100%{opacity:.15}50%{opacity:.45}}
+
+/* codewall */
+.codewall{position:absolute;inset:0;overflow:hidden;z-index:0;pointer-events:none;opacity:.05;mask-image:linear-gradient(180deg,transparent,#000 20%,#000 80%,transparent)}
+.codewall pre{font-family:var(--mono);font-size:11px;line-height:1.7;color:var(--teal);margin:0;white-space:pre;animation:codescroll 40s linear infinite}
+@keyframes codescroll{from{transform:translateY(0)}to{transform:translateY(-50%)}}
+
+/* tab system */
+.tab-nav{display:flex;gap:4px;margin-bottom:20px;flex-wrap:wrap}
+.tab-nav button{padding:10px 20px;border:1px solid var(--line);border-radius:100px;background:transparent;color:var(--muted);font-family:var(--mono);font-size:.7rem;letter-spacing:.12em;cursor:pointer;transition:all .3s var(--ease)}
+.tab-nav button:hover{color:var(--ink);border-color:var(--teal)}
+.tab-nav button.active{background:color-mix(in srgb,var(--teal) 18%,transparent);color:var(--teal);border-color:var(--teal)}
+.tab-panel{display:none}
+.tab-panel.active{display:block}
+
+/* footer */
+.footer{border-top:1px solid var(--line);padding:clamp(52px,7vw,80px) 0 40px;background:var(--bg2)}
+.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:34px}
+.footer .wm{margin-bottom:16px}
+.footer p{color:var(--muted);font-size:.9rem;max-width:34ch}
+.footer .col h5{font-family:var(--mono);font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin:0 0 16px}
+.footer .col a{display:block;color:var(--ink2);font-size:.92rem;margin:9px 0;transition:color .25s}
+.footer .col a:hover{color:var(--teal)}
+.foot-bar{max-width:var(--maxw);margin:38px auto 0;padding:22px var(--gutter) 0;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;font-size:.8rem;color:var(--muted)}
+
+/* reactor animated bits */
+.r-bub{animation:rise 3.4s linear infinite}
+.r-bub2{animation:rise 4.2s linear infinite .8s}
+.r-bub3{animation:rise 3.8s linear infinite 1.6s}
+@keyframes rise{0%{transform:translateY(0);opacity:0}12%{opacity:.9}100%{transform:translateY(-118px);opacity:0}}
+.r-node{transform-box:fill-box;transform-origin:center}
+.r-node circle.p{animation:node 2.4s ease-in-out infinite}
+@keyframes node{0%,100%{opacity:.4;r:3}50%{opacity:1;r:5.5}}
+
+/* reveal on scroll */
+.rv{opacity:0;transform:translateY(26px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.rv.in{opacity:1;transform:none}
+.rv.d1{transition-delay:.08s}.rv.d2{transition-delay:.16s}.rv.d3{transition-delay:.24s}.rv.d4{transition-delay:.32s}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1!important;transform:none!important;transition:none}}
+
+/* ambient canvas */
+#ambient{position:fixed;inset:0;width:100vw;height:100vh;z-index:0;pointer-events:none}
+.nav,main,.footer{position:relative;z-index:1}
+
+/* topic pills */
+.topic-pills{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.topic-pill{padding:6px 14px;border-radius:100px;font-family:var(--mono);font-size:.62rem;letter-spacing:.12em;border:1px solid var(--line);color:var(--muted);cursor:pointer;transition:all .25s;background:transparent}
+.topic-pill:hover,.topic-pill.active{border-color:var(--teal);color:var(--teal);background:color-mix(in srgb,var(--teal) 12%,transparent)}
+
+/* code block */
+.code-block{font-family:var(--mono);font-size:.74rem;line-height:1.6;padding:20px 24px;background:var(--bg2);border:1px solid var(--line);border-radius:var(--radius);overflow-x:auto;color:var(--ink2)}
+.code-block .kw{color:var(--purple)}.code-block .str{color:var(--amber)}.code-block .cm{color:var(--muted)}
+.code-block .fn{color:var(--blue)}.code-block .num{color:var(--cyan)}
+
+/* responsive */
+@media (max-width:960px){
+  .nav-links{position:fixed;inset:64px 0 auto 0;flex-direction:column;align-items:flex-start;gap:4px;padding:20px var(--gutter) 26px;background:color-mix(in srgb,var(--bg) 94%,transparent);backdrop-filter:blur(16px);border-bottom:1px solid var(--line);transform:translateY(-8px);opacity:0;pointer-events:none;transition:.3s var(--ease)}
+  .nav.open .nav-links{transform:none;opacity:1;pointer-events:auto}
+  .nav-links a{width:100%;padding:12px 0;font-size:1.05rem}
+  .nav-toggle{display:block}
+  .gauge-grid{grid-template-columns:repeat(3,1fr)}
+  .ai-pipeline{grid-template-columns:repeat(2,1fr)}
+  .pillars{grid-template-columns:repeat(2,1fr)}
+  .grid-3{grid-template-columns:1fr 1fr}
+  .safety-gate{grid-template-columns:1fr}
+  .arch-row{flex-direction:column;align-items:stretch}
+  .footer-grid{grid-template-columns:1fr 1fr}
+}
+@media (max-width:620px){
+  .gauge-grid{grid-template-columns:repeat(2,1fr)}
+  .ai-pipeline{grid-template-columns:1fr}
+  .grid-3,.grid-2{grid-template-columns:1fr}
+  .pillars{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr}
+}
+
+/* HOW IT WORKS - special section styles */
+.flow-diagram{display:flex;flex-direction:column;align-items:center;gap:0;margin:34px 0}
+.flow-row{display:flex;justify-content:center;align-items:center;gap:14px;flex-wrap:wrap}
+.flow-node{padding:16px 20px;border:1px solid var(--line);border-radius:12px;font-family:var(--mono);font-size:.68rem;letter-spacing:.08em;text-align:center;background:color-mix(in srgb,var(--panel) 60%,transparent);transition:transform .3s var(--ease),border-color .3s;min-width:130px}
+.flow-node:hover{transform:translateY(-2px);border-color:var(--teal)}
+.flow-node.sense{border-color:color-mix(in srgb,var(--blue) 50%,transparent)}
+.flow-node.predict{border-color:color-mix(in srgb,var(--purple) 50%,transparent)}
+.flow-node.propose{border-color:color-mix(in srgb,var(--teal) 50%,transparent)}
+.flow-node.validate{border-color:color-mix(in srgb,var(--amber) 50%,transparent)}
+.flow-node.act{border-color:color-mix(in srgb,var(--cyan) 50%,transparent)}
+.flow-arrow-down{color:var(--teal);font-size:1.2rem;margin:8px 0;text-align:center}
+.flow-label{font-family:var(--mono);font-size:.56rem;letter-spacing:.14em;color:var(--muted);text-align:center;margin-top:4px}
+
+.timeline{position:relative;padding-left:24px;border-left:1px solid var(--line)}
+.timeline-item{position:relative;padding-bottom:28px}
+.timeline-item::before{content:"";position:absolute;left:-28px;top:4px;width:10px;height:10px;border-radius:50%;background:var(--teal);box-shadow:0 0 12px var(--teal)}
+.timeline-item h4{font-size:1.05rem;margin-bottom:4px}
+.timeline-item .time{font-family:var(--mono);font-size:.62rem;letter-spacing:.14em;color:var(--teal);margin-bottom:6px}
+.timeline-item p{color:var(--muted);font-size:.9rem}
+
+.readout-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;margin-top:22px}
+.readout-cell{background:var(--panel);padding:18px 16px}
+.readout-cell .lab{font-family:var(--mono);font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.readout-cell .val{font-family:var(--mono);font-size:1.4rem;font-weight:500;color:var(--teal);margin-top:6px}
+
+.data-table{width:100%;border-collapse:collapse;font-family:var(--mono);font-size:.72rem}
+.data-table th,.data-table td{padding:10px 14px;text-align:left;border-bottom:1px solid var(--line)}
+.data-table th{color:var(--muted);font-weight:500;letter-spacing:.1em;text-transform:uppercase;font-size:.64rem}
+.data-table td{color:var(--ink2)}
+.data-table tr:hover td{background:color-mix(in srgb,var(--teal) 4%,transparent)}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="veil" aria-hidden="true"><svg class="veil-mark" viewBox="0 0 22 34" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" style="color:var(--teal)"><path d="M11 1 q7 5 -3 8 q-10 3 3 8 q10 5 -3 8 q-7 3 3 7"/></svg></div>
+<canvas id="ambient" aria-hidden="true"></canvas>
+<div class="pbar" aria-hidden="true"></div>
+
+<header class="nav">
+  <div class="nav-in">
+    <a class="wm" href="#" aria-label="MAIN — home">
+      <svg viewBox="0 0 22 34" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M11 1 q7 5 -3 8 q-10 3 3 8 q10 5 -3 8 q-7 3 3 7"/></svg>
+      <span><b>MAIN</b><small>How It Works</small></span>
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#overview">Overview</a>
+      <a href="#ai-pipeline">AI Pipeline</a>
+      <a href="#safety">Safety Gate</a>
+      <a href="#memory">Memory</a>
+      <a href="#phynonet">PhycoNet</a>
+      <a href="#data-flow">Data Flow</a>
+      <a href="#boot">Boot &amp; Connect</a>
+    </nav>
+    <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false"><span></span></button>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <canvas id="scene" class="no-webgl" aria-hidden="true"></canvas>
+  <div class="hero-grad"></div>
+  <div class="hero-top"><div class="kicker">DEEP TECHNICAL DIVE · THE COMPLETE ARCHITECTURE</div></div>
+  <div class="hero-in">
+    <h1 class="rv">How MAIN <em>Works</em></h1>
+    <p class="hero-sub rv d1">From the six analog sensors to the federated network that learns across reactors — every subsystem, every decision, every safety check explained in depth.</p>
+    <div class="scrollhint rv d2"><span class="line"></span>Scroll to begin the deep dive</div>
+  </div>
+</section>
+
+<!-- ===== OVERVIEW: THE FOUR PILLARS ===== -->
+<section class="band" id="overview" style="padding-top:0">
+  <div class="shell">
+    <div class="rv">
+      <div class="chip"><span class="dot"></span> System Overview</div>
+      <h2>Four Capabilities, One Living Culture</h2>
+      <p style="max-width:60ch;color:var(--ink2);font-size:1.08rem;margin-top:14px">
+        MAIN runs on a Raspberry Pi Zero 2W. It reads six sensors continuously, runs a physics-based digital twin of the culture, lets an AI pipeline propose the next action, validates every proposal through a two-layer safety gate, and learns from every outcome through ChromaDB memory — all while sharing improved model parameters across a federated network.
+      </p>
+    </div>
+
+    <div class="pillars rv d1">
+      <div class="pillar">
+        <div class="n">01</div>
+        <h4>It Senses</h4>
+        <p>Six analog sensors — pH, temperature (DS18B20), light (BH1750), optical density (TSD-10), dissolved oxygen, and TDS — read through an MCP3008 ADC. Optional ESP32-CAM for microscope-grade vision. Every reading logged to CSV and published over MQTT.</p>
+      </div>
+      <div class="pillar">
+        <div class="n">02</div>
+        <h4>It Predicts</h4>
+        <p>A Droop cell-quota model with Steele photoinhibition, Beer-Lambert self-shading, and temperature/pH/DO response curves. The twin forecasts 24-hour growth, simulates proposed actions before execution, and self-calibrates against real data every 6 hours.</p>
+      </div>
+      <div class="pillar">
+        <div class="n">03</div>
+        <h4>It Protects</h4>
+        <p>Two-layer safety gate: deterministic hard limits (pH 8.5–10.5, temp 20–35°C, nutrient ≤ 20mL) then a 24-hour twin simulation. If either layer rejects, the action is blocked. Firmware clamps and a physical GPIO15 emergency stop sit underneath as independent backstops.</p>
+      </div>
+      <div class="pillar">
+        <div class="n">04</div>
+        <h4>It Learns</h4>
+        <p>ChromaDB with Sentence-Transformer embeddings stores every validated experiment. LangGraph retrieves similar past experiments for AI context. PhycoNet shares tuned twin parameters across reactors — never raw culture data — so the network converges faster than any single reactor alone.</p>
+      </div>
+    </div>
+
+    <!-- Instrument + gauges -->
+    <div class="grid grid-2 rv d2" style="margin-top:30px">
+      <div class="instrument">
+        <div class="inst-cap"><span>PBR · MAIN-SPIR-001</span><span class="live"><span class="d"></span> live model</span></div>
+        <svg class="r-svg" viewBox="0 0 380 300" aria-hidden="true">
+          <defs><linearGradient id="rgrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#37d98a"/><stop offset="1" stop-color="#0a5e3f"/></linearGradient>
+          <clipPath id="vclip"><rect x="154" y="70" width="72" height="176" rx="30"/></clipPath></defs>
+          <ellipse cx="190" cy="150" rx="120" ry="130" fill="#1fae6a" opacity="0.12"/>
+          <rect x="146" y="36" width="88" height="16" rx="8" fill="#c9cfce"/>
+          <rect x="150" y="40" width="80" height="210" rx="34" fill="#0c3b2a"/>
+          <g clip-path="url(#vclip)"><rect x="154" y="70" width="72" height="176" fill="url(#rgrad)"/>
+            <circle class="r-bub" cx="176" cy="238" r="3" fill="#c9ffe6"/><circle class="r-bub2" cx="200" cy="238" r="2.3" fill="#c9ffe6"/><circle class="r-bub3" cx="190" cy="238" r="3.2" fill="#c9ffe6"/></g>
+          <rect x="150" y="40" width="80" height="210" rx="34" fill="none" stroke="rgba(255,255,255,.14)" stroke-width="1.5"/>
+          <rect x="168" y="60" width="8" height="170" rx="4" fill="#ffffff" opacity="0.14"/>
+          <rect x="150" y="250" width="80" height="18" rx="6" fill="#39413d"/><rect x="168" y="268" width="44" height="20" rx="4" fill="#2a302d"/>
+          <g class="r-node"><line x1="150" y1="86" x2="112" y2="86" stroke="rgba(120,220,190,.35)" stroke-width="1.1"/><circle class="p" cx="150" cy="86" r="3.5" fill="#33e6ad"/><text x="128" y="89.5" text-anchor="end" style="font:600 11px 'IBM Plex Mono',monospace;fill:#bfe0d6">pH</text></g>
+          <g class="r-node"><line x1="150" y1="118" x2="112" y2="118" stroke="rgba(120,220,190,.35)" stroke-width="1.1"/><circle class="p" cx="150" cy="118" r="3.5" fill="#33e6ad"/><text x="128" y="121.5" text-anchor="end" style="font:600 11px 'IBM Plex Mono',monospace;fill:#bfe0d6">TEMP</text></g>
+          <g class="r-node"><line x1="150" y1="150" x2="112" y2="150" stroke="rgba(120,220,190,.35)" stroke-width="1.1"/><circle class="p" cx="150" cy="150" r="3.5" fill="#33e6ad"/><text x="128" y="153.5" text-anchor="end" style="font:600 11px 'IBM Plex Mono',monospace;fill:#bfe0d6">LIGHT</text></g>
+          <g class="r-node"><line x1="230" y1="86" x2="268" y2="86" stroke="rgba(120,220,190,.35)" stroke-width="1.1"/><circle class="p" cx="230" cy="86" r="3.5" fill="#33e6ad"/><text x="252" y="89.5" text-anchor="start" style="font:600 11px 'IBM Plex Mono',monospace;fill:#bfe0d6">OD</text></g>
+          <g class="r-node"><line x1="230" y1="118" x2="268" y2="118" stroke="rgba(120,220,190,.35)" stroke-width="1.1"/><circle class="p" cx="230" cy="118" r="3.5" fill="#33e6ad"/><text x="252" y="121.5" text-anchor="start" style="font:600 11px 'IBM Plex Mono',monospace;fill:#bfe0d6">O₂</text></g>
+          <g class="r-node"><line x1="230" y1="150" x2="268" y2="150" stroke="rgba(120,220,190,.35)" stroke-width="1.1"/><circle class="p" cx="230" cy="150" r="3.5" fill="#33e6ad"/><text x="252" y="153.5" text-anchor="start" style="font:600 11px 'IBM Plex Mono',monospace;fill:#bfe0d6">TDS</text></g>
+        </svg>
+        <div class="growth"><div class="growth-head"><span>Digital-Twin Growth Forecast · 72h</span><b>+ predicted biomass</b></div>
+          <svg class="spark in" viewBox="0 0 300 90" preserveAspectRatio="none" aria-hidden="true">
+            <defs><linearGradient id="sparkfill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#33e6ad" stop-opacity="0.28"/><stop offset="1" stop-color="#33e6ad" stop-opacity="0"/></linearGradient></defs>
+            <path class="area" d="M0,82 C70,80 110,66 160,44 C210,22 250,14 300,9 L300,90 L0,90 Z"/>
+            <path class="line" d="M0,82 C70,80 110,66 160,44 C210,22 250,14 300,9"/>
+            <circle class="dot" cx="300" cy="9" r="4"/>
+          </svg></div>
+      </div>
+      <div>
+        <div class="health-ring-wrap" style="margin-bottom:18px">
+          <div class="health-ring">
+            <svg viewBox="0 0 100 100"><circle class="bg-ring" cx="50" cy="50" r="42"/><circle class="fg-ring" id="healthRing" cx="50" cy="50" r="42" stroke-dasharray="264" stroke-dashoffset="40"/></svg>
+            <div class="score-text">85</div>
+          </div>
+          <div class="health-info">
+            <div class="hi-label">Reactor Health Index</div>
+            <div class="hi-status" style="color:var(--teal)">Healthy</div>
+            <div class="hi-detail">pH 9.2 · Temp 29.1°C · Growth +0.022/hr · All sensors nominal</div>
+          </div>
+        </div>
+        <div class="estop-section">
+          <p style="color:var(--muted);font-size:.82rem;margin-bottom:14px">Hardware Safety Override</p>
+          <button class="estop-btn" id="estopBtn" title="Emergency Stop">STOP<br>ALL</button>
+          <p style="color:var(--muted);font-size:.7rem;margin-top:10px">GPIO15 · Active-Low · Physical + Software</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6 Gauges -->
+    <div class="gauge-grid rv d3" style="margin-top:22px">
+      <div class="gauge" id="gauge-ph"><svg viewBox="0 0 64 64"><circle class="track" cx="32" cy="32" r="26"/><circle class="arc" cx="32" cy="32" r="26" stroke-dasharray="163.4" stroke-dashoffset="55"/></svg><div class="gv"><span id="val-ph">9.20</span></div><div class="gl">pH</div><span class="trend up">▲</span></div>
+      <div class="gauge" id="gauge-temp"><svg viewBox="0 0 64 64"><circle class="track" cx="32" cy="32" r="26"/><circle class="arc" cx="32" cy="32" r="26" stroke-dasharray="163.4" stroke-dashoffset="45"/></svg><div class="gv"><span id="val-temp">29.1</span>°C</div><div class="gl">Temp</div><span class="trend up">▲</span></div>
+      <div class="gauge" id="gauge-light"><svg viewBox="0 0 64 64"><circle class="track" cx="32" cy="32" r="26"/><circle class="arc" cx="32" cy="32" r="26" stroke-dasharray="163.4" stroke-dashoffset="78"/></svg><div class="gv"><span id="val-light">215</span></div><div class="gl">Light µE</div><span class="trend down">▼</span></div>
+      <div class="gauge" id="gauge-od"><svg viewBox="0 0 64 64"><circle class="track" cx="32" cy="32" r="26"/><circle class="arc" cx="32" cy="32" r="26" stroke-dasharray="163.4" stroke-dashoffset="62"/></svg><div class="gv"><span id="val-od">0.46</span></div><div class="gl">OD</div><span class="trend up">▲</span></div>
+      <div class="gauge" id="gauge-do"><svg viewBox="0 0 64 64"><circle class="track" cx="32" cy="32" r="26"/><circle class="arc" cx="32" cy="32" r="26" stroke-dasharray="163.4" stroke-dashoffset="72"/></svg><div class="gv"><span id="val-do">7.4</span></div><div class="gl">DO mg/L</div><span class="trend down">▼</span></div>
+      <div class="gauge" id="gauge-tds"><svg viewBox="0 0 64 64"><circle class="track" cx="32" cy="32" r="26"/><circle class="arc" cx="32" cy="32" r="26" stroke-dasharray="163.4" stroke-dashoffset="52"/></svg><div class="gv"><span id="val-tds">1340</span></div><div class="gl">TDS ppm</div><span class="trend up">▲</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== THE AI DECISION PIPELINE ===== -->
+<section class="band" id="ai-pipeline" style="padding-top:0">
+  <div class="codewall" aria-hidden="true"><pre>mu = mu_max * (1.0 - Q0 / Q) * steele(I_avg) * bell(T) * bell(pH)
+growth = self.twin.predict_growth_rate(state, I0=env["light"], T=env["temp"], pH=ph1, DO=env["do"])
+if not math.isfinite(growth): return False, "predicted growth is not finite; blocking"
+return (growth >= threshold), "approved"
+</pre></div>
+  <div class="shell" style="position:relative;z-index:1">
+    <div class="sec-head rv">
+      <div class="kicker">The Brain</div>
+      <h2>The AI Decision Pipeline — Five Steps from Sensor to Action</h2>
+      <p>Every 30 minutes (configurable), MAIN runs a closed-loop AI cycle. The AI doesn't just react to current values — it sees the future through the twin's prediction and acts preemptively. Here's exactly how each step works.</p>
+    </div>
+
+    <!-- Pipeline visualization -->
+    <div class="ai-pipeline rv d1">
+      <div class="pipeline-step" data-detail="sense">
+        <div class="step-num">01</div>
+        <div class="step-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg></div>
+        <div class="step-label">SENSE</div>
+        <div class="step-desc">6 analog sensors → MCP3008 ADC + I2C → Pi Zero 2W reads every 60s</div>
+      </div>
+      <div class="pipeline-step" data-detail="predict">
+        <div class="step-num">02</div>
+        <div class="step-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+        <div class="step-label">PREDICT</div>
+        <div class="step-desc">Digital twin forecasts growth using Droop + Steele + Beer-Lambert kinetics</div>
+      </div>
+      <div class="pipeline-step active" data-detail="propose">
+        <div class="step-num">03</div>
+        <div class="step-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2a10 10 0 1 0 10 10h-10v-10z"/></svg></div>
+        <div class="step-label">PROPOSE</div>
+        <div class="step-desc">Gemini (deep reasoning) + Groq (fast JSON) → ChromaDB context → proposal</div>
+        <div class="ai-thinking" style="margin-top:10px"><span>AI</span><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+      </div>
+      <div class="pipeline-step" data-detail="validate">
+        <div class="step-num">04</div>
+        <div class="step-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <div class="step-label">VALIDATE</div>
+        <div class="step-desc">Hard limits + twin simulation. Fails closed. Unknown actions rejected.</div>
+      </div>
+      <div class="pipeline-step" data-detail="act">
+        <div class="step-num">05</div>
+        <div class="step-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="5 12 10 17 19 8"/></svg></div>
+        <div class="step-label">ACT</div>
+        <div class="step-desc">MQTT command → Pi GPIO → pump/light/heater. Outcome recorded.</div>
+      </div>
+    </div>
+
+    <!-- Pipeline detail tabs -->
+    <div class="rv d2" style="margin-top:28px">
+      <div class="tab-nav" id="pipelineTabs">
+        <button class="active" data-panel="sense-detail">Step 1: Sense</button>
+        <button data-panel="predict-detail">Step 2: Predict</button>
+        <button data-panel="propose-detail">Step 3: Propose</button>
+        <button data-panel="validate-detail">Step 4: Validate</button>
+        <button data-panel="act-detail">Step 5: Act</button>
+      </div>
+
+      <div class="tab-panel active" id="sense-detail">
+        <div class="grid grid-2">
+          <div>
+            <h4 style="color:var(--teal);margin-bottom:12px">Sensor → Telemetry Pipeline</h4>
+            <p style="color:var(--ink2);font-size:.95rem">Every 60 seconds, <code style="font-family:var(--mono);color:var(--teal)">hardware_driver.py</code> reads six analog channels through an MCP3008 ADC over SPI, plus temperature (DS18B20/OneWire) and light (BH1750/I2C). Each reading is calibrated, packaged as JSON, and simultaneously written to <code style="font-family:var(--mono);color:var(--amber)">data/telemetry.csv</code> and published to MQTT topic <code style="font-family:var(--mono);color:var(--cyan)">gaon/pbr/{id}/telemetry</code>. The OLED updates every cycle so you can glance at the reactor and see its state.</p>
+            <div class="readout-grid" style="margin-top:18px">
+              <div class="readout-cell"><div class="lab">pH</div><div class="val">9.2 <span style="font-size:.7rem;color:var(--muted)">±0.05</span></div></div>
+              <div class="readout-cell"><div class="lab">Temperature</div><div class="val">29.1<span style="font-size:.7rem;color:var(--muted)">°C</span></div></div>
+              <div class="readout-cell"><div class="lab">Light</div><div class="val">215<span style="font-size:.7rem;color:var(--muted)">µE/m²/s</span></div></div>
+              <div class="readout-cell"><div class="lab">Optical Density</div><div class="val">0.46<span style="font-size:.7rem;color:var(--muted)">OD</span></div></div>
+              <div class="readout-cell"><div class="lab">Dissolved O₂</div><div class="val">7.4<span style="font-size:.7rem;color:var(--muted)">mg/L</span></div></div>
+              <div class="readout-cell"><div class="lab">TDS</div><div class="val">1340<span style="font-size:.7rem;color:var(--muted)">ppm</span></div></div>
+            </div>
+          </div>
+          <div class="code-block">
+<span class="cm"># hardware_driver.py — sensor read cycle</span>
+<span class="kw">def</span> <span class="fn">read_all_sensors</span>():
+    <span class="kw">return</span> {
+        <span class="str">"ph"</span>: adc.read(MCP_CH_PH) * <span class="num">3.3</span> / <span class="num">1024</span> * <span class="num">3.5</span>,
+        <span class="str">"temp_c"</span>: ds18b20.read_temp(),
+        <span class="str">"light_umol"</span>: bh1750.read(),
+        <span class="str">"od"</span>: tsd10.read_od(),
+        <span class="str">"do_mgl"</span>: do_probe.read_mgl(),
+        <span class="str">"tds_ppm"</span>: tds_probe.read_ppm(),
+    }
+
+<span class="cm"># Published as JSON to MQTT + CSV</span>
+payload = json.dumps(sensors)
+mqtt.publish(<span class="str">"gaon/pbr/SPIR-USA-001/telemetry"</span>, payload)
+          </div>
+        </div>
+      </div>
+
+      <div class="tab-panel" id="predict-detail">
+        <div class="grid grid-2">
+          <div>
+            <h4 style="color:var(--teal);margin-bottom:12px">The Digital Twin: Four Equations That Model a Living Culture</h4>
+            <p style="color:var(--ink2);font-size:.95rem">The twin is a system of ODEs solved with SciPy's <code style="font-family:var(--mono);color:var(--teal)">solve_ivp</code>. It tracks four state variables — cell density (X), internal nutrient quota (Q), external nutrient concentration (N), and product concentration (P). Four coupled equations drive the simulation:</p>
+            <p style="color:var(--muted);font-size:.88rem;margin-top:12px"><strong>1. Droop cell-quota kinetics:</strong> Growth rate μ = μ<sub>max</sub> × (1 − Q₀/Q). When the cell's internal nutrient store runs low, growth slows — not instantaneously, but gracefully.</p>
+            <p style="color:var(--muted);font-size:.88rem"><strong>2. Steele photoinhibition:</strong> Light uptake follows a peaked curve. Too little light limits photosynthesis; too much light damages the photosystems. The twin finds the optimum.</p>
+            <p style="color:var(--muted);font-size:.88rem"><strong>3. Beer-Lambert self-shading:</strong> As cells multiply, they cast shade on each other. Light intensity drops exponentially through the culture depth. The twin integrates across the reactor to compute the average light each cell actually sees.</p>
+            <p style="color:var(--muted);font-size:.88rem"><strong>4. Temperature, pH, and DO response:</strong> Each environmental factor modulates growth through a bell-shaped response curve centered on the species optimum. Spirulina peaks at ~35°C and pH ~9.5; the twin knows both.</p>
+          </div>
+          <div class="code-block">
+<span class="cm"># digital_twin.py — the growth rate equation</span>
+<span class="kw">def</span> <span class="fn">predict_growth_rate</span>(state, I0, T, pH, DO):
+    mu = mu_max * (<span class="num">1.0</span> - Q0 / Q)    <span class="cm"># Droop quota</span>
+    I_avg = I0 * (<span class="num">1</span> - exp(-k * X * d)) / (k * X * d)  <span class="cm"># Beer-Lambert</span>
+    mu *= steele_response(I_avg, I_opt)  <span class="cm"># Steele curve</span>
+    mu *= temperature_response(T, T_opt, T_range)
+    mu *= ph_response(pH, pH_opt, pH_range)
+    mu *= do_inhibition(DO, DO_crit)
+    <span class="kw">return</span> mu
+
+<span class="cm"># Twin self-calibrates every 6 hours</span>
+<span class="kw">def</span> <span class="fn">fit_to_data</span>(telemetry_history):
+    <span class="cm"># Fits mu_max, I_opt, Q0 to match observed growth</span>
+    params = curve_fit(growth_model, telemetry_history)
+    self.update_parameters(params)
+          </div>
+        </div>
+      </div>
+
+      <div class="tab-panel" id="propose-detail">
+        <div class="grid grid-2">
+          <div>
+            <h4 style="color:var(--teal);margin-bottom:12px">The AI Brain: Gemini + Groq + ChromaDB</h4>
+            <p style="color:var(--ink2);font-size:.95rem">The AI layer uses a <strong>dual-provider strategy</strong>: Gemini for deep scientific reasoning (interpreting algal biology, cross-referencing strain knowledge), and Groq for fast, low-latency structured JSON formatting. The LangGraph-based <code style="font-family:var(--mono);color:var(--teal)">MAINAgent</code> orchestrates the workflow.</p>
+            <p style="color:var(--muted);font-size:.88rem;margin-top:12px">The prompt fed to the AI includes: (1) the current raw sensor snapshot, (2) the twin's 24-hour growth forecast, (3) similar past experiments retrieved from ChromaDB, and (4) the user's cultivation goal. The AI reasons across all four inputs simultaneously.</p>
+            <p style="color:var(--muted);font-size:.88rem">When the internet drops, a lightweight <strong>local fallback</strong> takes over: a rule-based heuristic on the Pi itself, or if Ollama is installed, a small local model (qwen2.5:0.5b) can generate proposals offline. The culture is never left without guidance.</p>
+            <div class="ai-thinking" style="margin-top:16px"><span>Processing</span><div class="dot"></div><div class="dot"></div><div class="dot"></div> <span style="color:var(--muted);font-size:.55rem">Gemini → Groq → DecisionSynthesizer → Safety</span></div>
+          </div>
+          <div class="code-block">
+<span class="cm"># ai/router.py — dual-provider routing</span>
+<span class="kw">class</span> <span class="fn">AIController</span>:
+    <span class="kw">def</span> <span class="fn">decide</span>(sensor_summary, twin_prediction, memory):
+        <span class="cm"># Deep reasoning via Gemini</span>
+        gemini_resp = self.gemini.generate(
+            system_prompt, sensor_summary, temp=<span class="num">0.4</span>)
+        
+        <span class="cm"># Fast structured output via Groq</span>
+        groq_resp = self.groq.generate(
+            system_prompt, formatted_context, temp=<span class="num">0.3</span>)
+        
+        <span class="cm"># Synthesize: best of both, fallback-aware</span>
+        decision = DecisionSynthesizer.merge(
+            gemini_resp, groq_resp, twin_prediction)
+        
+        <span class="kw">return</span> ValidatedCommand(
+            action=decision.action,
+            value=decision.value,
+            reason=decision.reason,
+            confidence=decision.confidence)
+          </div>
+        </div>
+      </div>
+
+      <div class="tab-panel" id="validate-detail">
+        <div>
+          <h4 style="color:var(--teal);margin-bottom:12px">Safety Architecture: Two Independent Gates</h4>
+          <div class="safety-gate">
+            <div class="safety-layer">
+              <div class="layer-num">Layer 1</div>
+              <h4>Hard Limit Validation</h4>
+              <p>Deterministic rule check against configurable bounds. pH must stay 8.5–10.5, temperature 20–35°C, nutrient pulse ≤ 20mL, bicarbonate ≤ 5g, light 100–400 µE/m²/s. Unknown action types are rejected. Every value is bounds-checked and finite-checked. This layer runs in microseconds — no network, no model, no ambiguity.</p>
+              <div class="status pass"></div>
+            </div>
+            <div class="safety-layer">
+              <div class="layer-num">Layer 2</div>
+              <h4>Digital Twin Simulation</h4>
+              <p>The proposed action is simulated for 24 hours in silico before a single pump moves. The twin computes the resulting pH shift, the predicted growth rate, and nutrient drawdown. If growth drops below threshold, pH drifts into danger, or any value becomes non-finite, the action is blocked. It fails closed. There is no path from AI proposal to actuator that doesn't pass through this gate.</p>
+              <div class="status pass"></div>
+            </div>
+          </div>
+          <div class="code-block" style="margin-top:16px">
+<span class="cm"># safety/controller_validator.py — the two-layer gate</span>
+<span class="kw">def</span> <span class="fn">validate_with_simulation</span>(proposal, state, env):
+    <span class="cm"># Layer 1: hard limits</span>
+    ok, reason = self.validate_hard_limits(proposal)
+    <span class="kw">if not</span> ok:
+        <span class="kw">return</span> <span class="str">False</span>, reason
+    
+    <span class="cm"># Layer 2: simulate the dose</span>
+    ph1 = env[<span class="str">"ph"</span>] + <span class="num">0.06</span> * (value / volume_l)
+    <span class="kw">if</span> ph1 > self.limits.ph_max:
+        <span class="kw">return</span> <span class="str">False</span>, <span class="str">f"pH {ph1:.2f} exceeds safe max"</span>
+    
+    growth = self.twin.predict_growth_rate(
+        state, I0=env[<span class="str">"light"</span>], T=env[<span class="str">"temp"</span>],
+        pH=ph1, DO=env[<span class="str">"do"</span>])
+    
+    <span class="kw">if not</span> math.isfinite(growth):
+        <span class="kw">return</span> <span class="str">False</span>, <span class="str">"NaN growth; blocking"</span>
+    
+    <span class="kw">return</span> (growth >= self.threshold), <span class="str">"approved"</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tab-panel" id="act-detail">
+        <div class="grid grid-2">
+          <div>
+            <h4 style="color:var(--teal);margin-bottom:12px">MQTT → GPIO → Actuator, Then Record Outcome</h4>
+            <p style="color:var(--ink2);font-size:.95rem">Approved commands are published to <code style="font-family:var(--mono);color:var(--teal)">gaon/pbr/{id}/command</code> over MQTT. The Pi's <code style="font-family:var(--mono);color:var(--amber)">mqtt_client.py</code> subscriber receives it, passes it through a final hardware-side validation, and activates the corresponding GPIO pin — triggering the pump, adjusting the LED PWM, or switching the heater relay.</p>
+            <p style="color:var(--muted);font-size:.88rem;margin-top:12px"><strong>CRITICAL:</strong> The outcome is only stored <em>after</em> the action has been executed and its effects measured. MAIN never learns from proposals that were never tested. The <code style="font-family:var(--mono);color:var(--teal)">record_outcome()</code> method enforces this — it will refuse to store an experiment with no outcome data.</p>
+            <div class="decision-log" style="margin-top:16px">
+              <div class="log-entry"><span class="log-time">14:32 UTC</span><span class="log-action">PUMP_NUTRIENT 12.5mL</span><span class="log-status approved">APPROVED</span></div>
+              <div class="log-entry"><span class="log-time">13:00 UTC</span><span class="log-action">ADD_BICARBONATE 2.0g</span><span class="log-status approved">APPROVED</span></div>
+              <div class="log-entry"><span class="log-time">11:30 UTC</span><span class="log-action">ADJUST_LIGHT 180→250</span><span class="log-status blocked">BLOCKED</span></div>
+              <div class="log-entry"><span class="log-time">10:00 UTC</span><span class="log-action">NO_ACTION</span><span class="log-status approved">APPROVED</span></div>
+            </div>
+          </div>
+          <div class="code-block">
+<span class="cm"># main_ai_loop.py — the closed-loop cycle</span>
+<span class="kw">def</span> <span class="fn">run_cycle</span>(config, twin, agent, safety, memory):
+    telemetry = mqtt.receive_telemetry()
+    state, env = twin.build_state(telemetry)
+    twin_pred = twin.predict(state, env)
+    
+    <span class="cm"># AI proposes</span>
+    decision = agent.propose(telemetry, twin_pred, memory)
+    
+    <span class="cm"># Safety validates</span>
+    approved, reason = safety.validate_with_simulation(
+        decision, state, env)
+    
+    <span class="kw">if</span> approved:
+        mqtt.publish_command(decision)
+        
+    <span class="cm"># ONLY store after outcome is measured</span>
+    <span class="kw">if</span> outcome_measured:
+        memory.store_experiment(
+            proposal=decision,
+            sensor_context=telemetry,
+            outcome=measured_outcome)
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SAFETY GATE DEEP DIVE ===== -->
+<section class="band" id="safety" style="padding-top:0">
+  <div class="shell">
+    <div class="sec-head rv">
+      <div class="kicker">Safety Architecture</div>
+      <h2>The Safety Gate — Why MAIN Fails Closed</h2>
+      <p>Every AI proposal passes through two independent validation layers before a single actuator moves. There is no backdoor — the AI cannot bypass these gates, and both must return "approved" for any action to proceed. Below that sits a physical emergency stop on GPIO15 that cuts all actuators with a single press.</p>
+    </div>
+
+    <div class="grid grid-3 rv d1">
+      <div class="acard">
+        <div class="meta"><span>Layer 1</span></div>
+        <h3>Hard Limits</h3>
+        <p class="dek">Deterministic bounds checks in <code style="font-family:var(--mono);color:var(--teal);font-size:.85rem">safety/controller_validator.py</code>. Runtime in microseconds. No network, no AI. Every value must be finite and within configurable bounds.</p>
+        <ul style="color:var(--muted);font-size:.85rem;padding-left:16px;margin-top:8px">
+          <li>pH: 8.5–10.5</li><li>Temp: 20–35°C</li>
+          <li>Nutrient pulse: ≤ 20mL</li><li>Bicarbonate: ≤ 5g</li>
+          <li>Light: 100–400 µE/m²/s</li><li>Clean cycle: ≤ 120s</li>
+          <li>Unknown actions: rejected</li>
+        </ul>
+      </div>
+      <div class="acard">
+        <div class="meta"><span>Layer 2</span></div>
+        <h3>Twin Simulation</h3>
+        <p class="dek">24-hour forward simulation of the proposed action. If the predicted growth rate drops below threshold, or any state value becomes non-finite, the action is rejected.</p>
+        <ul style="color:var(--muted);font-size:.85rem;padding-left:16px;margin-top:8px">
+          <li>Simulates pH shift from dose</li>
+          <li>Forecasts 24h growth trajectory</li>
+          <li>Checks nutrient drawdown</li>
+          <li>NaN/Inf guard: blocks on non-finite</li>
+          <li>Fail-closed: reject on uncertainty</li>
+        </ul>
+      </div>
+      <div class="acard">
+        <div class="meta"><span>Layer 3</span></div>
+        <h3>Physical E-Stop</h3>
+        <p class="dek">GPIO15 on the Pi. Active-low with pull-up. Press the button, and all actuator GPIO pins drop. Independent of software — runs even if the Python interpreter has crashed.</p>
+        <ul style="color:var(--muted);font-size:.85rem;padding-left:16px;margin-top:8px">
+          <li>Hardware interrupt (GPIO15)</li>
+          <li>Cuts all pumps, lights, heaters</li>
+          <li>Works with dead CPU</li>
+          <li>Latched: requires RESUME command</li>
+          <li>Dashboard STOP_ALL button</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="arch-diagram rv d2" style="margin-top:30px">
+      <div class="arch-row">
+        <div class="arch-box teal">AI Proposal</div>
+      </div>
+      <div class="arch-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>↓</div>
+      <div class="arch-row">
+        <div class="arch-box blue">Hard Limit Check</div>
+        <span style="color:var(--muted);font-family:var(--mono);font-size:.7rem">→</span>
+        <div class="arch-box amber">Twin Simulation</div>
+      </div>
+      <div class="arch-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>↓</div>
+      <div class="arch-row">
+        <div class="arch-box teal" style="border-color:var(--teal);padding:16px 28px">APPROVED → MQTT Command</div>
+        <span style="color:var(--red);font-family:var(--mono);font-size:.62rem">or</span>
+        <div class="arch-box red" style="border-color:var(--red);padding:16px 28px">REJECTED → Logged</div>
+      </div>
+      <div class="arch-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>↓</div>
+      <div class="arch-row">
+        <div class="arch-box red" style="padding:14px 24px">Physical E-Stop (GPIO15)<br><span style="font-size:.54rem;color:var(--muted)">Independent backstop — cuts all actuators</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CHROMADB MEMORY ===== -->
+<section class="band" id="memory" style="padding-top:0">
+  <div class="shell">
+    <div class="sec-head rv">
+      <div class="kicker">Memory System</div>
+      <h2>ChromaDB: How MAIN Learns from Every Experiment</h2>
+      <p>Every validated experiment — the sensor snapshot, the proposal, and the measured outcome — is embedded and stored in ChromaDB. When the AI brain generates its next proposal, it retrieves similar past experiments for grounding context. It doesn't just guess; it remembers what worked.</p>
+    </div>
+
+    <div class="grid grid-2 rv d1">
+      <div class="memory-section">
+        <div class="inst-cap"><span>ChromaDB · Vector Store</span><span class="live"><span class="d"></span> Sentence-Transformers embeddings</span></div>
+        <p style="color:var(--ink2);font-size:.88rem">Each experiment is flattened to natural language, embedded with <code style="font-family:var(--mono);color:var(--teal)">all-MiniLM-L6-v2</code>, and stored in a persistent ChromaDB collection. Retrieval uses cosine similarity on the embedding space — the model finds experiments that are <em>meaningfully</em> similar, not just keyword-matched.</p>
+        <div class="memory-nodes">
+          <div class="memory-node">PUMP_NUTRIENT 12.5mL <span class="mem-delta">+0.08 g/L</span></div>
+          <div class="memory-node">ADD_BICARBONATE 2.0g <span class="mem-delta">+0.05 g/L</span></div>
+          <div class="memory-node">ADJUST_LIGHT 180µE <span class="mem-delta">+0.14 g/L</span></div>
+          <div class="memory-node">PUMP_NUTRIENT 15mL <span class="mem-delta">+0.12 g/L</span></div>
+          <div class="memory-node">HARVEST 45s <span class="mem-delta">-0.15 g/L</span></div>
+          <div class="memory-node">NO_ACTION <span class="mem-delta">+0.01 g/L</span></div>
+        </div>
+        <p style="color:var(--muted);font-size:.72rem;margin-top:12px">When ChromaDB is unavailable (e.g. on a Pi Zero 2W), falls back to keyword-scored JSONL retrieval automatically.</p>
+      </div>
+      <div class="code-block">
+<span class="cm"># memory.py — store & retrieve</span>
+<span class="kw">def</span> <span class="fn">store_experiment</span>(proposal, sensor_context, outcome):
+    text = _experiment_to_text(proposal, sensor_context, outcome)
+    embedding = embedder.encode(text)
+    collection.add(
+        ids=[uuid4()],
+        embeddings=[embedding],
+        documents=[text],
+        metadatas=[{
+            <span class="str">"action"</span>: proposal.action,
+            <span class="str">"value"</span>: proposal.value,
+            <span class="str">"actual_result"</span>: outcome.biomass_delta_g_l,
+            <span class="str">"validated"</span>: <span class="str">True</span>,
+        }])
+
+<span class="kw">def</span> <span class="fn">retrieve_similar</span>(proposal, n=<span class="num">3</span>):
+    query_embedding = embedder.encode(query_text)
+    results = collection.query(
+        query_embeddings=[query_embedding], n_results=n)
+    <span class="kw">return</span> format_for_prompt(results)
+          </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PHYCONET: FEDERATED LEARNING ===== -->
+<section class="band" id="phynonet" style="padding-top:0">
+  <div class="shell">
+    <div class="sec-head rv">
+      <div class="kicker">Federated Learning</div>
+      <h2>PhycoNet: Reactors That Learn from Each Other</h2>
+      <p>Every 12 hours, each reactor shares its calibrated twin parameters — μ<sub>max</sub>, I<sub>opt</sub>, Q₀, and response curve parameters — via MQTT. An aggregator computes a weighted average by reactor performance. The improved global model is redistributed. No raw culture data ever leaves a reactor. The network converges on a strain's productive regime faster than any single reactor could alone.</p>
+    </div>
+
+    <div class="grid grid-2 rv d1">
+      <div class="fed-map" id="fedMap">
+        <div class="node" style="left:18%;top:28%"></div>
+        <div class="node" style="left:74%;top:18%"></div>
+        <div class="node" style="left:82%;top:62%"></div>
+        <div class="node" style="left:22%;top:68%"></div>
+        <div class="node central"></div>
+        <div class="line" style="left:18%;top:28%;width:32%;transform:rotate(-8deg)"></div>
+        <div class="line" style="left:74%;top:18%;width:26%;transform:rotate(28deg)"></div>
+        <div class="line" style="left:82%;top:62%;width:33%;transform:rotate(-160deg)"></div>
+        <div class="line" style="left:22%;top:68%;width:28%;transform:rotate(120deg)"></div>
+        <span class="fed-label" style="left:8%;top:22%">PBR-BR</span>
+        <span class="fed-label" style="left:78%;top:8%">PBR-JP</span>
+        <span class="fed-label" style="left:86%;top:56%">PBR-DE</span>
+        <span class="fed-label" style="left:6%;top:62%">PBR-US</span>
+        <span class="fed-label" style="left:46%;top:44%;color:var(--cyan);font-weight:600">Your PBR</span>
+      </div>
+      <div>
+        <div class="code-block" style="margin-bottom:16px">
+<span class="cm"># federated.py — share parameters, not data</span>
+<span class="kw">def</span> <span class="fn">share_twin_params</span>(twin_params, pbr_id):
+    payload = {
+        <span class="str">"pbr_id"</span>: pbr_id,
+        <span class="str">"params"</span>: {
+            <span class="str">"mu_max"</span>: twin_params.mu_max,
+            <span class="str">"I_opt"</span>: twin_params.I_opt,
+            <span class="str">"Q0"</span>: twin_params.Q0,
+            <span class="str">"performance"</span>: recent_growth_rate,
+        }}
+    mqtt.publish(<span class="str">"gaon/phyconet/params"</span>, payload)
+
+<span class="kw">def</span> <span class="fn">apply_global_model</span>(global_params):
+    <span class="cm"># Validate incoming params before applying</span>
+    <span class="kw">for</span> k,v <span class="kw">in</span> global_params.items():
+        <span class="kw">if not</span> math.isfinite(v):
+            <span class="kw">continue</span>  <span class="cm"># reject non-finite values</span>
+        setattr(self.twin, k, v)
+        </div>
+        <h4 style="color:var(--teal);margin:16px 0 8px">What PhycoNet Shares</h4>
+        <div class="readout-grid">
+          <div class="readout-cell"><div class="lab">μ<sub>max</sub></div><div class="val">0.048<span style="font-size:.65rem;color:var(--muted)">hr⁻¹</span></div></div>
+          <div class="readout-cell"><div class="lab">I<sub>opt</sub></div><div class="val">220<span style="font-size:.65rem;color:var(--muted)">µE/m²/s</span></div></div>
+          <div class="readout-cell"><div class="lab">Q₀</div><div class="val">3.2<span style="font-size:.65rem;color:var(--muted)">fmol/cell</span></div></div>
+          <div class="readout-cell"><div class="lab">T<sub>opt</sub></div><div class="val">35<span style="font-size:.65rem;color:var(--muted)">°C</span></div></div>
+          <div class="readout-cell"><div class="lab">pH<sub>opt</sub></div><div class="val">9.5</div></div>
+          <div class="readout-cell"><div class="lab">Perf</div><div class="val">0.022<span style="font-size:.65rem;color:var(--muted)">/hr</span></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== DATA FLOW ARCHITECTURE ===== -->
+<section class="band" id="data-flow" style="padding-top:0">
+  <div class="shell">
+    <div class="sec-head rv">
+      <div class="kicker">Data Flow</div>
+      <h2>The Complete Data Flow: Every Packet's Journey</h2>
+      <p>From the MCP3008 ADC to the MQTT broker to the AI brain to the GPIO pin — here is every subsystem and the data that flows between them.</p>
+    </div>
+
+    <!-- Architecture Diagram -->
+    <div class="arch-diagram rv d1">
+      <div class="arch-row">
+        <div class="arch-box teal">6 Sensors<br><span style="font-size:.54rem;color:var(--muted)">ADC + I2C + OneWire</span></div>
+        <span style="color:var(--teal);font-family:var(--mono);font-size:.8rem">→</span>
+        <div class="arch-box blue">hardware_driver.py<br><span style="font-size:.54rem;color:var(--muted)">Read + calibrate every 60s</span></div>
+        <span style="color:var(--teal);font-family:var(--mono);font-size:.8rem">→</span>
+        <div class="arch-box amber">data/telemetry.csv<br><span style="font-size:.54rem;color:var(--muted)">Persistent storage</span></div>
+      </div>
+      <div class="arch-row">
+        <div class="arch-box teal">MQTT Broker<br><span style="font-size:.54rem;color:var(--muted)">gaon/pbr/{id}/telemetry</span></div>
+        <span style="color:var(--teal);font-family:var(--mono);font-size:.8rem">⇄</span>
+        <div class="arch-box purple">mqtt_listener.py<br><span style="font-size:.54rem;color:var(--muted)">Persist + forward</span></div>
+        <span style="color:var(--teal);font-family:var(--mono);font-size:.8rem">→</span>
+        <div class="arch-box blue">Streamlit Dashboard<br><span style="font-size:.54rem;color:var(--muted)">:8501 live charts</span></div>
+      </div>
+      <div class="arch-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>Every 30 min (AI cycle)</div>
+      <div class="arch-row">
+        <div class="arch-box purple">Digital Twin<br><span style="font-size:.54rem;color:var(--muted)">24h forecast</span></div>
+        <span style="color:var(--teal);font-family:var(--mono);font-size:.8rem">→</span>
+        <div class="arch-box teal">AI Brain<br><span style="font-size:.54rem;color:var(--muted)">Gemini + Groq + ChromaDB</span></div>
+        <span style="color:var(--teal);font-family:var(--mono);font-size:.8rem">→</span>
+        <div class="arch-box amber">Safety Gate<br><span style="font-size:.54rem;color:var(--muted)">Hard limits + sim</span></div>
+        <span style="color:var(--teal);font-family:var(--mono);font-size:.8rem">→</span>
+        <div class="arch-box blue">MQTT Command<br><span style="font-size:.54rem;color:var(--muted)">gaon/pbr/{id}/command</span></div>
+      </div>
+      <div class="arch-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>Actuator execution</div>
+      <div class="arch-row">
+        <div class="arch-box teal">GPIO Pins<br><span style="font-size:.54rem;color:var(--muted)">Pump / Light / Heater</span></div>
+        <span style="color:var(--teal);font-family:var(--mono);font-size:.8rem">→</span>
+        <div class="arch-box purple">ChromaDB<br><span style="font-size:.54rem;color:var(--muted)">Store outcome</span></div>
+        <span style="color:var(--teal);font-family:var(--mono);font-size:.8rem">→</span>
+        <div class="arch-box amber">PhycoNet<br><span style="font-size:.54rem;color:var(--muted)">Share params /12h</span></div>
+      </div>
+      <div class="arch-row">
+        <div class="arch-box red">GPIO15 E-Stop<br><span style="font-size:.54rem;color:var(--muted)">Independent backstop</span></div>
+      </div>
+    </div>
+
+    <!-- MQTT topic ref + timing table -->
+    <div class="grid grid-2 rv d2" style="margin-top:34px">
+      <div>
+        <h4 style="color:var(--teal);margin-bottom:12px">MQTT Topic Reference</h4>
+        <table class="data-table">
+          <thead><tr><th>Topic</th><th>Direction</th><th>Purpose</th></tr></thead>
+          <tbody>
+            <tr><td>gaon/pbr/{id}/telemetry</td><td>Pi → Broker</td><td>Sensor readings every 60s</td></tr>
+            <tr><td>gaon/pbr/{id}/command</td><td>Laptop → Pi</td><td>AI commands to actuators</td></tr>
+            <tr><td>gaon/pbr/{id}/command_ack</td><td>Pi → Laptop</td><td>Execution confirmations</td></tr>
+            <tr><td>gaon/pbr/{id}/vision</td><td>Pi → Broker</td><td>ESP32-CAM images</td></tr>
+            <tr><td>gaon/pbr/{id}/heartbeat</td><td>Pi → Broker</td><td>Liveness signal</td></tr>
+            <tr><td>gaon/phyconet/params</td><td>Pi → Broker</td><td>Twin parameters /12h</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div>
+        <h4 style="color:var(--teal);margin-bottom:12px">Operation Cycle Timing</h4>
+        <table class="data-table">
+          <thead><tr><th>Interval</th><th>What Runs</th></tr></thead>
+          <tbody>
+            <tr><td>Every 60s</td><td>Sensor read + CSV log + MQTT publish + OLED update + e-stop check</td></tr>
+            <tr><td>Every 6h</td><td>Twin calibration — fits parameters to observed growth history</td></tr>
+            <tr><td>Every 30 min</td><td>AI decision cycle — sense → predict → propose → validate → act</td></tr>
+            <tr><td>Every 12h</td><td>PhycoNet parameter sharing + global model merge</td></tr>
+            <tr><td>Every 24h</td><td>ChromaDB memory consolidation + long-duration outcome recording</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== BOOT & CONNECTIVITY ===== -->
+<section class="band" id="boot" style="padding-top:0">
+  <div class="shell">
+    <div class="sec-head rv">
+      <div class="kicker">Boot Process &amp; Connectivity</div>
+      <h2>From Power-On to Autonomous Operation</h2>
+      <p>How the Pi Zero 2W boots, creates its setup hotspot, connects to your phone for configuration, and establishes dual-network operation — all before the first sensor is read.</p>
+    </div>
+
+    <div class="grid grid-2 rv d1">
+      <div>
+        <h4 style="color:var(--teal);margin-bottom:16px">Boot Sequence</h4>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="time">T+0s</div>
+            <h4>Power On</h4>
+            <p>Pi Zero 2W boots from SD card. No config.json exists → enters setup mode.</p>
+          </div>
+          <div class="timeline-item">
+            <div class="time">T+5s</div>
+            <h4>Setup Hotspot Created</h4>
+            <p>Creates open Wi-Fi network <code style="font-family:var(--mono);color:var(--teal)">MAIN-Setup-XXXX</code>. Captive portal launches on port 80.</p>
+          </div>
+          <div class="timeline-item">
+            <div class="time">T+30s</div>
+            <h4>Phone Connects</h4>
+            <p>User joins hotspot → captive portal shows setup form: strain, goal, medium, PBR volume, Wi-Fi credentials.</p>
+          </div>
+          <div class="timeline-item">
+            <div class="time">T+60s</div>
+            <h4>Config Saved</h4>
+            <p>User taps "Save & Connect" → <code style="font-family:var(--mono);color:var(--amber)">config.json</code> written to SD card → Pi reboots.</p>
+          </div>
+          <div class="timeline-item">
+            <div class="time">T+90s</div>
+            <h4>Dual Network Active</h4>
+            <p>Creates WPA2-protected <code style="font-family:var(--mono);color:var(--teal)">MAIN-Regular</code> hotspot for the dashboard. Simultaneously connects to home Wi-Fi (if credentials provided). Sensor loop begins.</p>
+          </div>
+          <div class="timeline-item">
+            <div class="time">T+120s</div>
+            <h4>Full Autonomy</h4>
+            <p>Dashboard available at <code style="font-family:var(--mono);color:var(--cyan)">http://192.168.4.1:8501</code>. MQTT connected (if online). AI brain ready for first cycle. Culture is under autonomous management.</p>
+          </div>
+        </div>
+      </div>
+      <div>
+        <h4 style="color:var(--teal);margin-bottom:16px">Dual-Network Architecture</h4>
+        <div class="arch-diagram" style="padding:20px">
+          <div class="arch-row" style="flex-direction:column;align-items:stretch">
+            <div class="arch-box teal" style="text-align:left">
+              <strong>wlan0_ap</strong> — Hotspot<br>
+              <span style="font-size:.56rem;color:var(--muted)">SSID: MAIN-Regular<br>Only dashboard traffic (phone ↔ Pi)<br>http://192.168.4.1:8501<br>Always available, zero internet required</span>
+            </div>
+            <div style="text-align:center;color:var(--muted);font-family:var(--mono);font-size:.6rem;padding:8px 0">↕</div>
+            <div class="arch-box blue" style="text-align:left">
+              <strong>wlan0</strong> — Home Wi-Fi Client<br>
+              <span style="font-size:.56rem;color:var(--muted)">Connects to your router → internet<br>MQTT to cloud broker on this path<br>AI cloud models (Gemini/Groq) via this<br>Optional — works fully offline without it</span>
+            </div>
+          </div>
+          <div style="margin-top:16px;padding:14px;border:1px solid var(--line);border-radius:12px">
+            <span style="font-family:var(--mono);font-size:.62rem;letter-spacing:.12em;color:var(--teal)">OFFLINE MODE</span>
+            <p style="color:var(--muted);font-size:.8rem;margin-top:6px">When home Wi-Fi is unavailable, MAIN runs fully offline: telemetry stays local on CSV, the local AI fallback (heuristic rules or Ollama) generates proposals, and the dashboard over the hotspot works perfectly. No internet means no cloud AI — but the culture stays managed. When connectivity returns, buffered telemetry flushes and the cloud brain resumes.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sensor ↔ GPIO pin mapping -->
+    <div class="rv d2" style="margin-top:34px">
+      <h4 style="color:var(--teal);margin-bottom:12px">Hardware Pin Map — Pi Zero 2W</h4>
+      <div class="grid grid-3">
+        <table class="data-table">
+          <thead><tr><th colspan="2">Sensors</th></tr></thead>
+          <tbody>
+            <tr><td>pH Probe</td><td>MCP3008 CH0 (SPI)</td></tr>
+            <tr><td>Temperature</td><td>DS18B20 GPIO4 (OneWire)</td></tr>
+            <tr><td>Light</td><td>BH1750 I2C (SDA2, SCL3)</td></tr>
+            <tr><td>Turbidity/OD</td><td>TSD-10 MCP3008 CH1 (SPI)</td></tr>
+            <tr><td>Dissolved O₂</td><td>MCP3008 CH3 (SPI or I2C)</td></tr>
+            <tr><td>TDS/Salinity</td><td>MCP3008 CH2 (SPI)</td></tr>
+          </tbody>
+        </table>
+        <table class="data-table">
+          <thead><tr><th colspan="2">Actuators</th></tr></thead>
+          <tbody>
+            <tr><td>Pump 1 (Bicarbonate)</td><td>GPIO17</td></tr>
+            <tr><td>Pump 2 (Nutrient)</td><td>GPIO27</td></tr>
+            <tr><td>Pump 3 (Cleaning)</td><td>GPIO22</td></tr>
+            <tr><td>Pump 4 (Inoculation)</td><td>GPIO26</td></tr>
+            <tr><td>Pump 5 (Air)</td><td>GPIO25</td></tr>
+            <tr><td>Heater Relay</td><td>GPIO23</td></tr>
+          </tbody>
+        </table>
+        <table class="data-table">
+          <thead><tr><th colspan="2">Lighting &amp; Safety</th></tr></thead>
+          <tbody>
+            <tr><td>LED Red Channel</td><td>GPIO12 (PWM)</td></tr>
+            <tr><td>LED Green Channel</td><td>GPIO13 (PWM)</td></tr>
+            <tr><td>LED Blue Channel</td><td>GPIO18 (PWM)</td></tr>
+            <tr><td>Emergency Stop</td><td>GPIO15 (active-low)</td></tr>
+            <tr><td>MCP3008 CS</td><td>GPIO8 (SPI CE0)</td></tr>
+            <tr><td>OLED Display</td><td>I2C (shared bus)</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== HOW THE AI SEES THE CULTURE ===== -->
+<section class="band" style="padding-top:0">
+  <div class="shell">
+    <div class="sec-head rv">
+      <div class="kicker">Inside the Prompt</div>
+      <h2>What the AI Brain Actually Sees</h2>
+      <p>When the brain wakes up for its decision cycle, this is the prompt it receives — the sensor snapshot, the twin's forecast, and the memory of what worked before.</p>
+    </div>
+
+    <div class="code-block rv d1" style="max-width:760px;margin:0 auto">
+<span style="color:var(--teal)">Current goal:</span> maximise lipids
+<span style="color:var(--muted)">────────────────────────────────</span>
+<span style="color:var(--amber)">Sensor snapshot (right now):</span>
+  pH: <span class="num">7.8</span>
+  Temperature: <span class="num">27.3</span> °C
+  Light: <span class="num">215</span> µE/m²/s
+  Optical Density (OD): <span class="num">0.72</span>
+  TDS: <span class="num">412</span> ppm
+  Dissolved oxygen: <span class="num">5.8</span> mg/L
+<span style="color:var(--muted)">────────────────────────────────</span>
+<span style="color:var(--purple)">Digital twin 24-hour prediction:</span>
+  If we do nothing, in 24 hours:
+    OD will be <span class="num">0.81</span>
+    Growth rate will be <span class="num">0.015</span> h⁻¹
+    Nitrogen will drop to <span class="num">12</span> mg/L (low)
+    Lipid accumulation likely to begin in ~<span class="num">18</span> hours
+<span style="color:var(--muted)">────────────────────────────────</span>
+<span style="color:var(--blue)">Memory (similar past experiments):</span>
+  1. Added <span class="num">3</span> mL nutrient at OD <span class="num">0.7</span> → lipid yield +<span class="num">22%</span>
+  2. pH crash at nitrogen &lt; <span class="num">10</span> mg/L in similar PBR
+  3. Light increased to <span class="num">250</span> µE → +<span class="num">0.008</span>/hr growth
+<span style="color:var(--muted)">────────────────────────────────</span>
+<span style="color:var(--teal)">Expected response (JSON only):</span>
+{
+  <span class="str">"action"</span>: <span class="str">"PUMP_NUTRIENT"</span>,
+  <span class="str">"value"</span>: <span class="num">3.5</span>,
+  <span class="str">"reason"</span>: <span class="str">"Twin predicts nitrogen limitation 
+   in 12h. A small pulse now will sustain growth 
+   and increase total lipid yield before 
+   stress-induced accumulation."</span>
+}
+    </div>
+  </div>
+</section>
+
+<!-- ===== KEY TECHNICAL MODULES ===== -->
+<section class="band" style="padding-top:0">
+  <div class="shell">
+    <div class="sec-head rv center">
+      <div class="kicker">Software Architecture</div>
+      <h2>Every Module, What It Does</h2>
+      <p>The Python modules that make MAIN work — from the sensor driver to the federated network.</p>
+    </div>
+
+    <div class="grid grid-3 rv d1">
+      <div class="acard">
+        <div class="meta"><span>main.py</span></div>
+        <h3>System Controller</h3>
+        <p class="dek">Orchestrates the sensor loop. Reads all sensors every 60 seconds, updates the OLED, publishes MQTT telemetry, checks the emergency stop, and manages the main execution thread. The heartbeat of the entire Pi side.</p>
+      </div>
+      <div class="acard">
+        <div class="meta"><span>hardware_driver.py</span></div>
+        <h3>Hardware Abstraction</h3>
+        <p class="dek">Wraps all GPIO, ADC, I2C, and OneWire interactions. Provides a clean <code style="font-family:var(--mono);color:var(--teal)">read_all_sensors()</code> API so the rest of the system never touches raw pins. Handles calibration, noise filtering, and sensor health monitoring.</p>
+      </div>
+      <div class="acard">
+        <div class="meta"><span>digital_twin.py</span></div>
+        <h3>AlgaeTwin</h3>
+        <p class="dek">Droop + Steele + Beer-Lambert ODE system. <code style="font-family:var(--mono);color:var(--teal)">simulate()</code> for 24h forecasts, <code style="font-family:var(--mono);color:var(--teal)">predict_growth_rate()</code> for instant checks, <code style="font-family:var(--mono);color:var(--teal)">fit_to_data()</code> for self-calibration. NaN-guarded at every boundary.</p>
+      </div>
+      <div class="acard">
+        <div class="meta"><span>ai/agent.py</span></div>
+        <h3>MAINAgent (LangGraph)</h3>
+        <p class="dek">Stateful AI workflow: builds the prompt, invokes the router (Gemini for reasoning, Groq for structured output), passes results to the decision synthesizer, and records outcomes back to ChromaDB. Guaranteed fallback to NO_ACTION on any failure.</p>
+      </div>
+      <div class="acard">
+        <div class="meta"><span>ai/router.py</span></div>
+        <h3>AIController</h3>
+        <p class="dek">Complexity-based provider routing. Gemini handles deep biological reasoning and multi-step optimization. Groq handles fast structured JSON and routine decisions. Both feed into a DecisionSynthesizer that produces the final ValidatedCommand.</p>
+      </div>
+      <div class="acard">
+        <div class="meta"><span>safety.py</span></div>
+        <h3>SafetyValidator</h3>
+        <p class="dek">Configurable SafetyLimits dataclass + two-layer validation. <code style="font-family:var(--mono);color:var(--teal)">validate_hard_limits()</code> checks bounds, <code style="font-family:var(--mono);color:var(--teal)">validate_with_simulation()</code> runs the twin. Unknown actions rejected. Non-finite values blocked. Always fails closed.</p>
+      </div>
+      <div class="acard">
+        <div class="meta"><span>memory.py</span></div>
+        <h3>ChromaMemory</h3>
+        <p class="dek">ChromaDB-backed with Sentence-Transformer embeddings. Stores every validated experiment. <code style="font-family:var(--mono);color:var(--teal)">retrieve_similar()</code> uses cosine similarity. Falls back to keyword-scored JSONL on constrained hardware. Deduplicates entries.</p>
+      </div>
+      <div class="acard">
+        <div class="meta"><span>federated.py</span></div>
+        <h3>PhycoNet</h3>
+        <p class="dek">Shares calibrated twin parameters via MQTT every 12 hours. Receives global model updates. Applies weighted averaging. Validates all incoming parameters for finiteness and bounds before touching the live twin. Never shares raw data.</p>
+      </div>
+      <div class="acard">
+        <div class="meta"><span>mqtt_client.py</span></div>
+        <h3>MQTT Communication</h3>
+        <p class="dek">Handles all broker communication. Paho MQTT client with automatic reconnect, offline buffering, TLS support, and username/password auth. Subscribes to command topics; publishes telemetry, acks, and heartbeats.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="shell">
+    <div class="footer-grid">
+      <div>
+        <a class="wm" href="#"><svg viewBox="0 0 22 34" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M11 1 q7 5 -3 8 q-10 3 3 8 q10 5 -3 8 q-7 3 3 7"/></svg><span><b>MAIN</b><small>How It Works</small></span></a>
+        <p>An open-source autonomous photobioreactor — AI pipeline, digital twin, safety gate, ChromaDB memory, and federated learning — all running on a Pi Zero 2W. Built in the open.</p>
+      </div>
+      <div class="col"><h5>Sections</h5>
+        <a href="#overview">System Overview</a><a href="#ai-pipeline">AI Pipeline</a><a href="#safety">Safety Gate</a><a href="#memory">ChromaDB Memory</a></div>
+      <div class="col"><h5>More</h5>
+        <a href="#phynonet">PhycoNet</a><a href="#data-flow">Data Flow</a><a href="#boot">Boot &amp; Connect</a></div>
+      <div class="col"><h5>Project</h5>
+        <a href="https://github.com">GitHub (coming soon)</a></div>
+    </div>
+    <div class="foot-bar">
+      <span>MAIN · Microalgae Artificial Intelligence Network · Educational · Open-source</span>
+      <span>Raspberry Pi Zero 2W · Python · ChromaDB · MQTT · LangGraph</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ===== Ambient Canvas — drifting Spirulina filaments ===== */
+(function () {
+  "use strict";
+  var c = document.getElementById("ambient");
+  if (!c) return;
+  var ctx = c.getContext("2d");
+  if (!ctx) return;
+  var reduce = (window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches) || (navigator.connection && navigator.connection.saveData);
+  var DPR = Math.min(window.devicePixelRatio || 1, 1.6);
+  var W=0, H=0;
+  function resize(){ DPR=Math.min(window.devicePixelRatio||1,1.6); W=window.innerWidth; H=window.innerHeight; c.width=Math.floor(W*DPR); c.height=Math.floor(H*DPR); ctx.setTransform(DPR,0,0,DPR,0,0); }
+  window.addEventListener("resize",resize,{passive:true}); resize();
+
+  var COL=[51,230,173]; var N=W<720?12:22;
+  var strands=[];
+  function rnd(i,s){var x=Math.sin(i*12.9898+s*78.233)*43758.5453;return x-Math.floor(x);}
+  for(var i=0;i<N;i++){strands.push({x:rnd(i,1)*W,y:rnd(i,2)*H,len:160+rnd(i,3)*300,amp:10+rnd(i,4)*26,freq:.03+rnd(i,5)*.05,phase:rnd(i,6)*6.28,vy:(rnd(i,7)-.5)*.24,vx:(rnd(i,8)-.5)*.14,rot:(rnd(i,9)-.5)*.6,sp:.004+rnd(i,10)*.006,a:.12+rnd(i,11)*.24,sc:.8+rnd(i,12)*1});}
+  var cells=[];
+  for(var j=0;j<(W<720?22:46);j++){cells.push({x:rnd(j,21)*W,y:rnd(j,22)*H,r:1.4+rnd(j,23)*4,vy:(rnd(j,24)-.5)*.2,vx:(rnd(j,25)-.5)*.12,a:.08+rnd(j,26)*.2});}
+
+  function drawStrand(s,t){
+    var beads=Math.max(8,Math.floor(s.len/12)); ctx.save(); ctx.translate(s.x,s.y); ctx.rotate(s.rot); ctx.beginPath();
+    for(var k=0;k<=beads;k++){var px=(k/beads-.5)*s.len,py=Math.sin(k*s.freq*12+s.phase+t*s.sp*60)*s.amp;if(k===0)ctx.moveTo(px,py);else ctx.lineTo(px,py);}
+    ctx.strokeStyle="rgba("+COL[0]+","+COL[1]+","+COL[2]+","+s.a+")"; ctx.lineWidth=1.9*s.sc; ctx.lineCap="round"; ctx.stroke();
+    for(var b=0;b<=beads;b+=2){var bx=(b/beads-.5)*s.len,by=Math.sin(b*s.freq*12+s.phase+t*s.sp*60)*s.amp;ctx.beginPath();ctx.arc(bx,by,2.1*s.sc,0,6.283);ctx.fillStyle="rgba("+COL+","+(s.a*1.5)+")";ctx.fill();}
+    ctx.restore();
+  }
+
+  var running=true,hidden=false; document.addEventListener("visibilitychange",function(){hidden=document.hidden});
+  function frame(now){if(!running)return;requestAnimationFrame(frame);if(hidden)return;var t=(now||0)/1000;ctx.clearRect(0,0,W,H);ctx.globalCompositeOperation="lighter";
+    for(var i=0;i<strands.length;i++){var s=strands[i];s.y+=s.vy;s.x+=s.vx;s.phase+=s.sp;if(s.y<-160)s.y=H+160;if(s.y>H+160)s.y=-160;if(s.x<-300)s.x=W+300;if(s.x>W+300)s.x=-300;drawStrand(s,t);}
+    for(var j=0;j<cells.length;j++){var cc=cells[j];cc.y+=cc.vy;cc.x+=cc.vx;if(cc.y<-10)cc.y=H+10;if(cc.y>H+10)cc.y=-10;if(cc.x<-10)cc.x=W+10;if(cc.x>W+10)cc.x=-10;ctx.beginPath();var g=ctx.createRadialGradient(cc.x,cc.y,0,cc.x,cc.y,cc.r*4);g.addColorStop(0,"rgba("+COL[0]+","+COL[1]+","+COL[2]+","+cc.a+")");g.addColorStop(1,"rgba("+COL[0]+","+COL[1]+","+COL[2]+",0)");ctx.fillStyle=g;ctx.arc(cc.x,cc.y,cc.r*4,0,6.283);ctx.fill();}
+    ctx.globalCompositeOperation="source-over";}
+  if(reduce){ctx.globalCompositeOperation="lighter";for(var i=0;i<strands.length;i++)drawStrand(strands[i],0);ctx.globalCompositeOperation="source-over";}
+  else requestAnimationFrame(frame);
+})();
+</script>
+
+<script>
+/* ===== Interactions ===== */
+(function () {
+  "use strict";
+  var root = document.documentElement; root.classList.add("js");
+  var reduce = (window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches);
+
+  /* veil */
+  (function(){var lit=false;function go(){if(lit)return;lit=true;var v=document.querySelector(".veil");if(v)setTimeout(function(){v.classList.add("done");},reduce?0:260);}
+  if(document.readyState!=="loading")setTimeout(go,reduce?0:100);else document.addEventListener("DOMContentLoaded",function(){setTimeout(go,reduce?0:100);});addEventListener("load",go);setTimeout(go,1600);})();
+
+  function ready(fn){document.readyState!=="loading"?fn():document.addEventListener("DOMContentLoaded",fn);}
+
+  ready(function(){
+    /* nav */
+    var nav = document.querySelector(".nav"), pbar = document.querySelector(".pbar");
+    var lastY=0,ticking=false,docH=1;
+    function measure(){docH=Math.max(1,root.scrollHeight-innerHeight);}
+    measure();addEventListener("resize",measure,{passive:true});
+    function onScroll(){
+      var y=scrollY||root.scrollTop;
+      if(pbar)pbar.style.width=(Math.min(y/docH,1)*100)+"%";
+      if(nav){if(y>40)nav.classList.add("solid");else nav.classList.remove("solid");if(y>260&&y>lastY+6)nav.classList.add("hide");else if(y<lastY-6||y<260)nav.classList.remove("hide");}
+      
+      lastY=y;ticking=false;
+    }
+    addEventListener("scroll",function(){if(!ticking){ticking=true;requestAnimationFrame(onScroll);}},{passive:true});onScroll();
+
+    if(nav){
+      var tg=nav.querySelector(".nav-toggle");
+      if(tg)tg.addEventListener("click",function(){var o=nav.classList.toggle("open");tg.setAttribute("aria-expanded",o);});
+      nav.querySelectorAll(".nav-links a").forEach(function(a){a.addEventListener("click",function(){nav.classList.remove("open");});});
+    }
+
+    /* reveal on scroll */
+    var io="IntersectionObserver"in window?new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){en.target.classList.add("in");io.unobserve(en.target);}});},{rootMargin:"0px 0px -8% 0px",threshold:0.16}):null;
+    document.querySelectorAll(".rv").forEach(function(el){io?io.observe(el):el.classList.add("in");});
+    setTimeout(function(){document.querySelectorAll(".rv:not(.in)").forEach(function(e){e.classList.add("in");});},3000);
+
+    /* sparkline animation on view */
+    document.querySelectorAll(".spark:not(.in)").forEach(function(s){
+      var so="IntersectionObserver"in window?new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){s.classList.add("in");so.unobserve(en.target);}});},{threshold:0.3}):null;
+      so?so.observe(s):s.classList.add("in");
+    });
+
+    /* e-stop button */
+    var estop=document.getElementById("estopBtn");
+    if(estop)estop.addEventListener("click",function(){estop.classList.toggle("pressed");if(estop.classList.contains("pressed")){estop.textContent='STOPPED';gaugeAlarm(true);}else{estop.textContent='STOP\nALL';estop.style.whiteSpace='pre-line';gaugeAlarm(false);}});
+    function gaugeAlarm(on){
+      document.querySelectorAll(".gauge").forEach(function(g){if(on)g.classList.add("alarm");else g.classList.remove("alarm");});
+    }
+
+    /* pipeline tab switching */
+    var tabs=document.querySelectorAll("#pipelineTabs button");
+    tabs.forEach(function(btn){
+      btn.addEventListener("click",function(){
+        tabs.forEach(function(b){b.classList.remove("active");});
+        btn.classList.add("active");
+        document.querySelectorAll(".tab-panel").forEach(function(p){p.classList.remove("active");});
+        var panel=document.getElementById(btn.getAttribute("data-panel"));
+        if(panel)panel.classList.add("active");
+      });
+    });
+
+    /* live gauge flicker */
+    if(!reduce){
+      (function(){
+        var gauges={ph:{val:9.2,jitter:.003},temp:{val:29.1,jitter:.01},light:{val:215,jitter:.02},od:{val:.46,jitter:.01},do:{val:7.4,jitter:.015},tds:{val:1340,jitter:.01}};
+        setInterval(function(){
+          if(document.hidden)return;
+          Object.keys(gauges).forEach(function(k){
+            var g=gauges[k],el=document.getElementById("val-"+k);
+            if(!el)return;
+            var j=g.val*(1+(Math.random()-.5)*2*g.jitter),dec=k==="light"||k==="tds"?0:(k==="od"?2:1);
+            el.textContent=j.toFixed(dec);
+          });
+        },1800);
+      })();
+    }
+  });
+})();
+</script>
+
+</body>
+</html>

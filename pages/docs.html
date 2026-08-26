@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Documentation â€” AlgaePhyte &amp; Mycophyte | Orr Biologicals</title>
+<meta name="description" content="Technical documentation for AlgaePhyte photobioreactors and Mycophyte grow chambers: hardware, wiring, firmware, MQTT, digital twin models, calibration, and simulation notes.">
+<link rel="canonical" href="https://orrbiologicals.com/docs">
+<meta property="og:type" content="article"><meta property="og:title" content="Documentation">
+<meta property="og:description" content="Hardware, wiring, firmware, MQTT topics, twin models and calibration for AlgaePhyte and Mycophyte."><meta property="og:url" content="https://orrbiologicals.com/docs">
+<meta property="og:site_name" content="Orr Biologicals"><meta property="og:image" content="https://orrbiologicals.com/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#04100e">
+<link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iOCIgZmlsbD0iIzA0MTAwZSIvPjxwYXRoIGQ9Ik0xNiA0IHE5IDYgLTQgMTAgcS0xMyA0IDQgMTAgcTkgNCAtMyA0IiBmaWxsPSJub25lIiBzdHJva2U9IiMzM2U2YWQiIHN0cm9rZS13aWR0aD0iMi4yIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz48Y2lyY2xlIGN4PSIxNiIgY3k9IjE2IiByPSIxLjYiIGZpbGw9IiM1N2YwZDYiLz48L3N2Zz4K">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../css/site.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "@id": "https://orrbiologicals.com/#org", "name": "Orr Biologicals", "url": "https://orrbiologicals.com", "logo": "https://orrbiologicals.com/assets/og.png"}</script>
+</head>
+<body class="phyto">
+<a class="skip" href="#main">Skip to content</a><div class="veil" aria-hidden="true"><svg class="veil-mark" viewBox="0 0 22 34" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" style="color:var(--teal)"><path d="M11 1 q7 5 -3 8 q-10 3 3 8 q10 5 -3 8 q-7 3 3 7"/></svg></div><canvas id="ambient" aria-hidden="true"></canvas><div class="pbar" aria-hidden="true"></div>
+<header class="nav"><div class="nav-in">
+  <a class="wm" href="../index.html" aria-label="Orr Biologicals â€” home"><svg viewBox="0 0 22 34" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M11 1 q7 5 -3 8 q-10 3 3 8 q10 5 -3 8 q-7 3 3 7"/></svg><span><b>Orr Biologicals</b><small>DOCS</small></span></a>
+  <nav class="nav-links" aria-label="Primary">
+    <a href="../index.html">AlgaePhyte</a>
+    <a href="mycophyte.html">Mycophyte</a>
+    <a href="how-it-works.html">How it works</a>
+    <a href="articles.html">Articles</a>
+    <a href="docs.html" style="color:var(--teal)">Docs</a>
+    <a class="btn btn-primary btn-sm" href="contact.html">Get in touch</a>
+  </nav>
+  <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false"><span></span></button>
+</div></header>
+<main id="main">
+<div class="docs-layout">
+  <nav class="docs-nav" aria-label="Documentation sections">
+    <h5>Docs</h5>
+    <a href="#getting-started">Getting started</a>
+    <a href="#bom">Hardware &amp; BOM</a>
+    <a href="#wiring">Wiring &amp; buses</a>
+    <a href="#firmware">Firmware</a>
+    <a href="#mqtt">MQTT topics</a>
+    <a href="#twin">Digital twin models</a>
+    <a href="#calibration">Calibration</a>
+    <a href="#simulations">Simulations</a>
+    <a href="#faq-link">FAQ &amp; troubleshooting</a>
+  </nav>
+  <div class="docs-body">
+    <h1>Documentation</h1>
+    <p class="dek">Everything needed to build, flash, wire, calibrate, and understand an AlgaePhyte reactor or a Mycophyte chamber â€” written down in the open, failures included.</p>
+
+    <h2 id="getting-started">Getting started</h2>
+    <p>Both platforms follow the same build order. Start with a bench setup on a breadboard, prove each sensor individually, then assemble the full enclosure.</p>
+    <ol style="padding-left:22px;color:var(--ink2)">
+      <li>Order the BOM for your platform (see below) and verify each part against the datasheet pinout.</li>
+      <li>Flash the reference firmware to the microcontroller with the default test configuration.</li>
+      <li>Connect one sensor at a time; the firmware's self-test prints each channel's readings over serial.</li>
+      <li>Run the loop with actuators on the bench for 48 hours before any culture or substrate is introduced.</li>
+      <li>Calibrate (see Calibration), then introduce the culture or spawn and watch the twin learn its baseline.</li>
+    </ol>
+    <div class="callout"><div class="h">Golden rule</div><p style="margin:0">Never let the AI control a culture before you can control it by hand. The failsafe is a backstop, not a beginner strategy.</p></div>
+
+    <h2 id="bom">Hardware &amp; BOM</h2>
+    <h3>Mycophyte chamber (hobbyist configuration, ~$298 target)</h3>
+    <table>
+      <tr><th>Item</th><th>Typical part</th><th>Bus</th><th>Approx.</th></tr>
+      <tr><td>Microcontroller</td><td>RP2040 board (Pico-class)</td><td>â€”</td><td>$9</td></tr>
+      <tr><td>AI accelerator (optional)</td><td>Coral-class USB TPU</td><td>USB</td><td>$25</td></tr>
+      <tr><td>Temp / humidity</td><td>SHT30-class</td><td>IÂ²C</td><td>$8</td></tr>
+      <tr><td>COâ‚‚</td><td>SCD40-class NDIR</td><td>IÂ²C</td><td>$40</td></tr>
+      <tr><td>Substrate moisture</td><td>Capacitive probe</td><td>ADC</td><td>$6</td></tr>
+      <tr><td>Camera</td><td>USB UVC camera</td><td>USB</td><td>$15</td></tr>
+      <tr><td>Actuation</td><td>Fans, mist pump, heater pad, LED strip</td><td>GPIOâ†’SSR</td><td>$60</td></tr>
+      <tr><td>Enclosure &amp; plumbing</td><td>Plastic tote + tubing</td><td>â€”</td><td>$55</td></tr>
+      <tr><td>Misc (PSU, relays, cables)</td><td>12 V PSU, SSRs, fuses</td><td>â€”</td><td>$80</td></tr>
+    </table>
+    <h3>AlgaePhyte reactor</h3>
+    <table>
+      <tr><th>Item</th><th>Typical part</th><th>Bus</th><th>Approx.</th></tr>
+      <tr><td>Controller</td><td>Raspberry Pi Zero 2 W</td><td>â€”</td><td>$15</td></tr>
+      <tr><td>pH electrode</td><td>Analog pH module</td><td>ADC</td><td>$20</td></tr>
+      <tr><td>Temp / light</td><td>DS18B20 + TSL-class</td><td>1-Wire / IÂ²C</td><td>$10</td></tr>
+      <tr><td>OD sensor</td><td>Photodiode pair (DIY)</td><td>ADC</td><td>$8</td></tr>
+      <tr><td>DO + TDS</td><td>Analog modules</td><td>ADC</td><td>$35</td></tr>
+      <tr><td>Pumps, air, heater</td><td>Peristaltic + air pump + pad</td><td>GPIOâ†’SSR</td><td>$45</td></tr>
+    </table>
+    <p class="muted" style="font-size:.85rem">Prices are typical 2026 hobbyist street prices in USD, used only to illustrate the cost target. Actual cost varies by region, supplier, and exchange rate. No supplier partnerships are implied.</p>
+
+    <h2 id="wiring">Wiring &amp; buses</h2>
+    <p>All sensors share a small set of buses so the firmware stays simple and testable:</p>
+    <table>
+      <tr><th>Bus</th><th>Devices</th><th>Notes</th></tr>
+      <tr><td>IÂ²C (0x28â€“0x77)</td><td>COâ‚‚, temp/humidity, light</td><td>Unique addresses; bus pull-ups at 4.7 kÎ©</td></tr>
+      <tr><td>ADC (MCP3008-class)</td><td>pH, OD, DO, TDS, moisture</td><td>12-bit, 3.3 V reference, running-average of 8 samples</td></tr>
+      <tr><td>1-Wire</td><td>DS18B20 temperature</td><td>4.7 kÎ© pull-up to 3.3 V</td></tr>
+      <tr><td>USB</td><td>Camera, TPU</td><td>Camera only connected when vision module is enabled</td></tr>
+      <tr><td>GPIO â†’ SSR</td><td>All mains actuators</td><td>Always via solid-state relay with fuse; never direct GPIO to load</td></tr>
+    </table>
+    <div class="callout"><div class="h">Electrical safety</div><p style="margin:0">Mains wiring is not a beginner project. If you are not confident working with mains voltage, use a 12 V low-voltage design or have an experienced person review the enclosure before first power-up.</p></div>
+
+    <h2 id="firmware">Firmware</h2>
+    <p>The reference firmware is a single-loop state machine. It never blocks on a sensor: every channel has a freshness timestamp, and a reading older than its timeout is treated as "unknown," which the safety gate treats as "no action."</p>
+    <pre><code>loop():
+    now = millis()
+    for sensor in sensors: sensor.poll(now)     # non-blocking, timeout-aware
+    if wifi.connected and mqtt.dues(now): mqtt.publish_telemetry()
+    if twin.due(now): twin.update(state, now)   # forward simulation
+    action = controller.propose(state, setpoints)
+    if safety_gate.allows(action, state):       # rules -> twin sim -> clamps
+        actuators.apply(action)
+    else:
+        actuators.hold()                        # fail closed
+    sleep(100ms)</code></pre>
+
+    <h2 id="mqtt">MQTT topics</h2>
+    <table>
+      <tr><th>Topic</th><th>Direction</th><th>Payload</th></tr>
+      <tr><td><code>orr/{node}/telemetry</code></td><td>up</td><td>JSON: sensor readings + actuator states, ~10 s interval</td></tr>
+      <tr><td><code>orr/{node}/twin</code></td><td>up</td><td>Signed model-update payload (federated rounds)</td></tr>
+      <tr><td><code>orr/{node}/events</code></td><td>up</td><td>State changes, alarms, vision flags (QoS 1)</td></tr>
+      <tr><td><code>orr/{node}/setpoints</code></td><td>down</td><td>JSON setpoint updates with ack + bounds check</td></tr>
+      <tr><td><code>orr/net/aggregate</code></td><td>down</td><td>Aggregated twin parameters (versioned, signed)</td></tr>
+    </table>
+    <p>Devices use QoS 1 for control topics, TLS where the broker supports it, and always fall back to local rule control if the broker is unreachable. See <a href="troubleshooting.html" style="color:var(--teal)">Troubleshooting: MQTT</a> for the failure modes.</p>
+
+    <h2 id="twin">Digital twin models</h2>
+    <p>The twin is deliberately transparent: the core is explicit equations with learned parameters, not a black box. That means a broken model is a visible, debuggable thing.</p>
+    <h3>AlgaePhyte (reactor)</h3>
+    <p>Growth rate is a product of independent biological factors, each with a name you can look up:</p>
+    <pre><code>mu = mu_max Â· (1 âˆ’ Qâ‚€/Q)            # Droop: nutrient quota kinetics
+       Â· steele(I_avg / I_opt)        # Steele: light response + photoinhibition
+       Â· bell(T, 33.5) Â· bell(pH, 10.0)
+       Â· COâ‚‚/(COâ‚‚+Kâ‚˜)                 # bicarbonate as carbon source
+       Â· (1 + exp((DOâˆ’150)/26))â»Â¹     # dissolved-oxygen inhibition
+
+I_avg = Iâ‚€Â·(1âˆ’exp(âˆ’kÂ·ODÂ·L))/(kÂ·ODÂ·L)  # Beer-Lambert self-shading</code></pre>
+    <h3>Mycophyte (chamber)</h3>
+    <pre><code>growth = g_max Â· bell(T, 22.5) Â· bell(RH, 92)
+                Â· clamp(1 âˆ’ (COâ‚‚âˆ’1000)/3500, 0, 1)   # fruiting penalty
+                Â· bell(moisture, 0.75)
+
+dew_point(T, RH)  # condensation risk drives fan scheduling
+humidity_decay    # toward ambient, faster when venting</code></pre>
+    <p>All parameters shown are illustrative defaults for the open simulations. Real deployments calibrate per strain and per enclosure; see <a href="docs.html#calibration" style="color:var(--teal)">Calibration</a>.</p>
+
+    <h2 id="calibration">Calibration</h2>
+    <table>
+      <tr><th>Sensor</th><th>Method</th><th>Frequency</th></tr>
+      <tr><td>pH</td><td>Two-point buffer calibration (4.0 / 7.0 or 7.0 / 10.0)</td><td>Monthly or after probe swap</td></tr>
+      <tr><td>OD</td><td>Blank (clear medium) then culture reference</td><td>Each batch</td></tr>
+      <tr><td>COâ‚‚</td><td>Fresh-air zero (~420 ppm) + known span if available</td><td>Quarterly</td></tr>
+      <tr><td>Temp / humidity</td><td>Side-by-side against a reference instrument</td><td>Quarterly</td></tr>
+      <tr><td>Moisture probe</td><td>Two-point: air-dry substrate / saturated</td><td>Per substrate change</td></tr>
+    </table>
+    <p>Calibration offsets are stored per-sensor with a validity timestamp. Expired calibrations surface as warnings on the device and in telemetry â€” the system prefers honesty over silent drift.</p>
+
+    <h2 id="simulations">Simulations &amp; their limits</h2>
+    <p>The <a href="mycophyte.html#sim" style="color:var(--teal)">Mycophyte simulation</a> and the <a href="../index.html#sim" style="color:var(--teal)">AlgaePhyte simulation</a> on the site run the same control logic and the same illustrative model equations shown above. They are educational tools for understanding the control loop â€” not validated experimental results, and not performance claims.</p>
+    <p>Specifically, the simulations do not model: strain-specific biology, contamination propagation, actuator degradation, sensor noise beyond a cosmetic jitter, or enclosure geometry. If you need defensible numbers, run the hardware and log real telemetry.</p>
+
+    <h2 id="faq-link">FAQ &amp; troubleshooting</h2>
+    <p>Start with the <a href="faq.html" style="color:var(--teal)">FAQ</a> for conceptual questions and <a href="troubleshooting.html" style="color:var(--teal)">Troubleshooting</a> for symptom-driven diagnosis â€” sensors, MQTT, cameras, humidity, temperature, airflow, pumps, AI inference, microcontrollers, digital twins, offline operation, and failures.</p>
+  </div>
+</div>
+</main>
+<footer class="footer"><div class="shell"><div class="footer-grid">
+  <div><a class="wm" href="../index.html"><svg viewBox="0 0 22 34" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M11 1 q7 5 -3 8 q-10 3 3 8 q10 5 -3 8 q-7 3 3 7"/></svg><span><b>Orr Biologicals</b><small>ALGAEPHYTE Â· MYCOPHYTE</small></span></a>
+    <p>Open-source AI-assisted cultivation systems â€” photobioreactors and mushroom grow chambers â€” built in the open.</p></div>
+  <div class="col"><h5>Products</h5>
+    <a href="../index.html">AlgaePhyte</a><a href="mycophyte.html">Mycophyte</a><a href="how-it-works.html">How it works</a><a href="docs.html">Docs</a></div>
+  <div class="col"><h5>Learn</h5>
+    <a href="articles.html">Articles</a><a href="faq.html">FAQ</a><a href="troubleshooting.html">Troubleshooting</a><a href="about.html">About</a></div>
+  <div class="col"><h5>Project</h5>
+    <a href="contact.html">Contact</a><a href="mailto:service@orrbiologicals.com">service@orrbiologicals.com</a><a href="privacy.html">Privacy</a><a href="disclaimer.html">Disclaimer</a></div>
+</div>
+<div class="foot-bar"><span>Â© 2026 Orr Biologicals Â· Educational Â· Open-source</span>
+  <span><a href="privacy.html">Privacy Policy</a> Â· <a href="disclaimer.html">Disclaimer</a></span></div>
+</div></footer>
+<script src="../js/site.js"></script>
+</body>
+</html>

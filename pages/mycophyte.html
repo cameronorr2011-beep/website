@@ -1,0 +1,414 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mycophyte â€” AI-assisted mushroom grow chambers | Orr Biologicals</title>
+<meta name="description" content="Mycophyte is an open-source AI grow chamber for mushrooms: sensors, microcontrollers and edge AI build a digital twin that predicts and controls humidity, temperature, airflow and CO2 â€” indoors, any season, under $300.">
+<link rel="canonical" href="https://orrbiologicals.com/mycophyte">
+<meta property="og:type" content="product"><meta property="og:title" content="Mycophyte â€” AI-assisted mushroom grow chambers | Orr Biologicals">
+<meta property="og:description" content="An open-source AI grow chamber for mushrooms. Edge AI, digital twins, MQTT and federated learning â€” indoors, any season, under $300."><meta property="og:url" content="https://orrbiologicals.com/mycophyte">
+<meta property="og:site_name" content="Orr Biologicals"><meta property="og:image" content="https://orrbiologicals.com/assets/og.png">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://orrbiologicals.com/assets/og.png">
+<meta name="theme-color" content="#0d0906">
+<link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iOCIgZmlsbD0iIzBkMDkwNiIvPjxwYXRoIGQ9Ik0xNiA2IGM2IDAgMTAgNSA5IDExIGMtMSA2LTUgOS0xMCA5IGwtNCAwIGwwIDAgYzEtNiA0LTkgOS0xMSBsMSAwIGMwIDIgMSAzIDIgNCB6IiBmaWxsPSIjZjBhODNhIi8+PC9zdmc+Cg==">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../css/site.css">
+<style>
+/* Mycophyte page extras */
+.myco-hero{min-height:100svh;min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;position:relative;overflow:hidden}
+.myco-hero .hero-canvas{position:absolute;inset:0;z-index:0}
+.myco-hero .hero-grad{z-index:1}
+.myco-hero .hero-in{z-index:2}
+.chamber-wrap{position:relative;z-index:2;pointer-events:none}
+.chamber-wrap svg{width:min(560px,86vw);height:auto;margin:0 auto;display:block;filter:drop-shadow(0 40px 90px rgba(0,0,0,.65))}
+.mush{transform-box:fill-box;transform-origin:50% 100%;transition:transform 1.2s var(--ease),opacity 1.2s var(--ease)}
+.fan-blades{transform-box:fill-box;transform-origin:center;animation:spin 1.15s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.mist-d{opacity:0;transition:opacity .5s}
+.mist-d.on{opacity:.85;animation:rise 3.4s linear infinite}
+@keyframes rise{0%{transform:translateY(0);opacity:0}15%{opacity:.8}100%{transform:translateY(-70px);opacity:0}}
+.lamp-r{transition:fill .5s}
+.lamp-r.flag{fill:#ff6a5e}
+.cam-w{transition:stroke .5s}
+.cam-w.flag{stroke:#ff6a5e;stroke-width:2.5}
+.bom-note{font-family:var(--mono);font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.spec td:first-child{white-space:normal}
+@media (max-width:960px){.chamber-wrap svg{width:min(460px,92vw)}}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","@id":"https://orrbiologicals.com/#org","name":"Orr Biologicals","url":"https://orrbiologicals.com","logo":"https://orrbiologicals.com/assets/og.png","description":"Open-source AI-assisted biological cultivation systems: AlgaePhyte photobioreactors and Mycophyte mushroom grow chambers."}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Product","name":"Mycophyte","description":"Open-source AI-assisted indoor mushroom grow chamber with sensors, microcontrollers, edge AI, digital twin, MQTT and federated learning.","url":"https://orrbiologicals.com/mycophyte","brand":{"@type":"Brand","name":"Orr Biologicals"},"offers":{"@type":"Offer","price":"298.00","priceCurrency":"USD","availability":"https://schema.org/PreOrder"}}</script>
+</head>
+<body class="myco">
+<a class="skip" href="#main">Skip to content</a><div class="veil" aria-hidden="true"><svg class="veil-mark" viewBox="0 0 22 34" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" style="color:var(--teal)"><path d="M11 1 q7 5 -3 8 q-10 3 3 8 q10 5 -3 8 q-7 3 3 7"/></svg></div><canvas id="ambient" aria-hidden="true"></canvas><div class="pbar" aria-hidden="true"></div>
+<header class="nav"><div class="nav-in">
+  <a class="wm" href="../index.html" aria-label="Orr Biologicals â€” home"><svg viewBox="0 0 22 34" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M11 1 q7 5 -3 8 q-10 3 3 8 q10 5 -3 8 q-7 3 3 7"/></svg><span><b>Orr Biologicals</b><small>MYCOPHYTE</small></span></a>
+  <nav class="nav-links" aria-label="Primary">
+    <a href="../index.html">AlgaePhyte</a>
+    <a href="mycophyte.html" style="color:var(--teal)">Mycophyte</a>
+    <a href="how-it-works.html">How it works</a>
+    <a href="articles.html">Articles</a>
+    <a href="docs.html">Docs</a>
+    <a class="btn btn-primary btn-sm" href="contact.html">Get in touch</a>
+  </nav>
+  <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false"><span></span></button>
+</div></header>
+<main id="main">
+  <section class="myco-hero">
+    <canvas id="myco-hero" class="hero-canvas" aria-hidden="true"></canvas>
+    <div class="hero-grad"></div>
+    <div class="hero-top"><div class="kicker">OPEN-SOURCE Â· EDGE AI Â· INDOOR Â· ANY SEASON</div></div>
+    <div class="hero-in">
+      <div class="product-grid" style="align-items:end">
+        <div>
+          <h1 class="rv">Fungi, cultivated by <em>intelligence</em></h1>
+          <p class="hero-sub rv d1">Mycophyte is an AI-assisted grow chamber for mushrooms. Sensors and microcontrollers watch temperature, humidity, airflow and CO2; a lightweight on-device model builds a living digital twin, predicts how your crop will respond, and adjusts the environment before the culture ever struggles.</p>
+          <div class="scrollhint rv d2"><span class="line"></span>Mycelium below. Scroll to meet it.</div>
+        </div>
+        <div class="chamber-wrap rv d2" aria-hidden="true">
+          <svg viewBox="0 0 460 440" role="img" aria-label="Mycophyte grow chamber cutaway">
+            <defs>
+              <linearGradient id="mglass" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2a1d10" stop-opacity=".9"/><stop offset="1" stop-color="#160f08" stop-opacity=".95"/></linearGradient>
+              <radialGradient id="mglow" cx="0.5" cy="0.2" r="0.8"><stop offset="0" stop-color="#f0a83a" stop-opacity=".28"/><stop offset="1" stop-color="#f0a83a" stop-opacity="0"/></radialGradient>
+              <radialGradient id="heatg" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#ff8a3c" stop-opacity=".9"/><stop offset="1" stop-color="#ff8a3c" stop-opacity="0"/></radialGradient>
+            </defs>
+            <rect x="40" y="16" width="380" height="404" rx="20" fill="#120c07" stroke="#3a2a16"/>
+            <rect x="110" y="40" width="240" height="360" rx="16" fill="url(#mglass)" stroke="#4a3620"/>
+            <rect x="110" y="40" width="240" height="360" rx="16" fill="url(#mglow)"/>
+            <rect id="myco-led" x="128" y="58" width="204" height="9" rx="4.5" fill="#ffd9a0" style="opacity:.9;transition:opacity .5s"/>
+            <g id="myco-mist" class="mist-d">
+              <circle cx="150" cy="120" r="5" fill="#cfe8dc" opacity=".5"/>
+              <circle cx="205" cy="100" r="6" fill="#cfe8dc" opacity=".4"/>
+              <circle cx="270" cy="115" r="4.5" fill="#cfe8dc" opacity=".5"/>
+            </g>
+            <line x1="128" y1="168" x2="332" y2="168" stroke="#3a2c1c" stroke-width="4"/>
+            <line x1="128" y1="268" x2="332" y2="268" stroke="#3a2c1c" stroke-width="4"/>
+            <g id="myco-m0" class="mush"><rect x="186" y="128" width="7" height="36" rx="3.5" fill="#e9d9bd"/><ellipse cx="190" cy="128" rx="17" ry="9" fill="#f0b35a"/><ellipse cx="190" cy="128" rx="17" ry="9" fill="#8a5a22" opacity=".15"/></g>
+            <g id="myco-m1" class="mush"><rect x="232" y="230" width="7" height="34" rx="3.5" fill="#efe2c8"/><ellipse cx="236" cy="230" rx="16" ry="8.5" fill="#f3bd6a"/></g>
+            <g id="myco-m2" class="mush"><rect x="266" y="124" width="6" height="40" rx="3" fill="#e9d9bd"/><ellipse cx="269" cy="124" rx="14" ry="7.5" fill="#f0b35a"/></g>
+            <g id="myco-m3" class="mush"><rect x="150" y="226" width="6" height="38" rx="3" fill="#efe2c8"/><ellipse cx="153" cy="226" rx="15" ry="8" fill="#f3bd6a"/></g>
+            <rect id="myco-heat" x="296" y="352" width="76" height="14" rx="7" fill="#ff8a3c" style="opacity:.15;transition:opacity .5s"/>
+            <circle cx="334" cy="359" r="30" fill="url(#heatg)" style="opacity:.5"/>
+            <g id="myco-fan" style="opacity:.25;transition:opacity .5s">
+              <circle cx="396" cy="110" r="24" fill="#1a1209" stroke="#4a3620" stroke-width="2"/>
+              <g class="fan-blades" fill="#c99b52">
+                <path d="M396 96 L403 104 L396 102 Z"/>
+                <path d="M396 124 L389 116 L396 118 Z"/>
+                <path d="M384 110 L392 103 L390 110 Z"/>
+                <path d="M408 110 L400 117 L402 110 Z"/>
+              </g>
+              <circle cx="396" cy="110" r="4" fill="#f0a83a"/>
+            </g>
+            <rect x="118" y="72" width="30" height="20" rx="5" fill="#1a1209" stroke="#5a4426" stroke-width="1.5" class="cam-w" id="myco-cam"/>
+            <circle cx="133" cy="82" r="5" fill="#3a2c1c"/>
+            <circle cx="133" cy="82" r="2.4" fill="#f0a83a"/>
+            <rect x="118" y="300" width="34" height="16" rx="4" fill="#1a1209" stroke="#3a2c1c"/><text x="135" y="312" text-anchor="middle" font-size="8" fill="#c99b52" font-family="monospace">T</text>
+            <rect x="160" y="300" width="34" height="16" rx="4" fill="#1a1209" stroke="#3a2c1c"/><text x="177" y="312" text-anchor="middle" font-size="8" fill="#c99b52" font-family="monospace">RH</text>
+            <rect x="202" y="300" width="40" height="16" rx="4" fill="#1a1209" stroke="#3a2c1c"/><text x="222" y="312" text-anchor="middle" font-size="8" fill="#c99b52" font-family="monospace">COâ‚‚</text>
+            <circle id="myco-lamp" cx="392" cy="380" r="7" fill="#2a2a2a" class="lamp-r"/>
+            <rect x="90" y="400" width="280" height="18" rx="8" fill="#0e0906" stroke="#3a2a16"/>
+            <rect x="120" y="368" width="220" height="26" rx="7" fill="#0e0906" stroke="#3a2a16"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" style="padding-bottom:0"><div class="shell">
+    <div class="stat-row">
+      <div class="stat rv"><div class="v" data-count="298" data-suffix="">0</div><div class="l">USD BOM target Â· hobby build</div></div>
+      <div class="stat rv d1"><div class="v" data-count="7" data-suffix="+">0</div><div class="l">Sensor channels monitored</div></div>
+      <div class="stat rv d2"><div class="v" data-count="24" data-suffix="7.html">0</div><div class="l">Digital-twin supervision</div></div>
+      <div class="stat rv d3"><div class="v" data-count="100" data-suffix="%">0</div><div class="l">Open source Â· no lock-in</div></div>
+    </div>
+  </div></section>
+
+  <section class="band" id="why"><div class="shell">
+    <div class="sec-head rv"><div class="kicker">The problem</div>
+      <h2>Mushrooms don't grow on a schedule. The weather does.</h2>
+      <p>Fruiting bodies are triggered by precise microclimate events â€” a humidity spike, a COâ‚‚ drawdown, a temperature dip. Do it by hand and one busy week ruins a crop. Mycophyte closes that loop with small, cheap hardware and a model that lives entirely on-device.</p></div>
+    <div class="grid grid-3">
+      <div class="benefit rv"><div class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M3 12h18M5 5l14 14M19 5L5 19"/></svg></div><h4>Season-blind</h4><p>Grow oyster, lion's mane or shiitake in July or January. The chamber recreates the season the strain asks for, on demand.</p></div>
+      <div class="benefit rv d1"><div class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.5 6.5L21 9l-5 4 1.5 7L12 16.5 6.5 20 8 13 3 9l6.5-.5z"/></svg></div><h4>Contamination-aware</h4><p>An experimental computer-vision module watches for anomalies â€” discoloration, odd growth, surface changes â€” and flags them for your eyes. It alerts; you decide.</p></div>
+      <div class="benefit rv d2"><div class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20h20M4 20V9l6 4V9l6 4V4h4v16"/></svg></div><h4>Set-and-forget</h4><p>Setpoints, automation schedules, and a failsafe that runs the chamber sensibly even when the network disappears.</p></div>
+    </div>
+  </div></section>
+
+  <section class="band" id="how"><div class="shell">
+    <div class="sec-head rv"><div class="kicker">How Mycophyte works</div>
+      <h2>One closed loop, five honest steps</h2>
+      <p>Everything below is engineering reality, not marketing: sensors sample, a model reasons, actuators act, and a safety layer keeps the AI on a leash.</p></div>
+    <div class="steps">
+      <div class="step rv"><div class="num">01</div><div><h3>Sense</h3><p>Temperature and humidity sensors, a COâ‚‚ module, a soil/substrate probe, and an optional camera read the chamber a few times a minute over IÂ²C and 1-Wire. Every reading is timestamped and logged locally.</p></div></div>
+      <div class="step rv d1"><div class="num">02</div><div><h3>Model</h3><p>The microcontrollers run a lightweight digital twin â€” a small neural network plus explicit equations for humidity saturation, dew point, and temperature-driven growth ranges. The twin's state is the chamber's state.</p></div></div>
+      <div class="step rv d2"><div class="num">03</div><div><h3>Predict</h3><p>Before changing anything, the twin projects the next hours: will humidity drift past the dew point? Will COâ‚‚ climb high enough to cause long, weak stems? Proposals that fail the projection are discarded.</p></div></div>
+      <div class="step rv d3"><div class="num">04</div><div><h3>Act</h3><p>Heaters, misters, pumps, exhaust and intake fans, and LED strips adjust the environment through solid-state relays â€” always through a deterministic safety gate that clamps ranges and fails closed.</p></div></div>
+      <div class="step rv d4"><div class="num">05</div><div><h3>Learn</h3><p>Over MQTT, chambers publish anonymized model updates â€” never your raw sensor logs or camera frames â€” and the network's twin parameters converge on better growing strategies for each strain.</p></div></div>
+    </div>
+    <p class="muted rv" style="margin-top:26px;font-size:.9rem">The control loop, sensors, twin, and MQTT topology are documented in <a href="how-it-works.html" style="color:var(--teal)">How it works</a> and the <a href="docs.html" style="color:var(--teal)">docs</a>.</p>
+  </div></section>
+
+  <section class="band" id="hardware"><div class="shell">
+    <div class="sec-head rv"><div class="kicker">Hardware Â· under $300</div>
+      <h2>Cheap, boring parts. Careful architecture.</h2>
+      <p>No exotic silicon. A mid-range microcontroller board, proven sensors, a USB camera, and a few dollars of pumps and fans â€” arranged so the AI can actually matter.</p></div>
+    <div class="two-col">
+      <div class="rv">
+        <table class="spec">
+          <tr><th>Component</th><th>Why it's there</th></tr>
+          <tr><td>RP2040 / ESP32-class MCU</td><td>Runs the control loop, twin inference, MQTT client. ~$5â€“9.</td></tr>
+          <tr><td>Optional AI accelerator (Coral-class TPU)</td><td>Speeds up camera inference for the experimental vision module. ~$25.</td></tr>
+          <tr><td>Temp + humidity sensor</td><td>Two channels, read continuously â€” the core of the climate loop.</td></tr>
+          <tr><td>COâ‚‚ sensor (NDIR)</td><td>Fruiting quality depends on COâ‚‚ drawdown; the fan schedule is built on it.</td></tr>
+          <tr><td>Substrate moisture probe</td><td>Keeps casing moisture in range without disturbing the block.</td></tr>
+          <tr><td>USB camera</td><td>Feeds the experimental vision module; frames stay on-device.</td></tr>
+          <tr><td>Pumps, misters, fans, LED strip</td><td>The actuation side: humidification, hydration, air exchange, light.</td></tr>
+          <tr><td>Solid-state relays + fuses</td><td>The safety layer between logic and mains-voltage loads.</td></tr>
+        </table>
+      </div>
+      <div class="rv d1">
+        <div class="callout"><div class="h">Bill-of-materials target</div>
+          <p style="margin-bottom:.4em">A complete hobbyist configuration â€” controller, sensors, camera, actuation, enclosure â€” is designed to land <strong style="color:var(--ink)">under $300</strong>. The full parts list and wiring diagrams live in the <a href="docs.html" style="color:var(--teal)">docs</a>.</p>
+          <p class="bom-note" style="margin:0">Prices vary by region and supplier; the target assumes typical 2026 hobbyist pricing. No partnerships or endorsements implied.</p></div>
+        <p class="muted" style="font-size:.92rem">The point of the price target is reachability: a small lab can field ten chambers for the cost of one commercial unit, and a hobbyist can afford to fail forward in public â€” which is exactly how open-source biology improves fastest.</p>
+      </div>
+    </div>
+  </div></section>
+
+  <section class="band" id="sim"><div class="shell">
+    <div class="sec-head rv"><div class="kicker">Live model Â· try it</div>
+      <h2>Drive the chamber yourself</h2>
+      <p>Set the setpoints. Watch the twin forecast the next 72 hours. Drive humidity past 96% with the fan off and see what the vision module flags. This is an <strong style="color:var(--ink)">illustrative simulation</strong> of the control logic â€” not validated experimental data.</p></div>
+    <div class="sim rv" id="myco-sim">
+      <div class="sim-head"><span>MYCOPHYTE Â· CHAMBER 01 Â· DIGITAL TWIN</span><span class="live"><span class="d"></span> live model</span></div>
+      <div class="sim-body">
+        <div class="sim-panel">
+          <div class="sim-tog" role="group" aria-label="Control mode">
+            <button type="button" id="mode-auto" class="on">Auto</button>
+            <button type="button" id="mode-manual">Manual</button>
+          </div>
+          <div style="margin-top:8px">
+            <div class="sim-control"><label for="sp-temp">Temp setpoint</label><div class="range"><input type="range" id="sp-temp" min="16" max="30" step="0.5" value="22.5" aria-label="Temperature setpoint"><output id="o-temp">22.5 Â°C</output></div></div>
+            <div class="sim-control"><label for="sp-hum">Humidity setpoint</label><div class="range"><input type="range" id="sp-hum" min="60" max="99" step="1" value="92" aria-label="Humidity setpoint"><output id="o-hum">92 %RH</output></div></div>
+            <div class="sim-control"><label for="sp-co2">COâ‚‚ limit</label><div class="range"><input type="range" id="sp-co2" min="400" max="1500" step="20" value="900" aria-label="CO2 limit"><output id="o-co2">900 ppm</output></div></div>
+          </div>
+          <div class="sim-actions">
+            <button type="button" class="btn btn-ghost btn-sm" id="sim-pause">Pause</button>
+            <button type="button" class="btn btn-ghost btn-sm" id="sim-reset">Reset crop</button>
+            <button type="button" class="btn btn-ghost btn-sm" id="sim-scan">Trigger vision scan</button>
+          </div>
+          <div class="act-grid" id="manual-acts" hidden>
+            <button type="button" class="act" data-act="heater"><span class="st"></span><b>Heater</b></button>
+            <button type="button" class="act" data-act="humidifier"><span class="st"></span><b>Fogger</b></button>
+            <button type="button" class="act" data-act="exhaust"><span class="st"></span><b>Exhaust fan</b></button>
+            <button type="button" class="act" data-act="mist"><span class="st"></span><b>Mist pump</b></button>
+            <button type="button" class="act" data-act="led"><span class="st"></span><b>LED</b></button>
+          </div>
+          <p class="sim-note" style="border-top:0;padding:14px 0 0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16.5v.01"/></svg>Simulation of the on-device control policy. Growth curves are illustrative.</p>
+        </div>
+        <div class="sim-stage">
+          <div class="readout" style="grid-template-columns:repeat(4,1fr);margin-top:0">
+            <div class="cell"><div class="lab">Temp</div><div class="val" id="s-temp">â€”</div></div>
+            <div class="cell"><div class="lab">Humidity</div><div class="val" id="s-hum">â€”</div></div>
+            <div class="cell"><div class="lab">COâ‚‚</div><div class="val" id="s-co2">â€”</div></div>
+            <div class="cell"><div class="lab">Growth index</div><div class="val" id="s-bio">â€”</div></div>
+          </div>
+          <div class="sim-legend" style="margin:10px 0 0">
+            <span><i style="background:rgba(240,168,58,1)"></i>Temp Â°C</span>
+            <span><i style="background:rgba(143,216,192,1)"></i>RH %</span>
+            <span><i style="background:rgba(240,200,140,1)"></i>72 h twin forecast (dashed)</span>
+          </div>
+          <canvas id="myco-trend" aria-label="Chamber temperature and humidity trend with twin forecast" role="img"></canvas>
+          <div class="readout" style="grid-template-columns:repeat(4,1fr)">
+            <div class="cell"><div class="lab">Airflow</div><div class="val" id="s-flow">â€”</div></div>
+            <div class="cell"><div class="lab">Forecast 72 h</div><div class="val" id="s-forecast">â€”</div></div>
+            <div class="cell"><div class="lab">Est. to harvest</div><div class="val" id="s-harvest">â€”</div></div>
+            <div class="cell"><div class="lab">Vision risk</div><div class="val" id="s-risk">â€”</div></div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px">
+            <div class="callout" style="margin:0;padding:14px 16px">
+              <div class="h" style="font-size:.6rem">Experimental vision feed Â· on-device</div>
+              <div id="myco-cam-feed" class="cam-w" style="height:74px;border:1px solid var(--line);border-radius:10px;background:radial-gradient(80% 90% at 50% 40%,#1c130b,#0e0906);position:relative">
+                <div style="position:absolute;inset:0;display:grid;place-items:center;font-family:var(--mono);font-size:.58rem;letter-spacing:.16em;color:var(--muted);text-align:center;padding:0 10px" id="myco-cam-note">Scan clean â€” no anomalies in this simulated frame</div>
+              </div>
+            </div>
+            <div class="callout" style="margin:0;padding:14px 16px">
+              <div class="h" style="font-size:.6rem">Twin event log</div>
+              <div class="sim-log" id="myco-log" aria-live="polite"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div></section>
+
+  <section class="band" id="ai"><div class="shell">
+    <div class="product-grid">
+      <div class="rv">
+        <div class="kicker">Edge AI Â· on-device</div>
+        <h2 style="font-size:clamp(1.9rem,4.4vw,3.2rem)">The intelligence lives in the chamber, not the cloud</h2>
+        <p class="lede" style="margin-top:18px">A small quantized model â€” hundreds of kilobytes, not gigabytes â€” runs on the microcontroller or a pocket-sized accelerator. It infers the chamber state from the sensor stream and proposes control actions locally.</p>
+        <p style="color:var(--ink2)">The experimental vision module uses a lightweight object detector from the YOLO family to flag potential contamination â€” surface discoloration, unexpected growth patterns, liquid pooling â€” as <em style="color:var(--ink)">prompts for human review</em>. It does not diagnose mold; it tells you where to look. Detection is experimental and its reliability depends on your lighting, camera angle, and strain.</p>
+        <p style="color:var(--ink2)">Offline is not a failure mode: if the network drops, a deterministic rule-based controller keeps the climate in range until the twin reconnects. The AI proposes; the rules enforce; the hardware fails closed.</p>
+      </div>
+      <div class="rv d1">
+        <div class="callout"><div class="h">Inference stack (per node)</div>
+          <ul style="padding-left:20px;color:var(--ink2);margin:0">
+            <li>Quantized twin: ~300â€“800 KB on-device</li>
+            <li>Camera module: YOLO-class detector, frames processed locally</li>
+            <li>Optional TPU accelerator for higher camera throughput</li>
+            <li>MQTT publish: model updates + telemetry, TLS where supported</li>
+            <li>Failsafe: rule-based controller, independent of the model</li>
+          </ul></div>
+        <div class="callout"><div class="h">Why edge, not cloud</div>
+          <p style="margin:0">Latency matters for condensation control; privacy matters for your growing experiments; cost matters at lab scale. On-device inference keeps all three local.</p></div>
+      </div>
+    </div>
+  </div></section>
+
+  <section class="band" id="net"><div class="shell">
+    <div class="sec-head rv"><div class="kicker">Federated learning Â· MQTT</div>
+      <h2>Every chamber teaches the fleet</h2>
+      <p>Chambers connect over MQTT to a local broker or the open network. What travels between nodes is <em style="color:var(--ink)">twin parameter updates</em> â€” not your sensor logs, not your camera frames. The network learns strain-specific strategies from many growers without anyone's private data leaving their chamber.</p></div>
+    <div class="grid grid-2">
+      <div class="callout rv" style="margin:0"><div class="h">What's shared</div>
+        <ul style="padding-left:20px;color:var(--ink2);margin:0">
+          <li>Model weight/parameter updates, signed and versioned</li>
+          <li>Anonymized outcome summaries (harvest timing, yield bands)</li>
+          <li>Firmware hashes for reproducible builds</li>
+        </ul></div>
+      <div class="callout rv d1" style="margin:0"><div class="h">What stays local</div>
+        <ul style="padding-left:20px;color:var(--ink2);margin:0">
+          <li>Raw sensor logs, camera frames, and local history</li>
+          <li>Network topology and device identities</li>
+          <li>Anything you haven't explicitly opted to publish</li>
+        </ul></div>
+    </div>
+    <p class="muted rv" style="margin-top:20px;font-size:.88rem">Honest limits: federated learning reduces data exposure; it is not a privacy guarantee. Standard cryptanalysis assumptions and your own threat model apply. See <a href="how-it-works.html#federated" style="color:var(--teal)">How it works</a>.</p>
+  </div></section>
+
+  <section class="band" id="open"><div class="shell">
+    <div class="product-grid">
+      <div class="rv">
+        <div class="kicker">Open source Â· free to build</div>
+        <h2 style="font-size:clamp(1.9rem,4.4vw,3.2rem)">Blueprints, firmware, and models in the open</h2>
+        <p class="lede" style="margin-top:18px">Mycophyte is designed to be built, not bought. The enclosure files, PCB footprints, firmware, twin training scripts, and simulation source are released under permissive open licenses. A university lab, a biotech startup, or a kitchen table can all start from the same repository.</p>
+        <p style="color:var(--ink2)">We build in public and publish the failures too â€” the contamination crash logs, the fan that iced up, the crop that should have worked. That record is the actual documentation of how the system behaves.</p>
+        <a class="btn btn-primary" href="docs.html">Read the docs <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+      <div class="rv d1">
+        <div class="callout"><div class="h">Who Mycophyte is for</div>
+          <ul style="padding-left:20px;color:var(--ink2);margin:0">
+            <li><strong style="color:var(--ink)">Hobbyists</strong> â€” one chamber, any strain, any season</li>
+            <li><strong style="color:var(--ink)">Small labs</strong> â€” replicate strain screens on identical chambers</li>
+            <li><strong style="color:var(--ink)">R&amp;D teams</strong> â€” log everything, tune the twin, ship the data</li>
+            <li><strong style="color:var(--ink)">Pharma / biotech</strong> â€” robust, auditable environmental control for medicinal and research cultures</li>
+          </ul></div>
+        <div class="callout"><div class="h">Honest caveats</div>
+          <p style="margin:0;font-size:.9rem">Mycophyte is not a medical device. Contamination detection is experimental and flags anomalies for human review â€” it cannot replace sterile technique. Grown material for research or consumption is your responsibility under local law.</p></div>
+      </div>
+    </div>
+  </div></section>
+
+  <section class="band"><div class="shell">
+    <div class="cta rv">
+      <div class="kicker center">Build it Â· or follow the build</div>
+      <h2>Start with one chamber</h2>
+      <p>Join the Mycophyte waitlist and the open build. We'll email you when the next build batch and documentation drop go live â€” and never anything else.</p>
+      <a class="btn btn-primary" href="contact.html">Join the waitlist <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <p class="muted" style="font-size:.8rem;margin-top:22px">Open source Â· educational Â· built in public.</p>
+    </div>
+  </div></section>
+</main>
+<footer class="footer"><div class="shell"><div class="footer-grid">
+  <div><a class="wm" href="../index.html"><svg viewBox="0 0 22 34" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M11 1 q7 5 -3 8 q-10 3 3 8 q10 5 -3 8 q-7 3 3 7"/></svg><span><b>Orr Biologicals</b><small>ALGAEPHYTE Â· MYCOPHYTE</small></span></a>
+    <p>Open-source AI-assisted cultivation systems â€” photobioreactors and mushroom grow chambers â€” built in the open.</p></div>
+  <div class="col"><h5>Products</h5>
+    <a href="../index.html">AlgaePhyte</a><a href="mycophyte.html">Mycophyte</a><a href="how-it-works.html">How it works</a><a href="docs.html">Docs</a></div>
+  <div class="col"><h5>Learn</h5>
+    <a href="articles.html">Articles</a><a href="faq.html">FAQ</a><a href="troubleshooting.html">Troubleshooting</a><a href="about.html">About</a></div>
+  <div class="col"><h5>Project</h5>
+    <a href="contact.html">Contact</a><a href="mailto:service@orrbiologicals.com">service@orrbiologicals.com</a><a href="privacy.html">Privacy</a><a href="disclaimer.html">Disclaimer</a></div>
+</div>
+<div class="foot-bar"><span>Â© 2026 Orr Biologicals Â· Educational Â· Open-source</span>
+  <span><a href="privacy.html">Privacy Policy</a> Â· <a href="disclaimer.html">Disclaimer</a></span></div>
+</div></footer>
+<script src="../js/site.js"></script>
+<script src="../js/sims/core.js"></script>
+<script src="../js/sims/myco-sim.js"></script>
+<script src="../js/hero-myco.js"></script>
+<script>
+/* mount the Mycophyte simulation */
+(function () {
+  "use strict";
+  var sim = new window.MycoSim({
+    trend: document.getElementById("myco-trend"),
+    tempVal: document.getElementById("s-temp"), humVal: document.getElementById("s-hum"),
+    co2Val: document.getElementById("s-co2"), bioVal: document.getElementById("s-bio"),
+    flowVal: document.getElementById("s-flow"), forecastVal: document.getElementById("s-forecast"),
+    harvestVal: document.getElementById("s-harvest"), riskVal: document.getElementById("s-risk"),
+    logEl: document.getElementById("myco-log"),
+    fan: document.getElementById("myco-fan"), heaterGlow: document.getElementById("myco-heat"),
+    mist: document.getElementById("myco-mist"), led: document.getElementById("myco-led"),
+    lamp: document.getElementById("myco-lamp"), mushrooms: [
+      document.getElementById("myco-m0"), document.getElementById("myco-m1"),
+      document.getElementById("myco-m2"), document.getElementById("myco-m3")
+    ],
+    camera: document.getElementById("myco-cam"), camNote: document.getElementById("myco-cam-note")
+  });
+
+  function bindRange(id, out, onIn) {
+    var el = document.getElementById(id);
+    if (!el) return;
+    var set = function () {
+      var v = parseFloat(el.value);
+      if (out) out.textContent = el.value + (out.dataset.u || "");
+      onIn(v);
+    };
+    el.addEventListener("input", set);
+    set();
+  }
+  bindRange("sp-temp", document.getElementById("o-temp"), function (v) { sim.setSetpoint("temp", v); });
+  bindRange("sp-hum", document.getElementById("o-hum"), function (v) { sim.setSetpoint("hum", v); });
+  bindRange("sp-co2", document.getElementById("o-co2"), function (v) { sim.setSetpoint("co2", v); });
+
+  var autoBtn = document.getElementById("mode-auto"), manBtn = document.getElementById("mode-manual");
+  var acts = document.getElementById("manual-acts");
+  function mode(on) {
+    sim.toggleAuto(on);
+    autoBtn.classList.toggle("on", on); manBtn.classList.toggle("on", !on);
+    acts.hidden = on;
+  }
+  autoBtn.addEventListener("click", function () { mode(true); });
+  manBtn.addEventListener("click", function () { mode(false); });
+  acts.querySelectorAll(".act").forEach(function (b) {
+    b.addEventListener("click", function () {
+      var on = b.classList.toggle("on");
+      sim.setActuator(b.getAttribute("data-act"), on);
+    });
+  });
+
+  document.getElementById("sim-pause").addEventListener("click", function (e) {
+    sim.state.paused = !sim.state.paused;
+    e.target.textContent = sim.state.paused ? "Resume" : "Pause";
+  });
+  document.getElementById("sim-reset").addEventListener("click", function () {
+    sim.state.bio = 4; sim.state.pins = 0;
+    sim.state.temp = 23; sim.state.hum = 84; sim.state.co2 = 620;
+    sim.logEvent("Crop reset â€” new block loaded into the chamber");
+  });
+  document.getElementById("sim-scan").addEventListener("click", function () { sim.scan(); });
+
+  var last = 0;
+  function tick(now) {
+    var dt = Math.min(0.5, ((now || 0) - last) / 1000);
+    last = now || 0;
+    if (dt > 0) { sim.step(dt * 60); sim.render(); }
+    requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+})();
+</script>
+</body>
+</html>
