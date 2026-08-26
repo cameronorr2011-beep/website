@@ -1,0 +1,12 @@
+/* ---------- accordions (faq / issues) ---------- */
+.acc{border-top:1px solid rgba(255,255,255,.1);margin-top:48px}
+.acc details{border-bottom:1px solid rgba(255,255,255,.1)}
+.acc summary{list-style:none;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:22px 4px;cursor:pointer;font-size:18px;font-weight:500;letter-spacing:-.02em;color:rgba(255,255,255,.8);transition:color .3s}
+.acc summary::-webkit-details-marker{display:none}
+.acc summary:hover{color:#fff}
+.acc summary::after{content:"+";font-family:var(--mono);font-size:16px;color:var(--leaf-2);transition:transform .3s}
+.acc details[open] summary::after{transform:rotate(45deg)}
+.acc .a{padding:0 4px 24px;max-width:68ch;font-family:var(--serif);font-size:16px;line-height:1.7;color:var(--ink-soft)}
+.acc .sev{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;padding:3px 8px;border:1px solid var(--rule);border-radius:99px;white-space:nowrap}
+.acc .sev.low{color:#9fb89b}.acc .sev.mid{color:var(--copper)}.acc .sev.high{color:var(--warn)}
+

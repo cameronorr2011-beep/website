@@ -1,0 +1,4 @@
+# Local build / analysis artifacts
+build-run.log
+*.tmp
+.DS_Store

@@ -1,0 +1,8 @@
+/* ---------- deploy form ---------- */
+.deploy{max-width:640px;margin-top:48px}
+.field{margin-bottom:16px}
+.field label{display:block;font-family:var(--mono);font-size:10px;color:var(--mute);margin-bottom:6px}
+.field input,.field textarea{width:100%;border:1px solid var(--rule);background:var(--paper-2);padding:10px 12px;font-family:var(--mono);font-size:14px;color:var(--ink);outline:none;border-radius:0}
+.field input:focus,.field textarea:focus{border-color:var(--leaf-2)}
+.field textarea{min-height:100px;resize:vertical}
+

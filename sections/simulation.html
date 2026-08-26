@@ -1,0 +1,64 @@
+<!-- ============ SIMULATION ============ -->
+<section class="section" id="simulation">
+  <div class="wrap">
+    <div class="section-reveal" style="display:grid;gap:32px;grid-template-columns:7fr 5fr;align-items:end">
+      <div>
+        <p class="eyebrow">Living simulation</p>
+        <h2 class="h-display" style="max-width:12ch">Biology pushes back.</h2>
+      </div>
+      <p class="lede" style="justify-self:end">Change the environment. The model recalculates growth, oxygen stress and useful output. Brightest is not best. More is not always more.</p>
+    </div>
+    <div class="section-reveal" style="margin-top:56px">
+      <div class="sim-panel">
+        <div class="sim-visual">
+          <img class="sim-photo" id="simPhoto" src="assets/images/microscopy/sim-field.jpg" alt="Living Arthrospira filaments under dark-field microscopy">
+          <div class="sim-shade"></div>
+          <div class="scan-line"></div>
+          <canvas class="hero-atmo" id="atmoSim" aria-hidden="true" style="opacity:.4"></canvas>
+          <div class="sim-tag">Optical field · 400× · inferred state</div>
+          <div class="sim-cap">
+            <div class="tone good" id="simCaption">Productive regime. Cells are dividing. The twin would hold.</div>
+            <div class="meta" id="simMeta">Growth response 52% · oxygen stress 0%</div>
+          </div>
+        </div>
+        <div class="sim-controls" id="simControls">
+          <div>
+            <div class="sim-head"><span class="lab">Environment</span><button class="sim-reset" id="simReset" type="button">Reset optimum</button></div>
+            <div class="ctl" data-ctl="light">
+              <div class="ctl-top"><span class="name">Light at vessel wall</span><span class="unit" data-unit>218 μmol</span></div>
+              <input type="range" min="0.02" max="1" step="0.01" value="0.52" aria-label="Light at vessel wall">
+            </div>
+            <div class="ctl" data-ctl="carbon">
+              <div class="ctl-top"><span class="name">Available inorganic carbon</span><span class="unit" data-unit>6.8 g/L</span></div>
+              <input type="range" min="0.02" max="1" step="0.01" value="0.72" aria-label="Available inorganic carbon">
+            </div>
+            <div class="ctl" data-ctl="air">
+              <div class="ctl-top"><span class="name">Gas exchange</span><span class="unit" data-unit>58%</span></div>
+              <input type="range" min="0.02" max="1" step="0.01" value="0.58" aria-label="Gas exchange">
+            </div>
+          </div>
+          <div class="sim-outputs">
+            <div class="out-grid">
+              <div class="out"><div class="lab">Biomass</div><div class="val" id="oBio">0.00</div><div class="unit">g / day</div></div>
+              <div class="out"><div class="lab">Protein</div><div class="val" id="oProt">0.00</div><div class="unit">g / day</div></div>
+              <div class="out"><div class="lab">CO₂ fixed</div><div class="val" id="oCo2">0.0</div><div class="unit">g / day</div></div>
+            </div>
+            <div class="forecast">
+              <div class="forecast-head"><span>72 h biomass forecast</span><span>now →</span></div>
+              <svg viewBox="0 0 320 62" preserveAspectRatio="none" aria-hidden="true">
+                <line x1="0" x2="320" y1="58" y2="58" stroke="rgba(255,255,255,.08)"/>
+                <path id="fcPath" d="" fill="none" stroke="#9fe0a4" stroke-width="1.7" vector-effect="non-scaling-stroke" class="dash-flow"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- live chamber render -->
+      <div class="chamber-strip">
+        <div class="sim-tag">Chamber · live render · SIMULATION</div>
+        <canvas id="cultureSim" aria-label="Animated simulation of the photobioreactor chamber"></canvas>
+      </div>
+      <p class="mono" style="margin-top:12px;font-size:10px;color:var(--mute)">Simulated response from a physics model (Monod · Steele · Beer-Lambert · oxygen inhibition) — not measured laboratory data.</p>
+    </div>
+  </div>
+</section>

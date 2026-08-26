@@ -1,0 +1,27 @@
+/* ---------- stack ---------- */
+.stack-grid{display:grid;grid-template-columns:.7fr 1.3fr;border-top:1px solid rgba(255,255,255,.1);border-bottom:1px solid rgba(255,255,255,.1);margin-top:64px}
+@media(max-width:980px){.stack-grid{grid-template-columns:1fr}}
+.stack-tabs{border-right:1px solid rgba(255,255,255,.1)}
+@media(max-width:980px){.stack-tabs{border-right:0;border-bottom:1px solid rgba(255,255,255,.1)}}
+.stack-tab{display:flex;width:100%;align-items:center;justify-content:space-between;padding:20px 20px;border-bottom:1px solid rgba(255,255,255,.08);text-align:left;color:rgba(255,255,255,.35);transition:color .3s}
+.stack-tab:last-child{border-bottom:0}
+.stack-tab:hover{color:rgba(255,255,255,.7)}
+.stack-tab.on{color:#fff}
+.stack-tab .l{display:flex;align-items:center;gap:20px}
+.stack-tab .n{font-family:var(--mono);font-size:9px;color:rgba(255,255,255,.2)}
+.stack-tab.on .n{color:var(--leaf-2)}
+.stack-tab .nm{font-size:21px;font-weight:500;letter-spacing:-.03em}
+.stack-tab .ln{height:1px;background:rgba(255,255,255,.15);width:20px;transition:width .5s,background .5s}
+.stack-tab.on .ln{width:64px;background:var(--leaf-2)}
+.stack-stage{min-height:420px;display:flex;flex-direction:column;justify-content:space-between;padding:28px 32px 40px}
+@media(max-width:980px){.stack-stage{padding:28px 24px 36px}}
+.stage-enter{animation:stageEnter .45s cubic-bezier(.16,1,.3,1) both}
+.stack-stage .k{font-family:var(--mono);font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:rgba(159,224,164,.7)}
+.stack-stage h3{font-size:clamp(2rem,4vw,3.5rem);line-height:.98;font-weight:600;letter-spacing:-.05em;color:#fff;max-width:16ch;margin-top:20px}
+.stack-stage p{margin-top:28px;max-width:50ch;font-family:var(--serif);font-size:17px;line-height:1.65;color:rgba(255,255,255,.55)}
+.stack-foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px;border-top:1px solid rgba(255,255,255,.1);margin-top:48px;padding-top:24px}
+.stack-foot .spec{font-family:var(--mono);font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.3)}
+.sysline{display:flex;gap:6px}
+.sysline i{display:block;height:6px;border-radius:99px;background:rgba(255,255,255,.15);width:6px;transition:width .5s,background .5s}
+.sysline i.on{width:32px;background:var(--leaf-2)}
+

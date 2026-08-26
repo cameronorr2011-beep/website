@@ -1,0 +1,8 @@
+/* ---------- safety ---------- */
+.gate-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;border:1px solid var(--rule);background:var(--rule);margin-top:48px}
+@media(max-width:820px){.gate-grid{grid-template-columns:1fr}}
+.gate{background:var(--paper-2);padding:26px}
+.gate .n{font-family:var(--mono);font-size:10px;color:var(--warn)}
+.gate h4{font-size:18px;font-weight:600;letter-spacing:-.02em;color:var(--ink);margin-top:10px}
+.gate p{margin-top:10px;font-size:14px;line-height:1.6;color:var(--ink-soft)}
+

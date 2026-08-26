@@ -1,0 +1,23 @@
+<!-- ============ DIGITAL TWIN ============ -->
+<section class="section" id="twin">
+  <div class="wrap" style="max-width:960px">
+    <div class="section-reveal">
+      <p class="eyebrow">The digital twin</p>
+      <h2 class="h-display">Predicting growth with Droop and Steele</h2>
+      <p class="lede" style="margin-top:24px">A physics-based model of nutrient quotas and light saturation lets Algaephyte forecast growth before it ever moves a pump.</p>
+    </div>
+    <div class="essay section-reveal">
+      <h3>Droop: the quota inside the cell</h3>
+      <p>Droop's cell-quota kinetics decouple uptake from growth: cells store nitrogen, and division depends on that internal quota rather than the concentration in the medium. That single idea explains why a starved culture keeps dividing after you feed it, and why over-dosing nitrate buys you nothing but bacteria.</p>
+      <h3>Steele: light has an optimum, then a cliff</h3>
+      <p>Steele's curve handles light — growth rises to an optimum irradiance and falls again under photoinhibition. Brightest is not best: past the optimum, the outer shell of the culture bleaches, oxygen supersaturates, and photosynthesis starts to poison itself. The twin treats irradiance as a control surface, not a schedule.</p>
+      <h3>Beer-Lambert: a dense culture is a stack of dark jackets</h3>
+      <p>Beer-Lambert gives every radial shell of the vessel its own light climate, so the outer millimetre of a dense culture can be photoinhibited while the axis sits below compensation. A single wall sensor cannot see this. The twin can, because it integrates Steele's curve through the radial shells.</p>
+      <h3>Alkalinity, not pH</h3>
+      <p>Most growers chase pH because pH is the number a ten-dollar probe will give you. In an alkaline Arthrospira medium the bicarbonate/carbonate pool is simultaneously the inorganic carbon supply, the overnight buffer, and the reason almost nothing else can live in the vessel. pH is what that pool looks like from the outside. The twin treats dissolved inorganic carbon as a state variable, not a setpoint.</p>
+      <h3>Dissolved oxygen: when photosynthesis poisons itself</h3>
+      <p>As dissolved oxygen climbs through the afternoon, photosynthesis starts to supersaturate — the culture poisons itself. The first proposal is usually more air. The second is a modest dim. The third, if you have been stubborn about air, is a siesta. Oxygen stress is a state variable in the twin, not a footnote.</p>
+      <aside>The point of a twin is counterfactuals: "what happens if I add 3.2 g of bicarbonate over twelve minutes?" — the question a pump needs answered.</aside>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,42 @@
+/* ============================================================
+   Algaephyte — Orr Biologicals
+   Merged build: editorial design language (Bricolage / Source
+   Serif / IBM Plex Mono, leaf green on near-black) + the full
+   public-site content. Single self-contained file.
+   ============================================================ */
+:root{
+  --void:#050705; --void-2:#0b0f0b;
+  --paper:#0a0d0a; --paper-2:#12160f;
+  --ink:#f1f5ec; --ink-soft:#bcc6b4; --mute:#838f7c; --rule:#1d251b;
+  --leaf:#3f8f4e; --leaf-2:#9fe0a4; --copper:#d69a5c; --warn:#e07a52;
+  --sans:"Bricolage Grotesque",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --serif:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  --max:1320px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--void);color:#edf3ea;font-family:var(--sans);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;line-height:1.6;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+::selection{background:#3f8f4e;color:#f3f4ef}
+::-webkit-scrollbar{width:8px}
+::-webkit-scrollbar-track{background:#050705}
+::-webkit-scrollbar-thumb{background:#1c261c}
+:focus-visible{outline:2px solid var(--leaf-2);outline-offset:3px;border-radius:4px}
+
+.wrap{max-width:var(--max);margin:0 auto;padding:0 5vw}
+.section{padding:96px 0;border-top:1px solid rgba(255,255,255,.08)}
+.section.alt{background:var(--void-2)}
+.section.dark{background:#070907}
+.eyebrow{font-family:var(--mono);font-size:10px;letter-spacing:.25em;text-transform:uppercase;color:rgba(159,224,164,.7)}
+.h-display{font-size:clamp(2.8rem,6vw,5.2rem);line-height:.9;font-weight:600;letter-spacing:-.06em;margin-top:20px;color:#fff}
+.lede{font-family:var(--serif);font-size:18px;line-height:1.6;color:rgba(255,255,255,.55);max-width:52ch}
+.serif{font-family:var(--serif)}
+.mono{font-family:var(--mono)}
+.mute{color:var(--mute)}
+.hairline{height:1px;background:linear-gradient(90deg,transparent,rgba(159,224,164,.45),transparent)}
+.skip{position:fixed;top:8px;left:-999px;z-index:200;background:var(--leaf-2);color:#02100b;padding:10px 16px;border-radius:6px;font-weight:600}
+.skip:focus{left:12px}
+

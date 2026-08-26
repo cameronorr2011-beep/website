@@ -1,0 +1,7 @@
+/* ---------- instrument ---------- */
+.instrument{position:relative;min-height:760px;overflow:hidden;background:#000;display:flex;align-items:center}
+.instrument-img{position:absolute;inset:-3%;width:106%;height:106%;object-fit:cover;transition:transform 1.1s cubic-bezier(.16,1,.3,1);will-change:transform}
+.instrument-veil{position:absolute;inset:0;background:linear-gradient(90deg,#000 0%,rgba(0,0,0,.75) 60%,rgba(0,0,0,.1) 100%)}
+.instrument-in{position:relative;z-index:2;max-width:var(--max);margin:0 auto;width:100%;padding:96px 5vw}
+.instrument-in .max{max-width:580px}
+

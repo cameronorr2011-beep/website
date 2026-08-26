@@ -1,0 +1,10 @@
+/* ---------- footer ---------- */
+.footer{border-top:1px solid rgba(255,255,255,.1);background:#070907;color:rgba(255,255,255,.45)}
+.footer-grid{display:grid;grid-template-columns:1.3fr 1fr .8fr;gap:40px;max-width:var(--max);margin:0 auto;padding:56px 5vw}
+@media(max-width:980px){.footer-grid{grid-template-columns:1fr}}
+.footer p{font-family:var(--serif);font-size:15px;line-height:1.6;max-width:28rem;margin-top:20px}
+.footer .col-t{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:12px}
+.footer .cols{display:grid;grid-template-columns:1fr 1fr;gap:32px;font-size:13px;line-height:2.1}
+.footer a:hover{color:#fff}
+.footer .bar{max-width:var(--max);margin:0 auto;border-top:1px solid rgba(255,255,255,.1);padding:20px 5vw;font-family:var(--mono);font-size:10px;letter-spacing:.02em;display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
+

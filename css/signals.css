@@ -1,0 +1,9 @@
+/* ---------- signals ---------- */
+.sig-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:56px}
+@media(max-width:980px){.sig-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:620px){.sig-grid{grid-template-columns:1fr}}
+.sig{border:1px solid var(--rule);background:var(--paper-2);padding:26px}
+.sig .k{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--leaf-2)}
+.sig h4{font-size:19px;font-weight:600;letter-spacing:-.02em;color:var(--ink);margin-top:12px}
+.sig p{margin-top:10px;font-size:14px;line-height:1.6;color:var(--ink-soft)}
+
