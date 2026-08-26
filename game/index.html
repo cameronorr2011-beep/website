@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Algae Living — Play as a living culture | Orr Biologicals</title>
+<title>Algae Living — Grow. Evolve. Survive. | Orr Biologicals</title>
 <meta name="description" content="Algae Living: start as one Spirulina cell inside a photobioreactor. Forage light, evolve your lineage, build a colony, defend against bacteria and operate the whole reactor. A free browser game by Orr Biologicals.">
 <meta name="robots" content="noindex">
 <link rel="canonical" href="https://orrbiologicals.com/game/">
 <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
-<meta property="og:title" content="Algae Living — play as a living culture">
+<meta property="og:title" content="Algae Living — Grow. Evolve. Survive.">
 <meta property="og:description" content="Start as one cell. End operating an ecosystem. A biological survival-and-tycoon game set inside a real photobioreactor.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://orrbiologicals.com/game/">
@@ -17,25 +17,27 @@
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"VideoGame","name":"Algae Living","description":"A browser game where you grow a single Spirulina cell into a managed photobioreactor ecosystem: forage light, evolve traits, build colonies and defend against bacteria.","genre":["Simulation","Strategy"],"playMode":"SinglePlayer","applicationCategory":"Game","publisher":{"@type":"Organization","name":"Orr Biologicals","url":"https://orrbiologicals.com/"},"url":"https://orrbiologicals.com/game/"}
 </script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..700&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400..560;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/game/css/site-game.css">
 <style>
-:root{--bg:#04080a;--ink:#dff2e4;--dim:#8fb09a;--green:#5ad07a;--deep:#0a2416;--amber:#ffd166;--red:#e07a7a;--panel:rgba(6,20,12,.82);--line:rgba(90,208,122,.22)}
+:root{--bg:#04080a;--ink:#dff2e4;--dim:#8fb09a;--green:#5ad07a;--amber:#ffd166;--red:#e07a7a;--panel:rgba(6,20,12,.82);--line:rgba(90,208,122,.22)}
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--ink);font-family:"Bricolage Grotesque",system-ui,-apple-system,sans-serif;-webkit-user-select:none;user-select:none}
-#stage{position:fixed;inset:0}
+#stage{position:fixed;inset:0;z-index:1;display:none}
+body.playing #stage{display:block}
 canvas#view{display:block;width:100%;height:100%;touch-action:none}
-/* ---------- HUD ---------- */
 .hud{position:fixed;top:env(safe-area-inset-top,0);left:0;right:0;display:flex;gap:6px;padding:10px 10px 6px;z-index:5;pointer-events:none;flex-wrap:wrap}
 .stat{pointer-events:auto;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:6px 10px;font-size:11px;line-height:1.25;backdrop-filter:blur(6px)}
 .stat b{display:block;font-size:13px;color:#fff}
 .stat span{color:var(--dim);letter-spacing:.06em;text-transform:uppercase;font-size:9px}
 .bar{position:relative;height:4px;border-radius:2px;background:rgba(255,255,255,.08);margin-top:4px;overflow:hidden;width:64px}
 .bar i{position:absolute;inset:0;transform-origin:left;background:var(--green)}
-/* ---------- bottom action bar ---------- */
 .actions{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(env(safe-area-inset-bottom,0) + 10px);display:flex;gap:8px;z-index:5}
 .abtn{background:var(--panel);border:1px solid var(--line);color:var(--ink);border-radius:14px;padding:10px 14px;font-size:13px;font-family:inherit;cursor:pointer;backdrop-filter:blur(6px)}
 .abtn:active,.abtn.on{border-color:var(--green);color:var(--green)}
 .abtn[disabled]{opacity:.35;cursor:default}
-/* ---------- panels ---------- */
 .panel{position:fixed;inset:auto 8px 76px 8px;max-width:420px;margin:0 auto;background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:16px;z-index:6;backdrop-filter:blur(10px);max-height:min(62vh,480px);overflow-y:auto;display:none}
 .panel.open{display:block}
 .panel h3{font-size:15px;margin-bottom:10px;letter-spacing:-.01em}
@@ -45,25 +47,232 @@ canvas#view{display:block;width:100%;height:100%;touch-action:none}
 .buy{background:rgba(90,208,122,.12);border:1px solid var(--line);color:var(--green);border-radius:9px;padding:7px 11px;font-size:12px;font-family:inherit;cursor:pointer;white-space:nowrap}
 .buy:disabled{opacity:.35;cursor:default}
 .cost{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--amber)}
-/* ---------- overlays ---------- */
 .overlay{position:fixed;inset:0;z-index:10;display:flex;align-items:center;justify-content:center;background:radial-gradient(120% 100% at 50% 0%,#0a1f12,#04080a);padding:20px;text-align:center}
 .overlay.hidden{display:none}
 .ov-card{max-width:430px}
-.ov-card .logo-cell{width:84px;height:84px;margin:0 auto 22px;border-radius:50%;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;background:radial-gradient(circle at 35% 30%,rgba(90,208,122,.3),transparent 60%);animation:breathe 3.4s ease-in-out infinite}
-@keyframes breathe{50%{transform:scale(1.07)}}
-h1.title{font-size:clamp(2rem,8vw,3rem);letter-spacing:-.03em;margin-bottom:6px}
-.tag{color:var(--dim);font-size:14px;margin-bottom:26px;line-height:1.6}
 .big{background:linear-gradient(180deg,#6fe08c,#2fa05c);color:#04170c;border:none;border-radius:999px;padding:14px 34px;font-size:16px;font-weight:600;font-family:inherit;cursor:pointer;box-shadow:0 8px 30px rgba(90,208,122,.35)}
 .big:active{transform:scale(.97)}
-.hint{margin-top:18px;color:var(--dim);font-size:12px}
-.disc{margin-top:26px;color:#57705f;font-size:10.5px;line-height:1.6;max-width:360px;margin-inline:auto}
-.toast{position:fixed;top:calc(env(safe-area-inset-top,0) + 58px);left:50%;transform:translateX(-50%) translateY(-8px);background:var(--panel);border:1px solid var(--amber);color:var(--amber);padding:8px 16px;border-radius:999px;font-size:12px;z-index:8;opacity:0;transition:.35s;pointer-events:none;white-space:nowrap}
+.toast{position:fixed;top:calc(env(safe-area-inset-top,0) + 58px);left:50%;transform:translateX(-50%) translateY(-8px);background:var(--panel);border:1px solid var(--amber);color:var(--amber);padding:8px 16px;border-radius:999px;font-size:12px;z-index:40;opacity:0;transition:.35s;pointer-events:none;white-space:nowrap}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
-.viewtag{position:fixed;bottom:calc(env(safe-area-inset-bottom,0) + 58px);left:50%;transform:translateX(-50%);z-index:4;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--dim)}
-@media (prefers-reduced-motion:reduce){.ov-card .logo-cell{animation:none}}
+.viewtag{position:fixed;bottom:calc(env(safe-area-inset-bottom,0) + 58px);left:50%;transform:translateX(-50%);z-index:4;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--dim);display:none}
+body.playing .viewtag{display:block}
+#exitSite{position:fixed;top:calc(env(safe-area-inset-top,0) + 64px);right:10px;z-index:6;display:none}
+body.playing #exitSite{display:inline-block}
+@media (prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
 </style>
 </head>
 <body>
+<a class="skip" href="#start-here">Skip to content</a>
+
+<!-- ==================== LANDING SITE ==================== -->
+<div id="site">
+
+<nav id="siteNav" aria-label="Game sections">
+  <a class="brand" href="#home" data-nav>◍ Algae Living</a>
+  <div class="nlinks">
+    <a href="#home" data-nav>Home</a>
+    <a href="#start-here" data-nav>Start Here</a>
+    <a href="#world" data-nav>World</a>
+    <a href="#evolve" data-nav>Evolve</a>
+    <a href="#colony" data-nav>Colony</a>
+    <a href="#bacteria" data-nav>Bacteria</a>
+    <a href="#reactor" data-nav>Reactor</a>
+    <a href="#tycoon" data-nav>Tycoon</a>
+    <a href="#play" class="navplay" data-nav>Play</a>
+  </div>
+  <button id="menuBtn" aria-expanded="false" aria-controls="mnav">Menu</button>
+</nav>
+<div id="mnav" hidden>
+  <a href="#home" data-nav>Home</a><a href="#start-here" data-nav>Start Here</a><a href="#world" data-nav>World</a>
+  <a href="#evolve" data-nav>Evolve</a><a href="#colony" data-nav>Colony</a><a href="#bacteria" data-nav>Bacteria</a>
+  <a href="#reactor" data-nav>Reactor</a><a href="#tycoon" data-nav>Tycoon</a><a href="#play" class="navplay" data-nav>Play</a>
+</div>
+
+<!-- HERO -->
+<header class="sec hero" id="home">
+  <canvas id="cvHero" aria-hidden="true"></canvas>
+  <div class="rays" aria-hidden="true"></div>
+  <div class="hero-in">
+    <p class="eyebrow">A living-world game by Orr Biologicals</p>
+    <h1>ALGAE<br>LIVING</h1>
+    <p class="tag3"><span>Grow.</span> <span>Evolve.</span> <span>Survive.</span></p>
+    <p class="sub">Begin as one microscopic cell inside a vast photobioreactor — and end up running the whole living machine.</p>
+    <div class="ctas">
+      <button class="cta-primary" id="playNow">PLAY NOW</button>
+      <a class="cta-ghost" href="#start-here" data-nav>DISCOVER THE WORLD</a>
+    </div>
+  </div>
+  <div class="scrollcue" aria-hidden="true">▾</div>
+</header>
+
+<!-- COZY / START HERE -->
+<section class="sec cozy" id="start-here">
+  <div class="wrap">
+    <p class="eyebrow">Start here · no biology degree required</p>
+    <h2>Welcome to your<br>warm little world</h2>
+    <p class="lede">There is nothing to learn upfront. Drift, nibble light, and let the world teach you at its own gentle pace.</p>
+    <ol class="steps">
+      <li><span class="ic">🟢</span><h3>Start as one cell</h3><p>A tiny algae, all to yourself.</p></li>
+      <li><span class="ic">✨</span><h3>Find light</h3><p>Glide around. Sip glowing motes.</p></li>
+      <li><span class="ic">🌱</span><h3>Grow</h3><p>Energy becomes new cells.</p></li>
+      <li><span class="ic">🏠</span><h3>Build your colony</h3><p>Make a safe, soft home.</p></li>
+      <li><span class="ic">🧬</span><h3>Discover</h3><p>Unlock traits as you wander.</p></li>
+      <li><span class="ic">🛡️</span><h3>Protect</h3><p>Meet the neighbors — calmly.</p></li>
+    </ol>
+    <button class="cta-primary sm" data-play>Play it now — it's free</button>
+  </div>
+</section>
+
+<!-- WORLD -->
+<section class="sec world" id="world">
+  <canvas class="sec-bg" data-ambient aria-hidden="true"></canvas>
+  <div class="wrap">
+    <p class="eyebrow">The setting</p>
+    <h2>The microscopic world</h2>
+    <p class="lede">You live inside a photobioreactor — a glass column of swirling water, light and chemistry. Everything here is alive, edible, or interested in you.</p>
+    <ul class="chips" aria-label="What lives in the world">
+      <li class="c-algae">Algae — you and your kin</li>
+      <li class="c-light">Light — free energy</li>
+      <li class="c-carbon">Carbon — building material</li>
+      <li class="c-nitro">Nitrogen — growth fuel</li>
+      <li class="c-phos">Phosphorus — rare treats</li>
+      <li class="c-bact">Bacteria — complicated neighbors</li>
+      <li class="c-colony">Colonies — safety in numbers</li>
+      <li class="c-waste">Waste — someone's lunch</li>
+    </ul>
+  </div>
+</section>
+
+<!-- EVOLVE -->
+<section class="sec dark" id="evolve">
+  <div class="wrap">
+    <p class="eyebrow">Your lineage, your rules</p>
+    <h2>Evolve</h2>
+    <p class="lede">Traits branch like a living tree — not a skill menu. Hover or tap one to feel what it changes.</p>
+    <div class="evo-wrap">
+      <div class="demo-cell-zone"><div class="demo-cell" id="demoCell" aria-hidden="true"></div></div>
+      <svg id="evoTree" viewBox="0 0 600 340" role="img" aria-label="Organic evolution trait map">
+        <path class="branch" d="M300 330 C300 260 180 250 150 190 C130 150 140 110 150 80"/>
+        <path class="branch" d="M300 330 C300 270 420 260 450 200 C468 160 455 120 448 88"/>
+        <path class="branch" d="M300 330 C300 240 240 210 235 150 C232 118 236 96 238 74"/>
+        <path class="branch" d="M300 330 C300 250 360 215 368 155 C371 124 367 98 365 76"/>
+        <path class="branch" d="M300 330 C298 230 300 170 300 70"/>
+        <g class="leaf" data-trait="light"><circle cx="150" cy="66" r="26"/><text x="150" y="30">Light capture</text></g>
+        <g class="leaf" data-trait="defense"><circle cx="448" cy="72" r="26"/><text x="448" y="36">Defense</text></g>
+        <g class="leaf" data-trait="growth"><circle cx="238" cy="60" r="26"/><text x="238" y="24">Growth</text></g>
+        <g class="leaf" data-trait="environment"><circle cx="365" cy="62" r="26"/><text x="365" y="26">Resilience</text></g>
+        <g class="leaf" data-trait="colony"><circle cx="300" cy="52" r="26"/><text x="300" y="16">Cooperation</text></g>
+      </svg>
+      <div class="trait-tip glass" id="traitTip" role="status" aria-live="polite">
+        <b id="ttName">Pick a branch</b>
+        <p id="ttDesc">Every lineage grows differently. There is no single best build.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COLONY -->
+<section class="sec" id="colony">
+  <div class="wrap split">
+    <div>
+      <p class="eyebrow">From lonely to lively</p>
+      <h2>Build your living colony</h2>
+      <p class="lede">Watch this space fill as you scroll — exactly how your culture grows in-game: one cell, then ten, then a breathing metropolis of goo.</p>
+      <div class="densities mono" aria-hidden="true">
+        <span data-at="0">1 cell</span><span data-at="1">10 cells</span><span data-at="2">colony</span><span data-at="3">ecosystem</span>
+      </div>
+    </div>
+    <div class="colony-stage"><canvas id="cvColony" aria-label="Colony growing denser as you scroll"></canvas></div>
+  </div>
+</section>
+
+<!-- BACTERIA -->
+<section class="sec alt" id="bacteria">
+  <div class="wrap">
+    <p class="eyebrow">Ecosystem, not enemy list</p>
+    <h2>Not everything is your friend</h2>
+    <p class="lede">Some neighbors steal. Some clean up. A few help. Learning who's who is half the game.</p>
+    <div class="bact-grid">
+      <div class="vignette glass"><canvas id="cvBact" aria-label="Animated vignette: algae feeding while a grazer approaches"></canvas><p class="cap" id="vignetteCap">A cell settles into a nutrient patch…</p></div>
+      <ul class="who">
+        <li data-k="grazer"><i style="--c:#e07a7a"></i><b>Grazers</b><small>Eat algae. Run, hide, or get sticky.</small></li>
+        <li data-k="competitor"><i style="--c:#c9c9e0"></i><b>Competitors</b><small>Hoard nutrients before you arrive.</small></li>
+        <li data-k="pathogen"><i style="--c:#d06ac9"></i><b>Pathogens</b><small>Rare, targeted, worth fearing.</small></li>
+        <li data-k="decomposer"><i style="--c:#9a8f6a"></i><b>Decomposers</b><small>Recycle waste into calm nothing.</small></li>
+        <li data-k="beneficial"><i style="--c:#7ad0e0"></i><b>Beneficials</b><small>Mend hurt cells. Be nice to these.</small></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- REACTOR -->
+<section class="sec dark tall" id="reactor">
+  <div class="zoom-pin">
+    <div class="zoom-layers">
+      <div class="z-cell" id="zCell" aria-hidden="true"></div>
+      <div class="z-reactor" id="zReactor" aria-hidden="true">
+        <div class="glass-tube">
+          <div class="culture"></div>
+          <span class="led-strip"></span><span class="tube-l"></span><span class="tube-r"></span>
+          <span class="glare"></span>
+        </div>
+        <div class="readouts mono">
+          <span>pH 10.1</span><span>33.4°C</span><span>OD₇₅₀ ▲</span><span>O₂ 118%</span><span>biomass +</span>
+        </div>
+      </div>
+    </div>
+    <div class="zoom-copy">
+      <p class="eyebrow">Zoom out</p>
+      <h2>Your living reactor</h2>
+      <p class="lede">The column was never just water. It is a precision instrument — and late game, it answers to you.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TYCOON -->
+<section class="sec" id="tycoon">
+  <div class="wrap">
+    <p class="eyebrow">Operator phase</p>
+    <h2>Build the perfect reactor</h2>
+    <p class="lede">Choose an upgrade path — watch equipment appear and the numbers move.</p>
+    <div class="tycoon">
+      <div class="upcards" role="tablist" aria-label="Upgrade categories">
+        <button class="upcard on" data-up="light" role="tab" aria-selected="true"><span>💡 LIGHT</span><small>Spectrum-tuned LEDs</small></button>
+        <button class="upcard" data-up="co2" role="tab" aria-selected="false"><span>🫧 CO₂</span><small>Precision carbon dosing</small></button>
+        <button class="upcard" data-up="mix" role="tab" aria-selected="false"><span>🌀 MIXING</span><small>Circulation pump</small></button>
+        <button class="upcard" data-up="sensor" role="tab" aria-selected="false"><span>📡 SENSORS</span><small>See the invisible</small></button>
+        <button class="upcard" data-up="harvest" role="tab" aria-selected="false"><span>🧺 HARVESTING</span><small>Continuous biomass recovery</small></button>
+        <button class="upcard locked" disabled><span>⚙️ AUTOMATION</span><small>Late-game era</small></button>
+      </div>
+      <div class="preview glass">
+        <div class="mini-reactor" id="miniReactor" aria-hidden="true">
+          <i class="mr-culture"></i><i class="mr-led"></i><i class="mr-co2"></i><i class="mr-pump"></i><i class="mr-sense"></i><i class="mr-harv"></i>
+        </div>
+        <div class="stat-line mono"><span id="statName">Photon efficiency</span> <b id="statVal">+25%</b></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="sec cta-final" id="play">
+  <canvas class="sec-bg" data-ambient aria-hidden="true"></canvas>
+  <div class="wrap">
+    <h2>The column is waiting.</h2>
+    <p class="lede">One cell. One reactor. One story only you will grow.</p>
+    <button class="cta-primary xl" data-play>PLAY NOW</button>
+    <p class="free-note">Free · saves on this device · no account</p>
+  </div>
+</section>
+
+<footer class="sfooter">
+  <a href="/">← Orr Biologicals</a>
+  <a href="/insights/">Field notes</a>
+  <span>© 2026 Orr Biologicals</span>
+</footer>
+</div><!-- /site -->
+
+<!-- ==================== GAME (preserved) ==================== -->
 <div id="stage"><canvas id="view" aria-label="Algae Living game world"></canvas></div>
 
 <div class="hud" id="hud" hidden>
@@ -76,6 +285,8 @@ h1.title{font-size:clamp(2rem,8vw,3rem);letter-spacing:-.03em;margin-bottom:6px}
 </div>
 
 <div class="viewtag" id="viewTag" hidden>microscopic view · drag to swim</div>
+
+<button class="abtn" id="exitSite" hidden>⌂ Overview</button>
 
 <div class="actions" id="actions" hidden>
   <button class="abtn" id="btnEvolve">Evolve</button>
@@ -92,7 +303,7 @@ h1.title{font-size:clamp(2rem,8vw,3rem);letter-spacing:-.03em;margin-bottom:6px}
 
 <div class="toast" id="toast"></div>
 
-<div class="overlay" id="startOverlay">
+<div class="overlay hidden" id="startOverlay">
   <div class="ov-card">
     <div class="logo-cell"><svg viewBox="0 0 28 28" width="52" height="52" fill="none" stroke="#5ad07a" stroke-linecap="round"><circle cx="14" cy="14" r="13" stroke-opacity=".35"/><path d="M7 20c2.6-2.2 2.6-9.8 7-9.8S16.4 20 21 20" stroke-width="1.8"/><path d="M6 12c2.6-2.2 2.6-6 7-6s4.4 3.8 7 6" stroke-width="1.5" stroke-opacity=".55"/></svg></div>
     <h1 class="title">Algae Living</h1>
@@ -111,6 +322,7 @@ h1.title{font-size:clamp(2rem,8vw,3rem);letter-spacing:-.03em;margin-bottom:6px}
   </div>
 </div>
 
+<script type="module" src="js/game-site.js"></script>
 <script type="module" src="js/main.js"></script>
 </body>
 </html>
