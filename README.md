@@ -1,8 +1,8 @@
-# Algaephyte — Orr Biologicals
+# Algaephyte — Standalone Edge Intelligence | Orr Biologicals
 
 Refactored from the single-file `NEW 67.html` (≈1 MB, self-contained) into a
 modular, maintainable project. **Same website. Same functionality. Same visual
-identity.** Nothing was redesigned, removed, or rewritten.
+identity.** The public site describes a standalone Raspberry Pi 5 + Coral edge architecture; it does not claim that every runtime component is contained in this static-site repository.
 
 Open `index.html` directly in a browser — it works over `file://` and `http://`
 exactly like the original.
@@ -112,3 +112,26 @@ The build pipeline runs this list of checks on every build:
 And an end-to-end headless-Chrome comparison of the original vs. the rebuilt
 page renders **identical DOMs** (JS-generated content, canvas sizes, computed
 styles, 0 console exceptions).
+
+## Standalone edge architecture
+
+At runtime, Algaephyte is designed to operate without a laptop, cloud AI, or
+internet connection in its control loop:
+
+- **Raspberry Pi 5:** sensor ingestion, telemetry, physics-based digital twin,
+  deterministic local policy, logging, and safety validation.
+- **Coral USB Accelerator:** a fully quantized YOLO-class TensorFlow Lite model
+  for experimental visual flags. Vision can inform caution, but cannot actuate.
+- **Actuation:** proposals pass deterministic hard limits and twin simulation
+  before commands are sent to the hardware controller, which has independent
+  clamps and watchdog behavior.
+- **Fallback:** if the Coral, local model, network, or dashboard is unavailable,
+  conservative sensor-plus-twin control continues on the Pi.
+
+Model training and Edge TPU compilation are preparation steps performed before
+installation. The installed Pi receives the compiled model and runs inference
+locally; no external computer is required during cultivation.
+
+The current public site is documentation and presentation. Runtime modules,
+model files, and hardware deployment remain maintained in the main
+`Mycophyte-and-Algaephyte` repository until separately released.

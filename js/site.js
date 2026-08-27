@@ -4,8 +4,9 @@ var STACK = [
   {label:"Culture", index:"01", title:"The organism is the product surface.", text:"An 18 L borosilicate column keeps Arthrospira in a warm, alkaline, carbonate-rich medium. Geometry, light path and sparger are designed together because biology notices every shortcut.", spec:"18 L · 6 cm optical path · 30–36 °C"},
   {label:"Sense", index:"02", title:"Six channels describe the water. Vision describes the cells.", text:"pH, temperature, wall light, OD₇₅₀, dissolved oxygen and conductivity stream into the controller. A camera and edge TPU classify intact helices, fragments and anything that is not spirulina.", spec:"6 sensors · INT8 YOLO · local inference"},
   {label:"Twin", index:"03", title:"A mathematical culture runs beside the living one.", text:"Droop cell quotas, Steele's light curve and Beer-Lambert self-shading forecast the next 72 hours. Every proposed dose is simulated before the physical culture sees it.", spec:"Physics-first · 72 h horizon · counterfactuals"},
-  {label:"Control", index:"04", title:"Intelligence proposes. Hardware decides.", text:"A deterministic gate checks mass, pH, temperature and duty cycle. The ESP32 owns the pumps and keeps independent clamps in firmware. A physical e-stop sits underneath the entire software stack.", spec:"Fail closed · dual gate · wet-side isolation"},
-  {label:"Mesh", index:"05", title:"Every vessel can improve without surrendering its data.", text:"Algaephyte nodes exchange fitted twin parameters over MQTT. Images and raw traces stay on the instrument. Incoming values are bounded, checked and mixed with a local prior before they influence a live culture.", spec:"MQTT · federated parameters · no raw images"}
+  {label:"Edge brain", index:"04", title:"The Pi 5 thinks locally. The Coral sees locally.", text:"A Raspberry Pi 5 runs telemetry, the physics twin and a deterministic local policy engine. A small, fully quantized YOLO model runs on the Coral USB Accelerator for experimental visual flags. Neither network access nor another computer is required at runtime.", spec:"Pi 5 CPU · Coral TPU · local-first"},
+  {label:"Control", index:"05", title:"Intelligence proposes. Hardware decides.", text:"A deterministic gate checks mass, pH, temperature and duty cycle. The ESP32 owns the pumps and keeps independent clamps in firmware. A physical e-stop sits underneath the entire software stack.", spec:"Fail closed · dual gate · wet-side isolation"},
+  {label:"Mesh", index:"06", title:"Every vessel can improve without surrendering its data.", text:"Algaephyte nodes exchange fitted twin parameters over MQTT when a network is available. Images and raw traces stay on the instrument. Incoming values are bounded and checked before they influence a live culture.", spec:"Optional MQTT · federated parameters · no raw images"}
 ];
 var SIGNALS = [
   {k:"pH", h:"The carbonate pool, from outside", p:"Not the goal — the symptom. pH is what the bicarbonate/carbonate pool looks like from the outside. A culture at pH 10.6 with high alkalinity is comfortable; the same pH with a depleted pool is starving."},
@@ -167,7 +168,7 @@ var JOURNAL = [
   var stage=document.getElementById("stackStage");
   var tabs=document.querySelectorAll(".stack-tab");
   function render(i){
-    var d=STACK[i];
+    var d=STACK[i] || STACK[0];
     stage.innerHTML='<div class="stage-enter">'
       +'<div class="k">Layer '+d.index+'</div>'
       +'<h3>'+d.title+'</h3>'
