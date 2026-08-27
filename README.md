@@ -122,6 +122,9 @@ internet connection in its control loop:
   deterministic local policy, logging, and safety validation.
 - **Coral USB Accelerator:** a fully quantized YOLO-class TensorFlow Lite model
   for experimental visual flags. Vision can inform caution, but cannot actuate.
+- **Local Qwen assistant:** a small quantized Qwen model runs on the Pi 5 CPU
+  for explanations and structured operator interaction. It is optional, has no
+  actuator authority, and cannot bypass policy or safety validation.
 - **Actuation:** proposals pass deterministic hard limits and twin simulation
   before commands are sent to the hardware controller, which has independent
   clamps and watchdog behavior.
