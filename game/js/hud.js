@@ -1,95 +1,109 @@
-import { CFG, ACH } from "./config.js";
-import { fx } from "./save.js";
+import { CFG } from "./config.js";
+import { fmt } from "./reactors.js";
 
-const $ = (id) => document.getElementById(id);
-const $$ = (s) => [...document.querySelectorAll(s)];
+const $id = (i) => document.getElementById(i);
 
-export function createHud(S, sim, reactor, actions) {
-  const toastEl = $("toast");
-  let toastT;
+export function createHud(S, sim, bay, audio) {
+  let panelOpen = false;
+
+  function init() {
+    $id("tabHome").addEventListener("click", () => setTab("home"));
+    $id("tabCell").addEventListener("click", () => setTab("cell"));
+    $id("btnUps").addEventListener("click", () => { panelOpen ? closePanel() : openCellPanel(); });
+    $id("btnMusic").addEventListener("click", () => {
+      const on = !S.music;
+      S.music = on; audio.setMusic(on);
+      $id("btnMusic").classList.toggle("off", !on);
+    });
+    $id("btnSfx").addEventListener("click", () => {
+      const on = !S.sfx;
+      S.sfx = on; audio.setSfx(on);
+      $id("btnSfx").classList.toggle("off", !on);
+    });
+    document.querySelector("#panel .x").addEventListener("click", closePanel);
+  }
+
+  function setTab(name) {
+    document.body.classList.toggle("tab-home", name === "home");
+    document.body.classList.toggle("tab-cell", name === "cell");
+    $id("homeTab").hidden = name !== "home";
+    $id("tabHome").classList.toggle("on", name === "home");
+    $id("tabCell").classList.toggle("on", name === "cell");
+    $id("btnUps").style.display = name === "cell" ? "" : "none";
+    if (name !== "cell") closePanel();
+    if (name === "home") bay.refresh();
+  }
+
+  function openCellPanel() {
+    panelOpen = true;
+    const p = $id("panel");
+    p.classList.add("open");
+    renderCellPanel();
+  }
+  function closePanel() {
+    panelOpen = false;
+    $id("panel").classList.remove("open");
+  }
+
+  function renderCellPanel() {
+    const body = $id("panelBody");
+    body.innerHTML = "<h3>Cell lab · spend reactor income</h3>";
+    for (const id of Object.keys(CFG.cellUps)) {
+      const u = CFG.cellUps[id];
+      const lvl = S.cellUps[id] || 0;
+      const maxed = lvl >= u.costs.length;
+      const row = document.createElement("div");
+      row.className = "up-row";
+      const dots = "●".repeat(lvl) + "○".repeat(u.costs.length - lvl);
+      row.innerHTML = `<div><b>${u.name}</b> <span class="dots">${dots}</span>
+        <small>${u.desc}</small></div>
+        <button class="buy">${maxed ? "MAX" : "$" + fmt(u.costs[lvl])}</button>`;
+      row.querySelector("button").addEventListener("click", () => {
+        if (maxed || S.money < u.costs[lvl]) return audio.deny();
+        S.money -= u.costs[lvl];
+        S.cellUps[id] = lvl + 1;
+        sim._d = null;
+        audio.buy();
+        renderCellPanel(); hudTick();
+      });
+      body.appendChild(row);
+    }
+    body.insertAdjacentHTML("beforeend",
+      `<p class="hintline">Energy motes feed <b>evolution</b>. Divisions grow the colony. Reactor money buys power.</p>`);
+  }
+
+  function hudTick() {
+    const inc = sim.income();
+    $id("sMoney").textContent = "$" + fmt(S.money);
+    $id("sRate").textContent = "+$" + fmt(inc) + "/s";
+    const st = CFG.stages[S.stageIdx];
+    const next = CFG.stages[S.stageIdx + 1];
+    $id("sStage").textContent = st.name;
+    const pct = next ? Math.min(1, S.evoProg / next.need) : 1;
+    $id("bEnergy").style.transform = `scaleX(${pct})`;
+    $id("sEvoTxt").textContent = next
+      ? `${Math.floor(S.evoProg)} / ${next.need}`
+      : "APEX FORM";
+    $id("sPop").textContent = S.pop;
+    if (document.body.classList.contains("tab-home")) bay.refresh();
+    if (panelOpen && document.body.classList.contains("tab-cell")) renderCellPanel();
+  }
+
+  let toastT = null;
   function toast(msg) {
-    toastEl.textContent = msg; toastEl.classList.add("show");
+    const el = $id("toast");
+    el.textContent = msg;
+    el.classList.add("show");
     clearTimeout(toastT);
-    toastT = setTimeout(() => toastEl.classList.remove("show"), 3200);
-  }
-  function hud() {
-    const P = S.player, M = fx(S);
-    $("sBio").textContent = S.biomass.toFixed(1);
-    $("sEn").textContent = S.energy.toFixed(0);
-    $("sPop").textContent = sim.algae.length + 1;
-    $("sEP").textContent = S.ep.toFixed(0);
-    $("sHp").textContent = Math.max(0, P.hp).toFixed(0) + "%";
-    $("sStage").textContent = CFG.stages[S.stage].name;
-    $("bBio").style.transform = `scaleX(${Math.min(1, S.biomass / 120)})`;
-    $("bEn").style.transform = `scaleX(${Math.min(1, S.energy / 120)})`;
-    $("bHp").style.transform = `scaleX(${Math.max(0, P.hp / 100)})`;
-    $("btnBuild").disabled = S.stage < 1;
-    $("btnLab").disabled = S.stage < 2;
-    $("epEcho").textContent = S.ep.toFixed(0);
+    toastT = setTimeout(() => el.classList.remove("show"), 2600);
   }
 
-  function open(id) {
-    for (const p of document.querySelectorAll(".panel")) p.classList.remove("open");
-    if (id) { renderPanel(id); $(id).classList.add("open"); }
+  function banner(title, sub) {
+    const el = $id("banner");
+    el.innerHTML = `<b>${title}</b>${sub ? `<span>${sub}</span>` : ""}`;
+    el.classList.add("show");
+    setTimeout(() => el.classList.remove("show"), 2600);
   }
 
-  function renderPanel(id) {
-    if (id === "pEvolve") {
-      let html = CFG.evo.map((t) => {
-        const owned = S.evo.includes(t.id);
-        const locked = t.req && !S.evo.includes(t.req);
-        return `<div class="evo-item" style="${owned ? "border-color:var(--green)" : ""}">
-          <div><b>${t.name}</b><small>${t.branch}</small></div>
-          ${owned ? '<span class="cost">✓</span>' :
-            `<button class="buy" data-evo="${t.id}" ${locked || S.ep < t.cost ? "disabled" : ""}>${locked ? "needs previous" : t.cost + " EP"}</button>`}
-        </div>`;
-      }).join("");
-      const got = ACH.filter((a) => S.achievements.includes(a.id));
-      html += `<h3 style="margin:14px 0 8px;font-size:13px;color:#8fb09a">Achievements · ${got.length}/${ACH.length}</h3>`;
-      html += ACH.map((a) => {
-        const has = S.achievements.includes(a.id);
-        return `<div class="evo-item" style="opacity:${has ? 1 : .45}"><div><b>${has ? "🏅" : "🔒"} ${a.name}</b><small>${a.desc}</small></div></div>`;
-      }).join("");
-      $("evoList").innerHTML = html;
-      $$("#evoList [data-evo]").forEach((b) => b.addEventListener("click", () => actions.evolve(b.dataset.evo)));
-    }
-    if (id === "pBuild") {
-      $("bldList").innerHTML = Object.entries(CFG.buildings).map(([k, b]) => {
-        const cost = Math.round(b.cost * fx(S).buildDiscount);
-        return `<div class="bld-item evo-item"><div><b>${b.name}</b><small>${b.desc}</small></div>
-          <button class="buy" data-bld="${k}" data-cost="${cost}" ${S.energy < cost ? "disabled" : ""}><span class="cost">${cost} ⚡</span></button></div>`;
-      }).join("") + `<small style="color:#57705f;display:block;margin-top:6px">Then tap the water to place it.</small>`;
-      $$("#bldList [data-bld]").forEach((b) => b.addEventListener("click", () => actions.armBuild(b.dataset.bld, +b.dataset.cost)));
-    }
-    if (id === "pLab") {
-      const r = S.reactor;
-      $("labList").innerHTML = [
-        slider("Light", "light", r.light), slider("Temp", "temp", r.temp, 18, 40, "°C"),
-        slider("pH", "ph", r.ph, 7, 11.5), slider("CO₂", "co2", r.co2), slider("Mixing", "mixing", r.mixing),
-      ].join("");
-      $$("#labList input[type=range]").forEach((inp) => inp.addEventListener("input", () => {
-        S.reactor[inp.dataset.k] = parseFloat(inp.value);
-        inp.closest(".evo-item").querySelector(".cost").textContent = inp.value + (inp.dataset.unit || "");
-      }));
-    }
-    if (id === "pReactor") {
-      const R = reactor.readouts();
-      $("reactStats").innerHTML =
-        `growth ×${R.growth.toFixed(2)} · O₂ ${(R.oxygen * 100) | 0}%<br>contamination ${(R.contamination * 100) | 0}% · health ${(R.health * 100) | 0}%`;
-      $("upList").innerHTML = Object.entries(CFG.upgrades).map(([uid, u]) => {
-        const lvl = reactor.level(uid);
-        const maxed = lvl >= u.costs.length;
-        const cost = maxed ? 0 : u.costs[lvl];
-        return `<div class="up-item"><div><b>${u.name} <span style="color:var(--dim);font-size:11px">Lv ${lvl}/3</span></b><small>${u.desc}</small></div>
-          <button class="buy" data-up="${uid}" ${maxed || S.biomass < cost ? "disabled" : ""}><span class="cost">${maxed ? "MAX" : cost + " bio"}</span></button></div>`;
-      }).join("");
-      $$("#upList [data-up]").forEach((b) => b.addEventListener("click", () => actions.buyUpgrade(b.dataset.up)));
-    }
-  }
-  function slider(label, k, v, min = 0, max = 100, unit = "") {
-    return `<div class="evo-item"><div style="flex:1"><b>${label}</b>
-      <input type="range" data-k="${k}" data-unit="${unit}" min="${min}" max="${max}" step="0.5" value="${v}" style="width:100%">
-    </div><span class="cost">${v}${unit}</span></div>`;
-  }
-  return { hud, toast, open };
+  return { init, setTab, hudTick, toast, banner, openCellPanel, closePanel };
 }

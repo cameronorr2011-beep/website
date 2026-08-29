@@ -150,5 +150,6 @@ if (!reduced) addEventListener("scroll", () => {
 document.body.classList.add("site-open");
 if (location.hash === "#play-game" || location.hash === "#play") {
   // deep-link straight into play only from explicit #play-game
-  if (location.hash === "#play-game") enterGame(false); else location.hash = "#home";
+  if (location.hash === "#play-game") setTimeout(() => enterGame(false));
+  else location.hash = "#home";
 }

@@ -1,251 +1,218 @@
 ﻿import { CFG } from "./config.js";
-import { fx, stageFor } from "./save.js";
-import { Grid, makeZones, zoneAt, zoneLightMod, zoneNutMod } from "./world.js";
-import { makeCell, makeBacteria, makePool, uid } from "./entities.js";
+import { createBlob, stepBlob, deformMetric } from "./softbody.js";
 
-const W = CFG.world.w, H = CFG.world.h;
-const RES_COLOR = Object.fromEntries(CFG.resources.map((r) => [r.kind, r.color]));
-const resColor = (k) => RES_COLOR[k] || "#fff";
-const weightedKind = () => {
-  let r = Math.random(), acc = 0;
-  for (const k of CFG.resources) { acc += k.weight; if (r <= acc) return k.kind; }
-  return "light";
-};
+const rnd = (a, b) => a + Math.random() * (b - a);
+const dist = (ax, ay, bx, by) => Math.hypot(ax - bx, ay - by);
 
-export function createSim(S) {
-  const algae = [], bact = [];
-  const pool = makePool(CFG.counts.nutrients);
-  const grid = new Grid(110);
-  let quality = "high", targetPop = CFG.counts.nutrients;
-  const joy = { x: 0, y: 0 };           // normalized input direction
-  let lastHurt = -9;
-  const cb = { toast: [], death: [] };
-  const on = (e, f) => cb[e].push(f);
-  const emit = (e, a) => cb[e].forEach((f) => f(a));
+export function createSim(S, audio) {
+  const sim = {
+    S,
+    blob: null,
+    npcs: [],
+    motes: [],
+    bacteria: [],
+    fx: [],
+    joy: { x: 0, y: 0 },
+    hitFlash: 0,
+    quality: "high",
+    _d: null,
 
-  /* seed */
-  for (let i = 0; i < 2; i++) algae.push(makeCell(S.player.x + rnd(40), S.player.y + rnd(40), S.player.hue));
-  for (let i = 0; i < 22; i++) spawnFar();
-  refillAll();
-  function spawnFar() {
-    const kinds = ["grazer", "grazer", "competitor", "competitor", "decomposer", "beneficial"];
-    bact.push(makeBacteria(kinds[(Math.random() * kinds.length) | 0], Math.random() * W, Math.random() * H));
-  }
-  function refillAll() {
-    while (pool.live.size < targetPop) pool.spawn(weightedKind(), Math.random() * W, Math.random() * H);
-  }
-
-  /* ---------- input ---------- */
-  function setJoy(x, y) { joy.x = x; joy.y = y; }
-
-  /* ---------- main step ---------- */
-  function step(dt, fxq) {
-    const M = fx(S);
-    S.t += dt;
-    const P = S.player;
-
-    /* player physics: direct control */
-    const acc = CFG.player.accel * M.speed * (P.hp > 0 ? 1 : 0);
-    P.vx += joy.x * acc * dt; P.vy += joy.y * acc * dt;
-    const damp = Math.pow(CFG.player.damp, dt * 60);
-    P.vx *= damp; P.vy *= damp;
-    const sp = Math.hypot(P.vx, P.vy), maxS = CFG.player.maxSpeed * M.speed;
-    if (sp > maxS) { P.vx *= maxS / sp; P.vy *= maxS / sp; }
-    P.x = Math.min(W - 24, Math.max(24, P.x + P.vx * dt));
-    P.y = Math.min(H - 24, Math.max(24, P.y + P.vy * dt));
-    P.flagella = Math.min(1.9, Math.hypot(P.vx, P.vy) / maxS * 2.2);
-
-    const zone = zoneAt(S.zones, W, H, P.x, P.y);
-
-    /* energy economy */
-    const lightPower = (S.reactor.light / 100) * M.lightUpgrade * zoneLightMod(zone);
-    const gain = lightPower * M.lightGain * CFG.energy.lightBase;
-    S.energy = Math.min(999, S.energy + gain * dt);
-    S.energy -= CFG.energy.basal * M.drain * dt;
-    if (M.sharedEnergy && algae.length > 8) S.energy += dt * .4;
-    S.biomass += dt * gain * .03 + M.harvestRate * dt;
-
-    /* hp regen */
-    if (S.t - lastHurt > CFG.player.regenDelay) P.hp = Math.min(100, P.hp + CFG.player.regenRate * dt);
-
-    /* nutrients: index, magnet-eat around every colony cell */
-    grid.clear();
-    for (const n of pool.live) grid.insert(n);
-    for (const c of allCells()) {
-      const near = grid.near(c.x, c.y, CFG.eat.magnet * (c === P ? M.magnet : 1));
-      for (const n of near) {
-        if (n.dead) continue;
-        const dx = c.x - n.x, dy = c.y - n.y, d = Math.hypot(dx, dy) || 1;
-        if (d < CFG.eat.radius + (c === P ? P.r : 0)) {
-          eat(n, M, zone); fxq.pop(n.x, n.y, resColor(n.kind), 5, 70);
-          if (c === P && Math.random() < .3) fxq.ring(P.x, P.y, "#9fe8b4", 20);
-        } else {
-          const pull = (CFG.eat.pull * dt) / d;
-          n.x += dx * pull; n.y += dy * pull;
-        }
+    reset() {
+      this.blob = createBlob(CFG.world.w / 2, CFG.world.h / 2, CFG.cell.r, CFG.cell.points);
+      this.npcs = [];
+      this.bacteria = [];
+      this.fx = [];
+      this.spawnMotes();
+      for (let i = 0; i < CFG.bacteria.count; i++) {
+        const a = rnd(0, Math.PI * 2);
+        this.bacteria.push({
+          x: rnd(200, CFG.world.w - 200), y: rnd(200, CFG.world.h - 200),
+          vx: Math.cos(a) * CFG.bacteria.speed, vy: Math.sin(a) * CFG.bacteria.speed,
+          seed: rnd(0, 9), cool: 0,
+        });
       }
-    }
+    },
 
-    /* division: automatic when affordable, staggered */
-    const divCost = CFG.divide.cost * M.divideCost * (nearBuilding("nursery", P.x, P.y, 260) ? .7 : 1);
-    if (algae.length < 130 && S.energy >= divCost) {
-      S.energy -= divCost;
-      const parent = algae[(Math.random() * algae.length) | 0];
-      const nx = parent ? parent.x + rnd(18) : P.x + rnd(18);
-      const ny = parent ? parent.y + rnd(18) : P.y + rnd(18);
-      algae.push(makeCell(nx, ny, S.player.hue));
-      S.ep += CFG.ep.perDivide * M.epGain;
-      fxq.pop(nx, ny, "#b8f5c8", 10, 120); fxq.ring(nx, ny, "#5ad07a", 30);
-    } else if (algae.length === 0 && S.energy >= divCost) {
-      S.energy -= divCost;
-      algae.push(makeCell(P.x, P.y, S.player.hue));
-    }
+    spawnMotes() {
+      this.motes.length = 0;
+      for (let i = 0; i < CFG.motes.count; i++) this.motes.push(this.newMote(true));
+    },
 
-    /* buildings passives */
-    if (nearBuilding("lightfarm", P.x, P.y, 240)) S.energy += dt * 1.5 * M.lightGain;
-    if (nearBuilding("hub", P.x, P.y, 220)) S.energy += dt * .5;
-    if (nearBuilding("cluster", P.x, P.y, 240) && Math.random() < dt * 1.6)
-      pool.spawn(weightedKind(), P.x + rnd(170), P.y + rnd(170));
-
-    /* bacteria */
-    stepBacteria(dt, M, fxq);
-
-    /* stages */
-    const st = stageFor(algae.length + 1);
-    if (st > S.stage) { S.stage = st; emit("toast", "ðŸ”¬ Stage reached â€” " + CFG.stages[st].name); }
-
-    targetPop = Math.round(CFG.counts.nutrients * (quality === "low" ? .55 : 1));
-    refillAll();
-  }
-
-  function allCells() { return [S.player, ...algae]; }
-
-  function eat(n, M, zone) {
-    pool.kill(n);
-    const res = CFG.resources.find((r) => r.kind === n.kind);
-    const mult = (n.kind === "carbon" ? M.carbonGain * M.carbonUpgrade : n.kind === "light" ? M.lightGain : M.nutrientGain) * zoneNutMod(zone);
-    S.energy = Math.min(999, S.energy + (res?.energy ?? 2) * mult);
-    S.ep += (res?.ep ?? .12) * M.epGain * M.sensorUpgrade;
-    S.biomass += .04;
-  }
-
-  function stepBacteria(dt, M, fxq) {
-    const P = S.player;
-    const predatorMode = algae.length >= CFG.predation.popNeeded;
-    for (let i = bact.length - 1; i >= 0; i--) {
-      const b = bact[i], B = CFG.bacteria[b.kind];
-      b.biteT -= dt; b.wobble += dt * 6;
-      let ax = 0, ay = 0;
-
-      if (b.kind === "grazer" || b.kind === "pathogen") {
-        // flee biofilm or chemically-defended player
-        if (M.grazerFlee && nearBuilding("biofilm", b.x, b.y, 210)) {
-          ax = b.x - P.x; ay = b.y - P.y;
-        } else {
-          let best = null, bd = B.sense;
-          const dp = dist(b, P); if (dp < bd) { best = P; bd = dp; }
-          for (const c of algae) { const dd = dist(b, c); if (dd < bd) { best = c; bd = dd; } }
-          if (best) {
-            ax = best.x - b.x; ay = best.y - b.y;
-            if (bd < 11 && b.biteT <= 0) { bite(best, B.dps, M, fxq); b.biteT = B.biteCd; }
-          }
-        }
-        // predation: big colony absorbs grazers/pathogens on contact
-        if (predatorMode && dist(b, P) < P.r + 6) {
-          bact.splice(i, 1);
-          S.ep += CFG.ep.perPredation * M.epGain;
-          S.biomass += .15;
-          fxq.pop(b.x, b.y, B.color, 12, 130); fxq.text(b.x, b.y - 14, "+" + (CFG.ep.perPredation).toFixed(1) + " EP", "#e8b8ff");
-          continue;
-        }
-      } else if (b.kind === "competitor") {
-        if (predatorMode && dist(b, P) < P.r + 6) {
-          bact.splice(i, 1); S.ep += .3 * M.epGain;
-          fxq.pop(b.x, b.y, B.color, 10, 120);
-          continue;
-        }
-        const near = grid.near(b.x, b.y, B.sense);
-        let bestN = null, bd = 1e9;
-        for (const n of near) if (!n.dead) { const dd = dist(b, n); if (dd < bd) { bestN = n; bd = dd; } }
-        if (bestN) { ax = bestN.x - b.x; ay = bestN.y - b.y; if (bd < 8) pool.kill(bestN); }
-      } else if (b.kind === "decomposer") {
-        ax = Math.sin((S.t + b.id) * .7) * 14; ay = Math.cos((S.t + b.id) * .6) * 14;
-      } else { // beneficial
-        let best = null, bd = B.sense;
-        for (const c of algae) if (c.hp < 20) { const dd = dist(b, c); if (dd < bd) { best = c; bd = dd; } }
-        if ((!best || bd > 60) && P.hp < 100) { best = P; }
-        if (best) {
-          ax = best.x - b.x; ay = best.y - b.y;
-          if (dist(b, best) < 14) {
-            if (best === P) { P.hp = Math.min(100, P.hp + 6 * dt * 10); fxq.ring(P.x, P.y, "#7ad0e0", 16); }
-            else best.hp = 20;
-          }
-        }
+    newMote(nearStart) {
+      let x, y;
+      if (nearStart && Math.random() < 0.6 && this.blob) {
+        const a = rnd(0, Math.PI * 2), d = rnd(140, 620);
+        x = this.blob.cx + Math.cos(a) * d;
+        y = this.blob.cy + Math.sin(a) * d;
+      } else {
+        x = rnd(80, CFG.world.w - 80); y = rnd(80, CFG.world.h - 80);
       }
-      const al = Math.hypot(ax, ay) || 1;
-      b.vx += ((ax / al) * B.speed - b.vx) * Math.min(1, dt * 3);
-      b.vy += ((ay / al) * B.speed - b.vy) * Math.min(1, dt * 3);
-      b.x = Math.min(W - 10, Math.max(10, b.x + b.vx * dt));
-      b.y = Math.min(H - 10, Math.max(10, b.y + b.vy * dt));
-    }
-    if (bact.length < 26 && Math.random() < dt * .3) spawnFar();
-    if (bact.length > 64 && Math.random() < dt * 2) bact.pop();
-  }
+      x = Math.max(60, Math.min(CFG.world.w - 60, x));
+      y = Math.max(60, Math.min(CFG.world.h - 60, y));
+      return { x, y, big: Math.random() < CFG.motes.bigChance, phase: rnd(0, 9), respawn: 0 };
+    },
 
-  function bite(t, dps, M, fxq) {
-    if (t === S.player) {
-      S.player.hp -= dps * M.dmgTaken;
-      lastHurt = S.t;
-      fxq.pop(P().x, P().y, "#e07a7a", 6, 90);
-      if (S.player.hp <= 0) emit("death");
-    } else {
-      t.hp -= dps * 1.5;
-      if (t.hp <= 0) {
-        const idx = algae.indexOf(t);
-        if (idx >= 0) { algae.splice(idx, 1); fxq.pop(t.x, t.y, "#5ad07a", 8, 80); }
-        S.ep += .15;
-      }
-    }
-  }
-  const P = () => S.player;
-  function nearBuilding(kind, x, y, r) {
-    for (const b of S.buildings) if (b.kind === kind && Math.hypot(b.x - x, b.y - y) < r) return true;
-    return false;
-  }
-  function dist(a, b) { return Math.hypot(a.x - b.x, a.y - b.y); }
-  function rnd(m) { return (Math.random() - .5) * m * 2; }
-
-  /* ---------- public ---------- */
-  return {
-    algae, bact, pool,
-    zones: null, joy,
-    setJoy, on, step,
-    setQuality(q) { quality = q; },
-    readouts() {
-      const r = S.reactor, M = fx(S);
-      const lightEff = (r.light / 100) * M.lightUpgrade;
-      const tf = r.temp < 20 || r.temp > 38 ? .35 : 1 - Math.abs(r.temp - 34) / 40;
-      const pf = r.ph < 8 || r.ph > 11 ? .3 : 1 - Math.abs(r.ph - 10) / 12;
-      const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
-      const growth = clamp(lightEff * (.5 + (r.co2 / 100) * .6) * tf * pf, 0, 2.4);
-      return {
-        density: clamp(S.biomass / 120, 0, 1), growth,
-        oxygen: clamp(growth * .8, 0, 1),
-        contamination: clamp((r.ph < 9 ? .5 : .08) + (r.temp > 37 ? .3 : 0) + (r.light > 85 ? .15 : 0), 0, 1),
-        health: clamp(1 - Math.abs(r.temp - 33) / 25 - Math.abs(r.ph - 10) / 8, 0, 1),
+    derived() {
+      if (this._d) return this._d;
+      const lvl = (id) => S.cellUps[id] || 0;
+      const blvl = (id) => S.boosts[id] || 0;
+      const prod = (fxArr, n) => { let m = 1; for (let i = 0; i < n; i++) m *= fxArr[i]; return m; };
+      this._d = {
+        speed: prod(CFG.cellUps.fins.fx, lvl("fins")),
+        magnet: CFG.eat.magnet * prod(CFG.cellUps.magnet.fx, lvl("magnet")),
+        photo: prod(CFG.cellUps.photo.fx, lvl("photo")) * CFG.stages[S.stageIdx].mult * (CFG.boosts.co2.fx[blvl("co2") - 1] || 1),
+        mito: prod(CFG.cellUps.mitosis.fx, lvl("mitosis")),
+        membrane: prod(CFG.cellUps.membrane.fx, lvl("membrane")),
+        leds: CFG.boosts.leds.fx[blvl("leds") - 1] || 1,
+        offlineCapH: CFG.boosts.harvest.fx[blvl("harvest") - 1] || 0,
       };
+      return this._d;
     },
-    respawn() {
-      S.deaths++; S.player.hp = 100; algae.length = 0;
-      algae.push(makeCell(S.player.x, S.player.y, S.player.hue));
-      emit("toast", "ðŸŒ± A daughter cell takes root.");
+
+    income() {
+      let r = 0;
+      for (const re of S.reactors) r += CFG.reactors[re.t].rate * re.lvl;
+      return r * this.derived().leds;
     },
-    bloom(n = 8) { for (let i = 0; i < n; i++) { const nb = makeBacteria(Math.random() < .6 ? "grazer" : "pathogen", S.player.x + rnd(420), S.player.y + rnd(420)); bact.push(nb); } },
-    sprinkle(kind = "carbon", n = 50) { for (let i = 0; i < n; i++) pool.spawn(kind, S.player.x + rnd(380), S.player.y + rnd(380)); },
-    beneficialWave() { for (let i = 0; i < 5; i++) bact.push(makeBacteria("beneficial", S.player.x + rnd(360), S.player.y + rnd(360))); },
-    drain(v) { S.energy = Math.max(0, S.energy - v); },
-    heal(v) { S.player.hp = Math.min(100, S.player.hp + v); },
-    mutate() { S.player.hue = (S.player.hue + 50 + Math.random() * 60) % 360; for (const c of algae) c.hue = S.player.hue; },
-    grantEnergy(v) { S.energy = Math.min(999, S.energy + v); },
+
+    addFx(f) { if (this.fx.length < 90) this.fx.push(f); },
+
+    grantEnergy(v, wx, wy) {
+      S.energy += v;
+      S.evoProg += v;
+      if (wx !== undefined) this.addFx({ kind: "txt", x: wx, y: wy, txt: "+" + Math.round(v), life: 0.9, max: 0.9, color: "#d6ffe4" });
+      while (S.stageIdx + 1 < CFG.stages.length && S.evoProg >= CFG.stages[S.stageIdx + 1].need) {
+        S.stageIdx++;
+        this._d = null;
+        this.addFx({ kind: "burst", x: this.blob.cx, y: this.blob.cy, life: 1.2, max: 1.2, color: "#aef2c3" });
+      }
+    },
+
+    step(dt, t) {
+      const D = this.derived();
+      const b = this.blob;
+
+      let jx = this.joy.x, jy = this.joy.y;
+      const jl = Math.hypot(jx, jy);
+      if (jl > 1) { jx /= jl; jy /= jl; }
+      stepBlob(b, dt, {
+        fx: jx, fy: jy, accel: CFG.cell.accel * D.speed,
+        damp: CFG.cell.damp, t, W: CFG.world.w, H: CFG.world.h,
+      });
+
+      const magR = D.magnet;
+      for (const m of this.motes) {
+        if (m.respawn > 0) {
+          m.respawn -= dt;
+          if (m.respawn <= 0) Object.assign(m, this.newMote(false));
+          continue;
+        }
+        const d = dist(m.x, m.y, b.cx, b.cy);
+        if (d < magR) {
+          const k = CFG.eat.pull * dt / Math.max(d, 12);
+          m.x += (b.cx - m.x) * k; m.y += (b.cy - m.y) * k;
+        }
+        if (d < CFG.eat.radius + b.r * 0.5) {
+          const v = (m.big ? CFG.motes.bigValue : CFG.motes.value) * D.photo;
+          this.grantEnergy(v, m.x, m.y);
+          b.pulse = 1;
+          m.respawn = CFG.motes.respawnDelay;
+          m.x = -9999; m.y = -9999;
+          if (audio) audio.eat();
+        }
+      }
+
+      while (S.energy >= S.divNeed * D.mito) {
+        S.energy -= S.divNeed * D.mito;
+        S.divNeed *= CFG.divide.growth;
+        this.divideCell();
+      }
+
+      if (this.npcs.length && S.pop < CFG.divide.popCap) {
+        if (Math.random() < CFG.divide.npcRate * dt * this.npcs.length) this.divideCell(true);
+      }
+
+      for (const n of this.npcs) {
+        n.grow = Math.min(1, n.grow + dt * 0.25);
+        n.heading += Math.sin(t * 0.7 + n.seed) * 0.9 * dt + rnd(-0.25, 0.25) * dt;
+        const sp = 34 * (0.6 + n.grow * 0.4);
+        n.x += Math.cos(n.heading) * sp * dt;
+        n.y += Math.sin(n.heading) * sp * dt;
+        if (n.x < 120 || n.x > CFG.world.w - 120) n.heading = Math.PI - n.heading;
+        if (n.y < 120 || n.y > CFG.world.h - 120) n.heading = -n.heading;
+        n.x = Math.max(100, Math.min(CFG.world.w - 100, n.x));
+        n.y = Math.max(100, Math.min(CFG.world.h - 100, n.y));
+      }
+
+      this.hitFlash = Math.max(0, this.hitFlash - dt);
+      for (const ba of this.bacteria) {
+        ba.cool = Math.max(0, ba.cool - dt);
+        const dp = dist(ba.x, ba.y, b.cx, b.cy);
+        if (dp < CFG.bacteria.sense) {
+          const k = 60 * dt / Math.max(dp, 20);
+          ba.vx += (b.cx - ba.x) * k; ba.vy += (b.cy - ba.y) * k;
+          const sp = Math.hypot(ba.vx, ba.vy), maxS = CFG.bacteria.speed * 1.35;
+          if (sp > maxS) { ba.vx *= maxS / sp; ba.vy *= maxS / sp; }
+        } else {
+          ba.vx += Math.sin(t * 0.4 + ba.seed) * 30 * dt;
+          ba.vy += Math.cos(t * 0.33 + ba.seed * 2) * 30 * dt;
+        }
+        ba.x += ba.vx * dt; ba.y += ba.vy * dt;
+        if (ba.x < 60 || ba.x > CFG.world.w - 60) ba.vx *= -1;
+        if (ba.y < 60 || ba.y > CFG.world.h - 60) ba.vy *= -1;
+        ba.x = Math.max(60, Math.min(CFG.world.w - 60, ba.x));
+        ba.y = Math.max(60, Math.min(CFG.world.h - 60, ba.y));
+
+        if (dp < b.r + 14 && ba.cool <= 0) {
+          ba.cool = CFG.bacteria.iframes;
+          this.hitFlash = 0.5;
+          const drain = CFG.bacteria.drain * D.membrane;
+          S.energy = Math.max(0, S.energy - drain);
+          const kx = b.cx - ba.x, ky = b.cy - ba.y, kl = Math.hypot(kx, ky) || 1;
+          b.cpx = b.cx + (kx / kl) * 26; b.cpy = b.cy + (ky / kl) * 26;
+          this.addFx({ kind: "ring", x: b.cx, y: b.cy, life: 0.6, max: 0.6, color: "#ff9c9c" });
+          if (audio) audio.hurt();
+        }
+      }
+
+      for (let i = this.fx.length - 1; i >= 0; i--) {
+        const f = this.fx[i];
+        f.life -= dt;
+        if (f.kind === "txt") f.y -= 26 * dt;
+        if (f.life <= 0) this.fx.splice(i, 1);
+      }
+
+      S.t += dt;
+      S.money += this.income() * dt;
+      S.earnedTotal += this.income() * dt;
+      S.pop = 1 + this.npcs.length;
+    },
+
+    divideCell(fromNpc) {
+      const b = this.blob;
+      const a = rnd(0, Math.PI * 2);
+      const n = {
+        x: b.cx + Math.cos(a) * (b.r + 22),
+        y: b.cy + Math.sin(a) * (b.r + 22),
+        r: fromNpc ? rnd(10, 15) : 11,
+        grow: fromNpc ? 0.55 : 0.3,
+        heading: a + Math.PI, seed: rnd(0, 9),
+      };
+      this.npcs.push(n);
+      b.pulse = 1;
+      this.addFx({ kind: "ring", x: b.cx, y: b.cy, life: 0.7, max: 0.7, color: "#b8ffd4" });
+      if (!fromNpc && audio) audio.divide();
+    },
+
+    squish() { return deformMetric(this.blob); },
+    offline() {
+      const secs = Math.min((Date.now() - S.savedAt) / 1000, this.derived().offlineCapH * 3600);
+      if (secs < 60) return 0;
+      const earned = this.income() * secs * CFG.offlineEfficiency;
+      S.money += earned; S.earnedTotal += earned;
+      return earned;
+    },
   };
+  sim.reset();
+  return sim;
 }
