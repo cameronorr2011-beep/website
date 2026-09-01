@@ -46,3 +46,15 @@
 .ins-card small{display:block;margin-top:16px;color:#5ad07a;font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase}
 
 @media (prefers-reduced-motion:reduce){.gcell,.gbub{animation:none!important}}
+
+/* ---------- applications: stage ration table ---------- */
+.app-table-wrap{overflow-x:auto;margin:0 0 1.25em;border:1px solid rgba(90,208,122,.14);border-radius:12px;background:linear-gradient(180deg,#0a120b,#050705)}
+.app-table{border-collapse:collapse;width:100%;min-width:680px;font-size:.9rem}
+.app-table caption{caption-side:top;text-align:left;color:#9fb3a4;font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:12px 14px 10px}
+.app-table th,.app-table td{text-align:left;padding:11px 14px;border-bottom:1px solid rgba(90,208,122,.12);vertical-align:top;line-height:1.55}
+.app-table th{color:#5ad07a;font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;border-bottom-color:rgba(90,208,122,.3);white-space:nowrap}
+.app-table td{color:#cfdccf}
+.app-table td:first-child{color:#e8f0e8}
+.app-table td:first-child small{display:block;margin-top:2px;color:#9fb3a4;font-size:.8rem}
+.app-table tr:last-child td{border-bottom:none}
+
