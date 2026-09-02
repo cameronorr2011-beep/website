@@ -58,3 +58,15 @@
 .app-table td:first-child small{display:block;margin-top:2px;color:#9fb3a4;font-size:.8rem}
 .app-table tr:last-child td{border-bottom:none}
 
+/* ---------- library: article hero figures, facts, hub cards ---------- */
+.art-hero{margin:0 0 34px;border:1px solid rgba(90,208,122,.14);border-radius:14px;overflow:hidden;background:#071009}
+.art-hero img{display:block;width:100%;height:auto}
+.art-hero figcaption{padding:10px 14px;color:#9fb3a4;font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.06em;border-top:1px solid rgba(90,208,122,.1)}
+.facts{display:grid;grid-template-columns:180px 1fr;gap:8px 18px;margin:0 0 1.6em;font-size:.97rem}
+.facts dt{color:#5ad07a;font-family:"IBM Plex Mono",monospace;font-size:11px;text-transform:uppercase;letter-spacing:.1em;padding-top:4px}
+.facts dd{margin:0;color:#cfdccf;line-height:1.65}
+.ins-card img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;border-radius:10px;margin-bottom:14px;background:#071009}
+.lib-refs{font-size:.92rem}
+.lib-refs li{margin-bottom:.4em}
+@media(max-width:640px){.facts{grid-template-columns:1fr}.facts dt{padding-top:0}}
+
