@@ -1,5 +1,5 @@
 ﻿export const CFG = {
-  world: { w: 2200, h: 2200 },
+  world: { w: 2600, h: 2600 },
   tick: 1 / 60,
   cell: {
     r: 26,
@@ -12,6 +12,14 @@
   motes: { count: 130, value: 3, bigValue: 14, bigChance: 0.06, respawnDelay: 2.2 },
   divide: { baseNeed: 42, growth: 1.14, popCap: 34, npcRate: 0.028 },
   bacteria: { count: 9, speed: 92, sense: 240, drain: 12, iframes: 1.4 },
+  zones: [
+    { name: "Sunlit Shallows", x: 0.30, y: 0.30, r: 0.20, energy: 1.0, bact: 0.8,  mote: 1.15, tint: "122,208,160", label: "bright · calm · steady food" },
+    { name: "Nutrient Vent",   x: 0.14, y: 0.84, r: 0.16, energy: 1.6, bact: 1.3,  mote: 1.8,  tint: "255,209,102", label: "rich motes · hungry grazers" },
+    { name: "Dark Depths",     x: 0.86, y: 0.86, r: 0.18, energy: 2.2, bact: 1.65, mote: 0.7,  tint: "138,212,255", label: "lean waters · potent light" },
+    { name: "LED Reef",        x: 0.86, y: 0.14, r: 0.16, energy: 1.3, bact: 0.7,  mote: 1.3,  tint: "212,163,255", label: "gentle glow · few grazers" },
+    { name: "The Thermocline", x: 0.50, y: 0.63, r: 0.11, energy: 1.8, bact: 1.05, mote: 1.0,  tint: "255,138,181", label: "warm current · mixed risk" },
+  ],
+  zoneDiscoverBonus: 25,
   stages: [
     { name: "Plankton Cell", need: 0, mult: 1 },
     { name: "Dividing Cell", need: 70, mult: 1.2 },

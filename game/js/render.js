@@ -87,6 +87,8 @@ export function createRenderer(canvas, sim) {
 
     drawDust(dustFar, 0.35, 0.16);
 
+    drawZones();
+
     const ox = W / 2 - cam.x, oy = H / 2 - cam.y;
 
     for (const m of sim.motes) {
@@ -154,6 +156,80 @@ export function createRenderer(canvas, sim) {
       ctx.fillStyle = `rgba(224,110,110,${sim.hitFlash * 0.35})`;
       ctx.fillRect(0, 0, W, H);
     }
+
+    drawMinimap();
+  }
+
+  /* Biome waters: soft tint, dashed boundary, label that fades in on approach. */
+  function drawZones() {
+    for (const z of CFG.zones) {
+      const zx = z.x * CFG.world.w, zy = z.y * CFG.world.h, zr = z.r * CFG.world.w;
+      const sx = zx - cam.x + W / 2, sy = zy - cam.y + H / 2;
+      if (sx + zr < 0 || sx - zr > W || sy + zr < 0 || sy - zr > H) continue;
+      const g = ctx.createRadialGradient(sx, sy, zr * 0.1, sx, sy, zr);
+      g.addColorStop(0, `rgba(${z.tint},0.10)`);
+      g.addColorStop(0.75, `rgba(${z.tint},0.05)`);
+      g.addColorStop(1, `rgba(${z.tint},0)`);
+      ctx.fillStyle = g;
+      ctx.beginPath(); ctx.arc(sx, sy, zr, 0, Math.PI * 2); ctx.fill();
+      ctx.strokeStyle = `rgba(${z.tint},0.30)`;
+      ctx.lineWidth = 1.5;
+      ctx.setLineDash([10, 14]);
+      ctx.beginPath(); ctx.arc(sx, sy, zr, 0, Math.PI * 2); ctx.stroke();
+      ctx.setLineDash([]);
+      const d = Math.hypot(sim.blob.cx - zx, sim.blob.cy - zy);
+      const la = Math.max(0, Math.min(0.9, 1.3 - d / (zr * 2.2)));
+      if (la > 0.05) {
+        ctx.globalAlpha = la;
+        ctx.textAlign = "center";
+        ctx.fillStyle = "#dff2e4";
+        ctx.font = "600 15px 'Bricolage Grotesque',sans-serif";
+        ctx.fillText(z.name, sx, sy - zr + 22);
+        ctx.fillStyle = `rgba(${z.tint},1)`;
+        ctx.font = "11px 'IBM Plex Mono',monospace";
+        ctx.fillText(z.label, sx, sy - zr + 38);
+        ctx.textAlign = "left";
+        ctx.globalAlpha = 1;
+      }
+    }
+  }
+
+  /* Corner minimap: whole tank, biome markers, colony and grazers. */
+  function drawMinimap() {
+    const mw = 118, mh = 118, mx = W - mw - 14, my = H / 2 - mh / 2;
+    ctx.globalAlpha = 0.82;
+    ctx.fillStyle = "rgba(4,14,9,0.72)";
+    ctx.strokeStyle = "rgba(90,208,122,0.35)";
+    ctx.lineWidth = 1;
+    if (ctx.roundRect) {
+      ctx.beginPath(); ctx.roundRect(mx, my, mw, mh, 10); ctx.fill(); ctx.stroke();
+    } else {
+      ctx.fillRect(mx, my, mw, mh); ctx.strokeRect(mx, my, mw, mh);
+    }
+    ctx.globalAlpha = 1;
+    const map = (wx, wy) => ({ x: mx + (wx / CFG.world.w) * mw, y: my + (wy / CFG.world.h) * mh });
+    for (const z of CFG.zones) {
+      const c = map(z.x * CFG.world.w, z.y * CFG.world.h);
+      ctx.fillStyle = `rgba(${z.tint},0.16)`;
+      ctx.beginPath(); ctx.arc(c.x, c.y, z.r * mw, 0, Math.PI * 2); ctx.fill();
+      ctx.strokeStyle = `rgba(${z.tint},0.45)`;
+      ctx.beginPath(); ctx.arc(c.x, c.y, z.r * mw, 0, Math.PI * 2); ctx.stroke();
+    }
+    ctx.fillStyle = "rgba(224,122,122,0.9)";
+    for (const ba of sim.bacteria) {
+      const c = map(ba.x, ba.y);
+      ctx.fillRect(c.x - 1, c.y - 1, 2, 2);
+    }
+    ctx.fillStyle = "rgba(150,240,180,0.9)";
+    for (const n of sim.npcs) {
+      const c = map(n.x, n.y);
+      ctx.beginPath(); ctx.arc(c.x, c.y, 1.6, 0, Math.PI * 2); ctx.fill();
+    }
+    const p = map(sim.blob.cx, sim.blob.cy);
+    ctx.fillStyle = "#eafff2";
+    ctx.beginPath(); ctx.arc(p.x, p.y, 3, 0, Math.PI * 2); ctx.fill();
+    ctx.strokeStyle = "rgba(234,255,242,0.4)";
+    ctx.strokeRect(mx, my, mw, mh);
   }
 
   function drawPlayer(b, ox, oy, S) {

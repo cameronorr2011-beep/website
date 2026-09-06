@@ -1,5 +1,6 @@
 export function createInput(canvas, sim) {
   const keys = {};
+  const R = 56, DEAD = 5;
   let joyId = null, joyOx = 0, joyOy = 0;
 
   addEventListener("keydown", (e) => {
@@ -9,13 +10,31 @@ export function createInput(canvas, sim) {
   });
   addEventListener("keyup", (e) => { keys[e.key.toLowerCase()] = false; });
 
+  /* Stuck-key guard: alt-tab or losing focus must not leave the cell swimming. */
+  addEventListener("blur", () => {
+    for (const k in keys) keys[k] = false;
+    sim.joy.x = 0; sim.joy.y = 0;
+  });
+
   canvas.addEventListener("pointerdown", (e) => {
     if (joyId !== null) return;
-    joyId = e.pointerId; joyOx = e.clientX; joyOy = e.clientY;
+    joyId = e.pointerId;
+    try { canvas.setPointerCapture(e.pointerId); } catch {}
+    joyOx = e.clientX; joyOy = e.clientY;
+    applyJoy(e.clientX - joyOx, e.clientY - joyOy);
   });
   canvas.addEventListener("pointermove", (e) => {
     if (e.pointerId !== joyId) return;
-    applyJoy(e.clientX - joyOx, e.clientY - joyOy);
+    let dx = e.clientX - joyOx, dy = e.clientY - joyOy;
+    const len = Math.hypot(dx, dy);
+    /* Floating joystick: once the drag passes the ring, the anchor follows
+       the finger so direction never saturates or flips. */
+    if (len > R) {
+      joyOx += dx * (1 - R / len);
+      joyOy += dy * (1 - R / len);
+      dx = e.clientX - joyOx; dy = e.clientY - joyOy;
+    }
+    applyJoy(dx, dy);
   });
   const end = (e) => {
     if (e.pointerId !== joyId) return;
@@ -25,8 +44,9 @@ export function createInput(canvas, sim) {
   canvas.addEventListener("pointercancel", end);
 
   function applyJoy(dx, dy) {
-    const R = 52, len = Math.hypot(dx, dy) || 1;
-    const k = Math.min(1, len / R);
+    const len = Math.hypot(dx, dy) || 1;
+    if (len < DEAD) { sim.joy.x = 0; sim.joy.y = 0; return; }
+    const k = Math.min(1, (len - DEAD) / (R - DEAD));
     sim.joy.x = (dx / len) * k;
     sim.joy.y = (dy / len) * k;
   }

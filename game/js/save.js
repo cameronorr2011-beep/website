@@ -20,6 +20,7 @@ export function freshState() {
     cellUps: {},
     boosts: {},
     reactors: [{ t: 0, lvl: 1 }],
+    zonesFound: [],
   };
 }
 

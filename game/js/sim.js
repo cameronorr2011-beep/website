@@ -33,6 +33,25 @@ export function createSim(S, audio) {
       }
     },
 
+    zoneAt(x, y) {
+      for (const z of CFG.zones) {
+        if (dist(x, y, z.x * CFG.world.w, z.y * CFG.world.h) < z.r * CFG.world.w) return z;
+      }
+      return null;
+    },
+
+    /* Best-of-N sampling biases motes toward rich biomes without clumping them. */
+    pickMoteSpot() {
+      let best = null, bestScore = -1;
+      for (let i = 0; i < 3; i++) {
+        const x = rnd(80, CFG.world.w - 80), y = rnd(80, CFG.world.h - 80);
+        const z = this.zoneAt(x, y);
+        const score = (z ? z.mote : 0.9) + Math.random() * 0.9;
+        if (score > bestScore) { bestScore = score; best = { x, y }; }
+      }
+      return best;
+    },
+
     spawnMotes() {
       this.motes.length = 0;
       for (let i = 0; i < CFG.motes.count; i++) this.motes.push(this.newMote(true));
@@ -45,7 +64,7 @@ export function createSim(S, audio) {
         x = this.blob.cx + Math.cos(a) * d;
         y = this.blob.cy + Math.sin(a) * d;
       } else {
-        x = rnd(80, CFG.world.w - 80); y = rnd(80, CFG.world.h - 80);
+        ({ x, y } = this.pickMoteSpot());
       }
       x = Math.max(60, Math.min(CFG.world.w - 60, x));
       y = Math.max(60, Math.min(CFG.world.h - 60, y));
@@ -92,6 +111,15 @@ export function createSim(S, audio) {
       const D = this.derived();
       const b = this.blob;
 
+      /* Biome of the cell right now: drives energy yield and discovery. */
+      const zone = this.zoneAt(b.cx, b.cy);
+      if (zone && !S.zonesFound.includes(zone.name)) {
+        S.zonesFound.push(zone.name);
+        this.addFx({ kind: "ring", x: b.cx, y: b.cy, life: 1.0, max: 1.0, color: "#ffd166" });
+        this.grantEnergy(CFG.zoneDiscoverBonus, b.cx, b.cy - 40);
+        if (this.onDiscover) this.onDiscover(zone);
+      }
+
       let jx = this.joy.x, jy = this.joy.y;
       const jl = Math.hypot(jx, jy);
       if (jl > 1) { jx /= jl; jy /= jl; }
@@ -113,7 +141,7 @@ export function createSim(S, audio) {
           m.x += (b.cx - m.x) * k; m.y += (b.cy - m.y) * k;
         }
         if (d < CFG.eat.radius + b.r * 0.5) {
-          const v = (m.big ? CFG.motes.bigValue : CFG.motes.value) * D.photo;
+          const v = (m.big ? CFG.motes.bigValue : CFG.motes.value) * D.photo * (zone ? zone.energy : 1);
           this.grantEnergy(v, m.x, m.y);
           b.pulse = 1;
           m.respawn = CFG.motes.respawnDelay;
@@ -148,10 +176,12 @@ export function createSim(S, audio) {
       for (const ba of this.bacteria) {
         ba.cool = Math.max(0, ba.cool - dt);
         const dp = dist(ba.x, ba.y, b.cx, b.cy);
+        const bz = this.zoneAt(ba.x, ba.y);
+        const aggro = bz ? bz.bact : 1;
         if (dp < CFG.bacteria.sense) {
           const k = 60 * dt / Math.max(dp, 20);
           ba.vx += (b.cx - ba.x) * k; ba.vy += (b.cy - ba.y) * k;
-          const sp = Math.hypot(ba.vx, ba.vy), maxS = CFG.bacteria.speed * 1.35;
+          const sp = Math.hypot(ba.vx, ba.vy), maxS = CFG.bacteria.speed * 1.35 * aggro;
           if (sp > maxS) { ba.vx *= maxS / sp; ba.vy *= maxS / sp; }
         } else {
           ba.vx += Math.sin(t * 0.4 + ba.seed) * 30 * dt;
@@ -166,7 +196,7 @@ export function createSim(S, audio) {
         if (dp < b.r + 14 && ba.cool <= 0) {
           ba.cool = CFG.bacteria.iframes;
           this.hitFlash = 0.5;
-          const drain = CFG.bacteria.drain * D.membrane;
+          const drain = CFG.bacteria.drain * D.membrane * (0.7 + 0.3 * aggro);
           S.energy = Math.max(0, S.energy - drain);
           const kx = b.cx - ba.x, ky = b.cy - ba.y, kl = Math.hypot(kx, ky) || 1;
           b.cpx = b.cx + (kx / kl) * 26; b.cpy = b.cy + (ky / kl) * 26;

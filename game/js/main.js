@@ -23,6 +23,13 @@ document.getElementById("btnMusic").classList.toggle("off", !S.music);
 document.getElementById("btnSfx").classList.toggle("off", !S.sfx);
 
 const input = createInput(canvas, sim);
+
+sim.onDiscover = (z) => {
+  ui.banner(z.name.toUpperCase(), z.label + " · +" + CFG.zoneDiscoverBonus + " energy");
+  ui.toast("New waters discovered — " + z.name + " (" + S.zonesFound.length + "/" + CFG.zones.length + ")");
+  audio.divide();
+};
+
 const wakeAudio = () => { if (started) audio.ensure(); };
 addEventListener("pointerdown", wakeAudio);
 addEventListener("keydown", wakeAudio);
