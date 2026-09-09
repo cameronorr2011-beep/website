@@ -3,6 +3,17 @@ import { CFG } from "./config.js";
 const KEY = "algae-living-v3";
 const OLD_KEY = "algae-living-v2";
 
+/* Storage consent (see site /js/consent.js): the game save is a preference,
+   not strictly necessary storage. Without a consent record the game runs
+   normally but nothing is written to localStorage. */
+function storageAllowed() {
+  try {
+    const c = localStorage.getItem("ob-cookie-consent");
+    if (!c) return false;
+    const v = JSON.parse(c);
+    return v && v.choice === "all";
+  } catch { return false; }
+}
 export function freshState() {
   return {
     v: 3,
@@ -25,6 +36,7 @@ export function freshState() {
 }
 
 export function loadGame() {
+  if (!storageAllowed()) return null;
   try {
     const raw = localStorage.getItem(KEY);
     if (raw) {
@@ -47,6 +59,7 @@ export function loadGame() {
 }
 
 export function saveGame(S) {
+  if (!storageAllowed()) return;
   try {
     S.savedAt = Date.now();
     localStorage.setItem(KEY, JSON.stringify(S));

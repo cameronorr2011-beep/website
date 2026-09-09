@@ -46,6 +46,7 @@ orr-biologicals/
 │   ├── site.js             ← data + all content renderers
 │   ├── main-dashboard.js   ← live simulation wiring + culture render + dose calc
 │   ├── navigation.js       ← nav state, mobile menu, deploy mailto form
+│   ├── consent.js          ← cookie/localStorage consent banner (all pages)
 │   └── animations.js       ← reveal-on-scroll, count-up, atmosphere, parallax
 └── assets/
     ├── images/             ← hero.jpg, instrument-photo.jpg
