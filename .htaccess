@@ -34,9 +34,9 @@ Redirect 301 /reading-your-culture                     /insights/reading-your-cu
 Redirect 301 /winter-home-growing-warmth               /insights/winter-home-growing-warmth
 
 # Product / concept equivalents on the rebuilt homepage
-Redirect 301 /research                                 /#system
-Redirect 301 /technology                               /#stack
-Redirect 301 /projects                                 /#stack
+Redirect 301 /research                   /#research
+Redirect 301 /technology                  /#technology
+Redirect 301 /projects                   /#architecture
 Redirect 301 /lab                                      /game/
 Redirect 301 /algaephyte                               /
 # Exact-match only: a plain `Redirect /applications /applications/` prefix-matches
