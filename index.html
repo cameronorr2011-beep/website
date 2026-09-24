@@ -1,387 +1,469 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Cyanoflow — Single-Cell Discovery | Orr Biologicals</title>
-  <meta name="description" content="Cyanoflow is a developing research platform by Orr Biologicals combining microfluidics, automated microscopy, computer vision, and AI phenotyping for individual microalgal cells.">
-  <meta name="theme-color" content="#030807">
-  <link rel="canonical" href="https://orrbiologicals.com/">
-  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Cyanoflow — AI-powered single-cell discovery">
-  <meta property="og:description" content="A developing microfluidics and microscopy platform for observing, measuring, and identifying individual microalgal cells.">
-  <meta property="og:url" content="https://orrbiologicals.com/">
-  <meta property="og:site_name" content="Orr Biologicals">
-  <meta property="og:image" content="https://orrbiologicals.com/assets/og.png">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Cyanoflow — AI-powered single-cell discovery">
-  <meta name="twitter:description" content="Microfluidics, microscopy, and computational phenotyping for individual microalgal cells.">
-  <meta name="twitter:image" content="https://orrbiologicals.com/assets/og.png">
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"Organization",
-    "name":"Orr Biologicals",
-    "url":"https://orrbiologicals.com/",
-    "description":"Independent biology and research-technology initiative developing instruments for measurable, searchable biology."
-  }
-  </script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Manrope:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,300;6..72,400;6..72,500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/cyanoflow.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Algaephyte — AI Microalgae Photobioreactor | Orr Biologicals</title>
+<meta name="description" content="Algaephyte by Orr Biologicals — a self-tending photobioreactor for home and lab microalgae cultivation. Digital twin, edge-AI vision, MQTT mesh. Six sensors, a physics model, and pumps that are not allowed to move until three safety gates agree.">
+<meta name="theme-color" content="#050705">
+<link rel="canonical" href="https://orrbiologicals.com/">
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<meta property="og:title" content="Algaephyte — AI Microalgae Photobioreactor | Orr Biologicals">
+<meta property="og:description" content="A living production system that learns how to stay productive. Vessel, sensors, edge vision, digital twin, control firmware and federated learning — one instrument.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://orrbiologicals.com/">
+<meta property="og:image" content="https://orrbiologicals.com/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="Orr Biologicals">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Algaephyte — AI Microalgae Photobioreactor | Orr Biologicals">
+<meta name="twitter:description" content="Vessel, sensors, edge vision, digital twin, control firmware and federated learning — engineered as one instrument for reliable microalgae cultivation.">
+<meta name="twitter:image" content="https://orrbiologicals.com/assets/og.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+{"@type":"Organization","@id":"https://orrbiologicals.com/#org","name":"Orr Biologicals","url":"https://orrbiologicals.com/","email":"service@orrbiologicals.com","logo":"https://orrbiologicals.com/assets/og.png","description":"Orr Biologicals builds Algaephyte, an AI-tended microalgae photobioreactor platform combining a physics digital twin, edge computer vision and federated learning — prototyped on Arthrospira, designed for microalgae and phytoplankton broadly."},
+{"@type":"WebSite","@id":"https://orrbiologicals.com/#site","url":"https://orrbiologicals.com/","name":"Orr Biologicals","publisher":{"@id":"https://orrbiologicals.com/#org"}},
+{"@type":"Product","@id":"https://orrbiologicals.com/#algaephyte","name":"Algaephyte","description":"A full-stack automated photobioreactor for microalgae — currently configured for Arthrospira (Spirulina): sensor suite, Droop/Steele digital twin, Edge TPU contamination vision, three-gate safety firmware and a federated MQTT mesh.","brand":{"@id":"https://orrbiologicals.com/#org"},"url":"https://orrbiologicals.com/","offers":{"@type":"Offer","availability":"https://schema.org/PreOrder","offerStatus":"https://schema.org/PreOrder","priceCurrency":"USD","description":"Controlled pilot deployments — inquiry only"}}]}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:opsz,ital,wght@8..60,0,400;8..60,0,500;8..60,1,400&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/header.css">
+  <link rel="stylesheet" href="css/hero.css">
+  <link rel="stylesheet" href="css/ticker.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+  <link rel="stylesheet" href="css/stack.css">
+  <link rel="stylesheet" href="css/system.css">
+  <link rel="stylesheet" href="css/signals.css">
+  <link rel="stylesheet" href="css/safety.css">
+  <link rel="stylesheet" href="css/mesh.css">
+  <link rel="stylesheet" href="css/instrument.css">
+  <link rel="stylesheet" href="css/impact.css">
+  <link rel="stylesheet" href="css/accordions.css">
+  <link rel="stylesheet" href="css/journal.css">
+  <link rel="stylesheet" href="css/deploy.css">
+  <link rel="stylesheet" href="css/footer.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/extras.css">
 </head>
 <body>
-  <a class="skip-link" href="#main">Skip to content</a>
-  <div class="site-noise" aria-hidden="true"></div>
-  <div class="reading-progress" aria-hidden="true"><span></span></div>
+  <a class="skip" href="#main">Skip to content</a>
 
-  <header class="site-header">
-    <a class="brand" href="#top" aria-label="Cyanoflow home">
-      <span class="brand-mark" aria-hidden="true">
-        <svg viewBox="0 0 36 36"><circle cx="18" cy="18" r="16.5"/><path d="M9 21.5c4-3.4 4-10.2 9-10.2s5 6.8 9 10.2"/><circle cx="18" cy="18" r="2.2"/></svg>
-      </span>
-      <span><strong>CYANOFLOW</strong><small>ORR BIOLOGICALS</small></span>
+<!-- ============ NAV ============ -->
+<header class="nav" id="nav">
+  <div class="nav-in">
+    <a class="mark" href="#top" aria-label="Algaephyte home">
+      <svg viewBox="0 0 28 28" aria-hidden="true">
+        <circle cx="14" cy="14" r="13" fill="none" stroke="currentColor" stroke-opacity="0.35"/>
+        <path d="M7 20c2.6-2.2 2.6-9.8 7-9.8S16.4 20 21 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" class="dash-flow"/>
+        <path d="M6 12c2.6-2.2 2.6-6 7-6s4.4 3.8 7 6" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-opacity="0.55" class="dash-flow"/>
+      </svg>
+      <span><b>Algaephyte</b><small>Orr Biologicals</small></span>
     </a>
-    <nav class="desktop-nav" aria-label="Primary navigation">
-      <a href="#technology">Technology</a>
-      <a href="#architecture">Architecture</a>
-      <a href="#roadmap">Roadmap</a>
-      <a href="#status">Research status</a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#system">System</a>
+      <a href="#stack">Stack</a>
+      <a href="#mesh">Mesh</a>
+      <a href="#journal">Journal</a>
+      <a href="#faults">Faults</a>
+      <a href="#faq">FAQ</a>
+      <a href="/applications/">Applications</a>
+      <a href="/insights/">Insights</a>
+      <a href="/game/">Game</a>
+      <a class="btn-white" href="#deploy">Pilot access</a>
     </nav>
-    <a class="header-cta" href="#discovery">Explore research <span aria-hidden="true">↘</span></a>
-    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open navigation"><span></span><span></span></button>
-    <div class="mobile-menu" id="mobile-menu" hidden>
-      <a href="#technology">Technology</a><a href="#architecture">Architecture</a><a href="#roadmap">Roadmap</a><a href="#status">Research status</a>
-    </div>
-  </header>
+    <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
+  </div>
+</header>
+<div class="mobile-menu" id="mobileMenu" hidden>
+  <a href="#system">System</a>
+  <a href="#stack">Stack</a>
+  <a href="#mesh">Mesh</a>
+  <a href="#journal">Journal</a>
+  <a href="#faults">Faults</a>
+  <a href="#faq">FAQ</a>
+  <a href="/applications/">Applications</a>
+  <a href="/insights/">Insights</a>
+  <a href="/game/">Game</a>
+  <a href="#deploy">Pilot access</a>
+</div>
 
   <main id="main">
-    <section class="hero" id="top">
-      <div class="hero-grid" aria-hidden="true"></div>
-      <div class="hero-copy">
-        <p class="kicker"><span class="status-dot"></span> A research platform by Orr Biologicals</p>
-        <h1>Cyanoflow</h1>
-        <p class="hero-subhead">AI-powered single-cell discovery for microalgal biotechnology.</p>
-        <p class="hero-intro">Cyanoflow is a developing platform designed to isolate, observe, measure, and identify individual microalgal cells using microfluidics, automated imaging, and artificial intelligence.</p>
-        <div class="hero-actions">
-          <a class="button button-primary" href="#technology">Explore the technology <span aria-hidden="true">↓</span></a>
-          <a class="button button-secondary" href="#research">Research</a>
-        </div>
+<!-- ============ HERO ============ -->
+<section class="hero" id="top">
+  <img class="hero-img parallax" id="heroImg" src="assets/images/hero.jpg" alt="Algaephyte photobioreactor cultivating a dense Arthrospira culture">
+  <div class="hero-veil"></div>
+  <canvas class="hero-atmo" id="atmoHero" aria-hidden="true"></canvas>
+  <div class="noise"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-in" id="heroIn">
+    <p class="eyebrow fadeup" style="animation:fadeup 1s cubic-bezier(.16,1,.3,1) both">Full-stack biological infrastructure</p>
+    <h1 id="wordmark" aria-label="Algaephyte"></h1>
+    <h2 class="fadeup" style="animation:fadeup 1s cubic-bezier(.16,1,.3,1) both;animation-delay:.62s">A living production system that learns how to stay productive.</h2>
+    <p class="lede fadeup" style="animation:fadeup 1s cubic-bezier(.16,1,.3,1) both;animation-delay:.76s">Vessel, sensors, edge vision, digital twin, control firmware and federated learning — engineered as one instrument for reliable microalgae cultivation.</p>
+    <div class="hero-cta fadeup" style="animation:fadeup 1s cubic-bezier(.16,1,.3,1) both;animation-delay:.9s">
+      <a class="btn-white" href="#simulation">Experience the system</a>
+      <a class="btn-ghost" href="#stack">Explore the full stack</a>
+    </div>
+  </div>
+  <div class="hero-status"><span class="beacon-wrap"><span class="pulse-ring"></span><span class="status-beacon"></span></span>AP-01 · culture online</div>
+  <div class="scroll-hint"><span class="mono">Scroll</span><span class="scroll-line"></span></div>
+</section>
+<!-- ============ TICKER ============ -->
+<div class="ticker" aria-hidden="true">
+  <div class="marquee-track" id="tickerTrack"></div>
+</div>
+<!-- ============ SIMULATION ============ -->
+<section class="section" id="simulation">
+  <div class="wrap">
+    <div class="section-reveal" style="display:grid;gap:32px;grid-template-columns:7fr 5fr;align-items:end">
+      <div>
+        <p class="eyebrow">Living simulation</p>
+        <h2 class="h-display" style="max-width:12ch">Biology pushes back.</h2>
       </div>
-
-      <div class="hero-instrument" aria-label="Conceptual visualization of cells moving through a microfluidic imaging chip">
-        <div class="instrument-topline"><span>CF / IMAGING CHIP</span><span class="instrument-state"><i></i> CONCEPT VIEW</span></div>
-        <div class="chip-stage">
-          <svg class="chip-visual" viewBox="0 0 780 460" role="img" aria-labelledby="chip-title chip-desc">
-            <title id="chip-title">Microfluidic single-cell analysis chip</title>
-            <desc id="chip-desc">A sample enters branching fluidic channels, individual cells are separated into tiny compartments, pass through an imaging zone, and are highlighted by an analysis overlay.</desc>
-            <defs>
-              <linearGradient id="fluid" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#103d35"/><stop offset=".5" stop-color="#061e1a"/><stop offset="1" stop-color="#0b312d"/></linearGradient>
-              <linearGradient id="scan" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#5de4d0" stop-opacity="0"/><stop offset=".5" stop-color="#5de4d0" stop-opacity=".45"/><stop offset="1" stop-color="#5de4d0" stop-opacity="0"/></linearGradient>
-              <radialGradient id="cellBody"><stop stop-color="#a5f37d"/><stop offset=".48" stop-color="#50b86b"/><stop offset=".82" stop-color="#1c654f"/><stop offset="1" stop-color="#0a2e29"/></radialGradient>
-              <filter id="glow"><feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-              <filter id="soft"><feGaussianBlur stdDeviation="12"/></filter>
-            </defs>
-            <path class="chip-body" d="M60 36h660c20 0 36 16 36 36v316c0 20-16 36-36 36H60c-20 0-36-16-36-36V72c0-20 16-36 36-36Z"/>
-            <path class="channel channel-main" d="M54 230h90c28 0 28-108 70-108h105c36 0 32 108 68 108h86c30 0 28-108 66-108h96c31 0 29 108 65 108h64"/>
-            <path class="channel channel-branch" d="M144 230h74c29 0 27 94 61 94h112c32 0 29-94 62-94h70c33 0 30-94 64-94h65"/>
-            <g class="compartments">
-              <g transform="translate(160 222)"><rect width="48" height="17" rx="8.5"/><ellipse cx="20" cy="8" rx="8" ry="6" class="cell"/></g>
-              <g transform="translate(260 160)"><rect width="48" height="17" rx="8.5"/><ellipse cx="28" cy="8" rx="7" ry="6" class="cell cell-b"/></g>
-              <g transform="translate(350 230)"><rect width="48" height="17" rx="8.5"/><ellipse cx="20" cy="8" rx="7" ry="5.5" class="cell"/></g>
-              <g transform="translate(446 122)"><rect width="48" height="17" rx="8.5"/><ellipse cx="25" cy="8" rx="8" ry="6" class="cell cell-c"/></g>
-              <g transform="translate(540 230)"><rect width="48" height="17" rx="8.5"/><ellipse cx="23" cy="8" rx="7" ry="5" class="cell cell-b"/></g>
-              <g transform="translate(638 122)"><rect width="48" height="17" rx="8.5"/><ellipse cx="26" cy="8" rx="8" ry="6" class="cell"/></g>
-              <g transform="translate(228 324)"><rect width="48" height="17" rx="8.5"/><ellipse cx="22" cy="8" rx="7" ry="5.5" class="cell cell-c"/></g>
-              <g transform="translate(390 324)"><rect width="48" height="17" rx="8.5"/><ellipse cx="25" cy="8" rx="7" ry="6" class="cell"/></g>
-              <g transform="translate(562 324)"><rect width="48" height="17" rx="8.5"/><ellipse cx="22" cy="8" rx="8" ry="5" class="cell cell-b"/></g>
-            </g>
-            <rect class="imaging-zone" x="442" y="70" width="176" height="128" rx="12"/>
-            <rect class="scan-line" x="454" y="74" width="152" height="2"/>
-            <g class="focus-corners"><path d="M456 104v-20h20M614 84h20v20M456 164v20h20M614 184h20v-20"/></g>
-            <g class="ai-layer">
-              <path d="M530 212v66h114"/>
-              <rect x="604" y="264" width="80" height="32" rx="6"/>
-              <circle cx="620" cy="280" r="5"/><path d="M634 276h32M634 284h22"/>
-            </g>
-            <g class="selected-cell" filter="url(#glow)"><ellipse cx="490" cy="130" rx="15" ry="12"/><circle cx="490" cy="130" r="23"/><path d="M490 97v-12M490 175v-12M457 130h-12M535 130h-12"/></g>
-            <g class="labels"><text x="50" y="404">SAMPLE IN</text><text x="278" y="404">COMPARTMENT ARRAY</text><text x="474" y="54">IMAGING REGION</text><text x="619" y="322">PHENOTYPE OUTPUT</text></g>
-          </svg>
-          <div class="scan-beam" aria-hidden="true"></div>
-          <div class="focus-readout" aria-hidden="true"><span>OPTICAL FIELD</span><strong>CF-00184</strong><i></i></div>
-        </div>
-        <div class="instrument-footer">
-          <span>ISOLATION</span><span>OPTICAL ACQUISITION</span><span>PHENOTYPING</span>
-        </div>
-      </div>
-      <p class="concept-note">Conceptual instrument visualization · not experimental data</p>
-    </section>
-
-    <section class="problem section" id="research">
-      <div class="section-number">01</div>
-      <div class="section-heading">
-        <p class="eyebrow">The problem</p>
-        <h2>Valuable biology can disappear inside a population.</h2>
-        <p>Microalgal populations contain enormous cellular diversity. Population-level measurements often describe the average behavior of thousands or millions of cells. An unusual cell with a potentially valuable phenotype can therefore remain hidden within the population.</p>
-        <p class="statement">Cyanoflow approaches the problem differently: <strong>Measure the individual cell.</strong></p>
-      </div>
-      <div class="comparison" aria-label="Comparison of population screening and Cyanoflow single-cell analysis">
-        <div class="comparison-card muted-card">
-          <div class="card-label">Traditional screening</div>
-          <div class="population-cloud" aria-hidden="true">
-            <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+      <p class="lede" style="justify-self:end">Change the environment. The model recalculates growth, oxygen stress and useful output. Brightest is not best. More is not always more.</p>
+    </div>
+    <div class="section-reveal" style="margin-top:56px">
+      <div class="sim-panel">
+        <div class="sim-visual">
+          <img class="sim-photo" id="simPhoto" src="assets/images/microscopy/sim-field.jpg" alt="Living Arthrospira filaments under dark-field microscopy">
+          <div class="sim-shade"></div>
+          <div class="scan-line"></div>
+          <canvas class="hero-atmo" id="atmoSim" aria-hidden="true" style="opacity:.4"></canvas>
+          <div class="sim-tag">Optical field · 400× · inferred state</div>
+          <div class="sim-cap">
+            <div class="tone good" id="simCaption">Productive regime. Cells are dividing. The twin would hold.</div>
+            <div class="meta" id="simMeta">Growth response 52% · oxygen stress 0%</div>
           </div>
-          <div class="flow-row"><span>Population</span><b>→</b><span>Average measurement</span></div>
         </div>
-        <div class="comparison-card active-card">
-          <div class="card-label">Cyanoflow</div>
-          <div class="isolated-cells" aria-hidden="true"><i></i><i></i><i class="candidate"></i><i></i><i></i><i></i><i class="candidate"></i><i></i></div>
-          <div class="flow-row wrap"><span>Individual cells</span><b>→</b><span>Individual measurements</span><b>→</b><span>Phenotype map</span><b>→</b><span class="highlight-text">Candidate discovery</span></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="concept section" id="technology">
-      <div class="section-number">02</div>
-      <div class="section-heading wide">
-        <p class="eyebrow">The concept</p>
-        <h2>One continuous path from cell to candidate.</h2>
-        <p>Cyanoflow combines four technologies into a single research architecture. Each layer preserves the link between the original cell, its image series, its measured phenotype, and its experimental context.</p>
-      </div>
-      <div class="technology-grid">
-        <article class="technology-card"><span>01</span><div class="tech-icon microfluidic-icon"><i></i><i></i><i></i></div><h3>Microfluidics</h3><p>Create controlled microscopic compartments for individual-cell observation.</p></article>
-        <article class="technology-card"><span>02</span><div class="tech-icon imaging-icon"><i></i></div><h3>Imaging</h3><p>Capture cellular morphology and behavior over time.</p></article>
-        <article class="technology-card"><span>03</span><div class="tech-icon vision-icon"><i></i><i></i><i></i><i></i></div><h3>Computer vision</h3><p>Convert images into quantitative cellular measurements.</p></article>
-        <article class="technology-card"><span>04</span><div class="tech-icon ai-icon"><i></i><i></i><i></i></div><h3>Artificial intelligence</h3><p>Identify patterns and phenotypes that warrant further investigation.</p></article>
-      </div>
-      <div class="process-rail" aria-label="Cyanoflow analysis sequence">
-        <div><b>Sample</b><span>01</span></div><i></i><div><b>Cell isolation</b><span>02</span></div><i></i><div><b>Microscopy</b><span>03</span></div><i></i><div><b>Computer vision</b><span>04</span></div><i></i><div><b>AI phenotyping</b><span>05</span></div><i></i><div><b>Candidate ID</b><span>06</span></div>
-      </div>
-    </section>
-
-    <section class="chip-section section">
-      <div class="section-number">03</div>
-      <div class="section-heading wide">
-        <p class="eyebrow">Inside the chip</p>
-        <h2>A microscopic conveyor system for biological measurements.</h2>
-        <p>Cells are separated into controlled aqueous compartments, transported through the chip, imaged in a defined region, and evaluated before selection.</p>
-      </div>
-      <div class="chip-explainer">
-        <div class="chip-map">
-          <div class="chip-map-grid" aria-hidden="true"></div>
-          <div class="flow-node input-node"><i></i><span>Sample input</span></div>
-          <div class="flow-path path-a"><i></i></div>
-          <div class="flow-node isolation-node"><i></i><span>Cell isolation</span></div>
-          <div class="flow-path path-b"><i></i></div>
-          <div class="flow-node channel-node"><i></i><span>Fluidic channels</span></div>
-          <div class="flow-path path-c"><i></i></div>
-          <div class="flow-node scan-node"><i></i><span>Imaging zone</span></div>
-          <div class="flow-path path-d"><i></i></div>
-          <div class="flow-node analysis-node"><i></i><span>AI analysis</span></div>
-          <div class="flow-path path-e"><i></i></div>
-          <div class="flow-node select-node"><i></i><span>Candidate selection</span></div>
-          <div class="map-axis axis-x"><span>FLOW DIRECTION</span><b>→</b></div>
-        </div>
-        <div class="sequence-panel">
-          <div class="sequence-top"><span>SEQUENCE / CF-CHIP-01</span><span id="sequence-status">READY</span></div>
-          <div class="sequence-stage">
-            <div class="stage-index" id="stage-index">00</div>
-            <div><p id="stage-label">Concept sequence</p><h3 id="stage-title">Sample preparation</h3><span id="stage-copy">A cell-containing sample enters the controlled fluidic path.</span></div>
-          </div>
-          <div class="sequence-progress" aria-hidden="true"><span id="sequence-progress-bar"></span></div>
-          <button class="sequence-button" id="sequence-button" type="button">Run conceptual sequence <span aria-hidden="true">→</span></button>
-          <p>Interface demonstration only. Geometry, timing, and sequence are conceptual.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="observation section alt">
-      <div class="section-number">04</div>
-      <div class="section-heading wide split-heading">
-        <div><p class="eyebrow">Single-cell observation</p><h2>Every cell becomes a data point.</h2></div>
-        <p>Cyanoflow is designed to track individual cells rather than relying only on population averages. Repeated imaging makes changes in form and behavior available for analysis.</p>
-      </div>
-      <div class="observation-interface">
-        <figure class="microscopy-panel">
-          <img src="assets/images/microscopy/sim-field.jpg" alt="Representative dark-field microscopy image of filamentous microalgal cells">
-          <div class="image-overlay"><span>OPTICAL FIELD / CONCEPT</span><span>40×</span></div>
-          <div class="target-reticle" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
-          <figcaption>Representative microscopy imagery. The interface and metrics shown are conceptual.</figcaption>
-        </figure>
-        <div class="cell-interface">
-          <div class="cell-interface-top"><div><span>ACTIVE CELL</span><strong>CF-00184</strong></div><span class="record-state">TRACKING</span></div>
-          <div class="trajectory-chart" aria-label="Conceptual cell growth trajectory">
-            <svg viewBox="0 0 540 180" role="img"><defs><linearGradient id="area" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#59e2cc" stop-opacity=".28"/><stop offset="1" stop-color="#59e2cc" stop-opacity="0"/></linearGradient></defs><g class="chart-grid"><path d="M0 30h540M0 75h540M0 120h540M0 165h540"/><path d="M0 15v150M108 15v150M216 15v150M324 15v150M432 15v150M540 15v150"/></g><path class="chart-area" d="M0 156C45 150 60 135 108 139s60-38 108-31 66-51 108-45 68-45 108-39 68-20 108-20V165H0Z"/><path class="chart-line" d="M0 156C45 150 60 135 108 139s60-38 108-31 66-51 108-45 68-45 108-39 68-20 108-20"/><circle cx="540" cy="24" r="4"/></svg>
-            <div class="chart-axis"><span>T₀</span><span>T+12 h</span><span>T+24 h</span><span>T+36 h</span><span>T+48 h</span></div>
-          </div>
-          <div class="measurements">
-            <div><span>Morphology</span><b><i style="--value:80%"></i></b><em>0.82</em></div>
-            <div><span>Growth</span><b><i style="--value:91%"></i></b><em>0.91</em></div>
-            <div><span>Optical profile</span><b><i style="--value:72%"></i></b><em>0.72</em></div>
-            <div><span>Stability</span><b><i style="--value:88%"></i></b><em>0.88</em></div>
-          </div>
-          <div class="phenotype-result"><span>PHENOTYPE</span><strong>Candidate</strong><small>Conceptual classification</small></div>
-        </div>
-      </div>
-      <div class="measurement-tags"><span>Cell size</span><span>Morphology</span><span>Growth behavior</span><span>Division events</span><span>Pigmentation</span><span>Movement</span><span>Optical characteristics</span><span>Changes over time</span></div>
-      <p class="disclaimer-inline">Conceptual interface examples. Displayed values are not claimed experimental results.</p>
-    </section>
-
-    <section class="phenotyping section">
-      <div class="section-number">05</div>
-      <div class="phenotyping-grid">
-        <div class="section-heading">
-          <p class="eyebrow">AI phenotyping</p>
-          <h2>From images to biological measurements.</h2>
-          <p>Cyanoflow’s AI layer is designed to transform microscopy data into measurable phenotypic features. Instead of asking only what species a cell may be, the system focuses on what the cell is doing.</p>
-          <div class="question-shift"><div><span>Instead of</span><strong>“What species is this?”</strong></div><b>→</b><div class="active-question"><span>Focus on</span><strong>“What is this cell doing?”</strong></div></div>
-        </div>
-        <div class="feature-orbit" aria-label="Phenotypic features analyzed by Cyanoflow">
-          <div class="orbit-center"><span>AI</span><small>PHENOTYPE</small></div>
-          <div class="orbit-ring ring-one"></div><div class="orbit-ring ring-two"></div>
-          <span class="orbit-point point-one">Morphology</span><span class="orbit-point point-two">Growth trajectories</span><span class="orbit-point point-three">Optical characteristics</span><span class="orbit-point point-four">Temporal behavior</span><span class="orbit-point point-five">Experimental conditions</span>
-          <i class="orbit-satellite"></i>
-        </div>
-      </div>
-      <p class="phenotyping-note">The system can identify cells displaying predefined characteristics of scientific interest. Model outputs remain subject to experimental validation.</p>
-    </section>
-
-    <section class="discovery section alt" id="discovery">
-      <div class="section-number">06</div>
-      <div class="section-heading centered wide">
-        <p class="eyebrow">Candidate discovery</p>
-        <h2>Find the cells worth investigating.</h2>
-        <p>Cyanoflow is designed to reduce the search space by identifying individual cells that display measurable characteristics of interest.</p>
-      </div>
-      <div class="candidate-map-wrap">
-        <div class="candidate-map-top"><span>PHENOTYPE EMBEDDING / CONCEPT</span><span><i class="legend-dot ordinary"></i> Observation <i class="legend-dot selected"></i> Candidate</span></div>
-        <canvas id="candidate-map" aria-label="Conceptual map of hundreds of cellular observations with a small number of highlighted candidates"></canvas>
-        <div class="map-axis-labels"><span>OPTICAL FEATURE 01</span><span>OPTICAL FEATURE 02</span><span>OPTICAL FEATURE 03</span></div>
-        <button id="map-control" type="button" aria-pressed="true">Hide candidate layer</button>
-      </div>
-      <div class="discovery-callout"><div><span>Human decision point</span><strong>The AI does not replace biological validation.</strong><p>It helps researchers decide where to look next.</p></div><div class="callout-mark" aria-hidden="true">↗</div></div>
-    </section>
-
-    <section class="characterization section">
-      <div class="section-number">07</div>
-      <div class="section-heading wide">
-        <p class="eyebrow">From discovery to characterization</p>
-        <h2>A computational lead into biological research.</h2>
-        <p>Candidate cells identified by the system can be directed toward appropriate downstream characterization under approved laboratory conditions.</p>
-      </div>
-      <div class="characterization-flow">
-        <div class="flow-step"><span>01</span><i class="step-icon observe"></i><h3>Observe</h3><p>Record individual cells and image sequences.</p></div>
-        <div class="flow-arrow">→</div>
-        <div class="flow-step"><span>02</span><i class="step-icon measure"></i><h3>Measure</h3><p>Extract quantitative cellular features.</p></div>
-        <div class="flow-arrow">→</div>
-        <div class="flow-step active"><span>03</span><i class="step-icon identify"></i><h3>Identify</h3><p>Map cells against predefined characteristics.</p></div>
-        <div class="flow-arrow">→</div>
-        <div class="flow-step"><span>04</span><i class="step-icon select"></i><h3>Select</h3><p>Prioritize observations for review.</p></div>
-        <div class="flow-arrow">→</div>
-        <div class="flow-step"><span>05</span><i class="step-icon characterize"></i><h3>Characterize</h3><p>Connect predictions with independent measurements.</p></div>
-      </div>
-    </section>
-
-    <section class="data-layer section">
-      <div class="section-number">08</div>
-      <div class="data-layout">
-        <div class="section-heading">
-          <p class="eyebrow">The data layer</p>
-          <h2>Every observation can become part of a searchable biological record.</h2>
-          <p>A long-term objective is to build structured datasets connecting cellular appearance and behavior with experimentally validated phenotypes.</p>
-          <p class="data-principle">The record keeps the cell, its context, and its evidence together.</p>
-        </div>
-        <div class="record-window">
-          <div class="record-window-bar"><span>CYANOFLOW CELL RECORD</span><span>CF-00184 <i></i></span></div>
-          <div class="record-content">
-            <div class="record-image"><img src="assets/images/microscopy/sim-field.jpg" alt="Representative microscopy imagery"><span>12 IMAGE SETS</span></div>
-            <div class="record-fields">
-              <div><span>Images</span><strong>12</strong></div><div><span>Morphology</span><strong>Measured</strong></div><div><span>Growth trajectory</span><strong>Recorded</strong></div><div><span>Optical profile</span><strong>Recorded</strong></div><div><span>Experimental condition</span><strong>Recorded</strong></div><div><span>AI phenotype</span><strong>Candidate</strong></div><div><span>Validation</span><strong class="pending">Pending</strong></div>
+        <div class="sim-controls" id="simControls">
+          <div>
+            <div class="sim-head"><span class="lab">Environment</span><button class="sim-reset" id="simReset" type="button">Reset optimum</button></div>
+            <div class="ctl" data-ctl="light">
+              <div class="ctl-top"><span class="name">Light at vessel wall</span><span class="unit" data-unit>218 μmol</span></div>
+              <input type="range" min="0.02" max="1" step="0.01" value="0.52" aria-label="Light at vessel wall">
+            </div>
+            <div class="ctl" data-ctl="carbon">
+              <div class="ctl-top"><span class="name">Available inorganic carbon</span><span class="unit" data-unit>6.8 g/L</span></div>
+              <input type="range" min="0.02" max="1" step="0.01" value="0.72" aria-label="Available inorganic carbon">
+            </div>
+            <div class="ctl" data-ctl="air">
+              <div class="ctl-top"><span class="name">Gas exchange</span><span class="unit" data-unit>58%</span></div>
+              <input type="range" min="0.02" max="1" step="0.01" value="0.58" aria-label="Gas exchange">
             </div>
           </div>
-          <div class="record-footer"><span>CONCEPTUAL DATA MODEL</span><span>TRACEABLE · SEARCHABLE · VALIDATABLE</span></div>
+          <div class="sim-outputs">
+            <div class="out-grid">
+              <div class="out"><div class="lab">Biomass</div><div class="val" id="oBio">0.00</div><div class="unit">g / day</div></div>
+              <div class="out"><div class="lab">Protein</div><div class="val" id="oProt">0.00</div><div class="unit">g / day</div></div>
+              <div class="out"><div class="lab">CO₂ fixed</div><div class="val" id="oCo2">0.0</div><div class="unit">g / day</div></div>
+            </div>
+            <div class="forecast">
+              <div class="forecast-head"><span>72 h biomass forecast</span><span>now →</span></div>
+              <svg viewBox="0 0 320 62" preserveAspectRatio="none" aria-hidden="true">
+                <line x1="0" x2="320" y1="58" y2="58" stroke="rgba(255,255,255,.08)"/>
+                <path id="fcPath" d="" fill="none" stroke="#9fe0a4" stroke-width="1.7" vector-effect="non-scaling-stroke" class="dash-flow"/>
+              </svg>
+            </div>
+          </div>
         </div>
       </div>
-    </section>
-
-    <section class="architecture section alt" id="architecture">
-      <div class="section-number">09</div>
-      <div class="section-heading wide centered">
-        <p class="eyebrow">Research architecture</p>
-        <h2>Designed as one instrument.</h2>
-        <p>Physical observation and computational analysis remain linked at every stage.</p>
+      <!-- live chamber render -->
+      <div class="chamber-strip">
+        <div class="sim-tag">Chamber · live render · SIMULATION</div>
+        <canvas id="cultureSim" aria-label="Animated simulation of the photobioreactor chamber"></canvas>
       </div>
-      <div class="architecture-diagram">
-        <div class="architecture-title"><span>CF</span><strong>CYANOFLOW</strong><small>RESEARCH ARCHITECTURE</small></div>
-        <div class="architecture-layers">
-          <div class="arch-layer" data-layer="1"><span>01</span><i>◇</i><strong>Microfluidics</strong><small>Controlled isolation</small></div>
-          <div class="arch-layer" data-layer="2"><span>02</span><i>◉</i><strong>Imaging</strong><small>Time-resolved observation</small></div>
-          <div class="arch-layer" data-layer="3"><span>03</span><i>⌗</i><strong>Computer vision</strong><small>Quantitative features</small></div>
-          <div class="arch-layer" data-layer="4"><span>04</span><i>✦</i><strong>AI phenotyping</strong><small>Pattern analysis</small></div>
-          <div class="arch-layer" data-layer="5"><span>05</span><i>○</i><strong>Candidate cells</strong><small>Prioritized observations</small></div>
-          <div class="arch-layer" data-layer="6"><span>06</span><i>⬡</i><strong>Characterization</strong><small>Independent validation</small></div>
+      <p class="mono" style="margin-top:12px;font-size:10px;color:var(--mute)">Simulated response from a physics model (Monod · Steele · Beer-Lambert · oxygen inhibition) — not measured laboratory data.</p>
+    </div>
+  </div>
+</section>
+<!-- ============ STACK ============ -->
+<section class="section dark" id="stack">
+  <div class="wrap">
+    <div class="section-reveal">
+      <p class="eyebrow">One product, every layer</p>
+      <h2 class="h-display" style="max-width:14ch">The whole loop is Algaephyte.</h2>
+    </div>
+    <div class="section-reveal stack-grid" style="margin-top:64px">
+      <div class="stack-tabs" role="tablist" aria-label="System layers">
+        <button class="stack-tab on" data-i="0" role="tab" aria-selected="true"><span class="l"><span class="n">01</span><span class="nm">Culture</span></span><span class="ln"></span></button>
+        <button class="stack-tab" data-i="1" role="tab" aria-selected="false"><span class="l"><span class="n">02</span><span class="nm">Sense</span></span><span class="ln"></span></button>
+        <button class="stack-tab" data-i="2" role="tab" aria-selected="false"><span class="l"><span class="n">03</span><span class="nm">Twin</span></span><span class="ln"></span></button>
+        <button class="stack-tab" data-i="3" role="tab" aria-selected="false"><span class="l"><span class="n">04</span><span class="nm">Edge brain</span></span><span class="ln"></span></button>
+        <button class="stack-tab" data-i="4" role="tab" aria-selected="false"><span class="l"><span class="n">05</span><span class="nm">Control</span></span><span class="ln"></span></button>
+        <button class="stack-tab" data-i="5" role="tab" aria-selected="false"><span class="l"><span class="n">06</span><span class="nm">Mesh</span></span><span class="ln"></span></button>
+      </div>
+      <div class="stack-stage" id="stackStage"></div>
+    </div>
+  </div>
+</section>
+<!-- ============ HOW IT WORKS / CONTROL LOOP ============ -->
+<section class="section" id="system">
+  <div class="wrap" style="max-width:960px">
+    <div class="section-reveal">
+      <p class="eyebrow">Algaephyte · operating essay</p>
+      <h2 class="h-display">How the system works</h2>
+      <p class="lede" style="margin-top:24px">A column of Arthrospira, six numbers, a small physics model, a vision stick that is not allowed to act, and a mesh that shares what it learned without sharing what it saw.</p>
+    </div>
+    <div class="essay section-reveal">
+      <h3>The loop, said slowly</h3>
+      <p>Every few seconds the brick reads pH, temperature, wall irradiance, OD at 750 nm, dissolved oxygen and conductivity. Those six numbers update a digital twin whose state is biomass, internal nitrogen quota, and dissolved inorganic carbon. The twin is Droop for quota, Steele for light (including the photoinhibitory limb), Beer-Lambert for self-shading through radial shells, and a dissolved-oxygen inhibition term we added after watching afternoon plateaus we could not otherwise explain.</p>
+      <p>From the current state the twin is integrated seventy-two hours forward. A planner — rules when offline, a small proposing model when a link exists — suggests an action: dose bicarbonate, nudge nitrate, raise air, dim the jacket, do nothing. The suggestion is not an actuation.</p>
+      <aside>Algaephyte proposes. Three gates and a red button sit between the sentence and the liquid.</aside>
+      <p>Gate one is arithmetic: mass, duty, pH band, temperature ceiling, minimum seconds between doses. Gate two is the twin itself, run on the proposal as a counterfactual; if predicted μ falls or pH leaves the band, the proposal dies. Gate three is firmware on the ESP32 that owns the pump MOSFETs, with its own EEPROM clamps and a watchdog that opens the pumps if the Pi goes mute. The mushroom e-stop on the brick does not speak software.</p>
+      <h3>What the TPU is for</h3>
+      <p>Optical density is colour-blind. A healthy helix and a green contaminant can share an OD₇₅₀. A camera at a modest magnification, with a small fully-quantized YOLO model compiled for the Coral at 288 pixels, returns three experimental classes: healthy helix, fragment, not-spirulina. Fragment fraction over a rolling hour is a stress signal. Not-spirulina climbing is a contamination cue. Neither output can open a pump. Either can hold one, and can widen the twin's uncertainty so the planner becomes conservative. The deployed Pi does not need a computer or internet connection; model training and compilation happen before installation.</p>
+      <p>Inference is ~20 ms at ~2 W. We do not need 50 fps. We need to notice a ciliate before it is a population, and we need the stick to keep doing that when the brick is warm.</p>
+      <h3>The edge brain</h3>
+      <p>The production controller is self-contained on a Raspberry Pi 5. The Pi runs telemetry, the physics twin and a deterministic local policy engine; the Coral USB Accelerator runs only the camera model. Qwen runs locally on the Pi as an optional assistant for explanations and structured operator requests. It has no actuator authority, cannot bypass safety, and is not required for autonomous control. If Qwen, the Coral, network or dashboard disappears, sensor-plus-twin control continues in conservative rule-based mode. No external computer is part of the control loop.</p>
+      <h3>What the mesh is for</h3>
+      <p>One column is n = 1. Finding a strain's true I_opt by hand is a season. Forty columns sharing fitted parameters — not images, not traces — is a month. Algaephyte Mesh publishes a short vector on MQTT (QoS 1, retained): μ_max, I_opt, K_s, T_opt, Q_min. Subscribers bounds-check and finite-check before a value can touch a live twin. Last-will marks a node dead when the socket dies, which is how we stopped mistaking a crashed greenhouse culture for a flaky mast.</p>
+    </div>
+    <div class="section-reveal loop-grid" id="loopGrid"></div>
+    <div class="section-reveal" style="margin-top:64px">
+      <figure>
+        <img src="assets/images/microscopy/bench-photo.jpg" alt="Open Algaephyte control brick: Pi, Coral TPU, terminal blocks, labelled leads" style="width:100%;border:1px solid var(--rule)">
+        <figcaption class="mono" style="margin-top:12px;font-size:11px;color:var(--mute)">AP-07 open on the bench. The note about the alkali pump is not decorative.</figcaption>
+      </figure>
+    </div>
+    <div class="section-reveal" style="margin-top:64px;border:1px solid var(--rule);background:var(--paper-2);padding:24px 28px">
+      <h3 class="mono" style="font-size:16px;letter-spacing:-.02em;color:var(--ink)">Bicarbonate dosing, by hand</h3>
+      <p style="margin-top:8px;max-width:60ch;font-size:15px;color:var(--ink-soft)">If you are intervening because a probe lied or a pump was dry, do not dump the deficit. This is the same staging Algaephyte uses: 0.5 g/L per hour, never as a slug.</p>
+      <div style="display:grid;gap:20px;grid-template-columns:repeat(3,1fr);margin-top:24px">
+        <label class="field" style="margin:0"><span>Volume (L)</span><input type="number" id="dVol" value="18" min="1" max="40" step="0.5"></label>
+        <label class="field" style="margin:0"><span>Measured alkalinity (g/L as NaHCO₃)</span><input type="number" id="dHave" value="5.2" min="0" max="16" step="0.1"></label>
+        <label class="field" style="margin:0"><span>Target (g/L)</span><input type="number" id="dTarget" value="8" min="2" max="16" step="0.1"></label>
+      </div>
+      <p id="doseOut" style="margin-top:24px;font-size:22px;letter-spacing:-.02em;color:var(--ink)"></p>
+      <p class="mono" style="margin-top:8px;font-size:11px;color:var(--mute)">Cooking soda is fine. Do not use washing soda without knowing the conversion. Do not add acid to 'correct' a high pH while the pool is empty — restore the pool.</p>
+    </div>
+  </div>
+</section>
+<!-- ============ SIX SIGNALS ============ -->
+<section class="section alt" id="signals">
+  <div class="wrap">
+    <div class="section-reveal">
+      <p class="eyebrow">The sensor stack</p>
+      <h2 class="h-display" style="max-width:13ch">Six signals, one culture.</h2>
+      <p class="lede" style="margin-top:24px">Each channel tells a different biological story. The twin listens to all six at once, because no single number can describe a living culture.</p>
+    </div>
+    <div class="sig-grid section-reveal" id="sigGrid"></div>
+  </div>
+</section>
+<!-- ============ DIGITAL TWIN ============ -->
+<section class="section" id="twin">
+  <div class="wrap" style="max-width:960px">
+    <div class="section-reveal">
+      <p class="eyebrow">The digital twin</p>
+      <h2 class="h-display">Predicting growth with Droop and Steele</h2>
+      <p class="lede" style="margin-top:24px">A physics-based model of nutrient quotas and light saturation lets Algaephyte forecast growth before it ever moves a pump.</p>
+    </div>
+    <div class="essay section-reveal">
+      <h3>Droop: the quota inside the cell</h3>
+      <p>Droop's cell-quota kinetics decouple uptake from growth: cells store nitrogen, and division depends on that internal quota rather than the concentration in the medium. That single idea explains why a starved culture keeps dividing after you feed it, and why over-dosing nitrate buys you nothing but bacteria.</p>
+      <h3>Steele: light has an optimum, then a cliff</h3>
+      <p>Steele's curve handles light — growth rises to an optimum irradiance and falls again under photoinhibition. Brightest is not best: past the optimum, the outer shell of the culture bleaches, oxygen supersaturates, and photosynthesis starts to poison itself. The twin treats irradiance as a control surface, not a schedule.</p>
+      <h3>Beer-Lambert: a dense culture is a stack of dark jackets</h3>
+      <p>Beer-Lambert gives every radial shell of the vessel its own light climate, so the outer millimetre of a dense culture can be photoinhibited while the axis sits below compensation. A single wall sensor cannot see this. The twin can, because it integrates Steele's curve through the radial shells.</p>
+      <h3>Alkalinity, not pH</h3>
+      <p>Most growers chase pH because pH is the number a ten-dollar probe will give you. In an alkaline Arthrospira medium the bicarbonate/carbonate pool is simultaneously the inorganic carbon supply, the overnight buffer, and the reason almost nothing else can live in the vessel. pH is what that pool looks like from the outside. The twin treats dissolved inorganic carbon as a state variable, not a setpoint.</p>
+      <h3>Dissolved oxygen: when photosynthesis poisons itself</h3>
+      <p>As dissolved oxygen climbs through the afternoon, photosynthesis starts to supersaturate — the culture poisons itself. The first proposal is usually more air. The second is a modest dim. The third, if you have been stubborn about air, is a siesta. Oxygen stress is a state variable in the twin, not a footnote.</p>
+      <aside>The point of a twin is counterfactuals: "what happens if I add 3.2 g of bicarbonate over twelve minutes?" — the question a pump needs answered.</aside>
+    </div>
+  </div>
+</section>
+<!-- ============ SAFETY ============ -->
+<section class="section alt" id="safety">
+  <div class="wrap">
+    <div class="section-reveal" style="display:grid;gap:32px;grid-template-columns:7fr 5fr;align-items:end">
+      <div>
+        <p class="eyebrow">Bounded autonomy</p>
+        <h2 class="h-display" style="max-width:11ch">Intelligence proposes. Hardware decides.</h2>
+      </div>
+      <p class="lede" style="justify-self:end">A pump that does nothing is almost always safer than a pump that does the wrong thing quickly. Especially the alkali pump. Algaephyte fails closed — three independent layers, plus a physical stop.</p>
+    </div>
+    <div class="gate-grid section-reveal" id="gateGrid"></div>
+    <div class="essay section-reveal" style="margin-top:56px">
+      <p>We once let a planner (a language model, to be specific, and we deserved what we got) propose "raise alkalinity to target" without a rate. The software gate caught the mass. If it had not, the firmware would have. If it had not, there is a red button on the front of the brick. The culture is expensive in time. The pump is cheap. We take the pump's side.</p>
+      <aside>Fail closed. If you remember one design rule from this site, remember that.</aside>
+    </div>
+  </div>
+</section>
+<!-- ============ MESH / FEDERATED ============ -->
+<section class="section" id="mesh">
+  <div class="wrap" style="max-width:960px">
+    <div class="section-reveal">
+      <p class="eyebrow">Algaephyte Mesh</p>
+      <h2 class="h-display">Federated learning without sending a pixel</h2>
+      <p class="lede" style="margin-top:24px">Mesh is not a cloud that owns your culture. It is a broker and a convention. Each node fits its digital twin to what it has seen — a handful of scalars — and may publish those scalars. Not the OD trace. Not the pH trace. Not the camera frames. Not the coordinates of the greenhouse.</p>
+    </div>
+    <div class="topic section-reveal">
+      <b>algaephyte/{id}/lwt</b> — last will, retained, the obituary.<br>
+      <b>algaephyte/{id}/twin</b> — the parameter vector, retained.<br>
+      <b>algaephyte/{id}/health</b> — a coarse status (ok, hold, human), not a dump.<br>
+      <b>algaephyte/strain/{name}/aggregate</b> — optional, broker-side, still just parameters.
+    </div>
+    <div class="essay section-reveal">
+      <p>QoS 1. TLS if you have it. User/pass if you do not yet have TLS, which we do not pretend is the same thing. Payloads are short on purpose: a rural 4G stick should be able to move them during a storm.</p>
+      <aside>A bad neighbour cannot crash your culture. Incoming values are clipped to literature-sane bounds, rejected if NaN or Inf, and mixed with a local prior so a vandalised node is a small nudge, not a new religion.</aside>
+      <p>Not training YOLO on-device — the Coral is inference-only. Federated in the twin: each node is a noisy experiment on μ_max and I_opt, and the mesh is a way for those experiments to average without a graduate student in the middle. If you want to keep your node private, do not subscribe, do not publish. Algaephyte does not require the broker. The broker is how a network of vessels gets wiser than a single vessel.</p>
+      <p>AP-04's air MOSFET died at 02:14. Without last-will, the dashboard showed a happy last packet from 01:51 and we called it a mast. With last-will, silence is a published fact. We still lost the culture. We did not lose the next one the same way.</p>
+    </div>
+    <div class="mesh-box section-reveal" id="meshSvg"></div>
+  </div>
+</section>
+<!-- ============ INSTRUMENT ============ -->
+<section class="instrument">
+  <img class="instrument-img parallax" id="instImg" src="assets/images/instrument-photo.jpg" alt="Algaephyte control hardware assembled on the bench">
+  <div class="instrument-veil"></div>
+  <canvas class="hero-atmo" id="atmoInst" aria-hidden="true" style="opacity:.4"></canvas>
+  <div class="noise"></div>
+  <div class="instrument-in">
+    <div class="max section-reveal">
+      <p class="eyebrow">Built as an instrument</p>
+      <h2 class="h-display" style="font-size:clamp(2.7rem,6vw,5rem)">Nothing critical lives in the cloud.</h2>
+      <p class="lede" style="margin-top:28px;color:rgba(255,255,255,.6)">The Pi runs the twin. The Edge TPU reads the microscope. The ESP32 owns the wet-side actuators. Pull the network and cultivation continues. Pull the e-stop and the pumps do not.</p>
+      <a class="btn-leaf" style="margin-top:36px;display:inline-block" href="#stack">Inspect the hardware stack</a>
+    </div>
+  </div>
+</section>
+<!-- ============ IMPACT ============ -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-reveal impact-grid">
+      <div class="l">
+        <p class="eyebrow">Scale without fantasy</p>
+        <h2 class="h-display">One vessel is small. Reliability multiplies.</h2>
+      </div>
+      <div class="r">
+        <div class="mono" style="font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.3)">A healthy 18 L column</div>
+        <div style="margin-top:20px;display:flex;flex-wrap:wrap;align-items:baseline;gap:16px">
+          <span class="count" id="countUp">0.00</span>
+          <span class="count-lab">g biomass / day</span>
         </div>
-        <div class="data-spine"><span>TRACEABLE CELL DATA</span><i></i></div>
+        <div style="margin-top:32px;height:1px;width:100%;overflow:hidden;background:rgba(255,255,255,.1)"><div style="height:1px;width:33.3%;background:rgba(159,224,164,.7);animation:marquee 6s linear infinite"></div></div>
+        <p>That is roughly 1.4 g of protein and 4.3 g of carbon dioxide fixed each day. Not a miracle. Ten thousand vessels that avoid the overnight crash become more than five tonnes of protein a year, produced where the vessels are installed. The honest range the literature reports for small photobioreactors — 0.10–0.16 g dry biomass per litre per day — is the range our own columns fall into when nothing is on fire.</p>
       </div>
-    </section>
-
-    <section class="roadmap section" id="roadmap">
-      <div class="section-number">10</div>
-      <div class="section-heading wide roadmap-heading">
-        <div><p class="eyebrow">Development roadmap</p><h2>From optical measurement to discovery at scale.</h2></div>
-        <p>The sequence below is a research and development plan. Items are not implied to be complete.</p>
+    </div>
+  </div>
+</section>
+<!-- ============ JOURNAL ============ -->
+<section class="section dark" id="journal">
+  <div class="wrap">
+    <div class="section-reveal" style="display:flex;align-items:flex-end;justify-content:space-between;gap:32px;flex-wrap:wrap">
+      <div>
+        <p class="eyebrow">Development record</p>
+        <h2 class="h-display">The failures are part of the product.</h2>
       </div>
-      <div class="roadmap-list">
-        <details open><summary><span>01</span><strong>Imaging</strong><small>BUILD AUTOMATED DETECTION + TRACKING</small><i></i></summary><p>Develop repeatable single-cell detection, tracking, and image acquisition workflows.</p></details>
-        <details><summary><span>02</span><strong>Microfluidics</strong><small>DEVELOP CONTROLLED COMPARTMENTALIZATION</small><i></i></summary><p>Establish reproducible fluidic conditions for observing individual cells.</p></details>
-        <details><summary><span>03</span><strong>Phenotyping</strong><small>EXTRACT QUANTITATIVE FEATURES</small><i></i></summary><p>Translate image series into structured cellular measurements.</p></details>
-        <details><summary><span>04</span><strong>AI</strong><small>DEVELOP + VALIDATE CLASSIFICATION</small><i></i></summary><p>Evaluate models against experimentally defined characteristics and controls.</p></details>
-        <details><summary><span>05</span><strong>Candidate selection</strong><small>IDENTIFY CELLS MEETING CRITERIA</small><i></i></summary><p>Prioritize individual observations for researcher review.</p></details>
-        <details><summary><span>06</span><strong>Characterization</strong><small>CONNECT PREDICTIONS + MEASUREMENTS</small><i></i></summary><p>Compare computational phenotypes with independent biological evidence.</p></details>
-        <details><summary><span>07</span><strong>High-throughput discovery</strong><small>SCALE MICROALGAL SCREENING</small><i></i></summary><p>Explore higher-throughput discovery while preserving traceability and research controls.</p></details>
-      </div>
-    </section>
-
-    <section class="why section alt">
-      <div class="section-number">11</div>
-      <div class="section-heading centered wide"><p class="eyebrow">Why Cyanoflow?</p><h2>Resolution changes the question.</h2></div>
-      <div class="why-grid">
-        <article><span>01</span><h3>Single-cell</h3><p>Study biological variation at the level where it actually exists.</p></article>
-        <article><span>02</span><h3>Quantitative</h3><p>Convert microscopy into structured measurements.</p></article>
-        <article><span>03</span><h3>Intelligent</h3><p>Use computational analysis to search large numbers of observations.</p></article>
-      </div>
-    </section>
-
-    <section class="status-section section" id="status">
-      <div class="status-grid">
-        <div class="status-number">12</div>
-        <div class="status-copy">
-          <p class="eyebrow">Research status</p>
-          <div class="status-label"><i></i> Cyanoflow is currently under development.</div>
-          <h2>A research concept becoming an instrument.</h2>
-          <p>The platform represents a developing research concept combining microfluidics, microscopy, computer vision, and machine learning for single-cell microalgal research.</p>
-          <p>Capabilities shown on this website should be presented as <strong>design goals, prototypes, or research objectives unless experimentally validated.</strong></p>
-        </div>
-        <div class="safety-note"><span>Responsible research</span><p>For environmental or unknown microorganisms, experimentation will follow applicable biosafety, institutional, and science-fair requirements.</p><div><i>01</i>Identify</div><div><i>02</i>Assess</div><div><i>03</i>Control</div><div><i>04</i>Document</div></div>
-      </div>
-    </section>
-
-    <section class="final-cta">
-      <div class="cta-orbit" aria-hidden="true"><i></i><i></i><i></i></div>
-      <p class="eyebrow">Cyanoflow research</p>
-      <h2>Discover what the population average hides.</h2>
-      <p>Cyanoflow is being developed to make individual microalgal cells measurable, searchable, and experimentally testable.</p>
-      <a class="button button-primary" href="#top">Explore Cyanoflow research <span aria-hidden="true">↑</span></a>
-    </section>
+      <p class="lede" style="max-width:34ch">Every clean run and every crash makes the cut. AP-02 is in the firmware comments.</p>
+    </div>
+    <div class="journal-rows section-reveal" id="journalRows"></div>
+  </div>
+</section>
+<!-- ============ TROUBLESHOOTING ============ -->
+<section class="section" id="faults">
+  <div class="wrap">
+    <div class="section-reveal">
+      <p class="eyebrow">When it goes wrong</p>
+      <h2 class="h-display">Troubleshooting, from the field</h2>
+      <p class="lede" style="margin-top:24px">Each fault below is one we have actually met — a probe that lied, a pump that was dry, a greenhouse that died at 2:14 a.m. The fixes are ordered the way we would do them.</p>
+    </div>
+    <div class="acc section-reveal" id="issueAcc"></div>
+  </div>
+</section>
+<!-- ============ FAQ ============ -->
+<section class="section alt" id="faq">
+  <div class="wrap">
+    <div class="section-reveal">
+      <p class="eyebrow">Questions, answered plainly</p>
+      <h2 class="h-display">FAQ</h2>
+    </div>
+    <div class="acc section-reveal" id="faqAcc"></div>
+  </div>
+</section>
+<!-- ============ DEPLOY ============ -->
+<section class="section dark" id="deploy">
+  <div class="wrap" style="max-width:760px">
+    <div class="section-reveal">
+      <p class="eyebrow">Pilot access · deployment inquiry</p>
+      <h2 class="h-display">Deploy Algaephyte</h2>
+      <p class="lede" style="margin-top:24px">Algaephyte is entering controlled pilot deployments across research, production and education. Tell us the environment, intended scale and organism goal. This opens a deployment inquiry to service@orrbiologicals.com.</p>
+    </div>
+    <form class="deploy section-reveal" id="deployForm">
+      <div class="field"><label for="fName">Name / organization</label><input id="fName" type="text" placeholder="Name or organization"></div>
+      <div class="field"><label for="fPlace">Location</label><input id="fPlace" type="text" placeholder="City, country"></div>
+      <div class="field"><label for="fGrow">Cultivation objective</label><textarea id="fGrow" placeholder="Classroom column, greenhouse mesh node, feed for filter feeders…"></textarea></div>
+      <div class="field" style="display:none" aria-hidden="true"><label for="fHp">Leave blank</label><input id="fHp" type="text" tabindex="-1" autocomplete="off"></div>
+      <button class="btn-white" type="submit">Open deployment inquiry</button>
+    </form>
+  </div>
+</section>
   </main>
 
-  <footer class="site-footer">
-    <div class="footer-brand"><span class="brand-mark"><svg viewBox="0 0 36 36"><circle cx="18" cy="18" r="16.5"/><path d="M9 21.5c4-3.4 4-10.2 9-10.2s5 6.8 9 10.2"/><circle cx="18" cy="18" r="2.2"/></svg></span><div><strong>Cyanoflow</strong><span>A research technology by Orr Biologicals</span></div></div>
-    <nav aria-label="Footer"><a href="#technology">Technology</a><a href="#architecture">Architecture</a><a href="#roadmap">Roadmap</a><a href="#status">Research status</a><a href="privacy.html">Privacy</a><a href="disclaimer.html">Disclaimer</a></nav>
-    <div class="footer-bottom"><span>© 2026 Orr Biologicals</span><span>Research technology · concept under development</span><a href="mailto:service@orrbiologicals.com">service@orrbiologicals.com</a></div>
-  </footer>
-  <script src="js/cyanoflow.js" defer></script>
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div>
+      <a class="mark" href="#top" aria-label="Algaephyte home">
+        <svg viewBox="0 0 28 28" aria-hidden="true" style="width:26px;height:26px;color:var(--leaf-2)">
+          <circle cx="14" cy="14" r="13" fill="none" stroke="currentColor" stroke-opacity="0.35"/>
+          <path d="M7 20c2.6-2.2 2.6-9.8 7-9.8S16.4 20 21 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+          <path d="M6 12c2.6-2.2 2.6-6 7-6s4.4 3.8 7 6" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-opacity="0.55"/>
+        </svg>
+        <span><b style="color:#fff">Algaephyte</b><small>Orr Biologicals</small></span>
+      </a>
+      <p>Algaephyte is a full-stack cultivation platform for microalgae and phytoplankton — vessel, firmware, edge vision, a physics twin, and a mesh, built end to end by Orr Biologicals. Arthrospira is where it started; the platform is built to extend.</p>
+    </div>
+    <div class="cols">
+      <div>
+        <div class="col-t">Product</div>
+        <a href="#system">How it works</a><br>
+        <a href="#stack">The stack</a><br>
+        <a href="#mesh">Mesh network</a><br>
+        <a href="#twin">Biology</a><br>
+        <a href="#signals">Sensors</a>
+      </div>
+      <div>
+        <div class="col-t">Lab</div>
+        <a href="#journal">Journal</a><br>
+        <a href="#faults">Troubleshooting</a><br>
+        <a href="#faq">FAQ</a><br>
+        <a href="/game/">Algae Living (game)</a><br>
+        <a href="/applications/">Applications</a><br>
+        <a href="#deploy">Pilot access</a><br>
+        <a href="https://www.youtube.com/@OrrBiologicals" target="_blank" rel="noreferrer">YouTube</a>
+      </div>
+      <div>
+        <div class="col-t">Field notes</div>
+        <a href="/applications/">Applications hub</a><br>
+        <a href="/applications/#species">Species guides</a><br>
+        <a href="/insights/">All insights</a><br>
+        <a href="/insights/how-to-start-home-spirulina-culture">Grow Spirulina at home</a><br>
+        <a href="/insights/zarrouk-medium-and-nutrients">Zarrouk medium</a><br>
+        <a href="/insights/harvesting-and-using-fresh-spirulina">Harvesting</a><br>
+        <a href="/insights/troubleshooting-contamination-crashes">Contamination</a>
+      </div>
+    </div>
+    <div style="font-size:13px;line-height:2.1">
+      <div class="col-t">Contact</div>
+      <a href="mailto:service@orrbiologicals.com">service@orrbiologicals.com</a>
+      <p class="mono" style="margin-top:24px;max-width:20rem;font-size:11px;line-height:1.7">Engineered for monitored deployment. Every actuation fails closed.</p>
+    </div>
+  </div>
+  <div class="bar"><span>© 2026 Orr Biologicals · Algaephyte</span><span class="legal-links"><a href="/privacy">Privacy</a> · <a href="/terms">Terms</a> · <a href="/disclaimer">Disclaimer</a> · <a href="LICENSE" download>MIT License</a></span><span>orrbiologicals.com</span></div>
+</footer>
+
+  <script defer src="js/simulator.js"></script>
+  <script defer src="js/site.js"></script>
+  <script defer src="js/main-dashboard.js"></script>
+  <script defer src="js/navigation.js"></script>
+  <script defer src="js/animations.js"></script>
+<script src="/js/consent.js" defer></script>
 </body>
 </html>

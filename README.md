@@ -1,19 +1,11 @@
-# Orr Biologicals Website
+# Algaephyte — Standalone Edge Intelligence | Orr Biologicals
 
-The primary homepage presents **Cyanoflow**, a developing single-cell research platform by Orr Biologicals. The page combines a scientific instrument aesthetic with diagrams for microfluidics, microscopy, computer vision, AI phenotyping, candidate discovery, and research status.
+Refactored from the single-file `NEW 67.html` (≈1 MB, self-contained) into a
+modular, maintainable project. **Same website. Same functionality. Same visual
+identity.** The public site describes a standalone Raspberry Pi 5 + Coral edge architecture; it does not claim that every runtime component is contained in this static-site repository.
 
-The site is static and dependency-free. The homepage can be opened directly in a browser over `file://` or served over HTTP.
-
-## Homepage structure
-
-- `index.html` — semantic Cyanoflow product page
-- `css/cyanoflow.css` — responsive design system, diagrams, and restrained motion
-- `js/cyanoflow.js` — navigation, conceptual chip sequence, candidate map, and architecture interactions
-- `assets/images/microscopy/` — representative microscopy imagery
-
-All measurements, interfaces, and platform capabilities shown on the homepage are explicitly presented as conceptual examples, design goals, prototypes, or research objectives unless experimentally validated.
-
-Legacy source slices and supporting content remain in the repository but are not loaded by the Cyanoflow homepage.
+Open `index.html` directly in a browser — it works over `file://` and `http://`
+exactly like the original.
 
 ---
 
