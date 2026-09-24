@@ -66,6 +66,9 @@ Redirect 301 /shop                                     /#deploy
 Redirect 301 /about                                    /
 Redirect 301 /mycophyte                                /
 
+# Cyanoflow research platform (standalone page)
+RedirectMatch 301 ^/CyanoFlow/?$ /cyanoflow
+
 # --- clean URLs: serve /slug -> slug.html (internal), and 301 the reverse --
 RewriteCond %{THE_REQUEST} \s/([^\s?]+)\.html[\s?] [NC]
 RewriteRule ^ /%1 [R=301,L]

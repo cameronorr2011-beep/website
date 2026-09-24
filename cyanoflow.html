@@ -1,0 +1,535 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cyanoflow — AI-Powered Single-Cell Discovery for Microalgal Biotechnology | Orr Biologicals</title>
+<meta name="description" content="Cyanoflow is a developing research platform by Orr Biologicals combining microfluidics, automated microscopy, computer vision and AI to isolate, observe, measure and identify individual microalgal cells.">
+<meta name="theme-color" content="#040a08">
+<link rel="canonical" href="https://orrbiologicals.com/cyanoflow">
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<meta property="og:title" content="Cyanoflow — AI-Powered Single-Cell Discovery | Orr Biologicals">
+<meta property="og:description" content="A developing research platform combining microfluidics, automated imaging, computer vision and AI to make individual microalgal cells measurable, searchable and experimentally testable.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://orrbiologicals.com/cyanoflow">
+<meta property="og:image" content="https://orrbiologicals.com/assets/og.png">
+<meta property="og:site_name" content="Orr Biologicals">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Cyanoflow — AI-Powered Single-Cell Discovery | Orr Biologicals">
+<meta name="twitter:description" content="Measure the individual cell: microfluidics, microscopy, computer vision and AI phenotyping for microalgal research. Under development.">
+<meta name="twitter:image" content="https://orrbiologicals.com/assets/og.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+{"@type":"Organization","@id":"https://orrbiologicals.com/#org","name":"Orr Biologicals","url":"https://orrbiologicals.com/","email":"service@orrbiologicals.com","logo":"https://orrbiologicals.com/assets/og.png"},
+{"@type":"Product","@id":"https://orrbiologicals.com/cyanoflow/#product","name":"Cyanoflow","description":"A developing research platform combining microfluidics, automated microscopy, computer vision and AI to isolate, observe, measure and identify individual microalgal cells. Capabilities shown are design goals or research objectives unless experimentally validated.","brand":{"@id":"https://orrbiologicals.com/#org"},"url":"https://orrbiologicals.com/cyanoflow"}]}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..700&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,0..560&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/cyanoflow.css">
+</head>
+<body class="cyano-page">
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- ============ HERO ============ -->
+<section class="cy-hero">
+  <canvas class="cy-hero-canvas" id="cyHeroCanvas" aria-hidden="true"></canvas>
+  <div class="cy-hero-veil"></div>
+  <div class="cy-shell cy-hero-in">
+    <span class="cy-hero-meta"><span class="dot"></span>A research platform by Orr Biologicals</span>
+    <p class="cy-kicker">Microfluidics × Automated Microscopy × Computer Vision × AI</p>
+    <h1>Cyano<em>flow</em></h1>
+    <p class="cy-tagline">AI-powered single-cell discovery for microalgal biotechnology.</p>
+    <p class="cy-hero-intro">Cyanoflow is a developing platform designed to isolate, observe, measure, and identify individual microalgal cells using microfluidics, automated imaging, and artificial intelligence.</p>
+    <div class="cy-hero-cta">
+      <a class="cy-btn cy-btn-primary" href="#concept">Explore the Technology <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a class="cy-btn cy-btn-ghost" href="#architecture">Research <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9 12l2 2 4-4"/></svg></a>
+    </div>
+    <div class="cy-scroll"><span class="line"></span>Follow a single cell through the chip</div>
+  </div>
+</section>
+
+<!-- ============ 01 · THE PROBLEM ============ -->
+<section class="cy-band" id="problem">
+  <div class="cy-shell">
+    <p class="cy-kicker cy-rv"><span class="n">Section 01</span>The Problem</p>
+    <h2 class="cy-h2 cy-rv">Valuable biology can disappear inside a population.</h2>
+    <p class="cy-lede cy-rv d1">Microalgal populations contain enormous cellular diversity. Population-level measurements often describe the average behavior of thousands or millions of cells. An unusual cell with a potentially valuable phenotype can therefore remain hidden within the population.</p>
+    <div class="cy-compare" style="margin-top:40px">
+      <div class="cy-cmp cy-rv">
+        <span class="tag">Traditional screening</span>
+        <h3>Population → Average measurement</h3>
+        <div class="cy-pop" aria-hidden="true">
+          <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class="cand"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+        </div>
+        <div class="cy-flowline">POPULATION<span class="arr">→</span><span class="dim">AVERAGE MEASUREMENT</span></div>
+        <p class="cy-measline">One number for a million cells. The outlier — <span class="hl">highlighted above</span> — never shows up.</p>
+      </div>
+      <div class="cy-cmp win cy-rv d1">
+        <span class="tag">The Cyanoflow approach</span>
+        <h3>Measure the individual cell.</h3>
+        <div class="cy-pipe">
+          <span class="st">INDIVIDUAL CELLS</span><span class="arr">→</span>
+          <span class="st">INDIVIDUAL MEASUREMENTS</span><span class="arr">→</span>
+          <span class="st">PHENOTYPE MAP</span><span class="arr">→</span>
+          <span class="st hot">CANDIDATE DISCOVERY</span>
+        </div>
+        <p class="cy-measline">Every cell becomes its own data point — the unusual ones become visible.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 02 · THE CONCEPT ============ -->
+<section class="cy-band" id="concept">
+  <div class="cy-shell">
+    <p class="cy-kicker cy-rv"><span class="n">Section 02</span>The Cyanoflow Concept</p>
+    <h2 class="cy-h2 cy-rv">Four technologies, one measurement chain.</h2>
+    <p class="cy-lede cy-rv d1">Cyanoflow combines four technologies into a single chain — from bulk sample to named candidate cells.</p>
+    <div class="cy-concept" style="margin-top:44px">
+      <div class="cy-con cy-rv">
+        <span class="cn">/01</span>
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l2-6 3 12 2-8 2 4h5"/></svg></div>
+        <h4>Microfluidics</h4>
+        <p>Create controlled microscopic compartments for individual-cell observation.</p>
+      </div>
+      <div class="cy-con cy-rv d1">
+        <span class="cn">/02</span>
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><circle cx="12" cy="13.5" r="3.6"/><path d="M8 7l1.4-2.6h5.2L16 7"/></svg></div>
+        <h4>Imaging</h4>
+        <p>Capture cellular morphology and behavior over time.</p>
+      </div>
+      <div class="cy-con cy-rv d2">
+        <span class="cn">/03</span>
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h7v7H3zM14 3h7v7h-7zM3 14h7v7H3zM14 14h7v7h-7z"/></svg></div>
+        <h4>Computer Vision</h4>
+        <p>Convert images into quantitative cellular measurements.</p>
+      </div>
+      <div class="cy-con cy-rv d3">
+        <span class="cn">/04</span>
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/></svg></div>
+        <h4>Artificial Intelligence</h4>
+        <p>Identify patterns and phenotypes that warrant further investigation.</p>
+      </div>
+    </div>
+    <div class="cy-vflow cy-rv d1" role="img" aria-label="Pipeline: sample, cell isolation, microscopy, computer vision, AI phenotyping, candidate identification">
+      <div class="vn head">SAMPLE</div><div class="vs"></div>
+      <div class="vn">CELL ISOLATION</div><div class="vs"></div>
+      <div class="vn">MICROSCOPY</div><div class="vs"></div>
+      <div class="vn">COMPUTER VISION</div><div class="vs"></div>
+      <div class="vn">AI PHENOTYPING</div><div class="vs"></div>
+      <div class="vn tail">CANDIDATE IDENTIFICATION</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 03 · INSIDE THE CHIP ============ -->
+<section class="cy-band" id="chip">
+  <div class="cy-shell cy-wide">
+    <p class="cy-kicker cy-rv"><span class="n">Section 03</span>Inside the Chip</p>
+    <h2 class="cy-h2 cy-rv">A microscopic conveyor system for biological measurements.</h2>
+    <p class="cy-lede cy-rv d1">Sample enters the chip. Individual cells are captured into tiny aqueous compartments, which travel sealed channels through an imaging zone where computer vision and the AI analysis layer read every cell.</p>
+    <div class="cy-fig cy-rv d2" style="margin-top:40px">
+      <svg viewBox="0 0 1100 430" role="img" aria-label="Conceptual cutaway of the Cyanoflow microfluidic chip: sample inlet, single-cell isolation into droplets, travel channels, imaging zone with AI analysis, and candidate selection outlet">
+        <defs>
+          <linearGradient id="cyChan" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0a2f26"/><stop offset="1" stop-color="#06231c"/></linearGradient>
+          <radialGradient id="cyDrop" cx="0.35" cy="0.35" r="0.8"><stop offset="0" stop-color="#a6f0e7" stop-opacity=".55"/><stop offset="1" stop-color="#1c714b" stop-opacity=".22"/></radialGradient>
+          <radialGradient id="cyCell" cx="0.35" cy="0.3" r="0.9"><stop offset="0" stop-color="#d8ffef"/><stop offset="1" stop-color="#5ad07a"/></radialGradient>
+          <marker id="cyArrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#63e3d2"/></marker>
+        </defs>
+        <rect x="30" y="46" width="1040" height="338" rx="26" fill="#05150f" stroke="rgba(99,227,210,.2)" stroke-width="1.2"/>
+        <g font-family="'IBM Plex Mono',monospace" font-size="12" letter-spacing="2.5">
+          <text x="70" y="90" fill="#8fa89d">SAMPLE INPUT</text>
+          <text x="230" y="90" fill="#8fa89d">ISOLATION</text>
+          <text x="452" y="90" fill="#8fa89d">COMPARTMENT TRAVEL</text>
+          <text x="700" y="90" fill="#8fa89d">IMAGING ZONE</text>
+          <text x="885" y="90" fill="#63e3d2">AI ANALYSIS · SELECT</text>
+        </g>
+        <g stroke="rgba(99,227,210,.25)" stroke-dasharray="2 6"><line x1="216" y1="108" x2="216" y2="352"/><line x1="436" y1="108" x2="436" y2="352"/><line x1="686" y1="108" x2="686" y2="352"/><line x1="872" y1="108" x2="872" y2="352"/></g>
+        <path d="M62 230 h84" stroke="url(#cyChan)" stroke-width="34" stroke-linecap="round"/>
+        <circle cx="62" cy="230" r="24" fill="#05130e" stroke="rgba(99,227,210,.45)" stroke-width="1.4"/>
+        <circle cx="62" cy="230" r="10" fill="#2c7a55" opacity=".8"/>
+        <circle class="cy-ch-comp" cx="96" cy="230" r="4.5" fill="url(#cyCell)" style="--dx:60px;--dy:0px;animation-duration:4s"/>
+        <circle cx="118" cy="214" r="3.5" fill="url(#cyCell)" opacity=".85"/>
+        <circle cx="128" cy="242" r="3" fill="url(#cyCell)" opacity=".7"/>
+        <path d="M146 230 h52" stroke="url(#cyChan)" stroke-width="26" stroke-linecap="round"/>
+        <g class="cy-ch-dash" stroke="#5ad07a" stroke-width="1.6" fill="none" opacity=".7">
+          <path d="M158 216 q14 14 30 14"/><path d="M158 244 q14 -14 30 -14"/>
+        </g>
+        <circle cx="196" cy="230" r="9" fill="url(#cyDrop)" stroke="rgba(166,240,231,.55)" stroke-width="1"/>
+        <circle cx="196" cy="230" r="3" fill="url(#cyCell)"/>
+        <path d="M226 230 C 262 230 262 168 296 168 S 330 292 364 292 S 398 168 432 168 L 452 168 C 486 168 486 292 520 292 S 554 168 588 168 L 640 168" stroke="url(#cyChan)" stroke-width="26" stroke-linecap="round" fill="none"/>
+        <path d="M226 230 C 262 230 262 168 296 168 S 330 292 364 292 S 398 168 432 168 L 452 168 C 486 168 486 292 520 292 S 554 168 588 168 L 640 168" stroke="rgba(99,227,210,.16)" stroke-width="26" stroke-linecap="round" fill="none"/>
+        <path d="M226 230 C 262 230 262 168 296 168 S 330 292 364 292 S 398 168 432 168 L 452 168 C 486 168 486 292 520 292 S 554 168 588 168 L 640 168" class="cy-ch-dash" stroke="rgba(99,227,210,.3)" stroke-width="1.4" fill="none"/>
+        <g>
+          <circle class="cy-ch-comp" cx="262" cy="196" r="9" fill="url(#cyDrop)" stroke="rgba(166,240,231,.5)" style="--dx:150px;--dy:-24px;animation-duration:8s"/>
+          <circle cx="262" cy="196" r="3" fill="url(#cyCell)"/>
+          <circle class="cy-ch-comp" cx="330" cy="266" r="9" fill="url(#cyDrop)" stroke="rgba(166,240,231,.5)" style="--dx:110px;--dy:24px;animation-duration:9s"/>
+          <circle cx="330" cy="266" r="2.6" fill="url(#cyCell)"/>
+          <circle class="cy-ch-comp" cx="470" cy="196" r="9" fill="url(#cyDrop)" stroke="rgba(166,240,231,.5)" style="--dx:140px;--dy:-24px;animation-duration:8.5s"/>
+          <circle cx="470" cy="196" r="3" fill="url(#cyCell)"/>
+          <circle class="cy-ch-comp" cx="540" cy="266" r="9" fill="url(#cyDrop)" stroke="rgba(166,240,231,.5)" style="--dx:80px;--dy:-70px;animation-duration:10s"/>
+          <circle cx="540" cy="266" r="2.6" fill="url(#cyCell)"/>
+        </g>
+        <rect x="640" y="128" width="130" height="204" rx="14" fill="rgba(99,227,210,.05)" stroke="rgba(99,227,210,.35)" stroke-width="1.2"/>
+        <g stroke="#63e3d2" stroke-width="1.4" fill="none" opacity=".8">
+          <path d="M648 140 h12M648 140 v12M762 140 h-12M762 140 v12M648 320 h12M648 320 v-12M762 320 h-12M762 320 v-12"/>
+        </g>
+        <path d="M640 168 h130" stroke="url(#cyChan)" stroke-width="22" stroke-linecap="round"/>
+        <circle cx="688" cy="168" r="9" fill="url(#cyDrop)" stroke="rgba(166,240,231,.6)"/>
+        <circle cx="688" cy="168" r="3.2" fill="url(#cyCell)"/>
+        <circle cx="722" cy="168" r="9" fill="url(#cyDrop)" stroke="rgba(99,227,210,.7)"/>
+        <circle cx="722" cy="168" r="3.4" fill="#63e3d2"/>
+        <g stroke="#63e3d2" stroke-width="1.1" fill="none">
+          <path d="M712 158 h20 v20 h-20 z" opacity=".85"/>
+          <path d="M708 154 l4 4M732 154 l-4 4M708 182 l4 -4M732 182 l-4 -4"/>
+        </g>
+        <text x="688" y="218" font-family="'IBM Plex Mono',monospace" font-size="9.5" fill="#63e3d2" letter-spacing="1.5">CELL CF-00512</text>
+        <text x="688" y="232" font-family="'IBM Plex Mono',monospace" font-size="9.5" fill="#8fa89d" letter-spacing="1.5">SCAN 04 · 60 FPS</text>
+        <path d="M770 168 h70" stroke="url(#cyChan)" stroke-width="22" stroke-linecap="round"/>
+        <g class="cy-ch-dash" stroke="#5ad07a" stroke-width="1.4" fill="none" opacity=".8">
+          <path d="M782 160 q18 8 34 8"/><path d="M782 176 q18 -8 34 -8"/>
+        </g>
+        <rect x="846" y="140" width="118" height="118" rx="16" fill="#051a15" stroke="rgba(99,227,210,.4)" stroke-width="1.2"/>
+        <g font-family="'IBM Plex Mono',monospace" font-size="9.5" letter-spacing="1.5">
+          <text x="862" y="166" fill="#63e3d2">AI LAYER</text>
+          <text x="862" y="184" fill="#8fa89d">PHENOTYPE MAP</text>
+          <text x="862" y="202" fill="#8fa89d">SCORING…</text>
+        </g>
+        <g>
+          <rect x="862" y="214" width="86" height="4" rx="2" fill="rgba(99,227,210,.15)"/>
+          <rect x="862" y="214" width="60" height="4" rx="2" fill="#5ad07a"/>
+          <rect x="862" y="224" width="86" height="4" rx="2" fill="rgba(99,227,210,.15)"/>
+          <rect x="862" y="224" width="38" height="4" rx="2" fill="#5ad07a"/>
+          <rect x="862" y="234" width="86" height="4" rx="2" fill="rgba(99,227,210,.15)"/>
+          <rect x="862" y="234" width="72" height="4" rx="2" fill="#63e3d2"/>
+        </g>
+        <path d="M964 190 h42 q18 0 18 18 v22" stroke="rgba(99,227,210,.5)" stroke-width="2.4" fill="none" marker-end="url(#cyArrow)"/>
+        <circle cx="1024" cy="238" r="14" fill="#05130e" stroke="rgba(99,227,210,.55)" stroke-width="1.4"/>
+        <circle cx="1024" cy="238" r="5" fill="#63e3d2"/>
+        <text x="1024" y="272" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="9.5" fill="#63e3d2" letter-spacing="1.5">CANDIDATE</text>
+        <path d="M964 168 h80" stroke="url(#cyChan)" stroke-width="18" stroke-linecap="round" opacity=".8"/>
+        <circle cx="1006" cy="168" r="7" fill="url(#cyDrop)" stroke="rgba(166,240,231,.4)"/>
+        <circle cx="1030" cy="168" r="7" fill="url(#cyDrop)" stroke="rgba(166,240,231,.4)"/>
+        <text x="1006" y="146" font-family="'IBM Plex Mono',monospace" font-size="9" fill="#8fa89d" letter-spacing="1.5">RETURN</text>
+        <g stroke="rgba(99,227,210,.4)" stroke-width="1.6" fill="none" marker-end="url(#cyArrow)">
+          <path d="M180 116 h24"/><path d="M400 116 h24"/><path d="M650 116 h24"/><path d="M836 116 h24"/>
+        </g>
+      </svg>
+      <div class="cy-legend">
+        <span><i style="background:#0a2f26;border:1px solid rgba(99,227,210,.4);height:10px"></i> Aqueous compartment</span>
+        <span><i style="background:#5ad07a"></i> Microalgal cell</span>
+        <span><i style="background:#63e3d2"></i> AI-flagged candidate</span>
+        <span><i style="background:linear-gradient(90deg,#5ad07a,#63e3d2)"></i> Data path</span>
+      </div>
+      <div class="cy-figcap"><span>Fig 03 · Cyanoflow microfluidic chip — conceptual schematic</span><span class="live"><span class="d"></span> Concept design</span></div>
+    </div>
+    <p class="cy-note cy-rv">Conceptual schematic. The chip is designed to act like a <b>microscopic conveyor system for biological measurements</b> — each compartment carries one cell's worth of context through the imaging path.</p>
+  </div>
+</section>
+
+<!-- ============ 04 · SINGLE-CELL OBSERVATION ============ -->
+<section class="cy-band" id="observation">
+  <div class="cy-shell cy-wide">
+    <p class="cy-kicker cy-rv"><span class="n">Section 04</span>Single-Cell Observation</p>
+    <h2 class="cy-h2 cy-rv">Every cell becomes a data point.</h2>
+    <p class="cy-lede cy-rv d1">Cyanoflow is designed to track individual cells rather than relying only on population averages.</p>
+    <div class="cy-obs" style="margin-top:40px">
+      <div class="cy-fig cy-scope cy-rv">
+        <svg viewBox="0 0 560 420" role="img" aria-label="Simulated microscopy field: microalgal cells in a microfluidic compartment with a measurement reticle">
+          <defs>
+            <radialGradient id="cyFov" cx="0.5" cy="0.45" r="0.75"><stop offset="0" stop-color="#0d3628"/><stop offset="0.6" stop-color="#07231a"/><stop offset="1" stop-color="#03120d"/></radialGradient>
+            <radialGradient id="cyMc1" cx="0.35" cy="0.3" r="0.9"><stop offset="0" stop-color="#d9fff2"/><stop offset="0.55" stop-color="#4fdc9f"/><stop offset="1" stop-color="#0f7a5c"/></radialGradient>
+            <radialGradient id="cyMc2" cx="0.4" cy="0.35" r="0.9"><stop offset="0" stop-color="#c2f8e6"/><stop offset="0.6" stop-color="#2fbf92"/><stop offset="1" stop-color="#0a5c46"/></radialGradient>
+          </defs>
+          <rect width="560" height="420" fill="url(#cyFov)"/>
+          <path d="M40 60 q240 -26 480 0" stroke="rgba(140,255,225,.22)" stroke-width="2.4" fill="none"/>
+          <path d="M40 372 q240 26 480 0" stroke="rgba(140,255,225,.22)" stroke-width="2.4" fill="none"/>
+          <circle cx="86" cy="120" r="17" fill="#123a2e" opacity=".7"/>
+          <circle cx="472" cy="310" r="22" fill="#123a2e" opacity=".6"/>
+          <circle cx="150" cy="330" r="13" fill="#0f3026" opacity=".7"/>
+          <circle cx="420" cy="96" r="15" fill="#123a2e" opacity=".65"/>
+          <g>
+            <circle cx="286" cy="208" r="52" fill="url(#cyMc1)" opacity=".92"/>
+            <circle cx="286" cy="208" r="52" fill="none" stroke="rgba(220,255,244,.5)" stroke-width="1.4"/>
+            <circle cx="270" cy="192" r="16" fill="rgba(240,255,250,.5)"/>
+            <circle cx="300" cy="226" r="7" fill="rgba(6,40,30,.55)"/>
+            <circle cx="266" cy="230" r="5" fill="rgba(6,40,30,.4)"/>
+          </g>
+          <circle cx="132" cy="216" r="30" fill="url(#cyMc2)" opacity=".85"/>
+          <circle cx="124" cy="206" r="9" fill="rgba(240,255,250,.4)"/>
+          <circle cx="416" cy="222" r="24" fill="url(#cyMc2)" opacity=".8"/>
+          <circle cx="410" cy="214" r="7" fill="rgba(240,255,250,.35)"/>
+          <g stroke="#63e3d2" stroke-width="1.2" fill="none" opacity=".9">
+            <circle cx="286" cy="208" r="66" stroke-dasharray="4 7"/>
+            <path d="M286 128 v-22M286 288 v22M206 208 h-22M366 208 h22"/>
+            <path d="M220 154 h132M220 262 h132" stroke-dasharray="2 4" opacity=".6"/>
+            <path d="M220 154 v108" stroke-dasharray="2 4" opacity=".6"/>
+          </g>
+          <g font-family="'IBM Plex Mono',monospace" font-size="10" letter-spacing="2" fill="#8fd8c8">
+            <text x="296" y="122">CF-00184</text>
+            <text x="368" y="270">Ø 12.4 µM</text>
+            <text x="296" y="300" fill="#63e3d2">TRACKING</text>
+          </g>
+          <g>
+            <line x1="430" y1="356" x2="506" y2="356" stroke="#8fa89d" stroke-width="1.4"/>
+            <line x1="430" y1="350" x2="430" y2="362" stroke="#8fa89d" stroke-width="1.4"/>
+            <line x1="506" y1="350" x2="506" y2="362" stroke="#8fa89d" stroke-width="1.4"/>
+            <text x="438" y="346" font-family="'IBM Plex Mono',monospace" font-size="9.5" fill="#8fa89d" letter-spacing="1.5">20 µM</text>
+          </g>
+          <rect x="8" y="8" width="544" height="404" fill="none" stroke="rgba(99,227,210,.18)"/>
+        </svg>
+        <div class="cy-figcap"><span>Microscopy field — simulated rendering</span><span class="live"><span class="d"></span> Tracking</span></div>
+      </div>
+      <div class="cy-cellcard cy-rv d1">
+        <div class="cc-head"><span>Cell record</span><b>CF-00184</b></div>
+        <div class="cy-bar"><span class="bl">Morphology</span><span class="bv">0.82</span><span class="bar"><i style="--w:82%"></i></span></div>
+        <div class="cy-bar"><span class="bl">Growth</span><span class="bv">0.91</span><span class="bar"><i style="--w:91%"></i></span></div>
+        <div class="cy-bar"><span class="bl">Optical profile</span><span class="bv">0.74</span><span class="bar"><i style="--w:74%"></i></span></div>
+        <div class="cy-bar"><span class="bl">Stability</span><span class="bv">0.93</span><span class="bar"><i style="--w:93%"></i></span></div>
+        <div class="cy-pheno"><span class="pl">Phenotype</span><span class="pv">CANDIDATE</span></div>
+        <p class="cy-note" style="margin-top:20px"><b>Conceptual interface example.</b> Values shown are illustrative — not claimed experimental results.</p>
+      </div>
+    </div>
+    <div class="cy-meas-grid cy-rv d1">
+      <div class="cy-meas"><b>Cell size</b>Diameter &amp; volume over time</div>
+      <div class="cy-meas"><b>Morphology</b>Shape, symmetry, surface detail</div>
+      <div class="cy-meas"><b>Growth behavior</b>Elongation and biomass gain</div>
+      <div class="cy-meas"><b>Division events</b>Timestamped split detection</div>
+      <div class="cy-meas"><b>Pigmentation</b>Optical color signatures</div>
+      <div class="cy-meas"><b>Movement</b>Motility inside compartments</div>
+      <div class="cy-meas"><b>Optical characteristics</b>Scatter, absorption, fluorescence</div>
+      <div class="cy-meas"><b>Changes over time</b>Every feature, tracked longitudinally</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 05 · AI PHENOTYPING ============ -->
+<section class="cy-band" id="ai">
+  <div class="cy-shell">
+    <p class="cy-kicker cy-rv"><span class="n">Section 05</span>AI Phenotyping</p>
+    <h2 class="cy-h2 cy-rv">From images to biological measurements.</h2>
+    <p class="cy-lede cy-rv d1">Cyanoflow's AI layer is designed to transform microscopy data into measurable phenotypic features.</p>
+    <div class="cy-ai" style="margin-top:40px">
+      <div class="cy-pane cy-rv">
+        <div class="plabel">The usual question</div>
+        <p class="q">"What species is this?"</p>
+        <p style="color:var(--cy-mute);margin:18px 0 0;font-size:.92rem;line-height:1.7">Taxonomy alone says little about what a cell is doing right now — or whether it is unusual at all.</p>
+      </div>
+      <div class="cy-pane focus cy-rv d1">
+        <div class="plabel">The Cyanoflow question</div>
+        <p class="q">"What is this cell <em>doing</em>?"</p>
+        <p style="color:var(--cy-soft);margin:18px 0 0;font-size:.92rem;line-height:1.7">The system focuses on behavior: growth, motion, optical response, and change over time — patterns that can be measured, compared, and searched.</p>
+      </div>
+    </div>
+    <p class="cy-body cy-rv" style="margin-top:34px">The model can analyze patterns across:</p>
+    <div class="cy-feats cy-rv d1">
+      <span>Morphology</span><span>Growth trajectories</span><span>Optical characteristics</span><span>Temporal behavior</span><span>Experimental conditions</span>
+    </div>
+    <p class="cy-body cy-rv d2" style="margin-top:26px">The system can then identify cells that display predefined characteristics of scientific interest — for example, unusually fast growth, distinctive optical signatures, or stable morphologies under stress.</p>
+    <div class="cy-track cy-rv d2">
+      <span class="cap">Growth trajectories · conceptual rendering</span>
+      <canvas id="cyTrack" aria-label="Animated conceptual growth trajectories for individual tracked cells, with one trajectory highlighted as a candidate" role="img"></canvas>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 06 · CANDIDATE DISCOVERY ============ -->
+<section class="cy-band" id="candidates">
+  <div class="cy-shell cy-wide">
+    <p class="cy-kicker cy-rv"><span class="n">Section 06</span>Candidate Discovery</p>
+    <h2 class="cy-h2 cy-rv">Find the cells worth investigating.</h2>
+    <p class="cy-lede cy-rv d1">Cyanoflow is designed to reduce the search space by identifying individual cells that display measurable characteristics of interest. The AI does not replace biological validation. It helps researchers decide <b style="color:#fff">where to look next</b>.</p>
+    <div class="cy-fig cy-map cy-rv d2" style="margin-top:40px">
+      <canvas id="cyMap" aria-label="Scatter map of hundreds of measured cells as small points; most are ordinary observations and a small number are highlighted as candidate phenotypes" role="img"></canvas>
+      <div class="cy-map-hud">
+        <span>Phenotype map · <b id="cyCandCount">—</b> candidates</span>
+        <span class="hl"><i></i> Ordinary observation</span>
+        <span class="hl c"><i></i> Candidate phenotype</span>
+      </div>
+      <div class="cy-figcap"><span>Fig 06 · Phenotype space — conceptual visualization</span><span class="live"><span class="d"></span> Concept design</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 07 · DISCOVERY → CHARACTERIZATION ============ -->
+<section class="cy-band" id="workflow">
+  <div class="cy-shell">
+    <p class="cy-kicker cy-rv"><span class="n">Section 07</span>From Discovery to Characterization</p>
+    <h2 class="cy-h2 cy-rv">A discovery workflow, not just an imaging system.</h2>
+    <p class="cy-lede cy-rv d1">Candidate cells identified by the system can be directed toward appropriate downstream characterization under approved laboratory conditions. This turns Cyanoflow from an imaging system into a potential discovery workflow.</p>
+    <div class="cy-wf" style="margin-top:52px">
+      <div class="cy-wf-step cy-rv"><div class="nd">01</div><h4>Observe</h4><p>Every compartment is imaged continuously as it passes the optical path.</p></div>
+      <div class="cy-wf-step cy-rv d1"><div class="nd">02</div><h4>Measure</h4><p>Computer vision converts frames into quantitative single-cell features.</p></div>
+      <div class="cy-wf-step cy-rv d2"><div class="nd">03</div><h4>Identify</h4><p>The AI layer scores cells against predefined characteristics of interest.</p></div>
+      <div class="cy-wf-step cy-rv d3"><div class="nd">04</div><h4>Select</h4><p>Candidate cells are flagged and routed for follow-up by position or compartment.</p></div>
+      <div class="cy-wf-step cy-rv d3"><div class="nd">05</div><h4>Characterize</h4><p>Selected cells move to downstream lab analysis under approved protocols.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 08 · THE DATA LAYER ============ -->
+<section class="cy-band" id="data">
+  <div class="cy-shell cy-wide">
+    <p class="cy-kicker cy-rv"><span class="n">Section 08</span>The Data Layer</p>
+    <h2 class="cy-h2 cy-rv">Every observation can become part of a searchable biological record.</h2>
+    <p class="cy-lede cy-rv d1">A long-term objective of Cyanoflow is to build structured datasets that connect cellular appearance and behavior with experimentally validated phenotypes.</p>
+    <div class="cy-record cy-rv d2" style="margin-top:40px">
+      <div class="r-head"><span class="t">Cyanoflow cell record</span><span class="id">CF-00184</span></div>
+      <div class="r-body">
+        <div class="r-cell"><div class="k">Images</div><div class="v">12 captured · indexed</div></div>
+        <div class="r-cell"><div class="k">Morphology</div><div class="v ok">Measured</div></div>
+        <div class="r-cell"><div class="k">Growth trajectory</div><div class="v ok">Recorded</div></div>
+        <div class="r-cell"><div class="k">Optical profile</div><div class="v ok">Recorded</div></div>
+        <div class="r-cell"><div class="k">Experimental condition</div><div class="v ok">Recorded</div></div>
+        <div class="r-cell"><div class="k">AI phenotype</div><div class="v cand">Candidate</div></div>
+        <div class="r-cell"><div class="k">Validation</div><div class="v pend">Pending</div></div>
+        <div class="r-cell"><div class="k">Compartment</div><div class="v">DROPLET-0912 · TRACKED</div></div>
+        <div class="r-cell"><div class="k">Record status</div><div class="v pend">Unvalidated — research use</div></div>
+      </div>
+      <div class="r-foot"><span>Record version <b>v0.4 · concept</b></span><span>Retention <b>Research use only</b></span><span>Validation <b>Independent lab confirmation required</b></span></div>
+    </div>
+    <p class="cy-note cy-rv d1">AI-assigned phenotypes are <b>hypotheses, not conclusions</b>. A record becomes biology only when an independent measurement confirms it.</p>
+  </div>
+</section>
+
+<!-- ============ 09 · RESEARCH ARCHITECTURE ============ -->
+<section class="cy-band" id="architecture">
+  <div class="cy-shell">
+    <p class="cy-kicker cy-rv"><span class="n">Section 09</span>Research Architecture</p>
+    <h2 class="cy-h2 cy-rv">How the layers connect.</h2>
+    <p class="cy-lede cy-rv d1">Data flows one direction through the platform — from physics to biology to computation to the lab. Each layer passes its output to the next.</p>
+    <div class="cy-fig cy-rv d2" style="margin-top:40px">
+      <svg viewBox="0 0 760 700" role="img" aria-label="Research architecture stack: microfluidics, imaging, computer vision, AI phenotyping, candidate cells, characterization — with data pulses flowing down the stack">
+        <defs>
+          <linearGradient id="cyLay" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#0a1f1a"/><stop offset="1" stop-color="#061510"/></linearGradient>
+          <marker id="cyAArrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#63e3d2"/></marker>
+        </defs>
+        <g font-family="'IBM Plex Mono',monospace" letter-spacing="3">
+          <g>
+            <rect x="190" y="24" width="380" height="64" rx="14" fill="url(#cyLay)" stroke="rgba(90,208,122,.45)" stroke-width="1.3"/>
+            <text x="380" y="52" text-anchor="middle" font-size="14" fill="#e9f4ee">MICROFLUIDICS</text>
+            <text x="380" y="72" text-anchor="middle" font-size="9.5" fill="#8fa89d">COMPARTMENT THE SAMPLE</text>
+          </g>
+          <line x1="380" y1="88" x2="380" y2="126" stroke="rgba(99,227,210,.4)" stroke-width="1.4" marker-end="url(#cyAArrow)"/>
+          <circle class="cy-arch-pk" r="4" fill="#5ad07a" style="offset-path:path('M380 88 V 126');animation-delay:0s"/>
+          <g>
+            <rect x="190" y="130" width="380" height="64" rx="14" fill="url(#cyLay)" stroke="rgba(90,208,122,.4)" stroke-width="1.2"/>
+            <text x="380" y="158" text-anchor="middle" font-size="14" fill="#e9f4ee">IMAGING</text>
+            <text x="380" y="178" text-anchor="middle" font-size="9.5" fill="#8fa89d">AUTOMATED MICROSCOPY OVER TIME</text>
+          </g>
+          <line x1="380" y1="194" x2="380" y2="232" stroke="rgba(99,227,210,.4)" stroke-width="1.4" marker-end="url(#cyAArrow)"/>
+          <circle class="cy-arch-pk" r="4" fill="#5ad07a" style="offset-path:path('M380 194 V 232');animation-delay:.5s"/>
+          <g>
+            <rect x="190" y="236" width="380" height="64" rx="14" fill="url(#cyLay)" stroke="rgba(90,208,122,.4)" stroke-width="1.2"/>
+            <text x="380" y="264" text-anchor="middle" font-size="14" fill="#e9f4ee">COMPUTER VISION</text>
+            <text x="380" y="284" text-anchor="middle" font-size="9.5" fill="#8fa89d">FRAMES → QUANTITATIVE FEATURES</text>
+          </g>
+          <line x1="380" y1="300" x2="380" y2="338" stroke="rgba(99,227,210,.4)" stroke-width="1.4" marker-end="url(#cyAArrow)"/>
+          <circle class="cy-arch-pk" r="4" fill="#5ad07a" style="offset-path:path('M380 300 V 338');animation-delay:1s"/>
+          <g>
+            <rect x="190" y="342" width="380" height="64" rx="14" fill="url(#cyLay)" stroke="rgba(99,227,210,.5)" stroke-width="1.3"/>
+            <text x="380" y="370" text-anchor="middle" font-size="14" fill="#e9f4ee">AI PHENOTYPING</text>
+            <text x="380" y="390" text-anchor="middle" font-size="9.5" fill="#8fa89d">PATTERN ANALYSIS · SCORING</text>
+          </g>
+          <line x1="380" y1="406" x2="380" y2="444" stroke="rgba(99,227,210,.4)" stroke-width="1.4" marker-end="url(#cyAArrow)"/>
+          <circle class="cy-arch-pk" r="4" fill="#63e3d2" style="offset-path:path('M380 406 V 444');animation-delay:1.5s"/>
+          <g>
+            <rect x="190" y="448" width="380" height="64" rx="14" fill="url(#cyLay)" stroke="rgba(99,227,210,.45)" stroke-width="1.2"/>
+            <text x="380" y="476" text-anchor="middle" font-size="14" fill="#e9f4ee">CANDIDATE CELLS</text>
+            <text x="380" y="496" text-anchor="middle" font-size="9.5" fill="#8fa89d">FLAGGED FOR INVESTIGATION</text>
+          </g>
+          <line x1="380" y1="512" x2="380" y2="550" stroke="rgba(99,227,210,.4)" stroke-width="1.4" marker-end="url(#cyAArrow)"/>
+          <circle class="cy-arch-pk" r="4" fill="#63e3d2" style="offset-path:path('M380 512 V 550');animation-delay:2s"/>
+          <g>
+            <rect x="190" y="554" width="380" height="64" rx="14" fill="url(#cyLay)" stroke="rgba(90,208,122,.55)" stroke-width="1.4"/>
+            <text x="380" y="582" text-anchor="middle" font-size="14" fill="#e9f4ee">CHARACTERIZATION</text>
+            <text x="380" y="602" text-anchor="middle" font-size="9.5" fill="#8fa89d">INDEPENDENT LAB VALIDATION</text>
+          </g>
+          <line x1="570" y1="56" x2="570" y2="586" stroke="rgba(99,227,210,.18)" stroke-width="1" stroke-dasharray="3 6"/>
+          <g>
+            <rect x="590" y="286" width="140" height="72" rx="12" fill="#051510" stroke="rgba(99,227,210,.25)" stroke-width="1"/>
+            <text x="660" y="316" text-anchor="middle" font-size="10.5" fill="#a6f0e7">DATA LAYER</text>
+            <text x="660" y="334" text-anchor="middle" font-size="8.5" fill="#8fa89d">SEARCHABLE RECORDS</text>
+          </g>
+          <path d="M570 322 h20" stroke="rgba(99,227,210,.35)" stroke-width="1.2"/>
+          <text x="380" y="668" text-anchor="middle" font-size="10" fill="#8fa89d" letter-spacing="4">CYANOFLOW · ONE DIRECTION: SAMPLE → KNOWLEDGE</text>
+        </g>
+      </svg>
+      <div class="cy-figcap"><span>Fig 09 · Research architecture — data flowing through each layer</span><span class="live"><span class="d"></span> System design</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 10 · DEVELOPMENT ROADMAP ============ -->
+<section class="cy-band" id="roadmap">
+  <div class="cy-shell">
+    <p class="cy-kicker cy-rv"><span class="n">Section 10</span>Development Roadmap</p>
+    <h2 class="cy-h2 cy-rv">From first images to large-scale discovery.</h2>
+    <p class="cy-lede cy-rv d1">Cyanoflow is being built in stages. Each milestone is an engineering deliverable, validated before the next begins.</p>
+    <div class="cy-roadmap" style="margin-top:44px">
+      <div class="cy-rm cy-rv"><span class="rn">01 — Imaging</span><h4>Automated single-cell detection and tracking</h4><p>Build the microscopy pipeline that finds individual cells in each frame and follows them across time.</p></div>
+      <div class="cy-rm cy-rv d1"><span class="rn">02 — Microfluidics</span><h4>Controlled single-cell compartmentalization</h4><p>Develop chips that isolate one cell per aqueous compartment with reliable generation and transport.</p></div>
+      <div class="cy-rm cy-rv d2"><span class="rn">03 — Phenotyping</span><h4>Extract quantitative cellular features</h4><p>Turn raw imagery into stable measurements: size, morphology, optical response, growth and division.</p></div>
+      <div class="cy-rm cy-rv d3"><span class="rn">04 — AI</span><h4>Develop and validate phenotype classification</h4><p>Train models on labeled data and validate classifications against independent measurements.</p></div>
+      <div class="cy-rm cy-rv"><span class="rn">05 — Candidate Selection</span><h4>Identify cells meeting predefined research criteria</h4><p>Define the criteria, then let the system flag the cells that meet them — with human review at every step.</p></div>
+      <div class="cy-rm cy-rv d1"><span class="rn">06 — Characterization</span><h4>Connect predictions with independent biological measurements</h4><p>Close the loop: computational candidates are confirmed or rejected in the lab.</p></div>
+      <div class="cy-rm wide cy-rv d2"><span class="rn">07 — High-Throughput Discovery</span><h4>Scale toward large-scale microalgal screening</h4><p>Parallelize compartments, imaging, and analysis so the search space shrinks from millions of cells to a shortlist worth a researcher's time.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 11 · WHY CYANOFLOW ============ -->
+<section class="cy-band" id="why">
+  <div class="cy-shell">
+    <p class="cy-kicker cy-rv"><span class="n">Section 11</span>Why Cyanoflow?</p>
+    <h2 class="cy-h2 cy-rv">Three commitments.</h2>
+    <div class="cy-why" style="margin-top:40px">
+      <div class="w cy-rv"><span class="wn">/ 01</span><h3>Single-cell</h3><p>Study biological variation at the level where it actually exists.</p></div>
+      <div class="w cy-rv d1"><span class="wn">/ 02</span><h3>Quantitative</h3><p>Convert microscopy into structured measurements.</p></div>
+      <div class="w cy-rv d2"><span class="wn">/ 03</span><h3>Intelligent</h3><p>Use computational analysis to search large numbers of observations.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 12 · RESEARCH STATUS ============ -->
+<section class="cy-band" id="status">
+  <div class="cy-shell">
+    <div class="cy-status cy-rv">
+      <span class="cy-status-label"><span class="dot"></span>Cyanoflow is currently under development.</span>
+      <h2>Research status.</h2>
+      <p>The platform represents a developing research concept combining microfluidics, microscopy, computer vision, and machine learning for single-cell microalgal research.</p>
+      <p>Capabilities shown on this website should be presented as <b>design goals, prototypes, or research objectives unless experimentally validated</b>.</p>
+      <p style="margin-bottom:0">For environmental or unknown microorganisms, experimentation will follow applicable <b>biosafety, institutional, and science-fair requirements</b>.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FINAL CTA ============ -->
+<section class="cy-band" id="research-cta">
+  <div class="cy-shell">
+    <div class="cy-final cy-rv">
+      <p class="cy-kicker" style="justify-content:center">Cyanoflow · Research</p>
+      <h2>Discover what the population average hides.</h2>
+      <p>Cyanoflow is being developed to make individual microalgal cells measurable, searchable, and experimentally testable.</p>
+      <a class="cy-btn cy-btn-primary" href="mailto:service@orrbiologicals.com?subject=Cyanoflow%20research%20inquiry">Explore Cyanoflow Research <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <p class="fine">Under development · Research objectives · Not validated claims</p>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="cy-foot">
+  <div class="cy-shell">
+    <div class="fin">
+      <span><b>Cyanoflow</b> · A research technology by Orr Biologicals</span>
+      <span><a href="/">Orr Biologicals</a> · <a href="/insights/">Insights</a> · <a href="/applications/">Applications</a> · <a href="mailto:service@orrbiologicals.com">Contact</a> · <a href="/disclaimer">Disclaimer</a> · <a href="/privacy">Privacy</a> · <a href="/terms">Terms</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/cyanoflow.js"></script>
+<script src="/js/consent.js" defer></script>
+</body>
+</html>
