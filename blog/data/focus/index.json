@@ -1,0 +1,107 @@
+{
+  "updated": "2026-09-25T00:56:41Z",
+  "count": 7,
+  "posts": [
+    {
+      "date": "2026-09-24",
+      "slug": "ocean-alkalinity-algae-response",
+      "title": "Alkalinity Boost Changes Algae Growth and Lipids",
+      "dek": "A 16‑day study shows that raising seawater alkalinity alters Isochrysis galbana’s growth, stress enzymes, and lipid metabolism, indicating a shift from growth to defense.",
+      "tags": [
+        "ALKALINITY",
+        "GROWTH",
+        "LIPIDS",
+        "ECOTOX"
+      ],
+      "pmid": "42660040",
+      "url": "https://doi.org/10.1016/j.ecoenv.2026.120716",
+      "journal": "Ecotoxicology and environmental safety"
+    },
+    {
+      "date": "2026-09-23",
+      "slug": "co2-membrane-aeration-urine-valorization",
+      "title": "Bubbleless CO₂ membrane aeration boosts algae growth and nutrient removal from urine",
+      "dek": "Delivering CO₂ through a membrane raises Chlorella vulgaris biomass and sharply improves nitrogen and phosphorus capture from source‑separated urine.",
+      "tags": [
+        "GROWTH",
+        "NUTRIENT RECOVERY",
+        "METABOLISM"
+      ],
+      "pmid": "42762740",
+      "url": "https://doi.org/10.1016/j.watres.2026.126975",
+      "journal": "Water research"
+    },
+    {
+      "date": "2026-09-22",
+      "slug": "dinoflagellate-contribution-calanus-pacific",
+      "title": "Copepod Diets Reveal Dinoflagellate Dominance in Subarctic Pacific",
+      "dek": "Isotope analysis shows Calanus spp. rely heavily on dinoflagellates in the Bering Strait, while tropical diets include more nitrogen‑fixers and bacteria.",
+      "tags": [
+        "FOODWEB",
+        "NUTRIENTS",
+        "ISOTOPES"
+      ],
+      "pmid": "42758850",
+      "url": "https://doi.org/10.1126/sciadv.aed3966",
+      "journal": "Science advances"
+    },
+    {
+      "date": "2026-09-21",
+      "slug": "nannochloropsis-biodiesel-performance",
+      "title": "Nannochloropsis strains produce high‑quality biodiesel",
+      "dek": "Three Nannochloropsis species were grown under nitrogen‑starved, high‑light conditions, yielding up to 143 mg L⁻¹ day⁻¹ lipid and >98% conversion to biodiesel that meets ASTM and EN standards.",
+      "tags": [
+        "BIOFUELS",
+        "LIPIDS",
+        "PROCESS",
+        "QUALITY"
+      ],
+      "pmid": "42638968",
+      "url": "https://doi.org/10.1039/d6ra05806j",
+      "journal": "RSC advances"
+    },
+    {
+      "date": "2026-09-20",
+      "slug": "plasma-chitosan-algae-wound-healing",
+      "title": "Plasma‑treated chitosan dressing powers algae to heal diabetic wounds",
+      "dek": "A cold atmospheric plasma‑modified chitosan matrix couples red‑light‑activated microalgae to boost oxygen and energy production, speeding closure of diabetic skin wounds.",
+      "tags": [
+        "WOUND HEALING",
+        "PHOTOBIOENERGETICS",
+        "ALGAE",
+        "CARBOHYDRATE"
+      ],
+      "pmid": "42493092",
+      "url": "https://doi.org/10.1016/j.carbpol.2026.125521",
+      "journal": "Carbohydrate polymers"
+    },
+    {
+      "date": "2026-09-19",
+      "slug": "humic-cation-nanoplastic-algae",
+      "title": "Humic acids and salts reshape nanoplastic toxicity to algae",
+      "dek": "Combined humic acid and cations alter nanoplastic aggregation, bioaccessibility, and toxicity pathways in Chlorella vulgaris.",
+      "tags": [
+        "POLLUTION",
+        "TOXICITY",
+        "ALGAE"
+      ],
+      "pmid": "42217384",
+      "url": "https://doi.org/10.1016/j.watres.2026.126207",
+      "journal": "Water research"
+    },
+    {
+      "date": "2026-09-18",
+      "slug": "microbial-photosynthetic-biofilm-review",
+      "title": "Photosynthetic Biofilm Carriers Boost Wastewater Treatment and Biomass Yield",
+      "dek": "A systematic review finds that carrier type matters less than operating conditions for efficient nutrient removal and algae biomass production.",
+      "tags": [
+        "WASTEWATER",
+        "BIOFILM",
+        "BIOENERGY"
+      ],
+      "pmid": "42754112",
+      "url": "https://doi.org/10.1016/j.biortech.2026.135843",
+      "journal": "Bioresource technology"
+    }
+  ]
+}

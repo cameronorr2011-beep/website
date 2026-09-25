@@ -1,0 +1,29 @@
+{
+  "date": "2026-09-23",
+  "slug": "co2-membrane-aeration-urine-valorization",
+  "title": "Bubbleless CO₂ membrane aeration boosts algae growth and nutrient removal from urine",
+  "dek": "Delivering CO₂ through a membrane raises Chlorella vulgaris biomass and sharply improves nitrogen and phosphorus capture from source‑separated urine.",
+  "body": "Researchers tested a bubbleless CO₂ membrane aeration method while growing the microalga Chlorella vulgaris in both fresh and hydrolyzed urine. By supplying inorganic carbon directly through the membrane, they could control how much CO₂ the algae received.\n\nWith this controlled CO₂ delivery, the algae produced 25 % more biomass compared with conventional cultivation. At the same time, the system removed 28 % more total nitrogen and more than double the phosphorus (112 % increase) from the urine.\n\nMolecular analyses showed that the membrane‑mediated CO₂ supply turned on genes linked to carbon fixation (acsA, acsE) and nitrogen assimilation (ureC, gdhA). The fresh urine plus CO₂ condition displayed a strong coupling of carbon and nitrogen metabolism, meaning that balanced carbon availability and the gradual release of nitrogen worked together to enhance photosynthesis and nutrient uptake.\n\nThe study concludes that the benefit of bubbleless CO₂ membrane aeration goes beyond simply adding carbon; it also improves the internal coordination of carbon and nitrogen pathways, offering a clearer mechanistic basis for algae‑based wastewater treatment that recovers resources while fixing carbon.",
+  "takeaways": [
+    "Membrane‑delivered CO₂ raises algae biomass by about a quarter.",
+    "Nitrogen removal improves 28 % and phosphorus removal more than doubles.",
+    "CO₂ supply triggers genes that link carbon fixation with nitrogen assimilation."
+  ],
+  "tags": [
+    "GROWTH",
+    "NUTRIENT RECOVERY",
+    "METABOLISM"
+  ],
+  "why_it_matters": "Understanding how CO₂ delivery coordinates carbon‑nitrogen metabolism helps design algae systems that turn urine waste into valuable biomass and recover nutrients efficiently.",
+  "source": {
+    "pmid": "42762740",
+    "title": "CO<sub>2</sub> membrane aeration enhances urine valorization by coordinating carbon-nitrogen metabolic coupling in Chlorella vulgaris.",
+    "journal": "Water research",
+    "year": "2026",
+    "authors": "Lin, Chen, Chen et al.",
+    "doi": "10.1016/j.watres.2026.126975",
+    "url": "https://doi.org/10.1016/j.watres.2026.126975"
+  },
+  "model": "openai/gpt-oss-120b",
+  "generated_at": "2026-09-25T00:56:41Z"
+}

@@ -1,0 +1,29 @@
+{
+  "date": "2026-09-22",
+  "slug": "dinoflagellate-contribution-calanus-pacific",
+  "title": "Copepod Diets Reveal Dinoflagellate Dominance in Subarctic Pacific",
+  "dek": "Isotope analysis shows Calanus spp. rely heavily on dinoflagellates in the Bering Strait, while tropical diets include more nitrogen‑fixers and bacteria.",
+  "body": "Researchers examined the stomach contents of the widespread copepod Calanus spp. across the western North Pacific by measuring carbon and nitrogen isotope ratios in amino acids. These chemical fingerprints let them estimate which groups of organisms formed the base of the copepods' diet.\n\nIn tropical and subtropical waters, the copepods' diet was composed of about 20% nitrogen‑fixing organisms and roughly 30% heterotrophic bacteria. By contrast, in the Bering Strait and southern Chukchi Sea, more than half of the diet (around 54%) came from dinoflagellates, a type of phytoplankton.\n\nThe study also linked nitrogen sources to region: tropical phytoplankton primarily used biologically fixed nitrogen, while in the Pacific Arctic Ocean, nitrate supplied over 90% of the nitrogen taken up by eukaryotic microalgae. These patterns suggest that regional nutrient changes are reshaping plankton food webs.",
+  "takeaways": [
+    "Calanus spp. diets shift from bacteria and nitrogen‑fixers in warm waters to dinoflagellates in subarctic regions.",
+    "Dinoflagellate contribution correlates with nitrogen isotope signals in copepod amino acids.",
+    "Nitrate dominates nitrogen sources in the Pacific Arctic, while tropical zones rely more on nitrogen fixation."
+  ],
+  "tags": [
+    "FOODWEB",
+    "NUTRIENTS",
+    "ISOTOPES"
+  ],
+  "why_it_matters": "Understanding which microalgae feed key zooplankton helps predict how climate‑driven nutrient changes will impact marine food chains and biotechnological harvesting of algae.",
+  "source": {
+    "pmid": "42758850",
+    "title": "Dietary records in cosmopolitan copepod <i>Calanus</i> spp. revealed large contribution of dinoflagellates in subarctic Pacific.",
+    "journal": "Science advances",
+    "year": "2026",
+    "authors": "Choi, Choi, Kim et al.",
+    "doi": "10.1126/sciadv.aed3966",
+    "url": "https://doi.org/10.1126/sciadv.aed3966"
+  },
+  "model": "openai/gpt-oss-120b",
+  "generated_at": "2026-09-25T00:56:34Z"
+}

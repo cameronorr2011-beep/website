@@ -1,0 +1,30 @@
+{
+  "date": "2026-09-21",
+  "slug": "nannochloropsis-biodiesel-performance",
+  "title": "Nannochloropsis strains produce high‑quality biodiesel",
+  "dek": "Three Nannochloropsis species were grown under nitrogen‑starved, high‑light conditions, yielding up to 143 mg L⁻¹ day⁻¹ lipid and >98% conversion to biodiesel that meets ASTM and EN standards.",
+  "body": "Researchers cultivated three Nannochloropsis species—N. oceanica (IMET1), N. granulata and N. limnetica—in a 20‑L bubble‑column photobioreactor using a nitrogen‑deficient, high‑light BG‑11 medium to encourage lipid accumulation. After harvesting, lipids were extracted with hexane in an automated Soxhlet system and profiled by high‑resolution GC‑MS.\n\nThe extracted oils underwent supercritical methanol transesterification, producing methyl esters with yields of 98.74 % for N. oceanica, 98.35 % for N. granulata and 96.12 % for N. limnetica. Fuel properties were measured according to ASTM D6751 and EN 14214, and all three biodiesels satisfied these quality standards.\n\nN. oceanica showed the highest lipid productivity (142.9 ± 3.42 mg L⁻¹ day⁻¹) and oil content (57.5 % dry weight), as well as an especially high cetane number (57.63) and calorific value (41.85 MJ kg⁻¹), indicating strong ignition performance and potential fuel‑efficiency benefits.",
+  "takeaways": [
+    "N. oceanica achieved the greatest lipid productivity and oil content among the tested strains.",
+    "Supercritical methanol transesterification converted >96 % of algae lipids into biodiesel.",
+    "Resulting biodiesel met ASTM D6751 and EN 14214 standards, with high cetane number and energy content."
+  ],
+  "tags": [
+    "BIOFUELS",
+    "LIPIDS",
+    "PROCESS",
+    "QUALITY"
+  ],
+  "why_it_matters": "Demonstrating efficient, high‑quality biodiesel from Nannochloropsis supports scalable microalgae routes to renewable fuels.",
+  "source": {
+    "pmid": "42638968",
+    "title": "<i>Nannochloropsis</i> micro-algae: from cultivation to high-quality biodiesel: integrated bioprocess, lipid profiling, SCM transesterification and fuel quality assessment.",
+    "journal": "RSC advances",
+    "year": "2026",
+    "authors": "Folayan, Patel",
+    "doi": "10.1039/d6ra05806j",
+    "url": "https://doi.org/10.1039/d6ra05806j"
+  },
+  "model": "openai/gpt-oss-120b",
+  "generated_at": "2026-09-25T00:56:27Z"
+}

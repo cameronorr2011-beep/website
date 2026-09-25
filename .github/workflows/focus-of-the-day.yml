@@ -1,0 +1,49 @@
+name: Focus of the Day
+
+# Generates the daily algae research brief for the Blog tab:
+# PubMed search -> GPT-OSS-120B (Groq) -> blog/data/focus/<date>.json
+# Runs once per day; can also be triggered manually from the Actions tab.
+
+on:
+  schedule:
+    - cron: "0 7 * * *"   # 07:00 UTC daily
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: focus-of-the-day
+  cancel-in-progress: false
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Generate today's focus
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+        run: python tools/blog/generate_focus.py
+
+      - name: Rotate daily article picks
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+        run: python tools/blog/pick_articles.py
+
+      - name: Commit new post
+        run: |
+          git config user.name "focus-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add blog/data/focus/ blog/data/picks/
+          if git diff --cached --quiet; then
+            echo "Nothing new to commit"
+          else
+            git commit -m "Add blog daily update for $(date -u +%F)"
+            git push
+          fi

@@ -1,0 +1,30 @@
+{
+  "date": "2026-09-24",
+  "slug": "ocean-alkalinity-algae-response",
+  "title": "Alkalinity Boost Changes Algae Growth and Lipids",
+  "dek": "A 16‑day study shows that raising seawater alkalinity alters Isochrysis galbana’s growth, stress enzymes, and lipid metabolism, indicating a shift from growth to defense.",
+  "body": "Researchers simulated two levels of ocean alkalinity enhancement (+600 and +1200 µmol kg⁻¹ total alkalinity) and monitored the nanophytoplankton Isochrysis galbana for 16 days. They confirmed that the carbonate chemistry of the water matched the intended alkalinity gradients.\n\nDuring the early part of the experiment, the algae grew normally, showing physiological resilience to the higher alkalinity. Toward the later stages, growth slowed and antioxidant enzyme activities rose modestly, suggesting the cells were beginning to experience stress.\n\nMetabolite and transcript analyses revealed extensive reprogramming of the algae’s internal chemistry. Energy‑storage compounds and lipid profiles changed markedly, reflecting a shift of resources from growth and storage toward defensive functions.\n\nThese observations highlight that while short‑term exposure to increased alkalinity may be tolerated, longer exposure can suppress growth and remodel lipid metabolism, important considerations for evaluating the ecological safety of ocean alkalinity enhancement.",
+  "takeaways": [
+    "Initial algae growth is resilient to raised alkalinity, but slows later.",
+    "Antioxidant enzymes rise modestly, indicating a stress response.",
+    "Lipid and energy‑storage pathways are re‑wired toward defense."
+  ],
+  "tags": [
+    "ALKALINITY",
+    "GROWTH",
+    "LIPIDS",
+    "ECOTOX"
+  ],
+  "why_it_matters": "Understanding how key microalgae adjust to alkalinity changes helps assess risks and guide safe use of ocean alkalinity enhancement in climate mitigation.",
+  "source": {
+    "pmid": "42660040",
+    "title": "Ecological feasibility of ocean alkalinity enhancement: Physiological and metabolic responses of Isochrysis galbana.",
+    "journal": "Ecotoxicology and environmental safety",
+    "year": "2026",
+    "authors": "Chen, Bao, Yue et al.",
+    "doi": "10.1016/j.ecoenv.2026.120716",
+    "url": "https://doi.org/10.1016/j.ecoenv.2026.120716"
+  },
+  "model": "openai/gpt-oss-120b",
+  "generated_at": "2026-09-25T00:55:01Z"
+}

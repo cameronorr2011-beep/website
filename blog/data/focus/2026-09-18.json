@@ -1,0 +1,29 @@
+{
+  "date": "2026-09-18",
+  "slug": "microbial-photosynthetic-biofilm-review",
+  "title": "Photosynthetic Biofilm Carriers Boost Wastewater Treatment and Biomass Yield",
+  "dek": "A systematic review finds that carrier type matters less than operating conditions for efficient nutrient removal and algae biomass production.",
+  "body": "Researchers examined many studies of photosynthetic biofilm reactors that use carriers to grow algae on surfaces instead of in suspension. By categorising the data on carrier biodegradability and applying multivariate analysis, they identified which factors most affect performance.\n\nThe analysis showed that reactor orientation—whether horizontal, vertical, inclined, or rotating—did not significantly change treatment outcomes. Instead, operational parameters such as light exposure and the area available for growth were the main drivers of biomass yield, explaining about 80% of the variation.\n\nAcross the reviewed systems, average removal efficiencies were 82% for chemical oxygen demand, 78% for total nitrogen, and 88% for total phosphate. Typical operating conditions worldwide included a pH around 7.8, 14 hours of light per day, a 9‑day hydraulic retention time, and a temperature near 26 °C.\n\nThese findings suggest that selecting reactor designs that can maintain optimal light and surface area will be more important than the specific carrier material, guiding future scale‑up of algal biofilm technologies for wastewater treatment and bio‑product generation.",
+  "takeaways": [
+    "Operational conditions (light, area) dominate over carrier type for biomass yield.",
+    "Reactor orientation has little impact on nutrient removal efficiency.",
+    "Typical global settings: pH 7.8, 14 h light, 9 day HRT, 26 °C."
+  ],
+  "tags": [
+    "WASTEWATER",
+    "BIOFILM",
+    "BIOENERGY"
+  ],
+  "why_it_matters": "Understanding the key drivers of biofilm reactor performance helps design more efficient microalgae systems for clean water and renewable biomass.",
+  "source": {
+    "pmid": "42754112",
+    "title": "Microbial photosynthetic carriers in biofilm bioreactors: a systematic review and quantitative synthesis.",
+    "journal": "Bioresource technology",
+    "year": "2026",
+    "authors": "Gupta, Jha, Mishra et al.",
+    "doi": "10.1016/j.biortech.2026.135843",
+    "url": "https://doi.org/10.1016/j.biortech.2026.135843"
+  },
+  "model": "openai/gpt-oss-120b",
+  "generated_at": "2026-09-25T00:55:54Z"
+}

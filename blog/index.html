@@ -1,0 +1,376 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Blog — Focus of the Day, AI-picked algae research &amp; field notes | Orr Biologicals</title>
+<meta name="description" content="Every day an AI reads the newest peer-reviewed algae research and writes a grounded brief — the Focus of the Day — and selects up to ten papers worth your time. Plus the full Orr Biologicals field-notes library.">
+<link rel="canonical" href="https://orrbiologicals.com/blog/">
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<meta property="og:title" content="Orr Biologicals — Blog">
+<meta property="og:description" content="A daily AI research brief, a daily AI-picked paper rotation, and field notes from cultures we actually run.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://orrbiologicals.com/blog/">
+<meta property="og:image" content="https://orrbiologicals.com/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Blog","name":"Orr Biologicals Blog","url":"https://orrbiologicals.com/blog/","description":"Daily AI-summarized algae research briefs, a daily AI-picked paper rotation, and field notes on Spirulina cultivation, photobioreactors and AI-assisted biology."}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..700&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,0..560&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/extras.css">
+<style>
+/* ===== Blog tab extras — site green-on-black palette ===== */
+.blog-search{display:flex;gap:12px;align-items:center;max-width:640px;margin-top:28px;position:relative;flex-wrap:wrap}
+.blog-search svg{position:absolute;left:18px;top:50%;transform:translateY(-50%);width:16px;height:16px;color:#57705f;pointer-events:none}
+.blog-search input{flex:1;min-width:220px;background:rgba(0,0,0,.35);border:1px solid rgba(90,208,122,.18);border-radius:99px;padding:14px 22px 14px 44px;color:#e8f0e8;font:inherit;font-size:.95rem;outline:none;transition:border-color .25s,box-shadow .25s}
+.blog-search input::placeholder{color:#57705f}
+.blog-search input:focus{border-color:#5ad07a;box-shadow:0 0 0 4px rgba(90,208,122,.12)}
+.blog-search .cnt{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.14em;color:#57705f;text-transform:uppercase}
+.no-results .ins-grid{display:none}
+.no-results .ins-empty{display:block}
+.ins-empty{display:none;padding:40px 0;text-align:center;color:#57705f;font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase}
+.ins-grid mark{background:rgba(90,208,122,.28);color:#9fe8c9;border-radius:3px;padding:0 2px}
+
+/* ---- Focus of the Day ---- */
+.focus-day{position:relative;border:1px solid rgba(90,208,122,.32);border-radius:20px;overflow:hidden;margin-top:48px;
+  background:radial-gradient(90% 70% at 85% 0%,rgba(90,208,122,.09),transparent 60%),linear-gradient(180deg,#0a120b,#050705)}
+.fd-grid{display:grid;grid-template-columns:1.15fr .85fr}
+.fd-main{padding:clamp(26px,4vw,44px)}
+.fd-side{border-left:1px solid rgba(90,208,122,.14);padding:clamp(26px,4vw,44px) clamp(22px,3vw,36px);display:flex;flex-direction:column;gap:20px;background:rgba(0,0,0,.25)}
+.fd-label{display:flex;align-items:center;gap:10px;font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#5ad07a;margin-bottom:16px}
+.fd-label .dot{width:8px;height:8px;border-radius:50%;background:#5ad07a;box-shadow:0 0 12px #5ad07a;animation:fdpulse 2s infinite}
+@keyframes fdpulse{0%,100%{opacity:.4}50%{opacity:1}}
+@media (prefers-reduced-motion:reduce){.fd-label .dot{animation:none}}
+.fd-date{margin-left:auto;color:#57705f}
+.focus-day h2{font-size:clamp(1.5rem,3vw,2.1rem);line-height:1.2;margin:0 0 12px;color:#fff;letter-spacing:-.02em}
+.focus-day .dek{color:#b9ccbe;font-size:1rem;line-height:1.65;margin:0}
+.fd-body{margin-top:18px;color:#b9ccbe;font-size:.93rem;line-height:1.75;max-width:66ch}
+.fd-body p+p{margin-top:12px}
+.fd-takeaways{margin:18px 0 0;padding:0;list-style:none;display:grid;gap:9px}
+.fd-takeaways li{position:relative;padding-left:24px;color:#b9ccbe;font-size:.88rem}
+.fd-takeaways li::before{content:"";position:absolute;left:2px;top:.5em;width:8px;height:8px;border-radius:50%;background:#5ad07a;box-shadow:0 0 8px rgba(90,208,122,.6)}
+.fd-why{margin-top:18px;border-left:2px solid #5ad07a;padding:5px 0 5px 14px;color:#8fa396;font-size:.85rem;line-height:1.6}
+.fd-why b{color:#5ad07a;font-weight:500}
+.fd-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.fd-tags span{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.14em;padding:5px 11px;border:1px solid rgba(90,208,122,.22);border-radius:99px;color:#5ad07a}
+.src-card{border:1px solid rgba(90,208,122,.16);border-radius:14px;padding:16px 18px;background:rgba(0,0,0,.3)}
+.src-card .sc-k{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#57705f;margin-bottom:9px}
+.src-card .sc-t{font-size:.9rem;color:#e8f0e8;line-height:1.45}
+.src-card .sc-m{margin-top:9px;font-family:"IBM Plex Mono",monospace;font-size:11px;color:#8fa396;line-height:1.8}
+.src-card .sc-m b{color:#5ad07a;font-weight:500}
+.src-card a{color:#9fe8c9;text-decoration:none;border-bottom:1px solid rgba(90,208,122,.35)}
+.src-card a:hover{color:#5ad07a}
+.fd-meta{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#57705f;line-height:2.1}
+.fd-meta b{color:#b9ccbe;font-weight:500}
+.fd-skeleton{min-height:300px;display:flex;align-items:center;justify-content:center;color:#57705f;font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.18em;text-transform:uppercase}
+.fd-error{text-align:center;display:grid;gap:12px;justify-items:center;padding:34px 16px}
+.fd-error .big{font-family:"Source Serif 4",serif;font-size:1.35rem;color:#b9ccbe}
+
+/* ---- AI research finder ---- */
+.finder{position:relative;border:1px solid rgba(90,208,122,.22);border-radius:20px;overflow:hidden;margin-top:26px;background:linear-gradient(180deg,#0a120b,#050705)}
+.finder-head{display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding:20px clamp(20px,3vw,30px);border-bottom:1px solid rgba(90,208,122,.12)}
+.finder-head .t{display:inline-flex;align-items:center;gap:9px;font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#5ad07a}
+.finder-head .t .dot{width:7px;height:7px;border-radius:50%;background:#5ad07a;box-shadow:0 0 10px #5ad07a;animation:fdpulse 2.2s infinite}
+@media (prefers-reduced-motion:reduce){.finder-head .t .dot{animation:none}}
+.finder-head .when{margin-left:auto;font-family:"IBM Plex Mono",monospace;font-size:11px;color:#57705f}
+.picks{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(90,208,122,.12)}
+.pick{background:#070c08;padding:16px 20px;display:flex;gap:13px;align-items:flex-start;transition:background .25s}
+.pick:hover{background:#0b120c}
+.pick .num{flex:none;width:25px;height:25px;border-radius:8px;display:grid;place-items:center;font-family:"IBM Plex Mono",monospace;font-size:11px;color:#5ad07a;border:1px solid rgba(90,208,122,.35);background:rgba(90,208,122,.08)}
+.pick .pt{font-size:.9rem;color:#e8f0e8;line-height:1.4}
+.pick .pt a{color:inherit;text-decoration:none;border-bottom:1px solid rgba(90,208,122,.3)}
+.pick .pt a:hover{color:#9fe8c9}
+.pick .pmeta{margin-top:5px;font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#57705f}
+.pick .pmeta b{color:#5ad07a;font-weight:500}
+.pick .hook{margin-top:6px;font-size:.8rem;color:#8fa396;line-height:1.6}
+.finder-search{padding:20px clamp(20px,3vw,30px) 24px;border-top:1px solid rgba(90,208,122,.12);background:rgba(0,0,0,.25)}
+.finder-search .flabel{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#57705f;margin-bottom:12px}
+.gsearch{display:flex;gap:10px;flex-wrap:wrap}
+.gsearch .gwrap{position:relative;flex:1;min-width:220px}
+.gsearch .gwrap svg{position:absolute;left:16px;top:50%;transform:translateY(-50%);width:15px;height:15px;color:#57705f;pointer-events:none}
+.gsearch input{width:100%;background:rgba(0,0,0,.35);border:1px solid rgba(90,208,122,.18);border-radius:99px;padding:12px 20px 12px 40px;color:#e8f0e8;font:inherit;font-size:.9rem;outline:none;transition:border-color .25s,box-shadow .25s}
+.gsearch input:focus{border-color:#5ad07a;box-shadow:0 0 0 4px rgba(90,208,122,.12)}
+.gsearch button{border:0;border-radius:99px;padding:12px 22px;font:inherit;font-size:.85rem;font-weight:600;color:#04140a;background:#5ad07a;cursor:pointer;transition:transform .2s,background .2s}
+.gsearch button:hover{transform:translateY(-1px);background:#6fe08c}
+.topic-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.topic-chips button{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;border:1px solid rgba(90,208,122,.22);border-radius:99px;padding:6px 12px;background:transparent;color:#8fa396;cursor:pointer;transition:border-color .2s,color .2s}
+.topic-chips button:hover{border-color:#5ad07a;color:#5ad07a}
+.gcse-slot{margin-top:16px}
+.finder-empty{padding:30px clamp(20px,3vw,30px);text-align:center;color:#57705f;font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase}
+@media (max-width:860px){
+  .fd-grid{grid-template-columns:1fr}
+  .fd-side{border-left:0;border-top:1px solid rgba(90,208,122,.14)}
+  .picks{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body class="art-body">
+<div class="art-shell" style="max-width:1080px">
+  <nav class="art-top" aria-label="Breadcrumb"><a href="/">← Orr Biologicals</a><span style="color:#57705f">blog</span></nav>
+  <p class="art-cat">Focus of the Day · AI research rotation · Field notes</p>
+  <h1>The algae blog,<br>updated every day</h1>
+  <p class="art-meta">Every day an AI reads the newest peer-reviewed algae research: one paper becomes the Focus of the Day, and up to ten more join the daily rotation. Below all of that — the field notes we have been writing all along.</p>
+
+  <!-- ============ FOCUS OF THE DAY ============ -->
+  <div class="focus-day" id="focus">
+    <div class="fd-grid">
+      <div class="fd-main">
+        <div class="fd-label"><span class="dot"></span>Focus of the Day<span class="fd-date" id="fdDate"></span></div>
+        <div id="fdContent" class="fd-skeleton">LOADING TODAY'S FOCUS…</div>
+      </div>
+      <aside class="fd-side">
+        <div class="src-card" id="fdSource" hidden>
+          <div class="sc-k">Primary source</div>
+          <div class="sc-t" id="fdSrcTitle"></div>
+          <div class="sc-m" id="fdSrcMeta"></div>
+          <div class="sc-m" style="margin-top:10px"><a id="fdSrcLink" href="#" target="_blank" rel="noopener">Read the paper ↗</a></div>
+        </div>
+        <div class="fd-meta" id="fdMeta" hidden>
+          WRITTEN BY <b>GPT-OSS-120B</b> VIA GROQ<br>
+          SEARCHED <b>PUBMED · LAST 7 DAYS</b><br>
+          REFRESHED <b>DAILY · 07:00 UTC</b>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <!-- ============ AI RESEARCH FINDER ============ -->
+  <section id="finder" style="margin-top:56px">
+    <p class="art-cat" style="margin-top:0">AI research finder</p>
+    <h2 style="font-size:clamp(1.4rem,2.6vw,1.9rem);margin:0 0 8px;color:#fff">Fresh algae papers, picked by AI every day.</h2>
+    <p style="color:#8fa396;max-width:70ch;line-height:1.7;margin:0">Each day a GPT-OSS-120B agent selects the most interesting new algae papers — up to ten, across biotech, fuels, health, climate and cultivation. The selection rotates daily. Below it, a Google-powered search for going deeper.</p>
+    <div class="finder">
+      <div class="finder-head">
+        <span class="t"><span class="dot"></span>Today's rotation</span>
+        <span class="when" id="picksDate"></span>
+      </div>
+      <div id="picksBody"><div class="finder-empty">FIRST ROTATION LANDING SOON — THE DAILY AI RUNS AT 07:00 UTC</div></div>
+      <div class="finder-search">
+        <div class="flabel">Search algae research on Google</div>
+        <form class="gsearch" id="gform">
+          <div class="gwrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+            <input id="gq" type="search" placeholder="e.g. microalgae lipid yield, Spirulina bioreactor…" aria-label="Search algae research on Google">
+          </div>
+          <button type="submit">Search</button>
+        </form>
+        <div class="topic-chips" id="topicChips"></div>
+        <div class="gcse-slot" id="gcseSlot"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ARCHIVE ============ -->
+  <section id="archive" style="margin-top:56px">
+    <p class="art-cat" style="margin-top:0">Archive</p>
+    <h2 style="font-size:clamp(1.4rem,2.6vw,1.9rem);margin:0 0 4px;color:#fff">Past Focus of the Day.</h2>
+    <div class="blog-search">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+      <input id="focusSearch" type="search" placeholder="Search past focuses — try &quot;lipids&quot;, &quot;Spirulina&quot;, &quot;stress&quot;…" aria-label="Search past Focus of the Day posts">
+      <span class="cnt" id="focusCount"></span>
+    </div>
+    <div id="archiveWrap" style="margin-top:8px">
+      <div class="ins-grid" id="archiveGrid"></div>
+      <div class="ins-empty">No focuses match that search.</div>
+    </div>
+  </section>
+
+  <!-- ============ FIELD NOTES ============ -->
+  <section id="notes" style="margin-top:56px">
+    <p class="art-cat" style="margin-top:0">Field notes · Guides · Essays</p>
+    <h2 style="font-size:clamp(1.4rem,2.6vw,1.9rem);margin:0 0 4px;color:#fff">Notes on biology, written plainly.</h2>
+    <div class="ins-grid" id="notesGrid">
+      <a class="ins-card" href="/cyanoflow"><h2>Cyanoflow — Single-Cell Discovery</h2><p>The developing research platform: microfluidics, automated microscopy, computer vision and AI phenotyping designed to measure individual microalgal cells.</p><small>Research platform</small></a>
+      <a class="ins-card" href="/applications/"><h2>Applications &amp; Species Guides</h2><p>The Algaephyte knowledge hub: microalgae cultivation, aquaculture live feeds, ten species guides and algal biotechnology.</p><small>Knowledge hub</small></a>
+      <a class="ins-card" href="/blog/how-to-start-home-spirulina-culture"><h2>How to Start a Home Spirulina Culture</h2><p>What you need, live culture vs powder, warmth, light and alkalinity — the honest first steps.</p><small>Spirulina</small></a>
+      <a class="ins-card" href="/blog/harvesting-and-using-fresh-spirulina"><h2>Harvesting Fresh Spirulina</h2><p>When to harvest, simple screening methods, storage, freshness economics.</p><small>Spirulina</small></a>
+      <a class="ins-card" href="/blog/reading-your-culture"><h2>Reading Your Culture: Color, Density, Smell</h2><p>A no-lab guide to reading Spirulina health: blue-green color cues, spoon-depth density tests, smell diagnostics and the cheap measurements worth taking daily.</p><small>Spirulina</small></a>
+      <a class="ins-card" href="/blog/winter-home-growing-warmth"><h2>Keeping a Home Spirulina Culture Warm Through Winter</h2><p>Heaters, insulation and placement strategy for keeping Spirulina in its 30–37°C comfort band through cold months — warmth before anything else.</p><small>Spirulina</small></a>
+      <a class="ins-card" href="/blog/zarrouk-medium-and-nutrients"><h2>Zarrouk Medium and Nutrients</h2><p>The chemistry that feeds Arthrospira: bicarbonate as carbon source and shield.</p><small>Photobioreactors</small></a>
+      <a class="ins-card" href="/blog/light-temperature-mixing"><h2>Light, Temperature and Mixing</h2><p>The three physical levers — and why more of any one stops helping early.</p><small>Photobioreactors</small></a>
+      <a class="ins-card" href="/blog/alkalinity-as-a-control-variable"><h2>Alkalinity as a Control Variable</h2><p>In Spirulina culture, pH is not a knob — it is the readout of the carbon budget. Why alkalinity is the real control variable, and what that means for automation.</p><small>Photobioreactors</small></a>
+      <a class="ins-card" href="/blog/dissolved-oxygen-stress-signal"><h2>Dissolved Oxygen as a Stress Signal</h2><p>Afternoon oxygen plateaus explained: supersaturation, self-poisoning of photosynthesis, and how a twin treats DO as a state variable rather than a footnote.</p><small>Photobioreactors</small></a>
+      <a class="ins-card" href="/blog/six-culture-signals-main-senses"><h2>Six Culture Signals: What a Reactor Senses</h2><p>pH, temperature, wall irradiance, OD750, dissolved oxygen, conductivity — six channels each telling a different biological story about one culture.</p><small>Photobioreactors</small></a>
+      <a class="ins-card" href="/blog/spirulina-is-a-cyanobacterium"><h2>Spirulina Is a Cyanobacterium</h2><p>What Arthrospira actually is, and why the taxonomy matters for growers.</p><small>Microalgae</small></a>
+      <a class="ins-card" href="/blog/troubleshooting-contamination-crashes"><h2>Troubleshooting Contamination</h2><p>Grazers, competitors, and using high pH as passive biosecurity.</p><small>Troubleshooting</small></a>
+      <a class="ins-card" href="/blog/troubleshooting-ph-and-carbon"><h2>pH and Carbon Problems</h2><p>Rising pH is carbon fixation's fingerprint — until it becomes starvation.</p><small>Troubleshooting</small></a>
+      <a class="ins-card" href="/blog/photobioreactor-ai-optimization"><h2>AI Optimization in Photobioreactors</h2><p>Bounded proposals checked by hard limits and a physics twin — never direct control.</p><small>AI + Biology</small></a>
+      <a class="ins-card" href="/blog/digital-twins-biological-cultivation"><h2>Digital Twins for Cultivation</h2><p>State variables, counterfactuals, simulation-first control of living systems.</p><small>AI + Biology</small></a>
+      <a class="ins-card" href="/blog/digital-twin-droop-steele-model"><h2>A Digital Twin Built on Droop and Steele</h2><p>The physics inside an algae digital twin: Droop quota kinetics, Steele's photoinhibition limb, Beer–Lambert self-shading and oxygen inhibition as state variables.</p><small>AI + Biology</small></a>
+      <a class="ins-card" href="/blog/control-loop-architecture"><h2>Control Loop Architecture for Living Systems</h2><p>Sense → twin → propose → verify → act. The layered loop architecture that lets software participate in biology without ever owning the pumps.</p><small>AI + Biology</small></a>
+      <a class="ins-card" href="/blog/bounded-autonomy-safe-ai-proposals"><h2>Bounded Autonomy: Keeping AI Proposals Safe</h2><p>Hard-limit validators, counterfactual simulation and firmware clamps: three independent layers that let an AI propose while never risking the culture.</p><small>AI + Biology</small></a>
+      <a class="ins-card" href="/blog/how-main-keeps-culture-safe"><h2>How Algaephyte Keeps Your Culture Safe</h2><p>Plain-language walkthrough of the two-check safety system plus physical backstops — and why doing nothing is usually the safe action.</p><small>AI + Biology</small></a>
+      <a class="ins-card" href="/blog/what-is-main-plain-language"><h2>What Is Algaephyte? (Plain Language)</h2><p>No-jargon tour of an AI-tended photobioreactor: what it senses, how it decides, why every proposal passes gates, and what the human still owns.</p><small>AI + Biology</small></a>
+      <a class="ins-card" href="/blog/edge-ai-biological-systems"><h2>Edge AI for Biological Systems</h2><p>Why vision inference belongs on-device at ~2 W: latency, privacy of your lab bench, and the reliability story cloud loops cannot tell.</p><small>AI + Biology</small></a>
+      <a class="ins-card" href="/blog/vision-contamination-detection"><h2>Vision-Based Contamination Detection, Honestly</h2><p>What a microscope camera can and cannot classify: healthy helix vs fragment vs not-spirulina — flags that hold pumps, never ones that open them.</p><small>AI + Biology</small></a>
+      <a class="ins-card" href="/blog/computer-vision-contamination-detection"><h2>Computer-Vision Contamination Detection Across Two Kingdoms</h2><p>The shared visual vocabulary problem: why mushroom mycelium and algae culture both defeat naive accuracy claims, and what honest flagging looks like.</p><small>AI + Biology</small></a>
+      <a class="ins-card" href="/blog/federated-learning-network"><h2>A Federated Learning Network for Algae Reactors</h2><p>Sharing fitted twin parameters instead of images or traces: MQTT topics, bounds-checking, last-will obituaries and vandal-resistant averaging.</p><small>AI + Biology</small></a>
+      <a class="ins-card" href="/blog/ai-controlled-mushroom-cultivation"><h2>AI-Controlled Mushroom Cultivation</h2><p>Inside Mycophyte: microclimate control, twin-guided decisions and bounded autonomy applied to fruiting chambers instead of photobioreactors.</p><small>Mycology</small></a>
+      <a class="ins-card" href="/blog/computer-vision-mushroom-cultivation"><h2>Computer Vision for Mushroom Cultivation</h2><p>Pins, canopy and anomalies: what on-device detection honestly adds to a fruiting chamber, and why flags beat verdicts.</p><small>Mycology</small></a>
+      <a class="ins-card" href="/game/"><h2>Algae Living (playable)</h2><p>Start as one cell; end operating the reactor. A game model of this whole page.</p><small>Interactive</small></a>
+    </div>
+  </section>
+
+  <nav class="art-foot" aria-label="Site">
+    <a href="/">The Algaephyte system</a>
+    <a href="/cyanoflow">Cyanoflow</a>
+    <a href="/applications/">Applications and species guides</a>
+    <a href="/game/">Play Algae Living</a>
+  <a href="/privacy">Privacy</a><a href="/terms">Terms</a></nav>
+</div>
+
+<script>
+/* ---------- Blog: Focus of the Day + AI picks rotation + archive ---------- */
+(function () {
+  "use strict";
+  var BASE = "/blog/data/focus/";
+  var PICKS = "/blog/data/picks/";
+  function esc(s) { var d = document.createElement("div"); d.textContent = String(s == null ? "" : s); return d.innerHTML; }
+  function el(id) { return document.getElementById(id); }
+  var reduce = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* ---- Focus of the Day ---- */
+  function renderFocus(p) {
+    var wrap = el("fdContent");
+    wrap.classList.remove("fd-skeleton");
+    el("fdDate").textContent = p.date;
+    var body = String(p.body || "").split(/\n\s*\n/).map(function (par) { return "<p>" + esc(par) + "</p>"; }).join("");
+    var take = (p.takeaways || []).map(function (t) { return "<li>" + esc(t) + "</li>"; }).join("");
+    var tags = (p.tags || []).map(function (t) { return "<span>" + esc(t) + "</span>"; }).join("");
+    wrap.innerHTML =
+      "<h2>" + esc(p.title) + "</h2>" +
+      "<p class=\"dek\">" + esc(p.dek) + "</p>" +
+      "<div class=\"fd-body\">" + body + "</div>" +
+      (take ? "<ul class=\"fd-takeaways\">" + take + "</ul>" : "") +
+      (p.why_it_matters ? "<div class=\"fd-why\"><b>Why it matters —</b> " + esc(p.why_it_matters) + "</div>" : "") +
+      (tags ? "<div class=\"fd-tags\">" + tags + "</div>" : "");
+    var s = p.source || {};
+    el("fdSrcTitle").textContent = s.title || "";
+    el("fdSrcMeta").innerHTML =
+      (s.authors ? esc(s.authors) + "<br>" : "") +
+      "<b>" + esc(s.journal || "") + "</b>" + (s.year ? " · " + esc(s.year) : "") + "<br>" +
+      (s.pmid ? "PMID " + esc(s.pmid) : "");
+    var link = el("fdSrcLink");
+    if (s.url) { link.href = s.url; } else { link.removeAttribute("href"); link.style.display = "none"; }
+    el("fdSource").hidden = false;
+    el("fdMeta").hidden = false;
+  }
+  function focusError() {
+    var wrap = el("fdContent");
+    wrap.classList.remove("fd-skeleton");
+    wrap.innerHTML =
+      "<div class=\"fd-error\">" +
+      "<span class=\"big\">Today's focus hasn't landed yet.</span>" +
+      "<p style=\"color:#8fa396;max-width:44ch;margin:0\">It is generated once a day from live PubMed search — check back soon, or browse the archive below.</p>" +
+      "</div>";
+  }
+
+  /* ---- archive ---- */
+  var POSTS = [];
+  function renderArchive(list, q) {
+    var grid = el("archiveGrid");
+    grid.innerHTML = list.map(function (p) {
+      var title = esc(p.title), dek = esc(p.dek);
+      if (q) {
+        var rx = new RegExp("(" + q.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + ")", "gi");
+        title = title.replace(rx, "<mark>$1</mark>");
+        dek = dek.replace(rx, "<mark>$1</mark>");
+      }
+      var tags = (p.tags || []).map(function (t) { return "<small>" + esc(t) + "</small>"; }).join(" · ");
+      var journal = "<small>" + esc(p.journal || "") + " · <a href=\"" + esc(p.url || "#") + "\" target=\"_blank\" rel=\"noopener\" style=\"color:#5ad07a;text-decoration:none\">source ↗</a></small>";
+      return "<a class=\"ins-card\" href=\"" + esc(p.url || "#") + "\" target=\"_blank\" rel=\"noopener\">" +
+        "<h2>" + title + "</h2><p>" + dek + "</p>" + journal + "</a>";
+    }).join("");
+    el("focusCount").textContent = list.length + (list.length === 1 ? " POST" : " POSTS");
+    el("archiveWrap").classList.toggle("no-results", list.length === 0);
+  }
+  function onSearch() {
+    var q = el("focusSearch").value.trim();
+    if (!q) { renderArchive(POSTS, ""); return; }
+    var terms = q.toLowerCase().split(/\s+/).filter(Boolean);
+    var list = POSTS.filter(function (p) {
+      var hay = (p.title + " " + p.dek + " " + (p.tags || []).join(" ") + " " + (p.journal || "")).toLowerCase();
+      return terms.every(function (t) { return hay.indexOf(t) !== -1; });
+    });
+    renderArchive(list, q);
+  }
+
+  /* ---- daily AI picks rotation + Google search ---- */
+  /* To embed Google results on-page instead of opening Google in a new
+     tab, create a Programmable Search Engine at cse.google.com and paste
+     its CX id here: */
+  var GOOGLE_CSE_CX = "";
+  var TOPICS = ["microalgae biotechnology", "Spirulina nutrition", "algae biofuels",
+                "cyanobacteria", "photobioreactor", "algae carbon capture", "single-cell algae"];
+  function renderPicks(day) {
+    el("picksDate").textContent = day.date;
+    var rows = (day.picks || []).map(function (p, i) {
+      return "<div class=\"pick\"><span class=\"num\">" + String(i + 1).padStart(2, "0") + "</span>" +
+        "<div><div class=\"pt\"><a href=\"" + esc(p.url) + "\" target=\"_blank\" rel=\"noopener\">" + esc(p.title) + "</a></div>" +
+        "<div class=\"pmeta\"><b>" + esc(p.topic) + "</b> · " + esc(p.journal || "") + " " + esc(p.year || "") + "</div>" +
+        (p.hook ? "<div class=\"hook\">" + esc(p.hook) + "</div>" : "") +
+        "</div></div>";
+    }).join("");
+    el("picksBody").innerHTML = rows ||
+      "<div class=\"finder-empty\">NO PICKS TODAY — CHECK BACK AFTER THE NEXT ROTATION</div>";
+  }
+  function gquery(q) {
+    q = (q || "").trim();
+    if (!q) return;
+    if (GOOGLE_CSE_CX) {
+      var slot = el("gcseSlot");
+      slot.innerHTML = "<div class=\"gcse-search\" data-async=\"1\"></div>";
+      if (!window.__cseLoaded) {
+        window.__cseLoaded = true;
+        var s = document.createElement("script");
+        s.src = "https://cse.google.com/cse.js?cx=" + encodeURIComponent(GOOGLE_CSE_CX);
+        document.head.appendChild(s);
+      } else if (window.google && google.search && google.search.cse) {
+        google.search.cse.element.render("gcseSlot");
+      }
+    } else {
+      window.open("https://www.google.com/search?q=" + encodeURIComponent(q + " algae research"), "_blank", "noopener");
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    /* focus + archive */
+    fetch(BASE + "index.json")
+      .then(function (r) { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); })
+      .then(function (idx) {
+        POSTS = idx.posts || [];
+        var focus = POSTS[0]; /* newest = Focus of the Day (timezone-proof) */
+        var done = focus
+          ? fetch(BASE + focus.date + ".json")
+              .then(function (r) { return r.ok ? r.json() : focus; })
+              .then(renderFocus)
+              .catch(function () { renderFocus(focus); })
+          : (focusError(), Promise.resolve());
+        return done.then(function () { onSearch(); });
+      })
+      .catch(focusError);
+    el("focusSearch").addEventListener("input", onSearch);
+
+    /* picks rotation */
+    fetch(PICKS + "index.json")
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (pi) {
+        var days = (pi && pi.days) || [];
+        if (days.length) renderPicks(days[0]);
+      })
+      .catch(function () { /* empty state already in place */ });
+
+    /* google search */
+    var chips = el("topicChips");
+    chips.innerHTML = TOPICS.map(function (t) { return "<button type=\"button\" data-q=\"" + esc(t) + "\">" + esc(t) + "</button>"; }).join("");
+    chips.addEventListener("click", function (e) {
+      var b = e.target && e.target.closest ? e.target.closest("button") : null;
+      if (b) { el("gq").value = b.dataset.q; gquery(b.dataset.q); }
+    });
+    el("gform").addEventListener("submit", function (e) { e.preventDefault(); gquery(el("gq").value); });
+  });
+})();
+</script>
+<script src="/js/consent.js" defer></script>
+</body>
+</html>

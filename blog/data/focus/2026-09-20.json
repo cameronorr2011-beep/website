@@ -1,0 +1,30 @@
+{
+  "date": "2026-09-20",
+  "slug": "plasma-chitosan-algae-wound-healing",
+  "title": "Plasma‑treated chitosan dressing powers algae to heal diabetic wounds",
+  "dek": "A cold atmospheric plasma‑modified chitosan matrix couples red‑light‑activated microalgae to boost oxygen and energy production, speeding closure of diabetic skin wounds.",
+  "body": "Researchers created a wound dressing by treating chitosan, a sugar‑based polymer, with cold atmospheric plasma and then embedding the microalga *Chlamydomonas* (CHL). The plasma reshapes the polymer in a time‑dependent way, with a 30‑second treatment giving the most favorable structure for linking the algae.\n\nWhen the dressing is illuminated with 660 nm red light, the algae perform photosynthesis within the polymer matrix. At the optimal plasma condition, the system shows the lowest oxygen‑quenching index (about 66 %), indicating more available O₂, and it also increases hydrogen output and photosynthetic electron flow by roughly 115‑120 % compared with untreated material.\n\nIn a streptozotocin‑induced diabetic mouse model, wounds covered with the plasma‑engineered chitosan‑algae dressing and exposed to red light closed faster than wounds with no dressing or with plain chitosan. Blood counts remained normal. Tissue analysis revealed reduced inflammation, more blood‑vessel formation, lower reactive‑oxygen species, restored mitochondrial function, and activation of cellular recycling pathways.\n\nThe study shows that fine‑tuning carbohydrate polymers with plasma can program microalgal photobioenergetics, turning a simple dressing into a light‑driven bio‑factory that supports diabetic wound repair.",
+  "takeaways": [
+    "30 s plasma treatment gives the best polymer‑algae coupling for red‑light activity.",
+    "Red‑light activation boosts oxygen availability and hydrogen production by ~115 %.",
+    "Dressed diabetic wounds heal faster with less inflammation and improved mitochondrial health."
+  ],
+  "tags": [
+    "WOUND HEALING",
+    "PHOTOBIOENERGETICS",
+    "ALGAE",
+    "CARBOHYDRATE"
+  ],
+  "why_it_matters": "Programming microalgal photosynthesis within a polymer dressing offers a scalable, light‑controlled way to deliver bioenergy and regenerative cues for diabetic wound therapies.",
+  "source": {
+    "pmid": "42493092",
+    "title": "Plasma-engineered chitosan couples red-light bioenergetics to diabetic wound regeneration through programmable microenvironments.",
+    "journal": "Carbohydrate polymers",
+    "year": "2026",
+    "authors": "Rethi, Duc Chau, Febriani et al.",
+    "doi": "10.1016/j.carbpol.2026.125521",
+    "url": "https://doi.org/10.1016/j.carbpol.2026.125521"
+  },
+  "model": "openai/gpt-oss-120b",
+  "generated_at": "2026-09-25T00:56:21Z"
+}

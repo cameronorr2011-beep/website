@@ -16,22 +16,24 @@ RewriteRule ^ https://%1%{REQUEST_URI} [R=301,L]
 
 # --- legacy URL migration (pre-rebuild site) -------------------------------
 # Content restored as articles
-Redirect 301 /how-to-start-home-spirulina-culture      /insights/how-to-start-home-spirulina-culture
-Redirect 301 /harvesting-and-using-fresh-spirulina     /insights/harvesting-and-using-fresh-spirulina
-Redirect 301 /zarrouk-medium-and-nutrients             /insights/zarrouk-medium-and-nutrients
-Redirect 301 /light-temperature-mixing                 /insights/light-temperature-mixing
-Redirect 301 /troubleshooting-contamination-crashes    /insights/troubleshooting-contamination-crashes
-Redirect 301 /troubleshooting-ph-and-carbon            /insights/troubleshooting-ph-and-carbon
-Redirect 301 /photobioreactor-ai-optimization          /insights/photobioreactor-ai-optimization
-Redirect 301 /digital-twins-biological-cultivation     /insights/digital-twins-biological-cultivation
-Redirect 301 /spirulina-is-a-cyanobacterium            /insights/spirulina-is-a-cyanobacterium
-Redirect 301 /articles                                 /insights/
-Redirect 301 /control-loop-architecture                /insights/control-loop-architecture
-Redirect 301 /ai-controlled-mushroom-cultivation       /insights/ai-controlled-mushroom-cultivation
-Redirect 301 /computer-vision-mushroom-cultivation     /insights/computer-vision-mushroom-cultivation
-Redirect 301 /cultivation                              /insights/
-Redirect 301 /reading-your-culture                     /insights/reading-your-culture
-Redirect 301 /winter-home-growing-warmth               /insights/winter-home-growing-warmth
+Redirect 301 /how-to-start-home-spirulina-culture      /blog/how-to-start-home-spirulina-culture
+Redirect 301 /harvesting-and-using-fresh-spirulina     /blog/harvesting-and-using-fresh-spirulina
+Redirect 301 /zarrouk-medium-and-nutrients             /blog/zarrouk-medium-and-nutrients
+Redirect 301 /light-temperature-mixing                 /blog/light-temperature-mixing
+Redirect 301 /troubleshooting-contamination-crashes    /blog/troubleshooting-contamination-crashes
+Redirect 301 /troubleshooting-ph-and-carbon            /blog/troubleshooting-ph-and-carbon
+Redirect 301 /photobioreactor-ai-optimization          /blog/photobioreactor-ai-optimization
+Redirect 301 /digital-twins-biological-cultivation     /blog/digital-twins-biological-cultivation
+Redirect 301 /spirulina-is-a-cyanobacterium            /blog/spirulina-is-a-cyanobacterium
+Redirect 301 /articles                                 /blog/
+Redirect 301 /insights                                 /blog/
+RedirectMatch 301 ^/insights/?$ /blog/
+Redirect 301 /control-loop-architecture                /blog/control-loop-architecture
+Redirect 301 /ai-controlled-mushroom-cultivation       /blog/ai-controlled-mushroom-cultivation
+Redirect 301 /computer-vision-mushroom-cultivation     /blog/computer-vision-mushroom-cultivation
+Redirect 301 /cultivation                              /blog/
+Redirect 301 /reading-your-culture                     /blog/reading-your-culture
+Redirect 301 /winter-home-growing-warmth               /blog/winter-home-growing-warmth
 
 # Product / concept equivalents on the rebuilt homepage
 Redirect 301 /research                                 /#system
@@ -42,19 +44,20 @@ Redirect 301 /algaephyte                               /
 # Exact-match only: a plain `Redirect /applications /applications/` prefix-matches
 # the trailing-slash path too and loops forever (ERR_TOO_MANY_REDIRECTS).
 RedirectMatch 301 ^/applications$ /applications/
-Redirect 301 /what-is-main-plain-language              /insights/what-is-main-plain-language
+RedirectMatch 301 ^/blog$ /blog/
+Redirect 301 /what-is-main-plain-language              /blog/what-is-main-plain-language
 Redirect 301 /control-loop-architecture                /#system
-Redirect 301 /alkalinity-as-a-control-variable         /insights/alkalinity-as-a-control-variable
-Redirect 301 /dissolved-oxygen-stress-signal           /insights/dissolved-oxygen-stress-signal
-Redirect 301 /six-culture-signals-main-senses          /insights/six-culture-signals-main-senses
-Redirect 301 /digital-twin-droop-steele-model          /insights/digital-twin-droop-steele-model
-Redirect 301 /bounded-autonomy-safe-ai-proposals       /insights/bounded-autonomy-safe-ai-proposals
-Redirect 301 /how-main-keeps-culture-safe              /insights/how-main-keeps-culture-safe
-Redirect 301 /vision-contamination-detection           /insights/vision-contamination-detection
-Redirect 301 /computer-vision-contamination-detection  /insights/computer-vision-contamination-detection
+Redirect 301 /alkalinity-as-a-control-variable         /blog/alkalinity-as-a-control-variable
+Redirect 301 /dissolved-oxygen-stress-signal           /blog/dissolved-oxygen-stress-signal
+Redirect 301 /six-culture-signals-main-senses          /blog/six-culture-signals-main-senses
+Redirect 301 /digital-twin-droop-steele-model          /blog/digital-twin-droop-steele-model
+Redirect 301 /bounded-autonomy-safe-ai-proposals       /blog/bounded-autonomy-safe-ai-proposals
+Redirect 301 /how-main-keeps-culture-safe              /blog/how-main-keeps-culture-safe
+Redirect 301 /vision-contamination-detection           /blog/vision-contamination-detection
+Redirect 301 /computer-vision-contamination-detection  /blog/computer-vision-contamination-detection
 Redirect 301 /computer-vision-mushroom-cultivation     /#instrument
-Redirect 301 /edge-ai-biological-systems               /insights/edge-ai-biological-systems
-Redirect 301 /federated-learning-network               /insights/federated-learning-network
+Redirect 301 /edge-ai-biological-systems               /blog/edge-ai-biological-systems
+Redirect 301 /federated-learning-network               /blog/federated-learning-network
 Redirect 301 /federated-learning-biotech               /#mesh
 Redirect 301 /troubleshooting                          /#faults
 Redirect 301 /faq                                      /#faq

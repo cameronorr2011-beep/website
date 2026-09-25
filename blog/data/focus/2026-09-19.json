@@ -1,0 +1,29 @@
+{
+  "date": "2026-09-19",
+  "slug": "humic-cation-nanoplastic-algae",
+  "title": "Humic acids and salts reshape nanoplastic toxicity to algae",
+  "dek": "Combined humic acid and cations alter nanoplastic aggregation, bioaccessibility, and toxicity pathways in Chlorella vulgaris.",
+  "body": "Researchers examined how polystyrene nanoplastics interact with the freshwater alga Chlorella vulgaris under three water‑chemistry conditions: humic acid alone, sodium or calcium ions alone, and a mixture of humic acid with those cations. They found that when humic acid and cations were present together, the nanoplastics formed larger aggregates with the algae and became more bioavailable, yet the algae showed less growth inhibition than with cations alone. This reduced toxicity was linked to lower membrane damage, less disruption of photosynthesis, and fewer signs of programmed cell death.\n\nIn contrast, compared with humic acid alone, the humic‑cation mixture increased nanoplastic bioaccessibility, raised oxidative stress, and caused greater membrane destabilization, leading to higher overall toxicity. Quantitative analysis showed bioaccessibility rising from about 1.1 µg per 10⁴ cells to over 3 µg per 10⁴ cells when both humic acid and cations were present. Statistical modeling indicated that increased bioaccessibility drives toxicity only when it coincides with oxidative stress and membrane damage, revealing a conditional cascade of effects.\n\nThese results demonstrate that the combined presence of natural organic matter and common ions can fundamentally change how nanoplastics affect algae, a nuance that single‑factor experiments miss. The authors suggest that realistic water‑chemistry scenarios should be included in risk assessments for nanoplastics in freshwater ecosystems.",
+  "takeaways": [
+    "Humic acid plus cations increases nanoplastic bioaccessibility but can lower or raise toxicity depending on context.",
+    "Toxicity hinges on a cascade: bioaccessibility → oxidative stress → membrane damage.",
+    "Risk assessments must consider combined natural organic matter and ion effects."
+  ],
+  "tags": [
+    "POLLUTION",
+    "TOXICITY",
+    "ALGAE"
+  ],
+  "why_it_matters": "Understanding how natural organic matter and ions together modify nanoplastic impacts helps build more accurate safety guidelines for freshwater algal cultures used in biotech.",
+  "source": {
+    "pmid": "42217384",
+    "title": "Humic acid-cation interactions reshape nanoplastic bioaccessibility and mechanistic toxic pathways toward microalgae.",
+    "journal": "Water research",
+    "year": "2026",
+    "authors": "Kong, Liu, Shi et al.",
+    "doi": "10.1016/j.watres.2026.126207",
+    "url": "https://doi.org/10.1016/j.watres.2026.126207"
+  },
+  "model": "openai/gpt-oss-120b",
+  "generated_at": "2026-09-25T00:56:14Z"
+}
