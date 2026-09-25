@@ -31,14 +31,14 @@ body{
   --glass:linear-gradient(160deg,rgba(14,30,42,.85),rgba(6,14,22,.75));
   background:var(--bg); color:var(--ink);
 }
-.cyano a{color:var(--cyan)}
 
 .skip-link{position:absolute;left:-999px;top:0;z-index:100;background:#0b1512;color:#9fe8c9;padding:10px 16px;border-radius:0 0 10px 0;font-family:'IBM Plex Mono',monospace;font-size:.8rem}
 .skip-link:focus{left:0}
-.rv{opacity:0;transform:translateY(18px);transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1)}
-.rv.in{opacity:1;transform:none}
-.rv.d1{transition-delay:.08s}.rv.d2{transition-delay:.16s}.rv.d3{transition-delay:.24s}.rv.d4{transition-delay:.32s}
-@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}}
+/* entrance animation is pure CSS: content is never hidden without it */
+.rv{animation:cyRise .7s cubic-bezier(.22,1,.36,1) both}
+.rv.d1{animation-delay:.08s}.rv.d2{animation-delay:.16s}.rv.d3{animation-delay:.24s}.rv.d4{animation-delay:.32s}
+@keyframes cyRise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.rv{animation:none}}
 
 /* ---------- shared decorative ---------- */
 .grid-bg{background-image:linear-gradient(to right,rgba(34,211,238,.07) 1px,transparent 1px),linear-gradient(to bottom,rgba(34,211,238,.07) 1px,transparent 1px);background-size:48px 48px}
