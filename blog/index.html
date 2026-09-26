@@ -124,7 +124,13 @@
       var hook = card.querySelector(".pk-hook");
       if (p.hook) { hook.textContent = p.hook; hook.style.display = ""; } else { hook.style.display = "none"; }
       card.querySelector(".pk-topic").textContent = String(p.topic || "Research").replace(/<[^>]+>/g, "");
-      card.querySelector(".pk-src").textContent = ((p.journal || "PubMed")).replace(/<[^>]+>/g, "") + (p.year ? " · " + p.year : "");
+      var srcText = String(p.journal || "PubMed").replace(/<[^>]+>/g, "");
+      var md = String(p.pub_date || "").match(/^(\d{4})-(\d{2})-(\d{2})$/);
+      if (md) {
+        var MON = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+        srcText += " · online " + MON[parseInt(md[2], 10) - 1] + " " + parseInt(md[3], 10) + ", " + md[1];
+      } else if (p.year) { srcText += " · " + p.year; }
+      card.querySelector(".pk-src").textContent = srcText;
       var bodyDiv = card.querySelector(".pk-article");
       var paras = String(p.article || "").split(/\n\s*\n/).map(function (par) { return "<p>" + esc(par) + "</p>"; }).join("");
       if (paras) { bodyDiv.innerHTML = paras; } else { bodyDiv.remove(); }

@@ -144,10 +144,19 @@ def fetch_articles(pmids: list[str]) -> list[dict]:
         journal = grab(r"<Title>(.*?)</Title>")
         year = grab(r"<PubDate>.*?<Year>(\d{4})</Year>.*?</PubDate>")
         doi = grab(r"<ArticleId IdType=\"doi\">(.*?)</ArticleId>")
+        # True online-first publication date (journals often assign
+        # articles to future-dated print issues, which reads as a weird
+        # year; epub date is the honest "published" date).
+        epub = grab(r'<ArticleDate DateType="Electronic">(.*?)</ArticleDate>')
+        ey, em, ed = (re.search(r"<Year>(\d{4})", epub),
+                      re.search(r"<Month>(\d{1,2})", epub),
+                      re.search(r"<Day>(\d{1,2})", epub))
+        pub_date = (f"{ey.group(1)}-{int(em.group(1)):02d}-{int(ed.group(1)):02d}"
+                    if ey and em and ed else "")
         if pmid and title:
             articles.append({
                 "pmid": pmid, "title": title, "journal": journal, "year": year,
-                "doi": doi,
+                "pub_date": pub_date, "doi": doi,
                 "url": (f"https://doi.org/{doi}" if doi
                         else f"https://pubmed.ncbi.nlm.nih.gov/{pmid}/"),
                 "abstract": abstract[:900],
@@ -199,23 +208,44 @@ def ai_select(articles: list[dict], today: str) -> dict:
     if not api_key:
         raise RuntimeError("groq_api_key / GROQ_API_KEY not set")
 
-    # Free-tier Groq caps gpt-oss-120b at 8k tokens/min (and 413s on large
-    # payloads) — keep the brief small: title + abstract head per candidate.
-    brief = "\n".join(
-        f"[{i}] PMID {a['pmid']} | {a['journal']} {a['year']}\n"
-        f"    {a['title'][:180]}\n    {a['abstract'][:260]}"
-        for i, a in enumerate(articles)
-    )
+    # Free-tier Groq caps gpt-oss-120b at 8k tokens/min AND rejects large
+    # request payloads outright (HTTP 413) — keep the brief small: title +
+    # abstract head per candidate, under a hard character budget.
+    MAX_BRIEF_CHARS = 24000
+    lines: list[str] = []
+    total = 0
+    for i, a in enumerate(articles):
+        line = (
+            f"PMID {a['pmid']} | {a['journal']} {a['year']}"
+            f"{(' | online ' + a['pub_date']) if a.get('pub_date') else ''}\n"
+            f"    {a['title'][:180]}\n    {a['abstract'][:220]}"
+        )
+        if total + len(line) > MAX_BRIEF_CHARS:
+            log(f"brief: stopping at {i} candidates (payload budget)")
+            break
+        lines.append(line)
+        total += len(line)
+    brief = "\n".join(lines)
     system = (
         "You are the editor of the Cyanoflow daily algae digest by Orr "
-        "Biologicals. From the candidate list, select exactly the 4 most "
-        "interesting and relevant recent articles about algae for readers "
-        "interested in algae biotechnology. Aim for topical variety across "
-        "the four (biotech, biofuels, health, climate, cultivation, "
-        "single-cell methods, environment, engineering). Only pick articles "
-        "from the list, by PMID. For each pick give a short topic label and "
-        "a one-sentence hook grounded in the abstract. Never invent facts. "
-        "Return ONLY JSON matching the schema."
+        "Biologicals (orrbiologicals.com). From the numbered candidate list, "
+        "select exactly 4 papers.\n"
+        "Selection rules:\n"
+        "1. Every pick must be about algae, cyanobacteria, or phytoplankton "
+        "(biotech, biofuels, health/nutrition, climate/carbon, cultivation/"
+        "photobioreactors, single-cell methods, ecology/harmful blooms, "
+        "genetic engineering, pigments).\n"
+        "2. Topical variety: no more than two picks from the same topic "
+        "family.\n"
+        "3. Freshness: prefer the most recently published candidates (each "
+        "line shows its online-publication date).\n"
+        "4. Reader value: prefer concrete findings, novel methods, or "
+        "striking applications a curious non-specialist would want to read.\n"
+        "5. Only pick from the list, by PMID. Never invent PMIDs, titles, "
+        "dates, or facts.\n"
+        "For each pick give a 2-4 word topic label and a one-sentence hook "
+        "(max 150 chars) grounded in the abstract. Return ONLY JSON matching "
+        "the schema."
     )
     payload = {
         "model": MODEL,
@@ -269,18 +299,34 @@ def write_article(article: dict, today: str) -> dict:
         raise RuntimeError("groq_api_key / GROQ_API_KEY not set")
 
     system = (
-        "You write for the Cyanoflow daily algae digest by Orr Biologicals. "
-        "You receive ONE real peer-reviewed abstract. Write a short article "
-        "for curious non-specialists explaining what the study did, what it "
-        "found, and why it is interesting. STRICT GROUNDING RULES: use only "
-        "facts present in the abstract; never invent numbers, results, or "
-        "claims; if the abstract does not say something, do not say it. "
-        "Tone: precise, warm, plain language, no hype. Return ONLY JSON "
-        "matching the provided schema."
+        "You write for the Cyanoflow daily algae digest by Orr Biologicals "
+        "(orrbiologicals.com). You receive ONE real peer-reviewed abstract. "
+        "Write a short article for curious non-specialists.\n"
+        "Structure, in this order:\n"
+        "1. Opening: 1-2 sentences stating what the study set out to do, in "
+        "plain language.\n"
+        "2. Method: 1-3 sentences on how they did it (organism, technique, "
+        "scale) -- only what the abstract says.\n"
+        "3. Findings: what the study actually found; include a number only "
+        "if the abstract states it, and then exactly as stated.\n"
+        "4. Close: one sentence on why it is interesting or useful.\n"
+        "Style rules:\n"
+        "- 3-5 short paragraphs separated by blank lines; no headings, no "
+        "markdown, no bullet lists.\n"
+        "- Grounding: use ONLY facts present in the abstract. Never invent "
+        "numbers, results, claims, author names, or applications.\n"
+        "- Dates: never state a publication year, volume, or issue -- journal "
+        "issue years can differ from the true online date and often read as "
+        "a year in the future. Refer to the work as 'a recent study' or "
+        "'a new study', nothing more specific.\n"
+        "- Tone: precise, warm, plain language, no hype, no exclamation "
+        "marks; briefly explain jargon on first use.\n"
+        "Return ONLY JSON matching the provided schema."
     )
     user = (
-        f"Date: {today}\n"
-        f"Journal: {article['journal']} ({article['year']})\n"
+        f"Today's digest date: {today}\n"
+        f"Journal: {article['journal']}\n"
+        f"Online publication date: {article.get('pub_date') or 'not stated'}\n"
         f"Title: {article['title']}\n\n"
         f"Abstract:\n{article['abstract']}\n"
     )
@@ -386,7 +432,7 @@ def main() -> int:
             continue
         picks.append({
             "pmid": a["pmid"], "title": a["title"], "journal": a["journal"],
-            "year": a["year"], "url": a["url"],
+            "year": a["year"], "pub_date": a.get("pub_date", ""), "url": a["url"],
             "topic": str(p.get("topic", "Research"))[:40],
             "hook": str(p.get("hook", ""))[:180],
         })
