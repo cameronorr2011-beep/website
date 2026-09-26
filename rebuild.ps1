@@ -59,11 +59,11 @@ $cssLines = ($cssFiles | ForEach-Object { '  <link rel="stylesheet" href="css/' 
 # ------------------------------------------------------------
 $bodyFiles = @(
   'sections/header.html','sections/hero.html','sections/ticker.html',
-  'sections/simulation.html','sections/stack.html','sections/system.html',
-  'sections/signals.html','sections/twin.html','sections/safety.html',
-  'sections/mesh.html','sections/instrument.html','sections/impact.html',
-  'sections/journal.html','sections/faults.html','sections/faq.html',
-  'sections/deploy.html','sections/footer.html'
+  'sections/simulation.html','sections/products.html','sections/stack.html',
+  'sections/system.html','sections/signals.html','sections/twin.html',
+  'sections/safety.html','sections/mesh.html','sections/instrument.html',
+  'sections/impact.html','sections/journal.html','sections/faults.html',
+  'sections/faq.html','sections/deploy.html','sections/footer.html'
 )
 $sectionTexts = @()
 foreach($f in $bodyFiles){
@@ -71,7 +71,7 @@ foreach($f in $bodyFiles){
   if(-not (Test-Path -LiteralPath $p)){ throw "Missing section: $f" }
   $sectionTexts += (ReadUtf8 $p)
 }
-if($sectionTexts.Count -ne 17){ throw "Expected 17 body sections, found $($sectionTexts.Count)" }
+if($sectionTexts.Count -ne 18){ throw "Expected 18 body sections, found $($sectionTexts.Count)" }
 
 # ------------------------------------------------------------
 # 4. Scripts (fixed order, classic defer for file:// support)
@@ -94,13 +94,13 @@ $index = $head + $nl + $nl +
   '  <a class="skip" href="#main">Skip to content</a>' + $nl + $nl +
   $sectionTexts[0].TrimEnd() + $nl + $nl +
   '  <main id="main">' + $nl
-for($di = 1; $di -le 15; $di++){
+for($di = 1; $di -le 16; $di++){
   $index += $sectionTexts[$di].TrimEnd()
   if($di -lt 15){ $index += $nl }
 }
 $index += $nl +
   '  </main>' + $nl + $nl +
-  $sectionTexts[16].TrimEnd() + $nl + $nl +
+  $sectionTexts[17].TrimEnd() + $nl + $nl +
   $scripts + $nl +
   '</body>' + $nl +
   '</html>' + $nl

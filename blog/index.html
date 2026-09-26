@@ -3,116 +3,35 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Blog — Focus of the Day, AI-picked algae research &amp; field notes | Orr Biologicals</title>
-<meta name="description" content="Every day an AI reads the newest peer-reviewed algae research and writes a grounded brief — the Focus of the Day — and selects up to ten papers worth your time. Plus the full Orr Biologicals field-notes library.">
+<title>Blog — Focus of the Day &amp; the Orr Biologicals field library | Orr Biologicals</title>
+<meta name="description" content="Every day an AI reads the newest peer-reviewed algae research and writes a grounded brief — the Focus of the Day, refreshed daily at 1:00 PM Pacific. Below it, a rotating shelf of Spirulina cultivation guides and the two products, Algaephyte and Cyanoflow.">
 <link rel="canonical" href="https://orrbiologicals.com/blog/">
 <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
 <meta property="og:title" content="Orr Biologicals — Blog">
-<meta property="og:description" content="A daily AI research brief, a daily AI-picked paper rotation, and field notes from cultures we actually run.">
+<meta property="og:description" content="A daily AI research brief at 1:00 PM Pacific, a rotating shelf of Spirulina cultivation guides, and the two products: Algaephyte and Cyanoflow.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://orrbiologicals.com/blog/">
 <meta property="og:image" content="https://orrbiologicals.com/assets/og.png">
 <meta name="twitter:card" content="summary_large_image">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Blog","name":"Orr Biologicals Blog","url":"https://orrbiologicals.com/blog/","description":"Daily AI-summarized algae research briefs, a daily AI-picked paper rotation, and field notes on Spirulina cultivation, photobioreactors and AI-assisted biology."}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Blog","name":"Orr Biologicals Blog","url":"https://orrbiologicals.com/blog/","description":"Daily AI-summarized algae research briefs and field notes on Spirulina cultivation, photobioreactors and AI-assisted biology."}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..700&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,0..560&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../css/extras.css">
+<link rel="stylesheet" href="/css/extras.css">
 <style>
-/* ===== Blog tab extras — site green-on-black palette ===== */
-.blog-search{display:flex;gap:12px;align-items:center;max-width:640px;margin-top:28px;position:relative;flex-wrap:wrap}
-.blog-search svg{position:absolute;left:18px;top:50%;transform:translateY(-50%);width:16px;height:16px;color:#57705f;pointer-events:none}
-.blog-search input{flex:1;min-width:220px;background:rgba(0,0,0,.35);border:1px solid rgba(90,208,122,.18);border-radius:99px;padding:14px 22px 14px 44px;color:#e8f0e8;font:inherit;font-size:.95rem;outline:none;transition:border-color .25s,box-shadow .25s}
-.blog-search input::placeholder{color:#57705f}
-.blog-search input:focus{border-color:#5ad07a;box-shadow:0 0 0 4px rgba(90,208,122,.12)}
-.blog-search .cnt{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.14em;color:#57705f;text-transform:uppercase}
-.no-results .ins-grid{display:none}
-.no-results .ins-empty{display:block}
-.ins-empty{display:none;padding:40px 0;text-align:center;color:#57705f;font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase}
-.ins-grid mark{background:rgba(90,208,122,.28);color:#9fe8c9;border-radius:3px;padding:0 2px}
-.ins-card .ins-img{display:block;margin:-26px -26px 18px;border-radius:16px 16px 0 0;overflow:hidden;border-bottom:1px solid rgba(90,208,122,.12);background:#060b07}
-.ins-card .ins-img img{width:100%;height:132px;object-fit:cover;display:block;opacity:.85;transition:transform .5s,opacity .5s}
-.ins-card:hover .ins-img img{transform:scale(1.045);opacity:1}
-
-/* ---- Focus of the Day ---- */
-.focus-day{position:relative;border:1px solid rgba(90,208,122,.32);border-radius:20px;overflow:hidden;margin-top:48px;
-  background:radial-gradient(90% 70% at 85% 0%,rgba(90,208,122,.09),transparent 60%),linear-gradient(180deg,#0a120b,#050705)}
-.fd-grid{display:grid;grid-template-columns:1.15fr .85fr}
-.fd-main{padding:clamp(26px,4vw,44px)}
-.fd-side{border-left:1px solid rgba(90,208,122,.14);padding:clamp(26px,4vw,44px) clamp(22px,3vw,36px);display:flex;flex-direction:column;gap:20px;background:rgba(0,0,0,.25)}
-.fd-label{display:flex;align-items:center;gap:10px;font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#5ad07a;margin-bottom:16px}
-.fd-label .dot{width:8px;height:8px;border-radius:50%;background:#5ad07a;box-shadow:0 0 12px #5ad07a;animation:fdpulse 2s infinite}
-@keyframes fdpulse{0%,100%{opacity:.4}50%{opacity:1}}
-@media (prefers-reduced-motion:reduce){.fd-label .dot{animation:none}}
-.fd-date{margin-left:auto;color:#57705f}
-.focus-day h2{font-size:clamp(1.5rem,3vw,2.1rem);line-height:1.2;margin:0 0 12px;color:#fff;letter-spacing:-.02em}
-.focus-day .dek{color:#b9ccbe;font-size:1rem;line-height:1.65;margin:0}
-.fd-body{margin-top:18px;color:#b9ccbe;font-size:.93rem;line-height:1.75;max-width:66ch}
-.fd-body p+p{margin-top:12px}
-.fd-takeaways{margin:18px 0 0;padding:0;list-style:none;display:grid;gap:9px}
-.fd-takeaways li{position:relative;padding-left:24px;color:#b9ccbe;font-size:.88rem}
-.fd-takeaways li::before{content:"";position:absolute;left:2px;top:.5em;width:8px;height:8px;border-radius:50%;background:#5ad07a;box-shadow:0 0 8px rgba(90,208,122,.6)}
-.fd-why{margin-top:18px;border-left:2px solid #5ad07a;padding:5px 0 5px 14px;color:#8fa396;font-size:.85rem;line-height:1.6}
-.fd-why b{color:#5ad07a;font-weight:500}
-.fd-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
-.fd-tags span{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.14em;padding:5px 11px;border:1px solid rgba(90,208,122,.22);border-radius:99px;color:#5ad07a}
-.src-card{border:1px solid rgba(90,208,122,.16);border-radius:14px;padding:16px 18px;background:rgba(0,0,0,.3)}
-.src-card .sc-k{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#57705f;margin-bottom:9px}
-.src-card .sc-t{font-size:.9rem;color:#e8f0e8;line-height:1.45}
-.src-card .sc-m{margin-top:9px;font-family:"IBM Plex Mono",monospace;font-size:11px;color:#8fa396;line-height:1.8}
-.src-card .sc-m b{color:#5ad07a;font-weight:500}
-.src-card a{color:#9fe8c9;text-decoration:none;border-bottom:1px solid rgba(90,208,122,.35)}
-.src-card a:hover{color:#5ad07a}
-.fd-meta{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#57705f;line-height:2.1}
-.fd-meta b{color:#b9ccbe;font-weight:500}
-.fd-skeleton{min-height:300px;display:flex;align-items:center;justify-content:center;color:#57705f;font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.18em;text-transform:uppercase}
-.fd-error{text-align:center;display:grid;gap:12px;justify-items:center;padding:34px 16px}
-.fd-error .big{font-family:"Source Serif 4",serif;font-size:1.35rem;color:#b9ccbe}
-
-/* ---- AI research finder ---- */
-.finder{position:relative;border:1px solid rgba(90,208,122,.22);border-radius:20px;overflow:hidden;margin-top:26px;background:linear-gradient(180deg,#0a120b,#050705)}
-.finder-head{display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding:20px clamp(20px,3vw,30px);border-bottom:1px solid rgba(90,208,122,.12)}
-.finder-head .t{display:inline-flex;align-items:center;gap:9px;font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#5ad07a}
-.finder-head .t .dot{width:7px;height:7px;border-radius:50%;background:#5ad07a;box-shadow:0 0 10px #5ad07a;animation:fdpulse 2.2s infinite}
-@media (prefers-reduced-motion:reduce){.finder-head .t .dot{animation:none}}
-.finder-head .when{margin-left:auto;font-family:"IBM Plex Mono",monospace;font-size:11px;color:#57705f}
-.picks{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(90,208,122,.12)}
-.pick{background:#070c08;padding:16px 20px;display:flex;gap:13px;align-items:flex-start;transition:background .25s}
-.pick:hover{background:#0b120c}
-.pick .num{flex:none;width:25px;height:25px;border-radius:8px;display:grid;place-items:center;font-family:"IBM Plex Mono",monospace;font-size:11px;color:#5ad07a;border:1px solid rgba(90,208,122,.35);background:rgba(90,208,122,.08)}
-.pick .pt{font-size:.9rem;color:#e8f0e8;line-height:1.4}
-.pick .pt a{color:inherit;text-decoration:none;border-bottom:1px solid rgba(90,208,122,.3)}
-.pick .pt a:hover{color:#9fe8c9}
-.pick .pmeta{margin-top:5px;font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#57705f}
-.pick .pmeta b{color:#5ad07a;font-weight:500}
-.pick .hook{margin-top:6px;font-size:.8rem;color:#8fa396;line-height:1.6}
-.finder-search{padding:20px clamp(20px,3vw,30px) 24px;border-top:1px solid rgba(90,208,122,.12);background:rgba(0,0,0,.25)}
-.finder-search .flabel{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#57705f;margin-bottom:12px}
-.gsearch{display:flex;gap:10px;flex-wrap:wrap}
-.gsearch .gwrap{position:relative;flex:1;min-width:220px}
-.gsearch .gwrap svg{position:absolute;left:16px;top:50%;transform:translateY(-50%);width:15px;height:15px;color:#57705f;pointer-events:none}
-.gsearch input{width:100%;background:rgba(0,0,0,.35);border:1px solid rgba(90,208,122,.18);border-radius:99px;padding:12px 20px 12px 40px;color:#e8f0e8;font:inherit;font-size:.9rem;outline:none;transition:border-color .25s,box-shadow .25s}
-.gsearch input:focus{border-color:#5ad07a;box-shadow:0 0 0 4px rgba(90,208,122,.12)}
-.gsearch button{border:0;border-radius:99px;padding:12px 22px;font:inherit;font-size:.85rem;font-weight:600;color:#04140a;background:#5ad07a;cursor:pointer;transition:transform .2s,background .2s}
-.gsearch button:hover{transform:translateY(-1px);background:#6fe08c}
-.topic-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
-.topic-chips button{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;border:1px solid rgba(90,208,122,.22);border-radius:99px;padding:6px 12px;background:transparent;color:#8fa396;cursor:pointer;transition:border-color .2s,color .2s}
-.topic-chips button:hover{border-color:#5ad07a;color:#5ad07a}
-.gcse-slot{margin-top:16px}
-.finder-empty{padding:30px clamp(20px,3vw,30px);text-align:center;color:#57705f;font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase}
-@media (max-width:860px){
-  .fd-grid{grid-template-columns:1fr}
-  .fd-side{border-left:0;border-top:1px solid rgba(90,208,122,.14)}
-  .picks{grid-template-columns:1fr}
-}
+/* ===== Blog page — cream, consistent with the site ===== */
+.blog-search{display:none} /* search removed by design */
 </style>
 </head>
 <body class="art-body">
 <div class="art-shell" style="max-width:1080px">
-  <nav class="art-top" aria-label="Breadcrumb"><a href="/">← Orr Biologicals</a><span style="color:#57705f">blog</span></nav>
-  <p class="art-cat">Focus of the Day · AI research rotation · Field notes</p>
+  <nav class="art-top" aria-label="Breadcrumb">
+    <a href="/">&#8592; Orr Biologicals</a>
+    <a href="/#products">Products</a><a href="/applications/">Applications</a><a href="/game/">Game</a>
+  </nav>
+  <p class="art-cat">Focus of the Day · Rotating shelf · Full library</p>
   <h1>The algae blog,<br>updated every day</h1>
-  <p class="art-meta">Every day an AI reads the newest peer-reviewed algae research: one paper becomes the Focus of the Day, and up to ten more join the daily rotation. Below all of that — the field notes we have been writing all along.</p>
+  <p class="art-meta">Every day at <b>1:00 PM Pacific</b> an AI reads the newest peer-reviewed algae research — papers, books and news — and writes one grounded brief: the Focus of the Day. Around it, a small rotating shelf of cultivation guides and the two products.</p>
 
   <!-- ============ FOCUS OF THE DAY ============ -->
   <div class="focus-day" id="focus">
@@ -131,59 +50,61 @@
         <div class="fd-meta" id="fdMeta" hidden>
           WRITTEN BY <b>GPT-OSS-120B</b> VIA GROQ<br>
           SEARCHED <b>PUBMED · LAST 7 DAYS</b><br>
-          REFRESHED <b>DAILY · 07:00 UTC</b>
+          REFRESHED <b>DAILY · 1:00 PM PACIFIC</b>
         </div>
       </aside>
     </div>
   </div>
 
-  <!-- ============ AI RESEARCH FINDER ============ -->
-  <section id="finder" style="margin-top:56px">
-    <p class="art-cat" style="margin-top:0">AI research finder</p>
-    <h2 style="font-size:clamp(1.4rem,2.6vw,1.9rem);margin:0 0 8px;color:#fff">Fresh algae papers, picked by AI every day.</h2>
-    <p style="color:#8fa396;max-width:70ch;line-height:1.7;margin:0">Each day a GPT-OSS-120B agent selects the most interesting new algae papers — up to ten, across biotech, fuels, health, climate and cultivation. The selection rotates daily. Below it, a Google-powered search for going deeper.</p>
-    <div class="finder">
-      <div class="finder-head">
-        <span class="t"><span class="dot"></span>Today's rotation</span>
-        <span class="when" id="picksDate"></span>
-      </div>
-      <div id="picksBody"><div class="finder-empty">FIRST ROTATION LANDING SOON — THE DAILY AI RUNS AT 07:00 UTC</div></div>
-      <div class="finder-search">
-        <div class="flabel">Search algae research on Google</div>
-        <form class="gsearch" id="gform">
-          <div class="gwrap">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
-            <input id="gq" type="search" placeholder="e.g. microalgae lipid yield, Spirulina bioreactor…" aria-label="Search algae research on Google">
-          </div>
-          <button type="submit">Search</button>
-        </form>
-        <div class="topic-chips" id="topicChips"></div>
-        <div class="gcse-slot" id="gcseSlot"></div>
-      </div>
+  <!-- ============ ROTATING SHELF (4 cards) ============ -->
+  <section id="shelf" style="margin-top:64px">
+    <p class="art-cat" style="margin-top:0">The rotating shelf</p>
+    <h2 style="font-size:clamp(1.4rem,2.6vw,1.9rem);margin:0 0 4px;color:var(--ink)">Four cards, refreshed daily.</h2>
+    <p style="color:var(--ink-soft);max-width:70ch;line-height:1.7;margin:0">The Focus of the Day, one Spirulina cultivation guide that rotates through the library, and the two products. The shelf changes every day at 1:00 PM Pacific, alongside the brief.</p>
+    <div class="rot-grid" id="rotGrid">
+      <!-- Focus of the Day card (filled by JS with the day's real thumbnail) -->
+      <a class="rot-card" id="rotFocus" href="#focus">
+        <span class="rot-thumb"><img id="rotFocusImg" src="/assets/images/microscopy/sim-field.jpg" alt="" loading="lazy"><span class="rt-chip">Focus of the Day</span></span>
+        <span class="rt-body">
+          <h3 id="rotFocusTitle">Loading today's focus…</h3>
+          <p id="rotFocusDek"></p>
+          <span class="rt-foot"><b id="rotFocusSrc"></b><span class="rt-go">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
+        </span>
+      </a>
+      <!-- Spirulina cultivation guide (rotates daily) -->
+      <a class="rot-card" id="rotSpir">
+        <span class="rot-thumb"><img id="rotSpirImg" src="/assets/images/library/starter-culture.svg" alt="" loading="lazy"><span class="rt-chip">Spirulina cultivation</span></span>
+        <span class="rt-body">
+          <h3 id="rotSpirTitle">Spirulina cultivation guide</h3>
+          <p id="rotSpirDek"></p>
+          <span class="rt-foot"><b id="rotSpirTag"></b><span class="rt-go">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
+        </span>
+      </a>
+      <!-- Products -->
+      <a class="rot-card" href="/cyanoflow">
+        <span class="rot-thumb"><img src="/assets/cyano/hero-field.jpg" alt="Microalgae cells imaged through the Cyanoflow microfluidic chip" loading="lazy"><span class="rt-chip">Research platform</span></span>
+        <span class="rt-body">
+          <h3>Cyanoflow — Single-Cell Discovery</h3>
+          <p>The developing research platform: microfluidics, automated microscopy, computer vision and AI phenotyping designed to measure individual microalgal cells — and recover the ones worth keeping.</p>
+          <span class="rt-foot"><b>Cyanoflow</b><span class="rt-go">Explore <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
+        </span>
+      </a>
+      <a class="rot-card" href="/">
+        <span class="rot-thumb"><img src="/assets/images/hero.jpg" alt="Algaephyte photobioreactor with a dense green Arthrospira culture" loading="lazy"><span class="rt-chip">Photobioreactor</span></span>
+        <span class="rt-body">
+          <h3>Algaephyte — the self-tending reactor</h3>
+          <p>Six sensors, a camera and a physics-based digital twin; three safety gates between every proposal and the pump. It fails closed, runs on modest hardware, and never needs the cloud to keep a culture alive.</p>
+          <span class="rt-foot"><b>Algaephyte</b><span class="rt-go">Explore <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
+        </span>
+      </a>
     </div>
   </section>
 
-  <!-- ============ ARCHIVE ============ -->
-  <section id="archive" style="margin-top:56px">
-    <p class="art-cat" style="margin-top:0">Archive</p>
-    <h2 style="font-size:clamp(1.4rem,2.6vw,1.9rem);margin:0 0 4px;color:#fff">Past Focus of the Day.</h2>
-    <div class="blog-search">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
-      <input id="focusSearch" type="search" placeholder="Search past focuses — try &quot;lipids&quot;, &quot;Spirulina&quot;, &quot;stress&quot;…" aria-label="Search past Focus of the Day posts">
-      <span class="cnt" id="focusCount"></span>
-    </div>
-    <div id="archiveWrap" style="margin-top:8px">
-      <div class="ins-grid" id="archiveGrid"></div>
-      <div class="ins-empty">No focuses match that search.</div>
-    </div>
-  </section>
-
-  <!-- ============ FIELD NOTES ============ -->
-  <section id="notes" style="margin-top:56px">
+  <!-- ============ FULL LIBRARY ============ -->
+  <section id="library" style="margin-top:64px">
     <p class="art-cat" style="margin-top:0">Field notes · Guides · Essays</p>
-    <h2 style="font-size:clamp(1.4rem,2.6vw,1.9rem);margin:0 0 4px;color:#fff">Notes on biology, written plainly.</h2>
+    <h2 style="font-size:clamp(1.4rem,2.6vw,1.9rem);margin:0 0 4px;color:var(--ink)">Notes on biology, written plainly.</h2>
     <div class="ins-grid" id="notesGrid">
-      <a class="ins-card" href="/cyanoflow"><span class="ins-img"><img src="/assets/cyano/hero-field.jpg" alt="" loading="lazy"></span><h2>Cyanoflow — Single-Cell Discovery</h2><p>The developing research platform: microfluidics, automated microscopy, computer vision and AI phenotyping designed to measure individual microalgal cells.</p><small>Research platform</small></a>
       <a class="ins-card" href="/applications/"><span class="ins-img"><img src="/assets/images/library/culture-vessels.svg" alt="" loading="lazy"></span><h2>Applications &amp; Species Guides</h2><p>The Algaephyte knowledge hub: microalgae cultivation, aquaculture live feeds, ten species guides and algal biotechnology.</p><small>Knowledge hub</small></a>
       <a class="ins-card" href="/blog/how-to-start-home-spirulina-culture"><span class="ins-img"><img src="/assets/images/library/starter-culture.svg" alt="" loading="lazy"></span><h2>How to Start a Home Spirulina Culture</h2><p>What you need, live culture vs powder, warmth, light and alkalinity — the honest first steps.</p><small>Spirulina</small></a>
       <a class="ins-card" href="/blog/harvesting-and-using-fresh-spirulina"><span class="ins-img"><img src="/assets/images/library/isochrysis-cells.svg" alt="" loading="lazy"></span><h2>Harvesting Fresh Spirulina</h2><p>When to harvest, simple screening methods, storage, freshness economics.</p><small>Spirulina</small></a>
@@ -223,16 +144,22 @@
 </div>
 
 <script>
-/* ---------- Blog: Focus of the Day + AI picks rotation + archive ---------- */
+/* ---------- Blog: Focus of the Day + daily rotating shelf ---------- */
 (function () {
   "use strict";
   var BASE = "/blog/data/focus/";
-  var PICKS = "/blog/data/picks/";
   function esc(s) { var d = document.createElement("div"); d.textContent = String(s == null ? "" : s); return d.innerHTML; }
   function el(id) { return document.getElementById(id); }
-  var reduce = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  /* ---- Focus of the Day ---- */
+  /* brand-treated photography, rotating by day of month (see
+     tools/blog/make_focus_thumbs.py) — real imagery, not stock */
+  var FOCUS_IMGS = [
+    "/assets/images/focus/focus-0.jpg",
+    "/assets/images/focus/focus-1.jpg",
+    "/assets/images/focus/focus-2.jpg",
+    "/assets/images/focus/focus-3.jpg"
+  ];
+
   function renderFocus(p) {
     var wrap = el("fdContent");
     wrap.classList.remove("fd-skeleton");
@@ -257,6 +184,13 @@
     if (s.url) { link.href = s.url; } else { link.removeAttribute("href"); link.style.display = "none"; }
     el("fdSource").hidden = false;
     el("fdMeta").hidden = false;
+    /* shelf card mirrors the focus */
+    el("rotFocusTitle").textContent = p.title;
+    el("rotFocusDek").textContent = p.dek || "";
+    el("rotFocusSrc").textContent = (s.journal || "Focus of the Day") + " · " + (p.date || "");
+    var dayNum = 0, d = String(p.date || "");
+    if (/^\d{4}-\d{2}-\d{2}$/.test(d)) dayNum = parseInt(d.slice(8, 10), 10) || 0;
+    el("rotFocusImg").src = FOCUS_IMGS[dayNum % FOCUS_IMGS.length];
   }
   function focusError() {
     var wrap = el("fdContent");
@@ -264,114 +198,50 @@
     wrap.innerHTML =
       "<div class=\"fd-error\">" +
       "<span class=\"big\">Today's focus hasn't landed yet.</span>" +
-      "<p style=\"color:#8fa396;max-width:44ch;margin:0\">It is generated once a day from live PubMed search — check back soon, or browse the archive below.</p>" +
+      "<p style=\"color:var(--d-mute);max-width:44ch;margin:0\">It is generated once a day from live PubMed search at 1:00 PM Pacific — check back soon, or browse the shelf and library below.</p>" +
       "</div>";
+    el("rotFocusTitle").textContent = "Focus of the Day — coming at 1:00 PM Pacific";
+    el("rotFocusDek").textContent = "The daily AI brief is being written. The shelf below and the full library are always here.";
+    el("rotFocusSrc").textContent = "Orr Biologicals blog";
   }
 
-  /* ---- archive ---- */
-  var POSTS = [];
-  function renderArchive(list, q) {
-    var grid = el("archiveGrid");
-    grid.innerHTML = list.map(function (p) {
-      var title = esc(p.title), dek = esc(p.dek);
-      if (q) {
-        var rx = new RegExp("(" + q.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + ")", "gi");
-        title = title.replace(rx, "<mark>$1</mark>");
-        dek = dek.replace(rx, "<mark>$1</mark>");
-      }
-      var tags = (p.tags || []).map(function (t) { return "<small>" + esc(t) + "</small>"; }).join(" · ");
-      var journal = "<small>" + esc(p.journal || "") + " · <a href=\"" + esc(p.url || "#") + "\" target=\"_blank\" rel=\"noopener\" style=\"color:#5ad07a;text-decoration:none\">source ↗</a></small>";
-      return "<a class=\"ins-card\" href=\"" + esc(p.url || "#") + "\" target=\"_blank\" rel=\"noopener\">" +
-        "<span class=\"ins-img\"><img src=\"/assets/cyano/hero-field.jpg\" alt=\"\" loading=\"lazy\"></span>" +
-        "<h2>" + title + "</h2><p>" + dek + "</p>" + journal + "</a>";
-    }).join("");
-    el("focusCount").textContent = list.length + (list.length === 1 ? " POST" : " POSTS");
-    el("archiveWrap").classList.toggle("no-results", list.length === 0);
-  }
-  function onSearch() {
-    var q = el("focusSearch").value.trim();
-    if (!q) { renderArchive(POSTS, ""); return; }
-    var terms = q.toLowerCase().split(/\s+/).filter(Boolean);
-    var list = POSTS.filter(function (p) {
-      var hay = (p.title + " " + p.dek + " " + (p.tags || []).join(" ") + " " + (p.journal || "")).toLowerCase();
-      return terms.every(function (t) { return hay.indexOf(t) !== -1; });
-    });
-    renderArchive(list, q);
-  }
-
-  /* ---- daily AI picks rotation + Google search ---- */
-  /* To embed Google results on-page instead of opening Google in a new
-     tab, create a Programmable Search Engine at cse.google.com and paste
-     its CX id here: */
-  var GOOGLE_CSE_CX = "";
-  var TOPICS = ["microalgae biotechnology", "Spirulina nutrition", "algae biofuels",
-                "cyanobacteria", "photobioreactor", "algae carbon capture", "single-cell algae"];
-  function renderPicks(day) {
-    el("picksDate").textContent = day.date;
-    var rows = (day.picks || []).map(function (p, i) {
-      return "<div class=\"pick\"><span class=\"num\">" + String(i + 1).padStart(2, "0") + "</span>" +
-        "<div><div class=\"pt\"><a href=\"" + esc(p.url) + "\" target=\"_blank\" rel=\"noopener\">" + esc(p.title) + "</a></div>" +
-        "<div class=\"pmeta\"><b>" + esc(p.topic) + "</b> · " + esc(p.journal || "") + " " + esc(p.year || "") + "</div>" +
-        (p.hook ? "<div class=\"hook\">" + esc(p.hook) + "</div>" : "") +
-        "</div></div>";
-    }).join("");
-    el("picksBody").innerHTML = rows ||
-      "<div class=\"finder-empty\">NO PICKS TODAY — CHECK BACK AFTER THE NEXT ROTATION</div>";
-  }
-  function gquery(q) {
-    q = (q || "").trim();
-    if (!q) return;
-    if (GOOGLE_CSE_CX) {
-      var slot = el("gcseSlot");
-      slot.innerHTML = "<div class=\"gcse-search\" data-async=\"1\"></div>";
-      if (!window.__cseLoaded) {
-        window.__cseLoaded = true;
-        var s = document.createElement("script");
-        s.src = "https://cse.google.com/cse.js?cx=" + encodeURIComponent(GOOGLE_CSE_CX);
-        document.head.appendChild(s);
-      } else if (window.google && google.search && google.search.cse) {
-        google.search.cse.element.render("gcseSlot");
-      }
-    } else {
-      window.open("https://www.google.com/search?q=" + encodeURIComponent(q + " algae research"), "_blank", "noopener");
-    }
+  /* ---- rotating Spirulina guide ---- */
+  var GUIDES = [
+    { href: "/blog/how-to-start-home-spirulina-culture", title: "How to Start a Home Spirulina Culture", dek: "What you need, live culture vs powder, warmth, light and alkalinity — the honest first steps.", tag: "Getting started", img: "/assets/images/library/starter-culture.svg" },
+    { href: "/blog/harvesting-and-using-fresh-spirulina", title: "Harvesting and Using Fresh Spirulina", dek: "When to harvest, simple screening methods, storage, and the freshness economics of home-grown biomass.", tag: "Harvest", img: "/assets/images/library/isochrysis-cells.svg" },
+    { href: "/blog/reading-your-culture", title: "Reading Your Culture: Color, Density, Smell", dek: "Blue-green cues, spoon-depth density tests, smell diagnostics and the cheap measurements worth taking daily.", tag: "Daily care", img: "/assets/images/microscopy/sim-field.jpg" },
+    { href: "/blog/winter-home-growing-warmth", title: "Keeping a Culture Warm Through Winter", dek: "Heaters, insulation and placement strategy for the 30–37°C comfort band — warmth before anything else.", tag: "Seasonal", img: "/assets/images/library/culture-vessels.svg" },
+    { href: "/blog/zarrouk-medium-and-nutrients", title: "Zarrouk Medium and Nutrients", dek: "The chemistry that feeds Arthrospira: bicarbonate as carbon source and shield.", tag: "Chemistry", img: "/assets/images/library/biotech-compounds.svg" },
+    { href: "/blog/light-temperature-mixing", title: "Light, Temperature and Mixing", dek: "The three physical levers of a culture — and why more of any one stops helping early.", tag: "Fundamentals", img: "/assets/images/library/culture-vessels.svg" },
+    { href: "/blog/troubleshooting-contamination-crashes", title: "Troubleshooting Contamination", dek: "Grazers, competitors, and using high pH as passive biosecurity.", tag: "Troubleshooting", img: "/assets/images/library/contamination.svg" },
+    { href: "/blog/alkalinity-as-a-control-variable", title: "Alkalinity as a Control Variable", dek: "pH is not a knob — it is the readout of the carbon budget.", tag: "Chemistry", img: "/assets/images/library/biotech-compounds.svg" }
+  ];
+  function pickGuide() {
+    /* deterministic daily rotation in the visitor's local time */
+    var now = new Date();
+    var day = Math.floor((now - new Date(now.getFullYear(), 0, 0)) / 86400000);
+    return GUIDES[day % GUIDES.length];
   }
 
   document.addEventListener("DOMContentLoaded", function () {
-    /* focus + archive */
+    var g = pickGuide();
+    el("rotSpirTitle").textContent = g.title;
+    el("rotSpirDek").textContent = g.dek;
+    el("rotSpirTag").textContent = g.tag;
+    el("rotSpirImg").src = g.img;
+    el("rotSpir").href = g.href;
+
     fetch(BASE + "index.json")
       .then(function (r) { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); })
       .then(function (idx) {
-        POSTS = idx.posts || [];
-        var focus = POSTS[0]; /* newest = Focus of the Day (timezone-proof) */
-        var done = focus
-          ? fetch(BASE + focus.date + ".json")
-              .then(function (r) { return r.ok ? r.json() : focus; })
-              .then(renderFocus)
-              .catch(function () { renderFocus(focus); })
-          : (focusError(), Promise.resolve());
-        return done.then(function () { onSearch(); });
+        var focus = (idx.posts || [])[0]; /* newest = Focus of the Day */
+        if (!focus) { focusError(); return; }
+        return fetch(BASE + focus.date + ".json")
+          .then(function (r) { return r.ok ? r.json() : focus; })
+          .then(renderFocus)
+          .catch(function () { renderFocus(focus); });
       })
       .catch(focusError);
-    el("focusSearch").addEventListener("input", onSearch);
-
-    /* picks rotation */
-    fetch(PICKS + "index.json")
-      .then(function (r) { return r.ok ? r.json() : null; })
-      .then(function (pi) {
-        var days = (pi && pi.days) || [];
-        if (days.length) renderPicks(days[0]);
-      })
-      .catch(function () { /* empty state already in place */ });
-
-    /* google search */
-    var chips = el("topicChips");
-    chips.innerHTML = TOPICS.map(function (t) { return "<button type=\"button\" data-q=\"" + esc(t) + "\">" + esc(t) + "</button>"; }).join("");
-    chips.addEventListener("click", function (e) {
-      var b = e.target && e.target.closest ? e.target.closest("button") : null;
-      if (b) { el("gq").value = b.dataset.q; gquery(b.dataset.q); }
-    });
-    el("gform").addEventListener("submit", function (e) { e.preventDefault(); gquery(el("gq").value); });
   });
 })();
 </script>

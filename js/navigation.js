@@ -18,15 +18,15 @@
   });
 })();
 
-/* ---------- deploy form (Formspree; falls back to validation-only notice) -- */
-/* To activate: create a free form at formspree.io for service@orrbiologicals.com
-   and paste its ID below. Until then the form validates and shows a mailto link. */
+/* ---------- deploy form (pilot access) ----------
+   Always visible; submitting opens a pre-filled deployment inquiry to
+   service@orrbiologicals.com via the visitor's mail client. No backend
+   needed and nothing can silently swallow an inquiry. */
 (function(){
   var form=document.getElementById("deployForm");
   if(!form)return;
   var status=document.getElementById("formStatus");
-  var ENDPOINT="https://formspree.io/f/YOUR_FORM_ID"; // TODO: real Formspree ID
-  function say(msg,err){status.textContent=msg;status.style.color=err?"#e08a8a":"#5ad07a";}
+  function say(msg,err){if(status){status.textContent=msg;status.style.color=err?"var(--warn)":"var(--leaf-deep)";}}
   form.addEventListener("submit",function(e){
     e.preventDefault();
     var hp=document.getElementById("fHp");
@@ -34,20 +34,14 @@
     var fields=["fName","fPlace","fGrow"].map(function(id){return document.getElementById(id);});
     var missing=fields.filter(function(f){return !f.value.trim();});
     if(missing.length){say("Please fill in "+missing.map(function(f){return f.previousElementSibling.textContent.toLowerCase();}).join(", ")+".",true);missing[0].focus();return;}
-    var btn=form.querySelector("button[type=submit]");
-    btn.disabled=true;say("Sending…");
-    if(ENDPOINT.indexOf("YOUR_FORM_ID")!==-1){
-      say("Form service not configured yet — please email service@orrbiologicals.com directly.",true);
-      btn.disabled=false;return;
-    }
-    fetch(ENDPOINT,{method:"POST",headers:{Accept:"application/json"},
-      body:new FormData(form)})
-      .then(function(r){
-        if(r.ok){form.reset();say("Thank you — your inquiry is in. We reply from service@orrbiologicals.com.");}
-        else{throw new Error("bad status");}
-      })
-      .catch(function(){say("Sending failed — please email service@orrbiologicals.com directly.",true);})
-      .finally(function(){btn.disabled=false;});
+    var subject="Algaephyte deployment inquiry — " + fields[0].value.trim();
+    var body="Name / organization: "+fields[0].value.trim()+
+             "\nLocation: "+fields[1].value.trim()+
+             "\nCultivation objective: "+fields[2].value.trim()+
+             "\n\n(Sent from the pilot access form at orrbiologicals.com)";
+    say("Opening your email client…");
+    window.location.href="mailto:service@orrbiologicals.com?subject="+encodeURIComponent(subject)+"&body="+encodeURIComponent(body);
+    say("If your email client did not open, write to service@orrbiologicals.com.",true);
   });
 })();
 

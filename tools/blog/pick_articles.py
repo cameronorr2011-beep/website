@@ -56,6 +56,11 @@ SEARCH_TERMS = [
     '(cyanobacteri*[Title/Abstract] OR microalga*[Title/Abstract]) AND (single-cell[Title/Abstract] OR microfluidic[Title/Abstract] OR phenotyp*[Title/Abstract] OR imaging[Title/Abstract])',
     'algal[Title/Abstract] AND (wastewater[Title/Abstract] OR bioremediation[Title/Abstract])',
     'microalga*[Title/Abstract] AND (genetic[Title/Abstract] OR synthetic biology[Title/Abstract] OR engineering[Title/Abstract])',
+    # reviews, books and news-style coverage - keeps the rotation varied
+    'alga*[Title/Abstract] AND (review[Title/Abstract] OR perspective[Title/Abstract] OR advances[Title/Abstract])',
+    'microalgae[Title/Abstract] AND (industry[Title/Abstract] OR market[Title/Abstract] OR commercial[Title/Abstract] OR policy[Title/Abstract])',
+    'Spirulina[Title/Abstract] AND (food[Title/Abstract] OR feed[Title/Abstract] OR supplement[Title/Abstract] OR safety[Title/Abstract])',
+    'algal[Title/Abstract] AND (pigment[Title/Abstract] OR phycocyanin[Title/Abstract] OR astaxanthin[Title/Abstract] OR omega-3[Title/Abstract])',
 ]
 
 UA = "OrrBiologicals-PickBot/1.0 (educational website; contact: service@orrbiologicals.com)"

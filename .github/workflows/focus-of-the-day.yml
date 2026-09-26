@@ -1,12 +1,19 @@
 name: Focus of the Day
 
-# Generates the daily algae research brief for the Blog tab:
-# PubMed search -> GPT-OSS-120B (Groq) -> blog/data/focus/<date>.json
-# Runs once per day; can also be triggered manually from the Actions tab.
+# Generates the daily algae research brief for the Blog page:
+#   PubMed search -> GPT-OSS-120B (Groq) -> blog/data/focus/<date>.json
+#
+# Refresh time: 1:00 PM Pacific, every day, DST-safe.
+#   GitHub cron is UTC-only and cannot express "1 PM America/Los_Angeles",
+#   so the schedule fires at 20:00 and 21:00 UTC and the "at 1pm pacific"
+#   gate below runs the generator only when it is exactly 13:00 in
+#   America/Los_Angeles. That is 1 PM PDT (summer) or 1 PM PST (winter).
+#   Manual runs (workflow_dispatch) skip the gate.
 
 on:
   schedule:
-    - cron: "0 7 * * *"   # 07:00 UTC daily
+    - cron: "0 20 * * *"   # 20:00 UTC = 13:00 Pacific during PDT (Mar-Nov)
+    - cron: "0 21 * * *"   # 21:00 UTC = 13:00 Pacific during PST (Nov-Mar)
   workflow_dispatch:
 
 permissions:
@@ -26,12 +33,28 @@ jobs:
         with:
           python-version: "3.12"
 
+      - name: Run only at 1:00 PM Pacific (DST-safe gate)
+        id: gate
+        env:
+          TZ: America/Los_Angeles
+        run: |
+          HOUR=$(date +%H)
+          echo "Current hour in Pacific: $HOUR"
+          if [ "$GITHUB_EVENT_NAME" = "workflow_dispatch" ]; then
+            echo "Manual run — skipping the 13:00 gate."
+          elif [ "$HOUR" != "13" ]; then
+            echo "Not 13:00 Pacific right now — nothing to do."
+            exit 78 # neutral: the other scheduled slot owns this run
+          fi
+
       - name: Generate today's focus
+        if: ${{ !cancelled() && steps.gate.conclusion != 'failure' }}
         env:
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
         run: python tools/blog/generate_focus.py
 
       - name: Rotate daily article picks
+        if: ${{ !cancelled() && steps.gate.conclusion != 'failure' }}
         env:
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
         run: python tools/blog/pick_articles.py

@@ -152,15 +152,35 @@ var JOURNAL = [
   });
 })();
 
-/* ticker */
+/* ticker (clean rail — no dot markers) */
 (function(){
   var track=document.getElementById("tickerTrack");
   if(!track)return;
   var items=TICKS.concat(TICKS);
   items.forEach(function(t){
-    var s=el('<span class="tick"><i></i>'+t+"</span>");
+    var s=el('<span class="tick">'+t+"</span>");
     track.appendChild(s);
   });
+})();
+
+/* inside-nav scroll spy (merged tech band) */
+(function(){
+  var nav=document.querySelector(".inside-nav");
+  if(!nav)return;
+  var links=[].slice.call(nav.querySelectorAll("a[href^='#']"));
+  var map={};
+  links.forEach(function(a){var id=a.getAttribute("href").slice(1);var sec=document.getElementById(id);if(sec)map[id]=a;});
+  var ids=Object.keys(map);
+  if(!ids.length||!("IntersectionObserver" in window))return;
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(en){
+      if(en.isIntersecting){
+        links.forEach(function(a){a.classList.remove("on");});
+        var a=map[en.target.id];if(a)a.classList.add("on");
+      }
+    });
+  },{rootMargin:"-30% 0px -55% 0px"});
+  ids.forEach(function(id){io.observe(document.getElementById(id));});
 })();
 
 /* stack */
