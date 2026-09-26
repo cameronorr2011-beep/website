@@ -1,7 +1,21 @@
 {
-  "updated": "2026-09-25T00:56:41Z",
-  "count": 7,
+  "updated": "2026-09-26T16:07:02Z",
+  "count": 8,
   "posts": [
+    {
+      "date": "2026-09-26",
+      "slug": "seasonal-plastisphere-dynamics",
+      "title": "Seasonal shifts in microalgae on fish‑farm nets and ropes",
+      "dek": "A year‑long study in Monastir Bay shows temperature and nutrients drive seasonal changes in microalgal communities on aquaculture structures, with deeper ropes harboring toxin‑producing species.",
+      "tags": [
+        "ECOLOGY",
+        "HABITATS",
+        "TOXINS"
+      ],
+      "pmid": "42790313",
+      "url": "https://doi.org/10.1016/j.marenvres.2026.108423",
+      "journal": "Marine environmental research"
+    },
     {
       "date": "2026-09-24",
       "slug": "ocean-alkalinity-algae-response",

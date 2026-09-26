@@ -33,6 +33,7 @@ import os
 import re
 import sys
 import time
+import urllib.error
 import urllib.parse
 import urllib.request
 from datetime import date, datetime, timedelta, timezone
@@ -184,9 +185,11 @@ def ai_select(articles: list[dict], today: str) -> dict:
     if not api_key:
         raise RuntimeError("groq_api_key / GROQ_API_KEY not set")
 
+    # Free-tier Groq caps gpt-oss-120b at 8k tokens/min (and 413s on large
+    # payloads) — keep the brief small: title + abstract head per candidate.
     brief = "\n".join(
         f"[{i}] PMID {a['pmid']} | {a['journal']} {a['year']}\n"
-        f"    {a['title']}\n    {a['abstract']}"
+        f"    {a['title'][:180]}\n    {a['abstract'][:260]}"
         for i, a in enumerate(articles)
     )
     system = (
@@ -209,7 +212,7 @@ def ai_select(articles: list[dict], today: str) -> dict:
         "response_format": {"type": "json_schema", "json_schema": {
             "name": "daily_picks", "schema": PICKS_SCHEMA, "strict": True}},
         "temperature": 0.4,
-        "max_completion_tokens": 2400,
+        "max_completion_tokens": 1600,
         "reasoning_effort": "low",
     }
     req = urllib.request.Request(
@@ -219,8 +222,24 @@ def ai_select(articles: list[dict], today: str) -> dict:
                  "Content-Type": "application/json",
                  "User-Agent": BROWSER_UA},
         method="POST")
-    with urllib.request.urlopen(req, timeout=120) as r:
-        data = json.loads(r.read().decode("utf-8"))
+    # Free tier allows ~8k tokens/min; the focus generator may run just
+    # before this script (CI), so a 429 here is expected now and then.
+    # Wait out the window and retry instead of failing the day.
+    data = None
+    for attempt in range(3):
+        try:
+            with urllib.request.urlopen(req, timeout=120) as r:
+                data = json.loads(r.read().decode("utf-8"))
+            break
+        except urllib.error.HTTPError as e:
+            if e.code == 429 and attempt < 2:
+                wait = 60 + 10 * (attempt + 1)
+                log(f"groq: rate limited -- retrying in {wait}s (attempt {attempt + 1}/3)")
+                time.sleep(wait)
+                continue
+            raise
+    if data is None:
+        raise RuntimeError("groq: no response after retries")
     log(f"groq: {data.get('usage', {}).get('total_tokens', '?')} tokens")
     return json.loads(data["choices"][0]["message"]["content"])
 

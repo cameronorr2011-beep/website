@@ -1,0 +1,29 @@
+{
+  "date": "2026-09-26",
+  "slug": "seasonal-plastisphere-dynamics",
+  "title": "Seasonal shifts in microalgae on fish‑farm nets and ropes",
+  "dek": "A year‑long study in Monastir Bay shows temperature and nutrients drive seasonal changes in microalgal communities on aquaculture structures, with deeper ropes harboring toxin‑producing species.",
+  "body": "Researchers sampled breeding nets, floating tubes, and anchor ropes at a commercial fish farm in Tunisia over twelve months. They measured water temperature, nutrients, trace metals, and the microbes living on these artificial surfaces. The data revealed strong seasonal swings that matched changes in hydrodynamics and chemistry.\n\nTemperature and nutrient levels were the main factors linked to which microalgae were present. In cooler, nutrient‑rich periods, diatoms and cyanobacteria were most common. As the water warmed and became more stratified, dinoflagellates increased in abundance.\n\nEven though the total amount of microbial biomass was similar across all substrates, the composition varied with depth. Deeply submerged anchor ropes collected higher numbers of known harmful benthic algae such as *Prorocentrum lima*, *Ostreopsis siamensis*, and *Coolia monotis*.\n\nStatistical analyses indicated that the timing of the season and the depth of the substrate had a stronger influence on community structure than the type of material itself. The findings highlight that aquaculture structures act as dynamic, vertically layered ecosystems that can retain contaminants and host toxin‑producing algae.",
+  "takeaways": [
+    "Temperature and nutrients drive seasonal microalgal succession on aquaculture surfaces.",
+    "Deeper ropes preferentially host harmful benthic algae, acting as toxin reservoirs.",
+    "Depth and season shape community structure more than substrate material."
+  ],
+  "tags": [
+    "ECOLOGY",
+    "HABITATS",
+    "TOXINS"
+  ],
+  "why_it_matters": "Understanding how microalgal communities change on fish‑farm infrastructure helps predict biofouling impacts and manage the risk of toxin‑producing algae in coastal aquaculture.",
+  "source": {
+    "pmid": "42790313",
+    "title": "Seasonal dynamics of plastisphere microalgal assemblages in aquaculture systems: An integrated assessment from Monastir Bay.",
+    "journal": "Marine environmental research",
+    "year": "2026",
+    "authors": "Moncer, Ben Brahim, Trabelsi",
+    "doi": "10.1016/j.marenvres.2026.108423",
+    "url": "https://doi.org/10.1016/j.marenvres.2026.108423"
+  },
+  "model": "openai/gpt-oss-120b",
+  "generated_at": "2026-09-26T16:07:02Z"
+}

@@ -1,0 +1,43 @@
+{
+  "date": "2026-09-26",
+  "model": "openai/gpt-oss-120b",
+  "generated_at": "2026-09-26T16:04:47Z",
+  "picks": [
+    {
+      "pmid": "42766103",
+      "title": "Marine Microalgal Genes: Unlocking a New Era of Sustainable High Value PUFA Production for Neuroprotective Applications.",
+      "journal": "Cell biochemistry and biophysics",
+      "year": "2026",
+      "url": "https://doi.org/10.1007/s12013-026-02013-3",
+      "topic": "Health",
+      "hook": "Marine microalgal genes are harnessed to boost sustainable production of neuroprotective omega‑3 PUFA for high‑value nutraceuticals."
+    },
+    {
+      "pmid": "42777879",
+      "title": "Low-temperature plasma technology: comprehensive applications in microalgae cultivation, mutagenesis, and downstream processing.",
+      "journal": "Bioresource technology",
+      "year": "2026",
+      "url": "https://doi.org/10.1016/j.biortech.2026.135920",
+      "topic": "Engineering",
+      "hook": "Low‑temperature plasma is showcased for boosting microalgae growth, inducing beneficial mutations, and streamlining downstream processing."
+    },
+    {
+      "pmid": "42747505",
+      "title": "Beyond conventional imaging: curvelet-AI convergence for non-invasive microalgal lipid quantification and biofuel optimization.",
+      "journal": "Bioprocess and biosystems engineering",
+      "year": "2026",
+      "url": "https://doi.org/10.1007/s00449-026-03423-6",
+      "topic": "Biofuels",
+      "hook": "A curvelet‑AI imaging pipeline enables non‑invasive lipid quantification, accelerating biofuel optimization in microalgal cultures."
+    },
+    {
+      "pmid": "42776480",
+      "title": "Oral Microalgae-Laden Hydrogels Modulating the Intestinal Microbiota Metabolism for Acute Alcohol-Induced Liver Injury Therapy.",
+      "journal": "Small (Weinheim an der Bergstrasse, Germany)",
+      "year": "2026",
+      "url": "https://doi.org/10.1002/smll.202513746",
+      "topic": "Health",
+      "hook": "Oral microalgae‑laden hydrogels reshape gut microbiota metabolism, offering a novel therapy for acute alcohol‑induced liver injury."
+    }
+  ]
+}
