@@ -7,7 +7,7 @@
 .hero-atmo{position:absolute;inset:0;width:100%;height:100%;opacity:.5;pointer-events:none}
 .hero-glow{position:absolute;top:18%;left:12%;width:220px;height:220px;border-radius:50%;background:rgba(120,190,130,.16);filter:blur(56px);pointer-events:none;animation:breathe 6s ease-in-out infinite}
 .hero-in{position:relative;z-index:2;max-width:var(--max);margin:0 auto;width:100%;padding:120px 5vw 80px}
-.hero h1{font-size:clamp(4.1rem,12vw,9.6rem);line-height:.78;font-weight:600;letter-spacing:-.075em;color:var(--ink);margin-top:20px}
+.hero h1{font-size:clamp(3.2rem,7.5vw,6.4rem);line-height:.92;font-weight:600;letter-spacing:-.055em;color:var(--ink);margin-top:20px}
 .letter-in{display:inline-block;opacity:0;animation:letterIn .9s cubic-bezier(.16,1,.3,1) forwards}
 .hero h2{font-size:clamp(1.55rem,3vw,2.45rem);line-height:1.05;font-weight:500;letter-spacing:-.04em;color:var(--ink);max-width:19ch;margin-top:28px}
 .hero p.lede{margin-top:24px;max-width:48ch}

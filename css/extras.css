@@ -47,7 +47,7 @@
 .art-cat{color:var(--leaf-deep);letter-spacing:.14em;text-transform:uppercase;font-size:11px;font-family:"IBM Plex Mono",monospace;margin-bottom:14px}
 .art-body h1{font-family:"Bricolage Grotesque",system-ui,sans-serif;font-size:clamp(2rem,5.4vw,3.1rem);line-height:1.08;letter-spacing:-.03em;margin-bottom:18px;color:var(--ink)}
 .art-meta{color:var(--mute);font-size:13px;font-family:"IBM Plex Mono",monospace;margin-bottom:36px}
-.prose p{margin:0 0 1.25em;line-height:1.85;color:var(--ink-soft);font-size:1.04rem}
+.prose p{margin:0 0 1.25em;line-height:1.85;color:var(--ink-soft);font-size:1.09rem}
 .prose h2{font-family:"Bricolage Grotesque",system-ui,sans-serif;font-size:1.5rem;letter-spacing:-.02em;margin:2.2em 0 .7em;color:var(--ink)}
 .prose h3{font-family:"Bricolage Grotesque",system-ui,sans-serif;font-size:1.15rem;margin:1.8em 0 .6em;color:var(--ink)}
 .prose ul,.prose ol{margin:0 0 1.25em 1.4em;line-height:1.8;color:var(--ink-soft)}
@@ -66,8 +66,8 @@
 .ins-card .ins-img{display:block;overflow:hidden;background:var(--leaf-soft)}
 .ins-card .ins-img img{width:100%;height:172px;object-fit:cover;display:block;transition:transform .5s cubic-bezier(.16,1,.3,1)}
 .ins-card:hover .ins-img img{transform:scale(1.045)}
-.ins-card h2{font-size:1.12rem;font-family:"Bricolage Grotesque",system-ui,sans-serif;letter-spacing:-.01em;margin:18px 22px 8px;color:var(--ink)}
-.ins-card p{font-size:.92rem;line-height:1.65;color:var(--ink-soft);font-family:"Source Serif 4",Georgia,serif;margin:0 22px 20px;flex:1}
+.ins-card h2{font-size:1.22rem;font-family:"Bricolage Grotesque",system-ui,sans-serif;letter-spacing:-.01em;margin:18px 22px 8px;color:var(--ink)}
+.ins-card p{font-size:1rem;line-height:1.65;color:var(--ink-soft);font-family:"Source Serif 4",Georgia,serif;margin:0 22px 20px;flex:1}
 .ins-card small{display:block;margin:0 22px 22px;color:var(--leaf-deep);font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase}
 @media (max-width:900px){.art-shell{padding:96px 18px 64px}}
 
@@ -201,8 +201,8 @@
 .rot-card:hover .rot-thumb img{transform:scale(1.05)}
 .rot-thumb .rt-chip{position:absolute;top:12px;left:12px;font-family:"IBM Plex Mono",monospace;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:#fff;background:rgba(10,16,11,.72);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.18);border-radius:99px;padding:5px 11px}
 .rot-card .rt-body{padding:22px 22px 20px;display:flex;flex-direction:column;flex:1}
-.rot-card h3{font-size:1.14rem;font-family:"Bricolage Grotesque",system-ui,sans-serif;letter-spacing:-.015em;line-height:1.3;margin:0 0 10px;color:var(--ink)}
-.rot-card p{font-size:.9rem;line-height:1.65;color:var(--ink-soft);font-family:"Source Serif 4",Georgia,serif;margin:0 0 18px;flex:1}
+.rot-card h3{font-size:1.24rem;font-family:"Bricolage Grotesque",system-ui,sans-serif;letter-spacing:-.015em;line-height:1.3;margin:0 0 10px;color:var(--ink)}
+.rot-card p{font-size:.98rem;line-height:1.65;color:var(--ink-soft);font-family:"Source Serif 4",Georgia,serif;margin:0 0 18px;flex:1}
 .rot-card .rt-foot{display:flex;justify-content:space-between;align-items:center;gap:10px;font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute)}
 .rot-card .rt-foot b{color:var(--leaf-deep);font-weight:500}
 .rot-card .rt-go{display:inline-flex;align-items:center;gap:6px;color:var(--leaf-deep);font-weight:600;font-family:"Bricolage Grotesque",system-ui,sans-serif;font-size:.85rem;letter-spacing:0;text-transform:none}
@@ -231,6 +231,12 @@
 .prod-card .pc-points span{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;border:1px solid rgba(255,255,255,.18);border-radius:99px;padding:5px 11px;color:rgba(255,255,255,.75)}
 .prod-card .pc-go{display:inline-flex;align-items:center;gap:9px;font-weight:600;font-size:14px;color:#fff}
 .prod-card .pc-go svg{width:16px;height:16px;transition:transform .3s cubic-bezier(.16,1,.3,1)}
+/* idle drift on the card photography — the page breathes even before you scroll */
+@media(prefers-reduced-motion:no-preference){
+.prod-card .pc-bg{animation:pcDrift 11s ease-in-out infinite alternate}
+.prod-card.cyanoflow .pc-bg{animation-delay:-5.5s}
+@keyframes pcDrift{from{transform:scale(1.03) translateY(0)}to{transform:scale(1.07) translateY(-12px)}}
+}
 .prod-card:hover .pc-go svg{transform:translateX(5px)}
 .prod-card.algaephyte .pc-go{color:var(--dleaf-2)}
 .prod-card.cyanoflow .pc-go{color:#7de3f4}

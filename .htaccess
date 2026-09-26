@@ -91,6 +91,16 @@ ExpiresActive On
 ExpiresByType image/jpeg "access plus 30 days"
 ExpiresByType image/png "access plus 30 days"
 ExpiresByType image/svg+xml "access plus 30 days"
-ExpiresByType text/css "access plus 7 days"
-ExpiresByType application/javascript "access plus 7 days"
+ExpiresByType text/css "access plus 1 hour"
+ExpiresByType application/javascript "access plus 1 hour"
+</IfModule>
+
+# CSS/JS must revalidate: pages ship new markup alongside old stylesheets
+# otherwise (7-day caches served a dark-era stylesheet against the cream
+# redesign). Versioned query strings on <link>/<script> do the hard busting;
+# this is the safety net for pages missed by a version bump.
+<IfModule mod_headers.c>
+<FilesMatch "\.(css|js)$">
+Header set Cache-Control "max-age=3600, must-revalidate"
+</FilesMatch>
 </IfModule>

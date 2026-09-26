@@ -52,7 +52,10 @@ $cssFiles = @(
 foreach($c in $cssFiles){
   if(-not (Test-Path -LiteralPath (Join-Path $root ('css/' + $c)))){ throw "Missing stylesheet: css/$c" }
 }
-$cssLines = ($cssFiles | ForEach-Object { '  <link rel="stylesheet" href="css/' + $_ + '">' }) -join $nl
+# Cache-busting: version query forces browsers to re-fetch when CSS/JS change.
+# Bump $assetVer on every visual change (or sed-bump across pages).
+$assetVer = '?v=20260925b'
+$cssLines = ($cssFiles | ForEach-Object { '  <link rel="stylesheet" href="css/' + $_ + $assetVer + '">' }) -join $nl
 
 # ------------------------------------------------------------
 # 3. Body sections (order must match build.ps1 bodySections)
@@ -76,11 +79,11 @@ if($sectionTexts.Count -ne 18){ throw "Expected 18 body sections, found $($secti
 # ------------------------------------------------------------
 # 4. Scripts (fixed order, classic defer for file:// support)
 # ------------------------------------------------------------
-$scripts = '  <script defer src="js/simulator.js"></script>'      + $nl +
-           '  <script defer src="js/site.js"></script>'          + $nl +
-           '  <script defer src="js/main-dashboard.js"></script>'+ $nl +
-           '  <script defer src="js/navigation.js"></script>'    + $nl +
-           '  <script defer src="js/animations.js"></script>'
+$scripts = '  <script defer src="js/simulator.js' + $assetVer + '"></script>'      + $nl +
+           '  <script defer src="js/site.js' + $assetVer + '"></script>'          + $nl +
+           '  <script defer src="js/main-dashboard.js' + $assetVer + '"></script>'+ $nl +
+           '  <script defer src="js/navigation.js' + $assetVer + '"></script>'    + $nl +
+           '  <script defer src="js/animations.js' + $assetVer + '"></script>'
 foreach($j in @('simulator.js','site.js','main-dashboard.js','navigation.js','animations.js')){
   if(-not (Test-Path -LiteralPath (Join-Path $root ('js/' + $j)))){ throw "Missing script: js/$j" }
 }
@@ -116,10 +119,10 @@ $idxText = ReadUtf8 (Join-Path $root 'index.html')
 
 # 6a. every stylesheet and script must be linked
 foreach($c in $cssFiles){
-  if(-not $idxText.Contains('href="css/' + $c + '"')){ throw "index.html is missing stylesheet link: css/$c" }
+  if(-not $idxText.Contains('href="css/' + $c + $assetVer + '"')){ throw "index.html is missing stylesheet link: css/$c" }
 }
 foreach($j in @('simulator.js','site.js','main-dashboard.js','navigation.js','animations.js')){
-  if(-not $idxText.Contains('src="js/' + $j + '"')){ throw "index.html is missing script link: js/$j" }
+  if(-not $idxText.Contains('src="js/' + $j + $assetVer + '"')){ throw "index.html is missing script link: js/$j" }
 }
 Out-Log ("  css + js links verified (" + $cssFiles.Count + " stylesheets, 5 scripts)")
 

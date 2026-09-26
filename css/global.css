@@ -34,16 +34,16 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 :focus-visible{outline:2px solid var(--leaf);outline-offset:3px;border-radius:4px}
 
 .wrap{max-width:var(--max);margin:0 auto;padding:0 5vw}
-.section{padding:96px 0;border-top:1px solid var(--rule)}
+.section{padding:76px 0;border-top:1px solid var(--rule)}
 .section.alt{background:var(--void-2)}
 /* dark gradients reserved for specific visual sections of the technology */
 .section.dark{background:linear-gradient(180deg,var(--dvoid-2),var(--dvoid) 60%,#0a120c);color:var(--dink)}
 .section.dark .eyebrow{color:rgba(159,224,164,.85)}
-.section.dark .h-display{color:#fff}
+.section.dark .h-display{color:#fff;max-width:none}
 .section.dark .lede{color:rgba(255,255,255,.6)}
 .eyebrow{font-family:var(--mono);font-size:10px;letter-spacing:.25em;text-transform:uppercase;color:var(--leaf-deep)}
-.h-display{font-size:clamp(2.8rem,6vw,5.2rem);line-height:.9;font-weight:600;letter-spacing:-.06em;margin-top:20px;color:var(--ink)}
-.lede{font-family:var(--serif);font-size:18px;line-height:1.6;color:var(--ink-soft);max-width:52ch}
+.h-display{font-size:clamp(1.9rem,3.6vw,3rem);line-height:1.06;font-weight:600;letter-spacing:-.03em;margin-top:18px;color:var(--ink);max-width:22ch}
+.lede{font-family:var(--serif);font-size:19.5px;line-height:1.65;color:var(--ink-soft);max-width:54ch}
 .serif{font-family:var(--serif)}
 .mono{font-family:var(--mono)}
 .mute{color:var(--mute)}

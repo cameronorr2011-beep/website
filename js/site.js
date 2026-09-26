@@ -19,7 +19,7 @@ var SIGNALS = [
 var GATES = [
   {n:"GATE 01", h:"Arithmetic, not opinion", p:"Hard limits on dose mass, pump runtime, pH band, temperature ceiling and actuation frequency. A proposal outside them is rejected and logged before it reaches anything wet."},
   {n:"GATE 02", h:"The twin runs the counterfactual", p:"The surviving proposal is simulated. If the forecast stalls growth, crosses a pH boundary, or spikes dissolved oxygen, it is blocked. The model answers in the same units you dose in."},
-  {n:"GATE 03", h:"Firmware owns the MOSFETs", p:"The ESP32 has its own max-duty table in EEPROM, a watchdog that opens the pumps if the Pi stops heartbeating, and a physical mushroom e-stop that does not ask anyone's opinion."}
+  {n:"GATE 03", h:"Firmware owns the MOSFETs", p:"The ESP32 has its own max-duty table in EEPROM, a watchdog that opens the pumps if the Pi stops heartbeating, and a physical e-stop that does not ask anyone's opinion."}
 ];
 var LOOP = [
   ["1 Sense","MCP analog front-end + I²C + camera"],
@@ -124,7 +124,7 @@ var JOURNAL = [
     {aside:"Every clean run and every crash makes the cut. We mean that. AP-02 is in the firmware comments."}]},
   {slug:"a-pump-is-a-weapon", title:"A dosing pump is a weapon if you do not clamp it", dek:"Bounded autonomy is not a slogan. It is a MOSFET and a number in EEPROM.", date:"3 Sep 2025", minutes:7, tags:["safety","firmware"], body:[
     {p:"The planner is allowed to propose experiments. It is not allowed to act on them. The distinction lives in three places at once, because we do not trust any one of them."},
-    {p:"Layer one is software on the Pi: hard limits on dose mass, pump runtime, pH band, temperature ceiling, and actuation frequency. A proposal outside them is rejected and logged. Layer two is the twin. The surviving proposal is simulated; if the forecast stalls growth, crosses a pH boundary, or spikes dissolved oxygen, it is blocked. Layer three is firmware on the ESP32 that owns the MOSFETs. It has its own max-duty table in EEPROM, a watchdog that opens the pumps if the Pi stops heartbeating, and a physical mushroom e-stop that does not ask anyone's opinion."},
+    {p:"Layer one is software on the Pi: hard limits on dose mass, pump runtime, pH band, temperature ceiling, and actuation frequency. A proposal outside them is rejected and logged. Layer two is the twin. The surviving proposal is simulated; if the forecast stalls growth, crosses a pH boundary, or spikes dissolved oxygen, it is blocked. Layer three is firmware on the ESP32 that owns the MOSFETs. It has its own max-duty table in EEPROM, a watchdog that opens the pumps if the Pi stops heartbeating, and a physical e-stop that does not ask anyone's opinion."},
     {p:"We once let a planner (a language model, to be specific, and we deserved what we got) propose 'raise alkalinity to target' without a rate. The software gate caught the mass. If it had not, the firmware would have. If it had not, there is a red button on the front of the brick. The culture is expensive in time. The pump is cheap. We take the pump's side."},
     {aside:"Fail closed. If you remember one design rule from this site, remember that."}]},
   {slug:"zarrouk-from-the-hardware-store", title:"Zarrouk's medium from things you can actually buy", dek:"The original recipe assumes a storeroom. Ours assumes a town.", date:"21 Aug 2025", minutes:6, tags:["media","open source"], body:[
