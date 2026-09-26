@@ -151,45 +151,18 @@
 .algaephyte-detail .ad-card .ad-icon{color:var(--leaf-deep);font-size:1.2rem}
 @media(max-width:720px){.algaephyte-detail{grid-template-columns:1fr}}
 
-/* ---------- blog: focus of the day (dark feature panel on cream) ---------- */
-.focus-day{position:relative;border-radius:20px;overflow:hidden;margin-top:48px;color:var(--dink);
-  background:radial-gradient(90% 70% at 85% 0%,rgba(90,208,122,.12),transparent 60%),linear-gradient(160deg,var(--dvoid-2),var(--dvoid) 70%,#0a120c);
-  border:1px solid rgba(90,208,122,.3);box-shadow:0 40px 90px -60px rgba(29,92,44,.55)}
-.fd-grid{display:grid;grid-template-columns:1.15fr .85fr}
-.fd-main{padding:clamp(26px,4vw,44px)}
-.fd-side{border-left:1px solid rgba(255,255,255,.1);padding:clamp(26px,4vw,44px) clamp(22px,3vw,36px);display:flex;flex-direction:column;gap:20px;background:rgba(0,0,0,.25)}
-.fd-label{display:flex;align-items:center;gap:10px;font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--dleaf);margin-bottom:16px}
-.fd-label .dot{width:8px;height:8px;border-radius:50%;background:var(--dleaf);box-shadow:0 0 12px var(--dleaf);animation:fdpulse 2s infinite}
-@keyframes fdpulse{0%,100%{opacity:.4}50%{opacity:1}}
-@media (prefers-reduced-motion:reduce){.fd-label .dot{animation:none}}
-.fd-date{margin-left:auto;color:var(--d-mute)}
-.focus-day h2{font-family:"Bricolage Grotesque",system-ui,sans-serif;font-size:clamp(1.5rem,3vw,2.1rem);line-height:1.2;margin:0 0 12px;color:#fff;letter-spacing:-.02em}
-.focus-day .dek{color:var(--dink-soft);font-size:1.05rem;line-height:1.65;margin:0}
-.fd-body{margin-top:18px;color:var(--dink-soft);font-size:.98rem;line-height:1.75;max-width:66ch}
-.fd-body p+p{margin-top:12px}
-.fd-takeaways{margin:18px 0 0;padding:0;list-style:none;display:grid;gap:9px}
-.fd-takeaways li{position:relative;padding-left:24px;color:var(--dink-soft);font-size:.88rem}
-.fd-takeaways li::before{content:"";position:absolute;left:2px;top:.5em;width:8px;height:8px;border-radius:50%;background:var(--dleaf);box-shadow:0 0 8px rgba(125,216,138,.6)}
-.fd-why{margin-top:18px;border-left:2px solid var(--dleaf);padding:5px 0 5px 14px;color:var(--d-mute);font-size:.85rem;line-height:1.6}
-.fd-why b{color:var(--dleaf);font-weight:500}
-.fd-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
-.fd-tags span{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.14em;padding:5px 11px;border:1px solid rgba(125,216,138,.3);border-radius:99px;color:var(--dleaf)}
-.src-card{border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:16px 18px;background:rgba(0,0,0,.3)}
-.src-card .sc-k{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--d-mute);margin-bottom:9px}
-.src-card .sc-t{font-size:.9rem;color:#eef3ea;line-height:1.45}
-.src-card .sc-m{margin-top:9px;font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--dink-soft);line-height:1.8}
-.src-card .sc-m b{color:var(--dleaf);font-weight:500}
-.src-card a{color:var(--dleaf-2);text-decoration:none;border-bottom:1px solid rgba(125,216,138,.4)}
-.src-card a:hover{color:#fff}
-.fd-meta{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--d-mute);line-height:2.1}
-.fd-meta b{color:var(--dink-soft);font-weight:500}
-.fd-skeleton{min-height:300px;display:flex;align-items:center;justify-content:center;color:var(--d-mute);font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.18em;text-transform:uppercase}
-.fd-error{text-align:center;display:grid;gap:12px;justify-items:center;padding:34px 16px}
-.fd-error .big{font-family:"Source Serif 4",serif;font-size:1.35rem;color:var(--dink-soft)}
-@media (max-width:860px){
-  .fd-grid{grid-template-columns:1fr}
-  .fd-side{border-left:0;border-top:1px solid rgba(255,255,255,.1)}
-}
+/* ---------- blog: today's four AI-written article cards ---------- */
+.pick-card{cursor:default}
+.pick-card .pk-title a{color:inherit;text-decoration:none;transition:color .2s}
+.pick-card .pk-title a:hover{color:var(--leaf-deep)}
+.pick-card .pk-article{font-size:.93rem;line-height:1.72;color:var(--ink-soft);font-family:"Source Serif 4",Georgia,serif;margin-top:4px}
+.pick-card .pk-article p+p{margin-top:10px}
+.pick-card .pk-why{margin-top:16px;border-left:2px solid var(--leaf);padding:4px 0 4px 14px;color:var(--mute);font-size:.85rem;line-height:1.6}
+.pick-card .pk-why b{color:var(--leaf-deep);font-weight:500}
+.pick-card .rt-foot .pk-link{display:inline-flex;align-items:center;gap:6px;color:var(--leaf-deep);font-weight:600;font-family:"Bricolage Grotesque",system-ui,sans-serif;font-size:.85rem;letter-spacing:0;text-transform:none;text-decoration:none}
+.pick-card .rt-foot .pk-link svg{width:14px;height:14px;transition:transform .3s cubic-bezier(.16,1,.3,1)}
+.pick-card .rt-foot .pk-link:hover svg{transform:translateX(4px)}
+.pick-card .rot-thumb a{display:block;width:100%;height:100%}
 
 /* ---------- blog: shared section heading (consistency) ---------- */
 .sec-h2{font-family:"Bricolage Grotesque",system-ui,sans-serif;font-size:clamp(1.4rem,2.6vw,1.9rem);margin:0 0 10px;color:var(--ink);letter-spacing:-.02em}
@@ -212,7 +185,7 @@
 .rot-card p{font-size:.98rem;line-height:1.65;color:var(--ink-soft);font-family:"Source Serif 4",Georgia,serif;margin:0 0 18px;flex:1}
 .rot-card .rt-foot{display:flex;justify-content:space-between;align-items:center;gap:10px;font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute)}
 .rot-card .rt-foot b{color:var(--leaf-deep);font-weight:500}
-.rot-card .rt-go{display:inline-flex;align-items:center;gap:6px;color:var(--leaf-deep);font-weight:600;font-family:"Bricolage Grotesque",system-ui,sans-serif;font-size:.85rem;letter-spacing:0;text-transform:none}
+.rot-card .rt-go{display:inline-flex;align-items:center;gap:6px;color:var(--leaf-deep);font-weight:600;font-family:"Bricolage Grotesque",system-ui,sans-serif;font-size:.85rem;letter-spacing:0;text-transform:none;text-decoration:none}
 .rot-card .rt-go svg{width:14px;height:14px;transition:transform .3s cubic-bezier(.16,1,.3,1)}
 .rot-card:hover .rt-go svg{transform:translateX(4px)}
 @media (max-width:640px){.rot-grid{grid-template-columns:1fr}}

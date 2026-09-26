@@ -9,8 +9,9 @@ Once a day this script:
      research across several topic families (biotech, biofuels, health,
      climate, cultivation, single-cell methods...).
   2. Sends the candidate list (titles + abstracts, truncated) to
-     GPT-OSS-120B on Groq, which SELECTS the most interesting and
-     relevant articles (up to 10) and writes a one-line reason for each.
+     GPT-OSS-120B on Groq, which SELECTS the four most interesting and
+     relevant articles, then writes a separate short article for each
+     pick (strictly grounded in its abstract).
   3. Writes website/data/picks/<date>.json and regenerates
      website/data/picks/index.json (newest first) for the Blog tab.
 
@@ -62,6 +63,7 @@ SEARCH_TERMS = [
     'microalgae[Title/Abstract] AND (industry[Title/Abstract] OR market[Title/Abstract] OR commercial[Title/Abstract] OR policy[Title/Abstract])',
     'Spirulina[Title/Abstract] AND (food[Title/Abstract] OR feed[Title/Abstract] OR supplement[Title/Abstract] OR safety[Title/Abstract])',
     'algal[Title/Abstract] AND (pigment[Title/Abstract] OR phycocyanin[Title/Abstract] OR astaxanthin[Title/Abstract] OR omega-3[Title/Abstract])',
+    '(algal[Title/Abstract] OR phytoplankton[Title/Abstract] OR cyanobacteri*[Title/Abstract]) AND (bloom*[Title/Abstract] OR eutrophication[Title/Abstract] OR harmful[Title/Abstract])',
 ]
 
 UA = "OrrBiologicals-PickBot/1.0 (educational website; contact: service@orrbiologicals.com)"
@@ -168,7 +170,7 @@ PICKS_SCHEMA = {
                 "properties": {
                     "pmid": {"type": "string"},
                     "topic": {"type": "string",
-                              "description": "2-4 word topic label, e.g. Biotech, Biofuels, Health, Climate, Cultivation, Single-cell, Environment, Engineering"},
+                              "description": "2-4 word topic label, e.g. Biotech, Biofuels, Health, Climate, Blooms, Ecology, Cultivation, Single-cell, Environment, Engineering"},
                     "hook": {"type": "string",
                              "description": "one sentence, max 150 chars, why a curious reader should open this one"},
                 },
@@ -177,6 +179,18 @@ PICKS_SCHEMA = {
         },
     },
     "required": ["picks"],
+}
+
+ARTICLE_SCHEMA = {
+    "type": "object",
+    "additionalProperties": False,
+    "properties": {
+        "article": {"type": "string",
+                    "description": "3-5 short plain-text paragraphs for a curious non-specialist explaining what the study did, what it found and why it is interesting -- strictly grounded in the abstract; never invent numbers, results or claims; plain paragraphs separated by \\n\\n; no headings, no markdown"},
+        "why": {"type": "string",
+                "description": "one sentence connecting the finding to algae biotechnology or everyday life, max 180 chars"},
+    },
+    "required": ["article", "why"],
 }
 
 
@@ -241,6 +255,71 @@ def ai_select(articles: list[dict], today: str) -> dict:
     if data is None:
         raise RuntimeError("groq: no response after retries")
     log(f"groq: {data.get('usage', {}).get('total_tokens', '?')} tokens")
+    return json.loads(data["choices"][0]["message"]["content"])
+
+
+def write_article(article: dict, today: str) -> dict:
+    """Write one short grounded article for a single picked paper.
+
+    One Groq call per pick, paced so consecutive calls stay under the
+    free tier's per-minute token budget (429s are retried once).
+    """
+    api_key = os.environ.get("groq_api_key") or os.environ.get("GROQ_API_KEY")
+    if not api_key:
+        raise RuntimeError("groq_api_key / GROQ_API_KEY not set")
+
+    system = (
+        "You write for the Cyanoflow daily algae digest by Orr Biologicals. "
+        "You receive ONE real peer-reviewed abstract. Write a short article "
+        "for curious non-specialists explaining what the study did, what it "
+        "found, and why it is interesting. STRICT GROUNDING RULES: use only "
+        "facts present in the abstract; never invent numbers, results, or "
+        "claims; if the abstract does not say something, do not say it. "
+        "Tone: precise, warm, plain language, no hype. Return ONLY JSON "
+        "matching the provided schema."
+    )
+    user = (
+        f"Date: {today}\n"
+        f"Journal: {article['journal']} ({article['year']})\n"
+        f"Title: {article['title']}\n\n"
+        f"Abstract:\n{article['abstract']}\n"
+    )
+    payload = {
+        "model": MODEL,
+        "messages": [
+            {"role": "system", "content": system},
+            {"role": "user", "content": user},
+        ],
+        "response_format": {"type": "json_schema", "json_schema": {
+            "name": "pick_article", "schema": ARTICLE_SCHEMA, "strict": True}},
+        "temperature": 0.5,
+        "max_completion_tokens": 1200,
+        "reasoning_effort": "low",
+    }
+    req = urllib.request.Request(
+        "https://api.groq.com/openai/v1/chat/completions",
+        data=json.dumps(payload).encode("utf-8"),
+        headers={"Authorization": f"Bearer {api_key}",
+                 "Content-Type": "application/json",
+                 "User-Agent": BROWSER_UA},
+        method="POST")
+    data = None
+    for attempt in range(3):
+        try:
+            with urllib.request.urlopen(req, timeout=120) as r:
+                data = json.loads(r.read().decode("utf-8"))
+            break
+        except urllib.error.HTTPError as e:
+            if e.code == 429 and attempt < 2:
+                wait = 60 + 10 * (attempt + 1)
+                log(f"groq: rate limited on article -- retrying in {wait}s")
+                time.sleep(wait)
+                continue
+            raise
+    if data is None:
+        raise RuntimeError("groq: no response after retries")
+    log(f"groq: article PMID {article['pmid']} -- "
+        f"{data.get('usage', {}).get('total_tokens', '?')} tokens")
     return json.loads(data["choices"][0]["message"]["content"])
 
 
@@ -314,6 +393,25 @@ def main() -> int:
     if not picks:
         log("FAIL: selection produced no valid picks -- nothing written")
         return 1
+
+    # A separate short article per pick. One thin article must not sink
+    # the day: keep the pick with a fail-closed placeholder, not a quote.
+    ok = True
+    for p in picks:
+        a = by_pmid[p["pmid"]]
+        try:
+            art = write_article(a, today)
+            body = str(art.get("article", "")).strip()
+            if len(body) < 200:
+                raise ValueError("article too thin")
+            p["article"] = body[:2400]
+            p["why"] = str(art.get("why", ""))[:180]
+        except Exception as e:
+            ok = False
+            log(f"warn: article for PMID {p['pmid']} failed ({e}) -- pick kept without body")
+        time.sleep(20)  # pace calls: stay inside the free tier's TPM window
+    if not ok:
+        log("note: some picks have no article body (hooks still shown)")
 
     out = {"date": today, "model": MODEL,
            "generated_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),

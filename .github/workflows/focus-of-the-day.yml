@@ -1,7 +1,8 @@
-name: Focus of the Day
+name: Daily blog refresh
 
-# Generates the daily algae research brief for the Blog page:
-#   PubMed search -> GPT-OSS-120B (Groq) -> blog/data/focus/<date>.json
+# Generates the daily Blog content:
+#   PubMed search -> GPT-OSS-120B (Groq) picks 4 papers and writes
+#   a short grounded article for each -> blog/data/picks/<date>.json
 #
 # Refresh time: 1:00 PM Pacific, every day, DST-safe.
 #   GitHub cron is UTC-only and cannot express "1 PM America/Los_Angeles",
@@ -20,7 +21,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: focus-of-the-day
+  group: daily-blog-refresh
   cancel-in-progress: false
 
 jobs:
@@ -47,13 +48,7 @@ jobs:
             exit 78 # neutral: the other scheduled slot owns this run
           fi
 
-      - name: Generate today's focus
-        if: ${{ !cancelled() && steps.gate.conclusion != 'failure' }}
-        env:
-          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
-        run: python tools/blog/generate_focus.py
-
-      - name: Rotate daily article picks
+      - name: Pick four papers and write them up
         if: ${{ !cancelled() && steps.gate.conclusion != 'failure' }}
         env:
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
@@ -63,7 +58,7 @@ jobs:
         run: |
           git config user.name "focus-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add blog/data/focus/ blog/data/picks/
+          git add blog/data/picks/
           if git diff --cached --quiet; then
             echo "Nothing new to commit"
           else
