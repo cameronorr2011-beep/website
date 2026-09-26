@@ -43,7 +43,7 @@ DATA_DIR = ROOT / "blog" / "data" / "picks"
 MODEL = os.environ.get("GROQ_MODEL", "openai/gpt-oss-120b")
 
 EUTILS = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils"
-MAX_PICKS = 10
+MAX_PICKS = 4
 
 # Topic families the AI chooses from — broad by design so the daily
 # rotation moves across biotech, fuels, health, climate and methods.
@@ -191,10 +191,10 @@ def ai_select(articles: list[dict], today: str) -> dict:
     )
     system = (
         "You are the editor of the Cyanoflow daily algae digest by Orr "
-        "Biologicals. From the candidate list, select the 5 to 10 most "
+        "Biologicals. From the candidate list, select exactly the 4 most "
         "interesting and relevant recent articles about algae for readers "
         "interested in algae biotechnology. Aim for topical variety across "
-        "the list (biotech, biofuels, health, climate, cultivation, "
+        "the four (biotech, biofuels, health, climate, cultivation, "
         "single-cell methods, environment, engineering). Only pick articles "
         "from the list, by PMID. For each pick give a short topic label and "
         "a one-sentence hook grounded in the abstract. Never invent facts. "

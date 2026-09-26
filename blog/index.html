@@ -3,25 +3,21 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Blog — Focus of the Day &amp; the Orr Biologicals field library | Orr Biologicals</title>
-<meta name="description" content="Every day an AI reads the newest peer-reviewed algae research and writes a grounded brief — the Focus of the Day, refreshed daily at 1:00 PM Pacific. Below it, a rotating shelf of Spirulina cultivation guides and the two products, Algaephyte and Cyanoflow.">
+<title>Blog — Focus of the Day &amp; AI-picked papers | Orr Biologicals</title>
+<meta name="description" content="Every day an AI reads the newest peer-reviewed algae research, writes one grounded brief — the Focus of the Day — and selects four papers worth your hands. Refreshed daily at 1:00 PM Pacific.">
 <link rel="canonical" href="https://orrbiologicals.com/blog/">
 <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
 <meta property="og:title" content="Orr Biologicals — Blog">
-<meta property="og:description" content="A daily AI research brief at 1:00 PM Pacific, a rotating shelf of Spirulina cultivation guides, and the two products: Algaephyte and Cyanoflow.">
+<meta property="og:description" content="A daily AI research brief and four AI-selected papers from the live literature. Refreshed every day at 1:00 PM Pacific.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://orrbiologicals.com/blog/">
 <meta property="og:image" content="https://orrbiologicals.com/assets/og.png">
 <meta name="twitter:card" content="summary_large_image">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Blog","name":"Orr Biologicals Blog","url":"https://orrbiologicals.com/blog/","description":"Daily AI-summarized algae research briefs and field notes on Spirulina cultivation, photobioreactors and AI-assisted biology."}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Blog","name":"Orr Biologicals Blog","url":"https://orrbiologicals.com/blog/","description":"Daily AI-summarized algae research briefs and AI-selected papers on Spirulina cultivation, photobioreactors and AI-assisted biology."}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..700&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,0..560&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/css/extras.css?v=20260925b">
-<style>
-/* ===== Blog page — cream, consistent with the site ===== */
-.blog-search{display:none} /* search removed by design */
-</style>
+<link rel="stylesheet" href="/css/extras.css?v=20260925c">
 </head>
 <body class="art-body">
 <div class="art-shell" style="max-width:1080px">
@@ -29,9 +25,9 @@
     <a href="/">&#8592; Orr Biologicals</a>
     <a href="/#products">Products</a><a href="/applications/">Applications</a><a href="/game/">Game</a>
   </nav>
-  <p class="art-cat">Focus of the Day · Rotating shelf · Full library</p>
+  <p class="art-cat">Focus of the Day · AI-selected papers</p>
   <h1>The algae blog,<br>updated every day</h1>
-  <p class="art-meta">Every day at <b>1:00 PM Pacific</b> an AI reads the newest peer-reviewed algae research — papers, books and news — and writes one grounded brief: the Focus of the Day. Around it, a small rotating shelf of cultivation guides and the two products.</p>
+  <p class="art-meta">Every day at <b>1:00 PM Pacific</b> an AI searches the newest peer-reviewed algae research on PubMed, writes one grounded brief — the Focus of the Day — and picks the four papers most worth your hands. Nothing is invented: every claim links back to its source.</p>
 
   <!-- ============ FOCUS OF THE DAY ============ -->
   <div class="focus-day" id="focus">
@@ -56,79 +52,48 @@
     </div>
   </div>
 
-  <!-- ============ ROTATING SHELF (4 cards) ============ -->
-  <section id="shelf" style="margin-top:64px">
-    <p class="art-cat" style="margin-top:0">The rotating shelf</p>
-    <h2 style="font-size:clamp(1.4rem,2.6vw,1.9rem);margin:0 0 4px;color:var(--ink)">Four cards, refreshed daily.</h2>
-    <p style="color:var(--ink-soft);max-width:70ch;line-height:1.7;margin:0">The Focus of the Day, one Spirulina cultivation guide that rotates through the library, and the two products. The shelf changes every day at 1:00 PM Pacific, alongside the brief.</p>
-    <div class="rot-grid" id="rotGrid">
-      <!-- Focus of the Day card (filled by JS with the day's real thumbnail) -->
-      <a class="rot-card" id="rotFocus" href="#focus">
-        <span class="rot-thumb"><img id="rotFocusImg" src="/assets/images/microscopy/sim-field.jpg" alt="" loading="lazy"><span class="rt-chip">Focus of the Day</span></span>
+  <!-- ============ AI-SELECTED PAPERS (4) ============ -->
+  <section id="picks" style="margin-top:64px">
+    <p class="art-cat" style="margin-top:0">From today's literature</p>
+    <h2 class="sec-h2">Four papers the AI pulled from the internet.</h2>
+    <p class="art-meta" style="margin-bottom:0">Selected each day from live PubMed search across biotech, health, climate, cultivation and single-cell methods — topical variety, real sources, no filler.</p>
+    <div class="rot-grid" id="pickGrid">
+      <a class="rot-card pk-card" id="pk0" target="_blank" rel="noopener" hidden>
+        <span class="rot-thumb"><img class="pk-img" src="" alt="" loading="lazy"><span class="rt-chip pk-topic"></span></span>
         <span class="rt-body">
-          <h3 id="rotFocusTitle">Loading today's focus…</h3>
-          <p id="rotFocusDek"></p>
-          <span class="rt-foot"><b id="rotFocusSrc"></b><span class="rt-go">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
+          <h3 class="pk-title"></h3>
+          <p class="pk-hook"></p>
+          <span class="rt-foot"><b class="pk-src"></b><span class="rt-go">Read the paper <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
         </span>
       </a>
-      <!-- Spirulina cultivation guide (rotates daily) -->
-      <a class="rot-card" id="rotSpir">
-        <span class="rot-thumb"><img id="rotSpirImg" src="/assets/images/library/starter-culture.svg" alt="" loading="lazy"><span class="rt-chip">Spirulina cultivation</span></span>
+      <a class="rot-card pk-card" id="pk1" target="_blank" rel="noopener" hidden>
+        <span class="rot-thumb"><img class="pk-img" src="" alt="" loading="lazy"><span class="rt-chip pk-topic"></span></span>
         <span class="rt-body">
-          <h3 id="rotSpirTitle">Spirulina cultivation guide</h3>
-          <p id="rotSpirDek"></p>
-          <span class="rt-foot"><b id="rotSpirTag"></b><span class="rt-go">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
+          <h3 class="pk-title"></h3>
+          <p class="pk-hook"></p>
+          <span class="rt-foot"><b class="pk-src"></b><span class="rt-go">Read the paper <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
         </span>
       </a>
-      <!-- Products -->
-      <a class="rot-card" href="/cyanoflow">
-        <span class="rot-thumb"><img src="/assets/cyano/hero-field.jpg" alt="Microalgae cells imaged through the Cyanoflow microfluidic chip" loading="lazy"><span class="rt-chip">Research platform</span></span>
+      <a class="rot-card pk-card" id="pk2" target="_blank" rel="noopener" hidden>
+        <span class="rot-thumb"><img class="pk-img" src="" alt="" loading="lazy"><span class="rt-chip pk-topic"></span></span>
         <span class="rt-body">
-          <h3>Cyanoflow — Single-Cell Discovery</h3>
-          <p>The developing research platform: microfluidics, automated microscopy, computer vision and AI phenotyping designed to measure individual microalgal cells — and recover the ones worth keeping.</p>
-          <span class="rt-foot"><b>Cyanoflow</b><span class="rt-go">Explore <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
+          <h3 class="pk-title"></h3>
+          <p class="pk-hook"></p>
+          <span class="rt-foot"><b class="pk-src"></b><span class="rt-go">Read the paper <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
         </span>
       </a>
-      <a class="rot-card" href="/">
-        <span class="rot-thumb"><img src="/assets/images/hero.jpg" alt="Algaephyte photobioreactor with a dense green Arthrospira culture" loading="lazy"><span class="rt-chip">Photobioreactor</span></span>
+      <a class="rot-card pk-card" id="pk3" target="_blank" rel="noopener" hidden>
+        <span class="rot-thumb"><img class="pk-img" src="" alt="" loading="lazy"><span class="rt-chip pk-topic"></span></span>
         <span class="rt-body">
-          <h3>Algaephyte — the self-tending reactor</h3>
-          <p>Six sensors, a camera and a physics-based digital twin; three safety gates between every proposal and the pump. It fails closed, runs on modest hardware, and never needs the cloud to keep a culture alive.</p>
-          <span class="rt-foot"><b>Algaephyte</b><span class="rt-go">Explore <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
+          <h3 class="pk-title"></h3>
+          <p class="pk-hook"></p>
+          <span class="rt-foot"><b class="pk-src"></b><span class="rt-go">Read the paper <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
         </span>
       </a>
     </div>
-  </section>
-
-  <!-- ============ FULL LIBRARY ============ -->
-  <section id="library" style="margin-top:64px">
-    <p class="art-cat" style="margin-top:0">Field notes · Guides · Essays</p>
-    <h2 style="font-size:clamp(1.4rem,2.6vw,1.9rem);margin:0 0 4px;color:var(--ink)">Notes on biology, written plainly.</h2>
-    <div class="ins-grid" id="notesGrid">
-      <a class="ins-card" href="/applications/"><span class="ins-img"><img src="/assets/images/library/culture-vessels.svg" alt="" loading="lazy"></span><h2>Applications &amp; Species Guides</h2><p>The Algaephyte knowledge hub: microalgae cultivation, aquaculture live feeds, ten species guides and algal biotechnology.</p><small>Knowledge hub</small></a>
-      <a class="ins-card" href="/blog/how-to-start-home-spirulina-culture"><span class="ins-img"><img src="/assets/images/library/starter-culture.svg" alt="" loading="lazy"></span><h2>How to Start a Home Spirulina Culture</h2><p>What you need, live culture vs powder, warmth, light and alkalinity — the honest first steps.</p><small>Spirulina</small></a>
-      <a class="ins-card" href="/blog/harvesting-and-using-fresh-spirulina"><span class="ins-img"><img src="/assets/images/library/isochrysis-cells.svg" alt="" loading="lazy"></span><h2>Harvesting Fresh Spirulina</h2><p>When to harvest, simple screening methods, storage, freshness economics.</p><small>Spirulina</small></a>
-      <a class="ins-card" href="/blog/reading-your-culture"><span class="ins-img"><img src="/assets/images/microscopy/sim-field.jpg" alt="" loading="lazy"></span><h2>Reading Your Culture: Color, Density, Smell</h2><p>A no-lab guide to reading Spirulina health: blue-green color cues, spoon-depth density tests, smell diagnostics and the cheap measurements worth taking daily.</p><small>Spirulina</small></a>
-      <a class="ins-card" href="/blog/winter-home-growing-warmth"><span class="ins-img"><img src="/assets/images/library/culture-vessels.svg" alt="" loading="lazy"></span><h2>Keeping a Home Spirulina Culture Warm Through Winter</h2><p>Heaters, insulation and placement strategy for keeping Spirulina in its 30–37°C comfort band through cold months — warmth before anything else.</p><small>Spirulina</small></a>
-      <a class="ins-card" href="/blog/zarrouk-medium-and-nutrients"><span class="ins-img"><img src="/assets/images/library/biotech-compounds.svg" alt="" loading="lazy"></span><h2>Zarrouk Medium and Nutrients</h2><p>The chemistry that feeds Arthrospira: bicarbonate as carbon source and shield.</p><small>Photobioreactors</small></a>
-      <a class="ins-card" href="/blog/light-temperature-mixing"><span class="ins-img"><img src="/assets/images/library/culture-vessels.svg" alt="" loading="lazy"></span><h2>Light, Temperature and Mixing</h2><p>The three physical levers — and why more of any one stops helping early.</p><small>Photobioreactors</small></a>
-      <a class="ins-card" href="/blog/alkalinity-as-a-control-variable"><span class="ins-img"><img src="/assets/images/library/biotech-compounds.svg" alt="" loading="lazy"></span><h2>Alkalinity as a Control Variable</h2><p>In Spirulina culture, pH is not a knob — it is the readout of the carbon budget. Why alkalinity is the real control variable, and what that means for automation.</p><small>Photobioreactors</small></a>
-      <a class="ins-card" href="/blog/dissolved-oxygen-stress-signal"><span class="ins-img"><img src="/assets/images/library/culture-vessels.svg" alt="" loading="lazy"></span><h2>Dissolved Oxygen as a Stress Signal</h2><p>Afternoon oxygen plateaus explained: supersaturation, self-poisoning of photosynthesis, and how a twin treats DO as a state variable rather than a footnote.</p><small>Photobioreactors</small></a>
-      <a class="ins-card" href="/blog/six-culture-signals-main-senses"><span class="ins-img"><img src="/assets/images/microscopy/bench-photo.jpg" alt="" loading="lazy"></span><h2>Six Culture Signals: What a Reactor Senses</h2><p>pH, temperature, wall irradiance, OD750, dissolved oxygen, conductivity — six channels each telling a different biological story about one culture.</p><small>Photobioreactors</small></a>
-      <a class="ins-card" href="/blog/spirulina-is-a-cyanobacterium"><span class="ins-img"><img src="/assets/images/microscopy/sim-field.jpg" alt="" loading="lazy"></span><h2>Spirulina Is a Cyanobacterium</h2><p>What Arthrospira actually is, and why the taxonomy matters for growers.</p><small>Microalgae</small></a>
-      <a class="ins-card" href="/blog/troubleshooting-contamination-crashes"><span class="ins-img"><img src="/assets/images/library/contamination.svg" alt="" loading="lazy"></span><h2>Troubleshooting Contamination</h2><p>Grazers, competitors, and using high pH as passive biosecurity.</p><small>Troubleshooting</small></a>
-      <a class="ins-card" href="/blog/troubleshooting-ph-and-carbon"><span class="ins-img"><img src="/assets/images/library/biotech-compounds.svg" alt="" loading="lazy"></span><h2>pH and Carbon Problems</h2><p>Rising pH is carbon fixation's fingerprint — until it becomes starvation.</p><small>Troubleshooting</small></a>
-      <a class="ins-card" href="/blog/photobioreactor-ai-optimization"><span class="ins-img"><img src="/assets/images/microscopy/bench-photo.jpg" alt="" loading="lazy"></span><h2>AI Optimization in Photobioreactors</h2><p>Bounded proposals checked by hard limits and a physics twin — never direct control.</p><small>AI + Biology</small></a>
-      <a class="ins-card" href="/blog/digital-twins-biological-cultivation"><span class="ins-img"><img src="/assets/images/library/scaling.svg" alt="" loading="lazy"></span><h2>Digital Twins for Cultivation</h2><p>State variables, counterfactuals, simulation-first control of living systems.</p><small>AI + Biology</small></a>
-      <a class="ins-card" href="/blog/digital-twin-droop-steele-model"><span class="ins-img"><img src="/assets/images/library/scaling.svg" alt="" loading="lazy"></span><h2>A Digital Twin Built on Droop and Steele</h2><p>The physics inside an algae digital twin: Droop quota kinetics, Steele's photoinhibition limb, Beer–Lambert self-shading and oxygen inhibition as state variables.</p><small>AI + Biology</small></a>
-      <a class="ins-card" href="/blog/control-loop-architecture"><span class="ins-img"><img src="/assets/images/microscopy/bench-photo.jpg" alt="" loading="lazy"></span><h2>Control Loop Architecture for Living Systems</h2><p>Sense → twin → propose → verify → act. The layered loop architecture that lets software participate in biology without ever owning the pumps.</p><small>AI + Biology</small></a>
-      <a class="ins-card" href="/blog/bounded-autonomy-safe-ai-proposals"><span class="ins-img"><img src="/assets/images/library/biotech-compounds.svg" alt="" loading="lazy"></span><h2>Bounded Autonomy: Keeping AI Proposals Safe</h2><p>Hard-limit validators, counterfactual simulation and firmware clamps: three independent layers that let an AI propose while never risking the culture.</p><small>AI + Biology</small></a>
-      <a class="ins-card" href="/blog/how-main-keeps-culture-safe"><span class="ins-img"><img src="/assets/images/library/culture-vessels.svg" alt="" loading="lazy"></span><h2>How Algaephyte Keeps Your Culture Safe</h2><p>Plain-language walkthrough of the two-check safety system plus physical backstops — and why doing nothing is usually the safe action.</p><small>AI + Biology</small></a>
-      <a class="ins-card" href="/blog/what-is-main-plain-language"><span class="ins-img"><img src="/assets/images/microscopy/bench-photo.jpg" alt="" loading="lazy"></span><h2>What Is Algaephyte? (Plain Language)</h2><p>No-jargon tour of an AI-tended photobioreactor: what it senses, how it decides, why every proposal passes gates, and what the human still owns.</p><small>AI + Biology</small></a>
-      <a class="ins-card" href="/blog/edge-ai-biological-systems"><span class="ins-img"><img src="/assets/images/microscopy/bench-photo.jpg" alt="" loading="lazy"></span><h2>Edge AI for Biological Systems</h2><p>Why vision inference belongs on-device at ~2 W: latency, privacy of your lab bench, and the reliability story cloud loops cannot tell.</p><small>AI + Biology</small></a>
-      <a class="ins-card" href="/blog/vision-contamination-detection"><span class="ins-img"><img src="/assets/images/microscopy/sim-field.jpg" alt="" loading="lazy"></span><h2>Vision-Based Contamination Detection, Honestly</h2><p>What a microscope camera can and cannot classify: healthy helix vs fragment vs not-spirulina — flags that hold pumps, never ones that open them.</p><small>AI + Biology</small></a>
-      <a class="ins-card" href="/blog/federated-learning-network"><span class="ins-img"><img src="/assets/images/library/food-web.svg" alt="" loading="lazy"></span><h2>A Federated Learning Network for Algae Reactors</h2><p>Sharing fitted twin parameters instead of images or traces: MQTT topics, bounds-checking, last-will obituaries and vandal-resistant averaging.</p><small>AI + Biology</small></a>
-      <a class="ins-card" href="/game/"><span class="ins-img"><img src="/assets/images/library/food-web.svg" alt="" loading="lazy"></span><h2>Algae Living (playable)</h2><p>Start as one cell; end operating the reactor. A game model of this whole page.</p><small>Interactive</small></a>
+    <div class="pk-fail" id="pkFail" hidden>
+      <span class="big">Today's paper picks haven't landed yet.</span>
+      <p>They are selected once a day from live PubMed search at 1:00 PM Pacific — check back soon. The Focus of the Day above is always current.</p>
     </div>
   </section>
 
@@ -141,10 +106,11 @@
 </div>
 
 <script>
-/* ---------- Blog: Focus of the Day + daily rotating shelf ---------- */
+/* ---------- Blog: Focus of the Day + four AI-selected papers ---------- */
 (function () {
   "use strict";
   var BASE = "/blog/data/focus/";
+  var PICKS = "/blog/data/picks/";
   function esc(s) { var d = document.createElement("div"); d.textContent = String(s == null ? "" : s); return d.innerHTML; }
   function el(id) { return document.getElementById(id); }
 
@@ -181,13 +147,6 @@
     if (s.url) { link.href = s.url; } else { link.removeAttribute("href"); link.style.display = "none"; }
     el("fdSource").hidden = false;
     el("fdMeta").hidden = false;
-    /* shelf card mirrors the focus */
-    el("rotFocusTitle").textContent = p.title;
-    el("rotFocusDek").textContent = p.dek || "";
-    el("rotFocusSrc").textContent = (s.journal || "Focus of the Day") + " · " + (p.date || "");
-    var dayNum = 0, d = String(p.date || "");
-    if (/^\d{4}-\d{2}-\d{2}$/.test(d)) dayNum = parseInt(d.slice(8, 10), 10) || 0;
-    el("rotFocusImg").src = FOCUS_IMGS[dayNum % FOCUS_IMGS.length];
   }
   function focusError() {
     var wrap = el("fdContent");
@@ -195,39 +154,37 @@
     wrap.innerHTML =
       "<div class=\"fd-error\">" +
       "<span class=\"big\">Today's focus hasn't landed yet.</span>" +
-      "<p style=\"color:var(--d-mute);max-width:44ch;margin:0\">It is generated once a day from live PubMed search at 1:00 PM Pacific — check back soon, or browse the shelf and library below.</p>" +
+      "<p style=\"color:var(--d-mute);max-width:44ch;margin:0\">It is generated once a day from live PubMed search at 1:00 PM Pacific — check back soon.</p>" +
       "</div>";
-    el("rotFocusTitle").textContent = "Focus of the Day — coming at 1:00 PM Pacific";
-    el("rotFocusDek").textContent = "The daily AI brief is being written. The shelf below and the full library are always here.";
-    el("rotFocusSrc").textContent = "Orr Biologicals blog";
   }
 
-  /* ---- rotating Spirulina guide ---- */
-  var GUIDES = [
-    { href: "/blog/how-to-start-home-spirulina-culture", title: "How to Start a Home Spirulina Culture", dek: "What you need, live culture vs powder, warmth, light and alkalinity — the honest first steps.", tag: "Getting started", img: "/assets/images/library/starter-culture.svg" },
-    { href: "/blog/harvesting-and-using-fresh-spirulina", title: "Harvesting and Using Fresh Spirulina", dek: "When to harvest, simple screening methods, storage, and the freshness economics of home-grown biomass.", tag: "Harvest", img: "/assets/images/library/isochrysis-cells.svg" },
-    { href: "/blog/reading-your-culture", title: "Reading Your Culture: Color, Density, Smell", dek: "Blue-green cues, spoon-depth density tests, smell diagnostics and the cheap measurements worth taking daily.", tag: "Daily care", img: "/assets/images/microscopy/sim-field.jpg" },
-    { href: "/blog/winter-home-growing-warmth", title: "Keeping a Culture Warm Through Winter", dek: "Heaters, insulation and placement strategy for the 30–37°C comfort band — warmth before anything else.", tag: "Seasonal", img: "/assets/images/library/culture-vessels.svg" },
-    { href: "/blog/zarrouk-medium-and-nutrients", title: "Zarrouk Medium and Nutrients", dek: "The chemistry that feeds Arthrospira: bicarbonate as carbon source and shield.", tag: "Chemistry", img: "/assets/images/library/biotech-compounds.svg" },
-    { href: "/blog/light-temperature-mixing", title: "Light, Temperature and Mixing", dek: "The three physical levers of a culture — and why more of any one stops helping early.", tag: "Fundamentals", img: "/assets/images/library/culture-vessels.svg" },
-    { href: "/blog/troubleshooting-contamination-crashes", title: "Troubleshooting Contamination", dek: "Grazers, competitors, and using high pH as passive biosecurity.", tag: "Troubleshooting", img: "/assets/images/library/contamination.svg" },
-    { href: "/blog/alkalinity-as-a-control-variable", title: "Alkalinity as a Control Variable", dek: "pH is not a knob — it is the readout of the carbon budget.", tag: "Chemistry", img: "/assets/images/library/biotech-compounds.svg" }
-  ];
-  function pickGuide() {
-    /* deterministic daily rotation in the visitor's local time */
-    var now = new Date();
-    var day = Math.floor((now - new Date(now.getFullYear(), 0, 0)) / 86400000);
-    return GUIDES[day % GUIDES.length];
+  /* ---- four AI-selected papers (fail-closed) ---- */
+  function renderPicks(idx) {
+    var days = (idx && idx.days) || [];
+    if (!days.length || !days[0].picks || !days[0].picks.length) { picksError(); return; }
+    var picks = days[0].picks.slice(0, 4);
+    var dayNum = parseInt(days[0].date.slice(8, 10), 10) || 0;
+    var shown = 0;
+    picks.forEach(function (p, i) {
+      var card = el("pk" + i);
+      if (!card || !p.title) return;
+      card.href = p.url || ("https://pubmed.ncbi.nlm.nih.gov/" + p.pmid + "/");
+      card.querySelector(".pk-title").textContent = String(p.title || "").replace(/<[^>]+>/g, "");
+      var hook = card.querySelector(".pk-hook");
+      if (p.hook) { hook.textContent = p.hook; hook.style.display = ""; } else { hook.style.display = "none"; }
+      card.querySelector(".pk-topic").textContent = String(p.topic || "Research").replace(/<[^>]+>/g, "");
+      card.querySelector(".pk-src").textContent = ((p.journal || "PubMed")).replace(/<[^>]+>/g, "") + (p.year ? " · " + p.year : "");
+      var img = card.querySelector(".pk-img");
+      img.src = FOCUS_IMGS[(dayNum + i) % FOCUS_IMGS.length];
+      img.alt = "Journal figure — " + p.title;
+      card.hidden = false;
+      shown++;
+    });
+    if (!shown) picksError();
   }
+  function picksError() { el("pkFail").hidden = false; }
 
   document.addEventListener("DOMContentLoaded", function () {
-    var g = pickGuide();
-    el("rotSpirTitle").textContent = g.title;
-    el("rotSpirDek").textContent = g.dek;
-    el("rotSpirTag").textContent = g.tag;
-    el("rotSpirImg").src = g.img;
-    el("rotSpir").href = g.href;
-
     fetch(BASE + "index.json")
       .then(function (r) { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); })
       .then(function (idx) {
@@ -239,9 +196,14 @@
           .catch(function () { renderFocus(focus); });
       })
       .catch(focusError);
+
+    fetch(PICKS + "index.json")
+      .then(function (r) { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); })
+      .then(renderPicks)
+      .catch(picksError);
   });
 })();
 </script>
-<script src="/js/consent.js?v=20260925b" defer></script>
+<script src="/js/consent.js?v=20260925c" defer></script>
 </body>
 </html>

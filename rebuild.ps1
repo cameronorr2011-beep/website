@@ -54,7 +54,7 @@ foreach($c in $cssFiles){
 }
 # Cache-busting: version query forces browsers to re-fetch when CSS/JS change.
 # Bump $assetVer on every visual change (or sed-bump across pages).
-$assetVer = '?v=20260925b'
+$assetVer = '?v=20260925c'
 $cssLines = ($cssFiles | ForEach-Object { '  <link rel="stylesheet" href="css/' + $_ + $assetVer + '">' }) -join $nl
 
 # ------------------------------------------------------------

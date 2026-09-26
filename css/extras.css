@@ -5,9 +5,9 @@
    subpages that load only this file still render correctly.
    ============================================================ */
 :root{
-  --void:#faf6ec; --void-2:#f3ede0;
-  --paper:#fffdf7; --paper-2:#f3edde;
-  --ink:#23291f; --ink-soft:#4d5545; --mute:#83836f; --rule:#e3dccb;
+  --void:#f5efe0; --void-2:#ece4d2;
+  --paper:#fffaf0; --paper-2:#f0e8d6;
+  --ink:#262b21; --ink-soft:#4a5242; --mute:#6d6d5a; --rule:#e0d6c0;
   --leaf:#3f8f4e; --leaf-2:#2e7d3f; --leaf-deep:#1d5c2c; --leaf-soft:#e7f0e2;
   --copper:#b06f2c; --warn:#bf5a32;
   --sans:"Bricolage Grotesque",system-ui,-apple-system,"Segoe UI",sans-serif;
@@ -15,7 +15,7 @@
   --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
   --max:1320px;
   --dvoid:#0a100b; --dvoid-2:#0e160f; --dpanel:#0a120b; --dpanel-2:#0d160e;
-  --dink:#f1f5ec; --dink-soft:#bcc6b4; --d-mute:#8d9a85; --drule:rgba(255,255,255,.1);
+  --dink:#f1f5ec; --dink-soft:#c3cdbb; --d-mute:#98a48e; --drule:rgba(255,255,255,.1);
   --dleaf:#7dd88a; --dleaf-2:#9fe0a4;
 }
 
@@ -44,9 +44,8 @@
 .art-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:40px;font-family:"IBM Plex Mono",monospace;font-size:12px}
 .art-top a{color:var(--ink-soft);text-decoration:none}
 .art-top a:hover{color:var(--leaf-deep)}
-.art-cat{color:var(--leaf-deep);letter-spacing:.14em;text-transform:uppercase;font-size:11px;font-family:"IBM Plex Mono",monospace;margin-bottom:14px}
-.art-body h1{font-family:"Bricolage Grotesque",system-ui,sans-serif;font-size:clamp(2rem,5.4vw,3.1rem);line-height:1.08;letter-spacing:-.03em;margin-bottom:18px;color:var(--ink)}
-.art-meta{color:var(--mute);font-size:13px;font-family:"IBM Plex Mono",monospace;margin-bottom:36px}
+.art-cat{color:var(--leaf-deep);letter-spacing:.14em;text-transform:uppercase;font-size:11px;font-family:"IBM Plex Mono",monospace;margin-bottom:14px}.art-body h1{font-family:"Bricolage Grotesque",system-ui,sans-serif;font-size:clamp(2rem,5.4vw,3.1rem);line-height:1.08;letter-spacing:-.03em;margin-bottom:18px;color:var(--ink)}
+.art-meta{color:var(--ink-soft);font-size:15px;line-height:1.75;font-family:"Source Serif 4",Georgia,serif;max-width:66ch;margin-bottom:36px}
 .prose p{margin:0 0 1.25em;line-height:1.85;color:var(--ink-soft);font-size:1.09rem}
 .prose h2{font-family:"Bricolage Grotesque",system-ui,sans-serif;font-size:1.5rem;letter-spacing:-.02em;margin:2.2em 0 .7em;color:var(--ink)}
 .prose h3{font-family:"Bricolage Grotesque",system-ui,sans-serif;font-size:1.15rem;margin:1.8em 0 .6em;color:var(--ink)}
@@ -164,9 +163,9 @@
 @keyframes fdpulse{0%,100%{opacity:.4}50%{opacity:1}}
 @media (prefers-reduced-motion:reduce){.fd-label .dot{animation:none}}
 .fd-date{margin-left:auto;color:var(--d-mute)}
-.focus-day h2{font-size:clamp(1.5rem,3vw,2.1rem);line-height:1.2;margin:0 0 12px;color:#fff;letter-spacing:-.02em}
-.focus-day .dek{color:var(--dink-soft);font-size:1rem;line-height:1.65;margin:0}
-.fd-body{margin-top:18px;color:var(--dink-soft);font-size:.93rem;line-height:1.75;max-width:66ch}
+.focus-day h2{font-family:"Bricolage Grotesque",system-ui,sans-serif;font-size:clamp(1.5rem,3vw,2.1rem);line-height:1.2;margin:0 0 12px;color:#fff;letter-spacing:-.02em}
+.focus-day .dek{color:var(--dink-soft);font-size:1.05rem;line-height:1.65;margin:0}
+.fd-body{margin-top:18px;color:var(--dink-soft);font-size:.98rem;line-height:1.75;max-width:66ch}
 .fd-body p+p{margin-top:12px}
 .fd-takeaways{margin:18px 0 0;padding:0;list-style:none;display:grid;gap:9px}
 .fd-takeaways li{position:relative;padding-left:24px;color:var(--dink-soft);font-size:.88rem}
@@ -191,6 +190,14 @@
   .fd-grid{grid-template-columns:1fr}
   .fd-side{border-left:0;border-top:1px solid rgba(255,255,255,.1)}
 }
+
+/* ---------- blog: shared section heading (consistency) ---------- */
+.sec-h2{font-family:"Bricolage Grotesque",system-ui,sans-serif;font-size:clamp(1.4rem,2.6vw,1.9rem);margin:0 0 10px;color:var(--ink);letter-spacing:-.02em}
+
+/* ---------- blog: AI paper picks (fail-closed panel) ---------- */
+.pk-fail{margin-top:32px;border:1px dashed var(--rule);border-radius:16px;padding:34px 24px;text-align:center;background:var(--paper)}
+.pk-fail .big{font-family:"Source Serif 4",Georgia,serif;font-size:1.2rem;color:var(--ink)}
+.pk-fail p{color:var(--ink-soft);max-width:52ch;margin:10px auto 0;font-size:.95rem;line-height:1.7}
 
 /* ---------- blog: daily rotation cards (cream, with thumbnails) ---------- */
 .rot-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;margin-top:32px}

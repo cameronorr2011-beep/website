@@ -1,6 +1,6 @@
 /* ---------- nav ---------- */
-.nav{position:fixed;inset:0 0 auto;z-index:100;transition:background .3s,border-color .3s,backdrop-filter .3s,box-shadow .3s;border-bottom:1px solid transparent;background:linear-gradient(180deg,rgba(250,246,236,.94),rgba(250,246,236,.82))}
-.nav.solid{background:rgba(250,246,236,.95);backdrop-filter:blur(14px);border-bottom-color:var(--rule);box-shadow:0 6px 24px -18px rgba(35,41,31,.35)}
+.nav{position:fixed;inset:0 0 auto;z-index:100;transition:background .3s,border-color .3s,backdrop-filter .3s,box-shadow .3s;border-bottom:1px solid transparent;background:linear-gradient(180deg,rgba(245,239,224,.94),rgba(245,239,224,.82))}
+.nav.solid{background:rgba(245,239,224,.95);backdrop-filter:blur(14px);border-bottom-color:var(--rule);box-shadow:0 6px 24px -18px rgba(35,41,31,.35)}
 .nav-in{max-width:var(--max);margin:0 auto;height:64px;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:0 5vw}
 .mark{display:flex;align-items:center;gap:10px}
 .mark svg{width:26px;height:26px;color:var(--leaf-2)}
@@ -21,7 +21,7 @@
 @media(max-width:860px){
   .nav-links{display:none}
   .nav-toggle{display:block}
-  .mobile-menu{position:fixed;inset:64px 0 auto;background:rgba(250,246,236,.98);backdrop-filter:blur(14px);border-bottom:1px solid var(--rule);padding:10px 5vw 18px;z-index:99}
+  .mobile-menu{position:fixed;inset:64px 0 auto;background:rgba(245,239,224,.98);backdrop-filter:blur(14px);border-bottom:1px solid var(--rule);padding:10px 5vw 18px;z-index:99}
   .mobile-menu a{display:block;padding:11px 0;font-size:15px;border-bottom:1px solid var(--rule);color:var(--ink-soft)}
   .mobile-menu a:hover{color:var(--ink)}
 }

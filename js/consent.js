@@ -76,19 +76,19 @@
       "display:flex;justify-content:center;pointer-events:none;" +
       "font-family:'Bricolage Grotesque',system-ui,sans-serif}" +
     "#ob-consent .ob-c-inner{pointer-events:auto;max-width:720px;width:100%;" +
-      "background:rgba(250,246,236,.97);border:1px solid rgba(63,143,78,.35);border-radius:14px;" +
+      "background:rgba(236,228,210,.98);border:1px solid rgba(63,143,78,.4);border-radius:14px;" +
       "padding:14px 18px;display:flex;gap:14px;align-items:center;flex-wrap:wrap;" +
-      "box-shadow:0 18px 50px rgba(35,41,31,.25);color:#4d5545;font-size:.85rem;line-height:1.5}" +
+      "box-shadow:0 18px 50px rgba(35,41,31,.28);color:#262b21;font-size:.88rem;line-height:1.5}" +
     ".ob-c-text{margin:0;flex:1 1 320px;min-width:0}" +
     ".ob-c-text a{color:#1d5c2c;text-decoration:underline;text-underline-offset:2px}" +
     ".ob-c-actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap}" +
     ".ob-c-btn{cursor:pointer;border:1px solid rgba(63,143,78,.4);background:rgba(63,143,78,.08);" +
-      "color:#23291f;border-radius:999px;padding:8px 14px;font:600 .78rem 'Bricolage Grotesque',system-ui,sans-serif;" +
+      "color:#262b21;border-radius:999px;padding:8px 14px;font:600 .78rem 'Bricolage Grotesque',system-ui,sans-serif;" +
       "transition:border-color .2s,color .2s,background .2s}" +
     ".ob-c-btn:hover{border-color:#2e7d3f;color:#1d5c2c}" +
     ".ob-c-accept{background:#2e7d3f;border-color:#2e7d3f;color:#f3f4ef}" +
     ".ob-c-accept:hover{background:#1d5c2c;color:#f3f4ef}" +
-    ".ob-c-link{color:#83836f;font-size:.75rem;text-decoration:none;margin-left:2px}" +
+    ".ob-c-link{color:#4a5242;font-size:.75rem;text-decoration:none;margin-left:2px}" +
     ".ob-c-link:hover{color:#1d5c2c}" +
     ".ob-c-out{opacity:0;transform:translateY(12px);transition:opacity .3s,transform .3s}" +
     "@media (max-width:560px){#ob-consent .ob-c-inner{flex-direction:column;align-items:stretch}}" +

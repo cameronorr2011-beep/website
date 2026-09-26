@@ -6,10 +6,10 @@
    Fonts: Bricolage Grotesque / Source Serif 4 / IBM Plex Mono.
    ============================================================ */
 :root{
-  /* light cream canvas */
-  --void:#faf6ec; --void-2:#f3ede0;
-  --paper:#fffdf7; --paper-2:#f3edde;
-  --ink:#23291f; --ink-soft:#4d5545; --mute:#83836f; --rule:#e3dccb;
+  /* light cream canvas — warm, slight brown lean */
+  --void:#f5efe0; --void-2:#ece4d2;
+  --paper:#fffaf0; --paper-2:#f0e8d6;
+  --ink:#262b21; --ink-soft:#4a5242; --mute:#6d6d5a; --rule:#e0d6c0;
   --leaf:#3f8f4e; --leaf-2:#2e7d3f; --leaf-deep:#1d5c2c; --leaf-soft:#e7f0e2;
   --copper:#b06f2c; --warn:#bf5a32;
   --sans:"Bricolage Grotesque",system-ui,-apple-system,"Segoe UI",sans-serif;
@@ -18,7 +18,7 @@
   --max:1320px;
   /* dark-panel tokens (used by reserved tech sections) */
   --dvoid:#0a100b; --dvoid-2:#0e160f; --dpanel:#0a120b; --dpanel-2:#0d160e;
-  --dink:#f1f5ec; --dink-soft:#bcc6b4; --d-mute:#8d9a85; --drule:rgba(255,255,255,.1);
+  --dink:#f1f5ec; --dink-soft:#c3cdbb; --d-mute:#98a48e; --drule:rgba(255,255,255,.1);
   --dleaf:#7dd88a; --dleaf-2:#9fe0a4;
 }
 *{box-sizing:border-box;margin:0;padding:0}
