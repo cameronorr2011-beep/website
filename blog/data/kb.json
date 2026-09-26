@@ -1,0 +1,188 @@
+{
+ "updated": "2026-09-26T20:04:43Z",
+ "counts": {
+  "algaephyte": 10,
+  "cyanoflow": 12,
+  "total": 22
+ },
+ "algaephyte": [
+  {
+   "slug": "spirulina-is-a-cyanobacterium",
+   "url": "/blog/spirulina-is-a-cyanobacterium",
+   "title": "Spirulina Is a Cyanobacterium — What That Actually Means",
+   "dek": "Arthrospira platensis is a photosynthetic bacterium, not an alga in the plant sense. What cyanobacteria are, and why it matters for cultivation.",
+   "date": "2026-08-14",
+   "product": "Algaephyte field note"
+  },
+  {
+   "slug": "troubleshooting-ph-and-carbon",
+   "url": "/blog/troubleshooting-ph-and-carbon",
+   "title": "Troubleshooting pH and Carbon in Alkaline Culture",
+   "dek": "Why pH climbs in a healthy Spirulina culture, when rising pH becomes carbon starvation, and how bicarbonate dosing restores both buffer and feed.",
+   "date": "2026-08-02",
+   "product": "Algaephyte field note"
+  },
+  {
+   "slug": "troubleshooting-contamination-crashes",
+   "url": "/blog/troubleshooting-contamination-crashes",
+   "title": "Troubleshooting Spirulina Contamination and Crashes",
+   "dek": "Field-guide style troubleshooting for home Spirulina: spotting grazers and competitors early, using high pH defensively, and recovering a crashed culture.",
+   "date": "2026-07-30",
+   "product": "Algaephyte field note"
+  },
+  {
+   "slug": "light-temperature-mixing",
+   "url": "/blog/light-temperature-mixing",
+   "title": "Light, Temperature and Mixing: The Three Physical Levers",
+   "dek": "How irradiance, temperature band and mixing shape Spirulina growth rate — and why more of any one of them stops helping surprisingly early.",
+   "date": "2026-07-23",
+   "product": "Algaephyte field note"
+  },
+  {
+   "slug": "zarrouk-medium-and-nutrients",
+   "url": "/blog/zarrouk-medium-and-nutrients",
+   "title": "Zarrouk Medium and Nutrients: Feeding a Spirulina Culture",
+   "dek": "The chemistry behind Zarrouk medium for Arthrospira: bicarbonate, nitrate, phosphate, trace metals — and why a pale culture is usually a hungry one.",
+   "date": "2026-07-16",
+   "product": "Algaephyte field note"
+  },
+  {
+   "slug": "harvesting-and-using-fresh-spirulina",
+   "url": "/blog/harvesting-and-using-fresh-spirulina",
+   "title": "Harvesting and Using Fresh Spirulina",
+   "dek": "When and how to harvest fresh Spirulina at home, simple screening and pressing methods, storage, and honest notes on freshness versus bottled supplements.",
+   "date": "2026-07-09",
+   "product": "Algaephyte field note"
+  },
+  {
+   "slug": "winter-home-growing-warmth",
+   "url": "/blog/winter-home-growing-warmth",
+   "title": "Keeping a Home Spirulina Culture Warm Through Winter",
+   "dek": "Heaters, insulation and placement strategy for keeping Spirulina in its 30–37°C comfort band through cold months — warmth before anything else.",
+   "date": "2026-07-05",
+   "product": "Algaephyte field note"
+  },
+  {
+   "slug": "how-to-start-home-spirulina-culture",
+   "url": "/blog/how-to-start-home-spirulina-culture",
+   "title": "How to Start a Home Spirulina Culture (Without Guesswork)",
+   "dek": "A plain-language guide to starting Spirulina at home: what you need, live culture vs powder, light, warmth, alkalinity and the first signs your culture is thriving.",
+   "date": "2026-07-02",
+   "product": "Algaephyte field note"
+  },
+  {
+   "slug": "reading-your-culture",
+   "url": "/blog/reading-your-culture",
+   "title": "Reading Your Culture: Color, Density, Smell",
+   "dek": "A no-lab guide to reading Spirulina health: blue-green color cues, spoon-depth density tests, smell diagnostics and the cheap measurements worth taking daily.",
+   "date": "2026-06-25",
+   "product": "Algaephyte field note"
+  },
+  {
+   "slug": "alkalinity-as-a-control-variable",
+   "url": "/blog/alkalinity-as-a-control-variable",
+   "title": "Alkalinity as a Control Variable",
+   "dek": "In Spirulina culture, pH is not a knob — it is the readout of the carbon budget. Why alkalinity is the real control variable, and what that means for automation.",
+   "date": "2026-06-18",
+   "product": "Algaephyte field note"
+  }
+ ],
+ "cyanoflow": [
+  {
+   "slug": "federated-learning-network",
+   "url": "/blog/federated-learning-network",
+   "title": "A Federated Learning Network for Algae Reactors",
+   "dek": "Sharing fitted twin parameters instead of images or traces: MQTT topics, bounds-checking, last-will obituaries and vandal-resistant averaging.",
+   "date": "2026-08-17",
+   "product": "Cyanoflow"
+  },
+  {
+   "slug": "vision-contamination-detection",
+   "url": "/blog/vision-contamination-detection",
+   "title": "Vision-Based Contamination Detection, Honestly",
+   "dek": "What a microscope camera can and cannot classify: healthy helix vs fragment vs not-spirulina — flags that hold pumps, never ones that open them.",
+   "date": "2026-08-12",
+   "product": "Cyanoflow"
+  },
+  {
+   "slug": "digital-twins-biological-cultivation",
+   "url": "/blog/digital-twins-biological-cultivation",
+   "title": "Digital Twins for Biological Cultivation",
+   "dek": "What a digital twin of a living culture actually is: state variables, counterfactual testing of actions, and why simulation-first beats actuate-first.",
+   "date": "2026-08-10",
+   "product": "Cyanoflow"
+  },
+  {
+   "slug": "edge-ai-biological-systems",
+   "url": "/blog/edge-ai-biological-systems",
+   "title": "Edge AI for Biological Systems",
+   "dek": "Why vision inference belongs on-device at ~2 W: latency, privacy of your lab bench, and the reliability story cloud loops cannot tell.",
+   "date": "2026-08-08",
+   "product": "Cyanoflow"
+  },
+  {
+   "slug": "photobioreactor-ai-optimization",
+   "url": "/blog/photobioreactor-ai-optimization",
+   "title": "AI Optimization in Photobioreactors: Propose, Then Verify",
+   "dek": "How AI belongs in an algae photobioreactor: bounded proposals checked by hard limits and a physics twin — never direct control of pumps.",
+   "date": "2026-08-06",
+   "product": "Cyanoflow"
+  },
+  {
+   "slug": "what-is-main-plain-language",
+   "url": "/blog/what-is-main-plain-language",
+   "title": "What Is Algaephyte? (Plain Language)",
+   "dek": "No-jargon tour of an AI-tended photobioreactor: what it senses, how it decides, why every proposal passes gates, and what the human still owns.",
+   "date": "2026-08-04",
+   "product": "Cyanoflow"
+  },
+  {
+   "slug": "how-main-keeps-culture-safe",
+   "url": "/blog/how-main-keeps-culture-safe",
+   "title": "How Algaephyte Keeps Your Culture Safe",
+   "dek": "Plain-language walkthrough of the two-check safety system plus physical backstops — and why doing nothing is usually the safe action.",
+   "date": "2026-08-01",
+   "product": "Cyanoflow"
+  },
+  {
+   "slug": "bounded-autonomy-safe-ai-proposals",
+   "url": "/blog/bounded-autonomy-safe-ai-proposals",
+   "title": "Bounded Autonomy: Keeping AI Proposals Safe",
+   "dek": "Hard-limit validators, counterfactual simulation and firmware clamps: three independent layers that let an AI propose while never risking the culture.",
+   "date": "2026-07-29",
+   "product": "Cyanoflow"
+  },
+  {
+   "slug": "control-loop-architecture",
+   "url": "/blog/control-loop-architecture",
+   "title": "Control Loop Architecture for Living Systems",
+   "dek": "Sense → twin → propose → verify → act. The layered loop architecture that lets software participate in biology without ever owning the pumps.",
+   "date": "2026-07-26",
+   "product": "Cyanoflow"
+  },
+  {
+   "slug": "six-culture-signals-main-senses",
+   "url": "/blog/six-culture-signals-main-senses",
+   "title": "Six Culture Signals: What a Reactor Senses",
+   "dek": "pH, temperature, wall irradiance, OD750, dissolved oxygen, conductivity — six channels each telling a different biological story about one culture.",
+   "date": "2026-07-21",
+   "product": "Cyanoflow"
+  },
+  {
+   "slug": "dissolved-oxygen-stress-signal",
+   "url": "/blog/dissolved-oxygen-stress-signal",
+   "title": "Dissolved Oxygen as a Stress Signal",
+   "dek": "Afternoon oxygen plateaus explained: supersaturation, self-poisoning of photosynthesis, and how a twin treats DO as a state variable rather than a footnote.",
+   "date": "2026-07-19",
+   "product": "Cyanoflow"
+  },
+  {
+   "slug": "digital-twin-droop-steele-model",
+   "url": "/blog/digital-twin-droop-steele-model",
+   "title": "A Digital Twin Built on Droop and Steele",
+   "dek": "The physics inside an algae digital twin: Droop quota kinetics, Steele's photoinhibition limb, Beer–Lambert self-shading and oxygen inhibition as state variables.",
+   "date": "2026-07-12",
+   "product": "Cyanoflow"
+  }
+ ]
+}

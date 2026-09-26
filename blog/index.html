@@ -17,14 +17,42 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..700&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,0..560&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/css/extras.css?v=20260926a">
+<link rel="stylesheet" href="/css/extras.css?v=20260926b">
+<link rel="stylesheet" href="/css/header.css?v=20260926a">
 </head>
 <body class="art-body">
+<header class="nav" id="nav">
+  <div class="nav-in">
+    <a class="mark" href="/" aria-label="Orr Biologicals home">
+      <svg viewBox="0 0 28 28" aria-hidden="true">
+        <circle cx="14" cy="14" r="13" fill="none" stroke="currentColor" stroke-opacity="0.35"/>
+        <path d="M7 20c2.6-2.2 2.6-9.8 7-9.8S16.4 20 21 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" class="dash-flow"/>
+        <path d="M6 12c2.6-2.2 2.6-6 7-6s4.4 3.8 7 6" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-opacity="0.55" class="dash-flow"/>
+      </svg>
+      <span><b>Orr Biologicals</b><small>ALGAEPHYTE &middot; CYANOFLOW</small></span>
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="/#inside">System</a>
+      <a href="/#products">Products</a>
+      <a href="/applications/">Applications</a>
+      <a href="/cyanoflow">Cyanoflow</a>
+      <a href="/blog/">Blog</a>
+      <a href="/game/">Game</a>
+      <a class="btn-white" href="/#deploy">Pilot access</a>
+    </nav>
+    <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
+  </div>
+</header>
+<div class="mobile-menu" id="mobileMenu" hidden>
+  <a href="/#inside">System</a>
+  <a href="/#products">Products</a>
+  <a href="/applications/">Applications</a>
+  <a href="/cyanoflow">Cyanoflow</a>
+  <a href="/blog/">Blog</a>
+  <a href="/game/">Game</a>
+  <a href="/#deploy">Pilot access</a>
+</div>
 <div class="art-shell" style="max-width:1080px">
-  <nav class="art-top" aria-label="Breadcrumb">
-    <a href="/">&#8592; Orr Biologicals</a>
-    <a href="/#products">Products</a><a href="/applications/">Applications</a><a href="/game/">Game</a>
-  </nav>
   <p class="art-cat">The daily read · AI-written</p>
   <h1>The algae blog,<br>updated every day</h1>
   <p class="art-meta">Every day at <b>1:00 PM Pacific</b> an AI searches the newest peer-reviewed algae research on PubMed, picks the four papers most worth your time, and writes each one up — biotech, health, blooms, climate and beyond. Nothing is invented: every claim comes from the paper's abstract.</p>
@@ -80,6 +108,19 @@
       <span class="big">Today's paper picks haven't landed yet.</span>
       <p>They are picked and written up once a day from live PubMed search at 1:00 PM Pacific — check back soon.</p>
     </div>
+  </section>
+
+  <!-- ============ KNOWLEDGE BASE (static articles by product) ============ -->
+  <section id="kb" style="margin-top:72px">
+    <p class="art-cat" style="margin-top:0">Knowledge base</p>
+    <h2 class="sec-h2">Everything we've written, by product.</h2>
+    <p class="art-meta" style="margin-bottom:0">Practical cultivation guides from the <a href="/#products" style="color:var(--leaf-deep)">Algaephyte</a> program and research notes from <a href="/cyanoflow" style="color:var(--leaf-deep)">Cyanoflow</a>, our single-cell discovery platform.</p>
+
+    <h3 class="kb-h">Algaephyte — field notes on growing microalgae</h3>
+    <div class="rot-grid kb-grid" id="kbAlgae" hidden></div>
+
+    <h3 class="kb-h">Cyanoflow — research notes on seeing single cells</h3>
+    <div class="rot-grid kb-grid" id="kbCyano" hidden></div>
   </section>
 
   <nav class="art-foot" aria-label="Site">
@@ -147,14 +188,44 @@
   }
   function picksError() { el("pkFail").hidden = false; }
 
+  /* ---- knowledge base: static articles by product ---- */
+  function kbCard(a) {
+    var art = document.createElement("a");
+    art.className = "rot-card kb-card";
+    art.href = a.url;
+    art.innerHTML =
+      "<span class='rt-body'>" +
+      "<span class='kb-tag'>" + esc(a.product === "Cyanoflow" ? "Cyanoflow" : "Algaephyte") + "</span>" +
+      "<h3>" + esc(a.title) + "</h3>" +
+      "<p>" + esc(a.dek) + "</p>" +
+      "<span class='rt-foot'><b>" + esc(a.date) + "</b><span class='rt-go'>Read <svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><path d='M5 12h14M13 6l6 6-6 6'/></svg></span></span>" +
+      "</span>";
+    return art;
+  }
+  function renderKB(kb) {
+    [["algaephyte", "kbAlgae"], ["cyanoflow", "kbCyano"]].forEach(function (pair) {
+      var grid = el(pair[1]);
+      var list = (kb && kb[pair[0]]) || [];
+      if (!grid || !list.length) return;
+      list.forEach(function (a) { grid.appendChild(kbCard(a)); });
+      grid.hidden = false;
+    });
+  }
+
   document.addEventListener("DOMContentLoaded", function () {
     fetch(PICKS + "index.json")
       .then(function (r) { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); })
       .then(renderPicks)
       .catch(picksError);
+
+    fetch("/blog/data/kb.json")
+      .then(function (r) { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); })
+      .then(renderKB)
+      .catch(function () { /* kb grids stay hidden */ });
   });
 })();
 </script>
 <script src="/js/consent.js?v=20260925c" defer></script>
+<script src="/js/navigation.js?v=20260926a" defer></script>
 </body>
 </html>

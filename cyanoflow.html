@@ -402,12 +402,13 @@ body{
         <path d="M7 20c2.6-2.2 2.6-9.8 7-9.8S16.4 20 21 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" class="dash-flow"/>
         <path d="M6 12c2.6-2.2 2.6-6 7-6s4.4 3.8 7 6" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-opacity="0.55" class="dash-flow"/>
       </svg>
-      <span><b>Orr Biologicals</b><small>CYANOFLOW</small></span>
+      <span><b>Orr Biologicals</b><small>ALGAEPHYTE &middot; CYANOFLOW</small></span>
     </a>
     <nav class="nav-links" aria-label="Primary">
       <a href="/#inside">System</a>
       <a href="/#products">Products</a>
       <a href="/applications/">Applications</a>
+      <a href="/cyanoflow">Cyanoflow</a>
       <a href="/blog/">Blog</a>
       <a href="/game/">Game</a>
       <a class="btn-white" href="/#deploy">Pilot access</a>
@@ -419,6 +420,7 @@ body{
   <a href="/#inside">System</a>
   <a href="/#products">Products</a>
   <a href="/applications/">Applications</a>
+  <a href="/cyanoflow">Cyanoflow</a>
   <a href="/blog/">Blog</a>
   <a href="/game/">Game</a>
   <a href="/#deploy">Pilot access</a>
@@ -833,6 +835,16 @@ body{
   </div>
 </section>
 
+<!-- ============ RESEARCH NOTES ============ -->
+<section class="sec" id="research-notes">
+  <div class="wrap">
+    <div class="kicker center" style="font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.34em;text-transform:uppercase;color:#2dd4bf;margin:0 0 18px">Research notes</div>
+    <h2 style="text-align:center;letter-spacing:-.02em">How we think, in writing.</h2>
+    <p style="text-align:center;color:#8aa8a4;max-width:56ch;margin:14px auto 40px">Engineering notes from the Cyanoflow program: digital twins, edge vision, safe autonomy and what a culture is telling you.</p>
+    <div id="cyanoNotes" style="display:grid;gap:12px;max-width:760px;margin:0 auto"></div>
+  </div>
+</section>
+
 <!-- ============ FINAL CTA ============ -->
 <section class="sec" id="research-cta">
   <div class="wrap">
@@ -863,7 +875,30 @@ body{
   </div>
 </div></footer>
 
-<script 
+<script>
+/* Cyanoflow research notes, from the shared knowledge-base index */
+(function(){
+  "use strict";
+  var esc=function(s){var d=document.createElement("div");d.textContent=String(s==null?"":s);return d.innerHTML;};
+  fetch("/blog/data/kb.json")
+    .then(function(r){if(!r.ok)throw new Error("HTTP "+r.status);return r.json();})
+    .then(function(kb){
+      var box=document.getElementById("cyanoNotes");
+      if(!box)return;
+      (kb.cyanoflow||[]).forEach(function(a){
+        var row=document.createElement("a");
+        row.href=a.url;
+        row.style.cssText="display:flex;justify-content:space-between;gap:18px;align-items:baseline;padding:16px 18px;border:1px solid rgba(45,212,191,.16);border-radius:12px;background:rgba(255,255,255,.02);text-decoration:none;transition:border-color .2s,background .2s";
+        row.onmouseenter=function(){row.style.borderColor="rgba(45,212,191,.45)";row.style.background="rgba(45,212,191,.05)";};
+        row.onmouseleave=function(){row.style.borderColor="rgba(45,212,191,.16)";row.style.background="rgba(255,255,255,.02)";};
+        row.innerHTML="<span style='color:#d7f5f0;font-size:.98rem'>"+esc(a.title)+"</span>"+
+          "<span style='font-family:\"IBM Plex Mono\",monospace;font-size:.72rem;color:#64748b;white-space:nowrap'>"+esc(a.date)+"</span>";
+        box.appendChild(row);
+      });
+    })
+    .catch(function(){/* notes list stays empty */});
+})();
+</script>
 <script src="/js/cyano-app.js"></script>
 <script src="/js/navigation.js" defer></script>
 <script src="/js/consent.js" defer></script>

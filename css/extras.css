@@ -151,6 +151,12 @@
 .algaephyte-detail .ad-card .ad-icon{color:var(--leaf-deep);font-size:1.2rem}
 @media(max-width:720px){.algaephyte-detail{grid-template-columns:1fr}}
 
+/* ---------- knowledge-base cards (blog page + applications hub) ---------- */
+.kb-h{font-family:"Bricolage Grotesque",system-ui,sans-serif;font-size:1.15rem;letter-spacing:-.01em;margin:40px 0 0;color:var(--ink)}
+.kb-grid{margin-top:18px}
+.kb-tag{display:inline-block;font-family:"IBM Plex Mono",monospace;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--leaf-deep);border:1px solid var(--rule);border-radius:99px;padding:4px 10px;margin-bottom:12px}
+.kb-card p{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+
 /* ---------- blog: today's four AI-written article cards ---------- */
 .pick-card{cursor:default}
 .pick-card .pk-title a{color:inherit;text-decoration:none;transition:color .2s}

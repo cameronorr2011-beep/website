@@ -19,13 +19,41 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..700&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,0..560&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/css/extras.css">
+<link rel="stylesheet" href="/css/header.css?v=20260926a">
 </head>
 <body class="art-body">
+<header class="nav" id="nav">
+  <div class="nav-in">
+    <a class="mark" href="/" aria-label="Orr Biologicals home">
+      <svg viewBox="0 0 28 28" aria-hidden="true">
+        <circle cx="14" cy="14" r="13" fill="none" stroke="currentColor" stroke-opacity="0.35"/>
+        <path d="M7 20c2.6-2.2 2.6-9.8 7-9.8S16.4 20 21 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" class="dash-flow"/>
+        <path d="M6 12c2.6-2.2 2.6-6 7-6s4.4 3.8 7 6" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-opacity="0.55" class="dash-flow"/>
+      </svg>
+      <span><b>Orr Biologicals</b><small>ALGAEPHYTE &middot; CYANOFLOW</small></span>
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="/#inside">System</a>
+      <a href="/#products">Products</a>
+      <a href="/applications/">Applications</a>
+      <a href="/cyanoflow">Cyanoflow</a>
+      <a href="/blog/">Blog</a>
+      <a href="/game/">Game</a>
+      <a class="btn-white" href="/#deploy">Pilot access</a>
+    </nav>
+    <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
+  </div>
+</header>
+<div class="mobile-menu" id="mobileMenu" hidden>
+  <a href="/#inside">System</a>
+  <a href="/#products">Products</a>
+  <a href="/applications/">Applications</a>
+  <a href="/cyanoflow">Cyanoflow</a>
+  <a href="/blog/">Blog</a>
+  <a href="/game/">Game</a>
+  <a href="/#deploy">Pilot access</a>
+</div>
 <div class="hub-shell">
-  <nav class="art-top" aria-label="Breadcrumb">
-    <a href="/">&#8592; Orr Biologicals</a>
-    <span style="color:#57705f">applications</span>
-  </nav>
 
   <!-- Hero -->
   <div class="hub-hero">
@@ -324,8 +352,43 @@
     <p style="color:#9fb3a4;margin-bottom:28px;line-height:1.6">If you run a hatchery or culture room and want to talk about a pilot, use the <a href="/#deploy">pilot access form</a>. The <a href="/">main page</a> documents the system, and the <a href="/blog/">field notes</a> cover how we actually run cultures day to day.</p>
   </div>
 
-  <nav class="art-foot" aria-label="Related"><a href="/">Back to Orr Biologicals</a><a href="/blog/">Field notes</a><a href="/applications/#aquaculture">Aquaculture</a><a href="/applications/#cultivation">Cultivation</a><a href="/applications/#species">Species guides</a><a href="/privacy">Privacy</a><a href="/terms">Terms</a></nav>
+  <!-- ============ ALGAEPHYTE FIELD NOTES ============ -->
+  <div class="algaephyte-detail-section" id="field-notes">
+    <h2>Algaephyte field notes</h2>
+    <p style="color:#9fb3a4;margin-bottom:28px;line-height:1.6">How we actually run cultures day to day — feeding, buffering, light, contamination and harvest, from the Algaephyte program.</p>
+    <div class="rot-grid kb-grid" id="kbAlgae" hidden></div>
+  </div>
+
+  <nav class="art-foot" aria-label="Related"><a href="/">Back to Orr Biologicals</a><a href="/blog/">Blog — daily research</a><a href="/applications/#aquaculture">Aquaculture</a><a href="/applications/#cultivation">Cultivation</a><a href="/applications/#species">Species guides</a><a href="/privacy">Privacy</a><a href="/terms">Terms</a></nav>
 </div>
+<script>
+/* Algaephyte field notes, from the shared knowledge-base index */
+(function(){
+  "use strict";
+  var esc=function(s){var d=document.createElement("div");d.textContent=String(s==null?"":s);return d.innerHTML;};
+  fetch("/blog/data/kb.json")
+    .then(function(r){if(!r.ok)throw new Error("HTTP "+r.status);return r.json();})
+    .then(function(kb){
+      var grid=document.getElementById("kbAlgae");
+      if(!grid)return;
+      (kb.algaephyte||[]).forEach(function(a){
+        var card=document.createElement("a");
+        card.className="rot-card kb-card";
+        card.href=a.url;
+        card.innerHTML="<span class='rt-body'>"+
+          "<span class='kb-tag'>Field note</span>"+
+          "<h3>"+esc(a.title)+"</h3>"+
+          "<p>"+esc(a.dek)+"</p>"+
+          "<span class='rt-foot'><b>"+esc(a.date)+"</b><span class='rt-go'>Read <svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><path d='M5 12h14M13 6l6 6-6 6'/></svg></span></span>"+
+          "</span>";
+        grid.appendChild(card);
+      });
+      grid.hidden=false;
+    })
+    .catch(function(){/* grid stays hidden */});
+})();
+</script>
 <script src="/js/consent.js" defer></script>
+<script src="/js/navigation.js?v=20260926a" defer></script>
 </body>
 </html>
