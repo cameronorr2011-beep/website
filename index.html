@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Algaephyte — AI Microalgae Photobioreactor | Orr Biologicals</title>
-<meta name="description" content="Algaephyte by Orr Biologicals — a self-tending photobioreactor for home and lab microalgae cultivation. Digital twin, edge-AI vision, MQTT mesh. Six sensors, a physics model, and pumps that are not allowed to move until three safety gates agree.">
+<title>Orr Biologicals — Microalgae cultivation, research & discovery</title>
+<meta name="description" content="Orr Biologicals — Algaephyte cultivation platform, Cyanoflow single-cell research, a daily algae blog refreshed at 1:00 PM Pacific, and source-attributed cultivation guides.">
 <meta name="theme-color" content="#f5efe0">
 <link rel="canonical" href="https://orrbiologicals.com/">
 <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
-<meta property="og:title" content="Algaephyte — AI Microalgae Photobioreactor | Orr Biologicals">
-<meta property="og:description" content="A living production system that learns how to stay productive. Vessel, sensors, edge vision, digital twin, control firmware and federated learning — one instrument.">
+<meta property="og:title" content="Orr Biologicals — Microalgae cultivation, research & discovery">
+<meta property="og:description" content="Small organisms. Extraordinary potential. Algaephyte cultivation, Cyanoflow single-cell research, and a daily algae blog refreshed at 1:00 PM Pacific.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://orrbiologicals.com/">
 <meta property="og:image" content="https://orrbiologicals.com/assets/og.png">
@@ -19,7 +19,7 @@
 <meta property="og:site_name" content="Orr Biologicals">
 <meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Algaephyte — AI Microalgae Photobioreactor | Orr Biologicals">
+<meta name="twitter:title" content="Orr Biologicals — Microalgae cultivation, research & discovery">
 <meta name="twitter:description" content="Vessel, sensors, edge vision, digital twin, control firmware and federated learning — engineered as one instrument for reliable microalgae cultivation.">
 <meta name="twitter:image" content="https://orrbiologicals.com/assets/og.png">
 <script type="application/ld+json">
@@ -30,7 +30,7 @@
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:opsz,ital,wght@8..60,0,400;8..60,0,500;8..60,1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:opsz,ital,wght@8..60,0,400;8..60,0,500;8..60,1,400&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="css/global.css?v=20260925c">
   <link rel="stylesheet" href="css/header.css?v=20260925c">
@@ -50,68 +50,189 @@
   <link rel="stylesheet" href="css/footer.css?v=20260925c">
   <link rel="stylesheet" href="css/animations.css?v=20260925c">
   <link rel="stylesheet" href="css/extras.css?v=20260925c">
+  <link rel="stylesheet" href="css/orr-home.css?v=20260927a">
 </head>
-<body>
+<body class="orr-home">
   <a class="skip" href="#main">Skip to content</a>
 
-<!-- ============ NAV ============ -->
-<header class="nav" id="nav">
-  <div class="nav-in">
-    <a class="mark" href="/#top" aria-label="Orr Biologicals home">
+<!-- ============ HEADER (zip editorial layout) ============ -->
+<header class="orr-header" id="nav">
+  <div class="orr-container orr-header-in">
+    <a class="orr-brand" href="/#top" aria-label="Orr Biologicals home">
       <svg viewBox="0 0 28 28" aria-hidden="true">
         <circle cx="14" cy="14" r="13" fill="none" stroke="currentColor" stroke-opacity="0.35"/>
         <path d="M7 20c2.6-2.2 2.6-9.8 7-9.8S16.4 20 21 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" class="dash-flow"/>
         <path d="M6 12c2.6-2.2 2.6-6 7-6s4.4 3.8 7 6" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-opacity="0.55" class="dash-flow"/>
       </svg>
-      <span><b>Orr Biologicals</b><small>ALGAEPHYTE &middot; CYANOFLOW</small></span>
+      <span class="orr-brand-word">orr<span>biologicals</span><span class="orr-brand-dot">&reg;</span></span>
     </a>
-    <nav class="nav-links" aria-label="Primary">
-      <a href="/#inside">System</a>
-      <a href="/#products">Products</a>
-      <a href="/applications/">Applications</a>
-      <a href="/cyanoflow">Cyanoflow</a>
-      <a href="/blog/">Blog</a>
-      <a href="/game/">Game</a>
-      <a class="btn-white" href="/#deploy">Pilot access</a>
+    <nav class="orr-desktop-nav" aria-label="Primary">
+      <div class="orr-nav-dropdown">
+        <button class="orr-nav-link" type="button" aria-haspopup="true">Research platforms
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="orr-product-menu">
+          <span class="orr-eyebrow">TWO DISTINCT RESEARCH PLATFORMS</span>
+          <a href="/#products"><span class="orr-menu-icon"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 20c2.6-2.2 2.6-9.8 7-9.8S16.4 20 21 20"/><path d="M6 12c2.6-2.2 2.6-6 7-6s4.4 3.8 7 6"/></svg></span><span><strong>Algaephyte</strong><small>Cultivation &middot; sensing &middot; control</small></span></a>
+          <a href="/cyanoflow"><span class="orr-menu-icon teal"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg></span><span><strong>Cyanoflow</strong><small>Single-cell research &middot; in development</small></span></a>
+          <a class="menu-compare" href="/blog/">Compare the documented work
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="menu-archive" href="/blog/spirulina-is-a-cyanobacterium"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg> Knowledge base &middot; cultivation notes</a>
+        </div>
+      </div>
+      <a class="orr-nav-link" href="/#inside">System</a>
+      <a class="orr-nav-link" href="/applications/">Applications</a>
+      <a class="orr-nav-link" href="/blog/">The blog <span class="orr-nav-dot"></span></a>
+      <a class="orr-btn orr-btn-outline orr-header-cta" href="/#deploy">Pilot access
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
     </nav>
-    <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
+    <button class="orr-mobile-toggle" id="navToggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
+  </div>
+  <div class="orr-mobile-nav" id="mobileMenu" hidden>
+    <a href="/#products">Algaephyte &middot; cultivation</a>
+    <a href="/cyanoflow">Cyanoflow &middot; single-cell research</a>
+    <a href="/#inside">System</a>
+    <a href="/applications/">Applications</a>
+    <a href="/blog/">The blog</a>
+    <a href="/#deploy">Pilot access</a>
   </div>
 </header>
-<div class="mobile-menu" id="mobileMenu" hidden>
-  <a href="/#inside">System</a>
-  <a href="/#products">Products</a>
-  <a href="/applications/">Applications</a>
-  <a href="/cyanoflow">Cyanoflow</a>
-  <a href="/blog/">Blog</a>
-  <a href="/game/">Game</a>
-  <a href="/#deploy">Pilot access</a>
-</div>
 
   <main id="main">
-<!-- ============ HERO ============ -->
-<section class="hero" id="top">
-  <img class="hero-img parallax" id="heroImg" src="assets/images/hero.jpg" alt="Algaephyte photobioreactor cultivating a dense Arthrospira culture">
-  <div class="hero-veil"></div>
-  <canvas class="hero-atmo" id="atmoHero" aria-hidden="true"></canvas>
-  <div class="noise"></div>
-  <div class="hero-glow"></div>
-  <div class="hero-in" id="heroIn">
-    <p class="eyebrow fadeup" style="animation:fadeup 1s cubic-bezier(.16,1,.3,1) both">Orr Biologicals · Photobioreactor 01</p>
-    <h1 id="wordmark" aria-label="Algaephyte" style="font-size:clamp(3.2rem,7.5vw,6.4rem);line-height:.92"></h1>
-    <h2 class="fadeup" style="animation:fadeup 1s cubic-bezier(.16,1,.3,1) both;animation-delay:.62s;max-width:30ch;font-size:clamp(1.3rem,2.2vw,1.8rem)">A living production system that learns how to stay productive.</h2>
-    <p class="lede fadeup" style="animation:fadeup 1s cubic-bezier(.16,1,.3,1) both;animation-delay:.76s">Vessel, sensors, edge vision, digital twin, control firmware and federated learning — engineered as one instrument for reliable microalgae cultivation.</p>
-    <div class="hero-cta fadeup" style="animation:fadeup 1s cubic-bezier(.16,1,.3,1) both;animation-delay:.9s">
-      <a class="btn-white" href="#simulation">Experience the system</a>
-      <a class="btn-ghost" href="#products">Explore the products</a>
+<!-- ============ HERO (zip layout) ============ -->
+<section class="orr-container orr-hero" id="top">
+  <div class="orr-hero-copy">
+    <p class="orr-eyebrow orr-hero-eyebrow"><span class="orr-living-dot pulse"></span> BIG IDEAS BEGIN SMALL</p>
+    <h1>Small organisms.<br>Extraordinary<br><span>potential.</span></h1>
+    <p class="orr-hero-description">We turn a fascination with microalgae into tools for research, discovery, and cultivation.</p>
+    <div class="orr-hero-actions">
+      <a class="orr-btn orr-btn-dark" href="#products">Explore the platforms
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
+      <a class="orr-text-link" href="#inside">Discover the system
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+    <div class="orr-hero-footnote"><span class="orr-tiny-line"></span> ROOTED IN RESEARCH. GROWING WITH CURIOSITY.</div>
+  </div>
+  <div class="orr-hero-visual">
+    <img src="assets/images/hero.jpg" alt="Algaephyte photobioreactor cultivating a dense Arthrospira culture">
+    <div class="orr-hero-image-top"><span><span class="orr-living-dot"></span> A CLOSER LOOK CHANGES EVERYTHING</span>
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></div>
+    <div class="orr-hero-image-bottom">
+      <div class="orr-image-crosshair"><span></span></div>
+      <div><span class="orr-image-eyebrow">SMALL SCALE. LIMITLESS WONDER.</span><p>Life, in a different light.</p></div>
+      <div class="orr-image-index">FIG. 001<br><span>ALGAEPHYTE &middot; AP-01</span></div>
+    </div>
+    <span class="orr-hero-image-credit">LIVING CULTURE &middot; AP-01</span>
+  </div>
+</section>
+
+<!-- ============ PRINCIPLES STRIP (zip layout) ============ -->
+<div class="orr-principles">
+  <div class="orr-container orr-principles-in">
+    <span class="orr-principles-label">BIOLOGY, WITH PURPOSE.</span>
+    <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 019.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>Inspired by nature</span>
+    <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 18h8"/><path d="M3 22h18"/><path d="M14 22a7 7 0 10-7-7"/><path d="M9 14h2"/><path d="M9 12a2 2 0 01-2-2V6h6v4a2 2 0 01-2 2z"/><path d="M12 6V3a1 1 0 00-1-1H9a1 1 0 00-1 1v3"/></svg>Grounded in science</span>
+    <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><ellipse cx="12" cy="12" rx="10" ry="4.2"/></svg>Built for exploration</span>
+    <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>Growing possibilities</span>
+  </div>
+</div>
+
+<!-- ============ PRODUCTS (zip layout) ============ -->
+<section class="orr-container orr-section orr-products" id="products">
+  <div class="orr-section-heading">
+    <div>
+      <p class="orr-eyebrow">TWO RESEARCH PLATFORMS</p>
+      <h2>Two platforms. Different questions.</h2>
+    </div>
+    <p>Algaephyte explores cultivation.<br>Cyanoflow explores single cells.</p>
+  </div>
+  <div class="orr-product-grid">
+    <a class="orr-product-card algaephyte" href="#inside" aria-label="Algaephyte — the self-tending photobioreactor">
+      <div class="orr-product-card-content">
+        <div class="orr-product-card-top">
+          <p class="orr-eyebrow">PHOTOBIOREACTOR &middot; PILOT DEPLOYMENTS</p>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 20c2.6-2.2 2.6-9.8 7-9.8S16.4 20 21 20"/><path d="M6 12c2.6-2.2 2.6-6 7-6s4.4 3.8 7 6"/></svg>
+        </div>
+        <h3>Algaephyte</h3>
+        <p>A self-tending photobioreactor. Six sensors and a camera feed a physics-based digital twin; every dose it proposes must clear three safety gates before a pump is allowed to move. It fails closed.</p>
+        <div class="orr-specs-mini">
+          <div><strong>18 L</strong><span>Arthrospira reference column</span></div>
+          <div><strong>Droop &middot; Steele</strong><span>Physics digital twin</span></div>
+          <div><strong>3 gates</strong><span>Fails closed, always</span></div>
+        </div>
+        <span class="orr-text-link">Inside Algaephyte
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
+      </div>
+      <div class="orr-product-card-image">
+        <img src="assets/images/hero.jpg" alt="Algaephyte photobioreactor with a dense green Arthrospira culture" loading="lazy">
+        <span class="orr-image-note">ALGAEPHYTE &middot; AP-01</span>
+        <span class="orr-product-image-circle"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
+      </div>
+    </a>
+    <a class="orr-product-card cyanoflow" href="/cyanoflow" aria-label="Cyanoflow — single-cell discovery platform">
+      <div class="orr-product-card-content">
+        <div class="orr-product-card-top">
+          <p class="orr-eyebrow">RESEARCH PLATFORM &middot; IN DEVELOPMENT</p>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg>
+        </div>
+        <h3>Cyanoflow</h3>
+        <p>Single-cell discovery for microalgae. A microfluidic chip compartmentalizes cells, automated microscopy watches them over time, and computer vision turns diversity into a ranked list of candidates worth your hands.</p>
+        <div class="orr-specs-mini">
+          <div><strong>Microfluidics</strong><span>Cells compartmentalized</span></div>
+          <div><strong>Time-series</strong><span>Automated imaging</span></div>
+          <div><strong>AI ranking</strong><span>Candidate phenotypes</span></div>
+        </div>
+        <span class="orr-text-link">Explore Cyanoflow
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
+      </div>
+      <div class="orr-product-card-image">
+        <img src="assets/cyano/hero-field.jpg" alt="Microalgae cells imaged through the Cyanoflow microfluidic chip" loading="lazy">
+        <span class="orr-image-note">CYANOFLOW &middot; IN DEVELOPMENT</span>
+        <span class="orr-product-image-circle"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
+      </div>
+    </a>
+  </div>
+  <div class="orr-compare-link"><span>Distinct purpose. Different published status.</span>
+    <a class="orr-text-link" href="/blog/">Compare source-attributed notes
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></a></div>
+</section>
+
+<!-- ============ LAB TEASER (zip layout) ============ -->
+<section class="orr-container" style="padding-bottom:74px">
+  <div class="orr-lab-teaser">
+    <div class="orr-lab-teaser-copy">
+      <span class="orr-light-pill"><span class="orr-living-dot"></span> THE INTERACTIVE LAB</span>
+      <h2>Less &ldquo;what if.&rdquo;<br>More &ldquo;let&rsquo;s find out.&rdquo;</h2>
+      <p>Change light, carbon and gas exchange in a simplified physics model of the culture — the same ideas the digital twin uses, without the instrument. Brightest is not best. More is not always more.</p>
+      <a class="orr-btn orr-btn-lime" href="#simulation">Try the living simulation
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
+      <span class="orr-lab-disclaimer">Illustrative physics model &middot; no measured data</span>
+    </div>
+    <div class="orr-lab-panel">
+      <div class="orr-lab-panel-head">
+        <span>ENVIRONMENT PREVIEW</span>
+        <span class="live"><span></span> SIMULATION</span>
+      </div>
+      <div class="orr-lab-metrics">
+        <div><span>Light</span><strong>218<small> &micro;mol</small></strong></div>
+        <div><span>Carbon</span><strong>6.8<small> g/L</small></strong></div>
+        <div class="orr-lab-period"><span>Droop &middot; Steele &middot; Beer-Lambert</span><br>72 h forecast</div>
+      </div>
+      <div class="orr-lab-chart">
+        <svg viewBox="0 0 320 90" preserveAspectRatio="none" aria-hidden="true">
+          <line x1="0" x2="320" y1="84" y2="84" stroke="rgba(255,255,255,.08)"/>
+          <path d="M0 78 C 40 70, 70 44, 110 38 S 190 30, 230 36 S 300 52, 320 58" fill="none" stroke="#9fe0a4" stroke-width="1.7" vector-effect="non-scaling-stroke"/>
+        </svg>
+      </div>
+      <div class="orr-lab-controls">
+        <span>Illustrative curve — not instrument output</span>
+        <div><button type="button" class="selected">72 h</button></div>
+      </div>
+      <span class="orr-lab-footnote">The same environment sliders drive the living simulation below.</span>
     </div>
   </div>
-  <div class="hero-status"><span class="beacon-wrap"><span class="pulse-ring"></span><span class="status-beacon"></span></span>AP-01 · culture online</div>
-  <div class="scroll-hint" aria-hidden="true"><span class="scroll-line"></span></div>
 </section>
-<!-- ============ TICKER ============ -->
-<div class="ticker" aria-hidden="true">
-  <div class="marquee-track" id="tickerTrack"></div>
-</div>
+
+
 <!-- ============ SIMULATION ============ -->
 <section class="section" id="simulation">
   <div class="wrap">
@@ -173,44 +294,6 @@
         <canvas id="cultureSim" aria-label="Animated simulation of the photobioreactor chamber"></canvas>
       </div>
       <p class="mono" style="margin-top:12px;font-size:10px;color:var(--mute)">Simulated response from a physics model (Monod · Steele · Beer-Lambert · oxygen inhibition) — not measured laboratory data.</p>
-    </div>
-  </div>
-</section>
-<!-- ============ PRODUCTS: Algaephyte × Cyanoflow ============ -->
-<section class="section" id="products">
-  <div class="wrap">
-    <div class="section-reveal" style="display:flex;align-items:flex-end;justify-content:space-between;gap:32px;flex-wrap:wrap">
-      <div>
-        <p class="eyebrow">Two products · one laboratory</p>
-        <h2 class="h-display" style="max-width:16ch">Algaephyte and Cyanoflow.</h2>
-      </div>
-      <p class="lede" style="max-width:40ch">Two distinct instruments with distinct jobs: one tends a living culture, the other makes single cells searchable.</p>
-    </div>
-
-    <div class="prod-grid section-reveal">
-      <a class="prod-card algaephyte" href="#inside" aria-label="Algaephyte — the self-tending photobioreactor">
-        <span class="pc-bg"><img src="/assets/images/hero.jpg" alt="Algaephyte photobioreactor with a dense green Arthrospira culture" loading="lazy"></span>
-        <span class="pc-veil"></span>
-        <span class="pc-in">
-          <span class="pc-tag">Photobioreactor · shipping to pilots</span>
-          <h3>Algaephyte</h3>
-          <p>A self-tending photobioreactor. Six sensors and a camera feed a physics-based digital twin; every dose it proposes must clear three safety gates before a pump is allowed to move. It fails closed.</p>
-          <span class="pc-points"><span>18 L column</span><span>Droop · Steele twin</span><span>Edge vision</span><span>Fails closed</span></span>
-          <span class="pc-go">Inside Algaephyte <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-        </span>
-      </a>
-
-      <a class="prod-card cyanoflow" href="/cyanoflow" aria-label="Cyanoflow — single-cell discovery platform">
-        <span class="pc-bg"><img src="/assets/cyano/hero-field.jpg" alt="Microalgae cells imaged through the Cyanoflow microfluidic chip" loading="lazy"></span>
-        <span class="pc-veil"></span>
-        <span class="pc-in">
-          <span class="pc-tag">Research platform · in development</span>
-          <h3>Cyanoflow</h3>
-          <p>Single-cell discovery for microalgae. A microfluidic chip compartmentalizes cells, automated microscopy watches them over time, and computer vision turns diversity into a ranked list of candidates worth your hands.</p>
-          <span class="pc-points"><span>Microfluidics</span><span>Time-series imaging</span><span>AI phenotyping</span><span>Cell recovery</span></span>
-          <span class="pc-go">Explore Cyanoflow <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-        </span>
-      </a>
     </div>
   </div>
 </section>
@@ -451,59 +534,173 @@
     </form>
   </div>
 </section>
-  </main>
-
-<!-- ============ FOOTER ============ -->
-<footer class="footer">
-  <div class="footer-grid">
+<!-- ============ JOURNAL HOME (zip layout) ============ -->
+<section class="orr-container orr-section orr-journal-home" id="journal-home">
+  <div class="orr-section-heading">
     <div>
-      <a class="mark" href="#top" aria-label="Algaephyte home">
-        <svg viewBox="0 0 28 28" aria-hidden="true" style="width:26px;height:26px;color:var(--leaf-2)">
-          <circle cx="14" cy="14" r="13" fill="none" stroke="currentColor" stroke-opacity="0.35"/>
-          <path d="M7 20c2.6-2.2 2.6-9.8 7-9.8S16.4 20 21 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-          <path d="M6 12c2.6-2.2 2.6-6 7-6s4.4 3.8 7 6" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-opacity="0.55"/>
-        </svg>
-        <span><b style="color:var(--ink)">Orr Biologicals</b><small>ALGAEPHYTE · CYANOFLOW</small></span>
+      <p class="orr-eyebrow">NOTES FROM A LIVING WORLD</p>
+      <h2>A culture of curiosity.</h2>
+    </div>
+    <a class="orr-text-link" href="/blog/">All blog posts
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
+  </div>
+  <div class="orr-topic-links">
+    <a href="/blog/">Cultivation
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
+    <a href="/blog/">Digital twins
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
+    <a href="/blog/">Contamination
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
+    <a href="/blog/">Harvesting
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
+    <a href="/blog/">Vision systems
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
+  </div>
+  <div class="orr-article-grid">
+    <article class="orr-article-card">
+      <a class="orr-article-card-image" href="/blog/spirulina-is-a-cyanobacterium" aria-label="Spirulina Is a Cyanobacterium — What That Actually Means">
+        <img src="assets/images/library/microscopy-field.svg" alt="" loading="lazy">
+        <span class="orr-article-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
       </a>
-      <p>Algaephyte is a full-stack cultivation platform for microalgae and phytoplankton — vessel, firmware, edge vision, a physics twin, and a mesh, built end to end by Orr Biologicals. Arthrospira is where it started; the platform is built to extend.</p>
+      <div class="orr-article-meta"><a href="/blog/">Algaephyte field note</a><span>Aug 2026</span></div>
+      <h3><a href="/blog/spirulina-is-a-cyanobacterium">Spirulina Is a Cyanobacterium — What That Actually Means</a></h3>
+      <p>Arthrospira platensis is a photosynthetic bacterium, not an alga in the plant sense. What cyanobacteria are, and why it matters for cultivation.</p>
+    </article>
+    <article class="orr-article-card">
+      <a class="orr-article-card-image" href="/blog/digital-twins-biological-cultivation" aria-label="Digital Twins for Biological Cultivation">
+        <img src="assets/images/library/culture-vessels.svg" alt="" loading="lazy">
+        <span class="orr-article-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
+      </a>
+      <div class="orr-article-meta"><a href="/blog/">Cyanoflow</a><span>Aug 2026</span></div>
+      <h3><a href="/blog/digital-twins-biological-cultivation">Digital Twins for Biological Cultivation</a></h3>
+      <p>What a digital twin of a living culture actually is: state variables, counterfactuals, and why the twin never gets the final word.</p>
+    </article>
+    <article class="orr-article-card">
+      <a class="orr-article-card-image" href="/blog/harvesting-and-using-fresh-spirulina" aria-label="Harvesting and Using Fresh Spirulina">
+        <img src="assets/images/library/biotech-compounds.svg" alt="" loading="lazy">
+        <span class="orr-article-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
+      </a>
+      <div class="orr-article-meta"><a href="/blog/">Algaephyte field note</a><span>Jul 2026</span></div>
+      <h3><a href="/blog/harvesting-and-using-fresh-spirulina">Harvesting and Using Fresh Spirulina</a></h3>
+      <p>When and how to harvest fresh Spirulina at home, simple screening and pressing methods, and what fresh actually tastes like.</p>
+    </article>
+  </div>
+  <a class="orr-daily-nudge" href="/blog/"><span class="orr-living-dot"></span><span>Four PubMed research reads.</span> One daily blog section
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    <small>UPDATES AT 1:00 PM PACIFIC</small></a>
+</section>
+
+<!-- ============ MISSION STRIP (zip layout) ============ -->
+<div class="orr-mission">
+  <div class="orr-container orr-mission-in">
+    <div class="orr-mission-icon"><svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 019.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg></div>
+    <p>We believe the next big thing<br>might be something <em>very small.</em></p>
+    <a class="orr-text-link" href="/#inside">See the whole system
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
+  </div>
+</div>
+
+<!-- ============ NEWSLETTER (zip layout) ============ -->
+<section class="orr-newsletter" id="newsletter">
+  <div class="orr-container orr-newsletter-in">
+    <div class="orr-newsletter-copy">
+      <p class="orr-eyebrow">GOOD THINGS ARE GROWING</p>
+      <h2>A little biology in your inbox.</h2>
+      <p>Field notes, new guides, and updates from the lab. No noise.</p>
     </div>
-    <div class="cols">
-      <div>
-        <div class="col-t">Products</div>
-        <a href="/#products">Algaephyte</a><br>
-        <a href="/cyanoflow">Cyanoflow</a><br>
-        <a href="/#inside">How it works</a><br>
-        <a href="/applications/">Applications</a><br>
-        <a href="#deploy">Pilot access</a><br>
-        <a href="https://www.youtube.com/@OrrBiologicals" target="_blank" rel="noreferrer">YouTube</a>
+    <div class="orr-newsletter-form">
+      <!-- Operator: wire this form to your email provider or form backend when ready. -->
+      <form id="orrSubscribeForm" novalidate>
+        <div class="orr-newsletter-input">
+          <label class="sr-only" for="newsletter-email">Email address</label>
+          <input id="newsletter-email" name="email" type="email" placeholder="Your email address" maxlength="254" required autocomplete="email">
+          <button type="submit" aria-label="Subscribe">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+        </div>
+        <label class="orr-consent-label"><input type="checkbox" required> I agree to receive updates. Unsubscribe by email anytime.</label>
+        <p class="orr-form-note" id="orrNote" role="alert"></p>
+      </form>
+      <div id="orrSuccess" class="orr-newsletter-success" hidden>
+        <span><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>
+        <div><strong>You&rsquo;re part of the culture.</strong><p>Thanks — the first field note will find you soon.</p></div>
       </div>
-      <div>
-        <div class="col-t">Learn</div>
-        <a href="/blog/">Blog</a><br>
-        <a href="/#journal">Journal</a><br>
-        <a href="/#faults">Troubleshooting</a><br>
-        <a href="/#faq">FAQ</a><br>
-        <a href="/game/">Algae Living (game)</a>
-      </div>
-      <div>
-        <div class="col-t">Field notes</div>
-        <a href="/applications/">Applications hub</a><br>
-        <a href="/applications/#species">Species guides</a><br>
-        <a href="/blog/">All blog posts</a><br>
-        <a href="/blog/how-to-start-home-spirulina-culture">Grow Spirulina at home</a><br>
-        <a href="/blog/zarrouk-medium-and-nutrients">Zarrouk medium</a><br>
-        <a href="/blog/harvesting-and-using-fresh-spirulina">Harvesting</a><br>
-        <a href="/blog/troubleshooting-contamination-crashes">Contamination</a>
-      </div>
-    </div>
-    <div style="font-size:13px;line-height:2.1">
-      <div class="col-t">Contact</div>
-      <a href="mailto:service@orrbiologicals.com">service@orrbiologicals.com</a>
-      <p class="mono" style="margin-top:24px;max-width:20rem;font-size:11px;line-height:1.7">Engineered for monitored deployment. Every actuation fails closed.</p>
     </div>
   </div>
-  <div class="bar"><span>© 2026 Orr Biologicals · Algaephyte</span><span class="legal-links"><a href="/privacy">Privacy</a> · <a href="/terms">Terms</a> · <a href="/disclaimer">Disclaimer</a> · <a href="LICENSE" download>MIT License</a></span><span>orrbiologicals.com</span></div>
+</section>
+
+<script>
+/* newsletter — front-end validation only until a backend is wired */
+(function(){
+  var f=document.getElementById("orrSubscribeForm");if(!f)return;
+  var note=document.getElementById("orrNote"),ok=document.getElementById("orrSuccess");
+  f.addEventListener("submit",function(e){
+    e.preventDefault();
+    var email=f.email.value.trim(),consent=f.querySelector('input[type=checkbox]').checked;
+    note.textContent="";note.className="orr-form-note";
+    if(!email||email.indexOf("@")<1){note.textContent="Please enter a valid email address.";note.classList.add("is-error");return;}
+    if(!consent){note.textContent="Please agree to receive updates first.";note.classList.add("is-error");return;}
+    f.hidden=true;ok.hidden=false;
+  });
+})();
+</script>
+
+  </main>
+
+<!-- ============ FOOTER (zip dark editorial) ============ -->
+<footer class="orr-footer">
+  <div class="orr-container">
+    <div class="orr-footer-main">
+      <div class="orr-footer-brand">
+        <a class="orr-brand" href="/#top" aria-label="Orr Biologicals home">
+          <svg viewBox="0 0 28 28" aria-hidden="true">
+            <circle cx="14" cy="14" r="13" fill="none" stroke="currentColor" stroke-opacity="0.35"/>
+            <path d="M7 20c2.6-2.2 2.6-9.8 7-9.8S16.4 20 21 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+            <path d="M6 12c2.6-2.2 2.6-6 7-6s4.4 3.8 7 6" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-opacity="0.55"/>
+          </svg>
+          <span class="orr-brand-word">orr<span>biologicals</span><span class="orr-brand-dot">&reg;</span></span>
+        </a>
+        <p>Small organisms.<br>A world of possibility.</p>
+        <span class="orr-footer-location"><span></span> Independently curious. Naturally inspired.</span>
+      </div>
+      <div class="orr-footer-links">
+        <div>
+          <h3>RESEARCH PLATFORMS</h3>
+          <a href="/#products">Algaephyte &middot; cultivation</a>
+          <a href="/cyanoflow">Cyanoflow &middot; in development</a>
+          <a href="/#inside">How it works</a>
+          <a href="/applications/">Applications</a>
+          <a href="/#deploy">Pilot access</a>
+          <a href="https://www.youtube.com/@OrrBiologicals" target="_blank" rel="noreferrer">YouTube</a>
+        </div>
+        <div>
+          <h3>KEEP EXPLORING</h3>
+          <a href="/blog/">Algae research blog</a>
+          <a href="/#journal">Development journal</a>
+          <a href="/#faults">Troubleshooting</a>
+          <a href="/#faq">FAQ</a>
+          <a href="/game/">Algae Living (game)</a>
+        </div>
+        <div>
+          <h3>LET&rsquo;S CONNECT</h3>
+          <a href="mailto:service@orrbiologicals.com">service@orrbiologicals.com</a>
+          <a href="/privacy">Privacy policy</a>
+          <a href="/terms">Terms</a>
+          <a href="/disclaimer">Disclaimer</a>
+        </div>
+      </div>
+    </div>
+    <div class="orr-footer-bottom">
+      <span>&copy; <span id="orrYr">2026</span> Orr Biologicals. Growing with intention.</span>
+      <div><a href="/privacy">Privacy</a><a href="/terms">Terms</a><a href="/disclaimer">Disclaimer</a><a href="LICENSE" download>MIT License</a></div>
+      <span>orrbiologicals.com</span>
+    </div>
+  </div>
 </footer>
+
+<script>
+/* footer year */
+(function(){var y=document.getElementById("orrYr");if(y)y.textContent=String(new Date().getFullYear());})();
+</script>
 
   <script defer src="js/simulator.js?v=20260925c"></script>
   <script defer src="js/site.js?v=20260925c"></script>
