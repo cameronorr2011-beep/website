@@ -4,17 +4,18 @@ name: Daily blog refresh
 #   PubMed search -> GPT-OSS-120B (Groq) picks 4 papers and writes
 #   a short grounded article for each -> blog/data/picks/<date>.json
 #
-# Refresh time: 1:00 PM Pacific, every day, DST-safe.
-#   GitHub cron is UTC-only and cannot express "1 PM America/Los_Angeles",
-#   so the schedule fires at 20:00 and 21:00 UTC and the "at 1pm pacific"
-#   gate below runs the generator only when it is exactly 13:00 in
-#   America/Los_Angeles. That is 1 PM PDT (summer) or 1 PM PST (winter).
-#   Manual runs (workflow_dispatch) skip the gate.
+# Refresh time: around 1:00 PM Pacific, every day, DST-safe.
+#   GitHub cron is UTC-only and runners are routinely delayed by
+#   minutes-to-hours, so an exact "hour == 13" gate silently skipped
+#   most days. Instead: one cron slot at 20:00 UTC and an idempotent
+#   date gate -- the generator itself rewrites today's file only if
+#   it does not exist yet, so late firing is harmless and there is
+#   exactly one publication per Pacific calendar day.
+#   Manual runs (workflow_dispatch) also skip the gate.
 
 on:
   schedule:
     - cron: "0 20 * * *"   # 20:00 UTC = 13:00 Pacific during PDT (Mar-Nov)
-    - cron: "0 21 * * *"   # 21:00 UTC = 13:00 Pacific during PST (Nov-Mar)
   workflow_dispatch:
 
 permissions:
@@ -34,18 +35,18 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Run only at 1:00 PM Pacific (DST-safe gate)
+      - name: Once per Pacific calendar day (idempotent gate)
         id: gate
         env:
           TZ: America/Los_Angeles
         run: |
-          HOUR=$(date +%H)
-          echo "Current hour in Pacific: $HOUR"
+          TODAY=$(date +%F)
+          echo "Today in Pacific: $TODAY"
           if [ "$GITHUB_EVENT_NAME" = "workflow_dispatch" ]; then
-            echo "Manual run — skipping the 13:00 gate."
-          elif [ "$HOUR" != "13" ]; then
-            echo "Not 13:00 Pacific right now — nothing to do."
-            exit 78 # neutral: the other scheduled slot owns this run
+            echo "Manual run -- skipping the date gate."
+          elif [ -f "blog/data/picks/$TODAY.json" ]; then
+            echo "Picks for $TODAY already exist -- nothing to do."
+            exit 78 # neutral: today is already published
           fi
 
       - name: Pick four papers and write them up
