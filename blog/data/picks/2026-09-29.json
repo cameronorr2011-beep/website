@@ -1,0 +1,55 @@
+{
+  "date": "2026-09-29",
+  "model": "openai/gpt-oss-120b",
+  "generated_at": "2026-09-29T00:06:33Z",
+  "picks": [
+    {
+      "pmid": "42777879",
+      "title": "Low-temperature plasma technology: comprehensive applications in microalgae cultivation, mutagenesis, and downstream processing.",
+      "journal": "Bioresource technology",
+      "year": "2026",
+      "pub_date": "2026-09-23",
+      "url": "https://doi.org/10.1016/j.biortech.2026.135920",
+      "topic": "Cultivation Technology",
+      "hook": "Low‑temperature plasma boosts microalgae growth, mutation and downstream processing.",
+      "article": "A recent study set out to see how low‑temperature plasma (LTP) could help grow microalgae more efficiently and make downstream steps like strain improvement and processing cheaper. The authors reviewed how different LTP setups – atmospheric and room‑temperature plasma – interact with microalgae during cultivation, mutagenesis (creating genetic changes) and downstream processing.\n\nThey examined dose‑dependent effects of LTP on microalgae, looking at how varying the plasma exposure influences growth, nutrient content and material properties. The review gathered evidence from multiple experiments that LTP can act as a versatile tool across the entire microalgal biotechnological workflow.\n\nThe authors concluded that LTP technologies show promise as flexible, cost‑effective methods for improving microalgal strains and processing, potentially enhancing the production of fuels, nutraceuticals and environmental remediation materials.\n\nUnderstanding how plasma can be tuned to benefit microalgae may help develop greener, more affordable bioprocesses.",
+      "why": "Tailoring plasma treatments could lower costs and boost yields in algae‑based fuels and health products."
+    },
+    {
+      "pmid": "42803859",
+      "title": "Quorum sensing molecules enhance cadmium detoxification and cellular removal in the marine diatom Phaeodactylum tricornutum.",
+      "journal": "World journal of microbiology &amp; biotechnology",
+      "year": "2026",
+      "pub_date": "2026-09-28",
+      "url": "https://doi.org/10.1007/s11274-026-05294-1",
+      "topic": "Environmental Detox",
+      "hook": "Quorum‑sensing molecules help diatom Phaeodactylum strip cadmium from seawater.",
+      "article": "A recent study explored whether bacterial quorum‑sensing molecules called AHLs (acyl‑homoserine lactones) can help a marine microalga, the diatom Phaeodactylum tricornutum, cope with cadmium, a toxic metal. \n\nThe researchers added exogenous AHLs to cultures of the diatom and monitored cell growth, metabolic changes, and how much cadmium was removed from the surrounding water. \n\nThey found that the AHLs influenced the diatom’s physiology and enhanced its ability to detoxify and remove cadmium, although the abstract does not give precise quantitative results. \n\nThese findings suggest that microbial communication signals could be harnessed to improve algal bioremediation of metal‑contaminated marine environments.",
+      "why": "Using bacterial signals to boost algae’s metal‑cleaning ability could make seawater detoxification more efficient."
+    },
+    {
+      "pmid": "42766750",
+      "title": "The genomic origins of cyanobacterial morphological diversity.",
+      "journal": "Proceedings of the National Academy of Sciences of the United States of America",
+      "year": "2026",
+      "pub_date": "2026-09-21",
+      "url": "https://doi.org/10.1073/pnas.2608186123",
+      "topic": "Genomic Diversity",
+      "hook": "New study maps genetic roots of cyanobacterial shape diversity.",
+      "article": "A recent study set out to uncover the genetic basis for the wide range of shapes and structures seen in cyanobacteria, the only prokaryotes that perform oxygenic photosynthesis and have shaped Earth’s chemistry and biology.\n\nThe researchers examined the genomes of many cyanobacterial species, focusing on those that display filamentous growth and cellular differentiation, to look for genetic patterns linked to these traits.\n\nThey found that the mechanisms governing the repeated transitions between single‑cell and multicellular forms have not yet been resolved, indicating that the genomic drivers of cyanobacterial morphological diversity remain unknown.\n\nUnderstanding these unresolved genetic pathways is important because it could reveal how multicellularity evolved in one of the planet’s most ancient and ecologically vital groups.",
+      "why": "Decoding cyanobacterial shape control could help engineer algae with tailored growth forms for biofuel and bioproduct applications."
+    },
+    {
+      "pmid": "42776480",
+      "title": "Oral Microalgae-Laden Hydrogels Modulating the Intestinal Microbiota Metabolism for Acute Alcohol-Induced Liver Injury Therapy.",
+      "journal": "Small (Weinheim an der Bergstrasse, Germany)",
+      "year": "2026",
+      "pub_date": "2026-09-23",
+      "url": "https://doi.org/10.1002/smll.202513746",
+      "topic": "Health Therapy",
+      "hook": "Microalgae‑laden oral hydrogel protects gut and heals alcohol‑induced liver injury.",
+      "article": "A recent study set out to see whether a hydrogel packed with live microalgae could be taken by mouth to change gut‑microbe activity and protect the liver from the damage caused by a binge of alcohol.\n\nThe researchers made a food‑grade hydrogel that incorporated living microalgae cells and delivered it orally, aiming to let the algae interact with the intestinal microbiota.\n\nThe work describes the design of this living‑food hydrogel and suggests it can modulate the metabolism of the gut microbiota, offering a potential therapeutic approach for acute alcohol‑induced liver injury.\n\nIf the concept proves effective, it could open a new route for using algae‑based materials to support liver health through the gut.",
+      "why": "It shows how algae can be turned into an edible delivery system that may help protect the liver by reshaping gut microbes."
+    }
+  ]
+}
