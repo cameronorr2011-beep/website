@@ -1,53 +1,53 @@
 "use strict";
 /* ---------- data ---------- */
 var STACK = [
-  {label:"Culture", index:"01", title:"The organism is the product surface.", text:"An 18 L borosilicate column keeps Arthrospira in a warm, alkaline, carbonate-rich medium. Geometry, light path and sparger are designed together because biology notices every shortcut.", spec:"18 L · 6 cm optical path · 30–36 °C"},
-  {label:"Sense", index:"02", title:"Six channels describe the water. Vision describes the cells.", text:"pH, temperature, wall light, OD₇₅₀, dissolved oxygen and conductivity stream into the controller. A camera and edge TPU classify intact helices, fragments and anything that is not spirulina.", spec:"6 sensors · INT8 YOLO · local inference"},
-  {label:"Twin", index:"03", title:"A mathematical culture runs beside the living one.", text:"Droop cell quotas, Steele's light curve and Beer-Lambert self-shading forecast the next 72 hours. Every proposed dose is simulated before the physical culture sees it.", spec:"Physics-first · 72 h horizon · counterfactuals"},
-  {label:"Edge brain", index:"04", title:"The Pi 5 thinks locally. The Coral sees locally.", text:"A Raspberry Pi 5 runs telemetry, the physics twin and a deterministic local policy engine. A small, fully quantized YOLO model runs on the Coral USB Accelerator for experimental visual flags. Qwen runs locally on the Pi as an optional explanation and operator-interface assistant; it never controls hardware. Neither network access nor another computer is required at runtime.", spec:"Pi 5 CPU · Coral TPU · local Qwen"},
-  {label:"Control", index:"05", title:"Intelligence proposes. Hardware decides.", text:"A deterministic gate checks mass, pH, temperature and duty cycle. The ESP32 owns the pumps and keeps independent clamps in firmware. A physical e-stop sits underneath the entire software stack.", spec:"Fail closed · dual gate · wet-side isolation"},
-  {label:"Mesh", index:"06", title:"Every vessel can improve without surrendering its data.", text:"Algaephyte nodes exchange fitted twin parameters over MQTT when a network is available. Images and raw traces stay on the instrument. Incoming values are bounded and checked before they influence a live culture.", spec:"Optional MQTT · federated parameters · no raw images"}
+  {label:"Culture", index:"01", title:"The organism is the product.", text:"An 18-litre glass column keeps Arthrospira (spirulina) in warm, alkaline, carbonate-rich water. Geometry, light path and bubbles are designed together, because the culture notices every shortcut.", spec:"18 L · 6 cm light path · 30–36 °C"},
+  {label:"Sense", index:"02", title:"Six numbers describe the water. The camera watches the cells.", text:"pH, temperature, light, density (OD₇₅₀), dissolved oxygen and conductivity stream into the controller. A small camera model classifies healthy spirulina coils, broken fragments, and anything that is not spirulina.", spec:"6 sensors · camera checks · runs on-device"},
+  {label:"Twin", index:"03", title:"A mathematical copy of the culture runs beside the living one.", text:"Growth equations forecast the next 72 hours. Every proposed dose is played out in the model first, so the living culture never has to be the experiment.", spec:"Physics model · 72-hour look-ahead · asks 'what if'"},
+  {label:"Edge brain", index:"04", title:"It thinks for itself. No cloud, no internet needed.", text:"A Raspberry Pi 5 runs the sensors, the growth model and the safety rules. A camera model runs on a small accelerator stick for visual checks. A local voice-and-text assistant can explain what is happening, but it never controls hardware. Unplug the network and nothing changes.", spec:"Pi 5 · camera accelerator · local assistant"},
+  {label:"Control", index:"05", title:"The software suggests. The hardware decides.", text:"Simple checks — dose size, pump runtime, pH range, temperature ceiling — happen before anything moves. The pump controller keeps its own independent limits, and a physical stop button overrides everything.", spec:"Fails closed · double-checked · hardware isolated"},
+  {label:"Mesh", index:"06", title:"Vessels can learn from each other without giving up their data.", text:"Algaephyte units can share a handful of tuned model numbers over the network when one is available. Photos and raw readings never leave the instrument, and every incoming number is checked before it can influence a live culture.", spec:"Optional networking · shares settings, never photos"}
 ];
 var SIGNALS = [
-  {k:"pH", h:"The carbonate pool, from outside", p:"Not the goal — the symptom. pH is what the bicarbonate/carbonate pool looks like from the outside. A culture at pH 10.6 with high alkalinity is comfortable; the same pH with a depleted pool is starving."},
-  {k:"Temperature", h:"The growth band", p:"Arthrospira wants ~30–36 °C. Below that, division slows. Past ~42 °C you are cooking it. The twin keeps the bell-shaped response in mind, not just a setpoint."},
-  {k:"Light", h:"Steele, not 'as much as the LED will do'", p:"Growth rises to an optimum irradiance and falls again under photoinhibition. A single wall sensor measures the jacket; the twin integrates through every radial shell."},
-  {k:"OD₇₅₀", h:"Biomass, bluntly", p:"Optical density at 750 nm is the workhorse biomass proxy — and it is colour-blind. Below ~0.05 it cannot see the culture yet; a healthy helix and a contaminant can share the number."},
-  {k:"Dissolved oxygen", h:"When photosynthesis poisons itself", p:"Oxygen supersaturation through the afternoon is photosynthesis turning on itself. High DO with high light is the classic yellowing recipe. The twin treats it as a state variable, not a footnote."},
-  {k:"Conductivity / TDS", h:"Ionic strength, standing in for the pool", p:"A cheap stand-in for the total ionic environment. Combined with pH and temperature it lets the twin estimate the carbonate system — the thing actually feeding the cell."}
+  {k:"pH", h:"The carbon supply, seen from outside", p:"pH is not the goal — it's the symptom. It shows how much carbonate food is left in the water. A culture at pH 10.6 with plenty of bicarbonate is comfortable; the same reading with a drained supply is starving."},
+  {k:"Temperature", h:"The comfort zone", p:"Arthrospira wants roughly 30–36 °C. Below that, growth slows. Past ~42 °C you are cooking it. The model tracks the whole response curve, not just one target number."},
+  {k:"Light", h:"There is a best brightness — more can be worse", p:"Growth rises with light up to a peak, then falls as the cells bleach. One sensor reads the light at the glass; the model works out what each layer of the culture actually receives."},
+  {k:"OD₇₅₀", h:"A rough head-count of cells", p:"Shining light through the culture and measuring what's blocked gives a quick density reading — but it can't tell healthy spirulina from an impostor, and it can't see very thin cultures yet."},
+  {k:"Dissolved oxygen", h:"When photosynthesis turns on itself", p:"As oxygen builds through the afternoon the culture starts to suffocate in its own output. High oxygen plus bright light is the classic recipe for yellowing. The model treats it as a warning sign, not a footnote."},
+  {k:"Conductivity / TDS", h:"How much is dissolved in the water", p:"A cheap stand-in for the total salt content. Together with pH and temperature, it lets the model estimate the carbonate supply — the thing actually feeding the cells."}
 ];
 var GATES = [
-  {n:"GATE 01", h:"Arithmetic, not opinion", p:"Hard limits on dose mass, pump runtime, pH band, temperature ceiling and actuation frequency. A proposal outside them is rejected and logged before it reaches anything wet."},
-  {n:"GATE 02", h:"The twin runs the counterfactual", p:"The surviving proposal is simulated. If the forecast stalls growth, crosses a pH boundary, or spikes dissolved oxygen, it is blocked. The model answers in the same units you dose in."},
-  {n:"GATE 03", h:"Firmware owns the MOSFETs", p:"The ESP32 has its own max-duty table in EEPROM, a watchdog that opens the pumps if the Pi stops heartbeating, and a physical e-stop that does not ask anyone's opinion."}
+  {n:"GATE 01", h:"Plain arithmetic", p:"Hard limits on dose size, pump runtime, pH range, temperature ceiling and how often doses can happen. A proposal outside them is rejected and logged before it can reach the water."},
+  {n:"GATE 02", h:"The model runs a dry rehearsal", p:"Anything that passes the first gate is played out in the growth model first. If the forecast stalls growth, crosses a pH boundary or spikes oxygen, the dose is blocked."},
+  {n:"GATE 03", h:"The pump controller has its own limits", p:"The pump controller keeps its own maximum settings stored on-chip, plus a watchdog that shuts the pumps off if the main computer goes quiet. And the physical stop button asks nobody's permission."}
 ];
 var LOOP = [
-  ["1 Sense","MCP analog front-end + I²C + camera"],
-  ["2 Model","Droop · Steele · Beer-Lambert"],
-  ["3 Propose","Rules, or a planner with no authority"],
-  ["4 Verify","Limits, then counterfactual"],
-  ["5 Act","ESP32 MOSFETs, or nothing"],
-  ["6 Publish","MQTT parameter vector, or LWT"]
+  ["1 Sense","Six sensors plus a camera"],
+  ["2 Model","The growth equations forecast ahead"],
+  ["3 Propose","Rules suggest an action"],
+  ["4 Verify","Limits checked, then a dry rehearsal"],
+  ["5 Act","The pump controller decides, or nothing moves"],
+  ["6 Publish","A few numbers, optionally shared"]
 ];
-var TICKS = ["pH 10.14","35.1 °C","210 µmol","OD₇₅₀ 0.64","DO 148%","TDS 18.2 ppt","Twin +72 h","TPU 21 ms","MQTT QoS 1","Fail closed","Arthrospira platensis","18 L column"];
+var TICKS = ["pH 10.14","35.1 °C","210 µmol","OD₇₅₀ 0.64","DO 148%","TDS 18.2 ppt","+72 h forecast","Vision 21 ms","Network heartbeat","Fails closed","Arthrospira platensis","18 L column"];
 
 var FAQS = [
-  {q:"What is Algaephyte, in one sentence?", a:"An 18-litre photobioreactor with a digital twin, a two-watt Edge TPU, and pumps that are not allowed to move until a physics model and a firmware clamp both agree."},
-  {q:"What's actually 'intelligent' about it?", a:"A control loop: sense, simulate, propose, verify, act. It senses six channels and a camera, forecasts growth with a physics twin, proposes a dose or a light change, and then waits for permission from gates that do not care about its confidence."},
-  {q:"Is a language model in charge of the culture?", a:"No. Qwen runs locally on the Pi only as an optional explanation and operator-interface assistant. Every request remains subject to the deterministic policy, twin simulation, firmware duty clamps, and physical e-stop. If Qwen is missing or fails, the local controller continues without it."},
-  {q:"Why a Coral TPU instead of just the Pi?", a:"YOLOv8n at 288 px is uncomfortable on a Pi CPU if you also want to integrate a twin at a few hertz. The Coral does the vision in ~20 ms at ~2 W. The Pi keeps the physics. If the TPU falls off USB, the controller keeps running, just blind."},
-  {q:"What does the YOLO model actually look at?", a:"Helices, fragments, and not-spirulina. We use it as a contamination and stress signal. It cannot open a pump. It can hold one."},
-  {q:"What is Algaephyte Mesh?", a:"A federated mesh over MQTT. Nodes share fitted twin parameters — μ_max, I_opt, half-saturation constants — never images, never raw traces, never location. Incoming values are bounds-checked before they touch a live twin."},
-  {q:"Why MQTT?", a:"Because a greenhouse on a flaky 4G stick is the real deployment, and MQTT's last-will, retained messages, and 48-byte payloads still work there. We are not bored of it yet."},
-  {q:"Can I run a different alga?", a:"Version one is Arthrospira platensis, on purpose. Alkaline medium is free biosecurity and the filaments are large enough to see. Other strains need other twins and other vision classes. Later."},
-  {q:"How much does a column actually produce?", a:"On the order of 0.10–0.16 g dry biomass per litre per day when it is healthy. For 18 L that is about 2 g a day, ~1.4 g of protein, ~4 g of CO₂ fixed. We do not round that up."},
-  {q:"What happens if the internet dies?", a:"The Pi falls back to a rule-based strategy. Pumps remain clamped. The TPU, if present, still sees. The mesh waits. The culture should not notice."},
+  {q:"What is Algaephyte, in one sentence?", a:"An 18-litre reactor with sensors, a growth-predicting model, and pumps that aren't allowed to move until both the maths and the hardware's own safety limits agree."},
+  {q:"What's actually 'intelligent' about it?", a:"A loop: sense, predict, propose, check, act. It watches six readings and a camera, forecasts growth, proposes a dose or a light change — then waits for permission from checks that don't care how confident the proposal sounds."},
+  {q:"Is an AI in charge of the culture?", a:"No. A local assistant on the device can explain what's happening and take operator requests, but every request still passes the same fixed safety rules, model rehearsal, hardware limits and physical stop button. If the assistant fails, the controller carries on without it."},
+  {q:"Why a separate camera chip instead of just the main computer?", a:"Checking the camera several times a minute is heavy work for the main computer while it's also running the growth model. The small accelerator chip does the vision cheaply. If it ever falls off, the controller keeps running — just without the camera checks."},
+  {q:"What does the camera model actually look at?", a:"Healthy coils, broken fragments, and things that aren't spirulina. We use it as a contamination and stress warning. It can never open a pump — but it can hold one closed."},
+  {q:"What is Algaephyte Mesh?", a:"An optional network where units share a handful of tuned model numbers — never photos, never raw traces, never location. Every incoming value is sanity-checked before it can touch a live culture."},
+  {q:"Why that messaging setup?", a:"Because a greenhouse on a patchy 4G connection is the real deployment. The protocol we use is old, small and reliable: tiny messages that survive bad connections, and an automatic 'gone quiet' notice when a unit drops off. We're not bored of it yet."},
+  {q:"Can I run a different alga?", a:"Version one is Arthrospira platensis (spirulina), on purpose. The alkaline water makes life hard for contaminants, and the spirals are big enough for a cheap camera to recognise. Other species need their own models. Later."},
+  {q:"How much does a column actually produce?", a:"On the order of 0.10–0.16 grams of dry spirulina per litre per day when it's healthy. For 18 litres that's about 2 grams a day — roughly 1.4 g of protein, and about 4 g of CO₂ taken in. We don't round that up."},
+  {q:"What happens if the internet dies?", a:"The device falls back to simple, conservative rules. Pumps stay safety-clamped. The camera, if present, keeps watching. The network just waits. The culture shouldn't notice."},
   {q:"Is this open source?", a:"The biological models and technical reasoning are published for scrutiny. Algaephyte itself is maintained as an integrated hardware and software platform. Research and validation partners can request deeper implementation access."},
-  {q:"Who is behind this?", a:"Orr Biologicals builds full-stack biological infrastructure: cultivation hardware, embedded control, edge vision, physical models and distributed learning in one system. Contact service@orrbiologicals.com."},
+  {q:"Who is behind this?", a:"Orr Biologicals builds complete biological systems: cultivation hardware, embedded control, camera checks, physical models and shared learning in one package. Contact service@orrbiologicals.com."},
   {q:"Can I buy one?", a:"Algaephyte is entering controlled pilot deployments. Use the deployment form or email service@orrbiologicals.com with your location, vessel requirement and cultivation objective."},
-  {q:"Does it work in a bedroom?", a:"It works anywhere you can keep ~30–36 °C, ventilate a little air, and not knock the vessel over. It does not work in a sealed cupboard, which we say from measurement, not vibe."},
-  {q:"What are the six sensors?", a:"pH, temperature, light at the wall, optical density at 750 nm, dissolved oxygen, and conductivity/TDS. Analog through a proper front-end, not a miracle module from a marketplace listing."},
-  {q:"Why fail closed?", a:"Because a pump that does nothing is almost always safer than a pump that does the wrong thing quickly. The alkali pump in particular."}
+  {q:"Does it work in a bedroom?", a:"It works anywhere you can keep ~30–36 °C, ventilate a little air, and not knock the vessel over. It does not work in a sealed cupboard — we measured, it's not a vibe."},
+  {q:"What are the six sensors?", a:"pH, temperature, light at the glass, culture density (optical density at 750 nm), dissolved oxygen, and conductivity. Proper instrument-grade inputs, not a miracle module from a marketplace listing."},
+  {q:"Why 'fails closed'?", a:"Because a pump that does nothing is almost always safer than a pump that does the wrong thing quickly. Especially the alkali pump."}
 ];
 
 var ISSUES = [
