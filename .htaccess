@@ -5,6 +5,19 @@ ErrorDocument 404 /404.html
 
 Options -Indexes
 
+# Block dotfiles (.env, .git) and source/tooling files from HTTP access.
+# Serves only site content; blocks anything sensitive that ends up in the
+# web root (scripts, backups, logs). 2.4 and 2.2 syntax both covered.
+<FilesMatch "^\.(?!well-known)|\.(bak|old|orig|save|swp|tmp|py|ps1|yml|yaml|sh|ini|conf|log|sql|md|zip)$|~$">
+  <IfModule mod_authz_core.c>
+    Require all denied
+  </IfModule>
+  <IfModule !mod_authz_core.c>
+    Order allow,deny
+    Deny from all
+  </IfModule>
+</FilesMatch>
+
 <IfModule mod_rewrite.c>
 RewriteEngine On
 
@@ -26,11 +39,8 @@ Redirect 301 /photobioreactor-ai-optimization          /blog/photobioreactor-ai-
 Redirect 301 /digital-twins-biological-cultivation     /blog/digital-twins-biological-cultivation
 Redirect 301 /spirulina-is-a-cyanobacterium            /blog/spirulina-is-a-cyanobacterium
 Redirect 301 /articles                                 /blog/
-Redirect 301 /insights                                 /blog/
 RedirectMatch 301 ^/insights/?$ /blog/
 Redirect 301 /control-loop-architecture                /blog/control-loop-architecture
-Redirect 301 /ai-controlled-mushroom-cultivation       /blog/ai-controlled-mushroom-cultivation
-Redirect 301 /computer-vision-mushroom-cultivation     /blog/computer-vision-mushroom-cultivation
 Redirect 301 /cultivation                              /blog/
 Redirect 301 /reading-your-culture                     /blog/reading-your-culture
 Redirect 301 /winter-home-growing-warmth               /blog/winter-home-growing-warmth
@@ -54,8 +64,7 @@ Redirect 301 /digital-twin-droop-steele-model          /blog/digital-twin-droop-
 Redirect 301 /bounded-autonomy-safe-ai-proposals       /blog/bounded-autonomy-safe-ai-proposals
 Redirect 301 /how-main-keeps-culture-safe              /blog/how-main-keeps-culture-safe
 Redirect 301 /vision-contamination-detection           /blog/vision-contamination-detection
-Redirect 301 /computer-vision-contamination-detection  /blog/computer-vision-contamination-detection
-Redirect 301 /computer-vision-mushroom-cultivation     /#instrument
+Redirect 301 /computer-vision-contamination-detection  /blog/vision-contamination-detection
 Redirect 301 /edge-ai-biological-systems               /blog/edge-ai-biological-systems
 Redirect 301 /federated-learning-network               /blog/federated-learning-network
 Redirect 301 /federated-learning-biotech               /#mesh

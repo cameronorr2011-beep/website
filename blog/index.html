@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Blog — four algae papers, written up daily | Orr Biologicals</title>
 <meta name="description" content="Every day an AI reads the newest peer-reviewed algae research, picks four papers — biotech to blooms — and writes each one up, grounded in the abstract. Refreshed daily at 1:00 PM Pacific.">
 <link rel="canonical" href="https://orrbiologicals.com/blog/">
@@ -159,7 +160,11 @@
     picks.forEach(function (p, i) {
       var card = el("pk" + i);
       if (!card || !p.title) return;
-      var url = p.url || ("https://pubmed.ncbi.nlm.nih.gov/" + p.pmid + "/");
+      var url = String(p.url || "");
+      if (!/^https:\/\//i.test(url)) {
+        /* fail closed to PubMed unless the stored url is a clean https link */
+        url = "https://pubmed.ncbi.nlm.nih.gov/" + encodeURIComponent(String(p.pmid || "")) + "/";
+      }
       card.querySelectorAll(".pk-link").forEach(function (a) { a.href = url; });
       card.querySelector(".pk-title a").textContent = String(p.title || "").replace(/<[^>]+>/g, "");
       var hook = card.querySelector(".pk-hook");

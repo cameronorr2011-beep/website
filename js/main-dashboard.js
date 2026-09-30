@@ -58,7 +58,7 @@
   function calc(){
     var v=parseFloat(vol.value)||0,h=parseFloat(have.value)||0,t=parseFloat(target.value)||0;
     var g=Math.max(0,(t-h)*v);
-    var staged=Math.max(1,Math.ceil(g/(0.5*v)));
+    var staged=v>0?Math.max(1,Math.ceil(g/(0.5*v))):1;
     out.textContent="Add "+g.toFixed(1)+" g NaHCO₃ total, in "+staged+" stage"+(staged>1?"s":"")+" of "+(g/staged).toFixed(1)+" g, an hour apart.";
   }
   [vol,have,target].forEach(function(i){i.addEventListener("input",calc);});
