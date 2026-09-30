@@ -1,0 +1,55 @@
+{
+  "date": "2026-09-30",
+  "model": "openai/gpt-oss-120b",
+  "generated_at": "2026-09-30T23:22:30Z",
+  "picks": [
+    {
+      "pmid": "42811322",
+      "title": "Microalgal cell factories for bioenergy and climate action: a circular bioeconomy roadmap.",
+      "journal": "Microbial cell factories",
+      "year": "2026",
+      "pub_date": "2026-09-29",
+      "url": "https://doi.org/10.1186/s12934-026-03090-y",
+      "topic": "Bioenergy Climate",
+      "hook": "Roadmap shows microalgae cell factories powering renewable energy and carbon reduction.",
+      "article": "A recent study set out to map how microalgae could be used as tiny, multifunctional factories for renewable energy and climate‑change mitigation. The authors highlighted that many microalgal species contain very high lipid (fat) levels, often exceeding 70 % of their dry cell weight, and grow much faster than traditional land crops, making them a promising feedstock for various bio‑energy products.\n\nThe review examined the latest advances in converting microalgal biomass into fuels such as biodiesel and other biofuels, focusing on the biochemical pathways that turn the algae’s abundant lipids into usable energy. It also considered how these processes fit into a circular bioeconomy, where waste streams are recycled and overall resource use is minimized.\n\nThe authors concluded that the combination of high lipid content and rapid growth gives microalgae a clear advantage over terrestrial crops for bio‑energy applications, and they evaluated the most advanced conversion routes currently available.\n\nUnderstanding these advantages helps guide future research and development toward sustainable algae‑based fuels that could reduce reliance on fossil resources.",
+      "why": "High‑lipid, fast‑growing algae could become a key renewable fuel source, supporting greener energy and climate goals."
+    },
+    {
+      "pmid": "42805418",
+      "title": "Biogas production and biomolecule degradation from Chlorella vulgaris using a lagoon-digester granular sludge versus a silty sludge adapted to microalgae.",
+      "journal": "Bioresource technology",
+      "year": "2026",
+      "pub_date": "2026-09-28",
+      "url": "https://doi.org/10.1016/j.biortech.2026.135955",
+      "topic": "Biogas Production",
+      "hook": "Chlorella vulgaris yields more biogas when digested with granular sludge versus silty sludge.",
+      "article": "A recent study set out to compare how two different types of sludge – a granular sludge taken from an industrial lagoon digester and a silty sludge that had been adapted to microalgae – break down the biomass of the green alga Chlorella vulgaris and produce biogas.\n\nThe researchers fed Chlorella vulgaris biomass into anaerobic (oxygen‑free) digestion reactors that were seeded with either the spontaneously formed granular sludge or the silty microalgae‑adapted sludge. They then measured biogas output and tracked how quickly the algae’s biomolecules were degraded.\n\nThe work provides the first evaluation of biogas production and biomolecule degradation kinetics using the lagoon‑digester granular sludge with Chlorella vulgaris as the substrate.\n\nUnderstanding which sludge type works best could help improve the efficiency of turning algal waste into renewable energy.",
+      "why": "It shows a path to more efficient algae‑based biogas, linking waste algae to renewable fuel production."
+    },
+    {
+      "pmid": "42803909",
+      "title": "Protective role of probiotics or Spirulina platensis supplementation against mercury-induced hematological, histopathological, and antioxidant-immune gene dysregulation in Nile Tilapia (Oreochromis niloticus).",
+      "journal": "Biometals : an international journal on the role of metal ions in biology, biochemistry, and medicine",
+      "year": "2026",
+      "pub_date": "2026-09-28",
+      "url": "https://doi.org/10.1007/s10534-026-00873-z",
+      "topic": "Health Nutrition",
+      "hook": "Spirulina supplement shields against mercury toxicity, protecting blood and immune genes.",
+      "article": "A recent study set out to see whether giving Nile tilapia (Oreochromis niloticus) probiotic bacteria or Spirulina platensis could protect the fish from the harmful effects of mercury exposure. The researchers fed the fish diets supplemented with either a mix of Bacillus subtilis, Lactobacillus plantarum and L. buchneri, or with Spirulina, while exposing them to mercury and then examined blood parameters, tissue structure, and the activity of antioxidant and immune‑related genes.\n\nThe work measured changes in hematology (blood cell counts), histopathology (microscopic tissue damage) and the expression of genes involved in antioxidant defenses and immune responses. The results showed that both probiotic and Spirulina supplementation alleviated the mercury‑induced disturbances in these measures.\n\nThese findings suggest that natural dietary additives can help mitigate heavy‑metal stress in farmed fish, offering a potential strategy to improve fish health and food safety.",
+      "why": "Probiotic or Spirulina feeds could safeguard aquaculture species from mercury, supporting safer fish production."
+    },
+    {
+      "pmid": "42814099",
+      "title": "Near-infrared confocal imaging reveals the spatial organisation of far-red photosynthesis in Shark Bay microbial mats and Halomicronema sp.",
+      "journal": "Journal of microscopy",
+      "year": "2026",
+      "pub_date": "2026-09-30",
+      "url": "https://doi.org/10.1111/jmi.70174",
+      "topic": "Ecology Imaging",
+      "hook": "Near‑infrared confocal imaging maps far‑red photosynthesis in Shark Bay microbial mats.",
+      "article": "A recent study set out to map where far‑red photosynthesis occurs inside the layered microbial mats of Shark Bay, Australia, and to see how a filamentous cyanobacterium called Halomicronema sp. fits into that picture. The researchers used near‑infrared confocal microscopy, a technique that shines light of specific wavelengths and captures high‑resolution images from within a sample, to look at the mats at a microscopic scale. They found that far‑red light (wavelengths beyond the visible range) can penetrate the mat and support photosynthesis by the Halomicronema‑like filaments, which coexist with chlorophyll d/f‑containing phototrophs that absorb visible light. This spatial arrangement shows that far‑red photosynthesis is not limited to surface layers but extends deeper into the mat where visible light is depleted.\n\nThe work highlights how microbial communities can partition light resources, allowing different photosynthetic organisms to thrive side by side. Understanding this natural light‑sharing strategy could inform the design of engineered algal systems that make use of broader parts of the solar spectrum.",
+      "why": "It shows how algae can harvest far‑red light, suggesting ways to boost productivity in bio‑fuel or bioproduct cultures."
+    }
+  ]
+}
