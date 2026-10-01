@@ -1,0 +1,55 @@
+{
+  "date": "2026-10-01",
+  "model": "openai/gpt-oss-120b",
+  "generated_at": "2026-10-01T23:37:24Z",
+  "picks": [
+    {
+      "pmid": "42805418",
+      "title": "Biogas production and biomolecule degradation from Chlorella vulgaris using a lagoon-digester granular sludge versus a silty sludge adapted to microalgae.",
+      "journal": "Bioresource technology",
+      "year": "2026",
+      "pub_date": "2026-09-28",
+      "url": "https://doi.org/10.1016/j.biortech.2026.135955",
+      "topic": "Biofuels",
+      "hook": "Chlorella vulgaris yields biogas efficiently in lagoon digester versus silty sludge.",
+      "article": "A recent study set out to see how well a granular sludge taken from an industrial lagoon digester could turn the micro‑alga Chlorella vulgaris into biogas and break down its biomolecules, and to compare that performance with a silty sludge that had been adapted to micro‑algae.\n\nThe researchers fed Chlorella vulgaris biomass to two types of anaerobic (oxygen‑free) digester sludge – a spontaneously formed granular sludge from a lagoon digester and a silty sludge pre‑adapted to algae – and measured biogas output and the rates at which the algal biomolecules were degraded.\n\nThe study provides the first evaluation of biogas production and biomolecule degradation kinetics using the lagoon‑digester granular sludge with Chlorella vulgaris as substrate.\n\nThese findings are useful because they help identify which type of sludge might be more effective for converting algal waste into renewable energy.",
+      "why": "Understanding sludge performance guides more efficient algae‑based biogas production for sustainable energy."
+    },
+    {
+      "pmid": "42811322",
+      "title": "Microalgal cell factories for bioenergy and climate action: a circular bioeconomy roadmap.",
+      "journal": "Microbial cell factories",
+      "year": "2026",
+      "pub_date": "2026-09-29",
+      "url": "https://doi.org/10.1186/s12934-026-03090-y",
+      "topic": "Climate Bioeconomy",
+      "hook": "Roadmap outlines microalgal cell factories for renewable energy and carbon mitigation.",
+      "article": "A recent study set out to map how microalgae could be used as tiny, fast‑growing factories that turn sunlight into renewable energy and help curb climate change. The authors reviewed the high lipid content—often exceeding 70 % dry cell weight—of many microalgal species and their rapid growth rates, comparing them with traditional land crops.\n\nThey examined the latest conversion pathways that turn algal biomass into biofuels such as biodiesel and other energy products, assessing the technical and economic feasibility of each route.\n\nThe review found that microalgae’s lipid yields and growth speed significantly surpass those of conventional terrestrial crops, making them a promising feedstock for diverse bio‑energy applications.\n\nUnderstanding these advantages helps guide the development of a circular bioeconomy where algae‑based processes can provide sustainable fuels and contribute to climate mitigation.",
+      "why": "Microalgae’s high oil yields and fast growth make them a strong candidate for sustainable biofuel production."
+    },
+    {
+      "pmid": "42795693",
+      "title": "Extremophilic Microalgae and Cyanobacteria as Platforms for Climate Resilience, Circular Resource Utilization and Bioprospecting.",
+      "journal": "Microorganisms",
+      "year": "2026",
+      "pub_date": "2026-09-21",
+      "url": "https://doi.org/10.3390/microorganisms14092113",
+      "topic": "Climate Resilience",
+      "hook": "Extremophilic microalgae and cyanobacteria offer robust platforms for circular resource use.",
+      "article": "A recent study set out to explore how the untapped genetic diversity of extremophilic microalgae and cyanobacteria could help meet several Sustainable Development Goals, including clean water, affordable energy and land‑based livelihoods. \n\nThe authors reviewed existing literature on these hardy microorganisms, focusing on the range of species, their mechanisms for coping with extreme conditions, and the biotechnological possibilities they present. \n\nThey found that extremophilic microalgae and cyanobacteria possess distinct physiological and biochemical traits that make them promising platforms for climate‑resilient applications, circular resource use and bioprospecting. \n\nThe review highlights how these organisms could be leveraged for resource recovery and other sustainable technologies, underscoring their potential role in future environmental solutions.",
+      "why": "Their unique traits could enable algae‑based processes for clean water, renewable energy and land‑based sustainability."
+    },
+    {
+      "pmid": "42803909",
+      "title": "Protective role of probiotics or Spirulina platensis supplementation against mercury-induced hematological, histopathological, and antioxidant-immune gene dysregulation in Nile Tilapia (Oreochromis niloticus).",
+      "journal": "Biometals : an international journal on the role of metal ions in biology, biochemistry, and medicine",
+      "year": "2026",
+      "pub_date": "2026-09-28",
+      "url": "https://doi.org/10.1007/s10534-026-00873-z",
+      "topic": "Health",
+      "hook": "Spirulina supplementation shields fish from mercury toxicity, restoring immune genes.",
+      "article": "A recent study set out to see whether adding common probiotics or the blue‑green alga Spirulina platensis to the diet of Nile tilapia could protect the fish from the harmful effects of mercury exposure. The researchers fed groups of tilapia either a probiotic mix (Bacillus subtilis, Lactobacillus plantarum, and L. buchneri) or Spirulina while exposing the fish to mercury, then examined blood parameters, tissue structure, and the activity of antioxidant and immune‑related genes.\n\nThe results showed that both probiotic and Spirulina supplementation reduced the mercury‑induced disruptions in blood cells, lessened tissue damage, and helped restore normal expression of antioxidant and immune genes compared with fish that received mercury alone.\n\nThese findings suggest that dietary probiotics or Spirulina can mitigate mercury toxicity in farmed fish, offering a practical strategy to improve fish health and food safety.",
+      "why": "Probiotic or Spirulina feeds could help keep farmed fish healthier in polluted waters, protecting both the aquaculture industry and consumers."
+    }
+  ]
+}
