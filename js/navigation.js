@@ -1,4 +1,17 @@
 "use strict";
+/* Keep shared navigation and older educational pages honest about status. */
+(function(){
+  document.querySelectorAll('a[href="/#deploy"], a[href="#deploy"]').forEach(function(a){
+    if(/pilot access|reserve|deploy|reservation/i.test(a.textContent))a.textContent="Contact the project";
+  });
+  var article=document.querySelector('.art-shell .prose');
+  if(!article)return;
+  var notice=document.createElement('aside');
+  notice.className="callout";
+  notice.setAttribute('aria-label','Project status');
+  notice.textContent="Project status: Algaephyte and Cyanoflow are research concepts in development, not validated products. Platform descriptions in these educational notes describe proposed designs, not completed builds, measured performance or deployed systems. Images are illustrative unless explicitly documented otherwise. No reactor orders or reservations are offered.";
+  article.parentNode.insertBefore(notice,article);
+})();
 /* ---------- nav state ---------- */
 (function(){
   var nav=document.getElementById("nav");
@@ -18,8 +31,8 @@
   });
 })();
 
-/* ---------- deploy form (pilot access) ----------
-   Always visible; submitting opens a pre-filled deployment inquiry to
+/* ---------- research contact form ----------
+   Always visible; submitting opens a pre-filled research inquiry to
    service@orrbiologicals.com via the visitor's mail client. No backend
    needed and nothing can silently swallow an inquiry. */
 (function(){
@@ -34,11 +47,11 @@
     var fields=["fName","fPlace","fGrow"].map(function(id){return document.getElementById(id);});
     var missing=fields.filter(function(f){return !f.value.trim();});
     if(missing.length){say("Please fill in "+missing.map(function(f){return f.previousElementSibling.textContent.toLowerCase();}).join(", ")+".",true);missing[0].focus();return;}
-    var subject="Algaephyte deployment inquiry — " + fields[0].value.trim();
+    var subject="Orr Biologicals research inquiry — " + fields[0].value.trim();
     var body="Name / organization: "+fields[0].value.trim()+
              "\nLocation: "+fields[1].value.trim()+
              "\nCultivation objective: "+fields[2].value.trim()+
-             "\n\n(Sent from the pilot access form at orrbiologicals.com)";
+             "\n\n(Drafted from the research contact form at orrbiologicals.com; no order or reservation)";
     say("Opening your email client…");
     window.location.href="mailto:service@orrbiologicals.com?subject="+encodeURIComponent(subject)+"&body="+encodeURIComponent(body);
     say("If your email client did not open, write to service@orrbiologicals.com.",true);
