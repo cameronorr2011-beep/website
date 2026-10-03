@@ -1,0 +1,55 @@
+{
+  "date": "2026-10-02",
+  "model": "openai/gpt-oss-120b",
+  "generated_at": "2026-10-03T00:42:00Z",
+  "picks": [
+    {
+      "pmid": "42800473",
+      "title": "Biomimetic Mineralized Capsules for Haematococcus pluvialis Clustering and Functional Regulation.",
+      "journal": "ACS biomaterials science &amp; engineering",
+      "year": "2026",
+      "pub_date": "2026-09-26",
+      "url": "https://doi.org/10.1021/acsbiomaterials.6c00751",
+      "topic": "Pigments Nutrition",
+      "hook": "Mineralized capsules boost Haematococcus clustering, enhancing astaxanthin yields.",
+      "article": "A recent study aimed to develop a way to cluster the green microalga Haematococcus pluvialis and control its growth and stress responses using biomimetic mineralized capsules.\n\nThe researchers used hydrogel encapsulation to surround the algal cells, creating mineralized capsules that mimic natural protective structures. The work focused on the algae’s production of astaxanthin, a valuable ketocarotenoid with antioxidant activity.\n\nThe study showed that hydrogel encapsulation offers a protective environment for the cells, helping to manage growth and stress conditions that normally affect free‑living cells.\n\nSuch a strategy could make it easier to produce astaxanthin more reliably, which is important for nutraceutical and other applications.",
+      "why": "Encapsulating Haematococcus pluvialis could boost steady astaxanthin production for health and industry."
+    },
+    {
+      "pmid": "42803859",
+      "title": "Quorum sensing molecules enhance cadmium detoxification and cellular removal in the marine diatom Phaeodactylum tricornutum.",
+      "journal": "World journal of microbiology &amp; biotechnology",
+      "year": "2026",
+      "pub_date": "2026-09-28",
+      "url": "https://doi.org/10.1007/s11274-026-05294-1",
+      "topic": "Bioremediation Heavy‑Metals",
+      "hook": "Quorum‑sensing molecules help diatoms strip cadmium from marine water.",
+      "article": "A recent study set out to see whether bacterial quorum‑sensing molecules called cyl‑homoserine lactones (AHLs) can help a marine diatom, Phaeodactylum tricornutum, cope with cadmium, a toxic metal.\n\nThe researchers added exogenous AHLs to cultures of the diatom and measured cell growth, metabolic changes and how much cadmium the cells could remove.\n\nThey found that the AHLs influenced the diatom’s physiology and enhanced cadmium detoxification and cellular removal, although the abstract does not give specific numbers.\n\nThese results suggest that microbial communication signals could be harnessed to improve metal cleanup using algae.",
+      "why": "AHL‑boosted diatoms may offer a greener way to strip toxic cadmium from seawater."
+    },
+    {
+      "pmid": "42825171",
+      "title": "Molecular Evaluation of Deep Eutectic Solvents for Wet Algae Lipid Extraction and Biofuel Production.",
+      "journal": "ACS omega",
+      "year": "2026",
+      "pub_date": "2026-09-12",
+      "url": "https://doi.org/10.1021/acsomega.6c06748",
+      "topic": "Biofuels Extraction",
+      "hook": "Deep eutectic solvents efficiently pull lipids from wet algae for fuel.",
+      "article": "A recent study set out to see whether environmentally friendly liquids called deep eutectic solvents (DES) and certain ionic liquids could help break open micro‑algae cells and release their oil for biofuel.\n\nThe researchers tested four chlorine‑based ionic liquids and several DES formulations on the wet micro‑alga Chlorella vulgaris, measuring how well each pretreatment freed lipids without drying the biomass.\n\nThey identified a geranic acid‑based DES (CG 1‑2 DES) as the optimal agent for promoting lipid release under wet conditions.\n\nFinding a green pretreatment that works on wet algae could simplify the step of extracting oil, a known bottleneck in scaling algae‑based biofuels.",
+      "why": "A greener, wet‑process pretreatment could lower costs and energy use in algae biofuel production."
+    },
+    {
+      "pmid": "42680390",
+      "title": "Influence of microplastics on microalgal performance during wastewater polishing.",
+      "journal": "Journal of environmental sciences (China)",
+      "year": "2026",
+      "pub_date": "2026-01-08",
+      "url": "https://doi.org/10.1016/j.jes.2026.01.017",
+      "topic": "Pollution Ecology",
+      "hook": "Microplastics impair microalgal wastewater polishing performance.",
+      "article": "A recent study set out to see how common microplastics influence the performance of microalgae used to polish wastewater. The researchers focused on five types of plastic particles that are frequently detected in wastewater streams.\n\nThey grew microalgal cultures in laboratory‑scale wastewater treatment setups and added each of the five plastics – polypropylene, polystyrene, polyamide, low‑density polyethylene and another polymer – to assess any changes in algal growth or activity.\n\nThe abstract does not provide specific quantitative results, only noting that the effects of these microplastics on the algae were evaluated.\n\nUnderstanding whether microplastics hinder algae‑based wastewater treatment is important for designing resilient and effective water‑cleaning technologies.",
+      "why": "If microplastics impair algae, treatment plants may need new strategies to maintain clean water."
+    }
+  ]
+}
