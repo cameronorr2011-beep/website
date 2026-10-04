@@ -1,0 +1,28 @@
+name: Static site SEO checks
+on:
+  pull_request:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Build canonical sitemap and static reading directories
+        run: |
+          python tools/site/build_seo.py
+          git diff --exit-code -- sitemap.xml blog/index.html cyanoflow.html blog/data/kb.json
+      - name: Validate all public pages and scientific status
+        run: python -m unittest discover -s tools -p 'test_*.py'
+      - name: Check browser script syntax
+        run: |
+          for file in js/*.js; do node --check "$file"; done
+          node --check tools/site/qa_seo.mjs

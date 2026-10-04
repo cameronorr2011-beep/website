@@ -1,17 +1,48 @@
 {
- "updated": "2026-09-30T01:19:58Z",
  "counts": {
-  "algaephyte": 10,
-  "cyanoflow": 12,
-  "total": 22
+  "algaephyte": 20,
+  "cyanoflow": 3,
+  "total": 23
  },
  "algaephyte": [
+  {
+   "slug": "federated-learning-network",
+   "url": "/blog/federated-learning-network",
+   "title": "A Federated Learning Network for Algae Reactors",
+   "dek": "Sharing fitted twin parameters instead of images or traces: MQTT topics, bounds-checking, last-will obituaries and vandal-resistant averaging.",
+   "date": "2026-08-17",
+   "product": "Algaephyte field note"
+  },
   {
    "slug": "spirulina-is-a-cyanobacterium",
    "url": "/blog/spirulina-is-a-cyanobacterium",
    "title": "Spirulina Is a Cyanobacterium — What That Actually Means",
    "dek": "Arthrospira platensis is a photosynthetic bacterium, not an alga in the plant sense. What cyanobacteria are, and why it matters for cultivation.",
    "date": "2026-08-14",
+   "product": "Algaephyte field note"
+  },
+  {
+   "slug": "digital-twins-biological-cultivation",
+   "url": "/blog/digital-twins-biological-cultivation",
+   "title": "Digital Twins for Biological Cultivation",
+   "dek": "What a digital twin of a living culture actually is: state variables, counterfactual testing of actions, and why simulation-first beats actuate-first.",
+   "date": "2026-08-10",
+   "product": "Algaephyte field note"
+  },
+  {
+   "slug": "photobioreactor-ai-optimization",
+   "url": "/blog/photobioreactor-ai-optimization",
+   "title": "AI Optimization in Photobioreactors: Propose, Then Verify",
+   "dek": "How AI belongs in an algae photobioreactor: bounded proposals checked by hard limits and a physics twin — never direct control of pumps.",
+   "date": "2026-08-06",
+   "product": "Algaephyte field note"
+  },
+  {
+   "slug": "what-is-main-plain-language",
+   "url": "/blog/what-is-main-plain-language",
+   "title": "What Is Algaephyte? (Plain Language)",
+   "dek": "No-jargon tour of an AI-tended photobioreactor: what it senses, how it decides, why every proposal passes gates, and what the human still owns.",
+   "date": "2026-08-04",
    "product": "Algaephyte field note"
   },
   {
@@ -23,11 +54,35 @@
    "product": "Algaephyte field note"
   },
   {
+   "slug": "how-main-keeps-culture-safe",
+   "url": "/blog/how-main-keeps-culture-safe",
+   "title": "How Algaephyte Keeps Your Culture Safe",
+   "dek": "Plain-language walkthrough of the two-check safety system plus physical backstops — and why doing nothing is usually the safe action.",
+   "date": "2026-08-01",
+   "product": "Algaephyte field note"
+  },
+  {
    "slug": "troubleshooting-contamination-crashes",
    "url": "/blog/troubleshooting-contamination-crashes",
    "title": "Troubleshooting Spirulina Contamination and Crashes",
    "dek": "Field-guide style troubleshooting for home Spirulina: spotting grazers and competitors early, using high pH defensively, and recovering a crashed culture.",
    "date": "2026-07-30",
+   "product": "Algaephyte field note"
+  },
+  {
+   "slug": "bounded-autonomy-safe-ai-proposals",
+   "url": "/blog/bounded-autonomy-safe-ai-proposals",
+   "title": "Bounded Autonomy: Keeping AI Proposals Safe",
+   "dek": "Hard-limit validators, counterfactual simulation and firmware clamps: three independent layers that let an AI propose while never risking the culture.",
+   "date": "2026-07-29",
+   "product": "Algaephyte field note"
+  },
+  {
+   "slug": "control-loop-architecture",
+   "url": "/blog/control-loop-architecture",
+   "title": "Control Loop Architecture for Living Systems",
+   "dek": "Sense → twin → propose → verify → act. The layered loop architecture that lets software participate in biology without ever owning the pumps.",
+   "date": "2026-07-26",
    "product": "Algaephyte field note"
   },
   {
@@ -39,11 +94,35 @@
    "product": "Algaephyte field note"
   },
   {
+   "slug": "six-culture-signals-main-senses",
+   "url": "/blog/six-culture-signals-main-senses",
+   "title": "Six Culture Signals: What a Reactor Senses",
+   "dek": "pH, temperature, wall irradiance, OD750, dissolved oxygen, conductivity — six channels each telling a different biological story about one culture.",
+   "date": "2026-07-21",
+   "product": "Algaephyte field note"
+  },
+  {
+   "slug": "dissolved-oxygen-stress-signal",
+   "url": "/blog/dissolved-oxygen-stress-signal",
+   "title": "Dissolved Oxygen as a Stress Signal",
+   "dek": "Afternoon oxygen plateaus explained: supersaturation, self-poisoning of photosynthesis, and how a twin treats DO as a state variable rather than a footnote.",
+   "date": "2026-07-19",
+   "product": "Algaephyte field note"
+  },
+  {
    "slug": "zarrouk-medium-and-nutrients",
    "url": "/blog/zarrouk-medium-and-nutrients",
    "title": "Zarrouk Medium and Nutrients: Feeding a Spirulina Culture",
    "dek": "The chemistry behind Zarrouk medium for Arthrospira: bicarbonate, nitrate, phosphate, trace metals — and why a pale culture is usually a hungry one.",
    "date": "2026-07-16",
+   "product": "Algaephyte field note"
+  },
+  {
+   "slug": "digital-twin-droop-steele-model",
+   "url": "/blog/digital-twin-droop-steele-model",
+   "title": "A Digital Twin Built on Droop and Steele",
+   "dek": "The physics inside an algae digital twin: Droop quota kinetics, Steele's photoinhibition limb, Beer–Lambert self-shading and oxygen inhibition as state variables.",
+   "date": "2026-07-12",
    "product": "Algaephyte field note"
   },
   {
@@ -89,11 +168,11 @@
  ],
  "cyanoflow": [
   {
-   "slug": "federated-learning-network",
-   "url": "/blog/federated-learning-network",
-   "title": "A Federated Learning Network for Algae Reactors",
-   "dek": "Sharing fitted twin parameters instead of images or traces: MQTT topics, bounds-checking, last-will obituaries and vandal-resistant averaging.",
-   "date": "2026-08-17",
+   "slug": "single-cell-microalgae-microfluidics",
+   "url": "/blog/single-cell-microalgae-microfluidics",
+   "title": "Single-Cell Microalgae Analysis with Microfluidics",
+   "dek": "Compare droplets and microwells for microalgae analysis. Learn how imaging, tracking, phenotype validation and recovery differ, with primary research references.",
+   "date": "2026-10-04",
    "product": "Cyanoflow"
   },
   {
@@ -105,83 +184,11 @@
    "product": "Cyanoflow"
   },
   {
-   "slug": "digital-twins-biological-cultivation",
-   "url": "/blog/digital-twins-biological-cultivation",
-   "title": "Digital Twins for Biological Cultivation",
-   "dek": "What a digital twin of a living culture actually is: state variables, counterfactual testing of actions, and why simulation-first beats actuate-first.",
-   "date": "2026-08-10",
-   "product": "Cyanoflow"
-  },
-  {
    "slug": "edge-ai-biological-systems",
    "url": "/blog/edge-ai-biological-systems",
    "title": "Edge AI for Biological Systems",
    "dek": "Why vision inference belongs on-device at ~2 W: latency, privacy of your lab bench, and the reliability story cloud loops cannot tell.",
    "date": "2026-08-08",
-   "product": "Cyanoflow"
-  },
-  {
-   "slug": "photobioreactor-ai-optimization",
-   "url": "/blog/photobioreactor-ai-optimization",
-   "title": "AI Optimization in Photobioreactors: Propose, Then Verify",
-   "dek": "How AI belongs in an algae photobioreactor: bounded proposals checked by hard limits and a physics twin — never direct control of pumps.",
-   "date": "2026-08-06",
-   "product": "Cyanoflow"
-  },
-  {
-   "slug": "what-is-main-plain-language",
-   "url": "/blog/what-is-main-plain-language",
-   "title": "What Is Algaephyte? (Plain Language)",
-   "dek": "No-jargon tour of an AI-tended photobioreactor: what it senses, how it decides, why every proposal passes gates, and what the human still owns.",
-   "date": "2026-08-04",
-   "product": "Cyanoflow"
-  },
-  {
-   "slug": "how-main-keeps-culture-safe",
-   "url": "/blog/how-main-keeps-culture-safe",
-   "title": "How Algaephyte Keeps Your Culture Safe",
-   "dek": "Plain-language walkthrough of the two-check safety system plus physical backstops — and why doing nothing is usually the safe action.",
-   "date": "2026-08-01",
-   "product": "Cyanoflow"
-  },
-  {
-   "slug": "bounded-autonomy-safe-ai-proposals",
-   "url": "/blog/bounded-autonomy-safe-ai-proposals",
-   "title": "Bounded Autonomy: Keeping AI Proposals Safe",
-   "dek": "Hard-limit validators, counterfactual simulation and firmware clamps: three independent layers that let an AI propose while never risking the culture.",
-   "date": "2026-07-29",
-   "product": "Cyanoflow"
-  },
-  {
-   "slug": "control-loop-architecture",
-   "url": "/blog/control-loop-architecture",
-   "title": "Control Loop Architecture for Living Systems",
-   "dek": "Sense → twin → propose → verify → act. The layered loop architecture that lets software participate in biology without ever owning the pumps.",
-   "date": "2026-07-26",
-   "product": "Cyanoflow"
-  },
-  {
-   "slug": "six-culture-signals-main-senses",
-   "url": "/blog/six-culture-signals-main-senses",
-   "title": "Six Culture Signals: What a Reactor Senses",
-   "dek": "pH, temperature, wall irradiance, OD750, dissolved oxygen, conductivity — six channels each telling a different biological story about one culture.",
-   "date": "2026-07-21",
-   "product": "Cyanoflow"
-  },
-  {
-   "slug": "dissolved-oxygen-stress-signal",
-   "url": "/blog/dissolved-oxygen-stress-signal",
-   "title": "Dissolved Oxygen as a Stress Signal",
-   "dek": "Afternoon oxygen plateaus explained: supersaturation, self-poisoning of photosynthesis, and how a twin treats DO as a state variable rather than a footnote.",
-   "date": "2026-07-19",
-   "product": "Cyanoflow"
-  },
-  {
-   "slug": "digital-twin-droop-steele-model",
-   "url": "/blog/digital-twin-droop-steele-model",
-   "title": "A Digital Twin Built on Droop and Steele",
-   "dek": "The physics inside an algae digital twin: Droop quota kinetics, Steele's photoinhibition limb, Beer–Lambert self-shading and oxygen inhibition as state variables.",
-   "date": "2026-07-12",
    "product": "Cyanoflow"
   }
  ]

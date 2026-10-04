@@ -19,6 +19,17 @@ param([switch]$Quiet)
 $ErrorActionPreference = 'Stop'
 $root = $PSScriptRoot
 
+# The current editorial homepage is authoritative; the legacy section layout
+# below must not overwrite it or restore obsolete Product/PreOrder claims.
+Push-Location $root
+try {
+  python tools/site/build_seo.py
+  if ($LASTEXITCODE -ne 0) { throw "Static SEO build failed ($LASTEXITCODE)" }
+} finally {
+  Pop-Location
+}
+exit 0
+
 $utf8 = [System.Text.UTF8Encoding]::new($false)
 function ReadUtf8([string]$p){ return [System.IO.File]::ReadAllText($p, [System.Text.Encoding]::UTF8) }
 function WriteUtf8([string]$p, [string]$t){

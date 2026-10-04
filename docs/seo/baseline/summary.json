@@ -1,0 +1,20 @@
+{
+  "pages": 53,
+  "indexable": 51,
+  "sitemap_urls": 52,
+  "noindex_in_sitemap": [
+    "https://orrbiologicals.com/game/"
+  ],
+  "missing_from_sitemap": [],
+  "missing_descriptions": [],
+  "orphans_in_html": [
+    "https://orrbiologicals.com/blog/edge-ai-biological-systems",
+    "https://orrbiologicals.com/blog/vision-contamination-detection",
+    "https://orrbiologicals.com/blog/what-is-main-plain-language"
+  ],
+  "duplicate_titles": [],
+  "live_status_counts": {
+    "200": 63,
+    "404": 4
+  }
+}

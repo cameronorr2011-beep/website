@@ -19,18 +19,10 @@ OUT = ROOT / "blog" / "data" / "kb.json"
 
 # Cyanoflow = research/engineering notes about the single-cell platform.
 CYANOFLOW = {
+    "single-cell-microalgae-microfluidics",
+    # Shared imaging methods are relevant to both research concepts.
     "vision-contamination-detection",
     "edge-ai-biological-systems",
-    "federated-learning-network",
-    "bounded-autonomy-safe-ai-proposals",
-    "digital-twins-biological-cultivation",
-    "digital-twin-droop-steele-model",
-    "control-loop-architecture",
-    "photobioreactor-ai-optimization",
-    "six-culture-signals-main-senses",
-    "how-main-keeps-culture-safe",
-    "what-is-main-plain-language",
-    "dissolved-oxygen-stress-signal",
 }
 
 # Everything else in blog/ is a cultivation field note -> Algaephyte.
@@ -54,13 +46,14 @@ def parse_articles() -> list[dict]:
         if not title_m:
             print(f"[kb] FAIL: no <title> in {f.name}", file=sys.stderr)
             sys.exit(1)
-        title = re.sub(r"\s*[\|\u2014]\s*Orr Biologicals\s*$", "", title_m.group(1)).strip()
+        from html import unescape
+        title = unescape(re.sub(r"\s*[\|\u2014]\s*Orr Biologicals\s*$", "", title_m.group(1)).strip())
         product = "Cyanoflow" if slug in CYANOFLOW else ALGAEPHYTE_FALLBACK
         arts.append({
             "slug": slug,
             "url": f"/blog/{slug}",
             "title": title,
-            "dek": (desc_m.group(1) if desc_m else "")[:220],
+            "dek": unescape(desc_m.group(1) if desc_m else "")[:220],
             "date": date_m.group(1) if date_m else "",
             "product": product,
         })
