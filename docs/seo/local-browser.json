@@ -1,7 +1,129 @@
 {
-  "testedAt": "2026-10-04T21:21:26.857Z",
+  "testedAt": "2026-10-04T21:43:22.703Z",
   "target": "http://127.0.0.1:8876",
   "results": [
+    {
+      "path": "/algae-biotechnology/",
+      "status": 200,
+      "title": "Algae Biotechnology: Organisms, Cultivation & Research | Orr Biologicals",
+      "h1": [
+        "Algae biotechnology: organisms, cultivation and research"
+      ],
+      "canonical": "https://orrbiologicals.com/algae-biotechnology/",
+      "schemas": [
+        {
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "WebPage",
+              "@id": "https://orrbiologicals.com/algae-biotechnology/#page",
+              "url": "https://orrbiologicals.com/algae-biotechnology/",
+              "name": "Algae Biotechnology: Organisms, Cultivation & Research | Orr Biologicals",
+              "description": "Understand algae biotechnology: organism selection, cultivation, photobioreactors, compounds and single-cell research, with evidence limits and source reading.",
+              "isPartOf": {
+                "@id": "https://orrbiologicals.com/#site"
+              }
+            },
+            {
+              "@type": "BreadcrumbList",
+              "itemListElement": [
+                {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "Orr Biologicals",
+                  "item": "https://orrbiologicals.com/"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 2,
+                  "name": "Algae biotechnology: organisms, cultivation and research",
+                  "item": "https://orrbiologicals.com/algae-biotechnology/"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "nav": [
+        {
+          "ttfb": 15.099999904632568,
+          "domContentLoaded": 211.39999997615814
+        }
+      ],
+      "metrics": {
+        "lcp": null,
+        "cls": 0.016401280721028647,
+        "longTasks": []
+      },
+      "payload": {
+        "requests": 5,
+        "transferred": 36056,
+        "js": 8887,
+        "css": 26378,
+        "images": 791
+      }
+    },
+    {
+      "path": "/algaephyte/",
+      "status": 200,
+      "title": "AI-Assisted Microalgae Cultivation Research | Algaephyte",
+      "h1": [
+        "Algaephyte: AI-assisted microalgae cultivation research"
+      ],
+      "canonical": "https://orrbiologicals.com/algaephyte/",
+      "schemas": [
+        {
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "WebPage",
+              "@id": "https://orrbiologicals.com/algaephyte/#page",
+              "url": "https://orrbiologicals.com/algaephyte/",
+              "name": "AI-Assisted Microalgae Cultivation Research | Algaephyte",
+              "description": "Explore Algaephyte’s proposed sensor-based cultivation, digital twin and bounded automation. Research design goals, not validated hardware or deployed products.",
+              "isPartOf": {
+                "@id": "https://orrbiologicals.com/#site"
+              }
+            },
+            {
+              "@type": "BreadcrumbList",
+              "itemListElement": [
+                {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "Orr Biologicals",
+                  "item": "https://orrbiologicals.com/"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 2,
+                  "name": "Algaephyte: AI-assisted microalgae cultivation research",
+                  "item": "https://orrbiologicals.com/algaephyte/"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "nav": [
+        {
+          "ttfb": 11,
+          "domContentLoaded": 54.200000047683716
+        }
+      ],
+      "metrics": {
+        "lcp": null,
+        "cls": 0,
+        "longTasks": []
+      },
+      "payload": {
+        "requests": 5,
+        "transferred": 36056,
+        "js": 8887,
+        "css": 26378,
+        "images": 791
+      }
+    },
     {
       "path": "/applications/algae-rations-for-bivalve-larvae",
       "status": 200,
@@ -20,7 +142,7 @@
               "description": "Typical published feed rations for oyster, mussel and clam larvae by stage — Isochrysis, Pavlova and Chaetoceros ratios — and where the Algaephyte platform applies.",
               "image": "https://orrbiologicals.com/assets/images/library/bivalve-larvae.svg",
               "datePublished": "2026-08-31",
-              "dateModified": "2026-08-31",
+              "dateModified": "2026-10-04",
               "author": {
                 "@type": "Organization",
                 "name": "Orr Biologicals",
@@ -90,16 +212,14 @@
       ],
       "nav": [
         {
-          "ttfb": 57.299999952316284,
-          "domContentLoaded": 296.2000000476837
+          "ttfb": 15.399999976158142,
+          "domContentLoaded": 110.29999995231628
         }
       ],
       "metrics": {
-        "lcp": null,
-        "cls": 0.01097880921098921,
-        "longTasks": [
-          86
-        ]
+        "lcp": 164,
+        "cls": 0.027833742062250776,
+        "longTasks": []
       },
       "payload": {
         "requests": 7,
@@ -127,7 +247,7 @@
               "description": "Isochrysis, Pavlova, Nannochloropsis, Tetraselmis, Chaetoceros and Rhodomonas compared for copepod culture — sizes, strengths, and why no single species is universally best.",
               "image": "https://orrbiologicals.com/assets/images/library/microscopy-field.svg",
               "datePublished": "2026-08-31",
-              "dateModified": "2026-08-31",
+              "dateModified": "2026-10-04",
               "author": {
                 "@type": "Organization",
                 "name": "Orr Biologicals",
@@ -197,23 +317,21 @@
       ],
       "nav": [
         {
-          "ttfb": 33.09999990463257,
-          "domContentLoaded": 148.59999990463257
+          "ttfb": 10.200000047683716,
+          "domContentLoaded": 86.5
         }
       ],
       "metrics": {
-        "lcp": 188,
-        "cls": 0.017979760977956984,
-        "longTasks": [
-          66
-        ]
+        "lcp": 116,
+        "cls": 0.034909619251887,
+        "longTasks": []
       },
       "payload": {
-        "requests": 6,
-        "transferred": 38800,
+        "requests": 7,
+        "transferred": 39591,
         "js": 8887,
         "css": 26378,
-        "images": 2334
+        "images": 3125
       }
     },
     {
@@ -234,7 +352,7 @@
               "description": "Why cultured microalgae make the best copepod feed, which factors actually matter — cell size, density, nutrition — and why different copepod species respond differently.",
               "image": "https://orrbiologicals.com/assets/images/library/copepod-feeding.svg",
               "datePublished": "2026-08-31",
-              "dateModified": "2026-08-31",
+              "dateModified": "2026-10-04",
               "author": {
                 "@type": "Organization",
                 "name": "Orr Biologicals",
@@ -304,13 +422,13 @@
       ],
       "nav": [
         {
-          "ttfb": 23.799999952316284,
-          "domContentLoaded": 157.29999995231628
+          "ttfb": 10.199999928474426,
+          "domContentLoaded": 92.89999997615814
         }
       ],
       "metrics": {
-        "lcp": 176,
-        "cls": 0.01169146830505795,
+        "lcp": 108,
+        "cls": 0.027816109471850925,
         "longTasks": []
       },
       "payload": {
@@ -339,7 +457,7 @@
               "description": "Microalgae cultivation explained for beginners: vessels, light, nutrients, temperature, mixing and monitoring — and why parameters vary by species and strain.",
               "image": "https://orrbiologicals.com/assets/images/library/culture-vessels.svg",
               "datePublished": "2026-08-31",
-              "dateModified": "2026-08-31",
+              "dateModified": "2026-10-04",
               "author": {
                 "@type": "Organization",
                 "name": "Orr Biologicals",
@@ -409,16 +527,14 @@
       ],
       "nav": [
         {
-          "ttfb": 44,
-          "domContentLoaded": 267.10000002384186
+          "ttfb": 10,
+          "domContentLoaded": 91.29999995231628
         }
       ],
       "metrics": {
-        "lcp": 280,
-        "cls": 0.011821115560001797,
-        "longTasks": [
-          51
-        ]
+        "lcp": 108,
+        "cls": 0.027908667484919228,
+        "longTasks": []
       },
       "payload": {
         "requests": 6,
@@ -446,7 +562,7 @@
               "description": "Scaling microalgae from starter to production volume: transfer ratios, growth phase timing, light through dense culture, and keeping reserves alive.",
               "image": "https://orrbiologicals.com/assets/images/library/scaling.svg",
               "datePublished": "2026-08-31",
-              "dateModified": "2026-08-31",
+              "dateModified": "2026-10-04",
               "author": {
                 "@type": "Organization",
                 "name": "Orr Biologicals",
@@ -516,21 +632,21 @@
       ],
       "nav": [
         {
-          "ttfb": 38,
-          "domContentLoaded": 227.79999995231628
+          "ttfb": 9.900000095367432,
+          "domContentLoaded": 86.90000009536743
         }
       ],
       "metrics": {
-        "lcp": 244,
-        "cls": 0.01169146830505795,
+        "lcp": 104,
+        "cls": 0.027816109471850925,
         "longTasks": []
       },
       "payload": {
-        "requests": 6,
-        "transferred": 37898,
+        "requests": 7,
+        "transferred": 38689,
         "js": 8887,
         "css": 26378,
-        "images": 1432
+        "images": 2223
       }
     },
     {
@@ -551,7 +667,7 @@
               "description": "The first two weeks of a phytoplankton culture: sourcing starter material, first vessels, first feeding of the culture, and the mistakes that kill new cultures.",
               "image": "https://orrbiologicals.com/assets/images/library/starter-culture.svg",
               "datePublished": "2026-08-31",
-              "dateModified": "2026-08-31",
+              "dateModified": "2026-10-04",
               "author": {
                 "@type": "Organization",
                 "name": "Orr Biologicals",
@@ -621,16 +737,14 @@
       ],
       "nav": [
         {
-          "ttfb": 51.200000047683716,
-          "domContentLoaded": 258.10000002384186
+          "ttfb": 10.299999952316284,
+          "domContentLoaded": 101.19999992847443
         }
       ],
       "metrics": {
-        "lcp": 296,
-        "cls": 0.011821115560001797,
-        "longTasks": [
-          52
-        ]
+        "lcp": 124,
+        "cls": 0.027816109471850925,
+        "longTasks": []
       },
       "payload": {
         "requests": 7,
@@ -645,7 +759,7 @@
       "status": 200,
       "title": "Applications: Microalgae and Phytoplankton Hub | Orr Biologicals",
       "h1": [
-        "Microalgae, without the guesswork"
+        "Microalgae knowledge: cultivation, species and applications"
       ],
       "canonical": "https://orrbiologicals.com/applications/",
       "schemas": [
@@ -691,23 +805,23 @@
       ],
       "nav": [
         {
-          "ttfb": 92.20000004768372,
-          "domContentLoaded": 617
+          "ttfb": 14.200000047683716,
+          "domContentLoaded": 141.70000004768372
         }
       ],
       "metrics": {
         "lcp": null,
-        "cls": 0.01801364576816559,
+        "cls": 0.02171591520309448,
         "longTasks": [
-          331
+          72
         ]
       },
       "payload": {
-        "requests": 9,
-        "transferred": 53271,
+        "requests": 10,
+        "transferred": 54062,
         "js": 8887,
         "css": 26378,
-        "images": 7235
+        "images": 8026
       }
     },
     {
@@ -728,7 +842,7 @@
               "description": "How phytoplankton fits marine larviculture: green water, rotifers and Artemia enrichment, and the fatty acids that decide larval survival.",
               "image": "https://orrbiologicals.com/assets/images/library/fish-larvae.svg",
               "datePublished": "2026-08-31",
-              "dateModified": "2026-08-31",
+              "dateModified": "2026-10-04",
               "author": {
                 "@type": "Organization",
                 "name": "Orr Biologicals",
@@ -798,16 +912,14 @@
       ],
       "nav": [
         {
-          "ttfb": 80.70000004768372,
-          "domContentLoaded": 486.7000000476837
+          "ttfb": 24.09999990463257,
+          "domContentLoaded": 153.5
         }
       ],
       "metrics": {
-        "lcp": 472,
-        "cls": 0.01882206732696957,
-        "longTasks": [
-          60
-        ]
+        "lcp": 180,
+        "cls": 0.03552972033288744,
+        "longTasks": []
       },
       "payload": {
         "requests": 6,
@@ -835,7 +947,7 @@
               "description": "What industry extracts from microalgae — astaxanthin, beta-carotene, phycocyanin, EPA, DHA, protein — which species produce them, and what is honestly established.",
               "image": "https://orrbiologicals.com/assets/images/library/biotech-compounds.svg",
               "datePublished": "2026-08-31",
-              "dateModified": "2026-08-31",
+              "dateModified": "2026-10-04",
               "author": {
                 "@type": "Organization",
                 "name": "Orr Biologicals",
@@ -905,14 +1017,16 @@
       ],
       "nav": [
         {
-          "ttfb": 37.89999997615814,
-          "domContentLoaded": 242.60000002384186
+          "ttfb": 22.700000047683716,
+          "domContentLoaded": 178.10000002384186
         }
       ],
       "metrics": {
-        "lcp": 300,
-        "cls": 0.01882206732696957,
-        "longTasks": []
+        "lcp": 208,
+        "cls": 0.035622278345955743,
+        "longTasks": [
+          51
+        ]
       },
       "payload": {
         "requests": 6,
@@ -940,7 +1054,7 @@
               "description": "Two small haptophyte flagellates that dominate marine hatchery feeds — how their nutrition, culture behaviour and uses differ, and why many systems run both.",
               "image": "https://orrbiologicals.com/assets/images/library/pavlova-vs-isochrysis.svg",
               "datePublished": "2026-08-31",
-              "dateModified": "2026-08-31",
+              "dateModified": "2026-10-04",
               "author": {
                 "@type": "Organization",
                 "name": "Orr Biologicals",
@@ -1010,15 +1124,15 @@
       ],
       "nav": [
         {
-          "ttfb": 28,
-          "domContentLoaded": 256.10000002384186
+          "ttfb": 29.300000071525574,
+          "domContentLoaded": 196.40000009536743
         }
       ],
       "metrics": {
-        "lcp": 312,
-        "cls": 0.011821115560001797,
+        "lcp": 248,
+        "cls": 0.028635919067594738,
         "longTasks": [
-          54
+          50
         ]
       },
       "payload": {
@@ -1047,7 +1161,7 @@
               "description": "From microalgae to copepods, rotifers and Artemia to fish and shellfish larvae: how trophic chains carry nutrition through an aquaculture system.",
               "image": "https://orrbiologicals.com/assets/images/library/food-web.svg",
               "datePublished": "2026-08-31",
-              "dateModified": "2026-08-31",
+              "dateModified": "2026-10-04",
               "author": {
                 "@type": "Organization",
                 "name": "Orr Biologicals",
@@ -1117,13 +1231,13 @@
       ],
       "nav": [
         {
-          "ttfb": 36.60000002384186,
-          "domContentLoaded": 262.39999997615814
+          "ttfb": 25.600000023841858,
+          "domContentLoaded": 188.20000004768372
         }
       ],
       "metrics": {
-        "lcp": 316,
-        "cls": 0.018692420072025723,
+        "lcp": 216,
+        "cls": 0.03565936758783128,
         "longTasks": [
           51
         ]
@@ -1154,7 +1268,7 @@
               "description": "What contaminates algae cultures, how contamination arrives, the habits that prevent it, and when to rescue versus discard a crashed culture.",
               "image": "https://orrbiologicals.com/assets/images/library/contamination.svg",
               "datePublished": "2026-08-31",
-              "dateModified": "2026-08-31",
+              "dateModified": "2026-10-04",
               "author": {
                 "@type": "Organization",
                 "name": "Orr Biologicals",
@@ -1224,15 +1338,15 @@
       ],
       "nav": [
         {
-          "ttfb": 30.800000071525574,
-          "domContentLoaded": 197.10000002384186
+          "ttfb": 22.100000023841858,
+          "domContentLoaded": 163.40000009536743
         }
       ],
       "metrics": {
-        "lcp": 240,
-        "cls": 0.01810940823290083,
+        "lcp": 184,
+        "cls": 0.03565936758783128,
         "longTasks": [
-          59
+          50
         ]
       },
       "payload": {
@@ -1261,7 +1375,7 @@
               "description": "Arthrospira platensis — the filamentous cyanobacterium sold as Spirulina: appearance, culture characteristics, nutrition, phycocyanin, and why alkaline medium is its biosecurity.",
               "image": "https://orrbiologicals.com/assets/images/library/species/arthrospira.svg",
               "datePublished": "2026-08-31",
-              "dateModified": "2026-08-31",
+              "dateModified": "2026-10-04",
               "author": {
                 "@type": "Organization",
                 "name": "Orr Biologicals",
@@ -1337,15 +1451,15 @@
       ],
       "nav": [
         {
-          "ttfb": 56.39999997615814,
-          "domContentLoaded": 329.89999997615814
+          "ttfb": 25.199999928474426,
+          "domContentLoaded": 212.19999992847443
         }
       ],
       "metrics": {
-        "lcp": 348,
-        "cls": 0.012242349094814725,
+        "lcp": 236,
+        "cls": 0.029445062544610767,
         "longTasks": [
-          74
+          58
         ]
       },
       "payload": {
@@ -1374,7 +1488,7 @@
               "description": "Chaetoceros — the chain-forming diatom of bivalve and shrimp hatcheries: appearance, silicate needs, culture traits, and how it fits stage-specific rations.",
               "image": "https://orrbiologicals.com/assets/images/library/species/chaetoceros.svg",
               "datePublished": "2026-08-31",
-              "dateModified": "2026-08-31",
+              "dateModified": "2026-10-04",
               "author": {
                 "@type": "Organization",
                 "name": "Orr Biologicals",
@@ -1450,15 +1564,15 @@
       ],
       "nav": [
         {
-          "ttfb": 30.40000009536743,
-          "domContentLoaded": 239.70000004768372
+          "ttfb": 23.899999976158142,
+          "domContentLoaded": 198.69999992847443
         }
       ],
       "metrics": {
-        "lcp": 252,
-        "cls": 0.011718088534143235,
+        "lcp": 212,
+        "cls": 0.028907818171713087,
         "longTasks": [
-          52
+          54
         ]
       },
       "payload": {
@@ -1487,7 +1601,7 @@
               "description": "Chlorella — the spherical freshwater green alga: appearance, culture characteristics, protein content, applications in aquaculture and nutrition, and honest caveats.",
               "image": "https://orrbiologicals.com/assets/images/library/species/chlorella.svg",
               "datePublished": "2026-08-31",
-              "dateModified": "2026-08-31",
+              "dateModified": "2026-10-04",
               "author": {
                 "@type": "Organization",
                 "name": "Orr Biologicals",
@@ -1563,15 +1677,15 @@
       ],
       "nav": [
         {
-          "ttfb": 32.799999952316284,
-          "domContentLoaded": 207.79999995231628
+          "ttfb": 23.300000071525574,
+          "domContentLoaded": 166.70000004768372
         }
       ],
       "metrics": {
-        "lcp": 244,
-        "cls": 0.012235266513294643,
+        "lcp": 200,
+        "cls": 0.028169949889183046,
         "longTasks": [
-          63
+          56
         ]
       },
       "payload": {
@@ -1600,7 +1714,7 @@
               "description": "Dunaliella salina — the hypersaline green flagellate behind natural beta-carotene: appearance, culture traits, osmotic tricks and commercial uses.",
               "image": "https://orrbiologicals.com/assets/images/library/species/dunaliella.svg",
               "datePublished": "2026-08-31",
-              "dateModified": "2026-08-31",
+              "dateModified": "2026-10-04",
               "author": {
                 "@type": "Organization",
                 "name": "Orr Biologicals",
@@ -1676,15 +1790,15 @@
       ],
       "nav": [
         {
-          "ttfb": 28.700000047683716,
-          "domContentLoaded": 209.89999997615814
+          "ttfb": 23.40000009536743,
+          "domContentLoaded": 170.5
         }
       ],
       "metrics": {
-        "lcp": 244,
-        "cls": 0.012235266513294643,
+        "lcp": 208,
+        "cls": 0.028895213577482436,
         "longTasks": [
-          68
+          57
         ]
       },
       "payload": {
@@ -1713,7 +1827,7 @@
               "description": "Haematococcus pluvialis — the green alga that turns red: appearance, two-stage culture, astaxanthin accumulation, and its role in aquaculture pigmentation.",
               "image": "https://orrbiologicals.com/assets/images/library/species/haematococcus.svg",
               "datePublished": "2026-08-31",
-              "dateModified": "2026-08-31",
+              "dateModified": "2026-10-04",
               "author": {
                 "@type": "Organization",
                 "name": "Orr Biologicals",
@@ -1789,15 +1903,15 @@
       ],
       "nav": [
         {
-          "ttfb": 35.60000002384186,
-          "domContentLoaded": 255.60000002384186
+          "ttfb": 26.5,
+          "domContentLoaded": 168.79999995231628
         }
       ],
       "metrics": {
-        "lcp": 296,
-        "cls": 0.012235266513294643,
+        "lcp": 192,
+        "cls": 0.028934828016493056,
         "longTasks": [
-          66
+          60
         ]
       },
       "payload": {
@@ -1826,7 +1940,7 @@
               "description": "Isochrysis galbana and its thermotolerant strain Tisochrysis lutea (T-Iso): appearance, culture traits, DHA-rich lipids, and why it is the marine hatchery default.",
               "image": "https://orrbiologicals.com/assets/images/library/species/isochrysis.svg",
               "datePublished": "2026-08-31",
-              "dateModified": "2026-08-31",
+              "dateModified": "2026-10-04",
               "author": {
                 "@type": "Organization",
                 "name": "Orr Biologicals",
@@ -1902,15 +2016,15 @@
       ],
       "nav": [
         {
-          "ttfb": 31.299999952316284,
-          "domContentLoaded": 208.10000002384186
+          "ttfb": 24.399999976158142,
+          "domContentLoaded": 175.89999997615814
         }
       ],
       "metrics": {
-        "lcp": 224,
-        "cls": 0.012235266513294643,
+        "lcp": 192,
+        "cls": 0.02942988846037123,
         "longTasks": [
-          68
+          54
         ]
       },
       "payload": {
@@ -1939,7 +2053,7 @@
               "description": "Nannochloropsis — the tiny, hardy eustigmatophyte behind marine green water: appearance, culture traits, EPA content, and its role in rotifer and copepod systems.",
               "image": "https://orrbiologicals.com/assets/images/library/species/nannochloropsis.svg",
               "datePublished": "2026-08-31",
-              "dateModified": "2026-08-31",
+              "dateModified": "2026-10-04",
               "author": {
                 "@type": "Organization",
                 "name": "Orr Biologicals",
@@ -2015,15 +2129,15 @@
       ],
       "nav": [
         {
-          "ttfb": 28.800000071525574,
-          "domContentLoaded": 246.70000004768372
+          "ttfb": 26.899999976158142,
+          "domContentLoaded": 187.19999992847443
         }
       ],
       "metrics": {
-        "lcp": 260,
-        "cls": 0.012235266513294643,
+        "lcp": 204,
+        "cls": 0.02896003720495436,
         "longTasks": [
-          68
+          59
         ]
       },
       "payload": {
@@ -2052,7 +2166,7 @@
               "description": "Pavlova lutheri — the small haptophyte flagellate prized in bivalve hatcheries: appearance, culture traits, EPA and DHA profile, and how it compares to Isochrysis.",
               "image": "https://orrbiologicals.com/assets/images/library/species/pavlova.svg",
               "datePublished": "2026-08-31",
-              "dateModified": "2026-08-31",
+              "dateModified": "2026-10-04",
               "author": {
                 "@type": "Organization",
                 "name": "Orr Biologicals",
@@ -2128,15 +2242,15 @@
       ],
       "nav": [
         {
-          "ttfb": 28.899999976158142,
-          "domContentLoaded": 207.39999997615814
+          "ttfb": 23.100000023841858,
+          "domContentLoaded": 173.89999997615814
         }
       ],
       "metrics": {
-        "lcp": 240,
-        "cls": 0.012235266513294643,
+        "lcp": 208,
+        "cls": 0.028855599138471813,
         "longTasks": [
-          68
+          51
         ]
       },
       "payload": {
@@ -2165,7 +2279,7 @@
               "description": "Phaeodactylum tricornutum — the model marine diatom: fusiform shapes, EPA-rich lipids, fucoxanthin, and why researchers and feed rooms both keep it.",
               "image": "https://orrbiologicals.com/assets/images/library/species/phaeodactylum.svg",
               "datePublished": "2026-08-31",
-              "dateModified": "2026-08-31",
+              "dateModified": "2026-10-04",
               "author": {
                 "@type": "Organization",
                 "name": "Orr Biologicals",
@@ -2241,15 +2355,15 @@
       ],
       "nav": [
         {
-          "ttfb": 40.199999928474426,
-          "domContentLoaded": 218.10000002384186
+          "ttfb": 28.200000047683716,
+          "domContentLoaded": 181.40000009536743
         }
       ],
       "metrics": {
-        "lcp": 256,
-        "cls": 0.012235266513294643,
+        "lcp": 216,
+        "cls": 0.028936508629057143,
         "longTasks": [
-          65
+          58
         ]
       },
       "payload": {
@@ -2278,7 +2392,7 @@
               "description": "Tetraselmis — the larger motile green flagellate with starch and lipid reserves: appearance, culture traits, aquaculture uses and reported antibacterial activity.",
               "image": "https://orrbiologicals.com/assets/images/library/species/tetraselmis.svg",
               "datePublished": "2026-08-31",
-              "dateModified": "2026-08-31",
+              "dateModified": "2026-10-04",
               "author": {
                 "@type": "Organization",
                 "name": "Orr Biologicals",
@@ -2354,15 +2468,15 @@
       ],
       "nav": [
         {
-          "ttfb": 62.200000047683716,
-          "domContentLoaded": 248.5
+          "ttfb": 28.899999976158142,
+          "domContentLoaded": 197.20000004768372
         }
       ],
       "metrics": {
-        "lcp": 276,
-        "cls": 0.012235266513294643,
+        "lcp": 212,
+        "cls": 0.028907818171713087,
         "longTasks": [
-          61
+          59
         ]
       },
       "payload": {
@@ -2391,7 +2505,7 @@
               "description": "Isochrysis is the marine hatchery's default flagellate: small, wall-free, DHA-rich and easy to culture. What it is, what it feeds, and where it falls short.",
               "image": "https://orrbiologicals.com/assets/images/library/isochrysis-cells.svg",
               "datePublished": "2026-08-31",
-              "dateModified": "2026-08-31",
+              "dateModified": "2026-10-04",
               "author": {
                 "@type": "Organization",
                 "name": "Orr Biologicals",
@@ -2461,14 +2575,16 @@
       ],
       "nav": [
         {
-          "ttfb": 28.399999976158142,
-          "domContentLoaded": 220.60000002384186
+          "ttfb": 38.300000071525574,
+          "domContentLoaded": 184.30000007152557
         }
       ],
       "metrics": {
-        "lcp": 248,
-        "cls": 0.011821115560001797,
-        "longTasks": []
+        "lcp": 200,
+        "cls": 0.028635919067594738,
+        "longTasks": [
+          54
+        ]
       },
       "payload": {
         "requests": 6,
@@ -2533,12 +2649,12 @@
       ],
       "nav": [
         {
-          "ttfb": 29.899999976158142,
-          "domContentLoaded": 215
+          "ttfb": 30.5,
+          "domContentLoaded": 194.5
         }
       ],
       "metrics": {
-        "lcp": 260,
+        "lcp": 224,
         "cls": 0.16844451416863335,
         "longTasks": []
       },
@@ -2605,15 +2721,15 @@
       ],
       "nav": [
         {
-          "ttfb": 104.89999997615814,
-          "domContentLoaded": 340.5
+          "ttfb": 22.40000009536743,
+          "domContentLoaded": 160.5
         }
       ],
       "metrics": {
-        "lcp": 368,
+        "lcp": 192,
         "cls": 0.16781419134140016,
         "longTasks": [
-          60
+          53
         ]
       },
       "payload": {
@@ -2679,15 +2795,15 @@
       ],
       "nav": [
         {
-          "ttfb": 37.10000002384186,
-          "domContentLoaded": 227.20000004768372
+          "ttfb": 28.09999990463257,
+          "domContentLoaded": 183.09999990463257
         }
       ],
       "metrics": {
-        "lcp": 256,
+        "lcp": 208,
         "cls": 0.16791374635696413,
         "longTasks": [
-          65
+          55
         ]
       },
       "payload": {
@@ -2753,16 +2869,14 @@
       ],
       "nav": [
         {
-          "ttfb": 78.69999992847443,
-          "domContentLoaded": 335.1999999284744
+          "ttfb": 22.90000009536743,
+          "domContentLoaded": 149.20000004768372
         }
       ],
       "metrics": {
-        "lcp": 376,
-        "cls": 0.16703283041053346,
-        "longTasks": [
-          76
-        ]
+        "lcp": 188,
+        "cls": 0.14916901510291627,
+        "longTasks": []
       },
       "payload": {
         "requests": 5,
@@ -2827,16 +2941,14 @@
       ],
       "nav": [
         {
-          "ttfb": 40.199999928474426,
-          "domContentLoaded": 432.59999990463257
+          "ttfb": 25.5,
+          "domContentLoaded": 170.79999995231628
         }
       ],
       "metrics": {
-        "lcp": 532,
+        "lcp": 188,
         "cls": 0.17302915791670484,
-        "longTasks": [
-          57
-        ]
+        "longTasks": []
       },
       "payload": {
         "requests": 5,
@@ -2901,16 +3013,14 @@
       ],
       "nav": [
         {
-          "ttfb": 33.199999928474426,
-          "domContentLoaded": 235.19999992847443
+          "ttfb": 21.799999952316284,
+          "domContentLoaded": 167.60000002384186
         }
       ],
       "metrics": {
-        "lcp": 272,
+        "lcp": 184,
         "cls": 0.16699069550302292,
-        "longTasks": [
-          56
-        ]
+        "longTasks": []
       },
       "payload": {
         "requests": 5,
@@ -2975,15 +3085,15 @@
       ],
       "nav": [
         {
-          "ttfb": 37.200000047683716,
-          "domContentLoaded": 202.60000002384186
+          "ttfb": 26.199999928474426,
+          "domContentLoaded": 153.39999997615814
         }
       ],
       "metrics": {
-        "lcp": 224,
-        "cls": 0.1707280179924435,
+        "lcp": 184,
+        "cls": 0.1528642026848263,
         "longTasks": [
-          57
+          52
         ]
       },
       "payload": {
@@ -3049,15 +3159,15 @@
       ],
       "nav": [
         {
-          "ttfb": 32.5,
-          "domContentLoaded": 196
+          "ttfb": 26.899999976158142,
+          "domContentLoaded": 186.5
         }
       ],
       "metrics": {
-        "lcp": 220,
+        "lcp": 208,
         "cls": 0.19395724995930988,
         "longTasks": [
-          57
+          53
         ]
       },
       "payload": {
@@ -3123,16 +3233,14 @@
       ],
       "nav": [
         {
-          "ttfb": 38.799999952316284,
-          "domContentLoaded": 212.09999990463257
+          "ttfb": 27.600000023841858,
+          "domContentLoaded": 185.5
         }
       ],
       "metrics": {
-        "lcp": 236,
+        "lcp": 208,
         "cls": 0.16505333428912694,
-        "longTasks": [
-          56
-        ]
+        "longTasks": []
       },
       "payload": {
         "requests": 5,
@@ -3197,16 +3305,14 @@
       ],
       "nav": [
         {
-          "ttfb": 35.39999997615814,
-          "domContentLoaded": 202.70000004768372
+          "ttfb": 26.100000023841858,
+          "domContentLoaded": 171.60000002384186
         }
       ],
       "metrics": {
-        "lcp": 224,
-        "cls": 0.17018916767173342,
-        "longTasks": [
-          72
-        ]
+        "lcp": 188,
+        "cls": 0.1685059894323349,
+        "longTasks": []
       },
       "payload": {
         "requests": 5,
@@ -3271,16 +3377,14 @@
       ],
       "nav": [
         {
-          "ttfb": 30.799999952316284,
-          "domContentLoaded": 238.5
+          "ttfb": 28.399999976158142,
+          "domContentLoaded": 179.60000002384186
         }
       ],
       "metrics": {
-        "lcp": 268,
+        "lcp": 204,
         "cls": 0.1475125058889389,
-        "longTasks": [
-          60
-        ]
+        "longTasks": []
       },
       "payload": {
         "requests": 5,
@@ -3295,7 +3399,7 @@
       "status": 200,
       "title": "Algae Cultivation Guides & Research Notes | Orr Biologicals",
       "h1": [
-        "The algae blog,updated every day"
+        "Algae cultivation guidesand research notes"
       ],
       "canonical": "https://orrbiologicals.com/blog/",
       "schemas": [
@@ -3309,21 +3413,23 @@
       ],
       "nav": [
         {
-          "ttfb": 27.399999976158142,
-          "domContentLoaded": 291.7999999523163
+          "ttfb": 23.799999952316284,
+          "domContentLoaded": 274
         }
       ],
       "metrics": {
-        "lcp": 356,
-        "cls": 0.058982778549194335,
-        "longTasks": []
+        "lcp": 292,
+        "cls": 0.056947916865348815,
+        "longTasks": [
+          168
+        ]
       },
       "payload": {
-        "requests": 9,
-        "transferred": 556996,
+        "requests": 6,
+        "transferred": 80172,
         "js": 8887,
         "css": 26378,
-        "images": 476824
+        "images": 0
       }
     },
     {
@@ -3381,15 +3487,15 @@
       ],
       "nav": [
         {
-          "ttfb": 28.600000023841858,
-          "domContentLoaded": 208.89999997615814
+          "ttfb": 24.5,
+          "domContentLoaded": 194.69999992847443
         }
       ],
       "metrics": {
-        "lcp": 232,
+        "lcp": 216,
         "cls": 0.14960130302111307,
         "longTasks": [
-          62
+          53
         ]
       },
       "payload": {
@@ -3455,15 +3561,15 @@
       ],
       "nav": [
         {
-          "ttfb": 37.39999997615814,
-          "domContentLoaded": 225.09999990463257
+          "ttfb": 27.899999976158142,
+          "domContentLoaded": 180.89999997615814
         }
       ],
       "metrics": {
-        "lcp": 248,
+        "lcp": 200,
         "cls": 0.1522656388282776,
         "longTasks": [
-          74
+          56
         ]
       },
       "payload": {
@@ -3529,12 +3635,12 @@
       ],
       "nav": [
         {
-          "ttfb": 24.800000071525574,
-          "domContentLoaded": 209.60000002384186
+          "ttfb": 29.100000023841858,
+          "domContentLoaded": 175.70000004768372
         }
       ],
       "metrics": {
-        "lcp": 248,
+        "lcp": 192,
         "cls": 0.1688610525793499,
         "longTasks": []
       },
@@ -3604,13 +3710,13 @@
       ],
       "nav": [
         {
-          "ttfb": 26.40000009536743,
-          "domContentLoaded": 164.60000002384186
+          "ttfb": 22.5,
+          "domContentLoaded": 151.5
         }
       ],
       "metrics": {
         "lcp": null,
-        "cls": 0.02017909240722656,
+        "cls": 0.019221883138020833,
         "longTasks": []
       },
       "payload": {
@@ -3676,16 +3782,14 @@
       ],
       "nav": [
         {
-          "ttfb": 28.600000023841858,
-          "domContentLoaded": 191.39999997615814
+          "ttfb": 25.899999976158142,
+          "domContentLoaded": 200.89999997615814
         }
       ],
       "metrics": {
-        "lcp": 216,
+        "lcp": 224,
         "cls": 0.16715756179226768,
-        "longTasks": [
-          50
-        ]
+        "longTasks": []
       },
       "payload": {
         "requests": 5,
@@ -3750,16 +3854,14 @@
       ],
       "nav": [
         {
-          "ttfb": 27.200000047683716,
-          "domContentLoaded": 175.10000002384186
+          "ttfb": 26.699999928474426,
+          "domContentLoaded": 261.10000002384186
         }
       ],
       "metrics": {
-        "lcp": 192,
+        "lcp": 280,
         "cls": 0.15388452192147573,
-        "longTasks": [
-          52
-        ]
+        "longTasks": []
       },
       "payload": {
         "requests": 5,
@@ -3824,13 +3926,13 @@
       ],
       "nav": [
         {
-          "ttfb": 29,
-          "domContentLoaded": 192.69999992847443
+          "ttfb": 26.40000009536743,
+          "domContentLoaded": 237
         }
       ],
       "metrics": {
-        "lcp": 208,
-        "cls": 0.15098542960484823,
+        "lcp": 252,
+        "cls": 0.1497434264024099,
         "longTasks": []
       },
       "payload": {
@@ -3896,16 +3998,14 @@
       ],
       "nav": [
         {
-          "ttfb": 24.100000023841858,
-          "domContentLoaded": 174.5
+          "ttfb": 33.200000047683716,
+          "domContentLoaded": 178.29999995231628
         }
       ],
       "metrics": {
-        "lcp": 188,
-        "cls": 0.15044919870959392,
-        "longTasks": [
-          51
-        ]
+        "lcp": 192,
+        "cls": 0.1522220284541448,
+        "longTasks": []
       },
       "payload": {
         "requests": 5,
@@ -3970,16 +4070,14 @@
       ],
       "nav": [
         {
-          "ttfb": 29.799999952316284,
-          "domContentLoaded": 216.79999995231628
+          "ttfb": 27.200000047683716,
+          "domContentLoaded": 183.20000004768372
         }
       ],
       "metrics": {
-        "lcp": 244,
+        "lcp": 200,
         "cls": 0.1728476307524575,
-        "longTasks": [
-          53
-        ]
+        "longTasks": []
       },
       "payload": {
         "requests": 5,
@@ -4044,14 +4142,16 @@
       ],
       "nav": [
         {
-          "ttfb": 22.799999952316284,
-          "domContentLoaded": 211.29999995231628
+          "ttfb": 21.90000009536743,
+          "domContentLoaded": 153.30000007152557
         }
       ],
       "metrics": {
-        "lcp": 232,
-        "cls": 0.17066693094041613,
-        "longTasks": []
+        "lcp": 184,
+        "cls": 0.15280311563279894,
+        "longTasks": [
+          50
+        ]
       },
       "payload": {
         "requests": 5,
@@ -4116,15 +4216,15 @@
       ],
       "nav": [
         {
-          "ttfb": 29.90000009536743,
-          "domContentLoaded": 185.20000004768372
+          "ttfb": 20.700000047683716,
+          "domContentLoaded": 169.89999997615814
         }
       ],
       "metrics": {
-        "lcp": 200,
-        "cls": 0.14557356888718073,
+        "lcp": 188,
+        "cls": 0.14733092733224232,
         "longTasks": [
-          73
+          50
         ]
       },
       "payload": {
@@ -4190,16 +4290,14 @@
       ],
       "nav": [
         {
-          "ttfb": 26.600000023841858,
-          "domContentLoaded": 175.60000002384186
+          "ttfb": 30.199999928474426,
+          "domContentLoaded": 192
         }
       ],
       "metrics": {
-        "lcp": 196,
-        "cls": 0.1491768119732539,
-        "longTasks": [
-          53
-        ]
+        "lcp": 204,
+        "cls": 0.15059200836552517,
+        "longTasks": []
       },
       "payload": {
         "requests": 5,
@@ -4264,16 +4362,16 @@
       ],
       "nav": [
         {
-          "ttfb": 30.200000047683716,
-          "domContentLoaded": 1215.7999999523163
+          "ttfb": 38.5,
+          "domContentLoaded": 1173.6999999284744
         }
       ],
       "metrics": {
-        "lcp": 1168,
+        "lcp": 1176,
         "cls": 0.0004571202198664347,
         "longTasks": [
-          144,
-          362
+          141,
+          349
         ]
       },
       "payload": {
@@ -4295,15 +4393,15 @@
       "schemas": [],
       "nav": [
         {
-          "ttfb": 28.600000023841858,
-          "domContentLoaded": 369.7999999523163
+          "ttfb": 25,
+          "domContentLoaded": 202.10000002384186
         }
       ],
       "metrics": {
-        "lcp": 492,
-        "cls": 0.06011272348297967,
+        "lcp": 244,
+        "cls": 0.08804540198379093,
         "longTasks": [
-          60
+          64
         ]
       },
       "payload": {
@@ -4358,21 +4456,21 @@
       ],
       "nav": [
         {
-          "ttfb": 24.300000071525574,
-          "domContentLoaded": 178.80000007152557
+          "ttfb": 25,
+          "domContentLoaded": 163.30000007152557
         }
       ],
       "metrics": {
         "lcp": null,
-        "cls": 0.02017909240722656,
+        "cls": 0.019221883138020833,
         "longTasks": []
       },
       "payload": {
-        "requests": 5,
-        "transferred": 36056,
+        "requests": 4,
+        "transferred": 35265,
         "js": 8887,
         "css": 26378,
-        "images": 791
+        "images": 0
       }
     },
     {
@@ -4380,7 +4478,7 @@
       "status": 200,
       "title": "Algae Biotechnology, Cultivation & Single-Cell Research | Orr Biologicals",
       "h1": [
-        "Algae biotechshould be easierto get into."
+        "Algae biotechnologyresearch, cultivationand single cells."
       ],
       "canonical": "https://orrbiologicals.com/",
       "schemas": [
@@ -4420,17 +4518,16 @@
       ],
       "nav": [
         {
-          "ttfb": 25.800000071525574,
-          "domContentLoaded": 1306.7000000476837
+          "ttfb": 26,
+          "domContentLoaded": 1392.1000000238419
         }
       ],
       "metrics": {
-        "lcp": 788,
-        "cls": 0.0012382274203830295,
+        "lcp": 900,
+        "cls": 0.03176676535606384,
         "longTasks": [
-          87,
-          382,
-          63
+          106,
+          397
         ]
       },
       "payload": {
@@ -4439,6 +4536,128 @@
         "js": 37539,
         "css": 84386,
         "images": 268973
+      }
+    },
+    {
+      "path": "/microalgae-cultivation/",
+      "status": 200,
+      "title": "Microalgae Cultivation: Light, Nutrients & Monitoring | Orr Biologicals",
+      "h1": [
+        "Microalgae cultivation: conditions and monitoring"
+      ],
+      "canonical": "https://orrbiologicals.com/microalgae-cultivation/",
+      "schemas": [
+        {
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "WebPage",
+              "@id": "https://orrbiologicals.com/microalgae-cultivation/#page",
+              "url": "https://orrbiologicals.com/microalgae-cultivation/",
+              "name": "Microalgae Cultivation: Light, Nutrients & Monitoring | Orr Biologicals",
+              "description": "Learn how light, temperature, nutrients, carbon, mixing and monitoring interact in microalgae cultivation. Compare measurements and find species-specific guides.",
+              "isPartOf": {
+                "@id": "https://orrbiologicals.com/#site"
+              }
+            },
+            {
+              "@type": "BreadcrumbList",
+              "itemListElement": [
+                {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "Orr Biologicals",
+                  "item": "https://orrbiologicals.com/"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 2,
+                  "name": "Microalgae cultivation: conditions and monitoring",
+                  "item": "https://orrbiologicals.com/microalgae-cultivation/"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "nav": [
+        {
+          "ttfb": 26.200000047683716,
+          "domContentLoaded": 231.5
+        }
+      ],
+      "metrics": {
+        "lcp": null,
+        "cls": 0.016401280721028647,
+        "longTasks": []
+      },
+      "payload": {
+        "requests": 4,
+        "transferred": 35265,
+        "js": 8887,
+        "css": 26378,
+        "images": 0
+      }
+    },
+    {
+      "path": "/photobioreactors/",
+      "status": 200,
+      "title": "Microalgae Photobioreactors: Design, Light & Sensors | Orr Biologicals",
+      "h1": [
+        "Microalgae photobioreactors: design and measurement"
+      ],
+      "canonical": "https://orrbiologicals.com/photobioreactors/",
+      "schemas": [
+        {
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "WebPage",
+              "@id": "https://orrbiologicals.com/photobioreactors/#page",
+              "url": "https://orrbiologicals.com/photobioreactors/",
+              "name": "Microalgae Photobioreactors: Design, Light & Sensors | Orr Biologicals",
+              "description": "Compare photobioreactor geometries and understand light paths, mixing, gas exchange, sensors and scale-up limits using cited research and educational guides.",
+              "isPartOf": {
+                "@id": "https://orrbiologicals.com/#site"
+              }
+            },
+            {
+              "@type": "BreadcrumbList",
+              "itemListElement": [
+                {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "Orr Biologicals",
+                  "item": "https://orrbiologicals.com/"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 2,
+                  "name": "Microalgae photobioreactors: design and measurement",
+                  "item": "https://orrbiologicals.com/photobioreactors/"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "nav": [
+        {
+          "ttfb": 24.199999928474426,
+          "domContentLoaded": 157
+        }
+      ],
+      "metrics": {
+        "lcp": null,
+        "cls": 0.016401280721028647,
+        "longTasks": []
+      },
+      "payload": {
+        "requests": 4,
+        "transferred": 35265,
+        "js": 8887,
+        "css": 26378,
+        "images": 0
       }
     },
     {
@@ -4452,18 +4671,18 @@
       "schemas": [],
       "nav": [
         {
-          "ttfb": 24.199999928474426,
-          "domContentLoaded": 251.39999997615814
+          "ttfb": 25.899999976158142,
+          "domContentLoaded": 193.39999997615814
         }
       ],
       "metrics": {
-        "lcp": 300,
-        "cls": 0.04258175422085656,
+        "lcp": 220,
+        "cls": 0.06509759995672439,
         "longTasks": []
       },
       "payload": {
         "requests": 5,
-        "transferred": 36385,
+        "transferred": 36301,
         "js": 8887,
         "css": 26378,
         "images": 0
@@ -4513,21 +4732,21 @@
       ],
       "nav": [
         {
-          "ttfb": 25.799999952316284,
-          "domContentLoaded": 177.39999997615814
+          "ttfb": 24.799999952316284,
+          "domContentLoaded": 149.10000002384186
         }
       ],
       "metrics": {
-        "lcp": null,
-        "cls": 0.017358489990234375,
+        "lcp": 160,
+        "cls": 0.016401280721028647,
         "longTasks": []
       },
       "payload": {
-        "requests": 5,
-        "transferred": 36056,
+        "requests": 4,
+        "transferred": 35265,
         "js": 8887,
         "css": 26378,
-        "images": 791
+        "images": 0
       }
     },
     {
@@ -4541,13 +4760,13 @@
       "schemas": [],
       "nav": [
         {
-          "ttfb": 23.699999928474426,
-          "domContentLoaded": 158.19999992847443
+          "ttfb": 24.700000047683716,
+          "domContentLoaded": 168.10000002384186
         }
       ],
       "metrics": {
-        "lcp": 188,
-        "cls": 0.07827786125077142,
+        "lcp": 184,
+        "cls": 0.10085968905025058,
         "longTasks": []
       },
       "payload": {
@@ -4587,6 +4806,36 @@
     },
     {
       "path": "/blog/single-cell-microalgae-microfluidics",
+      "width": 390,
+      "scrollWidth": 390
+    },
+    {
+      "path": "/algae-biotechnology/",
+      "width": 390,
+      "scrollWidth": 390
+    },
+    {
+      "path": "/microalgae-cultivation/",
+      "width": 390,
+      "scrollWidth": 390
+    },
+    {
+      "path": "/photobioreactors/",
+      "width": 390,
+      "scrollWidth": 390
+    },
+    {
+      "path": "/algaephyte/",
+      "width": 390,
+      "scrollWidth": 390
+    },
+    {
+      "path": "/applications/",
+      "width": 390,
+      "scrollWidth": 390
+    },
+    {
+      "path": "/applications/species/pavlova",
       "width": 390,
       "scrollWidth": 390
     }

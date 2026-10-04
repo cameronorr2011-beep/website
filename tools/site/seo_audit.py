@@ -17,6 +17,8 @@ from urllib.parse import urljoin, urlsplit
 
 ROOT = Path(__file__).resolve().parents[2]
 SITE = 'https://orrbiologicals.com'
+# Intentionally crawlable legal pages are omitted from the search-content sitemap.
+SITEMAP_EXCLUDED = {'/privacy', '/terms', '/disclaimer'}
 
 
 class Page(HTMLParser):
@@ -155,7 +157,8 @@ def main():
     sitemap = [n.text for n in ET.parse(ROOT / 'sitemap.xml').findall('.//s:loc', ns)]
     summary = {'pages': len(rows), 'indexable': sum(x['indexability'] == 'indexable' for x in rows),
         'sitemap_urls': len(sitemap), 'noindex_in_sitemap': [x['url'] for x in rows if x['url'] in sitemap and x['indexability'] == 'noindex'],
-        'missing_from_sitemap': [x['url'] for x in rows if x['indexability'] == 'indexable' and x['url'] not in sitemap],
+        'missing_from_sitemap': [x['url'] for x in rows if x['indexability'] == 'indexable' and urlsplit(x['url']).path not in SITEMAP_EXCLUDED and x['url'] not in sitemap],
+        'intentional_sitemap_exclusions': sorted(SITE + path for path in SITEMAP_EXCLUDED),
         'missing_descriptions': [x['url'] for x in rows if x['indexability'] == 'indexable' and not x['current_description']],
         'orphans_in_html': [x['url'] for x in rows if x['indexability'] == 'indexable' and not x['internal_links_in']],
         'duplicate_titles': [k for k, v in Counter(x['current_title'] for x in rows if x['indexability'] == 'indexable').items() if v > 1]}

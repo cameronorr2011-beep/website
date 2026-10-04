@@ -66,10 +66,8 @@ def build():
             return tag
         text = re.sub(r'<img\b[^>]*>', image, text)
         path.write_text(text, encoding='utf-8')
-    # The partial head is historical context only, but must not advertise offers.
-    home = (ROOT / 'index.html').read_text(encoding='utf-8')
-    head = home[:home.index('  <link rel="stylesheet" href="css/')].rstrip()
-    (ROOT / 'sections/head.html').write_text(head + '\n', encoding='utf-8')
+    # Homepage SEO edits belong in authoritative partials, never copied back
+    # from generated index.html. This utility must not overwrite those sources.
     print('Normalized actual page/social metadata and local image sizes')
 
 

@@ -41,7 +41,7 @@
       <a href="/cyanoflow">Cyanoflow</a>
       <a href="/blog/">Blog</a>
       <a href="/game/">Game</a>
-      <a class="btn-white" href="/#deploy">Pilot access</a>
+      <a class="btn-white" href="/#deploy">Contact</a>
     </nav>
     <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
   </div>
@@ -53,7 +53,7 @@
   <a href="/cyanoflow">Cyanoflow</a>
   <a href="/blog/">Blog</a>
   <a href="/game/">Game</a>
-  <a href="/#deploy">Pilot access</a>
+  <a href="/#deploy">Contact</a>
 </div>
 <main class="art-shell"><nav class="art-top" aria-label="Breadcrumb"><a href="/">Orr Biologicals</a> / <a href="/research/">Research methods</a></nav>
 <p class="art-cat">Educational research guide · Concepts, not validated hardware</p><h1>Single-cell microalgae analysis with microfluidics</h1>
@@ -64,11 +64,11 @@
 <p>Two cultures can share a similar average signal while containing different distributions of cell size, photosynthetic response or growth history. Single-cell measurements preserve that variation. The research question must specify the phenotype of interest and what observation would count as evidence, rather than ranking every visually unusual cell as useful.</p>
 <p>In PhenoChip, Behrendt and colleagues studied individual photosynthetic cells under controlled chemical and thermal conditions using chlorophyll fluorometry. The reported work demonstrates a literature example of single-cell photophysiology, not an experiment performed by Orr Biologicals [1].</p>
 <h2>Droplets, microwells and channels are different choices</h2>
-<table><thead><tr><th>Compartment</th><th>Useful property</th><th>Question to validate</th></tr></thead><tbody>
+<div class="app-table-wrap" role="region" aria-label="Scientific comparison table" tabindex="0"><table class="app-table"><thead><tr><th>Compartment</th><th>Useful property</th><th>Question to validate</th></tr></thead><tbody>
 <tr><td>Aqueous droplets in a carrier fluid</td><td>Separate small liquid volumes and potentially route selected compartments.</td><td>Does the interface affect viability, gas exchange, compounds or optical measurement?</td></tr>
 <tr><td>Microwells within a flow channel</td><td>Keep cells in known positions while media or exposure conditions change.</td><td>Are the same cells retained and are their local conditions known?</td></tr>
 <tr><td>Flow-through channels</td><td>Observe cells as they pass an imaging region.</td><td>Can a later image or recovered sample be tied to the same cell?</td></tr>
-</tbody></table>
+</tbody></table></div>
 <p>PhenoChip uses microwell confinement and controlled gradients [1]. Its findings must not be used to imply that a proposed droplet-based Cyanoflow device has the same behavior. Confinement itself can change a measurement: Bentley and colleagues examine single-cell motility in microfluidic confinement [2].</p>
 <h2>Single-cell loading is an observation, not a guarantee</h2>
 <p>Dilution alone does not prove one cell per compartment. Under an ideal independent random-loading model, occupancy can be described by a Poisson distribution: empty, single and multiple-cell compartments all occur. Aggregation, filamentous organisms and unequal compartment sizes can invalidate that simple assumption. Verify occupancy from images and report rejected doublets or ambiguous compartments.</p>

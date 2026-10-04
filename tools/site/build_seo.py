@@ -1,5 +1,5 @@
-"""Daily static SEO build. The editorial index.html is authoritative.
-Legacy PowerShell assembly is deliberately not used. No API keys required.
+"""Daily modular site build: homepage sources, curated pillars and SEO outputs.
+Both PowerShell entrypoints delegate here. No API keys required.
 """
 import html
 import json
@@ -10,10 +10,16 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'blog'))
 from build_kb_index import parse_articles
-from seo_audit import ROOT, SITE, Page, pages, route
+from seo_audit import ROOT, SITE, Page, pages, route, SITEMAP_EXCLUDED
+from build_home import build as build_home
+from build_research import build as build_research
+from link_topics import build as link_topics
 
 
 def build():
+    build_home()
+    build_research()
+    link_topics()
     articles = parse_articles()
     kb = {'counts': {'algaephyte': sum(a['product'] != 'Cyanoflow' for a in articles),
                      'cyanoflow': sum(a['product'] == 'Cyanoflow' for a in articles), 'total': len(articles)},
@@ -46,7 +52,7 @@ def build():
     count = 0; seen = set()
     for path in pages():
         page = Page(path.read_text(encoding='utf-8-sig'))
-        if 'noindex' in page.robots: continue
+        if 'noindex' in page.robots or route(path) in SITEMAP_EXCLUDED: continue
         canonical = SITE + route(path)
         if page.canonical != canonical: raise ValueError(f'Canonical mismatch: {path.name}: {page.canonical}')
         if canonical in seen: raise ValueError('Duplicate canonical: ' + canonical)

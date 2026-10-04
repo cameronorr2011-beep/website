@@ -1,5 +1,11 @@
 # Orr Biologicals: SEO audit and search strategy
 
+**Baseline audit:** findings below describe the preimplementation site. The
+executed second-pass architecture and updated requirements are recorded in
+[`EXECUTION.md`](EXECUTION.md). The final build uses authoritative homepage
+partials, includes four additional topic pillars and intentionally excludes
+legal pages from the knowledge-content sitemap.
+
 Audit date: 2026-10-04. Repository: https://github.com/cameronorr2011-beep/website.
 Baseline commit: `1ca9f44`; isolated branch `seo/scientific-discoverability-20261004`.
 

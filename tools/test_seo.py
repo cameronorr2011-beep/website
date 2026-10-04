@@ -12,7 +12,7 @@ from pathlib import Path
 from urllib.parse import urljoin, urlsplit
 
 sys.path.insert(0, str(Path(__file__).resolve().parent / 'site'))
-from seo_audit import ROOT, SITE, Page, inventory, pages, route
+from seo_audit import ROOT, SITE, Page, inventory, pages, route, SITEMAP_EXCLUDED
 
 
 class Resources(HTMLParser):
@@ -46,9 +46,10 @@ class SEOTests(unittest.TestCase):
         ns = {'s': 'http://www.sitemaps.org/schemas/sitemap/0.9'}
         xml = ET.parse(ROOT / 'sitemap.xml')
         urls = [n.text for n in xml.findall('.//s:loc', ns)]
-        expected = [r['url'] for r in inventory() if r['indexability'] == 'indexable']
+        expected = [r['url'] for r in inventory() if r['indexability'] == 'indexable' and urlsplit(r['url']).path not in SITEMAP_EXCLUDED]
         self.assertCountEqual(urls, expected); self.assertEqual(len(urls), len(set(urls)))
         self.assertNotIn(SITE + '/game/', urls)
+        for path in SITEMAP_EXCLUDED: self.assertNotIn(SITE + path, urls)
         for n in xml.findall('.//s:lastmod', ns):
             self.assertRegex(n.text, r'^\d{4}-\d{2}-\d{2}$')
         self.assertIn('Sitemap: ' + SITE + '/sitemap.xml', (ROOT / 'robots.txt').read_text())
@@ -110,6 +111,32 @@ class SEOTests(unittest.TestCase):
         before = digest()
         subprocess.run([sys.executable, str(ROOT / 'tools/site/build_seo.py')], check=True, capture_output=True)
         self.assertEqual(before, digest())
+
+    def test_modular_home_sources_and_build_entrypoints(self):
+        from build_home import render
+        self.assertEqual((ROOT / 'index.html').read_text(encoding='utf-8'), render())
+        self.assertIn('algae biotechnology', Page(render()).headings['h1'][0].lower())
+        for name in ('build.ps1', 'rebuild.ps1'):
+            text = (ROOT / name).read_text(encoding='utf-8-sig')
+            self.assertNotIn('SliceLines', text)
+            self.assertNotIn('cssMarkers', text)
+        self.assertIn('build_seo.py', (ROOT / 'rebuild.ps1').read_text())
+
+    def test_pillars_and_species_are_connected(self):
+        for slug in ('algae-biotechnology', 'microalgae-cultivation', 'photobioreactors', 'algaephyte'):
+            text = (ROOT / slug / 'index.html').read_text(encoding='utf-8')
+            page = Page(text)
+            self.assertGreater(len(page.headings['h2']), 5)
+            self.assertGreater(len(' '.join(page.text).split()), 400)
+            self.assertIn('href="/research/"', text)
+        for path in (ROOT / 'applications/species').glob('*.html'):
+            text = path.read_text(encoding='utf-8')
+            for link in ('/microalgae-cultivation/', '/photobioreactors/', '/algaephyte/', '/cyanoflow'):
+                self.assertIn('href="' + link + '"', text)
+        blog = (ROOT / 'blog/index.html').read_text(encoding='utf-8')
+        self.assertLess(blog.index('id="kb"'), blog.index('id="picks"'))
+        for public in ('/blog/', '/applications/', '/cyanoflow', '/assets/', '/blog/data/'):
+            self.assertNotIn('Disallow: ' + public, (ROOT / 'robots.txt').read_text())
 
     def test_google_font_ranges_are_valid(self):
         for path in pages():

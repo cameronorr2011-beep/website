@@ -19,7 +19,7 @@ jobs:
       - name: Build canonical sitemap and static reading directories
         run: |
           python tools/site/build_seo.py
-          git diff --exit-code -- sitemap.xml blog/index.html cyanoflow.html blog/data/kb.json
+          git diff --exit-code -- '*.html' sitemap.xml blog/data/kb.json
       - name: Validate all public pages and scientific status
         run: python -m unittest discover -s tools -p 'test_*.py'
       - name: Check browser script syntax

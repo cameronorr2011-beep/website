@@ -63,7 +63,8 @@ RedirectMatch 301 ^/research$ /research/
 Redirect 301 /technology                               /#stack
 Redirect 301 /projects                                 /#stack
 Redirect 301 /lab                                      /game/
-Redirect 301 /algaephyte                               /
+# Algaephyte now has a dedicated research pillar; preserve the no-slash alias.
+RedirectMatch 301 ^/algaephyte$ /algaephyte/
 # Exact-match only: a plain `Redirect /applications /applications/` prefix-matches
 # the trailing-slash path too and loops forever (ERR_TOO_MANY_REDIRECTS).
 RedirectMatch 301 ^/applications$ /applications/

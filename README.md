@@ -2,9 +2,11 @@
 
 ## Current build and SEO checks
 
-The current editorial `index.html` is authoritative. Historical `sections/`
-partials no longer reproduce its design and must not be assembled over it.
-`build.ps1` is a legacy source splitter, not the current build command.
+`index.html` is generated from **`sections/head.html` and
+`sections/home-body.html`**. Edit those source partials, not the generated page.
+Other historical `sections/` fragments are unused archival material and are
+not assembled. Both `build.ps1` and `rebuild.ps1` run the current modular build;
+the destructive legacy single-file splitter has been retired.
 
 ```bash
 python tools/site/build_seo.py
@@ -13,11 +15,14 @@ python tools/site/seo_audit.py --out docs/seo/current
 python tools/site/serve_preview.py  # http://127.0.0.1:8876
 ```
 
-`rebuild.ps1` delegates to the same Python SEO build without overwriting the
-homepage. The build writes static blog/Cyanoflow reading links and a sitemap
-containing only canonical indexable URLs. It never sets lastmod to build time.
-The three curated resources can be rebuilt with `build_research.py`; after
-editorial changes, run `normalize_metadata.py` and the daily SEO build again.
+The build regenerates the homepage, seven curated knowledge resources,
+contextual topic links, static blog/Cyanoflow reading directories and the
+canonical sitemap. Sources for the resources are `build_research.py` and
+`topics.py`; shared article/species links live in `link_topics.py`.
+Privacy, terms and disclaimer remain accessible but are deliberately omitted
+from the search-content sitemap. Lastmod is never set to build time.
+`normalize_metadata.py` handles existing hand-maintained page metadata only;
+it must not copy a generated homepage back over authoritative source partials.
 Do not rerun the historical `enrich_notes.py` to date future unrelated edits:
 its explicit 2026-10-04 date documents this editorial update only.
 

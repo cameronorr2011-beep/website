@@ -1,5 +1,30 @@
 # SEO validation — 2026-10-04
 
+## Second-pass validation (supersedes original output counts below)
+
+- Actual modular source: `sections/head.html` + `sections/home-body.html` ->
+  `index.html`; both `build.ps1` and `rebuild.ps1` executed successfully through
+  Windows PowerShell, invoking the same deterministic Python build.
+- Four distinct pillar resources generated at `/algae-biotechnology/`,
+  `/microalgae-cultivation/`, `/photobioreactors/`, `/algaephyte/`.
+- **17 tests pass** after final source repairs: full metadata/schema/links,
+  deterministic rebuilds, source/output equality, explicit legal exclusions,
+  connected species/pillars and evergreen-before-daily blog order.
+- **60 public documents; 58 indexable; 55 sitemap URLs.** Legal pages are
+  crawlable, self-canonical and linked but deliberately absent from sitemap.
+- All 58 indexable pages are included in browser navigation, not merely sitemap
+  pages. Updated browser report covers 12 mobile routes, including all new
+  pillars, applications and a species profile; both simulations and no-JS
+  reading directory remain part of the interface test.
+- Initial mobile QA caught a 430px-wide cultivation table on a 390px viewport.
+  Fixed the cause in the shared resource renderer using the existing responsive
+  table wrapper and genuine table semantics; no assertion was weakened.
+- Live homepage and `/algaephyte` rechecked: production still has the old title
+  and Algaephyte redirects to home. No second-pass deployment is implied.
+- See `EXECUTION.md` for source contracts, exact 90-day priorities and new
+  literature/SERP evidence. Original records below describe the first pass.
+
+
 ## Delivered artifacts
 
 - `AUDIT.md`: executive diagnosis, reconnaissance, severity/evidence/fix table, topic architecture, scientific safeguards, authority strategy and 30/60/90-day measurement plan.

@@ -54,6 +54,258 @@
     }
   },
   {
+    "url": "https://orrbiologicals.com/algae-biotechnology/",
+    "file": "algae-biotechnology/index.html",
+    "current_title": "Algae Biotechnology: Organisms, Cultivation & Research | Orr Biologicals",
+    "recommended_title": "Algae Biotechnology: Organisms, Cultivation & Research | Orr Biologicals",
+    "current_description": "Understand algae biotechnology: organism selection, cultivation, photobioreactors, compounds and single-cell research, with evidence limits and source reading.",
+    "recommended_description": "Understand algae biotechnology: organism selection, cultivation, photobioreactors, compounds and single-cell research, with evidence limits and source reading.",
+    "h1": [
+      "Algae biotechnology: organisms, cultivation and research"
+    ],
+    "h2": [
+      "What counts as algae biotechnology?",
+      "Four questions connect the field",
+      "Applications: useful distinctions, not universal promises",
+      "Algaephyte and Cyanoflow address different scales",
+      "How to evaluate a biotechnology claim",
+      "Sources and a reading route"
+    ],
+    "intent": "Navigational / educational",
+    "primary_topic": "Algae biotechnology: organisms, cultivation and research",
+    "secondary_topics": [
+      "What counts as algae biotechnology?",
+      "Four questions connect the field",
+      "Applications: useful distinctions, not universal promises",
+      "Algaephyte and Cyanoflow address different scales",
+      "How to evaluate a biotechnology claim",
+      "Sources and a reading route"
+    ],
+    "journey_stage": "Learn / evaluate research concepts",
+    "cluster": "Site",
+    "content_words": 578,
+    "content_quality": "Editorial review required; word count is not a quality score",
+    "internal_links_in": [
+      "https://orrbiologicals.com/",
+      "https://orrbiologicals.com/applications/",
+      "https://orrbiologicals.com/applications/algae-rations-for-bivalve-larvae",
+      "https://orrbiologicals.com/applications/best-microalgae-for-copepod-culture",
+      "https://orrbiologicals.com/applications/how-to-feed-copepods",
+      "https://orrbiologicals.com/applications/how-to-grow-a-microalgae-culture",
+      "https://orrbiologicals.com/applications/how-to-scale-a-microalgae-culture",
+      "https://orrbiologicals.com/applications/how-to-start-a-phytoplankton-culture",
+      "https://orrbiologicals.com/applications/microalgae-for-marine-fish-larvae",
+      "https://orrbiologicals.com/applications/microalgal-biotechnology",
+      "https://orrbiologicals.com/applications/pavlova-vs-isochrysis",
+      "https://orrbiologicals.com/applications/phytoplankton-aquaculture-food-webs",
+      "https://orrbiologicals.com/applications/prevent-contamination-microalgae-cultures",
+      "https://orrbiologicals.com/applications/why-isochrysis-matters-aquaculture",
+      "https://orrbiologicals.com/blog/",
+      "https://orrbiologicals.com/research/"
+    ],
+    "internal_links_out": [
+      "https://orrbiologicals.com/",
+      "https://orrbiologicals.com/#deploy",
+      "https://orrbiologicals.com/#inside",
+      "https://orrbiologicals.com/#products",
+      "https://orrbiologicals.com/algaephyte/",
+      "https://orrbiologicals.com/applications/",
+      "https://orrbiologicals.com/applications/#aquaculture",
+      "https://orrbiologicals.com/applications/#species",
+      "https://orrbiologicals.com/applications/microalgal-biotechnology",
+      "https://orrbiologicals.com/applications/phytoplankton-aquaculture-food-webs",
+      "https://orrbiologicals.com/applications/species/chlorella",
+      "https://orrbiologicals.com/blog/",
+      "https://orrbiologicals.com/blog/single-cell-microalgae-microfluidics",
+      "https://orrbiologicals.com/blog/spirulina-is-a-cyanobacterium",
+      "https://orrbiologicals.com/cyanoflow",
+      "https://orrbiologicals.com/game/",
+      "https://orrbiologicals.com/glossary",
+      "https://orrbiologicals.com/microalgae-cultivation/",
+      "https://orrbiologicals.com/photobioreactors/",
+      "https://orrbiologicals.com/privacy",
+      "https://orrbiologicals.com/research/",
+      "https://orrbiologicals.com/terms"
+    ],
+    "external_sources": [
+      "https://pmc.ncbi.nlm.nih.gov/articles/PMC9033726/",
+      "https://pmc.ncbi.nlm.nih.gov/articles/PMC9731602/"
+    ],
+    "canonical": "https://orrbiologicals.com/algae-biotechnology/",
+    "schema_types": [
+      "WebPage",
+      "BreadcrumbList"
+    ],
+    "schema_errors": [],
+    "images": [],
+    "image_quality": "Illustrations vs measurements must be labeled; no pixel review implied",
+    "image_alt_quality": {
+      "missing": 0,
+      "empty": 0
+    },
+    "indexability": "indexable",
+    "importance": "High",
+    "action": "KEEP",
+    "h1_count": 1,
+    "duplicate_ids": [],
+    "meta": {
+      "": "",
+      "viewport": "width=device-width, initial-scale=1",
+      "description": "Understand algae biotechnology: organism selection, cultivation, photobioreactors, compounds and single-cell research, with evidence limits and source reading.",
+      "og:type": "website",
+      "og:title": "Algae Biotechnology: Organisms, Cultivation & Research | Orr Biologicals",
+      "og:description": "Understand algae biotechnology: organism selection, cultivation, photobioreactors, compounds and single-cell research, with evidence limits and source reading.",
+      "og:url": "https://orrbiologicals.com/algae-biotechnology/",
+      "og:image": "https://orrbiologicals.com/assets/og.png",
+      "og:site_name": "Orr Biologicals",
+      "twitter:card": "summary_large_image",
+      "twitter:title": "Algae Biotechnology: Organisms, Cultivation & Research | Orr Biologicals",
+      "twitter:description": "Understand algae biotechnology: organism selection, cultivation, photobioreactors, compounds and single-cell research, with evidence limits and source reading.",
+      "twitter:image": "https://orrbiologicals.com/assets/og.png"
+    }
+  },
+  {
+    "url": "https://orrbiologicals.com/algaephyte/",
+    "file": "algaephyte/index.html",
+    "current_title": "AI-Assisted Microalgae Cultivation Research | Algaephyte",
+    "recommended_title": "AI-Assisted Microalgae Cultivation Research | Algaephyte",
+    "current_description": "Explore Algaephyte’s proposed sensor-based cultivation, digital twin and bounded automation. Research design goals, not validated hardware or deployed products.",
+    "recommended_description": "Explore Algaephyte’s proposed sensor-based cultivation, digital twin and bounded automation. Research design goals, not validated hardware or deployed products.",
+    "h1": [
+      "Algaephyte: AI-assisted microalgae cultivation research"
+    ],
+    "h2": [
+      "What question does Algaephyte address?",
+      "Sensors: different signals, not one health number",
+      "Digital twin: predictions need held-out tests",
+      "Computer vision and edge AI",
+      "Bounded automation: proposals do not own pumps",
+      "Research status and next experiments",
+      "Source reading and next steps"
+    ],
+    "intent": "Navigational / educational",
+    "primary_topic": "Algaephyte: AI-assisted microalgae cultivation research",
+    "secondary_topics": [
+      "What question does Algaephyte address?",
+      "Sensors: different signals, not one health number",
+      "Digital twin: predictions need held-out tests",
+      "Computer vision and edge AI",
+      "Bounded automation: proposals do not own pumps",
+      "Research status and next experiments",
+      "Source reading and next steps"
+    ],
+    "journey_stage": "Learn / evaluate research concepts",
+    "cluster": "Site",
+    "content_words": 639,
+    "content_quality": "Editorial review required; word count is not a quality score",
+    "internal_links_in": [
+      "https://orrbiologicals.com/",
+      "https://orrbiologicals.com/algae-biotechnology/",
+      "https://orrbiologicals.com/applications/",
+      "https://orrbiologicals.com/applications/species/arthrospira",
+      "https://orrbiologicals.com/applications/species/chaetoceros",
+      "https://orrbiologicals.com/applications/species/chlorella",
+      "https://orrbiologicals.com/applications/species/dunaliella",
+      "https://orrbiologicals.com/applications/species/haematococcus",
+      "https://orrbiologicals.com/applications/species/isochrysis-tisochrysis",
+      "https://orrbiologicals.com/applications/species/nannochloropsis",
+      "https://orrbiologicals.com/applications/species/pavlova",
+      "https://orrbiologicals.com/applications/species/phaeodactylum",
+      "https://orrbiologicals.com/applications/species/tetraselmis",
+      "https://orrbiologicals.com/blog/",
+      "https://orrbiologicals.com/blog/alkalinity-as-a-control-variable",
+      "https://orrbiologicals.com/blog/bounded-autonomy-safe-ai-proposals",
+      "https://orrbiologicals.com/blog/control-loop-architecture",
+      "https://orrbiologicals.com/blog/digital-twin-droop-steele-model",
+      "https://orrbiologicals.com/blog/digital-twins-biological-cultivation",
+      "https://orrbiologicals.com/blog/dissolved-oxygen-stress-signal",
+      "https://orrbiologicals.com/blog/edge-ai-biological-systems",
+      "https://orrbiologicals.com/blog/federated-learning-network",
+      "https://orrbiologicals.com/blog/harvesting-and-using-fresh-spirulina",
+      "https://orrbiologicals.com/blog/how-main-keeps-culture-safe",
+      "https://orrbiologicals.com/blog/how-to-start-home-spirulina-culture",
+      "https://orrbiologicals.com/blog/light-temperature-mixing",
+      "https://orrbiologicals.com/blog/photobioreactor-ai-optimization",
+      "https://orrbiologicals.com/blog/reading-your-culture",
+      "https://orrbiologicals.com/blog/six-culture-signals-main-senses",
+      "https://orrbiologicals.com/blog/spirulina-is-a-cyanobacterium",
+      "https://orrbiologicals.com/blog/troubleshooting-contamination-crashes",
+      "https://orrbiologicals.com/blog/troubleshooting-ph-and-carbon",
+      "https://orrbiologicals.com/blog/vision-contamination-detection",
+      "https://orrbiologicals.com/blog/what-is-main-plain-language",
+      "https://orrbiologicals.com/blog/winter-home-growing-warmth",
+      "https://orrbiologicals.com/blog/zarrouk-medium-and-nutrients",
+      "https://orrbiologicals.com/microalgae-cultivation/",
+      "https://orrbiologicals.com/photobioreactors/",
+      "https://orrbiologicals.com/research/"
+    ],
+    "internal_links_out": [
+      "https://orrbiologicals.com/",
+      "https://orrbiologicals.com/#deploy",
+      "https://orrbiologicals.com/#inside",
+      "https://orrbiologicals.com/#products",
+      "https://orrbiologicals.com/#simulation",
+      "https://orrbiologicals.com/#system",
+      "https://orrbiologicals.com/applications/",
+      "https://orrbiologicals.com/blog/",
+      "https://orrbiologicals.com/blog/alkalinity-as-a-control-variable",
+      "https://orrbiologicals.com/blog/bounded-autonomy-safe-ai-proposals",
+      "https://orrbiologicals.com/blog/control-loop-architecture",
+      "https://orrbiologicals.com/blog/digital-twin-droop-steele-model",
+      "https://orrbiologicals.com/blog/digital-twins-biological-cultivation",
+      "https://orrbiologicals.com/blog/dissolved-oxygen-stress-signal",
+      "https://orrbiologicals.com/blog/edge-ai-biological-systems",
+      "https://orrbiologicals.com/blog/federated-learning-network",
+      "https://orrbiologicals.com/blog/six-culture-signals-main-senses",
+      "https://orrbiologicals.com/blog/vision-contamination-detection",
+      "https://orrbiologicals.com/cyanoflow",
+      "https://orrbiologicals.com/disclaimer",
+      "https://orrbiologicals.com/game/",
+      "https://orrbiologicals.com/glossary",
+      "https://orrbiologicals.com/microalgae-cultivation/",
+      "https://orrbiologicals.com/photobioreactors/",
+      "https://orrbiologicals.com/privacy",
+      "https://orrbiologicals.com/research/",
+      "https://orrbiologicals.com/terms"
+    ],
+    "external_sources": [
+      "https://pmc.ncbi.nlm.nih.gov/articles/PMC9033726/",
+      "https://pmc.ncbi.nlm.nih.gov/articles/PMC9368473/"
+    ],
+    "canonical": "https://orrbiologicals.com/algaephyte/",
+    "schema_types": [
+      "WebPage",
+      "BreadcrumbList"
+    ],
+    "schema_errors": [],
+    "images": [],
+    "image_quality": "Illustrations vs measurements must be labeled; no pixel review implied",
+    "image_alt_quality": {
+      "missing": 0,
+      "empty": 0
+    },
+    "indexability": "indexable",
+    "importance": "High",
+    "action": "KEEP",
+    "h1_count": 1,
+    "duplicate_ids": [],
+    "meta": {
+      "": "",
+      "viewport": "width=device-width, initial-scale=1",
+      "description": "Explore Algaephyte’s proposed sensor-based cultivation, digital twin and bounded automation. Research design goals, not validated hardware or deployed products.",
+      "og:type": "website",
+      "og:title": "AI-Assisted Microalgae Cultivation Research | Algaephyte",
+      "og:description": "Explore Algaephyte’s proposed sensor-based cultivation, digital twin and bounded automation. Research design goals, not validated hardware or deployed products.",
+      "og:url": "https://orrbiologicals.com/algaephyte/",
+      "og:image": "https://orrbiologicals.com/assets/og.png",
+      "og:site_name": "Orr Biologicals",
+      "twitter:card": "summary_large_image",
+      "twitter:title": "AI-Assisted Microalgae Cultivation Research | Algaephyte",
+      "twitter:description": "Explore Algaephyte’s proposed sensor-based cultivation, digital twin and bounded automation. Research design goals, not validated hardware or deployed products.",
+      "twitter:image": "https://orrbiologicals.com/assets/og.png"
+    }
+  },
+  {
     "url": "https://orrbiologicals.com/applications/algae-rations-for-bivalve-larvae",
     "file": "applications/algae-rations-for-bivalve-larvae.html",
     "current_title": "Algae Rations for Bivalve Larvae | Orr Biologicals",
@@ -67,7 +319,8 @@
       "The ration, stage by stage",
       "Why the mix shifts with stage",
       "Where Algaephyte fits",
-      "Working with us"
+      "Working with us",
+      "Connect this guide to the wider research"
     ],
     "intent": "Informational",
     "primary_topic": "Stage-Specific Algae Rations for Bivalve Larvae",
@@ -75,11 +328,12 @@
       "The ration, stage by stage",
       "Why the mix shifts with stage",
       "Where Algaephyte fits",
-      "Working with us"
+      "Working with us",
+      "Connect this guide to the wider research"
     ],
     "journey_stage": "Learn / evaluate research concepts",
     "cluster": "Applications",
-    "content_words": 872,
+    "content_words": 933,
     "content_quality": "Editorial review required; word count is not a quality score",
     "internal_links_in": [
       "https://orrbiologicals.com/applications/",
@@ -98,15 +352,21 @@
       "https://orrbiologicals.com/#products",
       "https://orrbiologicals.com/#safety",
       "https://orrbiologicals.com/#system",
+      "https://orrbiologicals.com/algae-biotechnology/",
       "https://orrbiologicals.com/applications/",
+      "https://orrbiologicals.com/applications/#species",
       "https://orrbiologicals.com/applications/pavlova-vs-isochrysis",
       "https://orrbiologicals.com/applications/phytoplankton-aquaculture-food-webs",
       "https://orrbiologicals.com/applications/species/chaetoceros",
       "https://orrbiologicals.com/applications/why-isochrysis-matters-aquaculture",
       "https://orrbiologicals.com/blog/",
       "https://orrbiologicals.com/cyanoflow",
+      "https://orrbiologicals.com/disclaimer",
       "https://orrbiologicals.com/game/",
+      "https://orrbiologicals.com/glossary",
+      "https://orrbiologicals.com/microalgae-cultivation/",
       "https://orrbiologicals.com/privacy",
+      "https://orrbiologicals.com/research/",
       "https://orrbiologicals.com/terms"
     ],
     "external_sources": [],
@@ -150,7 +410,8 @@
       "og:site_name": "Orr Biologicals",
       "twitter:title": "Algae Rations for Bivalve Larvae | Orr Biologicals",
       "twitter:description": "Typical published feed rations for oyster, mussel and clam larvae by stage — Isochrysis, Pavlova and Chaetoceros ratios — and where the Algaephyte platform applies.",
-      "twitter:image": "https://orrbiologicals.com/assets/images/library/bivalve-larvae.svg"
+      "twitter:image": "https://orrbiologicals.com/assets/images/library/bivalve-larvae.svg",
+      "article:modified_time": "2026-10-04"
     }
   },
   {
@@ -166,18 +427,20 @@
     "h2": [
       "The candidates, at a glance",
       "How to choose without guessing",
-      "The metabolic point people miss"
+      "The metabolic point people miss",
+      "Connect this guide to the wider research"
     ],
     "intent": "Informational",
     "primary_topic": "Best Microalgae for Copepod Culture: an Honest Comparison",
     "secondary_topics": [
       "The candidates, at a glance",
       "How to choose without guessing",
-      "The metabolic point people miss"
+      "The metabolic point people miss",
+      "Connect this guide to the wider research"
     ],
     "journey_stage": "Learn / evaluate research concepts",
     "cluster": "Applications",
-    "content_words": 531,
+    "content_words": 592,
     "content_quality": "Editorial review required; word count is not a quality score",
     "internal_links_in": [
       "https://orrbiologicals.com/applications/",
@@ -195,7 +458,9 @@
       "https://orrbiologicals.com/#deploy",
       "https://orrbiologicals.com/#inside",
       "https://orrbiologicals.com/#products",
+      "https://orrbiologicals.com/algae-biotechnology/",
       "https://orrbiologicals.com/applications/",
+      "https://orrbiologicals.com/applications/#species",
       "https://orrbiologicals.com/applications/how-to-feed-copepods",
       "https://orrbiologicals.com/applications/species/chaetoceros",
       "https://orrbiologicals.com/applications/species/isochrysis-tisochrysis",
@@ -204,8 +469,12 @@
       "https://orrbiologicals.com/applications/species/tetraselmis",
       "https://orrbiologicals.com/blog/",
       "https://orrbiologicals.com/cyanoflow",
+      "https://orrbiologicals.com/disclaimer",
       "https://orrbiologicals.com/game/",
+      "https://orrbiologicals.com/glossary",
+      "https://orrbiologicals.com/microalgae-cultivation/",
       "https://orrbiologicals.com/privacy",
+      "https://orrbiologicals.com/research/",
       "https://orrbiologicals.com/terms"
     ],
     "external_sources": [],
@@ -249,7 +518,8 @@
       "og:site_name": "Orr Biologicals",
       "twitter:title": "Best Microalgae for Copepod Culture | Orr Biologicals",
       "twitter:description": "Isochrysis, Pavlova, Nannochloropsis, Tetraselmis, Chaetoceros and Rhodomonas compared for copepod culture — sizes, strengths, and why no single species is universally best.",
-      "twitter:image": "https://orrbiologicals.com/assets/images/library/microscopy-field.svg"
+      "twitter:image": "https://orrbiologicals.com/assets/images/library/microscopy-field.svg",
+      "article:modified_time": "2026-10-04"
     }
   },
   {
@@ -266,7 +536,8 @@
       "Why live microalgae, not dry feed",
       "The factors that actually matter",
       "Why species respond differently",
-      "Delivery practices that help"
+      "Delivery practices that help",
+      "Connect this guide to the wider research"
     ],
     "intent": "Informational",
     "primary_topic": "How to Feed Copepods With Phytoplankton",
@@ -274,11 +545,12 @@
       "Why live microalgae, not dry feed",
       "The factors that actually matter",
       "Why species respond differently",
-      "Delivery practices that help"
+      "Delivery practices that help",
+      "Connect this guide to the wider research"
     ],
     "journey_stage": "Learn / evaluate research concepts",
     "cluster": "Applications",
-    "content_words": 527,
+    "content_words": 588,
     "content_quality": "Editorial review required; word count is not a quality score",
     "internal_links_in": [
       "https://orrbiologicals.com/applications/",
@@ -293,7 +565,9 @@
       "https://orrbiologicals.com/#deploy",
       "https://orrbiologicals.com/#inside",
       "https://orrbiologicals.com/#products",
+      "https://orrbiologicals.com/algae-biotechnology/",
       "https://orrbiologicals.com/applications/",
+      "https://orrbiologicals.com/applications/#species",
       "https://orrbiologicals.com/applications/best-microalgae-for-copepod-culture",
       "https://orrbiologicals.com/applications/how-to-grow-a-microalgae-culture",
       "https://orrbiologicals.com/applications/phytoplankton-aquaculture-food-webs",
@@ -301,8 +575,12 @@
       "https://orrbiologicals.com/applications/species/pavlova",
       "https://orrbiologicals.com/blog/",
       "https://orrbiologicals.com/cyanoflow",
+      "https://orrbiologicals.com/disclaimer",
       "https://orrbiologicals.com/game/",
+      "https://orrbiologicals.com/glossary",
+      "https://orrbiologicals.com/microalgae-cultivation/",
       "https://orrbiologicals.com/privacy",
+      "https://orrbiologicals.com/research/",
       "https://orrbiologicals.com/terms"
     ],
     "external_sources": [],
@@ -346,7 +624,8 @@
       "og:site_name": "Orr Biologicals",
       "twitter:title": "How to Feed Copepods With Phytoplankton | Orr Biologicals",
       "twitter:description": "Why cultured microalgae make the best copepod feed, which factors actually matter — cell size, density, nutrition — and why different copepod species respond differently.",
-      "twitter:image": "https://orrbiologicals.com/assets/images/library/copepod-feeding.svg"
+      "twitter:image": "https://orrbiologicals.com/assets/images/library/copepod-feeding.svg",
+      "article:modified_time": "2026-10-04"
     }
   },
   {
@@ -362,18 +641,20 @@
     "h2": [
       "The five inputs",
       "Monitoring without a laboratory",
-      "The rhythm"
+      "The rhythm",
+      "Connect this guide to the wider research"
     ],
     "intent": "Informational",
     "primary_topic": "How to Grow a Microalgae Culture",
     "secondary_topics": [
       "The five inputs",
       "Monitoring without a laboratory",
-      "The rhythm"
+      "The rhythm",
+      "Connect this guide to the wider research"
     ],
     "journey_stage": "Learn / evaluate research concepts",
     "cluster": "Applications",
-    "content_words": 469,
+    "content_words": 530,
     "content_quality": "Editorial review required; word count is not a quality score",
     "internal_links_in": [
       "https://orrbiologicals.com/applications/",
@@ -385,6 +666,7 @@
       "https://orrbiologicals.com/applications/species/chlorella",
       "https://orrbiologicals.com/applications/species/nannochloropsis",
       "https://orrbiologicals.com/applications/species/tetraselmis",
+      "https://orrbiologicals.com/microalgae-cultivation/",
       "https://orrbiologicals.com/research/"
     ],
     "internal_links_out": [
@@ -392,6 +674,7 @@
       "https://orrbiologicals.com/#deploy",
       "https://orrbiologicals.com/#inside",
       "https://orrbiologicals.com/#products",
+      "https://orrbiologicals.com/algae-biotechnology/",
       "https://orrbiologicals.com/applications/",
       "https://orrbiologicals.com/applications/#species",
       "https://orrbiologicals.com/applications/how-to-scale-a-microalgae-culture",
@@ -399,8 +682,12 @@
       "https://orrbiologicals.com/applications/prevent-contamination-microalgae-cultures",
       "https://orrbiologicals.com/blog/",
       "https://orrbiologicals.com/cyanoflow",
+      "https://orrbiologicals.com/disclaimer",
       "https://orrbiologicals.com/game/",
+      "https://orrbiologicals.com/glossary",
+      "https://orrbiologicals.com/microalgae-cultivation/",
       "https://orrbiologicals.com/privacy",
+      "https://orrbiologicals.com/research/",
       "https://orrbiologicals.com/terms"
     ],
     "external_sources": [],
@@ -444,7 +731,8 @@
       "og:site_name": "Orr Biologicals",
       "twitter:title": "How to Grow a Microalgae Culture | Orr Biologicals",
       "twitter:description": "Microalgae cultivation explained for beginners: vessels, light, nutrients, temperature, mixing and monitoring — and why parameters vary by species and strain.",
-      "twitter:image": "https://orrbiologicals.com/assets/images/library/culture-vessels.svg"
+      "twitter:image": "https://orrbiologicals.com/assets/images/library/culture-vessels.svg",
+      "article:modified_time": "2026-10-04"
     }
   },
   {
@@ -461,7 +749,8 @@
       "Time transfers to the growth curve",
       "Respect the light problem",
       "Keep reserves at every rung",
-      "What changes at volume"
+      "What changes at volume",
+      "Connect this guide to the wider research"
     ],
     "intent": "Informational",
     "primary_topic": "How to Scale a Microalgae Culture",
@@ -469,16 +758,19 @@
       "Time transfers to the growth curve",
       "Respect the light problem",
       "Keep reserves at every rung",
-      "What changes at volume"
+      "What changes at volume",
+      "Connect this guide to the wider research"
     ],
     "journey_stage": "Learn / evaluate research concepts",
     "cluster": "Applications",
-    "content_words": 442,
+    "content_words": 503,
     "content_quality": "Editorial review required; word count is not a quality score",
     "internal_links_in": [
       "https://orrbiologicals.com/applications/",
       "https://orrbiologicals.com/applications/how-to-grow-a-microalgae-culture",
-      "https://orrbiologicals.com/applications/prevent-contamination-microalgae-cultures"
+      "https://orrbiologicals.com/applications/prevent-contamination-microalgae-cultures",
+      "https://orrbiologicals.com/microalgae-cultivation/",
+      "https://orrbiologicals.com/photobioreactors/"
     ],
     "internal_links_out": [
       "https://orrbiologicals.com/",
@@ -486,6 +778,7 @@
       "https://orrbiologicals.com/#inside",
       "https://orrbiologicals.com/#products",
       "https://orrbiologicals.com/#twin",
+      "https://orrbiologicals.com/algae-biotechnology/",
       "https://orrbiologicals.com/applications/",
       "https://orrbiologicals.com/applications/#species",
       "https://orrbiologicals.com/applications/how-to-grow-a-microalgae-culture",
@@ -493,8 +786,12 @@
       "https://orrbiologicals.com/applications/prevent-contamination-microalgae-cultures",
       "https://orrbiologicals.com/blog/",
       "https://orrbiologicals.com/cyanoflow",
+      "https://orrbiologicals.com/disclaimer",
       "https://orrbiologicals.com/game/",
+      "https://orrbiologicals.com/glossary",
+      "https://orrbiologicals.com/microalgae-cultivation/",
       "https://orrbiologicals.com/privacy",
+      "https://orrbiologicals.com/research/",
       "https://orrbiologicals.com/terms"
     ],
     "external_sources": [],
@@ -538,7 +835,8 @@
       "og:site_name": "Orr Biologicals",
       "twitter:title": "How to Scale a Microalgae Culture Up | Orr Biologicals",
       "twitter:description": "Scaling microalgae from starter to production volume: transfer ratios, growth phase timing, light through dense culture, and keeping reserves alive.",
-      "twitter:image": "https://orrbiologicals.com/assets/images/library/scaling.svg"
+      "twitter:image": "https://orrbiologicals.com/assets/images/library/scaling.svg",
+      "article:modified_time": "2026-10-04"
     }
   },
   {
@@ -555,7 +853,8 @@
       "Step one: choose the species on purpose",
       "Step two: source clean starter material",
       "Step three: set up small and steady",
-      "The first two weeks"
+      "The first two weeks",
+      "Connect this guide to the wider research"
     ],
     "intent": "Informational",
     "primary_topic": "How to Start a Phytoplankton Culture",
@@ -563,23 +862,27 @@
       "Step one: choose the species on purpose",
       "Step two: source clean starter material",
       "Step three: set up small and steady",
-      "The first two weeks"
+      "The first two weeks",
+      "Connect this guide to the wider research"
     ],
     "journey_stage": "Learn / evaluate research concepts",
     "cluster": "Applications",
-    "content_words": 430,
+    "content_words": 491,
     "content_quality": "Editorial review required; word count is not a quality score",
     "internal_links_in": [
       "https://orrbiologicals.com/applications/",
       "https://orrbiologicals.com/applications/how-to-grow-a-microalgae-culture",
-      "https://orrbiologicals.com/applications/species/nannochloropsis"
+      "https://orrbiologicals.com/applications/species/nannochloropsis",
+      "https://orrbiologicals.com/microalgae-cultivation/"
     ],
     "internal_links_out": [
       "https://orrbiologicals.com/",
       "https://orrbiologicals.com/#deploy",
       "https://orrbiologicals.com/#inside",
       "https://orrbiologicals.com/#products",
+      "https://orrbiologicals.com/algae-biotechnology/",
       "https://orrbiologicals.com/applications/",
+      "https://orrbiologicals.com/applications/#species",
       "https://orrbiologicals.com/applications/how-to-grow-a-microalgae-culture",
       "https://orrbiologicals.com/applications/prevent-contamination-microalgae-cultures",
       "https://orrbiologicals.com/applications/species/chlorella",
@@ -588,8 +891,12 @@
       "https://orrbiologicals.com/applications/species/tetraselmis",
       "https://orrbiologicals.com/blog/",
       "https://orrbiologicals.com/cyanoflow",
+      "https://orrbiologicals.com/disclaimer",
       "https://orrbiologicals.com/game/",
+      "https://orrbiologicals.com/glossary",
+      "https://orrbiologicals.com/microalgae-cultivation/",
       "https://orrbiologicals.com/privacy",
+      "https://orrbiologicals.com/research/",
       "https://orrbiologicals.com/terms"
     ],
     "external_sources": [],
@@ -633,7 +940,8 @@
       "og:site_name": "Orr Biologicals",
       "twitter:title": "How to Start a Phytoplankton Culture | Orr Biologicals",
       "twitter:description": "The first two weeks of a phytoplankton culture: sourcing starter material, first vessels, first feeding of the culture, and the mistakes that kill new cultures.",
-      "twitter:image": "https://orrbiologicals.com/assets/images/library/starter-culture.svg"
+      "twitter:image": "https://orrbiologicals.com/assets/images/library/starter-culture.svg",
+      "article:modified_time": "2026-10-04"
     }
   },
   {
@@ -644,7 +952,7 @@
     "current_description": "The Algaephyte knowledge hub: microalgae cultivation, phytoplankton species guides, aquaculture live feeds and algal biotechnology — practical, honest, illustrated.",
     "recommended_description": "The Algaephyte knowledge hub: microalgae cultivation, phytoplankton species guides, aquaculture live feeds and algal biotechnology — practical, honest, illustrated.",
     "h1": [
-      "Microalgae, without the guesswork"
+      "Microalgae knowledge: cultivation, species and applications"
     ],
     "h2": [
       "Bringing it together: the Algaephyte platform",
@@ -654,10 +962,11 @@
       "Species guides",
       "Biotechnology",
       "How Algaephyte supports all of this",
-      "Algaephyte field notes"
+      "Algaephyte field notes",
+      "Connect this guide to the wider research"
     ],
     "intent": "Informational",
-    "primary_topic": "Microalgae, without the guesswork",
+    "primary_topic": "Microalgae knowledge: cultivation, species and applications",
     "secondary_topics": [
       "Bringing it together: the Algaephyte platform",
       "Start here",
@@ -666,15 +975,18 @@
       "Species guides",
       "Biotechnology",
       "How Algaephyte supports all of this",
-      "Algaephyte field notes"
+      "Algaephyte field notes",
+      "Connect this guide to the wider research"
     ],
     "journey_stage": "Learn / evaluate research concepts",
     "cluster": "Applications",
-    "content_words": 1338,
+    "content_words": 1358,
     "content_quality": "Editorial review required; word count is not a quality score",
     "internal_links_in": [
       "https://orrbiologicals.com/",
       "https://orrbiologicals.com/404",
+      "https://orrbiologicals.com/algae-biotechnology/",
+      "https://orrbiologicals.com/algaephyte/",
       "https://orrbiologicals.com/applications/algae-rations-for-bivalve-larvae",
       "https://orrbiologicals.com/applications/best-microalgae-for-copepod-culture",
       "https://orrbiologicals.com/applications/how-to-feed-copepods",
@@ -725,6 +1037,8 @@
       "https://orrbiologicals.com/disclaimer",
       "https://orrbiologicals.com/game/",
       "https://orrbiologicals.com/glossary",
+      "https://orrbiologicals.com/microalgae-cultivation/",
+      "https://orrbiologicals.com/photobioreactors/",
       "https://orrbiologicals.com/privacy",
       "https://orrbiologicals.com/research/",
       "https://orrbiologicals.com/terms"
@@ -734,6 +1048,8 @@
       "https://orrbiologicals.com/#deploy",
       "https://orrbiologicals.com/#inside",
       "https://orrbiologicals.com/#products",
+      "https://orrbiologicals.com/algae-biotechnology/",
+      "https://orrbiologicals.com/algaephyte/",
       "https://orrbiologicals.com/applications/",
       "https://orrbiologicals.com/applications/#aquaculture",
       "https://orrbiologicals.com/applications/#cultivation",
@@ -762,8 +1078,13 @@
       "https://orrbiologicals.com/applications/why-isochrysis-matters-aquaculture",
       "https://orrbiologicals.com/blog/",
       "https://orrbiologicals.com/cyanoflow",
+      "https://orrbiologicals.com/disclaimer",
       "https://orrbiologicals.com/game/",
+      "https://orrbiologicals.com/glossary",
+      "https://orrbiologicals.com/microalgae-cultivation/",
+      "https://orrbiologicals.com/photobioreactors/",
       "https://orrbiologicals.com/privacy",
+      "https://orrbiologicals.com/research/",
       "https://orrbiologicals.com/terms"
     ],
     "external_sources": [],
@@ -992,7 +1313,8 @@
       "og:site_name": "Orr Biologicals",
       "twitter:title": "Applications: Microalgae and Phytoplankton Hub | Orr Biologicals",
       "twitter:description": "The Algaephyte knowledge hub: microalgae cultivation, phytoplankton species guides, aquaculture live feeds and algal biotechnology — practical, honest, illustrated.",
-      "twitter:image": "https://orrbiologicals.com/assets/images/library/microscopy-field.svg"
+      "twitter:image": "https://orrbiologicals.com/assets/images/library/microscopy-field.svg",
+      "article:modified_time": "2026-10-04"
     }
   },
   {
@@ -1009,7 +1331,8 @@
       "The green water technique",
       "The live-feed chain",
       "Where copepods fit",
-      "What this means in practice"
+      "What this means in practice",
+      "Connect this guide to the wider research"
     ],
     "intent": "Informational",
     "primary_topic": "How Microalgae Are Used to Feed Marine Fish Larvae",
@@ -1017,11 +1340,12 @@
       "The green water technique",
       "The live-feed chain",
       "Where copepods fit",
-      "What this means in practice"
+      "What this means in practice",
+      "Connect this guide to the wider research"
     ],
     "journey_stage": "Learn / evaluate research concepts",
     "cluster": "Applications",
-    "content_words": 460,
+    "content_words": 521,
     "content_quality": "Editorial review required; word count is not a quality score",
     "internal_links_in": [
       "https://orrbiologicals.com/applications/",
@@ -1034,7 +1358,9 @@
       "https://orrbiologicals.com/#deploy",
       "https://orrbiologicals.com/#inside",
       "https://orrbiologicals.com/#products",
+      "https://orrbiologicals.com/algae-biotechnology/",
       "https://orrbiologicals.com/applications/",
+      "https://orrbiologicals.com/applications/#species",
       "https://orrbiologicals.com/applications/best-microalgae-for-copepod-culture",
       "https://orrbiologicals.com/applications/how-to-feed-copepods",
       "https://orrbiologicals.com/applications/phytoplankton-aquaculture-food-webs",
@@ -1043,8 +1369,12 @@
       "https://orrbiologicals.com/applications/species/tetraselmis",
       "https://orrbiologicals.com/blog/",
       "https://orrbiologicals.com/cyanoflow",
+      "https://orrbiologicals.com/disclaimer",
       "https://orrbiologicals.com/game/",
+      "https://orrbiologicals.com/glossary",
+      "https://orrbiologicals.com/microalgae-cultivation/",
       "https://orrbiologicals.com/privacy",
+      "https://orrbiologicals.com/research/",
       "https://orrbiologicals.com/terms"
     ],
     "external_sources": [],
@@ -1088,7 +1418,8 @@
       "og:site_name": "Orr Biologicals",
       "twitter:title": "Microalgae in Marine Fish Larviculture | Orr Biologicals",
       "twitter:description": "How phytoplankton fits marine larviculture: green water, rotifers and Artemia enrichment, and the fatty acids that decide larval survival.",
-      "twitter:image": "https://orrbiologicals.com/assets/images/library/fish-larvae.svg"
+      "twitter:image": "https://orrbiologicals.com/assets/images/library/fish-larvae.svg",
+      "article:modified_time": "2026-10-04"
     }
   },
   {
@@ -1104,20 +1435,23 @@
     "h2": [
       "Pigments: the crown jewels",
       "Lipids and proteins",
-      "The honest boundaries"
+      "The honest boundaries",
+      "Connect this guide to the wider research"
     ],
     "intent": "Informational",
     "primary_topic": "Microalgal Biotechnology: Pigments, Lipids, Proteins and Beyond",
     "secondary_topics": [
       "Pigments: the crown jewels",
       "Lipids and proteins",
-      "The honest boundaries"
+      "The honest boundaries",
+      "Connect this guide to the wider research"
     ],
     "journey_stage": "Learn / evaluate research concepts",
     "cluster": "Applications",
-    "content_words": 362,
+    "content_words": 423,
     "content_quality": "Editorial review required; word count is not a quality score",
     "internal_links_in": [
+      "https://orrbiologicals.com/algae-biotechnology/",
       "https://orrbiologicals.com/applications/",
       "https://orrbiologicals.com/applications/species/arthrospira",
       "https://orrbiologicals.com/applications/species/chlorella",
@@ -1131,7 +1465,9 @@
       "https://orrbiologicals.com/#deploy",
       "https://orrbiologicals.com/#inside",
       "https://orrbiologicals.com/#products",
+      "https://orrbiologicals.com/algae-biotechnology/",
       "https://orrbiologicals.com/applications/",
+      "https://orrbiologicals.com/applications/#species",
       "https://orrbiologicals.com/applications/species/arthrospira",
       "https://orrbiologicals.com/applications/species/chlorella",
       "https://orrbiologicals.com/applications/species/dunaliella",
@@ -1142,8 +1478,12 @@
       "https://orrbiologicals.com/applications/species/phaeodactylum",
       "https://orrbiologicals.com/blog/",
       "https://orrbiologicals.com/cyanoflow",
+      "https://orrbiologicals.com/disclaimer",
       "https://orrbiologicals.com/game/",
+      "https://orrbiologicals.com/glossary",
+      "https://orrbiologicals.com/microalgae-cultivation/",
       "https://orrbiologicals.com/privacy",
+      "https://orrbiologicals.com/research/",
       "https://orrbiologicals.com/terms"
     ],
     "external_sources": [],
@@ -1187,7 +1527,8 @@
       "og:site_name": "Orr Biologicals",
       "twitter:title": "Microalgal Biotechnology: Pigments and Lipids | Orr Biologicals",
       "twitter:description": "What industry extracts from microalgae — astaxanthin, beta-carotene, phycocyanin, EPA, DHA, protein — which species produce them, and what is honestly established.",
-      "twitter:image": "https://orrbiologicals.com/assets/images/library/biotech-compounds.svg"
+      "twitter:image": "https://orrbiologicals.com/assets/images/library/biotech-compounds.svg",
+      "article:modified_time": "2026-10-04"
     }
   },
   {
@@ -1203,18 +1544,20 @@
     "h2": [
       "Where they are similar",
       "Where they differ",
-      "Why systems run both"
+      "Why systems run both",
+      "Connect this guide to the wider research"
     ],
     "intent": "Informational",
     "primary_topic": "Pavlova vs Isochrysis for Aquaculture",
     "secondary_topics": [
       "Where they are similar",
       "Where they differ",
-      "Why systems run both"
+      "Why systems run both",
+      "Connect this guide to the wider research"
     ],
     "journey_stage": "Learn / evaluate research concepts",
     "cluster": "Applications",
-    "content_words": 361,
+    "content_words": 422,
     "content_quality": "Editorial review required; word count is not a quality score",
     "internal_links_in": [
       "https://orrbiologicals.com/applications/",
@@ -1228,7 +1571,9 @@
       "https://orrbiologicals.com/#deploy",
       "https://orrbiologicals.com/#inside",
       "https://orrbiologicals.com/#products",
+      "https://orrbiologicals.com/algae-biotechnology/",
       "https://orrbiologicals.com/applications/",
+      "https://orrbiologicals.com/applications/#species",
       "https://orrbiologicals.com/applications/algae-rations-for-bivalve-larvae",
       "https://orrbiologicals.com/applications/best-microalgae-for-copepod-culture",
       "https://orrbiologicals.com/applications/species/isochrysis-tisochrysis",
@@ -1237,8 +1582,12 @@
       "https://orrbiologicals.com/applications/species/tetraselmis",
       "https://orrbiologicals.com/blog/",
       "https://orrbiologicals.com/cyanoflow",
+      "https://orrbiologicals.com/disclaimer",
       "https://orrbiologicals.com/game/",
+      "https://orrbiologicals.com/glossary",
+      "https://orrbiologicals.com/microalgae-cultivation/",
       "https://orrbiologicals.com/privacy",
+      "https://orrbiologicals.com/research/",
       "https://orrbiologicals.com/terms"
     ],
     "external_sources": [],
@@ -1282,7 +1631,8 @@
       "og:site_name": "Orr Biologicals",
       "twitter:title": "Pavlova vs Isochrysis for Aquaculture | Orr Biologicals",
       "twitter:description": "Two small haptophyte flagellates that dominate marine hatchery feeds — how their nutrition, culture behaviour and uses differ, and why many systems run both.",
-      "twitter:image": "https://orrbiologicals.com/assets/images/library/pavlova-vs-isochrysis.svg"
+      "twitter:image": "https://orrbiologicals.com/assets/images/library/pavlova-vs-isochrysis.svg",
+      "article:modified_time": "2026-10-04"
     }
   },
   {
@@ -1298,20 +1648,23 @@
     "h2": [
       "The two-step chain, concretely",
       "Why the bottom of the chain decides the top",
-      "Two ways to run the same biology"
+      "Two ways to run the same biology",
+      "Connect this guide to the wider research"
     ],
     "intent": "Informational",
     "primary_topic": "How Phytoplankton Supports Aquaculture Food Webs",
     "secondary_topics": [
       "The two-step chain, concretely",
       "Why the bottom of the chain decides the top",
-      "Two ways to run the same biology"
+      "Two ways to run the same biology",
+      "Connect this guide to the wider research"
     ],
     "journey_stage": "Learn / evaluate research concepts",
     "cluster": "Applications",
-    "content_words": 417,
+    "content_words": 478,
     "content_quality": "Editorial review required; word count is not a quality score",
     "internal_links_in": [
+      "https://orrbiologicals.com/algae-biotechnology/",
       "https://orrbiologicals.com/applications/",
       "https://orrbiologicals.com/applications/algae-rations-for-bivalve-larvae",
       "https://orrbiologicals.com/applications/how-to-feed-copepods",
@@ -1323,7 +1676,9 @@
       "https://orrbiologicals.com/#deploy",
       "https://orrbiologicals.com/#inside",
       "https://orrbiologicals.com/#products",
+      "https://orrbiologicals.com/algae-biotechnology/",
       "https://orrbiologicals.com/applications/",
+      "https://orrbiologicals.com/applications/#species",
       "https://orrbiologicals.com/applications/algae-rations-for-bivalve-larvae",
       "https://orrbiologicals.com/applications/how-to-feed-copepods",
       "https://orrbiologicals.com/applications/how-to-grow-a-microalgae-culture",
@@ -1334,8 +1689,12 @@
       "https://orrbiologicals.com/applications/species/tetraselmis",
       "https://orrbiologicals.com/blog/",
       "https://orrbiologicals.com/cyanoflow",
+      "https://orrbiologicals.com/disclaimer",
       "https://orrbiologicals.com/game/",
+      "https://orrbiologicals.com/glossary",
+      "https://orrbiologicals.com/microalgae-cultivation/",
       "https://orrbiologicals.com/privacy",
+      "https://orrbiologicals.com/research/",
       "https://orrbiologicals.com/terms"
     ],
     "external_sources": [],
@@ -1379,7 +1738,8 @@
       "og:site_name": "Orr Biologicals",
       "twitter:title": "Phytoplankton and Aquaculture Food Webs | Orr Biologicals",
       "twitter:description": "From microalgae to copepods, rotifers and Artemia to fish and shellfish larvae: how trophic chains carry nutrition through an aquaculture system.",
-      "twitter:image": "https://orrbiologicals.com/assets/images/library/food-web.svg"
+      "twitter:image": "https://orrbiologicals.com/assets/images/library/food-web.svg",
+      "article:modified_time": "2026-10-04"
     }
   },
   {
@@ -1396,7 +1756,8 @@
       "Know your invaders",
       "How they arrive",
       "The working hygiene set",
-      "Observation beats treatment"
+      "Observation beats treatment",
+      "Connect this guide to the wider research"
     ],
     "intent": "Informational",
     "primary_topic": "How to Prevent Contamination in Microalgae Cultures",
@@ -1404,24 +1765,27 @@
       "Know your invaders",
       "How they arrive",
       "The working hygiene set",
-      "Observation beats treatment"
+      "Observation beats treatment",
+      "Connect this guide to the wider research"
     ],
     "journey_stage": "Learn / evaluate research concepts",
     "cluster": "Applications",
-    "content_words": 451,
+    "content_words": 512,
     "content_quality": "Editorial review required; word count is not a quality score",
     "internal_links_in": [
       "https://orrbiologicals.com/applications/",
       "https://orrbiologicals.com/applications/how-to-grow-a-microalgae-culture",
       "https://orrbiologicals.com/applications/how-to-scale-a-microalgae-culture",
       "https://orrbiologicals.com/applications/how-to-start-a-phytoplankton-culture",
-      "https://orrbiologicals.com/applications/species/arthrospira"
+      "https://orrbiologicals.com/applications/species/arthrospira",
+      "https://orrbiologicals.com/microalgae-cultivation/"
     ],
     "internal_links_out": [
       "https://orrbiologicals.com/",
       "https://orrbiologicals.com/#deploy",
       "https://orrbiologicals.com/#inside",
       "https://orrbiologicals.com/#products",
+      "https://orrbiologicals.com/algae-biotechnology/",
       "https://orrbiologicals.com/applications/",
       "https://orrbiologicals.com/applications/#species",
       "https://orrbiologicals.com/applications/how-to-grow-a-microalgae-culture",
@@ -1429,8 +1793,12 @@
       "https://orrbiologicals.com/applications/species/arthrospira",
       "https://orrbiologicals.com/blog/",
       "https://orrbiologicals.com/cyanoflow",
+      "https://orrbiologicals.com/disclaimer",
       "https://orrbiologicals.com/game/",
+      "https://orrbiologicals.com/glossary",
+      "https://orrbiologicals.com/microalgae-cultivation/",
       "https://orrbiologicals.com/privacy",
+      "https://orrbiologicals.com/research/",
       "https://orrbiologicals.com/terms"
     ],
     "external_sources": [],
@@ -1474,7 +1842,8 @@
       "og:site_name": "Orr Biologicals",
       "twitter:title": "Contamination Control in Microalgae Cultures | Orr Biologicals",
       "twitter:description": "What contaminates algae cultures, how contamination arrives, the habits that prevent it, and when to rescue versus discard a crashed culture.",
-      "twitter:image": "https://orrbiologicals.com/assets/images/library/contamination.svg"
+      "twitter:image": "https://orrbiologicals.com/assets/images/library/contamination.svg",
+      "article:modified_time": "2026-10-04"
     }
   },
   {
@@ -1492,7 +1861,8 @@
       "Nutrition and important compounds",
       "A note on culture parameters",
       "Frequently asked questions",
-      "Further reading"
+      "Further reading",
+      "Connect this guide to the wider research"
     ],
     "intent": "Informational",
     "primary_topic": "Arthrospira (Spirulina)",
@@ -1501,32 +1871,41 @@
       "Nutrition and important compounds",
       "A note on culture parameters",
       "Frequently asked questions",
-      "Further reading"
+      "Further reading",
+      "Connect this guide to the wider research"
     ],
     "journey_stage": "Learn / evaluate research concepts",
     "cluster": "Species",
-    "content_words": 559,
+    "content_words": 661,
     "content_quality": "Editorial review required; word count is not a quality score",
     "internal_links_in": [
       "https://orrbiologicals.com/applications/",
       "https://orrbiologicals.com/applications/microalgal-biotechnology",
       "https://orrbiologicals.com/applications/prevent-contamination-microalgae-cultures",
-      "https://orrbiologicals.com/glossary"
+      "https://orrbiologicals.com/glossary",
+      "https://orrbiologicals.com/microalgae-cultivation/"
     ],
     "internal_links_out": [
       "https://orrbiologicals.com/",
       "https://orrbiologicals.com/#deploy",
       "https://orrbiologicals.com/#inside",
       "https://orrbiologicals.com/#products",
+      "https://orrbiologicals.com/algaephyte/",
       "https://orrbiologicals.com/applications/",
       "https://orrbiologicals.com/applications/#species",
       "https://orrbiologicals.com/applications/microalgal-biotechnology",
       "https://orrbiologicals.com/applications/prevent-contamination-microalgae-cultures",
       "https://orrbiologicals.com/blog/",
+      "https://orrbiologicals.com/blog/single-cell-microalgae-microfluidics",
       "https://orrbiologicals.com/blog/spirulina-is-a-cyanobacterium",
       "https://orrbiologicals.com/cyanoflow",
+      "https://orrbiologicals.com/disclaimer",
       "https://orrbiologicals.com/game/",
+      "https://orrbiologicals.com/glossary",
+      "https://orrbiologicals.com/microalgae-cultivation/",
+      "https://orrbiologicals.com/photobioreactors/",
       "https://orrbiologicals.com/privacy",
+      "https://orrbiologicals.com/research/",
       "https://orrbiologicals.com/terms"
     ],
     "external_sources": [
@@ -1574,7 +1953,8 @@
       "og:site_name": "Orr Biologicals",
       "twitter:title": "Arthrospira (Spirulina): Species Guide | Orr Biologicals",
       "twitter:description": "Arthrospira platensis — the filamentous cyanobacterium sold as Spirulina: appearance, culture characteristics, nutrition, phycocyanin, and why alkaline medium is its biosecurity.",
-      "twitter:image": "https://orrbiologicals.com/assets/images/library/species/arthrospira.svg"
+      "twitter:image": "https://orrbiologicals.com/assets/images/library/species/arthrospira.svg",
+      "article:modified_time": "2026-10-04"
     }
   },
   {
@@ -1592,7 +1972,8 @@
       "Nutrition and important compounds",
       "A note on culture parameters",
       "Frequently asked questions",
-      "Further reading"
+      "Further reading",
+      "Connect this guide to the wider research"
     ],
     "intent": "Informational",
     "primary_topic": "Chaetoceros",
@@ -1601,11 +1982,12 @@
       "Nutrition and important compounds",
       "A note on culture parameters",
       "Frequently asked questions",
-      "Further reading"
+      "Further reading",
+      "Connect this guide to the wider research"
     ],
     "journey_stage": "Learn / evaluate research concepts",
     "cluster": "Species",
-    "content_words": 486,
+    "content_words": 587,
     "content_quality": "Editorial review required; word count is not a quality score",
     "internal_links_in": [
       "https://orrbiologicals.com/applications/",
@@ -1619,15 +2001,23 @@
       "https://orrbiologicals.com/#deploy",
       "https://orrbiologicals.com/#inside",
       "https://orrbiologicals.com/#products",
+      "https://orrbiologicals.com/algaephyte/",
       "https://orrbiologicals.com/applications/",
+      "https://orrbiologicals.com/applications/#species",
       "https://orrbiologicals.com/applications/algae-rations-for-bivalve-larvae",
       "https://orrbiologicals.com/applications/best-microalgae-for-copepod-culture",
       "https://orrbiologicals.com/applications/species/phaeodactylum",
       "https://orrbiologicals.com/applications/why-isochrysis-matters-aquaculture",
       "https://orrbiologicals.com/blog/",
+      "https://orrbiologicals.com/blog/single-cell-microalgae-microfluidics",
       "https://orrbiologicals.com/cyanoflow",
+      "https://orrbiologicals.com/disclaimer",
       "https://orrbiologicals.com/game/",
+      "https://orrbiologicals.com/glossary",
+      "https://orrbiologicals.com/microalgae-cultivation/",
+      "https://orrbiologicals.com/photobioreactors/",
       "https://orrbiologicals.com/privacy",
+      "https://orrbiologicals.com/research/",
       "https://orrbiologicals.com/terms"
     ],
     "external_sources": [
@@ -1675,7 +2065,8 @@
       "og:site_name": "Orr Biologicals",
       "twitter:title": "Chaetoceros: Species Guide | Orr Biologicals",
       "twitter:description": "Chaetoceros — the chain-forming diatom of bivalve and shrimp hatcheries: appearance, silicate needs, culture traits, and how it fits stage-specific rations.",
-      "twitter:image": "https://orrbiologicals.com/assets/images/library/species/chaetoceros.svg"
+      "twitter:image": "https://orrbiologicals.com/assets/images/library/species/chaetoceros.svg",
+      "article:modified_time": "2026-10-04"
     }
   },
   {
@@ -1693,7 +2084,8 @@
       "Nutrition and important compounds",
       "A note on culture parameters",
       "Frequently asked questions",
-      "Further reading"
+      "Further reading",
+      "Connect this guide to the wider research"
     ],
     "intent": "Informational",
     "primary_topic": "Chlorella",
@@ -1702,13 +2094,15 @@
       "Nutrition and important compounds",
       "A note on culture parameters",
       "Frequently asked questions",
-      "Further reading"
+      "Further reading",
+      "Connect this guide to the wider research"
     ],
     "journey_stage": "Learn / evaluate research concepts",
     "cluster": "Species",
-    "content_words": 494,
+    "content_words": 595,
     "content_quality": "Editorial review required; word count is not a quality score",
     "internal_links_in": [
+      "https://orrbiologicals.com/algae-biotechnology/",
       "https://orrbiologicals.com/applications/",
       "https://orrbiologicals.com/applications/how-to-start-a-phytoplankton-culture",
       "https://orrbiologicals.com/applications/microalgal-biotechnology"
@@ -1718,15 +2112,22 @@
       "https://orrbiologicals.com/#deploy",
       "https://orrbiologicals.com/#inside",
       "https://orrbiologicals.com/#products",
+      "https://orrbiologicals.com/algaephyte/",
       "https://orrbiologicals.com/applications/",
       "https://orrbiologicals.com/applications/#species",
       "https://orrbiologicals.com/applications/how-to-grow-a-microalgae-culture",
       "https://orrbiologicals.com/applications/microalgae-for-marine-fish-larvae",
       "https://orrbiologicals.com/applications/microalgal-biotechnology",
       "https://orrbiologicals.com/blog/",
+      "https://orrbiologicals.com/blog/single-cell-microalgae-microfluidics",
       "https://orrbiologicals.com/cyanoflow",
+      "https://orrbiologicals.com/disclaimer",
       "https://orrbiologicals.com/game/",
+      "https://orrbiologicals.com/glossary",
+      "https://orrbiologicals.com/microalgae-cultivation/",
+      "https://orrbiologicals.com/photobioreactors/",
       "https://orrbiologicals.com/privacy",
+      "https://orrbiologicals.com/research/",
       "https://orrbiologicals.com/terms"
     ],
     "external_sources": [
@@ -1774,7 +2175,8 @@
       "og:site_name": "Orr Biologicals",
       "twitter:title": "Chlorella: Species Guide | Orr Biologicals",
       "twitter:description": "Chlorella — the spherical freshwater green alga: appearance, culture characteristics, protein content, applications in aquaculture and nutrition, and honest caveats.",
-      "twitter:image": "https://orrbiologicals.com/assets/images/library/species/chlorella.svg"
+      "twitter:image": "https://orrbiologicals.com/assets/images/library/species/chlorella.svg",
+      "article:modified_time": "2026-10-04"
     }
   },
   {
@@ -1792,7 +2194,8 @@
       "Nutrition and important compounds",
       "A note on culture parameters",
       "Frequently asked questions",
-      "Further reading"
+      "Further reading",
+      "Connect this guide to the wider research"
     ],
     "intent": "Informational",
     "primary_topic": "Dunaliella",
@@ -1801,11 +2204,12 @@
       "Nutrition and important compounds",
       "A note on culture parameters",
       "Frequently asked questions",
-      "Further reading"
+      "Further reading",
+      "Connect this guide to the wider research"
     ],
     "journey_stage": "Learn / evaluate research concepts",
     "cluster": "Species",
-    "content_words": 459,
+    "content_words": 560,
     "content_quality": "Editorial review required; word count is not a quality score",
     "internal_links_in": [
       "https://orrbiologicals.com/applications/",
@@ -1817,14 +2221,21 @@
       "https://orrbiologicals.com/#deploy",
       "https://orrbiologicals.com/#inside",
       "https://orrbiologicals.com/#products",
+      "https://orrbiologicals.com/algaephyte/",
       "https://orrbiologicals.com/applications/",
       "https://orrbiologicals.com/applications/#species",
       "https://orrbiologicals.com/applications/microalgal-biotechnology",
       "https://orrbiologicals.com/applications/species/haematococcus",
       "https://orrbiologicals.com/blog/",
+      "https://orrbiologicals.com/blog/single-cell-microalgae-microfluidics",
       "https://orrbiologicals.com/cyanoflow",
+      "https://orrbiologicals.com/disclaimer",
       "https://orrbiologicals.com/game/",
+      "https://orrbiologicals.com/glossary",
+      "https://orrbiologicals.com/microalgae-cultivation/",
+      "https://orrbiologicals.com/photobioreactors/",
       "https://orrbiologicals.com/privacy",
+      "https://orrbiologicals.com/research/",
       "https://orrbiologicals.com/terms"
     ],
     "external_sources": [
@@ -1872,7 +2283,8 @@
       "og:site_name": "Orr Biologicals",
       "twitter:title": "Dunaliella: Species Guide | Orr Biologicals",
       "twitter:description": "Dunaliella salina — the hypersaline green flagellate behind natural beta-carotene: appearance, culture traits, osmotic tricks and commercial uses.",
-      "twitter:image": "https://orrbiologicals.com/assets/images/library/species/dunaliella.svg"
+      "twitter:image": "https://orrbiologicals.com/assets/images/library/species/dunaliella.svg",
+      "article:modified_time": "2026-10-04"
     }
   },
   {
@@ -1890,7 +2302,8 @@
       "Nutrition and important compounds",
       "A note on culture parameters",
       "Frequently asked questions",
-      "Further reading"
+      "Further reading",
+      "Connect this guide to the wider research"
     ],
     "intent": "Informational",
     "primary_topic": "Haematococcus",
@@ -1899,11 +2312,12 @@
       "Nutrition and important compounds",
       "A note on culture parameters",
       "Frequently asked questions",
-      "Further reading"
+      "Further reading",
+      "Connect this guide to the wider research"
     ],
     "journey_stage": "Learn / evaluate research concepts",
     "cluster": "Species",
-    "content_words": 454,
+    "content_words": 555,
     "content_quality": "Editorial review required; word count is not a quality score",
     "internal_links_in": [
       "https://orrbiologicals.com/applications/",
@@ -1915,14 +2329,21 @@
       "https://orrbiologicals.com/#deploy",
       "https://orrbiologicals.com/#inside",
       "https://orrbiologicals.com/#products",
+      "https://orrbiologicals.com/algaephyte/",
       "https://orrbiologicals.com/applications/",
       "https://orrbiologicals.com/applications/#species",
       "https://orrbiologicals.com/applications/microalgal-biotechnology",
       "https://orrbiologicals.com/applications/species/dunaliella",
       "https://orrbiologicals.com/blog/",
+      "https://orrbiologicals.com/blog/single-cell-microalgae-microfluidics",
       "https://orrbiologicals.com/cyanoflow",
+      "https://orrbiologicals.com/disclaimer",
       "https://orrbiologicals.com/game/",
+      "https://orrbiologicals.com/glossary",
+      "https://orrbiologicals.com/microalgae-cultivation/",
+      "https://orrbiologicals.com/photobioreactors/",
       "https://orrbiologicals.com/privacy",
+      "https://orrbiologicals.com/research/",
       "https://orrbiologicals.com/terms"
     ],
     "external_sources": [
@@ -1970,7 +2391,8 @@
       "og:site_name": "Orr Biologicals",
       "twitter:title": "Haematococcus: Species Guide | Orr Biologicals",
       "twitter:description": "Haematococcus pluvialis — the green alga that turns red: appearance, two-stage culture, astaxanthin accumulation, and its role in aquaculture pigmentation.",
-      "twitter:image": "https://orrbiologicals.com/assets/images/library/species/haematococcus.svg"
+      "twitter:image": "https://orrbiologicals.com/assets/images/library/species/haematococcus.svg",
+      "article:modified_time": "2026-10-04"
     }
   },
   {
@@ -1988,7 +2410,8 @@
       "Nutrition and important compounds",
       "A note on culture parameters",
       "Frequently asked questions",
-      "Further reading"
+      "Further reading",
+      "Connect this guide to the wider research"
     ],
     "intent": "Informational",
     "primary_topic": "Isochrysis (Tisochrysis)",
@@ -1997,11 +2420,12 @@
       "Nutrition and important compounds",
       "A note on culture parameters",
       "Frequently asked questions",
-      "Further reading"
+      "Further reading",
+      "Connect this guide to the wider research"
     ],
     "journey_stage": "Learn / evaluate research concepts",
     "cluster": "Species",
-    "content_words": 454,
+    "content_words": 556,
     "content_quality": "Editorial review required; word count is not a quality score",
     "internal_links_in": [
       "https://orrbiologicals.com/applications/",
@@ -2013,22 +2437,31 @@
       "https://orrbiologicals.com/applications/pavlova-vs-isochrysis",
       "https://orrbiologicals.com/applications/phytoplankton-aquaculture-food-webs",
       "https://orrbiologicals.com/applications/species/pavlova",
-      "https://orrbiologicals.com/applications/why-isochrysis-matters-aquaculture"
+      "https://orrbiologicals.com/applications/why-isochrysis-matters-aquaculture",
+      "https://orrbiologicals.com/microalgae-cultivation/"
     ],
     "internal_links_out": [
       "https://orrbiologicals.com/",
       "https://orrbiologicals.com/#deploy",
       "https://orrbiologicals.com/#inside",
       "https://orrbiologicals.com/#products",
+      "https://orrbiologicals.com/algaephyte/",
       "https://orrbiologicals.com/applications/",
+      "https://orrbiologicals.com/applications/#species",
       "https://orrbiologicals.com/applications/algae-rations-for-bivalve-larvae",
       "https://orrbiologicals.com/applications/best-microalgae-for-copepod-culture",
       "https://orrbiologicals.com/applications/pavlova-vs-isochrysis",
       "https://orrbiologicals.com/applications/why-isochrysis-matters-aquaculture",
       "https://orrbiologicals.com/blog/",
+      "https://orrbiologicals.com/blog/single-cell-microalgae-microfluidics",
       "https://orrbiologicals.com/cyanoflow",
+      "https://orrbiologicals.com/disclaimer",
       "https://orrbiologicals.com/game/",
+      "https://orrbiologicals.com/glossary",
+      "https://orrbiologicals.com/microalgae-cultivation/",
+      "https://orrbiologicals.com/photobioreactors/",
       "https://orrbiologicals.com/privacy",
+      "https://orrbiologicals.com/research/",
       "https://orrbiologicals.com/terms"
     ],
     "external_sources": [
@@ -2076,7 +2509,8 @@
       "og:site_name": "Orr Biologicals",
       "twitter:title": "Isochrysis (T-Iso): Species Guide | Orr Biologicals",
       "twitter:description": "Isochrysis galbana and its thermotolerant strain Tisochrysis lutea (T-Iso): appearance, culture traits, DHA-rich lipids, and why it is the marine hatchery default.",
-      "twitter:image": "https://orrbiologicals.com/assets/images/library/species/isochrysis.svg"
+      "twitter:image": "https://orrbiologicals.com/assets/images/library/species/isochrysis.svg",
+      "article:modified_time": "2026-10-04"
     }
   },
   {
@@ -2094,7 +2528,8 @@
       "Nutrition and important compounds",
       "A note on culture parameters",
       "Frequently asked questions",
-      "Further reading"
+      "Further reading",
+      "Connect this guide to the wider research"
     ],
     "intent": "Informational",
     "primary_topic": "Nannochloropsis",
@@ -2103,11 +2538,12 @@
       "Nutrition and important compounds",
       "A note on culture parameters",
       "Frequently asked questions",
-      "Further reading"
+      "Further reading",
+      "Connect this guide to the wider research"
     ],
     "journey_stage": "Learn / evaluate research concepts",
     "cluster": "Species",
-    "content_words": 475,
+    "content_words": 576,
     "content_quality": "Editorial review required; word count is not a quality score",
     "internal_links_in": [
       "https://orrbiologicals.com/applications/",
@@ -2124,16 +2560,24 @@
       "https://orrbiologicals.com/#deploy",
       "https://orrbiologicals.com/#inside",
       "https://orrbiologicals.com/#products",
+      "https://orrbiologicals.com/algaephyte/",
       "https://orrbiologicals.com/applications/",
+      "https://orrbiologicals.com/applications/#species",
       "https://orrbiologicals.com/applications/best-microalgae-for-copepod-culture",
       "https://orrbiologicals.com/applications/how-to-grow-a-microalgae-culture",
       "https://orrbiologicals.com/applications/how-to-start-a-phytoplankton-culture",
       "https://orrbiologicals.com/applications/microalgae-for-marine-fish-larvae",
       "https://orrbiologicals.com/applications/microalgal-biotechnology",
       "https://orrbiologicals.com/blog/",
+      "https://orrbiologicals.com/blog/single-cell-microalgae-microfluidics",
       "https://orrbiologicals.com/cyanoflow",
+      "https://orrbiologicals.com/disclaimer",
       "https://orrbiologicals.com/game/",
+      "https://orrbiologicals.com/glossary",
+      "https://orrbiologicals.com/microalgae-cultivation/",
+      "https://orrbiologicals.com/photobioreactors/",
       "https://orrbiologicals.com/privacy",
+      "https://orrbiologicals.com/research/",
       "https://orrbiologicals.com/terms"
     ],
     "external_sources": [
@@ -2181,7 +2625,8 @@
       "og:site_name": "Orr Biologicals",
       "twitter:title": "Nannochloropsis: Species Guide | Orr Biologicals",
       "twitter:description": "Nannochloropsis — the tiny, hardy eustigmatophyte behind marine green water: appearance, culture traits, EPA content, and its role in rotifer and copepod systems.",
-      "twitter:image": "https://orrbiologicals.com/assets/images/library/species/nannochloropsis.svg"
+      "twitter:image": "https://orrbiologicals.com/assets/images/library/species/nannochloropsis.svg",
+      "article:modified_time": "2026-10-04"
     }
   },
   {
@@ -2199,7 +2644,8 @@
       "Nutrition and important compounds",
       "A note on culture parameters",
       "Frequently asked questions",
-      "Further reading"
+      "Further reading",
+      "Connect this guide to the wider research"
     ],
     "intent": "Informational",
     "primary_topic": "Pavlova",
@@ -2208,11 +2654,12 @@
       "Nutrition and important compounds",
       "A note on culture parameters",
       "Frequently asked questions",
-      "Further reading"
+      "Further reading",
+      "Connect this guide to the wider research"
     ],
     "journey_stage": "Learn / evaluate research concepts",
     "cluster": "Species",
-    "content_words": 453,
+    "content_words": 554,
     "content_quality": "Editorial review required; word count is not a quality score",
     "internal_links_in": [
       "https://orrbiologicals.com/applications/",
@@ -2227,15 +2674,23 @@
       "https://orrbiologicals.com/#deploy",
       "https://orrbiologicals.com/#inside",
       "https://orrbiologicals.com/#products",
+      "https://orrbiologicals.com/algaephyte/",
       "https://orrbiologicals.com/applications/",
+      "https://orrbiologicals.com/applications/#species",
       "https://orrbiologicals.com/applications/algae-rations-for-bivalve-larvae",
       "https://orrbiologicals.com/applications/how-to-feed-copepods",
       "https://orrbiologicals.com/applications/pavlova-vs-isochrysis",
       "https://orrbiologicals.com/applications/species/isochrysis-tisochrysis",
       "https://orrbiologicals.com/blog/",
+      "https://orrbiologicals.com/blog/single-cell-microalgae-microfluidics",
       "https://orrbiologicals.com/cyanoflow",
+      "https://orrbiologicals.com/disclaimer",
       "https://orrbiologicals.com/game/",
+      "https://orrbiologicals.com/glossary",
+      "https://orrbiologicals.com/microalgae-cultivation/",
+      "https://orrbiologicals.com/photobioreactors/",
       "https://orrbiologicals.com/privacy",
+      "https://orrbiologicals.com/research/",
       "https://orrbiologicals.com/terms"
     ],
     "external_sources": [
@@ -2282,7 +2737,8 @@
       "og:site_name": "Orr Biologicals",
       "twitter:title": "Pavlova: Species Guide | Orr Biologicals",
       "twitter:description": "Pavlova lutheri — the small haptophyte flagellate prized in bivalve hatcheries: appearance, culture traits, EPA and DHA profile, and how it compares to Isochrysis.",
-      "twitter:image": "https://orrbiologicals.com/assets/images/library/species/pavlova.svg"
+      "twitter:image": "https://orrbiologicals.com/assets/images/library/species/pavlova.svg",
+      "article:modified_time": "2026-10-04"
     }
   },
   {
@@ -2300,7 +2756,8 @@
       "Nutrition and important compounds",
       "A note on culture parameters",
       "Frequently asked questions",
-      "Further reading"
+      "Further reading",
+      "Connect this guide to the wider research"
     ],
     "intent": "Informational",
     "primary_topic": "Phaeodactylum",
@@ -2309,11 +2766,12 @@
       "Nutrition and important compounds",
       "A note on culture parameters",
       "Frequently asked questions",
-      "Further reading"
+      "Further reading",
+      "Connect this guide to the wider research"
     ],
     "journey_stage": "Learn / evaluate research concepts",
     "cluster": "Species",
-    "content_words": 436,
+    "content_words": 537,
     "content_quality": "Editorial review required; word count is not a quality score",
     "internal_links_in": [
       "https://orrbiologicals.com/applications/",
@@ -2325,14 +2783,22 @@
       "https://orrbiologicals.com/#deploy",
       "https://orrbiologicals.com/#inside",
       "https://orrbiologicals.com/#products",
+      "https://orrbiologicals.com/algaephyte/",
       "https://orrbiologicals.com/applications/",
+      "https://orrbiologicals.com/applications/#species",
       "https://orrbiologicals.com/applications/best-microalgae-for-copepod-culture",
       "https://orrbiologicals.com/applications/microalgal-biotechnology",
       "https://orrbiologicals.com/applications/species/chaetoceros",
       "https://orrbiologicals.com/blog/",
+      "https://orrbiologicals.com/blog/single-cell-microalgae-microfluidics",
       "https://orrbiologicals.com/cyanoflow",
+      "https://orrbiologicals.com/disclaimer",
       "https://orrbiologicals.com/game/",
+      "https://orrbiologicals.com/glossary",
+      "https://orrbiologicals.com/microalgae-cultivation/",
+      "https://orrbiologicals.com/photobioreactors/",
       "https://orrbiologicals.com/privacy",
+      "https://orrbiologicals.com/research/",
       "https://orrbiologicals.com/terms"
     ],
     "external_sources": [
@@ -2380,7 +2846,8 @@
       "og:site_name": "Orr Biologicals",
       "twitter:title": "Phaeodactylum: Species Guide | Orr Biologicals",
       "twitter:description": "Phaeodactylum tricornutum — the model marine diatom: fusiform shapes, EPA-rich lipids, fucoxanthin, and why researchers and feed rooms both keep it.",
-      "twitter:image": "https://orrbiologicals.com/assets/images/library/species/phaeodactylum.svg"
+      "twitter:image": "https://orrbiologicals.com/assets/images/library/species/phaeodactylum.svg",
+      "article:modified_time": "2026-10-04"
     }
   },
   {
@@ -2398,7 +2865,8 @@
       "Nutrition and important compounds",
       "A note on culture parameters",
       "Frequently asked questions",
-      "Further reading"
+      "Further reading",
+      "Connect this guide to the wider research"
     ],
     "intent": "Informational",
     "primary_topic": "Tetraselmis",
@@ -2407,11 +2875,12 @@
       "Nutrition and important compounds",
       "A note on culture parameters",
       "Frequently asked questions",
-      "Further reading"
+      "Further reading",
+      "Connect this guide to the wider research"
     ],
     "journey_stage": "Learn / evaluate research concepts",
     "cluster": "Species",
-    "content_words": 444,
+    "content_words": 545,
     "content_quality": "Editorial review required; word count is not a quality score",
     "internal_links_in": [
       "https://orrbiologicals.com/applications/",
@@ -2427,15 +2896,23 @@
       "https://orrbiologicals.com/#deploy",
       "https://orrbiologicals.com/#inside",
       "https://orrbiologicals.com/#products",
+      "https://orrbiologicals.com/algaephyte/",
       "https://orrbiologicals.com/applications/",
+      "https://orrbiologicals.com/applications/#species",
       "https://orrbiologicals.com/applications/algae-rations-for-bivalve-larvae",
       "https://orrbiologicals.com/applications/best-microalgae-for-copepod-culture",
       "https://orrbiologicals.com/applications/how-to-grow-a-microalgae-culture",
       "https://orrbiologicals.com/applications/species/nannochloropsis",
       "https://orrbiologicals.com/blog/",
+      "https://orrbiologicals.com/blog/single-cell-microalgae-microfluidics",
       "https://orrbiologicals.com/cyanoflow",
+      "https://orrbiologicals.com/disclaimer",
       "https://orrbiologicals.com/game/",
+      "https://orrbiologicals.com/glossary",
+      "https://orrbiologicals.com/microalgae-cultivation/",
+      "https://orrbiologicals.com/photobioreactors/",
       "https://orrbiologicals.com/privacy",
+      "https://orrbiologicals.com/research/",
       "https://orrbiologicals.com/terms"
     ],
     "external_sources": [
@@ -2483,7 +2960,8 @@
       "og:site_name": "Orr Biologicals",
       "twitter:title": "Tetraselmis: Species Guide | Orr Biologicals",
       "twitter:description": "Tetraselmis — the larger motile green flagellate with starch and lipid reserves: appearance, culture traits, aquaculture uses and reported antibacterial activity.",
-      "twitter:image": "https://orrbiologicals.com/assets/images/library/species/tetraselmis.svg"
+      "twitter:image": "https://orrbiologicals.com/assets/images/library/species/tetraselmis.svg",
+      "article:modified_time": "2026-10-04"
     }
   },
   {
@@ -2499,18 +2977,20 @@
     "h2": [
       "Small, digestible, and DHA-rich",
       "Where it is used",
-      "The limits, honestly stated"
+      "The limits, honestly stated",
+      "Connect this guide to the wider research"
     ],
     "intent": "Informational",
     "primary_topic": "Why Isochrysis Matters in Aquaculture",
     "secondary_topics": [
       "Small, digestible, and DHA-rich",
       "Where it is used",
-      "The limits, honestly stated"
+      "The limits, honestly stated",
+      "Connect this guide to the wider research"
     ],
     "journey_stage": "Learn / evaluate research concepts",
     "cluster": "Applications",
-    "content_words": 380,
+    "content_words": 441,
     "content_quality": "Editorial review required; word count is not a quality score",
     "internal_links_in": [
       "https://orrbiologicals.com/applications/",
@@ -2523,7 +3003,9 @@
       "https://orrbiologicals.com/#deploy",
       "https://orrbiologicals.com/#inside",
       "https://orrbiologicals.com/#products",
+      "https://orrbiologicals.com/algae-biotechnology/",
       "https://orrbiologicals.com/applications/",
+      "https://orrbiologicals.com/applications/#species",
       "https://orrbiologicals.com/applications/algae-rations-for-bivalve-larvae",
       "https://orrbiologicals.com/applications/how-to-feed-copepods",
       "https://orrbiologicals.com/applications/pavlova-vs-isochrysis",
@@ -2532,8 +3014,12 @@
       "https://orrbiologicals.com/applications/species/tetraselmis",
       "https://orrbiologicals.com/blog/",
       "https://orrbiologicals.com/cyanoflow",
+      "https://orrbiologicals.com/disclaimer",
       "https://orrbiologicals.com/game/",
+      "https://orrbiologicals.com/glossary",
+      "https://orrbiologicals.com/microalgae-cultivation/",
       "https://orrbiologicals.com/privacy",
+      "https://orrbiologicals.com/research/",
       "https://orrbiologicals.com/terms"
     ],
     "external_sources": [],
@@ -2577,7 +3063,8 @@
       "og:site_name": "Orr Biologicals",
       "twitter:title": "Why Isochrysis (T-Iso) Matters in Aquaculture | Orr Biologicals",
       "twitter:description": "Isochrysis is the marine hatchery's default flagellate: small, wall-free, DHA-rich and easy to culture. What it is, what it feeds, and where it falls short.",
-      "twitter:image": "https://orrbiologicals.com/assets/images/library/isochrysis-cells.svg"
+      "twitter:image": "https://orrbiologicals.com/assets/images/library/isochrysis-cells.svg",
+      "article:modified_time": "2026-10-04"
     }
   },
   {
@@ -2593,25 +3080,30 @@
     "h2": [
       "Research context and limitations",
       "Source-linked reading",
-      "Continue the topic"
+      "Continue the topic",
+      "Connect this guide to the wider research"
     ],
     "intent": "Informational",
     "primary_topic": "Alkalinity as a Control Variable",
     "secondary_topics": [
       "Research context and limitations",
       "Source-linked reading",
-      "Continue the topic"
+      "Continue the topic",
+      "Connect this guide to the wider research"
     ],
     "journey_stage": "Learn / evaluate research concepts",
     "cluster": "Algaephyte",
-    "content_words": 513,
+    "content_words": 563,
     "content_quality": "Editorial review required; word count is not a quality score",
     "internal_links_in": [
+      "https://orrbiologicals.com/algaephyte/",
       "https://orrbiologicals.com/blog/",
       "https://orrbiologicals.com/blog/dissolved-oxygen-stress-signal",
       "https://orrbiologicals.com/blog/reading-your-culture",
       "https://orrbiologicals.com/blog/six-culture-signals-main-senses",
       "https://orrbiologicals.com/blog/winter-home-growing-warmth",
+      "https://orrbiologicals.com/microalgae-cultivation/",
+      "https://orrbiologicals.com/photobioreactors/",
       "https://orrbiologicals.com/research/"
     ],
     "internal_links_out": [
@@ -2620,6 +3112,7 @@
       "https://orrbiologicals.com/#inside",
       "https://orrbiologicals.com/#products",
       "https://orrbiologicals.com/#system",
+      "https://orrbiologicals.com/algaephyte/",
       "https://orrbiologicals.com/applications/",
       "https://orrbiologicals.com/blog/",
       "https://orrbiologicals.com/blog/#kb",
@@ -2630,6 +3123,8 @@
       "https://orrbiologicals.com/disclaimer",
       "https://orrbiologicals.com/game/",
       "https://orrbiologicals.com/glossary",
+      "https://orrbiologicals.com/microalgae-cultivation/",
+      "https://orrbiologicals.com/photobioreactors/",
       "https://orrbiologicals.com/privacy",
       "https://orrbiologicals.com/research/",
       "https://orrbiologicals.com/terms"
@@ -2686,20 +3181,23 @@
     "h2": [
       "Research context and limitations",
       "Source-linked reading",
-      "Continue the topic"
+      "Continue the topic",
+      "Connect this guide to the wider research"
     ],
     "intent": "Informational",
     "primary_topic": "Bounded Autonomy: Keeping AI Proposals Safe",
     "secondary_topics": [
       "Research context and limitations",
       "Source-linked reading",
-      "Continue the topic"
+      "Continue the topic",
+      "Connect this guide to the wider research"
     ],
     "journey_stage": "Learn / evaluate research concepts",
     "cluster": "Algaephyte",
-    "content_words": 511,
+    "content_words": 561,
     "content_quality": "Editorial review required; word count is not a quality score",
     "internal_links_in": [
+      "https://orrbiologicals.com/algaephyte/",
       "https://orrbiologicals.com/blog/",
       "https://orrbiologicals.com/blog/control-loop-architecture",
       "https://orrbiologicals.com/blog/digital-twin-droop-steele-model",
@@ -2708,6 +3206,7 @@
       "https://orrbiologicals.com/blog/how-main-keeps-culture-safe",
       "https://orrbiologicals.com/blog/vision-contamination-detection",
       "https://orrbiologicals.com/blog/what-is-main-plain-language",
+      "https://orrbiologicals.com/photobioreactors/",
       "https://orrbiologicals.com/research/"
     ],
     "internal_links_out": [
@@ -2716,6 +3215,7 @@
       "https://orrbiologicals.com/#inside",
       "https://orrbiologicals.com/#products",
       "https://orrbiologicals.com/#system",
+      "https://orrbiologicals.com/algaephyte/",
       "https://orrbiologicals.com/applications/",
       "https://orrbiologicals.com/blog/",
       "https://orrbiologicals.com/blog/#kb",
@@ -2726,6 +3226,8 @@
       "https://orrbiologicals.com/disclaimer",
       "https://orrbiologicals.com/game/",
       "https://orrbiologicals.com/glossary",
+      "https://orrbiologicals.com/microalgae-cultivation/",
+      "https://orrbiologicals.com/photobioreactors/",
       "https://orrbiologicals.com/privacy",
       "https://orrbiologicals.com/research/",
       "https://orrbiologicals.com/terms"
@@ -2782,20 +3284,23 @@
     "h2": [
       "Research context and limitations",
       "Source-linked reading",
-      "Continue the topic"
+      "Continue the topic",
+      "Connect this guide to the wider research"
     ],
     "intent": "Informational",
     "primary_topic": "Control Loop Architecture for Living Systems",
     "secondary_topics": [
       "Research context and limitations",
       "Source-linked reading",
-      "Continue the topic"
+      "Continue the topic",
+      "Connect this guide to the wider research"
     ],
     "journey_stage": "Learn / evaluate research concepts",
     "cluster": "Algaephyte",
-    "content_words": 1145,
+    "content_words": 1195,
     "content_quality": "Editorial review required; word count is not a quality score",
     "internal_links_in": [
+      "https://orrbiologicals.com/algaephyte/",
       "https://orrbiologicals.com/blog/",
       "https://orrbiologicals.com/blog/bounded-autonomy-safe-ai-proposals",
       "https://orrbiologicals.com/blog/digital-twin-droop-steele-model",
@@ -2812,6 +3317,7 @@
       "https://orrbiologicals.com/#inside",
       "https://orrbiologicals.com/#products",
       "https://orrbiologicals.com/#system",
+      "https://orrbiologicals.com/algaephyte/",
       "https://orrbiologicals.com/applications/",
       "https://orrbiologicals.com/blog/",
       "https://orrbiologicals.com/blog/#kb",
@@ -2822,6 +3328,8 @@
       "https://orrbiologicals.com/disclaimer",
       "https://orrbiologicals.com/game/",
       "https://orrbiologicals.com/glossary",
+      "https://orrbiologicals.com/microalgae-cultivation/",
+      "https://orrbiologicals.com/photobioreactors/",
       "https://orrbiologicals.com/privacy",
       "https://orrbiologicals.com/research/",
       "https://orrbiologicals.com/terms"
@@ -2878,20 +3386,23 @@
     "h2": [
       "Research context and limitations",
       "Source-linked reading",
-      "Continue the topic"
+      "Continue the topic",
+      "Connect this guide to the wider research"
     ],
     "intent": "Informational",
     "primary_topic": "A Digital Twin Built on Droop and Steele",
     "secondary_topics": [
       "Research context and limitations",
       "Source-linked reading",
-      "Continue the topic"
+      "Continue the topic",
+      "Connect this guide to the wider research"
     ],
     "journey_stage": "Learn / evaluate research concepts",
     "cluster": "Algaephyte",
-    "content_words": 521,
+    "content_words": 571,
     "content_quality": "Editorial review required; word count is not a quality score",
     "internal_links_in": [
+      "https://orrbiologicals.com/algaephyte/",
       "https://orrbiologicals.com/blog/",
       "https://orrbiologicals.com/blog/bounded-autonomy-safe-ai-proposals",
       "https://orrbiologicals.com/blog/control-loop-architecture",
@@ -2903,6 +3414,7 @@
       "https://orrbiologicals.com/blog/what-is-main-plain-language",
       "https://orrbiologicals.com/blog/winter-home-growing-warmth",
       "https://orrbiologicals.com/glossary",
+      "https://orrbiologicals.com/photobioreactors/",
       "https://orrbiologicals.com/research/"
     ],
     "internal_links_out": [
@@ -2911,6 +3423,7 @@
       "https://orrbiologicals.com/#inside",
       "https://orrbiologicals.com/#products",
       "https://orrbiologicals.com/#system",
+      "https://orrbiologicals.com/algaephyte/",
       "https://orrbiologicals.com/applications/",
       "https://orrbiologicals.com/blog/",
       "https://orrbiologicals.com/blog/#kb",
@@ -2921,6 +3434,8 @@
       "https://orrbiologicals.com/disclaimer",
       "https://orrbiologicals.com/game/",
       "https://orrbiologicals.com/glossary",
+      "https://orrbiologicals.com/microalgae-cultivation/",
+      "https://orrbiologicals.com/photobioreactors/",
       "https://orrbiologicals.com/privacy",
       "https://orrbiologicals.com/research/",
       "https://orrbiologicals.com/terms"
@@ -2977,21 +3492,24 @@
     "h2": [
       "Research context and limitations",
       "Source-linked reading",
-      "Continue the topic"
+      "Continue the topic",
+      "Connect this guide to the wider research"
     ],
     "intent": "Informational",
     "primary_topic": "Digital Twins for Biological Cultivation",
     "secondary_topics": [
       "Research context and limitations",
       "Source-linked reading",
-      "Continue the topic"
+      "Continue the topic",
+      "Connect this guide to the wider research"
     ],
     "journey_stage": "Learn / evaluate research concepts",
     "cluster": "Algaephyte",
-    "content_words": 814,
+    "content_words": 864,
     "content_quality": "Editorial review required; word count is not a quality score",
     "internal_links_in": [
       "https://orrbiologicals.com/",
+      "https://orrbiologicals.com/algaephyte/",
       "https://orrbiologicals.com/blog/",
       "https://orrbiologicals.com/blog/photobioreactor-ai-optimization",
       "https://orrbiologicals.com/glossary",
@@ -3003,6 +3521,7 @@
       "https://orrbiologicals.com/#inside",
       "https://orrbiologicals.com/#products",
       "https://orrbiologicals.com/#system",
+      "https://orrbiologicals.com/algaephyte/",
       "https://orrbiologicals.com/applications/",
       "https://orrbiologicals.com/blog/",
       "https://orrbiologicals.com/blog/#kb",
@@ -3013,6 +3532,8 @@
       "https://orrbiologicals.com/disclaimer",
       "https://orrbiologicals.com/game/",
       "https://orrbiologicals.com/glossary",
+      "https://orrbiologicals.com/microalgae-cultivation/",
+      "https://orrbiologicals.com/photobioreactors/",
       "https://orrbiologicals.com/privacy",
       "https://orrbiologicals.com/research/",
       "https://orrbiologicals.com/terms"
@@ -3069,24 +3590,29 @@
     "h2": [
       "Research context and limitations",
       "Source-linked reading",
-      "Continue the topic"
+      "Continue the topic",
+      "Connect this guide to the wider research"
     ],
     "intent": "Informational",
     "primary_topic": "Dissolved Oxygen as a Stress Signal",
     "secondary_topics": [
       "Research context and limitations",
       "Source-linked reading",
-      "Continue the topic"
+      "Continue the topic",
+      "Connect this guide to the wider research"
     ],
     "journey_stage": "Learn / evaluate research concepts",
     "cluster": "Algaephyte",
-    "content_words": 474,
+    "content_words": 524,
     "content_quality": "Editorial review required; word count is not a quality score",
     "internal_links_in": [
+      "https://orrbiologicals.com/algaephyte/",
       "https://orrbiologicals.com/blog/",
       "https://orrbiologicals.com/blog/alkalinity-as-a-control-variable",
       "https://orrbiologicals.com/blog/six-culture-signals-main-senses",
       "https://orrbiologicals.com/glossary",
+      "https://orrbiologicals.com/microalgae-cultivation/",
+      "https://orrbiologicals.com/photobioreactors/",
       "https://orrbiologicals.com/research/"
     ],
     "internal_links_out": [
@@ -3095,6 +3621,7 @@
       "https://orrbiologicals.com/#inside",
       "https://orrbiologicals.com/#products",
       "https://orrbiologicals.com/#system",
+      "https://orrbiologicals.com/algaephyte/",
       "https://orrbiologicals.com/applications/",
       "https://orrbiologicals.com/blog/",
       "https://orrbiologicals.com/blog/#kb",
@@ -3105,6 +3632,8 @@
       "https://orrbiologicals.com/disclaimer",
       "https://orrbiologicals.com/game/",
       "https://orrbiologicals.com/glossary",
+      "https://orrbiologicals.com/microalgae-cultivation/",
+      "https://orrbiologicals.com/photobioreactors/",
       "https://orrbiologicals.com/privacy",
       "https://orrbiologicals.com/research/",
       "https://orrbiologicals.com/terms"
@@ -3161,20 +3690,23 @@
     "h2": [
       "Research context and limitations",
       "Source-linked reading",
-      "Continue the topic"
+      "Continue the topic",
+      "Connect this guide to the wider research"
     ],
     "intent": "Informational",
     "primary_topic": "Edge AI for Biological Systems",
     "secondary_topics": [
       "Research context and limitations",
       "Source-linked reading",
-      "Continue the topic"
+      "Continue the topic",
+      "Connect this guide to the wider research"
     ],
     "journey_stage": "Learn / evaluate research concepts",
     "cluster": "Algaephyte",
-    "content_words": 762,
+    "content_words": 806,
     "content_quality": "Editorial review required; word count is not a quality score",
     "internal_links_in": [
+      "https://orrbiologicals.com/algaephyte/",
       "https://orrbiologicals.com/blog/",
       "https://orrbiologicals.com/cyanoflow",
       "https://orrbiologicals.com/research/"
@@ -3186,6 +3718,7 @@
       "https://orrbiologicals.com/#journal",
       "https://orrbiologicals.com/#products",
       "https://orrbiologicals.com/#system",
+      "https://orrbiologicals.com/algaephyte/",
       "https://orrbiologicals.com/applications/",
       "https://orrbiologicals.com/blog/",
       "https://orrbiologicals.com/blog/bounded-autonomy-safe-ai-proposals",
@@ -3254,20 +3787,23 @@
     "h2": [
       "Research context and limitations",
       "Source-linked reading",
-      "Continue the topic"
+      "Continue the topic",
+      "Connect this guide to the wider research"
     ],
     "intent": "Informational",
     "primary_topic": "A Federated Learning Network for Algae Reactors",
     "secondary_topics": [
       "Research context and limitations",
       "Source-linked reading",
-      "Continue the topic"
+      "Continue the topic",
+      "Connect this guide to the wider research"
     ],
     "journey_stage": "Learn / evaluate research concepts",
     "cluster": "Algaephyte",
-    "content_words": 973,
+    "content_words": 1023,
     "content_quality": "Editorial review required; word count is not a quality score",
     "internal_links_in": [
+      "https://orrbiologicals.com/algaephyte/",
       "https://orrbiologicals.com/blog/",
       "https://orrbiologicals.com/blog/edge-ai-biological-systems"
     ],
@@ -3277,6 +3813,7 @@
       "https://orrbiologicals.com/#inside",
       "https://orrbiologicals.com/#products",
       "https://orrbiologicals.com/#system",
+      "https://orrbiologicals.com/algaephyte/",
       "https://orrbiologicals.com/applications/",
       "https://orrbiologicals.com/blog/",
       "https://orrbiologicals.com/blog/#kb",
@@ -3287,6 +3824,8 @@
       "https://orrbiologicals.com/disclaimer",
       "https://orrbiologicals.com/game/",
       "https://orrbiologicals.com/glossary",
+      "https://orrbiologicals.com/microalgae-cultivation/",
+      "https://orrbiologicals.com/photobioreactors/",
       "https://orrbiologicals.com/privacy",
       "https://orrbiologicals.com/research/",
       "https://orrbiologicals.com/terms"
@@ -3343,18 +3882,20 @@
     "h2": [
       "Research context and limitations",
       "Source-linked reading",
-      "Continue the topic"
+      "Continue the topic",
+      "Connect this guide to the wider research"
     ],
     "intent": "Informational",
     "primary_topic": "Harvesting and Using Fresh Spirulina",
     "secondary_topics": [
       "Research context and limitations",
       "Source-linked reading",
-      "Continue the topic"
+      "Continue the topic",
+      "Connect this guide to the wider research"
     ],
     "journey_stage": "Learn / evaluate research concepts",
     "cluster": "Algaephyte",
-    "content_words": 520,
+    "content_words": 570,
     "content_quality": "Editorial review required; word count is not a quality score",
     "internal_links_in": [
       "https://orrbiologicals.com/",
@@ -3366,7 +3907,8 @@
       "https://orrbiologicals.com/blog/spirulina-is-a-cyanobacterium",
       "https://orrbiologicals.com/blog/troubleshooting-contamination-crashes",
       "https://orrbiologicals.com/blog/troubleshooting-ph-and-carbon",
-      "https://orrbiologicals.com/blog/zarrouk-medium-and-nutrients"
+      "https://orrbiologicals.com/blog/zarrouk-medium-and-nutrients",
+      "https://orrbiologicals.com/microalgae-cultivation/"
     ],
     "internal_links_out": [
       "https://orrbiologicals.com/",
@@ -3374,6 +3916,7 @@
       "https://orrbiologicals.com/#inside",
       "https://orrbiologicals.com/#products",
       "https://orrbiologicals.com/#system",
+      "https://orrbiologicals.com/algaephyte/",
       "https://orrbiologicals.com/applications/",
       "https://orrbiologicals.com/blog/",
       "https://orrbiologicals.com/blog/#kb",
@@ -3384,6 +3927,8 @@
       "https://orrbiologicals.com/disclaimer",
       "https://orrbiologicals.com/game/",
       "https://orrbiologicals.com/glossary",
+      "https://orrbiologicals.com/microalgae-cultivation/",
+      "https://orrbiologicals.com/photobioreactors/",
       "https://orrbiologicals.com/privacy",
       "https://orrbiologicals.com/research/",
       "https://orrbiologicals.com/terms"
@@ -3440,18 +3985,20 @@
     "h2": [
       "Research context and limitations",
       "Source-linked reading",
-      "Continue the topic"
+      "Continue the topic",
+      "Connect this guide to the wider research"
     ],
     "intent": "Informational",
     "primary_topic": "How Algaephyte Keeps Your Culture Safe",
     "secondary_topics": [
       "Research context and limitations",
       "Source-linked reading",
-      "Continue the topic"
+      "Continue the topic",
+      "Connect this guide to the wider research"
     ],
     "journey_stage": "Learn / evaluate research concepts",
     "cluster": "Algaephyte",
-    "content_words": 860,
+    "content_words": 910,
     "content_quality": "Editorial review required; word count is not a quality score",
     "internal_links_in": [
       "https://orrbiologicals.com/blog/",
@@ -3466,6 +4013,7 @@
       "https://orrbiologicals.com/#inside",
       "https://orrbiologicals.com/#products",
       "https://orrbiologicals.com/#system",
+      "https://orrbiologicals.com/algaephyte/",
       "https://orrbiologicals.com/applications/",
       "https://orrbiologicals.com/blog/",
       "https://orrbiologicals.com/blog/#kb",
@@ -3476,6 +4024,8 @@
       "https://orrbiologicals.com/disclaimer",
       "https://orrbiologicals.com/game/",
       "https://orrbiologicals.com/glossary",
+      "https://orrbiologicals.com/microalgae-cultivation/",
+      "https://orrbiologicals.com/photobioreactors/",
       "https://orrbiologicals.com/privacy",
       "https://orrbiologicals.com/research/",
       "https://orrbiologicals.com/terms"
@@ -3532,18 +4082,20 @@
     "h2": [
       "Research context and limitations",
       "Source-linked reading",
-      "Continue the topic"
+      "Continue the topic",
+      "Connect this guide to the wider research"
     ],
     "intent": "Informational",
     "primary_topic": "How to Start a Home Spirulina Culture (Without Guesswork)",
     "secondary_topics": [
       "Research context and limitations",
       "Source-linked reading",
-      "Continue the topic"
+      "Continue the topic",
+      "Connect this guide to the wider research"
     ],
     "journey_stage": "Learn / evaluate research concepts",
     "cluster": "Algaephyte",
-    "content_words": 505,
+    "content_words": 555,
     "content_quality": "Editorial review required; word count is not a quality score",
     "internal_links_in": [
       "https://orrbiologicals.com/",
@@ -3566,6 +4118,7 @@
       "https://orrbiologicals.com/#inside",
       "https://orrbiologicals.com/#products",
       "https://orrbiologicals.com/#system",
+      "https://orrbiologicals.com/algaephyte/",
       "https://orrbiologicals.com/applications/",
       "https://orrbiologicals.com/blog/",
       "https://orrbiologicals.com/blog/#kb",
@@ -3577,6 +4130,8 @@
       "https://orrbiologicals.com/disclaimer",
       "https://orrbiologicals.com/game/",
       "https://orrbiologicals.com/glossary",
+      "https://orrbiologicals.com/microalgae-cultivation/",
+      "https://orrbiologicals.com/photobioreactors/",
       "https://orrbiologicals.com/privacy",
       "https://orrbiologicals.com/research/",
       "https://orrbiologicals.com/terms"
@@ -3628,25 +4183,27 @@
     "current_description": "Explore Spirulina cultivation, algae sensors, digital twins and single-cell imaging guides, plus clearly labeled AI-assisted research summaries.",
     "recommended_description": "Explore Spirulina cultivation, algae sensors, digital twins and single-cell imaging guides, plus clearly labeled AI-assisted research summaries.",
     "h1": [
-      "The algae blog,updated every day"
+      "Algae cultivation guidesand research notes"
     ],
     "h2": [
-      "Four papers, written up.",
-      "Cultivation guides and single-cell research notes."
+      "Cultivation guides and single-cell research notes.",
+      "Four papers, written up."
     ],
     "intent": "Informational",
-    "primary_topic": "The algae blog,updated every day",
+    "primary_topic": "Algae cultivation guidesand research notes",
     "secondary_topics": [
-      "Four papers, written up.",
-      "Cultivation guides and single-cell research notes."
+      "Cultivation guides and single-cell research notes.",
+      "Four papers, written up."
     ],
     "journey_stage": "Learn / evaluate research concepts",
     "cluster": "Algaephyte",
-    "content_words": 1047,
+    "content_words": 1060,
     "content_quality": "Editorial review required; word count is not a quality score",
     "internal_links_in": [
       "https://orrbiologicals.com/",
       "https://orrbiologicals.com/404",
+      "https://orrbiologicals.com/algae-biotechnology/",
+      "https://orrbiologicals.com/algaephyte/",
       "https://orrbiologicals.com/applications/",
       "https://orrbiologicals.com/applications/algae-rations-for-bivalve-larvae",
       "https://orrbiologicals.com/applications/best-microalgae-for-copepod-culture",
@@ -3697,6 +4254,8 @@
       "https://orrbiologicals.com/disclaimer",
       "https://orrbiologicals.com/game/",
       "https://orrbiologicals.com/glossary",
+      "https://orrbiologicals.com/microalgae-cultivation/",
+      "https://orrbiologicals.com/photobioreactors/",
       "https://orrbiologicals.com/privacy",
       "https://orrbiologicals.com/research/",
       "https://orrbiologicals.com/terms"
@@ -3706,6 +4265,8 @@
       "https://orrbiologicals.com/#deploy",
       "https://orrbiologicals.com/#inside",
       "https://orrbiologicals.com/#products",
+      "https://orrbiologicals.com/algae-biotechnology/",
+      "https://orrbiologicals.com/algaephyte/",
       "https://orrbiologicals.com/applications/",
       "https://orrbiologicals.com/blog/",
       "https://orrbiologicals.com/blog/alkalinity-as-a-control-variable",
@@ -3733,6 +4294,8 @@
       "https://orrbiologicals.com/blog/zarrouk-medium-and-nutrients",
       "https://orrbiologicals.com/cyanoflow",
       "https://orrbiologicals.com/game/",
+      "https://orrbiologicals.com/microalgae-cultivation/",
+      "https://orrbiologicals.com/photobioreactors/",
       "https://orrbiologicals.com/privacy",
       "https://orrbiologicals.com/terms"
     ],
@@ -3808,18 +4371,20 @@
     "h2": [
       "Research context and limitations",
       "Source-linked reading",
-      "Continue the topic"
+      "Continue the topic",
+      "Connect this guide to the wider research"
     ],
     "intent": "Informational",
     "primary_topic": "Light, Temperature and Mixing: The Three Physical Levers",
     "secondary_topics": [
       "Research context and limitations",
       "Source-linked reading",
-      "Continue the topic"
+      "Continue the topic",
+      "Connect this guide to the wider research"
     ],
     "journey_stage": "Learn / evaluate research concepts",
     "cluster": "Algaephyte",
-    "content_words": 516,
+    "content_words": 566,
     "content_quality": "Editorial review required; word count is not a quality score",
     "internal_links_in": [
       "https://orrbiologicals.com/blog/",
@@ -3827,6 +4392,8 @@
       "https://orrbiologicals.com/blog/how-to-start-home-spirulina-culture",
       "https://orrbiologicals.com/blog/zarrouk-medium-and-nutrients",
       "https://orrbiologicals.com/glossary",
+      "https://orrbiologicals.com/microalgae-cultivation/",
+      "https://orrbiologicals.com/photobioreactors/",
       "https://orrbiologicals.com/research/"
     ],
     "internal_links_out": [
@@ -3835,6 +4402,7 @@
       "https://orrbiologicals.com/#inside",
       "https://orrbiologicals.com/#products",
       "https://orrbiologicals.com/#system",
+      "https://orrbiologicals.com/algaephyte/",
       "https://orrbiologicals.com/applications/",
       "https://orrbiologicals.com/blog/",
       "https://orrbiologicals.com/blog/#kb",
@@ -3845,6 +4413,8 @@
       "https://orrbiologicals.com/disclaimer",
       "https://orrbiologicals.com/game/",
       "https://orrbiologicals.com/glossary",
+      "https://orrbiologicals.com/microalgae-cultivation/",
+      "https://orrbiologicals.com/photobioreactors/",
       "https://orrbiologicals.com/privacy",
       "https://orrbiologicals.com/research/",
       "https://orrbiologicals.com/terms"
@@ -3901,18 +4471,20 @@
     "h2": [
       "Research context and limitations",
       "Source-linked reading",
-      "Continue the topic"
+      "Continue the topic",
+      "Connect this guide to the wider research"
     ],
     "intent": "Informational",
     "primary_topic": "AI Optimization in Photobioreactors: Propose, Then Verify",
     "secondary_topics": [
       "Research context and limitations",
       "Source-linked reading",
-      "Continue the topic"
+      "Continue the topic",
+      "Connect this guide to the wider research"
     ],
     "journey_stage": "Learn / evaluate research concepts",
     "cluster": "Algaephyte",
-    "content_words": 800,
+    "content_words": 850,
     "content_quality": "Editorial review required; word count is not a quality score",
     "internal_links_in": [
       "https://orrbiologicals.com/blog/",
@@ -3925,6 +4497,7 @@
       "https://orrbiologicals.com/#products",
       "https://orrbiologicals.com/#simulation",
       "https://orrbiologicals.com/#system",
+      "https://orrbiologicals.com/algaephyte/",
       "https://orrbiologicals.com/applications/",
       "https://orrbiologicals.com/blog/",
       "https://orrbiologicals.com/blog/#kb",
@@ -3935,6 +4508,8 @@
       "https://orrbiologicals.com/disclaimer",
       "https://orrbiologicals.com/game/",
       "https://orrbiologicals.com/glossary",
+      "https://orrbiologicals.com/microalgae-cultivation/",
+      "https://orrbiologicals.com/photobioreactors/",
       "https://orrbiologicals.com/privacy",
       "https://orrbiologicals.com/research/",
       "https://orrbiologicals.com/terms"
@@ -3991,18 +4566,20 @@
     "h2": [
       "Research context and limitations",
       "Source-linked reading",
-      "Continue the topic"
+      "Continue the topic",
+      "Connect this guide to the wider research"
     ],
     "intent": "Informational",
     "primary_topic": "Reading Your Culture: Color, Density, Smell",
     "secondary_topics": [
       "Research context and limitations",
       "Source-linked reading",
-      "Continue the topic"
+      "Continue the topic",
+      "Connect this guide to the wider research"
     ],
     "journey_stage": "Learn / evaluate research concepts",
     "cluster": "Algaephyte",
-    "content_words": 529,
+    "content_words": 579,
     "content_quality": "Editorial review required; word count is not a quality score",
     "internal_links_in": [
       "https://orrbiologicals.com/blog/",
@@ -4017,6 +4594,7 @@
       "https://orrbiologicals.com/#inside",
       "https://orrbiologicals.com/#products",
       "https://orrbiologicals.com/#system",
+      "https://orrbiologicals.com/algaephyte/",
       "https://orrbiologicals.com/applications/",
       "https://orrbiologicals.com/blog/",
       "https://orrbiologicals.com/blog/#kb",
@@ -4028,6 +4606,8 @@
       "https://orrbiologicals.com/disclaimer",
       "https://orrbiologicals.com/game/",
       "https://orrbiologicals.com/glossary",
+      "https://orrbiologicals.com/microalgae-cultivation/",
+      "https://orrbiologicals.com/photobioreactors/",
       "https://orrbiologicals.com/privacy",
       "https://orrbiologicals.com/research/",
       "https://orrbiologicals.com/terms"
@@ -4105,9 +4685,21 @@
     ],
     "journey_stage": "Learn / evaluate research concepts",
     "cluster": "Algaephyte",
-    "content_words": 881,
+    "content_words": 879,
     "content_quality": "Editorial review required; word count is not a quality score",
     "internal_links_in": [
+      "https://orrbiologicals.com/",
+      "https://orrbiologicals.com/algae-biotechnology/",
+      "https://orrbiologicals.com/applications/species/arthrospira",
+      "https://orrbiologicals.com/applications/species/chaetoceros",
+      "https://orrbiologicals.com/applications/species/chlorella",
+      "https://orrbiologicals.com/applications/species/dunaliella",
+      "https://orrbiologicals.com/applications/species/haematococcus",
+      "https://orrbiologicals.com/applications/species/isochrysis-tisochrysis",
+      "https://orrbiologicals.com/applications/species/nannochloropsis",
+      "https://orrbiologicals.com/applications/species/pavlova",
+      "https://orrbiologicals.com/applications/species/phaeodactylum",
+      "https://orrbiologicals.com/applications/species/tetraselmis",
       "https://orrbiologicals.com/blog/",
       "https://orrbiologicals.com/blog/edge-ai-biological-systems",
       "https://orrbiologicals.com/blog/vision-contamination-detection",
@@ -4188,24 +4780,29 @@
     "h2": [
       "Research context and limitations",
       "Source-linked reading",
-      "Continue the topic"
+      "Continue the topic",
+      "Connect this guide to the wider research"
     ],
     "intent": "Informational",
     "primary_topic": "Six Culture Signals: What a Reactor Senses",
     "secondary_topics": [
       "Research context and limitations",
       "Source-linked reading",
-      "Continue the topic"
+      "Continue the topic",
+      "Connect this guide to the wider research"
     ],
     "journey_stage": "Learn / evaluate research concepts",
     "cluster": "Algaephyte",
-    "content_words": 472,
+    "content_words": 522,
     "content_quality": "Editorial review required; word count is not a quality score",
     "internal_links_in": [
+      "https://orrbiologicals.com/algaephyte/",
       "https://orrbiologicals.com/blog/",
       "https://orrbiologicals.com/blog/alkalinity-as-a-control-variable",
       "https://orrbiologicals.com/blog/dissolved-oxygen-stress-signal",
       "https://orrbiologicals.com/glossary",
+      "https://orrbiologicals.com/microalgae-cultivation/",
+      "https://orrbiologicals.com/photobioreactors/",
       "https://orrbiologicals.com/research/"
     ],
     "internal_links_out": [
@@ -4214,6 +4811,7 @@
       "https://orrbiologicals.com/#inside",
       "https://orrbiologicals.com/#products",
       "https://orrbiologicals.com/#system",
+      "https://orrbiologicals.com/algaephyte/",
       "https://orrbiologicals.com/applications/",
       "https://orrbiologicals.com/blog/",
       "https://orrbiologicals.com/blog/#kb",
@@ -4224,6 +4822,8 @@
       "https://orrbiologicals.com/disclaimer",
       "https://orrbiologicals.com/game/",
       "https://orrbiologicals.com/glossary",
+      "https://orrbiologicals.com/microalgae-cultivation/",
+      "https://orrbiologicals.com/photobioreactors/",
       "https://orrbiologicals.com/privacy",
       "https://orrbiologicals.com/research/",
       "https://orrbiologicals.com/terms"
@@ -4280,21 +4880,24 @@
     "h2": [
       "Research context and limitations",
       "Source-linked reading",
-      "Continue the topic"
+      "Continue the topic",
+      "Connect this guide to the wider research"
     ],
     "intent": "Informational",
     "primary_topic": "Spirulina Is a Cyanobacterium — What That Actually Means",
     "secondary_topics": [
       "Research context and limitations",
       "Source-linked reading",
-      "Continue the topic"
+      "Continue the topic",
+      "Connect this guide to the wider research"
     ],
     "journey_stage": "Learn / evaluate research concepts",
     "cluster": "Algaephyte",
-    "content_words": 550,
+    "content_words": 600,
     "content_quality": "Editorial review required; word count is not a quality score",
     "internal_links_in": [
       "https://orrbiologicals.com/",
+      "https://orrbiologicals.com/algae-biotechnology/",
       "https://orrbiologicals.com/applications/species/arthrospira",
       "https://orrbiologicals.com/blog/",
       "https://orrbiologicals.com/glossary",
@@ -4306,6 +4909,7 @@
       "https://orrbiologicals.com/#inside",
       "https://orrbiologicals.com/#products",
       "https://orrbiologicals.com/#system",
+      "https://orrbiologicals.com/algaephyte/",
       "https://orrbiologicals.com/applications/",
       "https://orrbiologicals.com/blog/",
       "https://orrbiologicals.com/blog/#kb",
@@ -4316,6 +4920,8 @@
       "https://orrbiologicals.com/disclaimer",
       "https://orrbiologicals.com/game/",
       "https://orrbiologicals.com/glossary",
+      "https://orrbiologicals.com/microalgae-cultivation/",
+      "https://orrbiologicals.com/photobioreactors/",
       "https://orrbiologicals.com/privacy",
       "https://orrbiologicals.com/research/",
       "https://orrbiologicals.com/terms"
@@ -4372,23 +4978,26 @@
     "h2": [
       "Research context and limitations",
       "Source-linked reading",
-      "Continue the topic"
+      "Continue the topic",
+      "Connect this guide to the wider research"
     ],
     "intent": "Informational",
     "primary_topic": "Troubleshooting Spirulina Contamination and Crashes",
     "secondary_topics": [
       "Research context and limitations",
       "Source-linked reading",
-      "Continue the topic"
+      "Continue the topic",
+      "Connect this guide to the wider research"
     ],
     "journey_stage": "Learn / evaluate research concepts",
     "cluster": "Algaephyte",
-    "content_words": 554,
+    "content_words": 604,
     "content_quality": "Editorial review required; word count is not a quality score",
     "internal_links_in": [
       "https://orrbiologicals.com/",
       "https://orrbiologicals.com/blog/",
-      "https://orrbiologicals.com/blog/troubleshooting-ph-and-carbon"
+      "https://orrbiologicals.com/blog/troubleshooting-ph-and-carbon",
+      "https://orrbiologicals.com/microalgae-cultivation/"
     ],
     "internal_links_out": [
       "https://orrbiologicals.com/",
@@ -4396,6 +5005,7 @@
       "https://orrbiologicals.com/#inside",
       "https://orrbiologicals.com/#products",
       "https://orrbiologicals.com/#system",
+      "https://orrbiologicals.com/algaephyte/",
       "https://orrbiologicals.com/applications/",
       "https://orrbiologicals.com/blog/",
       "https://orrbiologicals.com/blog/#kb",
@@ -4406,6 +5016,8 @@
       "https://orrbiologicals.com/disclaimer",
       "https://orrbiologicals.com/game/",
       "https://orrbiologicals.com/glossary",
+      "https://orrbiologicals.com/microalgae-cultivation/",
+      "https://orrbiologicals.com/photobioreactors/",
       "https://orrbiologicals.com/privacy",
       "https://orrbiologicals.com/research/",
       "https://orrbiologicals.com/terms"
@@ -4462,18 +5074,20 @@
     "h2": [
       "Research context and limitations",
       "Source-linked reading",
-      "Continue the topic"
+      "Continue the topic",
+      "Connect this guide to the wider research"
     ],
     "intent": "Informational",
     "primary_topic": "Troubleshooting pH and Carbon in Alkaline Culture",
     "secondary_topics": [
       "Research context and limitations",
       "Source-linked reading",
-      "Continue the topic"
+      "Continue the topic",
+      "Connect this guide to the wider research"
     ],
     "journey_stage": "Learn / evaluate research concepts",
     "cluster": "Algaephyte",
-    "content_words": 1165,
+    "content_words": 1215,
     "content_quality": "Editorial review required; word count is not a quality score",
     "internal_links_in": [
       "https://orrbiologicals.com/blog/",
@@ -4485,6 +5099,7 @@
       "https://orrbiologicals.com/#inside",
       "https://orrbiologicals.com/#products",
       "https://orrbiologicals.com/#system",
+      "https://orrbiologicals.com/algaephyte/",
       "https://orrbiologicals.com/applications/",
       "https://orrbiologicals.com/blog/",
       "https://orrbiologicals.com/blog/#kb",
@@ -4495,6 +5110,8 @@
       "https://orrbiologicals.com/disclaimer",
       "https://orrbiologicals.com/game/",
       "https://orrbiologicals.com/glossary",
+      "https://orrbiologicals.com/microalgae-cultivation/",
+      "https://orrbiologicals.com/photobioreactors/",
       "https://orrbiologicals.com/privacy",
       "https://orrbiologicals.com/research/",
       "https://orrbiologicals.com/terms"
@@ -4551,25 +5168,29 @@
     "h2": [
       "Research context and limitations",
       "Source-linked reading",
-      "Continue the topic"
+      "Continue the topic",
+      "Connect this guide to the wider research"
     ],
     "intent": "Informational",
     "primary_topic": "Vision-Based Contamination Detection, Honestly",
     "secondary_topics": [
       "Research context and limitations",
       "Source-linked reading",
-      "Continue the topic"
+      "Continue the topic",
+      "Connect this guide to the wider research"
     ],
     "journey_stage": "Learn / evaluate research concepts",
     "cluster": "Algaephyte",
-    "content_words": 1391,
+    "content_words": 1435,
     "content_quality": "Editorial review required; word count is not a quality score",
     "internal_links_in": [
       "https://orrbiologicals.com/",
+      "https://orrbiologicals.com/algaephyte/",
       "https://orrbiologicals.com/blog/",
       "https://orrbiologicals.com/blog/single-cell-microalgae-microfluidics",
       "https://orrbiologicals.com/cyanoflow",
       "https://orrbiologicals.com/glossary",
+      "https://orrbiologicals.com/photobioreactors/",
       "https://orrbiologicals.com/research/"
     ],
     "internal_links_out": [
@@ -4578,6 +5199,7 @@
       "https://orrbiologicals.com/#inside",
       "https://orrbiologicals.com/#products",
       "https://orrbiologicals.com/#system",
+      "https://orrbiologicals.com/algaephyte/",
       "https://orrbiologicals.com/applications/",
       "https://orrbiologicals.com/blog/",
       "https://orrbiologicals.com/blog/bounded-autonomy-safe-ai-proposals",
@@ -4645,18 +5267,20 @@
     "h2": [
       "Research context and limitations",
       "Source-linked reading",
-      "Continue the topic"
+      "Continue the topic",
+      "Connect this guide to the wider research"
     ],
     "intent": "Informational",
     "primary_topic": "What Is Algaephyte? (Plain Language)",
     "secondary_topics": [
       "Research context and limitations",
       "Source-linked reading",
-      "Continue the topic"
+      "Continue the topic",
+      "Connect this guide to the wider research"
     ],
     "journey_stage": "Learn / evaluate research concepts",
     "cluster": "Algaephyte",
-    "content_words": 1077,
+    "content_words": 1127,
     "content_quality": "Editorial review required; word count is not a quality score",
     "internal_links_in": [
       "https://orrbiologicals.com/blog/",
@@ -4668,6 +5292,7 @@
       "https://orrbiologicals.com/#inside",
       "https://orrbiologicals.com/#products",
       "https://orrbiologicals.com/#system",
+      "https://orrbiologicals.com/algaephyte/",
       "https://orrbiologicals.com/applications/",
       "https://orrbiologicals.com/blog/",
       "https://orrbiologicals.com/blog/#kb",
@@ -4678,6 +5303,8 @@
       "https://orrbiologicals.com/disclaimer",
       "https://orrbiologicals.com/game/",
       "https://orrbiologicals.com/glossary",
+      "https://orrbiologicals.com/microalgae-cultivation/",
+      "https://orrbiologicals.com/photobioreactors/",
       "https://orrbiologicals.com/privacy",
       "https://orrbiologicals.com/research/",
       "https://orrbiologicals.com/terms"
@@ -4734,22 +5361,25 @@
     "h2": [
       "Research context and limitations",
       "Source-linked reading",
-      "Continue the topic"
+      "Continue the topic",
+      "Connect this guide to the wider research"
     ],
     "intent": "Informational",
     "primary_topic": "Keeping a Home Spirulina Culture Warm Through Winter",
     "secondary_topics": [
       "Research context and limitations",
       "Source-linked reading",
-      "Continue the topic"
+      "Continue the topic",
+      "Connect this guide to the wider research"
     ],
     "journey_stage": "Learn / evaluate research concepts",
     "cluster": "Algaephyte",
-    "content_words": 1293,
+    "content_words": 1343,
     "content_quality": "Editorial review required; word count is not a quality score",
     "internal_links_in": [
       "https://orrbiologicals.com/blog/",
-      "https://orrbiologicals.com/blog/reading-your-culture"
+      "https://orrbiologicals.com/blog/reading-your-culture",
+      "https://orrbiologicals.com/microalgae-cultivation/"
     ],
     "internal_links_out": [
       "https://orrbiologicals.com/",
@@ -4757,6 +5387,7 @@
       "https://orrbiologicals.com/#inside",
       "https://orrbiologicals.com/#products",
       "https://orrbiologicals.com/#system",
+      "https://orrbiologicals.com/algaephyte/",
       "https://orrbiologicals.com/applications/",
       "https://orrbiologicals.com/blog/",
       "https://orrbiologicals.com/blog/#kb",
@@ -4768,6 +5399,8 @@
       "https://orrbiologicals.com/disclaimer",
       "https://orrbiologicals.com/game/",
       "https://orrbiologicals.com/glossary",
+      "https://orrbiologicals.com/microalgae-cultivation/",
+      "https://orrbiologicals.com/photobioreactors/",
       "https://orrbiologicals.com/privacy",
       "https://orrbiologicals.com/research/",
       "https://orrbiologicals.com/terms"
@@ -4824,18 +5457,20 @@
     "h2": [
       "Research context and limitations",
       "Source-linked reading",
-      "Continue the topic"
+      "Continue the topic",
+      "Connect this guide to the wider research"
     ],
     "intent": "Informational",
     "primary_topic": "Zarrouk Medium and Nutrients: Feeding a Spirulina Culture",
     "secondary_topics": [
       "Research context and limitations",
       "Source-linked reading",
-      "Continue the topic"
+      "Continue the topic",
+      "Connect this guide to the wider research"
     ],
     "journey_stage": "Learn / evaluate research concepts",
     "cluster": "Algaephyte",
-    "content_words": 518,
+    "content_words": 568,
     "content_quality": "Editorial review required; word count is not a quality score",
     "internal_links_in": [
       "https://orrbiologicals.com/blog/",
@@ -4843,6 +5478,7 @@
       "https://orrbiologicals.com/blog/how-to-start-home-spirulina-culture",
       "https://orrbiologicals.com/blog/light-temperature-mixing",
       "https://orrbiologicals.com/blog/spirulina-is-a-cyanobacterium",
+      "https://orrbiologicals.com/microalgae-cultivation/",
       "https://orrbiologicals.com/research/"
     ],
     "internal_links_out": [
@@ -4851,6 +5487,7 @@
       "https://orrbiologicals.com/#inside",
       "https://orrbiologicals.com/#products",
       "https://orrbiologicals.com/#system",
+      "https://orrbiologicals.com/algaephyte/",
       "https://orrbiologicals.com/applications/",
       "https://orrbiologicals.com/blog/",
       "https://orrbiologicals.com/blog/#kb",
@@ -4861,6 +5498,8 @@
       "https://orrbiologicals.com/disclaimer",
       "https://orrbiologicals.com/game/",
       "https://orrbiologicals.com/glossary",
+      "https://orrbiologicals.com/microalgae-cultivation/",
+      "https://orrbiologicals.com/photobioreactors/",
       "https://orrbiologicals.com/privacy",
       "https://orrbiologicals.com/research/",
       "https://orrbiologicals.com/terms"
@@ -4945,6 +5584,8 @@
     "internal_links_in": [
       "https://orrbiologicals.com/",
       "https://orrbiologicals.com/404",
+      "https://orrbiologicals.com/algae-biotechnology/",
+      "https://orrbiologicals.com/algaephyte/",
       "https://orrbiologicals.com/applications/",
       "https://orrbiologicals.com/applications/algae-rations-for-bivalve-larvae",
       "https://orrbiologicals.com/applications/best-microalgae-for-copepod-culture",
@@ -4995,6 +5636,8 @@
       "https://orrbiologicals.com/disclaimer",
       "https://orrbiologicals.com/game/",
       "https://orrbiologicals.com/glossary",
+      "https://orrbiologicals.com/microalgae-cultivation/",
+      "https://orrbiologicals.com/photobioreactors/",
       "https://orrbiologicals.com/privacy",
       "https://orrbiologicals.com/research/",
       "https://orrbiologicals.com/terms"
@@ -5173,6 +5816,30 @@
     "content_quality": "Editorial review required; word count is not a quality score",
     "internal_links_in": [
       "https://orrbiologicals.com/",
+      "https://orrbiologicals.com/algaephyte/",
+      "https://orrbiologicals.com/applications/",
+      "https://orrbiologicals.com/applications/algae-rations-for-bivalve-larvae",
+      "https://orrbiologicals.com/applications/best-microalgae-for-copepod-culture",
+      "https://orrbiologicals.com/applications/how-to-feed-copepods",
+      "https://orrbiologicals.com/applications/how-to-grow-a-microalgae-culture",
+      "https://orrbiologicals.com/applications/how-to-scale-a-microalgae-culture",
+      "https://orrbiologicals.com/applications/how-to-start-a-phytoplankton-culture",
+      "https://orrbiologicals.com/applications/microalgae-for-marine-fish-larvae",
+      "https://orrbiologicals.com/applications/microalgal-biotechnology",
+      "https://orrbiologicals.com/applications/pavlova-vs-isochrysis",
+      "https://orrbiologicals.com/applications/phytoplankton-aquaculture-food-webs",
+      "https://orrbiologicals.com/applications/prevent-contamination-microalgae-cultures",
+      "https://orrbiologicals.com/applications/species/arthrospira",
+      "https://orrbiologicals.com/applications/species/chaetoceros",
+      "https://orrbiologicals.com/applications/species/chlorella",
+      "https://orrbiologicals.com/applications/species/dunaliella",
+      "https://orrbiologicals.com/applications/species/haematococcus",
+      "https://orrbiologicals.com/applications/species/isochrysis-tisochrysis",
+      "https://orrbiologicals.com/applications/species/nannochloropsis",
+      "https://orrbiologicals.com/applications/species/pavlova",
+      "https://orrbiologicals.com/applications/species/phaeodactylum",
+      "https://orrbiologicals.com/applications/species/tetraselmis",
+      "https://orrbiologicals.com/applications/why-isochrysis-matters-aquaculture",
       "https://orrbiologicals.com/blog/alkalinity-as-a-control-variable",
       "https://orrbiologicals.com/blog/bounded-autonomy-safe-ai-proposals",
       "https://orrbiologicals.com/blog/control-loop-architecture",
@@ -5196,6 +5863,7 @@
       "https://orrbiologicals.com/blog/winter-home-growing-warmth",
       "https://orrbiologicals.com/blog/zarrouk-medium-and-nutrients",
       "https://orrbiologicals.com/cyanoflow",
+      "https://orrbiologicals.com/microalgae-cultivation/",
       "https://orrbiologicals.com/privacy",
       "https://orrbiologicals.com/research/",
       "https://orrbiologicals.com/terms"
@@ -5285,6 +5953,8 @@
     "internal_links_in": [
       "https://orrbiologicals.com/",
       "https://orrbiologicals.com/404",
+      "https://orrbiologicals.com/algae-biotechnology/",
+      "https://orrbiologicals.com/algaephyte/",
       "https://orrbiologicals.com/applications/",
       "https://orrbiologicals.com/applications/algae-rations-for-bivalve-larvae",
       "https://orrbiologicals.com/applications/best-microalgae-for-copepod-culture",
@@ -5335,6 +6005,8 @@
       "https://orrbiologicals.com/cyanoflow",
       "https://orrbiologicals.com/disclaimer",
       "https://orrbiologicals.com/glossary",
+      "https://orrbiologicals.com/microalgae-cultivation/",
+      "https://orrbiologicals.com/photobioreactors/",
       "https://orrbiologicals.com/privacy",
       "https://orrbiologicals.com/research/",
       "https://orrbiologicals.com/terms"
@@ -5440,9 +6112,34 @@
     ],
     "journey_stage": "Learn / evaluate research concepts",
     "cluster": "Site",
-    "content_words": 724,
+    "content_words": 722,
     "content_quality": "Editorial review required; word count is not a quality score",
     "internal_links_in": [
+      "https://orrbiologicals.com/algae-biotechnology/",
+      "https://orrbiologicals.com/algaephyte/",
+      "https://orrbiologicals.com/applications/",
+      "https://orrbiologicals.com/applications/algae-rations-for-bivalve-larvae",
+      "https://orrbiologicals.com/applications/best-microalgae-for-copepod-culture",
+      "https://orrbiologicals.com/applications/how-to-feed-copepods",
+      "https://orrbiologicals.com/applications/how-to-grow-a-microalgae-culture",
+      "https://orrbiologicals.com/applications/how-to-scale-a-microalgae-culture",
+      "https://orrbiologicals.com/applications/how-to-start-a-phytoplankton-culture",
+      "https://orrbiologicals.com/applications/microalgae-for-marine-fish-larvae",
+      "https://orrbiologicals.com/applications/microalgal-biotechnology",
+      "https://orrbiologicals.com/applications/pavlova-vs-isochrysis",
+      "https://orrbiologicals.com/applications/phytoplankton-aquaculture-food-webs",
+      "https://orrbiologicals.com/applications/prevent-contamination-microalgae-cultures",
+      "https://orrbiologicals.com/applications/species/arthrospira",
+      "https://orrbiologicals.com/applications/species/chaetoceros",
+      "https://orrbiologicals.com/applications/species/chlorella",
+      "https://orrbiologicals.com/applications/species/dunaliella",
+      "https://orrbiologicals.com/applications/species/haematococcus",
+      "https://orrbiologicals.com/applications/species/isochrysis-tisochrysis",
+      "https://orrbiologicals.com/applications/species/nannochloropsis",
+      "https://orrbiologicals.com/applications/species/pavlova",
+      "https://orrbiologicals.com/applications/species/phaeodactylum",
+      "https://orrbiologicals.com/applications/species/tetraselmis",
+      "https://orrbiologicals.com/applications/why-isochrysis-matters-aquaculture",
       "https://orrbiologicals.com/blog/alkalinity-as-a-control-variable",
       "https://orrbiologicals.com/blog/bounded-autonomy-safe-ai-proposals",
       "https://orrbiologicals.com/blog/control-loop-architecture",
@@ -5467,6 +6164,8 @@
       "https://orrbiologicals.com/blog/winter-home-growing-warmth",
       "https://orrbiologicals.com/blog/zarrouk-medium-and-nutrients",
       "https://orrbiologicals.com/cyanoflow",
+      "https://orrbiologicals.com/microalgae-cultivation/",
+      "https://orrbiologicals.com/photobioreactors/",
       "https://orrbiologicals.com/research/"
     ],
     "internal_links_out": [
@@ -5549,12 +6248,13 @@
     "file": "index.html",
     "current_title": "Algae Biotechnology, Cultivation & Single-Cell Research | Orr Biologicals",
     "recommended_title": "Algae Biotechnology, Cultivation & Single-Cell Research | Orr Biologicals",
-    "current_description": "Orr Biologicals develops algae cultivation and single-cell research concepts, with interactive simulations, cultivation guides, and daily AI-assisted research summaries.",
-    "recommended_description": "Orr Biologicals develops algae cultivation and single-cell research concepts, with interactive simulations, cultivation guides, and daily AI-assisted research summaries.",
+    "current_description": "Explore algae biotechnology, microalgae cultivation and single-cell research: photobioreactors, sensing, microfluidics and microscopy, with clearly labeled concepts.",
+    "recommended_description": "Explore algae biotechnology, microalgae cultivation and single-cell research: photobioreactors, sensing, microfluidics and microscopy, with clearly labeled concepts.",
     "h1": [
-      "Algae biotechshould be easierto get into."
+      "Algae biotechnologyresearch, cultivationand single cells."
     ],
     "h2": [
+      "Explore algae biotechnology by question.",
       "Two platforms. Different questions.",
       "Try the model.See what changes.",
       "Biology pushes back.",
@@ -5574,8 +6274,9 @@
       "The build, as it happens."
     ],
     "intent": "Navigational / educational",
-    "primary_topic": "Algae biotechshould be easierto get into.",
+    "primary_topic": "Algae biotechnologyresearch, cultivationand single cells.",
     "secondary_topics": [
+      "Explore algae biotechnology by question.",
       "Two platforms. Different questions.",
       "Try the model.See what changes.",
       "Biology pushes back.",
@@ -5596,10 +6297,12 @@
     ],
     "journey_stage": "Learn / evaluate research concepts",
     "cluster": "Site",
-    "content_words": 2287,
+    "content_words": 2341,
     "content_quality": "Editorial review required; word count is not a quality score",
     "internal_links_in": [
       "https://orrbiologicals.com/404",
+      "https://orrbiologicals.com/algae-biotechnology/",
+      "https://orrbiologicals.com/algaephyte/",
       "https://orrbiologicals.com/applications/",
       "https://orrbiologicals.com/applications/algae-rations-for-bivalve-larvae",
       "https://orrbiologicals.com/applications/best-microalgae-for-copepod-culture",
@@ -5651,6 +6354,8 @@
       "https://orrbiologicals.com/disclaimer",
       "https://orrbiologicals.com/game/",
       "https://orrbiologicals.com/glossary",
+      "https://orrbiologicals.com/microalgae-cultivation/",
+      "https://orrbiologicals.com/photobioreactors/",
       "https://orrbiologicals.com/privacy",
       "https://orrbiologicals.com/research/",
       "https://orrbiologicals.com/terms"
@@ -5672,17 +6377,22 @@
       "https://orrbiologicals.com/#top",
       "https://orrbiologicals.com/#twin",
       "https://orrbiologicals.com/LICENSE",
+      "https://orrbiologicals.com/algae-biotechnology/",
+      "https://orrbiologicals.com/algaephyte/",
       "https://orrbiologicals.com/applications/",
       "https://orrbiologicals.com/blog/",
       "https://orrbiologicals.com/blog/digital-twins-biological-cultivation",
       "https://orrbiologicals.com/blog/harvesting-and-using-fresh-spirulina",
       "https://orrbiologicals.com/blog/how-to-start-home-spirulina-culture",
+      "https://orrbiologicals.com/blog/single-cell-microalgae-microfluidics",
       "https://orrbiologicals.com/blog/spirulina-is-a-cyanobacterium",
       "https://orrbiologicals.com/blog/troubleshooting-contamination-crashes",
       "https://orrbiologicals.com/blog/vision-contamination-detection",
       "https://orrbiologicals.com/cyanoflow",
       "https://orrbiologicals.com/disclaimer",
       "https://orrbiologicals.com/game/",
+      "https://orrbiologicals.com/microalgae-cultivation/",
+      "https://orrbiologicals.com/photobioreactors/",
       "https://orrbiologicals.com/privacy",
       "https://orrbiologicals.com/research/",
       "https://orrbiologicals.com/terms"
@@ -5785,10 +6495,10 @@
       "": "",
       "viewport": "width=device-width, initial-scale=1",
       "referrer": "strict-origin-when-cross-origin",
-      "description": "Orr Biologicals develops algae cultivation and single-cell research concepts, with interactive simulations, cultivation guides, and daily AI-assisted research summaries.",
+      "description": "Explore algae biotechnology, microalgae cultivation and single-cell research: photobioreactors, sensing, microfluidics and microscopy, with clearly labeled concepts.",
       "theme-color": "#f5efe0",
       "og:title": "Algae Biotechnology, Cultivation & Single-Cell Research | Orr Biologicals",
-      "og:description": "Orr Biologicals develops algae cultivation and single-cell research concepts, with interactive simulations, cultivation guides, and daily AI-assisted research summaries.",
+      "og:description": "Explore algae biotechnology, microalgae cultivation and single-cell research: photobioreactors, sensing, microfluidics and microscopy, with clearly labeled concepts.",
       "og:type": "website",
       "og:url": "https://orrbiologicals.com/",
       "og:image": "https://orrbiologicals.com/assets/og.png",
@@ -5798,7 +6508,299 @@
       "og:locale": "en_US",
       "twitter:card": "summary_large_image",
       "twitter:title": "Algae Biotechnology, Cultivation & Single-Cell Research | Orr Biologicals",
-      "twitter:description": "Orr Biologicals develops algae cultivation and single-cell research concepts, with interactive simulations, cultivation guides, and daily AI-assisted research summaries.",
+      "twitter:description": "Explore algae biotechnology, microalgae cultivation and single-cell research: photobioreactors, sensing, microfluidics and microscopy, with clearly labeled concepts.",
+      "twitter:image": "https://orrbiologicals.com/assets/og.png"
+    }
+  },
+  {
+    "url": "https://orrbiologicals.com/microalgae-cultivation/",
+    "file": "microalgae-cultivation/index.html",
+    "current_title": "Microalgae Cultivation: Light, Nutrients & Monitoring | Orr Biologicals",
+    "recommended_title": "Microalgae Cultivation: Light, Nutrients & Monitoring | Orr Biologicals",
+    "current_description": "Learn how light, temperature, nutrients, carbon, mixing and monitoring interact in microalgae cultivation. Compare measurements and find species-specific guides.",
+    "recommended_description": "Learn how light, temperature, nutrients, carbon, mixing and monitoring interact in microalgae cultivation. Compare measurements and find species-specific guides.",
+    "h1": [
+      "Microalgae cultivation: conditions and monitoring"
+    ],
+    "h2": [
+      "Start with identity and the question",
+      "The inputs interact",
+      "Monitoring: optical density is a proxy",
+      "Contamination and culture failure",
+      "Batch, continuous operation and scaling",
+      "Models and automation are a separate layer",
+      "Sources and next reading"
+    ],
+    "intent": "Navigational / educational",
+    "primary_topic": "Microalgae cultivation: conditions and monitoring",
+    "secondary_topics": [
+      "Start with identity and the question",
+      "The inputs interact",
+      "Monitoring: optical density is a proxy",
+      "Contamination and culture failure",
+      "Batch, continuous operation and scaling",
+      "Models and automation are a separate layer",
+      "Sources and next reading"
+    ],
+    "journey_stage": "Learn / evaluate research concepts",
+    "cluster": "Site",
+    "content_words": 674,
+    "content_quality": "Editorial review required; word count is not a quality score",
+    "internal_links_in": [
+      "https://orrbiologicals.com/",
+      "https://orrbiologicals.com/algae-biotechnology/",
+      "https://orrbiologicals.com/algaephyte/",
+      "https://orrbiologicals.com/applications/",
+      "https://orrbiologicals.com/applications/algae-rations-for-bivalve-larvae",
+      "https://orrbiologicals.com/applications/best-microalgae-for-copepod-culture",
+      "https://orrbiologicals.com/applications/how-to-feed-copepods",
+      "https://orrbiologicals.com/applications/how-to-grow-a-microalgae-culture",
+      "https://orrbiologicals.com/applications/how-to-scale-a-microalgae-culture",
+      "https://orrbiologicals.com/applications/how-to-start-a-phytoplankton-culture",
+      "https://orrbiologicals.com/applications/microalgae-for-marine-fish-larvae",
+      "https://orrbiologicals.com/applications/microalgal-biotechnology",
+      "https://orrbiologicals.com/applications/pavlova-vs-isochrysis",
+      "https://orrbiologicals.com/applications/phytoplankton-aquaculture-food-webs",
+      "https://orrbiologicals.com/applications/prevent-contamination-microalgae-cultures",
+      "https://orrbiologicals.com/applications/species/arthrospira",
+      "https://orrbiologicals.com/applications/species/chaetoceros",
+      "https://orrbiologicals.com/applications/species/chlorella",
+      "https://orrbiologicals.com/applications/species/dunaliella",
+      "https://orrbiologicals.com/applications/species/haematococcus",
+      "https://orrbiologicals.com/applications/species/isochrysis-tisochrysis",
+      "https://orrbiologicals.com/applications/species/nannochloropsis",
+      "https://orrbiologicals.com/applications/species/pavlova",
+      "https://orrbiologicals.com/applications/species/phaeodactylum",
+      "https://orrbiologicals.com/applications/species/tetraselmis",
+      "https://orrbiologicals.com/applications/why-isochrysis-matters-aquaculture",
+      "https://orrbiologicals.com/blog/",
+      "https://orrbiologicals.com/blog/alkalinity-as-a-control-variable",
+      "https://orrbiologicals.com/blog/bounded-autonomy-safe-ai-proposals",
+      "https://orrbiologicals.com/blog/control-loop-architecture",
+      "https://orrbiologicals.com/blog/digital-twin-droop-steele-model",
+      "https://orrbiologicals.com/blog/digital-twins-biological-cultivation",
+      "https://orrbiologicals.com/blog/dissolved-oxygen-stress-signal",
+      "https://orrbiologicals.com/blog/federated-learning-network",
+      "https://orrbiologicals.com/blog/harvesting-and-using-fresh-spirulina",
+      "https://orrbiologicals.com/blog/how-main-keeps-culture-safe",
+      "https://orrbiologicals.com/blog/how-to-start-home-spirulina-culture",
+      "https://orrbiologicals.com/blog/light-temperature-mixing",
+      "https://orrbiologicals.com/blog/photobioreactor-ai-optimization",
+      "https://orrbiologicals.com/blog/reading-your-culture",
+      "https://orrbiologicals.com/blog/six-culture-signals-main-senses",
+      "https://orrbiologicals.com/blog/spirulina-is-a-cyanobacterium",
+      "https://orrbiologicals.com/blog/troubleshooting-contamination-crashes",
+      "https://orrbiologicals.com/blog/troubleshooting-ph-and-carbon",
+      "https://orrbiologicals.com/blog/what-is-main-plain-language",
+      "https://orrbiologicals.com/blog/winter-home-growing-warmth",
+      "https://orrbiologicals.com/blog/zarrouk-medium-and-nutrients",
+      "https://orrbiologicals.com/photobioreactors/",
+      "https://orrbiologicals.com/research/"
+    ],
+    "internal_links_out": [
+      "https://orrbiologicals.com/",
+      "https://orrbiologicals.com/#deploy",
+      "https://orrbiologicals.com/#inside",
+      "https://orrbiologicals.com/#products",
+      "https://orrbiologicals.com/#simulation",
+      "https://orrbiologicals.com/algaephyte/",
+      "https://orrbiologicals.com/applications/",
+      "https://orrbiologicals.com/applications/#species",
+      "https://orrbiologicals.com/applications/how-to-grow-a-microalgae-culture",
+      "https://orrbiologicals.com/applications/how-to-scale-a-microalgae-culture",
+      "https://orrbiologicals.com/applications/how-to-start-a-phytoplankton-culture",
+      "https://orrbiologicals.com/applications/prevent-contamination-microalgae-cultures",
+      "https://orrbiologicals.com/applications/species/arthrospira",
+      "https://orrbiologicals.com/applications/species/isochrysis-tisochrysis",
+      "https://orrbiologicals.com/blog/",
+      "https://orrbiologicals.com/blog/alkalinity-as-a-control-variable",
+      "https://orrbiologicals.com/blog/dissolved-oxygen-stress-signal",
+      "https://orrbiologicals.com/blog/harvesting-and-using-fresh-spirulina",
+      "https://orrbiologicals.com/blog/light-temperature-mixing",
+      "https://orrbiologicals.com/blog/six-culture-signals-main-senses",
+      "https://orrbiologicals.com/blog/troubleshooting-contamination-crashes",
+      "https://orrbiologicals.com/blog/winter-home-growing-warmth",
+      "https://orrbiologicals.com/blog/zarrouk-medium-and-nutrients",
+      "https://orrbiologicals.com/cyanoflow",
+      "https://orrbiologicals.com/disclaimer",
+      "https://orrbiologicals.com/game/",
+      "https://orrbiologicals.com/glossary",
+      "https://orrbiologicals.com/photobioreactors/",
+      "https://orrbiologicals.com/privacy",
+      "https://orrbiologicals.com/research/",
+      "https://orrbiologicals.com/terms"
+    ],
+    "external_sources": [
+      "https://pmc.ncbi.nlm.nih.gov/articles/PMC9033726/",
+      "https://pmc.ncbi.nlm.nih.gov/articles/PMC9368473/"
+    ],
+    "canonical": "https://orrbiologicals.com/microalgae-cultivation/",
+    "schema_types": [
+      "WebPage",
+      "BreadcrumbList"
+    ],
+    "schema_errors": [],
+    "images": [],
+    "image_quality": "Illustrations vs measurements must be labeled; no pixel review implied",
+    "image_alt_quality": {
+      "missing": 0,
+      "empty": 0
+    },
+    "indexability": "indexable",
+    "importance": "High",
+    "action": "KEEP",
+    "h1_count": 1,
+    "duplicate_ids": [],
+    "meta": {
+      "": "",
+      "viewport": "width=device-width, initial-scale=1",
+      "description": "Learn how light, temperature, nutrients, carbon, mixing and monitoring interact in microalgae cultivation. Compare measurements and find species-specific guides.",
+      "og:type": "website",
+      "og:title": "Microalgae Cultivation: Light, Nutrients & Monitoring | Orr Biologicals",
+      "og:description": "Learn how light, temperature, nutrients, carbon, mixing and monitoring interact in microalgae cultivation. Compare measurements and find species-specific guides.",
+      "og:url": "https://orrbiologicals.com/microalgae-cultivation/",
+      "og:image": "https://orrbiologicals.com/assets/og.png",
+      "og:site_name": "Orr Biologicals",
+      "twitter:card": "summary_large_image",
+      "twitter:title": "Microalgae Cultivation: Light, Nutrients & Monitoring | Orr Biologicals",
+      "twitter:description": "Learn how light, temperature, nutrients, carbon, mixing and monitoring interact in microalgae cultivation. Compare measurements and find species-specific guides.",
+      "twitter:image": "https://orrbiologicals.com/assets/og.png"
+    }
+  },
+  {
+    "url": "https://orrbiologicals.com/photobioreactors/",
+    "file": "photobioreactors/index.html",
+    "current_title": "Microalgae Photobioreactors: Design, Light & Sensors | Orr Biologicals",
+    "recommended_title": "Microalgae Photobioreactors: Design, Light & Sensors | Orr Biologicals",
+    "current_description": "Compare photobioreactor geometries and understand light paths, mixing, gas exchange, sensors and scale-up limits using cited research and educational guides.",
+    "recommended_description": "Compare photobioreactor geometries and understand light paths, mixing, gas exchange, sensors and scale-up limits using cited research and educational guides.",
+    "h1": [
+      "Microalgae photobioreactors: design and measurement"
+    ],
+    "h2": [
+      "How a photobioreactor works",
+      "Open ponds and closed vessels: a decision, not a ranking",
+      "Compare common reactor geometries",
+      "Light management and self-shading",
+      "Mixing, carbon supply and oxygen removal",
+      "Sensors and contamination monitoring",
+      "Digital twins and bounded control",
+      "Sources and scope"
+    ],
+    "intent": "Navigational / educational",
+    "primary_topic": "Microalgae photobioreactors: design and measurement",
+    "secondary_topics": [
+      "How a photobioreactor works",
+      "Open ponds and closed vessels: a decision, not a ranking",
+      "Compare common reactor geometries",
+      "Light management and self-shading",
+      "Mixing, carbon supply and oxygen removal",
+      "Sensors and contamination monitoring",
+      "Digital twins and bounded control",
+      "Sources and scope"
+    ],
+    "journey_stage": "Learn / evaluate research concepts",
+    "cluster": "Site",
+    "content_words": 707,
+    "content_quality": "Editorial review required; word count is not a quality score",
+    "internal_links_in": [
+      "https://orrbiologicals.com/",
+      "https://orrbiologicals.com/algae-biotechnology/",
+      "https://orrbiologicals.com/algaephyte/",
+      "https://orrbiologicals.com/applications/",
+      "https://orrbiologicals.com/applications/species/arthrospira",
+      "https://orrbiologicals.com/applications/species/chaetoceros",
+      "https://orrbiologicals.com/applications/species/chlorella",
+      "https://orrbiologicals.com/applications/species/dunaliella",
+      "https://orrbiologicals.com/applications/species/haematococcus",
+      "https://orrbiologicals.com/applications/species/isochrysis-tisochrysis",
+      "https://orrbiologicals.com/applications/species/nannochloropsis",
+      "https://orrbiologicals.com/applications/species/pavlova",
+      "https://orrbiologicals.com/applications/species/phaeodactylum",
+      "https://orrbiologicals.com/applications/species/tetraselmis",
+      "https://orrbiologicals.com/blog/",
+      "https://orrbiologicals.com/blog/alkalinity-as-a-control-variable",
+      "https://orrbiologicals.com/blog/bounded-autonomy-safe-ai-proposals",
+      "https://orrbiologicals.com/blog/control-loop-architecture",
+      "https://orrbiologicals.com/blog/digital-twin-droop-steele-model",
+      "https://orrbiologicals.com/blog/digital-twins-biological-cultivation",
+      "https://orrbiologicals.com/blog/dissolved-oxygen-stress-signal",
+      "https://orrbiologicals.com/blog/federated-learning-network",
+      "https://orrbiologicals.com/blog/harvesting-and-using-fresh-spirulina",
+      "https://orrbiologicals.com/blog/how-main-keeps-culture-safe",
+      "https://orrbiologicals.com/blog/how-to-start-home-spirulina-culture",
+      "https://orrbiologicals.com/blog/light-temperature-mixing",
+      "https://orrbiologicals.com/blog/photobioreactor-ai-optimization",
+      "https://orrbiologicals.com/blog/reading-your-culture",
+      "https://orrbiologicals.com/blog/six-culture-signals-main-senses",
+      "https://orrbiologicals.com/blog/spirulina-is-a-cyanobacterium",
+      "https://orrbiologicals.com/blog/troubleshooting-contamination-crashes",
+      "https://orrbiologicals.com/blog/troubleshooting-ph-and-carbon",
+      "https://orrbiologicals.com/blog/what-is-main-plain-language",
+      "https://orrbiologicals.com/blog/winter-home-growing-warmth",
+      "https://orrbiologicals.com/blog/zarrouk-medium-and-nutrients",
+      "https://orrbiologicals.com/microalgae-cultivation/",
+      "https://orrbiologicals.com/research/"
+    ],
+    "internal_links_out": [
+      "https://orrbiologicals.com/",
+      "https://orrbiologicals.com/#deploy",
+      "https://orrbiologicals.com/#inside",
+      "https://orrbiologicals.com/#products",
+      "https://orrbiologicals.com/algaephyte/",
+      "https://orrbiologicals.com/applications/",
+      "https://orrbiologicals.com/applications/how-to-scale-a-microalgae-culture",
+      "https://orrbiologicals.com/blog/",
+      "https://orrbiologicals.com/blog/alkalinity-as-a-control-variable",
+      "https://orrbiologicals.com/blog/bounded-autonomy-safe-ai-proposals",
+      "https://orrbiologicals.com/blog/digital-twin-droop-steele-model",
+      "https://orrbiologicals.com/blog/dissolved-oxygen-stress-signal",
+      "https://orrbiologicals.com/blog/light-temperature-mixing",
+      "https://orrbiologicals.com/blog/six-culture-signals-main-senses",
+      "https://orrbiologicals.com/blog/vision-contamination-detection",
+      "https://orrbiologicals.com/cyanoflow",
+      "https://orrbiologicals.com/game/",
+      "https://orrbiologicals.com/glossary",
+      "https://orrbiologicals.com/microalgae-cultivation/",
+      "https://orrbiologicals.com/privacy",
+      "https://orrbiologicals.com/research/",
+      "https://orrbiologicals.com/terms"
+    ],
+    "external_sources": [
+      "https://extension.okstate.edu/fact-sheets/photobioreactor-design-for-algal-biomass-production",
+      "https://pmc.ncbi.nlm.nih.gov/articles/PMC9033726/",
+      "https://pmc.ncbi.nlm.nih.gov/articles/PMC9731602/"
+    ],
+    "canonical": "https://orrbiologicals.com/photobioreactors/",
+    "schema_types": [
+      "WebPage",
+      "BreadcrumbList"
+    ],
+    "schema_errors": [],
+    "images": [],
+    "image_quality": "Illustrations vs measurements must be labeled; no pixel review implied",
+    "image_alt_quality": {
+      "missing": 0,
+      "empty": 0
+    },
+    "indexability": "indexable",
+    "importance": "High",
+    "action": "KEEP",
+    "h1_count": 1,
+    "duplicate_ids": [],
+    "meta": {
+      "": "",
+      "viewport": "width=device-width, initial-scale=1",
+      "description": "Compare photobioreactor geometries and understand light paths, mixing, gas exchange, sensors and scale-up limits using cited research and educational guides.",
+      "og:type": "website",
+      "og:title": "Microalgae Photobioreactors: Design, Light & Sensors | Orr Biologicals",
+      "og:description": "Compare photobioreactor geometries and understand light paths, mixing, gas exchange, sensors and scale-up limits using cited research and educational guides.",
+      "og:url": "https://orrbiologicals.com/photobioreactors/",
+      "og:image": "https://orrbiologicals.com/assets/og.png",
+      "og:site_name": "Orr Biologicals",
+      "twitter:card": "summary_large_image",
+      "twitter:title": "Microalgae Photobioreactors: Design, Light & Sensors | Orr Biologicals",
+      "twitter:description": "Compare photobioreactor geometries and understand light paths, mixing, gas exchange, sensors and scale-up limits using cited research and educational guides.",
       "twitter:image": "https://orrbiologicals.com/assets/og.png"
     }
   },
@@ -5839,6 +6841,8 @@
     "internal_links_in": [
       "https://orrbiologicals.com/",
       "https://orrbiologicals.com/404",
+      "https://orrbiologicals.com/algae-biotechnology/",
+      "https://orrbiologicals.com/algaephyte/",
       "https://orrbiologicals.com/applications/",
       "https://orrbiologicals.com/applications/algae-rations-for-bivalve-larvae",
       "https://orrbiologicals.com/applications/best-microalgae-for-copepod-culture",
@@ -5890,6 +6894,8 @@
       "https://orrbiologicals.com/disclaimer",
       "https://orrbiologicals.com/game/",
       "https://orrbiologicals.com/glossary",
+      "https://orrbiologicals.com/microalgae-cultivation/",
+      "https://orrbiologicals.com/photobioreactors/",
       "https://orrbiologicals.com/research/",
       "https://orrbiologicals.com/terms"
     ],
@@ -5949,6 +6955,7 @@
       "Algae cultivation and single-cell research methods"
     ],
     "h2": [
+      "Topic pillars: choose a reading path",
       "Choose the question, not just the platform",
       "Algae cultivation: a connected reading path",
       "Sensors, growth models and bounded control",
@@ -5960,6 +6967,7 @@
     "intent": "Navigational / educational",
     "primary_topic": "Algae cultivation and single-cell research methods",
     "secondary_topics": [
+      "Topic pillars: choose a reading path",
       "Choose the question, not just the platform",
       "Algae cultivation: a connected reading path",
       "Sensors, growth models and bounded control",
@@ -5970,10 +6978,35 @@
     ],
     "journey_stage": "Learn / evaluate research concepts",
     "cluster": "Site",
-    "content_words": 639,
+    "content_words": 674,
     "content_quality": "Editorial review required; word count is not a quality score",
     "internal_links_in": [
       "https://orrbiologicals.com/",
+      "https://orrbiologicals.com/algae-biotechnology/",
+      "https://orrbiologicals.com/algaephyte/",
+      "https://orrbiologicals.com/applications/",
+      "https://orrbiologicals.com/applications/algae-rations-for-bivalve-larvae",
+      "https://orrbiologicals.com/applications/best-microalgae-for-copepod-culture",
+      "https://orrbiologicals.com/applications/how-to-feed-copepods",
+      "https://orrbiologicals.com/applications/how-to-grow-a-microalgae-culture",
+      "https://orrbiologicals.com/applications/how-to-scale-a-microalgae-culture",
+      "https://orrbiologicals.com/applications/how-to-start-a-phytoplankton-culture",
+      "https://orrbiologicals.com/applications/microalgae-for-marine-fish-larvae",
+      "https://orrbiologicals.com/applications/microalgal-biotechnology",
+      "https://orrbiologicals.com/applications/pavlova-vs-isochrysis",
+      "https://orrbiologicals.com/applications/phytoplankton-aquaculture-food-webs",
+      "https://orrbiologicals.com/applications/prevent-contamination-microalgae-cultures",
+      "https://orrbiologicals.com/applications/species/arthrospira",
+      "https://orrbiologicals.com/applications/species/chaetoceros",
+      "https://orrbiologicals.com/applications/species/chlorella",
+      "https://orrbiologicals.com/applications/species/dunaliella",
+      "https://orrbiologicals.com/applications/species/haematococcus",
+      "https://orrbiologicals.com/applications/species/isochrysis-tisochrysis",
+      "https://orrbiologicals.com/applications/species/nannochloropsis",
+      "https://orrbiologicals.com/applications/species/pavlova",
+      "https://orrbiologicals.com/applications/species/phaeodactylum",
+      "https://orrbiologicals.com/applications/species/tetraselmis",
+      "https://orrbiologicals.com/applications/why-isochrysis-matters-aquaculture",
       "https://orrbiologicals.com/blog/alkalinity-as-a-control-variable",
       "https://orrbiologicals.com/blog/bounded-autonomy-safe-ai-proposals",
       "https://orrbiologicals.com/blog/control-loop-architecture",
@@ -5998,7 +7031,9 @@
       "https://orrbiologicals.com/blog/winter-home-growing-warmth",
       "https://orrbiologicals.com/blog/zarrouk-medium-and-nutrients",
       "https://orrbiologicals.com/cyanoflow",
-      "https://orrbiologicals.com/glossary"
+      "https://orrbiologicals.com/glossary",
+      "https://orrbiologicals.com/microalgae-cultivation/",
+      "https://orrbiologicals.com/photobioreactors/"
     ],
     "internal_links_out": [
       "https://orrbiologicals.com/",
@@ -6006,6 +7041,8 @@
       "https://orrbiologicals.com/#inside",
       "https://orrbiologicals.com/#products",
       "https://orrbiologicals.com/#simulation",
+      "https://orrbiologicals.com/algae-biotechnology/",
+      "https://orrbiologicals.com/algaephyte/",
       "https://orrbiologicals.com/applications/",
       "https://orrbiologicals.com/applications/#species",
       "https://orrbiologicals.com/applications/how-to-grow-a-microalgae-culture",
@@ -6031,6 +7068,8 @@
       "https://orrbiologicals.com/disclaimer",
       "https://orrbiologicals.com/game/",
       "https://orrbiologicals.com/glossary",
+      "https://orrbiologicals.com/microalgae-cultivation/",
+      "https://orrbiologicals.com/photobioreactors/",
       "https://orrbiologicals.com/privacy",
       "https://orrbiologicals.com/research/",
       "https://orrbiologicals.com/terms"
@@ -6113,6 +7152,8 @@
     "internal_links_in": [
       "https://orrbiologicals.com/",
       "https://orrbiologicals.com/404",
+      "https://orrbiologicals.com/algae-biotechnology/",
+      "https://orrbiologicals.com/algaephyte/",
       "https://orrbiologicals.com/applications/",
       "https://orrbiologicals.com/applications/algae-rations-for-bivalve-larvae",
       "https://orrbiologicals.com/applications/best-microalgae-for-copepod-culture",
@@ -6164,6 +7205,8 @@
       "https://orrbiologicals.com/disclaimer",
       "https://orrbiologicals.com/game/",
       "https://orrbiologicals.com/glossary",
+      "https://orrbiologicals.com/microalgae-cultivation/",
+      "https://orrbiologicals.com/photobioreactors/",
       "https://orrbiologicals.com/privacy",
       "https://orrbiologicals.com/research/"
     ],
