@@ -1,0 +1,19 @@
+{
+  "pages": 60,
+  "indexable": 58,
+  "sitemap_urls": 55,
+  "noindex_in_sitemap": [],
+  "missing_from_sitemap": [],
+  "intentional_sitemap_exclusions": [
+    "https://orrbiologicals.com/disclaimer",
+    "https://orrbiologicals.com/privacy",
+    "https://orrbiologicals.com/terms"
+  ],
+  "missing_descriptions": [],
+  "orphans_in_html": [],
+  "duplicate_titles": [],
+  "live_status_counts": {
+    "200": 73,
+    "404": 1
+  }
+}

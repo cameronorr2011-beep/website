@@ -1,5 +1,5 @@
 {
-  "testedAt": "2026-10-04T21:43:22.703Z",
+  "testedAt": "2026-10-05T01:33:54.379Z",
   "target": "http://127.0.0.1:8876",
   "results": [
     {
@@ -46,12 +46,12 @@
       ],
       "nav": [
         {
-          "ttfb": 15.099999904632568,
-          "domContentLoaded": 211.39999997615814
+          "ttfb": 15.299999952316284,
+          "domContentLoaded": 144.79999995231628
         }
       ],
       "metrics": {
-        "lcp": null,
+        "lcp": 112,
         "cls": 0.016401280721028647,
         "longTasks": []
       },
@@ -107,13 +107,13 @@
       ],
       "nav": [
         {
-          "ttfb": 11,
-          "domContentLoaded": 54.200000047683716
+          "ttfb": 9.799999952316284,
+          "domContentLoaded": 43.799999952316284
         }
       ],
       "metrics": {
         "lcp": null,
-        "cls": 0,
+        "cls": 0.016401280721028647,
         "longTasks": []
       },
       "payload": {
@@ -212,21 +212,21 @@
       ],
       "nav": [
         {
-          "ttfb": 15.399999976158142,
-          "domContentLoaded": 110.29999995231628
+          "ttfb": 12.800000071525574,
+          "domContentLoaded": 109.39999997615814
         }
       ],
       "metrics": {
-        "lcp": 164,
-        "cls": 0.027833742062250776,
+        "lcp": 152,
+        "cls": 0.050727192083994545,
         "longTasks": []
       },
       "payload": {
-        "requests": 7,
-        "transferred": 40043,
+        "requests": 6,
+        "transferred": 39252,
         "js": 8887,
         "css": 26378,
-        "images": 3577
+        "images": 2786
       }
     },
     {
@@ -317,21 +317,21 @@
       ],
       "nav": [
         {
-          "ttfb": 10.200000047683716,
-          "domContentLoaded": 86.5
+          "ttfb": 12.299999952316284,
+          "domContentLoaded": 96.60000002384186
         }
       ],
       "metrics": {
         "lcp": 116,
-        "cls": 0.034909619251887,
+        "cls": 0.03477997199694316,
         "longTasks": []
       },
       "payload": {
-        "requests": 7,
-        "transferred": 39591,
+        "requests": 6,
+        "transferred": 38800,
         "js": 8887,
         "css": 26378,
-        "images": 3125
+        "images": 2334
       }
     },
     {
@@ -422,12 +422,12 @@
       ],
       "nav": [
         {
-          "ttfb": 10.199999928474426,
-          "domContentLoaded": 92.89999997615814
+          "ttfb": 9.600000023841858,
+          "domContentLoaded": 95.89999997615814
         }
       ],
       "metrics": {
-        "lcp": 108,
+        "lcp": 116,
         "cls": 0.027816109471850925,
         "longTasks": []
       },
@@ -527,21 +527,21 @@
       ],
       "nav": [
         {
-          "ttfb": 10,
-          "domContentLoaded": 91.29999995231628
+          "ttfb": 12.599999904632568,
+          "domContentLoaded": 84.69999992847443
         }
       ],
       "metrics": {
-        "lcp": 108,
-        "cls": 0.027908667484919228,
+        "lcp": 100,
+        "cls": 0.02777902022997538,
         "longTasks": []
       },
       "payload": {
-        "requests": 6,
-        "transferred": 38360,
+        "requests": 7,
+        "transferred": 39151,
         "js": 8887,
         "css": 26378,
-        "images": 1894
+        "images": 2685
       }
     },
     {
@@ -632,8 +632,8 @@
       ],
       "nav": [
         {
-          "ttfb": 9.900000095367432,
-          "domContentLoaded": 86.90000009536743
+          "ttfb": 8.199999928474426,
+          "domContentLoaded": 91.19999992847443
         }
       ],
       "metrics": {
@@ -642,11 +642,11 @@
         "longTasks": []
       },
       "payload": {
-        "requests": 7,
-        "transferred": 38689,
+        "requests": 6,
+        "transferred": 37898,
         "js": 8887,
         "css": 26378,
-        "images": 2223
+        "images": 1432
       }
     },
     {
@@ -737,12 +737,12 @@
       ],
       "nav": [
         {
-          "ttfb": 10.299999952316284,
-          "domContentLoaded": 101.19999992847443
+          "ttfb": 11.5,
+          "domContentLoaded": 91.69999992847443
         }
       ],
       "metrics": {
-        "lcp": 124,
+        "lcp": 108,
         "cls": 0.027816109471850925,
         "longTasks": []
       },
@@ -805,16 +805,14 @@
       ],
       "nav": [
         {
-          "ttfb": 14.200000047683716,
-          "domContentLoaded": 141.70000004768372
+          "ttfb": 10.5,
+          "domContentLoaded": 154.79999995231628
         }
       ],
       "metrics": {
         "lcp": null,
         "cls": 0.02171591520309448,
-        "longTasks": [
-          72
-        ]
+        "longTasks": []
       },
       "payload": {
         "requests": 10,
@@ -912,21 +910,21 @@
       ],
       "nav": [
         {
-          "ttfb": 24.09999990463257,
-          "domContentLoaded": 153.5
+          "ttfb": 17.799999952316284,
+          "domContentLoaded": 115.39999997615814
         }
       ],
       "metrics": {
-        "lcp": 180,
-        "cls": 0.03552972033288744,
+        "lcp": 132,
+        "cls": 0.0348170612388187,
         "longTasks": []
       },
       "payload": {
-        "requests": 6,
-        "transferred": 39281,
+        "requests": 7,
+        "transferred": 40072,
         "js": 8887,
         "css": 26378,
-        "images": 2815
+        "images": 3606
       }
     },
     {
@@ -1017,16 +1015,14 @@
       ],
       "nav": [
         {
-          "ttfb": 22.700000047683716,
-          "domContentLoaded": 178.10000002384186
+          "ttfb": 25,
+          "domContentLoaded": 132.60000002384186
         }
       ],
       "metrics": {
-        "lcp": 208,
-        "cls": 0.035622278345955743,
-        "longTasks": [
-          51
-        ]
+        "lcp": 164,
+        "cls": 0.03477997199694316,
+        "longTasks": []
       },
       "payload": {
         "requests": 6,
@@ -1124,16 +1120,14 @@
       ],
       "nav": [
         {
-          "ttfb": 29.300000071525574,
-          "domContentLoaded": 196.40000009536743
+          "ttfb": 27,
+          "domContentLoaded": 195.5
         }
       ],
       "metrics": {
-        "lcp": 248,
+        "lcp": 244,
         "cls": 0.028635919067594738,
-        "longTasks": [
-          50
-        ]
+        "longTasks": []
       },
       "payload": {
         "requests": 6,
@@ -1231,16 +1225,14 @@
       ],
       "nav": [
         {
-          "ttfb": 25.600000023841858,
-          "domContentLoaded": 188.20000004768372
+          "ttfb": 30.299999952316284,
+          "domContentLoaded": 199.89999997615814
         }
       ],
       "metrics": {
-        "lcp": 216,
+        "lcp": 224,
         "cls": 0.03565936758783128,
-        "longTasks": [
-          51
-        ]
+        "longTasks": []
       },
       "payload": {
         "requests": 6,
@@ -1338,16 +1330,14 @@
       ],
       "nav": [
         {
-          "ttfb": 22.100000023841858,
-          "domContentLoaded": 163.40000009536743
+          "ttfb": 27.800000071525574,
+          "domContentLoaded": 215.90000009536743
         }
       ],
       "metrics": {
-        "lcp": 184,
+        "lcp": 236,
         "cls": 0.03565936758783128,
-        "longTasks": [
-          50
-        ]
+        "longTasks": []
       },
       "payload": {
         "requests": 6,
@@ -1451,15 +1441,15 @@
       ],
       "nav": [
         {
-          "ttfb": 25.199999928474426,
-          "domContentLoaded": 212.19999992847443
+          "ttfb": 25,
+          "domContentLoaded": 229.5
         }
       ],
       "metrics": {
-        "lcp": 236,
+        "lcp": 244,
         "cls": 0.029445062544610767,
         "longTasks": [
-          58
+          56
         ]
       },
       "payload": {
@@ -1564,15 +1554,15 @@
       ],
       "nav": [
         {
-          "ttfb": 23.899999976158142,
-          "domContentLoaded": 198.69999992847443
+          "ttfb": 36,
+          "domContentLoaded": 266.2000000476837
         }
       ],
       "metrics": {
-        "lcp": 212,
+        "lcp": 312,
         "cls": 0.028907818171713087,
         "longTasks": [
-          54
+          61
         ]
       },
       "payload": {
@@ -1677,15 +1667,15 @@
       ],
       "nav": [
         {
-          "ttfb": 23.300000071525574,
-          "domContentLoaded": 166.70000004768372
+          "ttfb": 33.10000002384186,
+          "domContentLoaded": 235.89999997615814
         }
       ],
       "metrics": {
-        "lcp": 200,
-        "cls": 0.028169949889183046,
+        "lcp": 284,
+        "cls": 0.028882608983251783,
         "longTasks": [
-          56
+          55
         ]
       },
       "payload": {
@@ -1790,23 +1780,23 @@
       ],
       "nav": [
         {
-          "ttfb": 23.40000009536743,
-          "domContentLoaded": 170.5
+          "ttfb": 28.59999990463257,
+          "domContentLoaded": 200.69999992847443
         }
       ],
       "metrics": {
-        "lcp": 208,
+        "lcp": 244,
         "cls": 0.028895213577482436,
         "longTasks": [
-          57
+          54
         ]
       },
       "payload": {
-        "requests": 6,
-        "transferred": 38859,
+        "requests": 7,
+        "transferred": 39650,
         "js": 8887,
         "css": 26378,
-        "images": 2393
+        "images": 3184
       }
     },
     {
@@ -1903,15 +1893,15 @@
       ],
       "nav": [
         {
-          "ttfb": 26.5,
-          "domContentLoaded": 168.79999995231628
+          "ttfb": 30.800000071525574,
+          "domContentLoaded": 221.90000009536743
         }
       ],
       "metrics": {
-        "lcp": 192,
+        "lcp": 256,
         "cls": 0.028934828016493056,
         "longTasks": [
-          60
+          56
         ]
       },
       "payload": {
@@ -2016,15 +2006,15 @@
       ],
       "nav": [
         {
-          "ttfb": 24.399999976158142,
-          "domContentLoaded": 175.89999997615814
+          "ttfb": 26.299999952316284,
+          "domContentLoaded": 193.19999992847443
         }
       ],
       "metrics": {
-        "lcp": 192,
+        "lcp": 208,
         "cls": 0.02942988846037123,
         "longTasks": [
-          54
+          52
         ]
       },
       "payload": {
@@ -2129,15 +2119,15 @@
       ],
       "nav": [
         {
-          "ttfb": 26.899999976158142,
-          "domContentLoaded": 187.19999992847443
+          "ttfb": 27.200000047683716,
+          "domContentLoaded": 200.39999997615814
         }
       ],
       "metrics": {
-        "lcp": 204,
+        "lcp": 212,
         "cls": 0.02896003720495436,
         "longTasks": [
-          59
+          52
         ]
       },
       "payload": {
@@ -2242,15 +2232,15 @@
       ],
       "nav": [
         {
-          "ttfb": 23.100000023841858,
-          "domContentLoaded": 173.89999997615814
+          "ttfb": 27.200000047683716,
+          "domContentLoaded": 186.5
         }
       ],
       "metrics": {
-        "lcp": 208,
+        "lcp": 220,
         "cls": 0.028855599138471813,
         "longTasks": [
-          51
+          53
         ]
       },
       "payload": {
@@ -2355,23 +2345,23 @@
       ],
       "nav": [
         {
-          "ttfb": 28.200000047683716,
-          "domContentLoaded": 181.40000009536743
+          "ttfb": 27.200000047683716,
+          "domContentLoaded": 177.20000004768372
         }
       ],
       "metrics": {
-        "lcp": 216,
+        "lcp": 208,
         "cls": 0.028936508629057143,
         "longTasks": [
-          58
+          53
         ]
       },
       "payload": {
-        "requests": 6,
-        "transferred": 38092,
+        "requests": 7,
+        "transferred": 38883,
         "js": 8887,
         "css": 26378,
-        "images": 1626
+        "images": 2417
       }
     },
     {
@@ -2468,15 +2458,15 @@
       ],
       "nav": [
         {
-          "ttfb": 28.899999976158142,
-          "domContentLoaded": 197.20000004768372
+          "ttfb": 24.699999928474426,
+          "domContentLoaded": 184.5
         }
       ],
       "metrics": {
-        "lcp": 212,
+        "lcp": 208,
         "cls": 0.028907818171713087,
         "longTasks": [
-          59
+          54
         ]
       },
       "payload": {
@@ -2575,16 +2565,14 @@
       ],
       "nav": [
         {
-          "ttfb": 38.300000071525574,
-          "domContentLoaded": 184.30000007152557
+          "ttfb": 23.899999976158142,
+          "domContentLoaded": 164.5
         }
       ],
       "metrics": {
-        "lcp": 200,
-        "cls": 0.028635919067594738,
-        "longTasks": [
-          54
-        ]
+        "lcp": 176,
+        "cls": 0.02850627181265089,
+        "longTasks": []
       },
       "payload": {
         "requests": 6,
@@ -2649,12 +2637,12 @@
       ],
       "nav": [
         {
-          "ttfb": 30.5,
-          "domContentLoaded": 194.5
+          "ttfb": 28.100000023841858,
+          "domContentLoaded": 190.10000002384186
         }
       ],
       "metrics": {
-        "lcp": 224,
+        "lcp": 236,
         "cls": 0.16844451416863335,
         "longTasks": []
       },
@@ -2721,16 +2709,14 @@
       ],
       "nav": [
         {
-          "ttfb": 22.40000009536743,
-          "domContentLoaded": 160.5
+          "ttfb": 27.799999952316284,
+          "domContentLoaded": 190.59999990463257
         }
       ],
       "metrics": {
-        "lcp": 192,
+        "lcp": 216,
         "cls": 0.16781419134140016,
-        "longTasks": [
-          53
-        ]
+        "longTasks": []
       },
       "payload": {
         "requests": 5,
@@ -2795,16 +2781,14 @@
       ],
       "nav": [
         {
-          "ttfb": 28.09999990463257,
-          "domContentLoaded": 183.09999990463257
+          "ttfb": 29.59999990463257,
+          "domContentLoaded": 192
         }
       ],
       "metrics": {
-        "lcp": 208,
+        "lcp": 216,
         "cls": 0.16791374635696413,
-        "longTasks": [
-          55
-        ]
+        "longTasks": []
       },
       "payload": {
         "requests": 5,
@@ -2869,13 +2853,13 @@
       ],
       "nav": [
         {
-          "ttfb": 22.90000009536743,
-          "domContentLoaded": 149.20000004768372
+          "ttfb": 28.300000071525574,
+          "domContentLoaded": 178.10000002384186
         }
       ],
       "metrics": {
-        "lcp": 188,
-        "cls": 0.14916901510291627,
+        "lcp": 200,
+        "cls": 0.16703283041053346,
         "longTasks": []
       },
       "payload": {
@@ -2941,12 +2925,12 @@
       ],
       "nav": [
         {
-          "ttfb": 25.5,
-          "domContentLoaded": 170.79999995231628
+          "ttfb": 27.800000071525574,
+          "domContentLoaded": 186
         }
       ],
       "metrics": {
-        "lcp": 188,
+        "lcp": 204,
         "cls": 0.17302915791670484,
         "longTasks": []
       },
@@ -3013,12 +2997,12 @@
       ],
       "nav": [
         {
-          "ttfb": 21.799999952316284,
-          "domContentLoaded": 167.60000002384186
+          "ttfb": 26.899999976158142,
+          "domContentLoaded": 200.70000004768372
         }
       ],
       "metrics": {
-        "lcp": 184,
+        "lcp": 220,
         "cls": 0.16699069550302292,
         "longTasks": []
       },
@@ -3085,16 +3069,14 @@
       ],
       "nav": [
         {
-          "ttfb": 26.199999928474426,
-          "domContentLoaded": 153.39999997615814
+          "ttfb": 29.800000071525574,
+          "domContentLoaded": 198.20000004768372
         }
       ],
       "metrics": {
-        "lcp": 184,
-        "cls": 0.1528642026848263,
-        "longTasks": [
-          52
-        ]
+        "lcp": 216,
+        "cls": 0.1707280179924435,
+        "longTasks": []
       },
       "payload": {
         "requests": 5,
@@ -3159,15 +3141,15 @@
       ],
       "nav": [
         {
-          "ttfb": 26.899999976158142,
-          "domContentLoaded": 186.5
+          "ttfb": 29,
+          "domContentLoaded": 177.60000002384186
         }
       ],
       "metrics": {
-        "lcp": 208,
+        "lcp": 200,
         "cls": 0.19395724995930988,
         "longTasks": [
-          53
+          51
         ]
       },
       "payload": {
@@ -3233,12 +3215,12 @@
       ],
       "nav": [
         {
-          "ttfb": 27.600000023841858,
-          "domContentLoaded": 185.5
+          "ttfb": 27.399999976158142,
+          "domContentLoaded": 184.79999995231628
         }
       ],
       "metrics": {
-        "lcp": 208,
+        "lcp": 204,
         "cls": 0.16505333428912694,
         "longTasks": []
       },
@@ -3305,13 +3287,13 @@
       ],
       "nav": [
         {
-          "ttfb": 26.100000023841858,
-          "domContentLoaded": 171.60000002384186
+          "ttfb": 27.600000023841858,
+          "domContentLoaded": 166.70000004768372
         }
       ],
       "metrics": {
-        "lcp": 188,
-        "cls": 0.1685059894323349,
+        "lcp": 192,
+        "cls": 0.17018916767173342,
         "longTasks": []
       },
       "payload": {
@@ -3377,8 +3359,8 @@
       ],
       "nav": [
         {
-          "ttfb": 28.399999976158142,
-          "domContentLoaded": 179.60000002384186
+          "ttfb": 25.800000071525574,
+          "domContentLoaded": 180.20000004768372
         }
       ],
       "metrics": {
@@ -3413,20 +3395,20 @@
       ],
       "nav": [
         {
-          "ttfb": 23.799999952316284,
-          "domContentLoaded": 274
+          "ttfb": 32.10000002384186,
+          "domContentLoaded": 278.7999999523163
         }
       ],
       "metrics": {
-        "lcp": 292,
+        "lcp": 296,
         "cls": 0.056947916865348815,
         "longTasks": [
-          168
+          155
         ]
       },
       "payload": {
         "requests": 6,
-        "transferred": 80172,
+        "transferred": 86426,
         "js": 8887,
         "css": 26378,
         "images": 0
@@ -3487,16 +3469,14 @@
       ],
       "nav": [
         {
-          "ttfb": 24.5,
-          "domContentLoaded": 194.69999992847443
+          "ttfb": 26.600000023841858,
+          "domContentLoaded": 183.10000002384186
         }
       ],
       "metrics": {
-        "lcp": 216,
+        "lcp": 208,
         "cls": 0.14960130302111307,
-        "longTasks": [
-          53
-        ]
+        "longTasks": []
       },
       "payload": {
         "requests": 5,
@@ -3561,16 +3541,14 @@
       ],
       "nav": [
         {
-          "ttfb": 27.899999976158142,
-          "domContentLoaded": 180.89999997615814
+          "ttfb": 28.699999928474426,
+          "domContentLoaded": 183.39999997615814
         }
       ],
       "metrics": {
         "lcp": 200,
         "cls": 0.1522656388282776,
-        "longTasks": [
-          56
-        ]
+        "longTasks": []
       },
       "payload": {
         "requests": 5,
@@ -3635,8 +3613,8 @@
       ],
       "nav": [
         {
-          "ttfb": 29.100000023841858,
-          "domContentLoaded": 175.70000004768372
+          "ttfb": 26.399999976158142,
+          "domContentLoaded": 175.39999997615814
         }
       ],
       "metrics": {
@@ -3710,8 +3688,8 @@
       ],
       "nav": [
         {
-          "ttfb": 22.5,
-          "domContentLoaded": 151.5
+          "ttfb": 30.799999952316284,
+          "domContentLoaded": 171.70000004768372
         }
       ],
       "metrics": {
@@ -3782,12 +3760,12 @@
       ],
       "nav": [
         {
-          "ttfb": 25.899999976158142,
-          "domContentLoaded": 200.89999997615814
+          "ttfb": 28.600000023841858,
+          "domContentLoaded": 184.5
         }
       ],
       "metrics": {
-        "lcp": 224,
+        "lcp": 208,
         "cls": 0.16715756179226768,
         "longTasks": []
       },
@@ -3854,12 +3832,12 @@
       ],
       "nav": [
         {
-          "ttfb": 26.699999928474426,
-          "domContentLoaded": 261.10000002384186
+          "ttfb": 26.799999952316284,
+          "domContentLoaded": 167.5
         }
       ],
       "metrics": {
-        "lcp": 280,
+        "lcp": 184,
         "cls": 0.15388452192147573,
         "longTasks": []
       },
@@ -3926,12 +3904,12 @@
       ],
       "nav": [
         {
-          "ttfb": 26.40000009536743,
-          "domContentLoaded": 237
+          "ttfb": 20.600000023841858,
+          "domContentLoaded": 181.60000002384186
         }
       ],
       "metrics": {
-        "lcp": 252,
+        "lcp": 204,
         "cls": 0.1497434264024099,
         "longTasks": []
       },
@@ -3998,14 +3976,16 @@
       ],
       "nav": [
         {
-          "ttfb": 33.200000047683716,
-          "domContentLoaded": 178.29999995231628
+          "ttfb": 33.300000071525574,
+          "domContentLoaded": 191.60000002384186
         }
       ],
       "metrics": {
-        "lcp": 192,
+        "lcp": 208,
         "cls": 0.1522220284541448,
-        "longTasks": []
+        "longTasks": [
+          50
+        ]
       },
       "payload": {
         "requests": 5,
@@ -4070,13 +4050,13 @@
       ],
       "nav": [
         {
-          "ttfb": 27.200000047683716,
-          "domContentLoaded": 183.20000004768372
+          "ttfb": 30.100000023841858,
+          "domContentLoaded": 227.10000002384186
         }
       ],
       "metrics": {
-        "lcp": 200,
-        "cls": 0.1728476307524575,
+        "lcp": 248,
+        "cls": 0.17401853051450517,
         "longTasks": []
       },
       "payload": {
@@ -4142,16 +4122,14 @@
       ],
       "nav": [
         {
-          "ttfb": 21.90000009536743,
-          "domContentLoaded": 153.30000007152557
+          "ttfb": 28.5,
+          "domContentLoaded": 171.39999997615814
         }
       ],
       "metrics": {
-        "lcp": 184,
+        "lcp": 208,
         "cls": 0.15280311563279894,
-        "longTasks": [
-          50
-        ]
+        "longTasks": []
       },
       "payload": {
         "requests": 5,
@@ -4216,16 +4194,14 @@
       ],
       "nav": [
         {
-          "ttfb": 20.700000047683716,
-          "domContentLoaded": 169.89999997615814
+          "ttfb": 26.600000023841858,
+          "domContentLoaded": 162.60000002384186
         }
       ],
       "metrics": {
-        "lcp": 188,
+        "lcp": 176,
         "cls": 0.14733092733224232,
-        "longTasks": [
-          50
-        ]
+        "longTasks": []
       },
       "payload": {
         "requests": 5,
@@ -4290,13 +4266,13 @@
       ],
       "nav": [
         {
-          "ttfb": 30.199999928474426,
-          "domContentLoaded": 192
+          "ttfb": 30.300000071525574,
+          "domContentLoaded": 191.10000002384186
         }
       ],
       "metrics": {
-        "lcp": 204,
-        "cls": 0.15059200836552517,
+        "lcp": 208,
+        "cls": 0.1491768119732539,
         "longTasks": []
       },
       "payload": {
@@ -4362,16 +4338,16 @@
       ],
       "nav": [
         {
-          "ttfb": 38.5,
-          "domContentLoaded": 1173.6999999284744
+          "ttfb": 35.60000002384186,
+          "domContentLoaded": 1120.3000000715256
         }
       ],
       "metrics": {
-        "lcp": 1176,
+        "lcp": 1132,
         "cls": 0.0004571202198664347,
         "longTasks": [
-          141,
-          349
+          138,
+          314
         ]
       },
       "payload": {
@@ -4393,16 +4369,14 @@
       "schemas": [],
       "nav": [
         {
-          "ttfb": 25,
-          "domContentLoaded": 202.10000002384186
+          "ttfb": 30.5,
+          "domContentLoaded": 282.5
         }
       ],
       "metrics": {
-        "lcp": 244,
-        "cls": 0.08804540198379093,
-        "longTasks": [
-          64
-        ]
+        "lcp": 316,
+        "cls": 0.08499881153636508,
+        "longTasks": []
       },
       "payload": {
         "requests": 5,
@@ -4456,8 +4430,8 @@
       ],
       "nav": [
         {
-          "ttfb": 25,
-          "domContentLoaded": 163.30000007152557
+          "ttfb": 26.700000047683716,
+          "domContentLoaded": 166.30000007152557
         }
       ],
       "metrics": {
@@ -4466,11 +4440,11 @@
         "longTasks": []
       },
       "payload": {
-        "requests": 4,
-        "transferred": 35265,
+        "requests": 5,
+        "transferred": 36056,
         "js": 8887,
         "css": 26378,
-        "images": 0
+        "images": 791
       }
     },
     {
@@ -4518,16 +4492,17 @@
       ],
       "nav": [
         {
-          "ttfb": 26,
-          "domContentLoaded": 1392.1000000238419
+          "ttfb": 29.600000023841858,
+          "domContentLoaded": 1366.3999999761581
         }
       ],
       "metrics": {
-        "lcp": 900,
+        "lcp": 852,
         "cls": 0.03176676535606384,
         "longTasks": [
-          106,
-          397
+          94,
+          367,
+          63
         ]
       },
       "payload": {
@@ -4582,21 +4557,21 @@
       ],
       "nav": [
         {
-          "ttfb": 26.200000047683716,
-          "domContentLoaded": 231.5
+          "ttfb": 25.100000023841858,
+          "domContentLoaded": 232.60000002384186
         }
       ],
       "metrics": {
-        "lcp": null,
+        "lcp": 252,
         "cls": 0.016401280721028647,
         "longTasks": []
       },
       "payload": {
-        "requests": 4,
-        "transferred": 35265,
+        "requests": 5,
+        "transferred": 36056,
         "js": 8887,
         "css": 26378,
-        "images": 0
+        "images": 791
       }
     },
     {
@@ -4643,8 +4618,8 @@
       ],
       "nav": [
         {
-          "ttfb": 24.199999928474426,
-          "domContentLoaded": 157
+          "ttfb": 34.700000047683716,
+          "domContentLoaded": 193
         }
       ],
       "metrics": {
@@ -4653,11 +4628,11 @@
         "longTasks": []
       },
       "payload": {
-        "requests": 4,
-        "transferred": 35265,
+        "requests": 5,
+        "transferred": 36056,
         "js": 8887,
         "css": 26378,
-        "images": 0
+        "images": 791
       }
     },
     {
@@ -4671,12 +4646,12 @@
       "schemas": [],
       "nav": [
         {
-          "ttfb": 25.899999976158142,
-          "domContentLoaded": 193.39999997615814
+          "ttfb": 22.200000047683716,
+          "domContentLoaded": 184
         }
       ],
       "metrics": {
-        "lcp": 220,
+        "lcp": 204,
         "cls": 0.06509759995672439,
         "longTasks": []
       },
@@ -4732,12 +4707,12 @@
       ],
       "nav": [
         {
-          "ttfb": 24.799999952316284,
-          "domContentLoaded": 149.10000002384186
+          "ttfb": 27.700000047683716,
+          "domContentLoaded": 159
         }
       ],
       "metrics": {
-        "lcp": 160,
+        "lcp": null,
         "cls": 0.016401280721028647,
         "longTasks": []
       },
@@ -4760,12 +4735,12 @@
       "schemas": [],
       "nav": [
         {
-          "ttfb": 24.700000047683716,
-          "domContentLoaded": 168.10000002384186
+          "ttfb": 24.100000023841858,
+          "domContentLoaded": 170.60000002384186
         }
       ],
       "metrics": {
-        "lcp": 184,
+        "lcp": 192,
         "cls": 0.10085968905025058,
         "longTasks": []
       },

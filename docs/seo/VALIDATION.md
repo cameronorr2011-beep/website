@@ -103,3 +103,12 @@ Long animation/simulation tasks remain visible; preserve simulations and schedul
 2. Verify 301 destinations for Pavlova, old control-loop, index aliases and known leaf slash variants; confirm arbitrary missing routes remain 404 and partials are denied.
 3. Confirm static directory with JavaScript disabled, corrected font response, preserved simulations and mobile layout on production.
 4. Submit sitemap in the existing verified Search Console property, inspect representative canonical URLs and begin the audit's measurement schedule.
+
+## Post-deploy verification (2026-10-05, performed)
+
+- PR #1 merged (81dffb2); the production host pulls from `main` automatically and served the merge within about a minute (robots.txt `last-modified` matched the merge time).
+- Full live re-crawl (`docs/seo/postdeploy/`): 73 of 74 checks 200; the only 404 is the intentional canary. Verified live: `/pavlova-lutheri` 301 → species page, `/control-loop-architecture` 301 → blog article, `/algaephyte` 301 → `/algaephyte/`, `/index` and `/blog/index` 301 to canonical directories, `/cyanoflow/` 301, `/sections/*` and `/tools/*` 403, corrected font URL 200, 55-URL sitemap without legal/`/game/` URLs.
+- A follow-up defect found and fixed in PR #2 (f3a3ab4): the legacy prefix `Redirect 301 /docs` ran before the per-directory 403 rule and soft-200'd `/docs/*` to the homepage. Now exact-match; `/docs/seo/AUDIT.md` returns 403 live, `/docs` still redirects.
+- Browser QA on production (`live-browser.json`): 5 routes with new titles, LCP 340–980 ms, CLS ≤ 0.16 (lab metrics; field CWV still unverified), mobile 390 px without overflow, both simulations respond, all redirect chains correct, zero console errors and zero failed requests except the intentional canary.
+- Limitation discovered: the host's bot challenge returns 403 "Checking your browser…" to JavaScript-disabled browsers, so a no-JS crawler cannot see the blog directory even though the served HTML contains the static links (confirmed by fetch: `id="kb"` with 25 static `/blog/` links). `qa_seo.mjs` now reports this interception instead of a false zero. Whether search crawlers are exempt is a hosting-panel setting outside this repository; not verified.
+- Steps 1–3 above are done; step 4 (Search Console submission) still requires the operator's authenticated property.

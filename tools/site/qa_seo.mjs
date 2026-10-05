@@ -74,8 +74,16 @@ export default async function run(page) {
   const pauseLabel = await toggle.textContent();
   if (!/RESUME|PLAY|RUN/i.test(pauseLabel)) throw new Error(`Cyanoflow simulation did not pause: ${pauseLabel}`);
   const noJS = await page.context().browser().newContext({javaScriptEnabled: false});
-  const plain = await noJS.newPage(); await plain.goto(base + '/blog/');
-  const staticLinks = await plain.locator('#kb a[href^="/blog/"]').count();
+  const plain = await noJS.newPage();
+  const noJSResponse = await plain.goto(base + '/blog/', {waitUntil: 'load'});
+  const noJSTitle = await plain.title();
+  // Some hosts serve an interstitial bot challenge ("Checking your browser…")
+  // to JavaScript-disabled browsers. That page contains no KB links, so record
+  // the interception honestly instead of reporting a false zero.
+  const noJSChallenged = noJSResponse.status() !== 200 || /just a moment|checking your browser/i.test(noJSTitle);
+  const staticLinks = noJSChallenged
+    ? `unavailable: host bot challenge returned ${noJSResponse.status()} to the no-JS request`
+    : await plain.locator('#kb a[href^="/blog/"]').count();
   if (!live && staticLinks !== 23) throw new Error(`Static directory missing: ${staticLinks}`);
   await noJS.close();
   const redirects = [];
