@@ -151,6 +151,13 @@ class SEOTests(unittest.TestCase):
         self.assertNotIn('Redirect 301 /research', text)
         self.assertLess(text.index('index(?:\\.html)?'), text.index('# --- clean URLs:'))
         self.assertIn('RewriteRule ^(?:sections|tools|docs)', text)
+        # The /docs convenience redirect must be exact-match: a prefix
+        # `Redirect 301 /docs` (mod_alias) runs before the per-directory F
+        # rule and would 301 every /docs/* artifact to the homepage instead
+        # of letting the F rule block it with 403.
+        docs_lines = [line for line in text.splitlines() if line.startswith('Redirect') and '/docs' in line]
+        self.assertEqual(len(docs_lines), 1)
+        self.assertEqual(docs_lines[0].strip(), 'RedirectMatch 301 ^/docs/?$ /#journal')
 
 
 if __name__ == '__main__': unittest.main()
