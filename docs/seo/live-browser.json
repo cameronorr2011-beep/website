@@ -1,13 +1,13 @@
 {
-  "testedAt": "2026-10-04T21:21:06.280Z",
+  "testedAt": "2026-10-05T01:34:55.414Z",
   "target": "https://orrbiologicals.com",
   "results": [
     {
       "path": "/",
       "status": 200,
-      "title": "Orr Biologicals — Making algae biotech more accessible",
+      "title": "Algae Biotechnology, Cultivation & Single-Cell Research | Orr Biologicals",
       "h1": [
-        "Algae biotechshould be easierto get into."
+        "Algae biotechnologyresearch, cultivationand single cells."
       ],
       "canonical": "https://orrbiologicals.com/",
       "schemas": [
@@ -47,74 +47,103 @@
       ],
       "nav": [
         {
-          "ttfb": 132.79999995231628,
-          "domContentLoaded": 1317.8999999761581
+          "ttfb": 177.09999990463257,
+          "domContentLoaded": 519.6999999284744
         }
       ],
       "metrics": {
-        "lcp": 528,
-        "cls": 0.0005868350267410279,
-        "longTasks": [
-          206,
-          366
-        ]
+        "lcp": 544,
+        "cls": 0.03176676535606384,
+        "longTasks": []
       },
       "payload": {
-        "requests": 30,
-        "transferred": 625481,
+        "requests": 27,
+        "transferred": 207311,
         "js": 14366,
         "css": 26062,
-        "images": 583570
+        "images": 165400
       }
     },
     {
       "path": "/cyanoflow",
       "status": 200,
-      "title": "Cyanoflow — AI-powered single-cell discovery for microalgal biotechnology | Orr Biologicals",
+      "title": "Single-Cell Microalgae Research with Microfluidics | Cyanoflow",
       "h1": [
-        "Cyanoflow"
+        "CyanoflowSingle-cell microalgae research"
       ],
       "canonical": "https://orrbiologicals.com/cyanoflow",
       "schemas": [
         {
           "@context": "https://schema.org",
-          "@type": "Product",
-          "name": "Cyanoflow",
-          "description": "A developing research platform combining microfluidics, automated microscopy, computer vision and AI to isolate, observe, measure and identify individual microalgal cells.",
-          "url": "https://orrbiologicals.com/cyanoflow",
-          "brand": {
-            "@type": "Brand",
-            "name": "Orr Biologicals"
-          }
+          "@graph": [
+            {
+              "@type": "WebPage",
+              "@id": "https://orrbiologicals.com/cyanoflow#page",
+              "url": "https://orrbiologicals.com/cyanoflow",
+              "name": "Single-cell microalgae research with microfluidics",
+              "about": {
+                "@id": "https://orrbiologicals.com/cyanoflow#concept"
+              }
+            },
+            {
+              "@type": "CreativeWork",
+              "@id": "https://orrbiologicals.com/cyanoflow#concept",
+              "name": "Cyanoflow research concept",
+              "description": "A proposed single-cell microalgal workflow using microfluidic compartments, time-series microscopy and feature extraction. In development; no validated hardware performance is claimed.",
+              "url": "https://orrbiologicals.com/cyanoflow",
+              "creator": {
+                "@type": "Organization",
+                "name": "Orr Biologicals",
+                "url": "https://orrbiologicals.com/"
+              }
+            },
+            {
+              "@type": "BreadcrumbList",
+              "itemListElement": [
+                {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "Orr Biologicals",
+                  "item": "https://orrbiologicals.com/"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 2,
+                  "name": "Cyanoflow",
+                  "item": "https://orrbiologicals.com/cyanoflow"
+                }
+              ]
+            }
+          ]
         }
       ],
       "nav": [
         {
-          "ttfb": 86.10000002384186,
-          "domContentLoaded": 1256.6999999284744
+          "ttfb": 160.20000004768372,
+          "domContentLoaded": 509
         }
       ],
       "metrics": {
-        "lcp": null,
-        "cls": 0,
+        "lcp": 696,
+        "cls": 0.0004571202198664347,
         "longTasks": [
-          149
+          57
         ]
       },
       "payload": {
-        "requests": 12,
-        "transferred": 557076,
+        "requests": 10,
+        "transferred": 392122,
         "js": 12545,
         "css": 6305,
-        "images": 535214
+        "images": 372038
       }
     },
     {
       "path": "/blog/",
       "status": 200,
-      "title": "Blog — four algae papers, written up daily | Orr Biologicals",
+      "title": "Algae Cultivation Guides & Research Notes | Orr Biologicals",
       "h1": [
-        "The algae blog,updated every day"
+        "Algae cultivation guidesand research notes"
       ],
       "canonical": "https://orrbiologicals.com/blog/",
       "schemas": [
@@ -128,18 +157,20 @@
       ],
       "nav": [
         {
-          "ttfb": 132.69999992847443,
-          "domContentLoaded": 723.1000000238419
+          "ttfb": 170.29999995231628,
+          "domContentLoaded": 573.8999999761581
         }
       ],
       "metrics": {
-        "lcp": null,
-        "cls": 0,
-        "longTasks": []
+        "lcp": 624,
+        "cls": 0.05675092506408691,
+        "longTasks": [
+          123
+        ]
       },
       "payload": {
-        "requests": 5,
-        "transferred": 9907,
+        "requests": 6,
+        "transferred": 24025,
         "js": 3602,
         "css": 6305,
         "images": 0
@@ -150,7 +181,7 @@
       "status": 200,
       "title": "Applications: Microalgae and Phytoplankton Hub | Orr Biologicals",
       "h1": [
-        "Microalgae, without the guesswork"
+        "Microalgae knowledge: cultivation, species and applications"
       ],
       "canonical": "https://orrbiologicals.com/applications/",
       "schemas": [
@@ -196,21 +227,23 @@
       ],
       "nav": [
         {
-          "ttfb": 120.10000002384186,
-          "domContentLoaded": 571.1000000238419
+          "ttfb": 182.5,
+          "domContentLoaded": 585.3999999761581
         }
       ],
       "metrics": {
         "lcp": null,
-        "cls": 0,
-        "longTasks": []
+        "cls": 0.019831821918487546,
+        "longTasks": [
+          119
+        ]
       },
       "payload": {
-        "requests": 10,
-        "transferred": 16084,
+        "requests": 9,
+        "transferred": 16815,
         "js": 3602,
         "css": 6305,
-        "images": 3165
+        "images": 2605
       }
     },
     {
@@ -231,30 +264,57 @@
           "author": {
             "@type": "Organization",
             "name": "Orr Biologicals",
-            "url": "https://orrbiologicals.com/"
+            "url": "https://orrbiologicals.com/research/"
           },
           "publisher": {
             "@type": "Organization",
             "name": "Orr Biologicals",
             "url": "https://orrbiologicals.com/"
           },
-          "mainEntityOfPage": "https://orrbiologicals.com/blog/spirulina-is-a-cyanobacterium"
+          "mainEntityOfPage": "https://orrbiologicals.com/blog/spirulina-is-a-cyanobacterium",
+          "dateModified": "2026-10-04"
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Orr Biologicals",
+              "item": "https://orrbiologicals.com/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Research notes",
+              "item": "https://orrbiologicals.com/blog/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "Spirulina Is a Cyanobacterium — What That Actually Means",
+              "item": "https://orrbiologicals.com/blog/spirulina-is-a-cyanobacterium"
+            }
+          ]
         }
       ],
       "nav": [
         {
-          "ttfb": 86.10000002384186,
-          "domContentLoaded": 377
+          "ttfb": 172,
+          "domContentLoaded": 428
         }
       ],
       "metrics": {
-        "lcp": null,
-        "cls": 0.017358489990234375,
-        "longTasks": []
+        "lcp": 456,
+        "cls": 0.15388452192147573,
+        "longTasks": [
+          52
+        ]
       },
       "payload": {
         "requests": 5,
-        "transferred": 9907,
+        "transferred": 11108,
         "js": 3602,
         "css": 6305,
         "images": 0
@@ -283,24 +343,25 @@
     "after": "0.97",
     "pauseLabel": "RUN"
   },
-  "staticKnowledgeLinksWithoutJS": 0,
+  "staticKnowledgeLinksWithoutJS": "unavailable: host bot challenge returned 403 to the no-JS request",
   "redirects": [
     {
       "path": "/index.html",
       "status": 200,
-      "finalURL": "https://orrbiologicals.com/index",
+      "finalURL": "https://orrbiologicals.com/",
       "chain": [
         "https://orrbiologicals.com/index.html",
-        "https://orrbiologicals.com/index"
+        "https://orrbiologicals.com/"
       ]
     },
     {
       "path": "/blog/index.html",
       "status": 200,
-      "finalURL": "https://orrbiologicals.com/blog/index",
+      "finalURL": "https://orrbiologicals.com/blog/",
       "chain": [
         "https://orrbiologicals.com/blog/index.html",
-        "https://orrbiologicals.com/blog/index"
+        "https://orrbiologicals.com/blog/index",
+        "https://orrbiologicals.com/blog/"
       ]
     },
     {
@@ -315,26 +376,28 @@
     {
       "path": "/control-loop-architecture",
       "status": 200,
-      "finalURL": "https://orrbiologicals.com/#system",
+      "finalURL": "https://orrbiologicals.com/blog/control-loop-architecture",
       "chain": [
         "https://orrbiologicals.com/control-loop-architecture",
-        "https://orrbiologicals.com/"
+        "https://orrbiologicals.com/blog/control-loop-architecture"
       ]
     },
     {
       "path": "/pavlova-lutheri",
-      "status": 404,
-      "finalURL": "https://orrbiologicals.com/pavlova-lutheri",
+      "status": 200,
+      "finalURL": "https://orrbiologicals.com/applications/species/pavlova",
       "chain": [
-        "https://orrbiologicals.com/pavlova-lutheri"
+        "https://orrbiologicals.com/pavlova-lutheri",
+        "https://orrbiologicals.com/applications/species/pavlova"
       ]
     },
     {
       "path": "/cyanoflow/",
-      "status": 404,
-      "finalURL": "https://orrbiologicals.com/cyanoflow/",
+      "status": 200,
+      "finalURL": "https://orrbiologicals.com/cyanoflow",
       "chain": [
-        "https://orrbiologicals.com/cyanoflow/"
+        "https://orrbiologicals.com/cyanoflow/",
+        "https://orrbiologicals.com/cyanoflow"
       ]
     },
     {
@@ -347,43 +410,6 @@
     }
   ],
   "errors": [],
-  "failures": [
-    {
-      "url": "https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..700&family=Source+Serif+4:opsz,wght@8..60,0..560&family=IBM+Plex+Mono:wght@400;500;600&display=swap",
-      "error": "net::ERR_BLOCKED_BY_ORB"
-    },
-    {
-      "url": "https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..700&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,0..560&display=swap",
-      "error": "net::ERR_BLOCKED_BY_ORB"
-    },
-    {
-      "url": "https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..700&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,0..560&display=swap",
-      "error": "net::ERR_BLOCKED_BY_ORB"
-    },
-    {
-      "url": "https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..700&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,0..560&display=swap",
-      "error": "net::ERR_BLOCKED_BY_ORB"
-    },
-    {
-      "url": "https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..700&family=Source+Serif+4:opsz,wght@8..60,0..560&family=IBM+Plex+Mono:wght@400;500;600&display=swap",
-      "error": "net::ERR_BLOCKED_BY_ORB"
-    },
-    {
-      "url": "https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..700&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,0..560&display=swap",
-      "error": "net::ERR_BLOCKED_BY_ORB"
-    },
-    {
-      "url": "https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..700&family=Source+Serif+4:opsz,wght@8..60,0..560&family=IBM+Plex+Mono:wght@400;500;600&display=swap",
-      "error": "net::ERR_BLOCKED_BY_ORB"
-    },
-    {
-      "url": "https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..700&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,0..560&display=swap",
-      "error": "net::ERR_BLOCKED_BY_ORB"
-    },
-    {
-      "url": "https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..700&family=Source+Serif+4:opsz,wght@8..60,0..560&family=IBM+Plex+Mono:wght@400;500;600&display=swap",
-      "error": "net::ERR_BLOCKED_BY_ORB"
-    }
-  ],
+  "failures": [],
   "fieldINP": "Not available: these are lab/browser checks, not real-user field metrics"
 }
