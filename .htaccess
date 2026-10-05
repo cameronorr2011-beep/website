@@ -22,6 +22,9 @@ Options -Indexes
 RewriteEngine On
 
 # Source partials, audit artifacts and tooling are not public landing pages.
+# NOTE: this mod_rewrite rule runs in the per-directory phase, AFTER mod_alias
+# Redirects. Never add a prefix `Redirect 301 /docs ...` here or it would win
+# over this F rule (see the exact-match /docs redirect below).
 RewriteRule ^(?:sections|tools|docs)(?:/|$) - [F,L]
 
 # Normalize directory index aliases before the generic .html redirect.
@@ -84,7 +87,10 @@ Redirect 301 /federated-learning-network               /blog/federated-learning-
 Redirect 301 /federated-learning-biotech               /#mesh
 Redirect 301 /troubleshooting                          /#faults
 Redirect 301 /faq                                      /#faq
-Redirect 301 /docs                                     /#journal
+# Exact match only: a prefix `Redirect /docs` would 301 every /docs/* path to
+# the homepage before the docs 403 rule above can run, leaking audit artifacts
+# as soft-200s instead of blocking them.
+RedirectMatch 301 ^/docs/?$ /#journal
 Redirect 301 /main-dashboard                           /#simulation
 Redirect 301 /pbr_simulation                           /#simulation
 Redirect 301 /contact                                  /#deploy
