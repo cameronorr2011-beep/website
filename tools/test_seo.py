@@ -134,9 +134,32 @@ class SEOTests(unittest.TestCase):
             for link in ('/microalgae-cultivation/', '/photobioreactors/', '/algaephyte/', '/cyanoflow'):
                 self.assertIn('href="' + link + '"', text)
         blog = (ROOT / 'blog/index.html').read_text(encoding='utf-8')
-        self.assertLess(blog.index('id="kb"'), blog.index('id="picks"'))
+        self.assertLess(blog.index('id="picks"'), blog.index('id="kb"'))
         for public in ('/blog/', '/applications/', '/cyanoflow', '/assets/', '/blog/data/'):
             self.assertNotIn('Disallow: ' + public, (ROOT / 'robots.txt').read_text())
+
+    def test_header_navigation_is_consistent(self):
+        expected = ('/#inside', '/applications/', '/algaephyte/', '/cyanoflow', '/blog/', '/game/', '/#deploy')
+        for path in pages():
+            text = path.read_text(encoding='utf-8-sig')
+            m = re.search(r'<header class="nav"[^>]*>[\s\S]*?</header>', text)
+            if not m: continue
+            header = m.group(0)
+            with self.subTest(page=route(path)):
+                for href in expected:
+                    self.assertIn('href="' + href + '"', header)
+                self.assertNotIn('/#products', header)
+                self.assertNotIn('Pilot access', header)
+                self.assertIn('>Contact</a>', header)
+        home = (ROOT / 'index.html').read_text(encoding='utf-8')
+        for href in ('/blog/', '/game/', '/algaephyte/', '/cyanoflow'):
+            self.assertIn('href="' + href + '"', home)
+
+    def test_prose_links_are_not_underlined(self):
+        css = (ROOT / 'css/extras.css').read_text(encoding='utf-8')
+        m = re.search(r'\.prose a\{[^}]*\}', css)
+        self.assertTrue(m, '.prose a rule missing')
+        self.assertNotIn('text-decoration', m.group(0))
 
     def test_google_font_ranges_are_valid(self):
         for path in pages():
