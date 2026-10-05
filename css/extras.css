@@ -51,7 +51,7 @@
 .prose h3{font-family:"Bricolage Grotesque",system-ui,sans-serif;font-size:1.15rem;margin:1.8em 0 .6em;color:var(--ink)}
 .prose ul,.prose ol{margin:0 0 1.25em 1.4em;line-height:1.8;color:var(--ink-soft)}
 .prose strong{color:var(--ink)}
-.prose a{color:var(--leaf-deep);text-decoration:underline;text-underline-offset:3px}
+.prose a{color:var(--leaf-deep)}
 .prose blockquote{border-left:2px solid var(--leaf);margin:1.5em 0;padding:.2em 0 .2em 1.2em;color:var(--ink);font-style:italic}
 .prose code{font-family:"IBM Plex Mono",monospace;font-size:.9em;background:var(--leaf-soft);padding:1px 6px;border-radius:5px}
 .art-foot{margin-top:56px;padding-top:28px;border-top:1px solid var(--rule);display:flex;flex-wrap:wrap;gap:10px}

@@ -112,3 +112,10 @@ Long animation/simulation tasks remain visible; preserve simulations and schedul
 - Browser QA on production (`live-browser.json`): 5 routes with new titles, LCP 340–980 ms, CLS ≤ 0.16 (lab metrics; field CWV still unverified), mobile 390 px without overflow, both simulations respond, all redirect chains correct, zero console errors and zero failed requests except the intentional canary.
 - Limitation discovered: the host's bot challenge returns 403 "Checking your browser…" to JavaScript-disabled browsers, so a no-JS crawler cannot see the blog directory even though the served HTML contains the static links (confirmed by fetch: `id="kb"` with 25 static `/blog/` links). `qa_seo.mjs` now reports this interception instead of a false zero. Whether search crawlers are exempt is a hosting-panel setting outside this repository; not verified.
 - Steps 1–3 above are done; step 4 (Search Console submission) still requires the operator's authenticated property.
+
+## UI consistency pass (2026-10-05)
+
+- Prose links no longer underlined: `.prose a` keeps the leaf colour but drops `text-decoration` (the site-wide `a { text-decoration: none }` rules are unchanged).
+- Header navigation unified on every subpage: System, Applications, Algaephyte, Cyanoflow, Blog, Game plus a single `Contact` CTA. The `Products` item and `Pilot access` label are gone; the homepage dropdown and the `/#products` anchor remain as valid targets. `sections/header.html` and the `inject_header.py` template match the shipped pages, so future `build_research.py` output stays consistent.
+- `/blog/` now leads with the four daily AI picks (`#picks`) above the evergreen directory (`#kb`); pick cards still render client-side from `/blog/data/picks/index.json`.
+- Regression coverage: 19 tests pass, including two new invariants (header link set on every subpage header; the `.prose a` rule may not set `text-decoration`) and the flipped picks-before-KB order assertion. Local browser QA clean: 23 static KB links, both simulations, no overflow at 390 px, zero console errors (`docs/seo/postdeploy-fix-local/`).
