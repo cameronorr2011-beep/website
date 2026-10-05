@@ -1,0 +1,55 @@
+{
+  "date": "2026-10-05",
+  "model": "openai/gpt-oss-120b",
+  "generated_at": "2026-10-05T23:54:21Z",
+  "picks": [
+    {
+      "pmid": "42826801",
+      "title": "Species- and reactor-aware machine learning for prediction and optimization of microalgal biomass productivity in photobioreactor-based bioresource systems.",
+      "journal": "Bioresource technology",
+      "year": "2026",
+      "pub_date": "2026-10-02",
+      "url": "https://doi.org/10.1016/j.biortech.2026.136000",
+      "topic": "Cultivation Optimization",
+      "hook": "Machine learning predicts and boosts microalgal biomass in photobioreactors.",
+      "article": "A recent study set out to improve how we predict and boost the amount of biomass that microalgae can produce in photobioreactors. The researchers built a machine‑learning system that takes into account both the specific algae species and the design of the reactor.\n\nThey trained the model using data on different microalgal strains, cultivation conditions such as light and nutrients, and various reactor configurations. The approach combines species‑specific information with reactor‑level parameters to forecast volumetric productivity, which is the amount of biomass generated per unit reactor volume.\n\nThe new framework can predict how changes in species choice or reactor design will affect biomass output, allowing users to identify optimal combinations without extensive trial‑and‑error experiments.\n\nThis capability is valuable because it can speed up the development of algae‑based bioproducts and make large‑scale cultivation more efficient.",
+      "why": "Accurate predictions help scale algae production for fuels, foods, and bioproducts, reducing time and cost."
+    },
+    {
+      "pmid": "42803859",
+      "title": "Quorum sensing molecules enhance cadmium detoxification and cellular removal in the marine diatom Phaeodactylum tricornutum.",
+      "journal": "World journal of microbiology &amp; biotechnology",
+      "year": "2026",
+      "pub_date": "2026-09-28",
+      "url": "https://doi.org/10.1007/s11274-026-05294-1",
+      "topic": "Pollution Detox",
+      "hook": "Quorum‑sensing molecules help diatoms remove cadmium more efficiently.",
+      "article": "A recent study set out to see whether bacterial quorum‑sensing molecules called cyan‑homoserine lactones (AHLs) can help a marine diatom, Phaeodactylum tricornutum, cope with cadmium, a toxic metal.\n\nThe researchers added exogenous AHLs to cultures of the diatom and monitored cell growth, metabolic changes, and how much cadmium the cells removed from the surrounding water.\n\nThey found that the AHLs influenced the diatom’s physiology and enhanced its ability to detoxify and physically remove cadmium, although the abstract does not give precise numbers.\n\nThese results suggest that natural microbial signals could be harnessed to improve algal strategies for cleaning up metal‑contaminated marine environments.",
+      "why": "Using bacterial signals to boost algae’s metal‑removal capacity could aid bioremediation of polluted waters."
+    },
+    {
+      "pmid": "42503266",
+      "title": "Species-specific susceptibility of green algae Raphidocelis subcapitata and Chlorella vulgaris to the exposure of microplastic leachates.",
+      "journal": "Aquatic toxicology (Amsterdam, Netherlands)",
+      "year": "2026",
+      "pub_date": "2026-07-17",
+      "url": "https://doi.org/10.1016/j.aquatox.2026.107939",
+      "topic": "Microplastic Toxicity",
+      "hook": "Green algae show species‑specific sensitivity to microplastic leachates.",
+      "article": "A recent study set out to see how chemicals that leach out of common plastics affect two types of freshwater green algae. The researchers exposed the algae Chlorella vulgaris and Raphidocelis subcapitata to water containing leachates from polyvinyl chloride (PVC) and polyisocyanurate (PIR) at concentrations of 1, 2, 5 and 15 g L⁻¹ for 14 days.\n\nGrowth inhibition was observed in R. subcapitata when it was exposed to the PVC leachate. The abstract does not report effects on C. vulgaris or on the PIR leachate.\n\nThese findings suggest that some algae are more vulnerable to chemicals released from certain plastics, highlighting a potential route by which microplastic pollution can impact freshwater ecosystems.",
+      "why": "Understanding algae sensitivity helps gauge how plastic pollution may alter water quality and ecosystem health."
+    },
+    {
+      "pmid": "42390732",
+      "title": "Deciphering Melatonin-Driven Bioenergy Reprogramming Through Integrated Physiological and Metabolomic Analyses in Dunaliella salina.",
+      "journal": "Applied biochemistry and biotechnology",
+      "year": "2026",
+      "pub_date": "2026-07-02",
+      "url": "https://doi.org/10.1007/s12010-026-05805-8",
+      "topic": "Bioenergy Reprogramming",
+      "hook": "Melatonin triggers metabolic shifts that enhance Dunaliella’s bioenergy output.",
+      "article": "A recent study set out to explore how melatonin influences the way the microalga Dunaliella salina directs its carbon and manages its redox balance, aiming to improve its usefulness for bioenergy.\n\nThe researchers grew D. salina in a two‑stage cultivation system and added melatonin during the first stage, then examined physiological responses and metabolite profiles.\n\nThe abstract does not provide specific results, so no concrete findings can be reported.\n\nUnderstanding melatonin’s role could help optimise algal production for renewable energy applications.",
+      "why": "Insights into melatonin signaling may enable more efficient algae‑based biofuel production."
+    }
+  ]
+}
