@@ -1,7 +1,16 @@
 User-agent: *
 Allow: /
 Disallow: /sections/
+Disallow: /tools/
+Disallow: /docs/
+Disallow: /backend/
+Disallow: /admin/
+Disallow: /api/
+Disallow: /.dev-tools/
 Disallow: /build.ps1
+Disallow: /rebuild.ps1
 Disallow: /README.md
 
+# blog/data remains crawlable because the public literature briefs fetch it.
+# robots rules are not authentication and do not replace server access rules.
 Sitemap: https://orrbiologicals.com/sitemap.xml

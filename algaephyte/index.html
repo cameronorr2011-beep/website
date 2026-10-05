@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI-Assisted Microalgae Cultivation Research | Algaephyte</title>
+<meta name="description" content="Explore Algaephyte’s proposed sensor-based cultivation, digital twin and bounded automation. Research design goals, not validated hardware or deployed products.">
+<link rel="canonical" href="https://orrbiologicals.com/algaephyte/">
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<meta property="og:type" content="website">
+<meta property="og:title" content="AI-Assisted Microalgae Cultivation Research | Algaephyte">
+<meta property="og:description" content="Explore Algaephyte’s proposed sensor-based cultivation, digital twin and bounded automation. Research design goals, not validated hardware or deployed products.">
+<meta property="og:url" content="https://orrbiologicals.com/algaephyte/">
+<meta property="og:image" content="https://orrbiologicals.com/assets/og.png">
+<meta property="og:site_name" content="Orr Biologicals">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AI-Assisted Microalgae Cultivation Research | Algaephyte">
+<meta name="twitter:description" content="Explore Algaephyte’s proposed sensor-based cultivation, digital twin and bounded automation. Research design goals, not validated hardware or deployed products.">
+<meta name="twitter:image" content="https://orrbiologicals.com/assets/og.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebPage", "@id": "https://orrbiologicals.com/algaephyte/#page", "url": "https://orrbiologicals.com/algaephyte/", "name": "AI-Assisted Microalgae Cultivation Research | Algaephyte", "description": "Explore Algaephyte’s proposed sensor-based cultivation, digital twin and bounded automation. Research design goals, not validated hardware or deployed products.", "isPartOf": {"@id": "https://orrbiologicals.com/#site"}}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Orr Biologicals", "item": "https://orrbiologicals.com/"}, {"@type": "ListItem", "position": 2, "name": "Algaephyte: AI-assisted microalgae cultivation research", "item": "https://orrbiologicals.com/algaephyte/"}]}]}</script>
+<link rel="stylesheet" href="/css/extras.css">
+<link rel="stylesheet" href="/css/header.css?v=20260926a">
+</head>
+<body class="art-body">
+<header class="nav" id="nav">
+  <div class="nav-in">
+    <a class="mark" href="/" aria-label="Orr Biologicals home">
+      <svg viewBox="0 0 28 28" aria-hidden="true">
+        <circle cx="14" cy="14" r="13" fill="none" stroke="currentColor" stroke-opacity="0.35"/>
+        <path d="M7 20c2.6-2.2 2.6-9.8 7-9.8S16.4 20 21 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" class="dash-flow"/>
+        <path d="M6 12c2.6-2.2 2.6-6 7-6s4.4 3.8 7 6" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-opacity="0.55" class="dash-flow"/>
+      </svg>
+      <span><b>Orr Biologicals</b><small>ALGAEPHYTE &middot; CYANOFLOW</small></span>
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="/#inside">System</a>
+      <a href="/#products">Products</a>
+      <a href="/applications/">Applications</a>
+      <a href="/cyanoflow">Cyanoflow</a>
+      <a href="/blog/">Blog</a>
+      <a href="/game/">Game</a>
+      <a class="btn-white" href="/#deploy">Contact</a>
+    </nav>
+    <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
+  </div>
+</header>
+<div class="mobile-menu" id="mobileMenu" hidden>
+  <a href="/#inside">System</a>
+  <a href="/#products">Products</a>
+  <a href="/applications/">Applications</a>
+  <a href="/cyanoflow">Cyanoflow</a>
+  <a href="/blog/">Blog</a>
+  <a href="/game/">Game</a>
+  <a href="/#deploy">Contact</a>
+</div>
+<main class="art-shell"><nav class="art-top" aria-label="Breadcrumb"><a href="/">Orr Biologicals</a> / <a href="/research/">Research methods</a></nav>
+<p class="art-cat">Educational research guide · Concepts, not validated hardware</p><h1>Algaephyte: AI-assisted microalgae cultivation research</h1>
+<p class="art-meta">By <a href="/research/">Orr Biologicals</a> · Published <time datetime="2026-10-04">October 4, 2026</time></p>
+<div class="prose">
+<p class="dek">Algaephyte is Orr Biologicals' proposed intelligent microalgae cultivation system. It combines culture-level sensors, a growth model, optional camera analysis and bounded control proposals. It is a research concept in development, not a validated reactor or commercially deployed product.</p>
+<h2>What question does Algaephyte address?</h2>
+<p>The question is whether documented observations and a calibrated model can help a grower understand changing conditions without handing unrestricted actuator control to an AI model. Unlike <a href="/cyanoflow">Cyanoflow's single-cell discovery workflow</a>, Algaephyte concerns the environment of a growing culture: chemistry, illumination, mixing and gas exchange.</p>
+<p><a href="/microalgae-cultivation/">Microalgae cultivation fundamentals</a> establish the biology; <a href="/photobioreactors/">photobioreactor design</a> establishes why vessel geometry and transport matter. The hardware/software proposals on the <a href="/#inside">interactive architecture page</a> still require assembly, calibration and fault testing.</p>
+<h2>Sensors: different signals, not one health number</h2>
+<p>The proposed inputs are pH, temperature, wall irradiance, optical density, dissolved oxygen and conductivity. Each can be wrong or ambiguous. An optical-density calibration depends on wavelength, path length, organism and conditions; cameras measure image features, not biochemical composition [1].</p>
+<p>Read <a href="/blog/six-culture-signals-main-senses">the six-channel sensor concept</a>, <a href="/blog/dissolved-oxygen-stress-signal">DO interpretation</a> and <a href="/blog/alkalinity-as-a-control-variable">alkalinity and carbon chemistry</a>. Record the measurement process before claiming an instrument detects a biological change.</p>
+<h2>Digital twin: predictions need held-out tests</h2>
+<p>Candidate model components include nutrient-quota kinetics, light-response curves and light attenuation. Their presence does not establish correct parameters or a useful forecast horizon. <a href="/blog/digital-twins-biological-cultivation">A biological digital twin</a> must be connected to observations; <a href="/blog/digital-twin-droop-steele-model">Droop and Steele design notes</a> explain some selected assumptions.</p>
+<p>Test predictions on runs or time periods excluded from fitting, document residual errors and specify where the model should refuse a forecast. The <a href="/#simulation">living culture simulation</a> is educational; its outputs are not measured reactor yield.</p>
+<h2>Computer vision and edge AI</h2>
+<p>Local camera inference may offer another evidence stream, but bubbles, debris, focus and unseen organisms can confound classification. The <a href="/blog/vision-contamination-detection">vision limitations note</a> and <a href="/blog/edge-ai-biological-systems">edge-AI tradeoffs</a> are design context. No accuracy, inference speed, power draw or contamination-detection performance is established for an assembled Algaephyte instrument.</p>
+<h2>Bounded automation: proposals do not own pumps</h2>
+<p>The proposed architecture separates fixed software limits, model-based checks and independent actuator-controller limits. Optional assistant output should never bypass these controls. <a href="/blog/control-loop-architecture">The control-loop design</a> and <a href="/blog/bounded-autonomy-safe-ai-proposals">bounded AI proposals</a> describe intended behavior, not safety certification.</p>
+<div class="app-table-wrap" role="region" aria-label="Scientific comparison table" tabindex="0"><table class="app-table"><thead><tr><th>Condition</th><th>Required design response to test</th></tr></thead><tbody>
+<tr><td>Stale or implausible sensor reading</td><td>Reject unsupported actions; expose uncertainty to the operator.</td></tr>
+<tr><td>Malformed assistant proposal</td><td>Reject incomplete units, rate or mass limits rather than guess.</td></tr>
+<tr><td>Lost network or optional inference</td><td>Do not rely on the missing component for actuator permission.</td></tr>
+<tr><td>Hardware command/output disagreement</td><td>Use independently tested watchdogs, clamps and physical stop paths.</td></tr>
+</tbody></table></div>
+<p>These are requirements for future tests. A plausible diagram or multiple software checks do not demonstrate independent physical protection.</p>
+<h2>Research status and next experiments</h2>
+<p>Priorities are sensor calibration, model identification, matched prediction/observation runs and fault injection. Any future performance report should disclose strain, medium, reactor geometry, energy inputs, replicates, exclusions and failed runs. A proposed parameter-sharing network also needs privacy and compatibility testing; read <a href="/blog/federated-learning-network">the mesh design</a>.</p>
+<p>The site makes no finished reactor offer, validated deployment, cultivation improvement or food-safety claim. <a href="/research/">Research status and methodology</a> defines the labels used here; <a href="/disclaimer">the scientific disclaimer</a> sets the safety scope.</p>
+<h2>Source reading and next steps</h2>
+<p>[1] <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9368473/">Schagerl et al. (2022), Estimating biomass and vitality of microalgae</a> supports the discussion of measurement proxies. For vessel selection, see <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9033726/">Benner et al. (2022), lab-scale photobioreactors</a>. Neither source validates Orr Biologicals hardware.</p>
+<p>Next: inspect <a href="/#system">the existing proposed control loop</a>, explore <a href="/#simulation">the model interface</a>, or <a href="/#deploy">discuss a research question</a>.</p>
+</div>
+<nav class="art-foot" aria-label="Next reading"><a href="/research/">Research methods</a><a href="/glossary">Glossary</a><a href="/blog/">All research notes</a><a href="/cyanoflow">Cyanoflow</a><a href="/privacy">Privacy</a><a href="/terms">Terms</a></nav></main>
+<script src="/js/consent.js" defer></script>
+<script src="/js/navigation.js?v=20260930a" defer></script>
+</body>
+</html>

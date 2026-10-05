@@ -21,6 +21,18 @@ Options -Indexes
 <IfModule mod_rewrite.c>
 RewriteEngine On
 
+# Source partials, audit artifacts and tooling are not public landing pages.
+RewriteRule ^(?:sections|tools|docs)(?:/|$) - [F,L]
+
+# Normalize directory index aliases before the generic .html redirect.
+RewriteCond %{THE_REQUEST} \s/+(.*/)?index(?:\.html)?(?:[?\s]) [NC]
+RewriteRule ^(?:.*/)?index(?:\.html)?$ /%1 [R=301,L]
+
+# Only normalize a leaf slash when its real HTML document exists.
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{DOCUMENT_ROOT}/$1.html -f
+RewriteRule ^(.+)/$ /$1 [R=301,L]
+
 # --- canonical host: force https + non-www ---------------------------------
 RewriteCond %{HTTPS} !=on [OR]
 RewriteCond %{HTTP_HOST} ^www\. [NC]
@@ -40,23 +52,25 @@ Redirect 301 /digital-twins-biological-cultivation     /blog/digital-twins-biolo
 Redirect 301 /spirulina-is-a-cyanobacterium            /blog/spirulina-is-a-cyanobacterium
 Redirect 301 /articles                                 /blog/
 RedirectMatch 301 ^/insights/?$ /blog/
-Redirect 301 /control-loop-architecture                /blog/control-loop-architecture
+RedirectMatch 301 ^/control-loop-architecture(?:\.html)?/?$ /blog/control-loop-architecture
 Redirect 301 /cultivation                              /blog/
 Redirect 301 /reading-your-culture                     /blog/reading-your-culture
 Redirect 301 /winter-home-growing-warmth               /blog/winter-home-growing-warmth
 
 # Product / concept equivalents on the rebuilt homepage
-Redirect 301 /research                                 /#system
+# /research/ is now a real topic and methodology hub.
+RedirectMatch 301 ^/research$ /research/
 Redirect 301 /technology                               /#stack
 Redirect 301 /projects                                 /#stack
 Redirect 301 /lab                                      /game/
-Redirect 301 /algaephyte                               /
+# Algaephyte now has a dedicated research pillar; preserve the no-slash alias.
+RedirectMatch 301 ^/algaephyte$ /algaephyte/
 # Exact-match only: a plain `Redirect /applications /applications/` prefix-matches
 # the trailing-slash path too and loops forever (ERR_TOO_MANY_REDIRECTS).
 RedirectMatch 301 ^/applications$ /applications/
 RedirectMatch 301 ^/blog$ /blog/
 Redirect 301 /what-is-main-plain-language              /blog/what-is-main-plain-language
-Redirect 301 /control-loop-architecture                /#system
+# Restored control-loop article redirect is defined above (never homepage).
 Redirect 301 /alkalinity-as-a-control-variable         /blog/alkalinity-as-a-control-variable
 Redirect 301 /dissolved-oxygen-stress-signal           /blog/dissolved-oxygen-stress-signal
 Redirect 301 /six-culture-signals-main-senses          /blog/six-culture-signals-main-senses
@@ -80,6 +94,8 @@ Redirect 301 /mycophyte                                /
 
 # Cyanoflow research platform (standalone page)
 RedirectMatch 301 ^/CyanoFlow/?$ /cyanoflow
+# Legacy species page still appears in search results.
+RedirectMatch 301 ^/pavlova-lutheri(?:\.html)?/?$ /applications/species/pavlova
 
 # --- clean URLs: serve /slug -> slug.html (internal), and 301 the reverse --
 RewriteCond %{THE_REQUEST} \s/([^\s?]+)\.html[\s?] [NC]

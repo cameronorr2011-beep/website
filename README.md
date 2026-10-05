@@ -1,4 +1,42 @@
-# Algaephyte — Standalone Edge Intelligence | Orr Biologicals
+# Orr Biologicals — algae cultivation and single-cell research
+
+## Current build and SEO checks
+
+`index.html` is generated from **`sections/head.html` and
+`sections/home-body.html`**. Edit those source partials, not the generated page.
+Other historical `sections/` fragments are unused archival material and are
+not assembled. Both `build.ps1` and `rebuild.ps1` run the current modular build;
+the destructive legacy single-file splitter has been retired.
+
+```bash
+python tools/site/build_seo.py
+python -m unittest discover -s tools -p 'test_*.py'
+python tools/site/seo_audit.py --out docs/seo/current
+python tools/site/serve_preview.py  # http://127.0.0.1:8876
+```
+
+The build regenerates the homepage, seven curated knowledge resources,
+contextual topic links, static blog/Cyanoflow reading directories and the
+canonical sitemap. Sources for the resources are `build_research.py` and
+`topics.py`; shared article/species links live in `link_topics.py`.
+Privacy, terms and disclaimer remain accessible but are deliberately omitted
+from the search-content sitemap. Lastmod is never set to build time.
+`normalize_metadata.py` handles existing hand-maintained page metadata only;
+it must not copy a generated homepage back over authoritative source partials.
+Do not rerun the historical `enrich_notes.py` to date future unrelated edits:
+its explicit 2026-10-04 date documents this editorial update only.
+
+Full audit, individual page review, 40-topic roadmap, live baseline and
+measurement plan: [`docs/seo/AUDIT.md`](docs/seo/AUDIT.md). Browser tests:
+`tools/site/qa_seo.mjs` (Playwright Page script for the browser-automation runner).
+The preview does **not** execute Apache `.htaccess`; server redirects must be
+verified on Apache/production after merge and deployment. No TypeScript or
+package-manager build exists in this static repository.
+
+The historical architecture/refactor record below describes the older layout,
+not validated hardware performance or the current assembly source.
+
+---
 
 Refactored from the single-file `NEW 67.html` (≈1 MB, self-contained) into a
 modular, maintainable project. **Same website. Same functionality. Same visual
