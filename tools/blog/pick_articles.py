@@ -16,8 +16,10 @@ Once a day this script:
      website/data/picks/index.json (newest first) for the Blog tab.
 
 The picks rotate every day: each day gets a fresh selection from that
-day's search. Fail-closed: if search or selection fails, nothing is
-written and the script exits 1.
+day's search, and papers already picked in the last few days are
+excluded so the digest never leads with a repeat (unless the search is
+thin -- a repeated paper still beats a missing day). Fail-closed: if
+search or selection fails, nothing is written and the script exits 1.
 
 Env:
   groq_api_key (or GROQ_API_KEY) — Groq API key
@@ -46,6 +48,30 @@ MODEL = os.environ.get("GROQ_MODEL", "openai/gpt-oss-120b")
 
 EUTILS = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils"
 MAX_PICKS = 4
+
+# A paper must not lead the digest day after day: candidates already
+# picked in the last REPEAT_WINDOW_DAYS days are excluded before the AI
+# selection (saves tokens too). If exclusion would starve the day
+# (< 5 candidates), repeats are kept -- a digest with one repeated
+# paper beats a missing day.
+REPEAT_WINDOW_DAYS = 3
+
+
+def recent_picked_pmids(target: date, days: int = REPEAT_WINDOW_DAYS) -> set[str]:
+    """PMIDs picked on the `days` calendar days before `target`."""
+    picked: set[str] = set()
+    for offset in range(1, days + 1):
+        f = DATA_DIR / f"{(target - timedelta(days=offset)).isoformat()}.json"
+        if not f.exists():
+            continue
+        try:
+            for p in json.loads(f.read_text(encoding="utf-8")).get("picks", []):
+                pmid = str(p.get("pmid", "")).strip()
+                if pmid:
+                    picked.add(pmid)
+        except Exception as e:
+            log(f"warn: cannot read {f.name} for dedupe: {e}")
+    return picked
 
 # Topic families the AI chooses from — broad by design so the daily
 # rotation moves across biotech, fuels, health, climate and methods.
@@ -414,6 +440,16 @@ def main() -> int:
     start = (target - timedelta(days=seed_days)).strftime("%Y/%m/%d")
     pmids = pubmed_window(start, end)
     articles = fetch_articles(pmids)
+    recent = recent_picked_pmids(target)
+    fresh = [a for a in articles if a["pmid"] not in recent]
+    if len(fresh) >= 5:
+        if len(fresh) != len(articles):
+            log(f"dedupe: excluding {len(articles) - len(fresh)} candidate(s) "
+                f"already picked in the last {REPEAT_WINDOW_DAYS} days")
+        articles = fresh
+    else:
+        log(f"dedupe: only {len(fresh)} fresh candidate(s) -- keeping recent "
+            "repeats so the day still publishes")
     if len(articles) < 5:
         log("FAIL: too few candidates -- nothing written (fail-closed)")
         return 1

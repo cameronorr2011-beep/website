@@ -68,7 +68,7 @@
   <section id="picks" style="margin-top:72px">
     <p class="art-cat" style="margin-top:0">Today's four</p>
     <h2 class="sec-h2">Four papers, written up.</h2>
-    <p class="art-meta" style="margin-bottom:0">Selected from live PubMed search across biotech, health, climate, cultivation, blooms and single-cell methods — topical variety, real sources, no filler.</p>
+    <p class="art-meta" style="margin-bottom:0">Selected from live PubMed search across biotech, health, climate, cultivation, blooms and single-cell methods — topical variety, real sources, no filler. <span id="pkUpdated" hidden></span></p>
     <div class="rot-grid" id="pickGrid">
       <article class="rot-card pick-card" id="pk0" hidden>
         <span class="rot-thumb"><a class="pk-link" target="_blank" rel="noopener"><img class="pk-img" src="" alt="" loading="lazy"></a><span class="rt-chip pk-topic"></span></span>
@@ -191,6 +191,13 @@
     var days = (idx && idx.days) || [];
     if (!days.length || !days[0].picks || !days[0].picks.length) { picksError(); return; }
     var picks = days[0].picks.slice(0, 4);
+    var stamp = el("pkUpdated");
+    var sd = String(days[0].date || "").match(/^(\d{4})-(\d{2})-(\d{2})$/);
+    if (stamp && sd) {
+      var MONS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+      stamp.textContent = "Updated " + MONS[parseInt(sd[2], 10) - 1] + " " + parseInt(sd[3], 10) + ", " + sd[1] + ".";
+      stamp.hidden = false;
+    }
     var dayNum = parseInt(days[0].date.slice(8, 10), 10) || 0;
     var shown = 0;
     picks.forEach(function (p, i) {
