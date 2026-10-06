@@ -119,3 +119,9 @@ Long animation/simulation tasks remain visible; preserve simulations and schedul
 - Header navigation unified on every subpage: System, Applications, Algaephyte, Cyanoflow, Blog, Game plus a single `Contact` CTA. The `Products` item and `Pilot access` label are gone; the homepage dropdown and the `/#products` anchor remain as valid targets. `sections/header.html` and the `inject_header.py` template match the shipped pages, so future `build_research.py` output stays consistent.
 - `/blog/` now leads with the four daily AI picks (`#picks`) above the evergreen directory (`#kb`); pick cards still render client-side from `/blog/data/picks/index.json`.
 - Regression coverage: 19 tests pass, including two new invariants (header link set on every subpage header; the `.prose a` rule may not set `text-decoration`) and the flipped picks-before-KB order assertion. Local browser QA clean: 23 static KB links, both simulations, no overflow at 390 px, zero console errors (`docs/seo/postdeploy-fix-local/`).
+
+## Daily-picks ops notes (2026-10-05/06)
+
+- The 1 PM Pacific scheduled run never fired (both cron slots dropped by GitHub's scheduler); the workflow was run manually via `workflow_dispatch` (run 37390860337) and the day published at 23:54 UTC.
+- PR #5 added a 3-day dedupe in `pick_articles.py` and an "Updated <date>" stamp in the picks header. Because the day's file predated the fix, PR #6 removed `2026-10-05.json` and the workflow regenerated it with the dedupe active (run 37395309479: `dedupe: excluding 8 candidate(s)`; new picks 42805418, 42831353, 42766750, 42269881).
+- Hosting sync anomaly: merges (PR #1/#4/#5/#6) reached the production host in roughly a minute, but the bot's direct push to `main` (468946b, 00:43 UTC) did not trigger a sync — the docroot stayed at the 00:41:33 state for 20+ minutes. A merge was used to nudge the sync; if bot pushes routinely fail to deploy, the hosting-panel trigger needs attention (operator-side setting).
