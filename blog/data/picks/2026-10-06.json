@@ -1,0 +1,55 @@
+{
+  "date": "2026-10-06",
+  "model": "openai/gpt-oss-120b",
+  "generated_at": "2026-10-06T23:28:55Z",
+  "picks": [
+    {
+      "pmid": "42834671",
+      "title": "CRISPR-Cas Tools for Dissecting and Engineering Environmental Responses in Microalgae.",
+      "journal": "Plant, cell &amp; environment",
+      "year": "2026",
+      "pub_date": "2026-10-05",
+      "url": "https://doi.org/10.1111/pce.70903",
+      "topic": "Engineering",
+      "hook": "CRISPR tools enable precise tweaking of microalgae to boost light and temperature resilience.",
+      "article": "A recent study set out to develop CRISPR-Cas tools that allow precise genetic editing of microalgae, enabling researchers to understand and improve how these tiny photosynthetic organisms cope with changing light, temperature, nutrients and carbon dioxide.\n\nThe researchers applied CRISPR-associated proteins—molecular scissors guided by short RNA sequences—to microalgae cells, moving from random DNA insertion methods to targeted gene modifications. The work was carried out at the laboratory scale using standard molecular biology techniques.\n\nThey demonstrated that clustered regularly interspaced short palindromic repeats (CRISPR)‑Cas systems can be used to edit specific genes in microalgae, shifting the field from random transgene integration toward precise genome engineering.\n\nThis advancement is important because it opens the door to engineering algae that maintain high productivity under variable environmental conditions, which could benefit sustainable biofuel and bioproduct production.",
+      "why": "Precise gene editing can help create algae strains that grow well despite changing climates, boosting their use in biofuels and other green technologies."
+    },
+    {
+      "pmid": "42826800",
+      "title": "Alanine aminotransferase-acetyl-CoA carboxylase switching produces starch-rich bioethanol feedstock in Desmodesmus.",
+      "journal": "Bioresource technology",
+      "year": "2026",
+      "pub_date": "2026-10-02",
+      "url": "https://doi.org/10.1016/j.biortech.2026.135992",
+      "topic": "Biofuels",
+      "hook": "Switching key enzymes creates starch‑rich microalgae, a promising feedstock for bioethanol.",
+      "article": "A recent study set out to see whether tweaking two key enzymes could redirect carbon inside the tiny green alga Desmodesmus to make more starch, which can be turned into bioethanol. The researchers first altered the activity of alanine aminotransferase (ALT), an enzyme that links alanine and pyruvate, and then switched the function of acetyl‑CoA carboxylase (ACC), which normally drives lipid (fat) synthesis. They performed this sequential manipulation in nitrogen‑limited cultures of the strain Desmodesmus sp. CNW‑N, using a combination of physiological measurements, transcriptomics (gene‑expression profiling), enzyme assays, and inducible CRISPR‑based gene editing.\n\nThe integrated approach showed that the ALT‑mediated pathway and the ACC‑dependent lipid synthesis could be successfully re‑programmed, leading to a noticeable shift in how the cells allocated their internal carbon. The altered cells accumulated a higher proportion of starch while reducing lipid buildup, creating a feedstock richer in the carbohydrate needed for bioethanol production.\n\nThese findings demonstrate that precise enzyme switching can steer microalgal metabolism toward desired products, offering a potential route to more efficient, starch‑rich biofuel feedstocks.",
+      "why": "Redirecting carbon to starch in algae could make bioethanol production cheaper and more sustainable."
+    },
+    {
+      "pmid": "42803909",
+      "title": "Protective role of probiotics or Spirulina platensis supplementation against mercury-induced hematological, histopathological, and antioxidant-immune gene dysregulation in Nile Tilapia (Oreochromis niloticus).",
+      "journal": "Biometals : an international journal on the role of metal ions in biology, biochemistry, and medicine",
+      "year": "2026",
+      "pub_date": "2026-09-28",
+      "url": "https://doi.org/10.1007/s10534-026-00873-z",
+      "topic": "Health",
+      "hook": "Spirulina or probiotics shield fish from mercury toxicity, preserving blood and immune genes.",
+      "article": "A recent study set out to see whether adding beneficial bacteria (probiotics) or the blue‑green algae Spirulina platensis to the diet of Nile tilapia could lessen the harmful effects of mercury exposure.\n\nThe researchers fed groups of tilapia either a probiotic mix containing Bacillus subtilis, Lactobacillus plantarum and L. buchneri, or a diet supplemented with Spirulina, then exposed the fish to mercury and examined blood parameters, tissue structure and the activity of antioxidant and immune‑related genes.\n\nThe results showed that both the probiotic regimen and the Spirulina supplement provided protection against mercury‑induced disruptions in blood chemistry, tissue damage and the dysregulation of antioxidant‑immune genes.\n\nThese findings suggest that natural dietary additives could help safeguard farmed fish from heavy‑metal stress, supporting healthier aquaculture production.",
+      "why": "Probiotic or Spirulina feeds may protect farmed fish from mercury, improving safety and sustainability in aquaculture."
+    },
+    {
+      "pmid": "42801926",
+      "title": "Bacterial contamination control in Chlorella sorokiniana cultivation using NVC-H antimicrobial peptide.",
+      "journal": "Bioresource technology",
+      "year": "2026",
+      "pub_date": "2026-09-27",
+      "url": "https://doi.org/10.1016/j.biortech.2026.135960",
+      "topic": "Cultivation",
+      "hook": "An antimicrobial peptide curbs bacterial contamination, stabilizing large‑scale Chlorella growth.",
+      "article": "A recent study set out to see whether a synthetic antimicrobial peptide called NVC‑H could keep bacterial contamination under control in large‑scale cultures of the green microalga Chlorella sorokiniana.\n\nThe researchers added the NVC‑H peptide to Chlorella sorokiniana cultures and monitored its effect on bacterial growth. The work was done at a scale relevant to commercial microalgal production and tested both Gram‑positive and Gram‑negative bacterial strains.\n\nThe peptide displayed antibacterial activity against both Gram‑positive and Gram‑negative bacteria, with inhibition that varied depending on the bacterial strain.\n\nKeeping bacterial contamination in check is important for maintaining high algal biomass yields and stable processing conditions.",
+      "why": "Effective bacterial control can boost algae biomass production, making algal bioproducts more reliable and affordable."
+    }
+  ]
+}
