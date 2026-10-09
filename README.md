@@ -13,6 +13,9 @@ python tools/site/build_seo.py
 python -m unittest discover -s tools -p 'test_*.py'
 python tools/site/seo_audit.py --out docs/seo/current
 python tools/site/serve_preview.py  # http://127.0.0.1:8876
+node tools/test_lab_engine.mjs
+# with the preview running, use the browser-automation runner:
+node C:\Users\Cameron\.claude\skills\browser-automation\browser.mjs http://127.0.0.1:8876/game/ --script tools/qa_lab.mjs
 ```
 
 The build regenerates the homepage, seven curated knowledge resources,
@@ -31,7 +34,10 @@ measurement plan: [`docs/seo/AUDIT.md`](docs/seo/AUDIT.md). Browser tests:
 `tools/site/qa_seo.mjs` (Playwright Page script for the browser-automation runner).
 The preview does **not** execute Apache `.htaccess`; server redirects must be
 verified on Apache/production after merge and deployment. No TypeScript or
-package-manager build exists in this static repository.
+package-manager build exists in this static repository. The lab itself is a
+dependency-free browser module: its software-3D projection, fixed-step engine,
+local persistence, export/import, and mock sensor provider work without a
+package install, database, API key, or network service.
 
 The historical architecture/refactor record below describes the older layout,
 not validated hardware performance or the current assembly source.
