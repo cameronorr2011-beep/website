@@ -1,5 +1,6 @@
 import * as T from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { RoundedBoxGeometry } from 'three/addons/geometries/RoundedBoxGeometry.js';
 
 const presets = {
   laboratory: { eye: [11, 10, 15], target: [0, 2, 0] },
@@ -53,7 +54,7 @@ export class WebGLLab {
     if (label) { mesh.userData.label = label; this.pickables.push(mesh); }
     return mesh;
   }
-  box(size, mat, pos, parent, label) { return this.mesh(new T.BoxGeometry(...size), mat, pos, parent, label); }
+  box(size, mat, pos, parent, label) { const radius = Math.min(.1, ...size.map((value) => value / 5)); return this.mesh(new RoundedBoxGeometry(...size, radius, 3), mat, pos, parent, label); }
   cylinder(radius, height, mat, pos, parent, label) { return this.mesh(new T.CylinderGeometry(radius, radius, height, 40), mat, pos, parent, label); }
   tube(points, radius, mat, parent = this.lab) {
     const curve = new T.CatmullRomCurve3(points.map(point));
@@ -61,8 +62,7 @@ export class WebGLLab {
   }
   label(text, position, color = '#dcece2', width = 2.5, parent = this.lab) {
     const canvas = document.createElement('canvas'); canvas.width = 640; canvas.height = 90;
-    const ctx = canvas.getContext('2d'); ctx.fillStyle = 'rgba(4,15,12,.78)'; ctx.beginPath(); ctx.roundRect(4, 8, 632, 74, 18); ctx.fill();
-    ctx.fillStyle = color; ctx.font = '600 28px system-ui'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText(text, 320, 45);
+    const ctx = canvas.getContext('2d'); ctx.fillStyle = 'rgba(4,15,12,.92)'; ctx.font = '600 27px system-ui'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.lineWidth = 8; ctx.strokeStyle = 'rgba(4,15,12,.9)'; ctx.strokeText(text, 320, 45); ctx.fillStyle = color; ctx.fillText(text, 320, 45);
     const texture = new T.CanvasTexture(canvas); texture.colorSpace = T.SRGBColorSpace; this.textures.add(texture);
     const sprite = new T.Sprite(new T.SpriteMaterial({ map: texture, depthTest: false }));
     sprite.position.set(...position); sprite.scale.set(width, width * 90 / 640, 1); parent.add(sprite);
@@ -72,7 +72,7 @@ export class WebGLLab {
   buildLab() {
     const steel = material('#657a73', { metalness: .82, roughness: .25 });
     const dark = material('#162520'); const white = material('#d3ddd0', { roughness: .52 });
-    const glass = material('#9ed9ca', { transparent: true, opacity: .2, depthWrite: false, roughness: .08, metalness: .12, side: T.DoubleSide });
+    const glass = new T.MeshPhysicalMaterial({ color: '#9ed9ca', transparent: true, opacity: .24, depthWrite: false, roughness: .08, metalness: .05, transmission: .18, thickness: .7, clearcoat: .8, side: T.DoubleSide });
     const hose = material('#bad2c6', { transparent: true, opacity: .6 });
     this.box([17, .35, 9], material('#111d19', { metalness: .3, roughness: .45 }), [0, .25, 0]);
     this.box([17.2, .1, 9.2], material('#2b4439', { roughness: .65 }), [0, .48, 0]);

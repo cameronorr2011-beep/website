@@ -122,7 +122,7 @@ select.field { appearance: auto; }
 .workspace-card > p, .workspace-card h3 + p { max-width: 74ch; margin: 8px 0 0; color: var(--lab-soft); font: 14px/1.55 "Source Serif 4", Georgia, serif; }
 .card-heading { display: flex; align-items: flex-start; justify-content: space-between; gap: 15px; margin-bottom: 16px; }
 .card-heading > .eyebrow { padding-top: 4px; }
-.two-col { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(260px, .75fr); gap: 14px; }
+.two-col { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(260px, .75fr); gap: 14px; align-items: start; }
 .three-col { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 9px; }
 .mini-card { padding: 12px; border: 1px solid var(--lab-line); border-radius: 9px; background: rgba(3, 14, 10, .4); }
 .mini-card .mini-label { display: block; color: var(--lab-muted); font: 9px "IBM Plex Mono", monospace; letter-spacing: .08em; text-transform: uppercase; }
@@ -133,8 +133,9 @@ select.field { appearance: auto; }
 .note.warning { border-color: var(--lab-amber); background: rgba(255, 209, 102, .06); }
 .note.warning b { color: var(--lab-amber); }
 .action-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 15px; }
-.action-btn { padding: 9px 13px; border: 1px solid var(--lab-line-bright); border-radius: 8px; background: rgba(64, 178, 115, .12); color: var(--lab-green); font-size: 11px; cursor: pointer; }
+.action-btn { min-height: 36px; padding: 9px 14px; border: 1px solid var(--lab-line-bright); border-radius: 8px; background: linear-gradient(135deg, rgba(64, 178, 115, .22), rgba(31, 105, 79, .16)); color: var(--lab-green); font-size: 11px; font-weight: 600; cursor: pointer; box-shadow: 0 5px 16px rgba(0,0,0,.12); }
 .action-btn:hover { background: rgba(64, 178, 115, .22); }
+.action-btn:focus-visible, .control-btn:focus-visible, .text-btn:focus-visible, .camera-btn:focus-visible, .sound-btn:focus-visible { outline: 2px solid var(--lab-cyan); outline-offset: 2px; }
 .action-btn.secondary { border-color: var(--lab-line); background: rgba(5, 18, 14, .4); color: var(--lab-soft); }
 .action-btn.cyan { border-color: rgba(114, 222, 213, .45); background: rgba(114, 222, 213, .09); color: var(--lab-cyan); }
 .action-btn:disabled { opacity: .4; cursor: not-allowed; }
