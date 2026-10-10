@@ -41,6 +41,8 @@ a { color: inherit; }
 .data-pill i { animation: dataPulse 2.4s ease-in-out infinite; }
 .back-link { color: var(--lab-soft); font-size: 12px; text-decoration: none; }
 .back-link:hover { color: var(--lab-ink); }
+.sound-btn { padding: 6px 9px; border: 1px solid var(--lab-line); border-radius: 7px; background: rgba(7, 20, 15, .4); color: var(--lab-muted); font: 10px "IBM Plex Mono", monospace; cursor: pointer; }
+.sound-btn:hover, .sound-btn[aria-pressed="true"] { border-color: var(--lab-cyan); color: var(--lab-cyan); background: rgba(114, 222, 213, .08); }
 @keyframes dataPulse { 50% { opacity: .42; transform: scale(.72); } }
 
 .lab-shell { display: grid; grid-template-columns: 292px minmax(0, 1fr); max-width: 1800px; min-height: calc(100vh - 78px); margin: 0 auto; }
@@ -217,6 +219,7 @@ input[type="range"]::-moz-range-thumb { width: 12px; height: 12px; border: 2px s
   .lab-brand small { font-size: 8px; }
   .header-actions { gap: 10px; }
   .data-pill { font-size: 8px; }
+  .sound-btn { font-size: 8px; padding-inline: 6px; }
   .back-link { font-size: 11px; }
   .lab-shell { display: block; }
   .lab-sidebar { border-right: 0; border-bottom: 1px solid var(--lab-line); padding: 14px; }

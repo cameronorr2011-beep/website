@@ -22,8 +22,8 @@ export class WebGLLab {
     this.renderer.toneMappingExposure = 1.5;
     this.renderer.shadowMap.enabled = true;
     this.renderer.shadowMap.type = T.PCFSoftShadowMap;
-    this.scene = new T.Scene(); this.scene.background = new T.Color('#12251f');
-    this.scene.fog = new T.Fog('#12251f', 24, 52);
+    this.scene = new T.Scene(); this.scene.background = new T.Color('#081510');
+    this.scene.fog = new T.Fog('#081510', 24, 52);
     this.camera = new T.PerspectiveCamera(40, 1, .05, 80);
     this.controls = new OrbitControls(this.camera, canvas);
     this.controls.enableDamping = true; this.controls.dampingFactor = .09;
@@ -32,12 +32,14 @@ export class WebGLLab {
     this.controls.addEventListener('start', () => { this.transition = null; });
     this.lab = new T.Group(); this.scene.add(this.lab);
     this.inspector = new T.Group(); this.inspector.visible = false; this.scene.add(this.inspector);
-    this.scene.add(new T.HemisphereLight(0xe5f4e7, 0x24382d, 2.4));
-    const key = new T.DirectionalLight(0xfff4dc, 3.2); key.position.set(-5, 12, 8);
+    this.scene.add(new T.HemisphereLight(0xd9eee5, 0x101d19, 2.1));
+    const key = new T.DirectionalLight(0xfff2d5, 3.6); key.position.set(-5, 12, 8);
     key.castShadow = true; key.shadow.mapSize.set(1024, 1024);
     Object.assign(key.shadow.camera, { left: -12, right: 12, top: 10, bottom: -10 });
     key.shadow.bias = -.001; this.scene.add(key);
-    const fill = new T.DirectionalLight(0xb4e9ee, 1.5); fill.position.set(8, 6, -5); this.scene.add(fill);
+    const fill = new T.DirectionalLight(0x9ee8e5, 1.8); fill.position.set(8, 6, -5); this.scene.add(fill);
+    const cyan = new T.PointLight(0x5de4d3, 4.5, 13); cyan.position.set(3, 4, 2); this.scene.add(cyan);
+    const green = new T.PointLight(0x8bd47a, 3.2, 10); green.position.set(-3, 3, 1); this.scene.add(green);
     this.buildLab(); this.bind(); this.setCamera('laboratory', true); this.resize();
     this.observer = new ResizeObserver(() => this.resize()); this.observer.observe(canvas);
     this.frame = this.frame.bind(this); this.frameId = requestAnimationFrame(this.frame);
@@ -59,8 +61,8 @@ export class WebGLLab {
   }
   label(text, position, color = '#dcece2', width = 2.5, parent = this.lab) {
     const canvas = document.createElement('canvas'); canvas.width = 640; canvas.height = 90;
-    const ctx = canvas.getContext('2d'); ctx.fillStyle = 'rgba(9,26,21,.93)'; ctx.fillRect(0, 0, 640, 90);
-    ctx.fillStyle = color; ctx.font = '500 30px system-ui'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText(text, 320, 45);
+    const ctx = canvas.getContext('2d'); ctx.fillStyle = 'rgba(4,15,12,.78)'; ctx.beginPath(); ctx.roundRect(4, 8, 632, 74, 18); ctx.fill();
+    ctx.fillStyle = color; ctx.font = '600 28px system-ui'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText(text, 320, 45);
     const texture = new T.CanvasTexture(canvas); texture.colorSpace = T.SRGBColorSpace; this.textures.add(texture);
     const sprite = new T.Sprite(new T.SpriteMaterial({ map: texture, depthTest: false }));
     sprite.position.set(...position); sprite.scale.set(width, width * 90 / 640, 1); parent.add(sprite);
@@ -68,18 +70,21 @@ export class WebGLLab {
   }
 
   buildLab() {
-    const steel = material('#a2b9ad', { metalness: .75, roughness: .3 });
-    const dark = material('#243a31'); const white = material('#c2cec0', { roughness: .7 });
-    const glass = material('#b7e7d8', { transparent: true, opacity: .18, depthWrite: false, roughness: .1, side: T.DoubleSide });
+    const steel = material('#657a73', { metalness: .82, roughness: .25 });
+    const dark = material('#162520'); const white = material('#d3ddd0', { roughness: .52 });
+    const glass = material('#9ed9ca', { transparent: true, opacity: .2, depthWrite: false, roughness: .08, metalness: .12, side: T.DoubleSide });
     const hose = material('#bad2c6', { transparent: true, opacity: .6 });
-    this.box([17, .35, 9], material('#344c41'), [0, .25, 0]);
-    this.box([17.2, .1, 9.2], material('#5e7565', { roughness: .8 }), [0, .48, 0]);
+    this.box([17, .35, 9], material('#111d19', { metalness: .3, roughness: .45 }), [0, .25, 0]);
+    this.box([17.2, .1, 9.2], material('#2b4439', { roughness: .65 }), [0, .48, 0]);
     for (const x of [-6.8, 6.8]) this.box([.3, 2.8, .3], steel, [x, -1.3, 2.8]);
-    const grid = new T.GridHelper(32, 32, '#344c40', '#20382c'); grid.position.y = -2.8; this.lab.add(grid);
+    const grid = new T.GridHelper(32, 32, '#244b3b', '#132c23'); grid.position.y = -2.8; this.lab.add(grid);
+    this.box([17, 7, .2], material('#0d1c17', { roughness: .9 }), [0, 2.9, -4.4]);
+    this.box([10, .08, .12], material('#8fe7ce', { emissive: '#3b927a', emissiveIntensity: .8 }), [0, 5.8, -4.2]);
+    for (const x of [-6, -3, 0, 3, 6]) this.box([.04, 4.8, .04], material('#294a3c'), [x, 2.6, -4.25]);
 
     // Algaephyte: glass column, liquid, sparger, probe, lid, LED rails, pump.
     this.cylinder(1.52, .28, steel, [-2.6, .7, 0], undefined, 'Algaephyte · 18 L culture model').userData.focus = 'algaephyte';
-    this.liquid = this.cylinder(1.24, 3.25, material('#368c51', { transparent: true, opacity: .65, depthWrite: false }), [-2.6, 2.48, 0]);
+    this.liquid = this.cylinder(1.24, 3.25, material('#248b5f', { transparent: true, opacity: .72, depthWrite: false, roughness: .16 }), [-2.6, 2.48, 0]);
     this.cylinder(1.32, 4, glass, [-2.6, 2.9, 0]);
     for (const y of [.96, 4.88]) {
       const ring = this.mesh(new T.TorusGeometry(1.33, .055, 8, 60), steel, [-2.6, y, 0]); ring.rotation.x = Math.PI / 2;
