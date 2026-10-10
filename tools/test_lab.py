@@ -16,7 +16,7 @@ class ResearchLabContractTests(unittest.TestCase):
         self.assertIn('id="exportReport"', text)
         self.assertIn('id="importFile"', text)
         self.assertIn('SYNTHETIC DATA', text)
-        self.assertIn('js/lab-app.js', text)
+        self.assertTrue('js/lab-app.js' in text or 'dist/lab-' in text)
         self.assertNotIn('Algae Living — Grow. Evolve. Survive.', text)
         self.assertNotIn('cdn.jsdelivr.net', text)
 

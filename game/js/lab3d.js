@@ -1,7 +1,7 @@
-/* Interactive laboratory renderer. The dependency-free software projection is
- * the guaranteed path: it keeps the same camera modes, selection affordance,
- * and state labels usable offline on low-memory computers and Raspberry
- * Pi-class browsers. The model remains independent from this visual layer. */
+/* Interactive laboratory renderer. WebGL is the primary path; the dependency-
+ * free Canvas projection keeps camera modes, selection affordance, and state
+ * labels usable on low-memory computers and Raspberry Pi-class browsers. The
+ * model remains independent from this visual layer. */
 
 const clamp = (v, lo, hi) => Math.max(lo, Math.min(hi, v));
 const fract = (v) => v - Math.floor(v);
@@ -12,11 +12,18 @@ function colorForHealth(health) {
 }
 
 export async function createLabRenderer(canvas, hooks = {}) {
-  // The static site must also work offline and on browsers that block a CDN.
-  // The software renderer is therefore the guaranteed path; its projection,
-  // orbit camera, depth sorting, vessel, chip, bubbles, and cell picking are
-  // real 3D scene operations on a 2D canvas. A Three.js adapter can be added
-  // later without changing the engine/UI contract.
+  if (new URLSearchParams(location.search).get('render') !== '2d') {
+    try {
+      const { WebGLLab } = await import('./lab-webgl.js');
+      const lab = new WebGLLab(canvas, hooks);
+      return lab;
+    } catch (error) {
+      hooks.onFallback?.(`3D unavailable: ${error.message}. Using the accessible Canvas view.`);
+      // A failed WebGL context cannot be reused as a 2D context.
+      const replacement = canvas.cloneNode(false); canvas.replaceWith(replacement); canvas = replacement;
+    }
+  }
+  canvas.dataset.renderer = 'canvas';
   return new SoftwareLab3D(canvas, hooks);
 }
 
@@ -254,9 +261,10 @@ class SoftwareLab3D {
   }
 
   resize() { const rect = this.canvas.getBoundingClientRect(); this.dpr = Math.min(1.5, devicePixelRatio || 1); this.w = Math.max(1, rect.width); this.h = Math.max(1, rect.height); this.canvas.width = Math.round(this.w * this.dpr); this.canvas.height = Math.round(this.h * this.dpr); }
-  setState(state) { this.state = state; this.mode = state.sim.mode; this.cameraName = state.sim.camera; }
+  setState(state) { this.state = state; this.mode = state.sim.mode; }
   setMode(mode) { this.mode = mode; }
-  setCamera(name) { this.cameraName = name; const presets = { laboratory: [.54, 1.03, 14], algaephyte: [.05, 1.04, 9], cyanoflow: [-.42, .9, 9], cell: [.28, 1.08, 6.5] }; const preset = presets[name] || presets.laboratory; this.orbit.theta = preset[0]; this.orbit.phi = preset[1]; this.orbit.radius = preset[2]; }
+  setCamera(name) { if (this.cameraName === name) return; this.cameraName = name; const presets = { laboratory: [.9, 1.03, 14, 0, 2], algaephyte: [.9, 1.04, 9, -3.4, 2.5], cyanoflow: [1, .6, 9, 3.6, .6], cell: [.9, 1.08, 12, 0, 2] }; const preset = presets[name] || presets.laboratory; this.orbit.theta = preset[0]; this.orbit.phi = preset[1]; this.orbit.radius = preset[2]; this.orbit.target.x = preset[3]; this.orbit.target.y = preset[4]; }
+  setQuality(value) { this.low = value === 'low'; }
 
   cameraBasis() {
     const o = this.orbit, eye = { x: o.target.x + Math.cos(o.theta) * Math.sin(o.phi) * o.radius, y: o.target.y + Math.cos(o.phi) * o.radius, z: o.target.z + Math.sin(o.theta) * Math.sin(o.phi) * o.radius };
@@ -304,7 +312,7 @@ class SoftwareLab3D {
   drawCells(ctx, state) {
     const hits = [];
     for (const cell of state.cyano.cells) {
-      if (["lost", "multiplet"].includes(cell.state)) continue;
+      if (["lost", "filtered-out", "multiplet"].includes(cell.state)) continue;
       const n = Number(cell.id.slice(-3)); let point = { x: -3.4 + (noise(n + 3) - .5) * 3.2, y: 1 + noise(n + 4) * 3.5, z: (noise(n + 5) - .5) * 3.1 };
       if (["in-chip", "analyzed", "isolated"].includes(cell.state)) point = { x: .3 + cell.trajectory.channelProgress * 6.2, y: 1.05, z: (cell.trajectory.y - .5) * 2.25 };
       if (cell.state === "transferred") point = { x: -3.4 + (noise(n + 8) - .5) * 3.2, y: 1 + noise(n + 9) * 3.5, z: (noise(n + 10) - .5) * 3.1 };
@@ -325,7 +333,7 @@ class SoftwareLab3D {
     ctx.beginPath(); ctx.arc(cx, cy, radius, 0, Math.PI * 2); ctx.stroke();
     ctx.strokeStyle = "rgba(114, 222, 213, .22)";
     ctx.beginPath(); ctx.moveTo(cx - radius, cy); ctx.lineTo(cx + radius, cy); ctx.moveTo(cx, cy - radius); ctx.lineTo(cx, cy + radius); ctx.stroke();
-    ctx.translate(cx, cy); ctx.scale(5.4, 5.4); ctx.rotate(cell.morphology === "spiral" ? -.25 : .15);
+    ctx.translate(cx, cy); ctx.scale(radius * .75, radius * .75); ctx.rotate(cell.morphology === "spiral" ? -.25 : .15);
     ctx.strokeStyle = cell.eligibleCandidate ? "#ffd166" : "#82d8ff"; ctx.fillStyle = "rgba(130, 216, 255, .18)"; ctx.lineWidth = .055;
     if (cell.morphology === "spiral") {
       ctx.beginPath();

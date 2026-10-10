@@ -64,6 +64,7 @@ let lastUiPaint = 0;
 let lastFrame = performance.now();
 let simAccumulator = 0;
 let toastTimer = null;
+let lastQuality = "high";
 const mockSensorProvider = createMockSensorProvider();
 const realDeviceProvider = createRealDeviceProvider();
 
@@ -71,6 +72,7 @@ const refs = {
   canvas: $("#labCanvas"),
   content: $("#workspaceContent"),
   sceneLoading: $("#sceneLoading"),
+  sceneStatus: $("#sceneStatus"),
   runToggle: $("#runToggle"),
   stepRun: $("#stepRun"),
   resetRun: $("#resetRun"),
@@ -342,10 +344,17 @@ async function boot() {
   document.body.dataset.labBoot = "started";
   bindControls();
   render();
-  renderer = await createLabRenderer(refs.canvas, { onSelect: (cellId) => { if (selectCell(state, cellId)) { mode = "cell"; state.sim.camera = "cell"; render(); } } });
+  renderer = await createLabRenderer(refs.canvas, {
+    onSelect: (cellId) => { if (selectCell(state, cellId)) { mode = "cell"; state.sim.camera = "cell"; render(); } },
+    onFocus: (nextCamera) => { state.sim.camera = nextCamera; if (nextCamera === "cell") mode = "cell"; render(); },
+    onFallback: (message) => { refs.sceneStatus.textContent = message; refs.sceneStatus.classList.add("is-warning"); },
+  });
   renderer.setState(state);
   renderer.setMode(mode);
   renderer.setCamera(state.sim.camera);
+  refs.sceneStatus.textContent = renderer.canvas?.dataset?.renderer === "webgl"
+    ? "WebGL laboratory · synthetic state linked"
+    : "2D accessibility fallback · synthetic state linked";
   refs.sceneLoading.classList.add("is-ready");
   if (!storageAvailable()) showToast("Local storage unavailable. Export JSON to keep this run.");
   document.body.dataset.labBoot = "ready";
@@ -354,6 +363,8 @@ async function boot() {
 function loop(now) {
   const frameSeconds = Math.min(.25, Math.max(0, (now - lastFrame) / 1000));
   lastFrame = now;
+  const quality = frameSeconds > .045 ? "low" : "high";
+  if (renderer && quality !== lastQuality) { lastQuality = quality; renderer.setQuality?.(quality); }
   if (state.sim.running) {
     simAccumulator += frameSeconds * state.sim.speed * 60;
     while (simAccumulator >= STEP_SECONDS) { step(state, STEP_SECONDS); simAccumulator -= STEP_SECONDS; }

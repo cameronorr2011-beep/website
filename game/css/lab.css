@@ -98,6 +98,8 @@ select.field { appearance: auto; }
 .scene-legend .cyan { color: var(--lab-cyan); background: currentColor; }
 .scene-legend .amber { color: var(--lab-amber); background: currentColor; }
 .scene-hint { right: 12px; bottom: 12px; color: var(--lab-muted); }
+.scene-status { position: absolute; left: 12px; bottom: 12px; padding: 7px 9px; border: 1px solid rgba(124, 226, 160, .16); border-radius: 8px; background: rgba(4, 16, 12, .62); color: var(--lab-muted); font: 9px "IBM Plex Mono", monospace; }
+.scene-status.is-warning { border-color: rgba(255, 209, 102, .4); color: var(--lab-amber); }
 
 .metric-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 9px; margin: 12px 0 22px; }
 .metric-card { min-height: 89px; padding: 13px 14px; border: 1px solid var(--lab-line); border-radius: 11px; background: rgba(9, 28, 21, .62); }
@@ -234,6 +236,7 @@ input[type="range"]::-moz-range-thumb { width: 12px; height: 12px; border: 2px s
   .scene-frame { height: 390px; min-height: 300px; }
   .scene-legend { right: 10px; left: auto; display: grid; gap: 4px; }
   .scene-hint { left: 10px; right: auto; }
+  .scene-status { top: 47px; right: 10px; bottom: auto; left: auto; }
   .metric-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .metric-card { min-height: 80px; padding: 11px; }
   .three-col, .range-grid, .sensor-grid, .analysis-grid { grid-template-columns: 1fr; }

@@ -54,8 +54,8 @@ single-cell provenance, experiments, or a cross-platform workflow.
 - [x] Implement Cyanoflow sample processing, cell identity, synthetic analysis,
       isolation, and candidate transfer into cultivation.
 - [x] Add local persistence, reset, import/export, and reproducibility checks.
-- [x] Add an interactive software-3D laboratory renderer with a Canvas fallback
-      path, camera modes, object selection, and a microscope-inspired cell view.
+- [x] Add a self-hosted Three.js laboratory renderer with a Canvas fallback path,
+      camera modes, object selection, and a microscope-inspired cell view.
 
 ### P1 — product completion within the static architecture
 

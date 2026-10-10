@@ -1,0 +1,10 @@
+{
+  "name": "orr-biologicals-site",
+  "private": true,
+  "scripts": {
+    "build:lab": "node tools/build_lab.mjs",
+    "test:lab": "node tools/test_lab_engine.mjs"
+  },
+  "dependencies": { "three": "0.180.0" },
+  "devDependencies": { "esbuild": "0.25.10" }
+}

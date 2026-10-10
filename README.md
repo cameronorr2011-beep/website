@@ -34,10 +34,10 @@ measurement plan: [`docs/seo/AUDIT.md`](docs/seo/AUDIT.md). Browser tests:
 `tools/site/qa_seo.mjs` (Playwright Page script for the browser-automation runner).
 The preview does **not** execute Apache `.htaccess`; server redirects must be
 verified on Apache/production after merge and deployment. No TypeScript or
-package-manager build exists in this static repository. The lab itself is a
-dependency-free browser module: its software-3D projection, fixed-step engine,
-local persistence, export/import, and mock sensor provider work without a
-package install, database, API key, or network service.
+package-manager build exists in this static repository. The lab ships its
+Three.js runtime as committed, content-hashed static assets; it needs no Node
+runtime, database, API key, or network service after deployment. A Canvas
+accessibility fallback remains available when WebGL cannot initialize.
 
 The historical architecture/refactor record below describes the older layout,
 not validated hardware performance or the current assembly source.

@@ -66,12 +66,12 @@ node tools/test_lab_engine.mjs
    change conditions and observe the synthetic cultivation trajectory.
 5. Capture a comparison, export state JSON, or export the complete report.
 
-The scene is a dependency-free software 3D projection with orbit, zoom, cell
-selection, vessel/chip camera modes, depth cues, transparent vessel surfaces,
-channels, probes, droplets, bubbles, and synthetic cell motion. This avoids a
-runtime CDN dependency and keeps the lab usable offline or on a low-memory
-browser. It is intentionally a visualization layer over the independent model,
-not a CFD or validated biological renderer.
+The scene uses a self-hosted, content-hashed Three.js runtime with orbit, zoom,
+cell selection, vessel/chip/cell camera modes, depth cues, transparent vessel
+surfaces, channels, probes, droplets, bubbles, and synthetic cell motion. A
+Canvas accessibility fallback keeps the lab usable when WebGL is unavailable.
+It is intentionally a visualization layer over the independent model, not a CFD
+or validated biological renderer.
 
 ## Data and safety boundary
 
