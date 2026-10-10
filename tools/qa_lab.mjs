@@ -3,6 +3,10 @@ export default async function run(page) {
   await page.waitForSelector('[data-lab-boot="ready"]');
   result.boot = await page.locator('body').getAttribute('data-lab-boot');
   if (result.boot !== 'ready') throw new Error(`Lab boot failed: ${result.boot}`);
+  const sound = page.getByRole('button', { name: 'Ambient off' });
+  await sound.click();
+  result.soundOn = await page.locator('#soundToggle').getAttribute('aria-pressed');
+  await page.getByRole('button', { name: 'Ambient on' }).click();
   await page.setViewportSize({ width: 390, height: 844 });
   result.mobileNoOverflow = await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth + 1);
   await page.setViewportSize({ width: 1280, height: 900 });
