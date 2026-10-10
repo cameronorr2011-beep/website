@@ -1,0 +1,10 @@
+{
+  "deviceId": "algaephyte-pi3",
+  "temperatureSensorId": null,
+  "adc": { "bus": 0, "device": 0, "referenceVoltage": 3.3 },
+  "analog": {
+    "ph": { "enabled": false, "channel": 0, "calibration": null },
+    "turbidityAU": { "enabled": false, "channel": 1, "calibration": null },
+    "dissolvedOxygenMgL": { "enabled": false, "channel": 3, "calibration": null }
+  }
+}

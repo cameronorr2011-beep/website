@@ -178,6 +178,11 @@ input[type="range"]::-moz-range-thumb { width: 12px; height: 12px; border: 2px s
 .sensor-item span { display: block; color: var(--lab-muted); font: 9px/1.35 "IBM Plex Mono", monospace; }
 .sensor-item strong { display: block; margin-top: 7px; color: var(--lab-cyan); font: 500 15px "IBM Plex Mono", monospace; }
 .sensor-item small { display: block; margin-top: 4px; color: var(--lab-soft); font-size: 9px; line-height: 1.35; }
+.device-panel { margin-top: 14px; }
+.device-panel .unit-note, .device-panel .sensor-item { overflow-wrap: anywhere; }
+.device-panel .field { min-width: 0; max-width: 640px; }
+.device-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); margin-top: 14px; }
+#deviceResults { margin-top: 20px; }
 .comparison-list { display: grid; gap: 12px; }
 .comparison-row { display: grid; grid-template-columns: minmax(150px, .8fr) minmax(120px, 1.5fr) 70px; align-items: center; gap: 12px; }
 .comparison-row > div { min-width: 0; }

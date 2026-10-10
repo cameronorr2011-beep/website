@@ -3,7 +3,7 @@
   "private": true,
   "scripts": {
     "build:lab": "node tools/build_lab.mjs",
-    "test:lab": "node tools/test_lab_engine.mjs"
+    "test:lab": "node tools/test_lab_engine.mjs && node tools/test_lab_providers.mjs"
   },
   "dependencies": { "three": "0.180.0" },
   "devDependencies": { "esbuild": "0.25.10" }

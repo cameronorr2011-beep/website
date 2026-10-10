@@ -13,9 +13,14 @@ python tools/site/build_seo.py
 python -m unittest discover -s tools -p 'test_*.py'
 python tools/site/seo_audit.py --out docs/seo/current
 python tools/site/serve_preview.py  # http://127.0.0.1:8876
-node tools/test_lab_engine.mjs
+npm run test:lab
+npm run build:lab
+python -m unittest discover -s hardware/pi-sensors -p 'test_*.py'
 # with the preview running, use the browser-automation runner:
-node C:\Users\Cameron\.claude\skills\browser-automation\browser.mjs http://127.0.0.1:8876/game/ --script tools/qa_lab.mjs
+node C:/Users/Cameron/.claude/skills/browser-automation/browser.mjs http://127.0.0.1:8876/game/ --script tools/qa_lab.mjs
+# Optional device QA: start the synthetic Pi service in another terminal first.
+python hardware/pi-sensors/sensor_service.py --mode mock --allow-origin http://127.0.0.1:8876
+node C:/Users/Cameron/.claude/skills/browser-automation/browser.mjs http://127.0.0.1:8876/game/ --script tools/qa_lab_device.mjs
 ```
 
 The build regenerates the homepage, seven curated knowledge resources,
@@ -33,11 +38,16 @@ Full audit, individual page review, 40-topic roadmap, live baseline and
 measurement plan: [`docs/seo/AUDIT.md`](docs/seo/AUDIT.md). Browser tests:
 `tools/site/qa_seo.mjs` (Playwright Page script for the browser-automation runner).
 The preview does **not** execute Apache `.htaccess`; server redirects must be
-verified on Apache/production after merge and deployment. No TypeScript or
-package-manager build exists in this static repository. The lab ships its
+verified on Apache/production after merge and deployment. There is no TypeScript typecheck;
+`npm run test:lab` and `npm run build:lab` verify and bundle the lab. The lab ships its
 Three.js runtime as committed, content-hashed static assets; it needs no Node
 runtime, database, API key, or network service after deployment. A Canvas
 accessibility fallback remains available when WebGL cannot initialize.
+
+The Algaephyte workspace optionally connects to the read-only Pi 3 B+ bridge.
+[Setup, wiring, calibration, and LAN/TLS requirements](hardware/pi-sensors/README.md)
+are documented separately. Telemetry never changes the synthetic model or its
+saved/report data, and no actuator controls are exposed.
 
 The historical architecture/refactor record below describes the older layout,
 not validated hardware performance or the current assembly source.

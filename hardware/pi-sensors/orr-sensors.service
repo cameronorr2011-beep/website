@@ -1,0 +1,22 @@
+[Unit]
+Description=Orr Biologicals read-only sensor service
+After=network.target
+
+[Service]
+Type=simple
+User=orr-sensors
+Group=orr-sensors
+SupplementaryGroups=spi
+WorkingDirectory=/opt/orr-sensors
+ExecStart=/usr/bin/python3 /opt/orr-sensors/sensor_service.py --mode real --config /etc/orr-sensors/config.json --allow-origin https://orrbiologicals.com
+Restart=on-failure
+RestartSec=5
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+DevicePolicy=closed
+DeviceAllow=/dev/spidev0.0 rw
+
+[Install]
+WantedBy=multi-user.target

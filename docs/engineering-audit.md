@@ -6,10 +6,12 @@ Working tree baseline: `4137c4d`
 
 ## Actual architecture
 
-This repository is a static Apache-hosted website. It has no package manifest,
-backend service, database schema, Electron shell, or Python runtime service.
-The public application entry point is `game/index.html`; JavaScript is served as
-browser ES modules and state is currently stored only in the browser.
+This repository is a static Apache-hosted website. `package.json` provides
+lab tests and an esbuild/Three.js static bundle; Node is not required on the
+hosting server. There is no database or Electron shell. The public application
+entry point is `game/index.html`, and simulation state stays in the browser.
+An optional, separately installed Python service in `hardware/pi-sensors/`
+provides read-only Raspberry Pi telemetry; it does not run on the website host.
 
 The existing `/game/` experience is the Algae Living canvas game. Its engine
 tracks a player cell, motes, bacteria, upgrades, and reactor-economy progress.
@@ -37,11 +39,11 @@ single-cell provenance, experiments, or a cross-platform workflow.
 6. **No 3D layer** — the existing visualization is Canvas 2D and CSS. There is
    no WebGL scene, camera system, object selection, or non-WebGL fallback for a
    laboratory workspace.
-7. **Hardware/AI boundary is intentionally local and unavailable** — the website
-   repository has no sensor acquisition service or AI API client. The lab now
-   exposes a versioned mock-provider contract, invalid-reading validation, and
-   an explicit unavailable Raspberry Pi provider rather than fabricating
-   hardware/cloud success.
+7. **Hardware/AI boundary is read-only and opt-in** — the lab exposes a
+   versioned Pi provider with contract, calibration, freshness, and provenance
+   validation. A separate Python service reads DS18B20 and MCP3008 interfaces
+   only. Mock telemetry remains explicitly synthetic; failed or stale readings
+   are not usable measurements. There is no actuator route or AI API client.
 
 ## Prioritized implementation checklist
 
@@ -67,22 +69,35 @@ single-cell provenance, experiments, or a cross-platform workflow.
 
 ### P2 — physical integration boundary
 
-- [x] Document and expose a versioned sensor-provider contract for a future Pi service,
+- [x] Implement and document the versioned, read-only Pi sensor service,
       including ADC requirements and invalid-reading handling.
-- [x] Keep actuator control disabled and provide an honest unavailable state for
-      future real hardware and AI integrations.
+- [x] Add explicit browser connection/disconnection and separate telemetry export.
+- [x] Keep actuator control disabled, simulation state separate, and hardware/AI
+      unavailability honest.
+- [ ] Verify acquisition, calibration, permissions, and systemd on a physical Pi.
 
 ## Scope boundary
 
 The implementation in this static repository can provide a fully functional
 browser simulation and local experiment record. It cannot truthfully provide a
-real Pi sensor service, validated biological measurements, CFD accuracy, cloud
+verified physical Pi acquisition, validated biological measurements, CFD accuracy, cloud
 synchronization, or AI conclusions without external hardware, credentials, and
 validated data. Synthetic results remain labeled in the UI and exported data.
 
 ## Verification recorded during this audit
 
-- `python -m unittest discover -s tools -p 'test_*.py'` — 23 tests passing.
+- `python -m unittest discover -s tools -p 'test_*.py'` — 25 tests passing.
+- `python -W error::ResourceWarning -m unittest discover -s hardware/pi-sensors
+  -p 'test_*.py'` — 9 tests passing, including ADC/calibration, sampling failure,
+  stale readings, CORS/preflight, and all advertised rejected write methods.
+- `npm run test:lab` — engine plus provider contract, calibration, provenance,
+  freshness, HTTP failure, timeout, and disconnect regression checks passing.
+- `npm run build:lab` — content-hashed, self-hosted bundle built and its HTML
+  entry reference verified. No TypeScript typecheck is configured.
+- Browser device QA `tools/qa_lab_device.mjs` — actual mock-service opt-in,
+  unchanged simulation state, downloaded snapshot schema, mobile layout,
+  stale-value hiding, malformed-response rejection, disconnect/reset behavior,
+  and zero console/request errors. No physical Pi or production TLS was tested.
 - `node tools/test_lab_engine.mjs` — deterministic workflow, fixed-step
   reproducibility, mass balance, loss modes, and schema validation passing.
 - Browser smoke test `tools/qa_lab.mjs` — app boot, complete synthetic workflow,
