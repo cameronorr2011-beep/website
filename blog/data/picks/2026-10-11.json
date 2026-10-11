@@ -1,0 +1,55 @@
+{
+  "date": "2026-10-11",
+  "model": "openai/gpt-oss-120b",
+  "generated_at": "2026-10-11T23:20:41Z",
+  "picks": [
+    {
+      "pmid": "42838245",
+      "title": "Programmable microalgae: Engineering sense-decide-adapt systems for dynamic environmental performance.",
+      "journal": "Biotechnology advances",
+      "year": "2026",
+      "pub_date": "2026-10-06",
+      "url": "https://doi.org/10.1016/j.biotechadv.2026.109068",
+      "topic": "Engineering",
+      "hook": "Engineered microalgae can sense, decide, and adapt to changing conditions for smarter bioprocesses.",
+      "article": "A recent study set out to give microalgae the ability to sense changing conditions, decide what to do, and then adjust their metabolism accordingly. \n\nThe researchers engineered microalgal strains with built‑in sensor circuits that detect environmental cues such as light, temperature, carbon dioxide, salinity and nutrient levels, and then trigger specific physiological responses – a so‑called sense‑decide‑adapt (SDA) system. \n\nThese programmable cells were shown to integrate signals for native nutrient sensing, photoprotection, carbon‑concentrating mechanisms and osmotic regulation, allowing them to modify their physiology over time scales ranging from seconds to seasons. \n\nThe work demonstrates a pathway toward microalgae that can dynamically respond to the fluctuating conditions typical of large‑scale cultivation, potentially improving stability and productivity.",
+      "why": "Dynamic, self‑adjusting algae could make outdoor bioprocesses more reliable and efficient."
+    },
+    {
+      "pmid": "42269881",
+      "title": "Artificial intelligence-enabled real-time monitoring of intracellular lipid dynamics in microalgae via optical sensors and kinetic early-warning differentiation.",
+      "journal": "Bioresource technology",
+      "year": "2026",
+      "pub_date": "2026-06-10",
+      "url": "https://doi.org/10.1016/j.biortech.2026.135143",
+      "topic": "Biofuels",
+      "hook": "AI‑driven optical sensors track lipid droplets in real time, warning of drops in biofuel precursors.",
+      "article": "A recent study set out to create a way to watch, in real time, how tiny oil droplets inside microalgae change as the cells grow. The researchers built an artificial‑intelligence‑driven sensing system that watches these droplets without harming the cells.\n\nThey used a microalgal photobioreactor and measured colour changes over time with a technique called chrono‑spectral colour evolution, which records how the colour of the culture shifts as lipids accumulate. An AI algorithm interpreted the colour data to infer the dynamics of intracellular lipid droplets.\n\nThe new system was able to monitor and anticipate intracellular lipid droplet dynamics in real time, providing non‑invasive detection and early‑warning signals of lipid accumulation.\n\nThis capability could help optimise algae‑based production of valuable oils by allowing growers to respond instantly to changes in lipid synthesis.",
+      "why": "Real‑time, non‑invasive lipid monitoring can streamline algae bio‑fuel and nutraceutical production."
+    },
+    {
+      "pmid": "42397522",
+      "title": "From Alga to Consortium: Advancing Petroleum Refinery Wastewater Biotreatment with Picocystis.",
+      "journal": "Applied biochemistry and biotechnology",
+      "year": "2026",
+      "pub_date": "2026-07-03",
+      "url": "https://doi.org/10.1007/s12010-026-05746-2",
+      "topic": "Wastewater",
+      "hook": "A Picocystis‑based consortium efficiently cleans petroleum refinery effluent, turning waste into biomass.",
+      "article": "A recent study set out to see whether the microalga Picocystis sp. could help clean up petroleum refinery strip wastewater, which is rich in organic matter, hydrocarbons and phenols. The researchers grew Picocystis alone and together with bacteria in laboratory reactors that simulated the wastewater environment.\n\nThey measured how well the algae, by itself or in a mixed community, could remove pollutants and produce biomass that might be used as bio‑fuel feedstock.\n\nThe abstract does not provide specific quantitative outcomes of these experiments.\n\nUnderstanding how microalgae and bacteria work together to treat oily waste streams could point to greener, cost‑effective ways to manage industrial wastewater.",
+      "why": "Such algae‑bacterial consortia could turn toxic refinery waste into useful bio‑fuel feedstock."
+    },
+    {
+      "pmid": "42173378",
+      "title": "Carbon capture in breweries using microalgae: Preliminary techno-economic insights for ruminant feed applications.",
+      "journal": "Bioresource technology",
+      "year": "2026",
+      "pub_date": "2026-05-22",
+      "url": "https://doi.org/10.1016/j.biortech.2026.134944",
+      "topic": "Carbon Capture",
+      "hook": "Microalgae scrub CO₂ from brewery emissions and yield feedstock for ruminant nutrition.",
+      "article": "A recent study looked at whether waste carbon dioxide and spent grain from Australian breweries could be turned into microalgae that might later be used as animal feed. The researchers modeled four different cultivation setups, including a bag‑type system, to see how much algae could be produced and at what cost.\n\nThey found that the design of the cultivation system was the dominant factor influencing production costs, making it the main barrier to economic viability. The analysis showed that, under the scenarios tested, the cost of producing algae remained high, limiting its competitiveness as a feed ingredient.\n\nThe work highlights that while breweries generate abundant CO2 and nutrient‑rich waste streams, turning these into valuable algae feed will require smarter, lower‑cost cultivation designs.",
+      "why": "Improving algae cultivation could let breweries recycle waste into sustainable animal feed, reducing environmental impact."
+    }
+  ]
+}
