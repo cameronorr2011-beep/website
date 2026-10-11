@@ -102,7 +102,7 @@ def glossary():
 
 def build():
     template = (ROOT / 'blog/spirulina-is-a-cyanobacterium.html').read_text(encoding='utf-8')
-    header = template[template.index('<header'):template.index('<div class="art-shell">')]
+    header = (ROOT / 'sections/header.html').read_text(encoding='utf-8') + '\n'
     for rel, title, description, body, article in [
         ('research/index.html', 'Algae Cultivation & Single-Cell Research Methods | Orr Biologicals', 'Explore Algaephyte cultivation models, Cyanoflow single-cell methods, species guides and transparent research-status labels. Concepts are not validated results.', HUB, False),
         ('glossary.html', 'Algae Biotechnology Glossary: Models, Sensors & Cells | Orr Biologicals', 'Understand microalgae, cyanobacteria, optical density, photobioreactors, digital twins, microfluidics and phenotyping, with limitations and deeper reading.', glossary(), False),

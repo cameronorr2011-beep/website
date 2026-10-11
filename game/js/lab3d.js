@@ -3,6 +3,8 @@
  * labels usable on low-memory computers and Raspberry Pi-class browsers. The
  * model remains independent from this visual layer. */
 
+import { scheduleRenderer } from './render-scheduler.js';
+
 const clamp = (v, lo, hi) => Math.max(lo, Math.min(hi, v));
 const fract = (v) => v - Math.floor(v);
 const noise = (n) => fract(Math.sin(n * 12.9898 + 78.233) * 43758.5453);
@@ -258,11 +260,11 @@ class SoftwareLab3D {
      canvas.addEventListener("pointercancel", () => { this.drag = null; });
      canvas.addEventListener("wheel", (event) => { event.preventDefault(); this.orbit.radius = clamp(this.orbit.radius + event.deltaY * .012, 6, 28); }, { passive: false });
      canvas.addEventListener("keydown", (event) => { if (this.mode !== "expedition" || !["w", "a", "s", "d", "ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown"].includes(event.key)) return; const direction = { x: 0, y: 0, depth: 0 }; if (event.key === "w" || event.key === "ArrowUp") direction.y = -1; if (event.key === "s" || event.key === "ArrowDown") direction.y = 1; if (event.key === "a" || event.key === "ArrowLeft") direction.x = -1; if (event.key === "d" || event.key === "ArrowRight") direction.x = 1; this.hooks.onMove?.(direction); event.preventDefault(); });
-     this.loop = this.loop.bind(this); requestAnimationFrame(this.loop);
+     this.loop = this.loop.bind(this); this.scheduler = scheduleRenderer(canvas, this.loop, () => Boolean(this.state?.sim.running));
   }
 
   resize() { const rect = this.canvas.getBoundingClientRect(); this.dpr = Math.min(1.5, devicePixelRatio || 1); this.w = Math.max(1, rect.width); this.h = Math.max(1, rect.height); this.canvas.width = Math.round(this.w * this.dpr); this.canvas.height = Math.round(this.h * this.dpr); }
-  setState(state) { this.state = state; this.mode = state.sim.mode; }
+  setState(state) { this.state = state; this.mode = state.sim.mode; this.scheduler?.request(); }
   setMode(mode) { this.mode = mode; }
   setCamera(name) { if (this.cameraName === name) { this.canvas.dataset.camera = name; return; } this.cameraName = name; const presets = { laboratory: [.9, 1.03, 14, 0, 2], expedition: [.75, .92, 15, 0, .5], algaephyte: [.9, 1.04, 9, -3.4, 2.5], cyanoflow: [1, .6, 9, 3.6, .6], cell: [.9, 1.08, 12, 0, 2] }; const preset = presets[name] || presets.laboratory; this.orbit.theta = preset[0]; this.orbit.phi = preset[1]; this.orbit.radius = preset[2]; this.orbit.target.x = preset[3]; this.orbit.target.y = preset[4]; this.canvas.dataset.camera = name; }
   setQuality(value) { this.low = value === 'low'; }
@@ -382,7 +384,7 @@ class SoftwareLab3D {
   }
   drawText(ctx) { ctx.fillStyle = "rgba(204,244,225,.62)"; ctx.font = "10px IBM Plex Mono, monospace"; ctx.fillText("SOFTWARE 3D · SYNTHETIC LAB VIEW · NO HARDWARE LINK", 18, this.h - 18); }
   pick(event) { const rect = this.canvas.getBoundingClientRect(), x = event.clientX - rect.left, y = event.clientY - rect.top; if (this.mode === "expedition") { const hit = (this.hitHotspots || []).map((item) => ({ ...item, d: Math.hypot(item.x - x, item.y - y) })).sort((a, b) => a.d - b.d)[0]; if (hit && hit.d < Math.max(24, hit.radius * 2)) this.hooks.onHotspot?.(hit.id); return; } const hit = (this.hitCells || []).map((item) => ({ ...item, d: Math.hypot(item.x - x, item.y - y) })).sort((a, b) => a.d - b.d)[0]; if (hit && hit.d < Math.max(20, hit.radius * 2)) this.hooks.onSelect?.(hit.id); }
-  loop() { requestAnimationFrame(this.loop); const ctx = this.ctx; ctx.setTransform(this.dpr, 0, 0, this.dpr, 0, 0); ctx.clearRect(0, 0, this.w, this.h); const gradient = ctx.createLinearGradient(0, 0, 0, this.h); gradient.addColorStop(0, "#0a211b"); gradient.addColorStop(1, "#06100f"); ctx.fillStyle = gradient; ctx.fillRect(0, 0, this.w, this.h); const state = this.state; if (!state) return; if (this.mode === "expedition") { this.drawExpedition(ctx, state); return; } this.drawFloor(ctx); if (this.mode !== "cyanoflow") this.drawVessel(ctx, state); if (this.mode !== "algaephyte") this.drawChip(ctx, state); this.drawCells(ctx, state); this.drawCellInspection(ctx, state); this.drawText(ctx); }
+  loop() { const ctx = this.ctx; ctx.setTransform(this.dpr, 0, 0, this.dpr, 0, 0); ctx.clearRect(0, 0, this.w, this.h); const gradient = ctx.createLinearGradient(0, 0, 0, this.h); gradient.addColorStop(0, "#0a211b"); gradient.addColorStop(1, "#06100f"); ctx.fillStyle = gradient; ctx.fillRect(0, 0, this.w, this.h); const state = this.state; if (!state) return; if (this.mode === "expedition") { this.drawExpedition(ctx, state); return; } this.drawFloor(ctx); if (this.mode !== "cyanoflow") this.drawVessel(ctx, state); if (this.mode !== "algaephyte") this.drawChip(ctx, state); this.drawCells(ctx, state); this.drawCellInspection(ctx, state); this.drawText(ctx); }
 }
 
 function sub(a, b) { return { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z }; }

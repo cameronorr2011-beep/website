@@ -115,7 +115,8 @@ class SEOTests(unittest.TestCase):
     def test_modular_home_sources_and_build_entrypoints(self):
         from build_home import render
         self.assertEqual((ROOT / 'index.html').read_text(encoding='utf-8'), render())
-        self.assertIn('algae biotechnology', Page(render()).headings['h1'][0].lower())
+        self.assertIn('understanding algae', Page(render()).headings['h1'][0].lower())
+        self.assertIn('single cells', Page(render()).headings['h1'][0].lower())
         for name in ('build.ps1', 'rebuild.ps1'):
             text = (ROOT / name).read_text(encoding='utf-8-sig')
             self.assertNotIn('SliceLines', text)
@@ -139,7 +140,7 @@ class SEOTests(unittest.TestCase):
             self.assertNotIn('Disallow: ' + public, (ROOT / 'robots.txt').read_text())
 
     def test_header_navigation_is_consistent(self):
-        expected = ('/#inside', '/applications/', '/algaephyte/', '/cyanoflow', '/blog/', '/game/', '/#deploy')
+        expected = ('/research/', '/applications/', '/algaephyte/', '/cyanoflow', '/blog/', '/game/', '/#deploy')
         for path in pages():
             text = path.read_text(encoding='utf-8-sig')
             m = re.search(r'<header class="nav"[^>]*>[\s\S]*?</header>', text)

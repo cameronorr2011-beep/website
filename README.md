@@ -4,8 +4,11 @@
 
 `index.html` is generated from **`sections/head.html` and
 `sections/home-body.html`**. Edit those source partials, not the generated page.
-Other historical `sections/` fragments are unused archival material and are
-not assembled. Both `build.ps1` and `rebuild.ps1` run the current modular build;
+`sections/header.html` and `sections/footer.html` are shared build inputs on
+all public pages through `tools/site/design_system.py`. Other historical
+`sections/` fragments are archival and are not assembled. Shared color,
+typography and motion tokens live only in `css/global.css`. See
+[`docs/INTERFACE-RESET.md`](docs/INTERFACE-RESET.md) for design and verification. Both `build.ps1` and `rebuild.ps1` run the current modular build;
 the destructive legacy single-file splitter has been retired.
 
 ```bash
@@ -38,7 +41,10 @@ its explicit 2026-10-04 date documents this editorial update only.
 
 Full audit, individual page review, 40-topic roadmap, live baseline and
 measurement plan: [`docs/seo/AUDIT.md`](docs/seo/AUDIT.md). Browser tests:
-`tools/site/qa_seo.mjs` (Playwright Page script for the browser-automation runner).
+`tools/site/qa_redesign.mjs`, `qa_all_routes.mjs`, and `qa_motion_lab.mjs`
+(Playwright Page scripts for the browser-automation runner). Generate the
+all-route inventory first with `python tools/site/seo_audit.py --out docs/redesign-seo`.
+The older `qa_seo.mjs` describes the prior homepage layout.
 The preview does **not** execute Apache `.htaccess`; server redirects must be
 verified on Apache/production after merge and deployment. There is no TypeScript typecheck;
 `npm run test:lab` and `npm run build:lab` verify and bundle the lab. The lab ships its
