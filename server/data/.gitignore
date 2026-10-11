@@ -1,0 +1,3 @@
+# Runtime state and event records created by the optional local backend.
+*.json
+*.tmp

@@ -14,6 +14,8 @@ python -m unittest discover -s tools -p 'test_*.py'
 python tools/site/seo_audit.py --out docs/seo/current
 python tools/site/serve_preview.py  # http://127.0.0.1:8876
 npm run test:lab
+npm run test:expedition
+npm run test:server
 npm run build:lab
 python -m unittest discover -s hardware/pi-sensors -p 'test_*.py'
 # with the preview running, use the browser-automation runner:
@@ -49,10 +51,14 @@ The Algaephyte workspace optionally connects to the read-only Pi 3 B+ bridge.
 are documented separately. Telemetry never changes the synthetic model or its
 saved/report data, and no actuator controls are exposed.
 
-The standalone `/demo/` route contains PHYCOFRONTIER, an original 2D algae
-discovery expedition with procedural habitats, sample processing, devices,
-research progression, and local saves. Its organism catalog is fictional and
-simulated; it is separate from the Algaephyte lab state.
+The `/game/` route now contains PHYCOFRONTIER as its 3D deterministic algae
+discovery expedition, linked to the Algaephyte/Cyanoflow research lab state.
+It includes procedural environment types, probe movement, uncertain signals,
+sample custody, autonomous cleaning, recovery, local saves, and Canvas fallback.
+The optional `server/` service is a loopback-only development persistence API;
+the deployed static site remains local-first unless an explicit API URL is
+configured. The standalone `/demo/` route remains a separate original 2D
+prototype with its own local state.
 
 The historical architecture/refactor record below describes the older layout,
 not validated hardware performance or the current assembly source.

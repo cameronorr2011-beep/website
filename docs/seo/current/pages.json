@@ -5758,6 +5758,69 @@
     }
   },
   {
+    "url": "https://orrbiologicals.com/demo/",
+    "file": "demo/index.html",
+    "current_title": "PHYCOFRONTIER — Algae Discovery Expedition",
+    "recommended_title": "PHYCOFRONTIER — Algae Discovery Expedition",
+    "current_description": "Explore a living fictional world, collect algae samples, and build a network of microfluidic research devices.",
+    "recommended_description": "Explore a living fictional world, collect algae samples, and build a network of microfluidic research devices.",
+    "h1": [
+      "PHYCOFRONTIER — Algae Discovery Expedition"
+    ],
+    "h2": [
+      "Research devices",
+      "Keep the culture alive."
+    ],
+    "intent": "Navigational / educational",
+    "primary_topic": "PHYCOFRONTIER — Algae Discovery Expedition",
+    "secondary_topics": [
+      "Research devices",
+      "Keep the culture alive."
+    ],
+    "journey_stage": "Learn / evaluate research concepts",
+    "cluster": "Site",
+    "content_words": 146,
+    "content_quality": "Editorial review required; word count is not a quality score",
+    "internal_links_in": [
+      "https://orrbiologicals.com/"
+    ],
+    "internal_links_out": [
+      "https://orrbiologicals.com/"
+    ],
+    "external_sources": [],
+    "canonical": "https://orrbiologicals.com/demo/",
+    "schema_types": [
+      "WebPage"
+    ],
+    "schema_errors": [],
+    "images": [],
+    "image_quality": "Illustrations vs measurements must be labeled; no pixel review implied",
+    "image_alt_quality": {
+      "missing": 0,
+      "empty": 0
+    },
+    "indexability": "indexable",
+    "importance": "High",
+    "action": "KEEP",
+    "h1_count": 1,
+    "duplicate_ids": [],
+    "meta": {
+      "": "",
+      "viewport": "width=device-width,initial-scale=1,viewport-fit=cover",
+      "theme-color": "#071716",
+      "description": "Explore a living fictional world, collect algae samples, and build a network of microfluidic research devices.",
+      "og:title": "PHYCOFRONTIER — Algae Discovery Expedition",
+      "og:description": "Explore a living fictional world, collect algae samples, and build a network of microfluidic research devices.",
+      "og:type": "website",
+      "og:url": "https://orrbiologicals.com/demo/",
+      "og:image": "https://orrbiologicals.com/assets/og.png",
+      "twitter:card": "summary_large_image",
+      "twitter:title": "PHYCOFRONTIER — Algae Discovery Expedition",
+      "twitter:description": "A fictional 2D algae discovery expedition by Orr Biologicals.",
+      "twitter:image": "https://orrbiologicals.com/assets/og.png"
+    }
+  },
+  {
     "url": "https://orrbiologicals.com/disclaimer",
     "file": "disclaimer.html",
     "current_title": "Scientific Disclaimer | Orr Biologicals",
@@ -5994,7 +6057,7 @@
     ],
     "journey_stage": "Learn / evaluate research concepts",
     "cluster": "Site",
-    "content_words": 236,
+    "content_words": 230,
     "content_quality": "Editorial review required; word count is not a quality score",
     "internal_links_in": [
       "https://orrbiologicals.com/",
@@ -6276,7 +6339,7 @@
     "h2": [
       "Explore algae biotechnology by question.",
       "Two platforms. Different questions.",
-      "Try the model.See what changes.",
+      "Run the workflow.See what changes.",
       "Biology pushes back.",
       "The whole loop is Algaephyte.",
       "How we plan the control loop",
@@ -6298,7 +6361,7 @@
     "secondary_topics": [
       "Explore algae biotechnology by question.",
       "Two platforms. Different questions.",
-      "Try the model.See what changes.",
+      "Run the workflow.See what changes.",
       "Biology pushes back.",
       "The whole loop is Algaephyte.",
       "How we plan the control loop",
@@ -6317,7 +6380,7 @@
     ],
     "journey_stage": "Learn / evaluate research concepts",
     "cluster": "Site",
-    "content_words": 2343,
+    "content_words": 2355,
     "content_quality": "Editorial review required; word count is not a quality score",
     "internal_links_in": [
       "https://orrbiologicals.com/404",
@@ -6371,6 +6434,7 @@
       "https://orrbiologicals.com/blog/winter-home-growing-warmth",
       "https://orrbiologicals.com/blog/zarrouk-medium-and-nutrients",
       "https://orrbiologicals.com/cyanoflow",
+      "https://orrbiologicals.com/demo/",
       "https://orrbiologicals.com/disclaimer",
       "https://orrbiologicals.com/downloads/",
       "https://orrbiologicals.com/game/",
@@ -6392,7 +6456,6 @@
       "https://orrbiologicals.com/#products",
       "https://orrbiologicals.com/#safety",
       "https://orrbiologicals.com/#signals",
-      "https://orrbiologicals.com/#simulation",
       "https://orrbiologicals.com/#stack",
       "https://orrbiologicals.com/#system",
       "https://orrbiologicals.com/#top",
@@ -6410,6 +6473,7 @@
       "https://orrbiologicals.com/blog/troubleshooting-contamination-crashes",
       "https://orrbiologicals.com/blog/vision-contamination-detection",
       "https://orrbiologicals.com/cyanoflow",
+      "https://orrbiologicals.com/demo/",
       "https://orrbiologicals.com/disclaimer",
       "https://orrbiologicals.com/downloads/",
       "https://orrbiologicals.com/game/",

@@ -255,15 +255,16 @@ class SoftwareLab3D {
     canvas.addEventListener("pointerdown", (event) => { this.drag = { x: event.clientX, y: event.clientY, moved: false }; canvas.setPointerCapture?.(event.pointerId); });
     canvas.addEventListener("pointermove", (event) => { if (!this.drag) return; const dx = event.clientX - this.drag.x, dy = event.clientY - this.drag.y; if (Math.abs(dx) + Math.abs(dy) > 3) this.drag.moved = true; this.orbit.theta -= dx * .008; this.orbit.phi = clamp(this.orbit.phi + dy * .008, .34, 1.5); this.drag.x = event.clientX; this.drag.y = event.clientY; });
     canvas.addEventListener("pointerup", (event) => { if (this.drag && !this.drag.moved) this.pick(event); this.drag = null; canvas.releasePointerCapture?.(event.pointerId); });
-    canvas.addEventListener("pointercancel", () => { this.drag = null; });
-    canvas.addEventListener("wheel", (event) => { event.preventDefault(); this.orbit.radius = clamp(this.orbit.radius + event.deltaY * .012, 6, 28); }, { passive: false });
-    this.loop = this.loop.bind(this); requestAnimationFrame(this.loop);
+     canvas.addEventListener("pointercancel", () => { this.drag = null; });
+     canvas.addEventListener("wheel", (event) => { event.preventDefault(); this.orbit.radius = clamp(this.orbit.radius + event.deltaY * .012, 6, 28); }, { passive: false });
+     canvas.addEventListener("keydown", (event) => { if (this.mode !== "expedition" || !["w", "a", "s", "d", "ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown"].includes(event.key)) return; const direction = { x: 0, y: 0, depth: 0 }; if (event.key === "w" || event.key === "ArrowUp") direction.y = -1; if (event.key === "s" || event.key === "ArrowDown") direction.y = 1; if (event.key === "a" || event.key === "ArrowLeft") direction.x = -1; if (event.key === "d" || event.key === "ArrowRight") direction.x = 1; this.hooks.onMove?.(direction); event.preventDefault(); });
+     this.loop = this.loop.bind(this); requestAnimationFrame(this.loop);
   }
 
   resize() { const rect = this.canvas.getBoundingClientRect(); this.dpr = Math.min(1.5, devicePixelRatio || 1); this.w = Math.max(1, rect.width); this.h = Math.max(1, rect.height); this.canvas.width = Math.round(this.w * this.dpr); this.canvas.height = Math.round(this.h * this.dpr); }
   setState(state) { this.state = state; this.mode = state.sim.mode; }
   setMode(mode) { this.mode = mode; }
-  setCamera(name) { if (this.cameraName === name) return; this.cameraName = name; const presets = { laboratory: [.9, 1.03, 14, 0, 2], algaephyte: [.9, 1.04, 9, -3.4, 2.5], cyanoflow: [1, .6, 9, 3.6, .6], cell: [.9, 1.08, 12, 0, 2] }; const preset = presets[name] || presets.laboratory; this.orbit.theta = preset[0]; this.orbit.phi = preset[1]; this.orbit.radius = preset[2]; this.orbit.target.x = preset[3]; this.orbit.target.y = preset[4]; }
+  setCamera(name) { if (this.cameraName === name) { this.canvas.dataset.camera = name; return; } this.cameraName = name; const presets = { laboratory: [.9, 1.03, 14, 0, 2], expedition: [.75, .92, 15, 0, .5], algaephyte: [.9, 1.04, 9, -3.4, 2.5], cyanoflow: [1, .6, 9, 3.6, .6], cell: [.9, 1.08, 12, 0, 2] }; const preset = presets[name] || presets.laboratory; this.orbit.theta = preset[0]; this.orbit.phi = preset[1]; this.orbit.radius = preset[2]; this.orbit.target.x = preset[3]; this.orbit.target.y = preset[4]; this.canvas.dataset.camera = name; }
   setQuality(value) { this.low = value === 'low'; }
 
   cameraBasis() {
@@ -309,6 +310,39 @@ class SoftwareLab3D {
     const progress = state?.cyano?.processingProgress || 0; this.ellipse3d(ctx, { x: x - 2.8 + progress * 5.6, y: y + .5, z: 0 }, .17, "#7be8da", null, 1);
     const label = this.project({ x: x - 2.3, y: .03, z: 2.4 }); if (label) { ctx.fillStyle = "#c8ffef"; ctx.font = "600 11px IBM Plex Mono, monospace"; ctx.fillText("CYANOFLOW · MICROFLUIDIC CHIP", label.x, label.y + 22); }
   }
+  expeditionPoint(position, world) {
+    const width = world?.dimensions?.widthM || 1000, height = world?.dimensions?.heightM || 760, depth = world?.dimensions?.maxDepthM || 80;
+    return { x: (position.x / width - .5) * 17.2, y: 3.05 - (position.z / depth) * 5.45, z: (position.y / height - .5) * 9.4 };
+  }
+  drawExpedition(ctx, state) {
+    const expedition = state.expedition; if (!expedition?.world) return;
+    const colors = { freshwater: ["#2b8f77", "#133d3a"], marine: ["#2b718d", "#102d45"], sediment: ["#97734d", "#342b26"], terrestrial: ["#647b43", "#253122"] };
+    const [accent, deep] = colors[expedition.environmentType] || colors.freshwater;
+    this.polygon(ctx, [{ x: -9, y: -2.8, z: -5.5 }, { x: 9, y: -2.8, z: -5.5 }, { x: 9, y: 3.4, z: -5.5 }, { x: -9, y: 3.4, z: -5.5 }], deep, accent, .9);
+    for (let i = 0; i < 11; i++) this.line(ctx, [{ x: -9, y: -2.7 + i * .56, z: -5.48 }, { x: 9, y: -2.7 + i * .56, z: -5.48 }], accent, 1, .2);
+    expedition.world.regions.forEach((region, index) => {
+      const p = this.expeditionPoint(region.position, expedition.world);
+      this.ellipse3d(ctx, { ...p, y: -2.3 }, .75 + index * .15, accent, null, .25);
+      const label = this.project({ ...p, y: -2.15 }); if (label) { ctx.fillStyle = "rgba(207,244,228,.48)"; ctx.font = "9px IBM Plex Mono, monospace"; ctx.fillText(region.name.toUpperCase(), label.x - 38, label.y); }
+    });
+    const hits = [];
+    expedition.world.hotspots.forEach((hotspot) => {
+      const p = this.expeditionPoint(hotspot.position, expedition.world);
+      const selected = hotspot.id === expedition.selectedHotspotId;
+      const color = selected ? "#ffd166" : hotspot.visited ? "#83c6bd" : "#78e3d3";
+      const marker = this.ellipse3d(ctx, p, selected ? .25 : .17, color, selected ? "#fff0aa" : null, .95);
+      if (marker) {
+        ctx.save(); ctx.strokeStyle = color; ctx.globalAlpha = selected ? .9 : .48; ctx.lineWidth = selected ? 2 : 1; ctx.beginPath(); ctx.arc(marker.x, marker.y, Math.max(8, marker.scale * (selected ? .42 : .28)), 0, Math.PI * 2); ctx.stroke(); ctx.restore();
+        hits.push({ id: hotspot.id, x: marker.x, y: marker.y, radius: Math.max(13, marker.scale * .25) });
+      }
+    });
+    this.ellipse3d(ctx, this.expeditionPoint(expedition.probe.position, expedition.world), .36, "#d7e6d5", "#ffd166", .98);
+    const probe = this.project(this.expeditionPoint(expedition.probe.position, expedition.world));
+    if (probe) { ctx.save(); ctx.strokeStyle = "#73e6d7"; ctx.globalAlpha = .45; ctx.beginPath(); ctx.moveTo(probe.x - 16, probe.y); ctx.lineTo(probe.x + 16, probe.y); ctx.moveTo(probe.x, probe.y - 16); ctx.lineTo(probe.x, probe.y + 16); ctx.stroke(); ctx.restore(); }
+    ctx.fillStyle = "#c8ffef"; ctx.font = "600 11px IBM Plex Mono, monospace"; ctx.fillText(`PHYCOFRONTIER · ${expedition.environment.label.toUpperCase()}`, 18, 26);
+    ctx.fillStyle = "rgba(204,244,225,.62)"; ctx.font = "9px IBM Plex Mono, monospace"; ctx.fillText("ARROW KEYS / WASD · SELECT HOTSPOT · SYNTHETIC WORLD", 18, this.h - 18);
+    this.hitHotspots = hits;
+  }
   drawCells(ctx, state) {
     const hits = [];
     for (const cell of state.cyano.cells) {
@@ -347,8 +381,8 @@ class SoftwareLab3D {
     ctx.fillStyle = "rgba(204,244,225,.65)"; ctx.font = "9px IBM Plex Mono, monospace"; ctx.fillText(`${cell.morphology} · ${cell.sizeUm.toFixed(2)} µm · synthetic`, this.w - 180, cy + radius + 45);
   }
   drawText(ctx) { ctx.fillStyle = "rgba(204,244,225,.62)"; ctx.font = "10px IBM Plex Mono, monospace"; ctx.fillText("SOFTWARE 3D · SYNTHETIC LAB VIEW · NO HARDWARE LINK", 18, this.h - 18); }
-  pick(event) { const rect = this.canvas.getBoundingClientRect(), x = event.clientX - rect.left, y = event.clientY - rect.top; const hit = (this.hitCells || []).map((item) => ({ ...item, d: Math.hypot(item.x - x, item.y - y) })).sort((a, b) => a.d - b.d)[0]; if (hit && hit.d < Math.max(20, hit.radius * 2)) this.hooks.onSelect?.(hit.id); }
-  loop() { requestAnimationFrame(this.loop); const ctx = this.ctx; ctx.setTransform(this.dpr, 0, 0, this.dpr, 0, 0); ctx.clearRect(0, 0, this.w, this.h); const gradient = ctx.createLinearGradient(0, 0, 0, this.h); gradient.addColorStop(0, "#0a211b"); gradient.addColorStop(1, "#06100f"); ctx.fillStyle = gradient; ctx.fillRect(0, 0, this.w, this.h); const state = this.state; if (!state) return; this.drawFloor(ctx); if (this.mode !== "cyanoflow") this.drawVessel(ctx, state); if (this.mode !== "algaephyte") this.drawChip(ctx, state); this.drawCells(ctx, state); this.drawCellInspection(ctx, state); this.drawText(ctx); }
+  pick(event) { const rect = this.canvas.getBoundingClientRect(), x = event.clientX - rect.left, y = event.clientY - rect.top; if (this.mode === "expedition") { const hit = (this.hitHotspots || []).map((item) => ({ ...item, d: Math.hypot(item.x - x, item.y - y) })).sort((a, b) => a.d - b.d)[0]; if (hit && hit.d < Math.max(24, hit.radius * 2)) this.hooks.onHotspot?.(hit.id); return; } const hit = (this.hitCells || []).map((item) => ({ ...item, d: Math.hypot(item.x - x, item.y - y) })).sort((a, b) => a.d - b.d)[0]; if (hit && hit.d < Math.max(20, hit.radius * 2)) this.hooks.onSelect?.(hit.id); }
+  loop() { requestAnimationFrame(this.loop); const ctx = this.ctx; ctx.setTransform(this.dpr, 0, 0, this.dpr, 0, 0); ctx.clearRect(0, 0, this.w, this.h); const gradient = ctx.createLinearGradient(0, 0, 0, this.h); gradient.addColorStop(0, "#0a211b"); gradient.addColorStop(1, "#06100f"); ctx.fillStyle = gradient; ctx.fillRect(0, 0, this.w, this.h); const state = this.state; if (!state) return; if (this.mode === "expedition") { this.drawExpedition(ctx, state); return; } this.drawFloor(ctx); if (this.mode !== "cyanoflow") this.drawVessel(ctx, state); if (this.mode !== "algaephyte") this.drawChip(ctx, state); this.drawCells(ctx, state); this.drawCellInspection(ctx, state); this.drawText(ctx); }
 }
 
 function sub(a, b) { return { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z }; }
