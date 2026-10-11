@@ -10,7 +10,7 @@
   var oBio=document.getElementById("oBio"),oProt=document.getElementById("oProt"),oCo2=document.getElementById("oCo2");
 
   function unitText(k,v){
-    if(k==="light")return Math.round(v*420)+" μmol";
+    if(k==="light")return Math.round(v*420)+" μmol m⁻² s⁻¹";
     if(k==="carbon")return (v*9.5).toFixed(1)+" g/L";
     return Math.round(v*100)+"%";
   }
@@ -56,10 +56,11 @@
 (function(){
   var vol=document.getElementById("dVol"),have=document.getElementById("dHave"),target=document.getElementById("dTarget"),out=document.getElementById("doseOut");
   function calc(){
-    var v=parseFloat(vol.value)||0,h=parseFloat(have.value)||0,t=parseFloat(target.value)||0;
+    if(!vol.validity.valid||!have.validity.valid||!target.validity.valid||[vol,have,target].some(function(i){return i.value==='';})){out.textContent='Enter valid values within the stated ranges.';return;}
+    var v=parseFloat(vol.value),h=parseFloat(have.value),t=parseFloat(target.value);
     var g=Math.max(0,(t-h)*v);
     var staged=v>0?Math.max(1,Math.ceil(g/(0.5*v))):1;
-    out.textContent="Add "+g.toFixed(1)+" g NaHCO₃ total, in "+staged+" stage"+(staged>1?"s":"")+" of "+(g/staged).toFixed(1)+" g, an hour apart.";
+    out.textContent="Illustrative deficit: "+g.toFixed(1)+" g NaHCO₃ total, in "+staged+" stage"+(staged>1?"s":"")+" of "+(g/staged).toFixed(1)+" g, an hour apart.";
   }
   [vol,have,target].forEach(function(i){i.addEventListener("input",calc);});
   calc();
@@ -71,10 +72,9 @@
   if(!canvas)return;
   var ctx=canvas.getContext("2d",{alpha:false});
   if(!ctx)return;
-  if(window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches){
-    canvas.style.display="none";return;
-  }
-  var running=true,raf=0,t0=performance.now();
+  var reduced=matchMedia('(prefers-reduced-motion: reduce)'),visible=false;
+  var running=true,raf=0,t0=performance.now(),lastFrame=0,animateUntil=0;
+  canvas.dataset.motionState='idle';
   var filaments=[];
   for(var i=0;i<170;i++){
     filaments.push({
@@ -91,7 +91,7 @@
     bubbles.push({nx:Math.random(),y:Math.random()*800,r:0.8+Math.random()*3.2,v:22+Math.random()*50,wobble:Math.random()*Math.PI*2});
   }
   var mouse={x:.62,y:.5};
-  window.addEventListener("mousemove",function(e){
+  canvas.addEventListener("pointermove",function(e){
     var r=canvas.getBoundingClientRect();
     mouse={x:(e.clientX-r.left)/r.width,y:(e.clientY-r.top)/r.height};
   },{passive:true});
@@ -118,7 +118,10 @@
     ctx.closePath();
   }
   function draw(now){
-    if(!running)return;
+    raf=0;
+    if(!running||!visible||document.hidden)return;
+    if(now-lastFrame<33){raf=requestAnimationFrame(draw);return;}
+    lastFrame=now;
     var dt=Math.min(.05,(now-t0)/1000);t0=now;
     var w=canvas.clientWidth,h=canvas.clientHeight;
     var s=simInputs();
@@ -228,9 +231,17 @@
     ctx.fillStyle="rgba(120,255,140,"+(0.4+0.4*Math.sin(t*3))+")";
     ctx.beginPath();ctx.arc(cx-colW*0.34,bot+30,3,0,Math.PI*2);ctx.fill();
 
-    raf=requestAnimationFrame(draw);
+    canvas.dataset.frames=String(Number(canvas.dataset.frames||0)+1);
+    if(!reduced.matches&&now<animateUntil){canvas.dataset.motionState='responding';raf=requestAnimationFrame(draw);}else{canvas.dataset.motionState='idle';}
   }
+  function respond(){if(!visible||document.hidden)return;animateUntil=performance.now()+650;if(!raf)raf=requestAnimationFrame(draw);}
+  new IntersectionObserver(function(entries){visible=entries[0].isIntersecting;if(visible)respond();else{cancelAnimationFrame(raf);raf=0;canvas.dataset.motionState='offscreen';}},{threshold:.01}).observe(canvas);
+  document.addEventListener('visibilitychange',function(){if(document.hidden){cancelAnimationFrame(raf);raf=0;}else respond();});
+  reduced.addEventListener('change',respond);
+  document.querySelectorAll('#simControls input').forEach(function(input){input.addEventListener('input',respond);});
+  document.getElementById('simReset').addEventListener('click',respond);
+  new ResizeObserver(respond).observe(canvas.parentElement);
   var simInputs=function(){return {light:parseFloat(document.querySelector('[data-ctl="light"] input').value)||.52,carbon:parseFloat(document.querySelector('[data-ctl="carbon"] input').value)||.72,air:parseFloat(document.querySelector('[data-ctl="air"] input').value)||.58};};
-  raf=requestAnimationFrame(draw);
+  respond();
 })();
 

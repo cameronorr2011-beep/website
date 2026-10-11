@@ -155,3 +155,5 @@ button:disabled { opacity: .38; cursor: not-allowed; }
   .header-actions button { padding: 6px 5px; font-size: 8px; }
   .modal-shell, .pause-shell { overflow: hidden; }
 }
+
+body[data-game]>.nav,body[data-game]>.mobile-menu,body[data-game]>.science-footer{display:none}

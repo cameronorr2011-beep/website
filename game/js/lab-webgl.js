@@ -1,4 +1,5 @@
 import * as T from 'three';
+import { scheduleRenderer } from './render-scheduler.js';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { RoundedBoxGeometry } from 'three/addons/geometries/RoundedBoxGeometry.js';
 
@@ -47,7 +48,9 @@ export class WebGLLab {
     const green = new T.PointLight(0x8bd47a, 3.2, 10); green.position.set(-3, 3, 1); this.scene.add(green);
     this.buildLab(); this.buildExpedition(); this.bind(); this.setCamera('laboratory', true); this.resize();
     this.observer = new ResizeObserver(() => this.resize()); this.observer.observe(canvas);
-    this.frame = this.frame.bind(this); this.frameId = requestAnimationFrame(this.frame);
+    this.frame = this.frame.bind(this);
+    this.scheduler = scheduleRenderer(canvas, this.frame, () => Boolean(this.state?.sim.running || this.transition));
+    this.controls.addEventListener('change', () => this.scheduler.request());
     canvas.dataset.renderer = 'webgl';
   }
 
@@ -436,7 +439,7 @@ export class WebGLLab {
     }
   }
 
-  setState(state) { this.state = state; }
+  setState(state) { this.state = state; this.scheduler?.request(); }
   setMode(mode) {
     this.mode = mode || 'overview';
     this.lab.visible = this.mode !== 'expedition' && this.mode !== 'cell';
@@ -499,10 +502,9 @@ export class WebGLLab {
   }
   frame(now) {
     if (this.disposed) return;
-    this.frameId = requestAnimationFrame(this.frame);
-    if (document.hidden || (this.low && now - (this.last || 0) < 33)) return;
+    if (document.hidden) return;
     this.last = now;
-    this.animTime = now / 1000;
+    this.animTime = matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : now / 1000;
     if (this.transition) {
       this.camera.position.lerp(this.transition.eye, .09); this.controls.target.lerp(this.transition.target, .09);
       if (this.camera.position.distanceTo(this.transition.eye) < .02) this.transition = null;
@@ -516,7 +518,7 @@ export class WebGLLab {
     geometries.forEach(g => g.dispose()); materials.forEach(m => { if (m.map) { m.map.dispose(); this.textures.delete(m.map); } m.dispose(); });
   }
   destroy() {
-    this.disposed = true; cancelAnimationFrame(this.frameId); this.controller.abort(); this.observer.disconnect();
+    this.disposed = true; this.scheduler.destroy(); this.controller.abort(); this.observer.disconnect();
     this.controls.dispose(); this.disposeGroup(this.scene); this.textures.forEach(t => t.dispose()); this.renderer.dispose();
   }
 }

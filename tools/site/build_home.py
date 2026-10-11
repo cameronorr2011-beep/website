@@ -10,7 +10,8 @@ def render():
     body = (ROOT / 'sections/home-body.html').read_text(encoding='utf-8').rstrip()
     if not head.endswith('</head>') or '<body' not in body:
         raise ValueError('Homepage source must contain a closed head and complete body')
-    text = head + '\n' + body + '\n'
+    from design_system import apply
+    text = apply(head + '\n' + body + '\n')
     page = Page(text)
     if len(page.headings['h1']) != 1 or page.canonical != 'https://orrbiologicals.com/':
         raise ValueError('Homepage source has invalid H1/canonical')

@@ -100,7 +100,7 @@
 
     var stats = { compartments: 0, occupied: 0, candidates: 0 };
     var comp = document.getElementById("stComp"), occ = document.getElementById("stOcc"), cand = document.getElementById("stCand");
-    var running = true, raf = 0, last = performance.now(), nextId = 1, scan = 0;
+    var running = !reduce, raf = 0, last = performance.now(), nextId = 1, scan = 0;
     var droplets = [], W = 0, H = 300;
 
     function resize() {
@@ -132,19 +132,24 @@
     var visible = true;
     if ("IntersectionObserver" in window) {
       new IntersectionObserver(function (es) {
-        es.forEach(function (en) { visible = en.isIntersecting; });
+        es.forEach(function (en) { visible = en.isIntersecting;if(visible&&!document.hidden&&running&&!reduce&&!raf)raf=requestAnimationFrame(frame);else if(!visible){cancelAnimationFrame(raf);raf=0;} });
       }, { threshold: 0.02 }).observe(canvas);
     }
-    document.addEventListener("visibilitychange", function () { visible = !document.hidden && visible; });
+    document.addEventListener("visibilitychange", function () { if(document.hidden){cancelAnimationFrame(raf);raf=0;}else if(visible&&running&&!reduce&&!raf)raf=requestAnimationFrame(frame); });
 
     var toggle = document.getElementById("simToggle");
     if (toggle) toggle.addEventListener("click", function () {
       running = !running;
       toggle.textContent = running ? "PAUSE" : "RUN";
+      toggle.setAttribute('aria-pressed',running?'true':'false');
+      if(running&&visible&&!document.hidden&&!reduce&&!raf)raf=requestAnimationFrame(frame);
+      if(!running){cancelAnimationFrame(raf);raf=0;}
     });
 
     function frame(now) {
-      raf = requestAnimationFrame(frame);
+      raf = 0;
+      if(!visible||document.hidden)return;
+      if(running&&!reduce)raf=requestAnimationFrame(frame);
       var dt = Math.min((now - last) / 1000, 0.05); last = now;
       if (!visible || document.hidden) return;
       var speed = running ? 78 : 0;
@@ -266,7 +271,8 @@
       /* one static frame */
       scan = 0.4; running = false;
       frame(performance.now()); cancelAnimationFrame(raf);
-      running = true; if (toggle) toggle.textContent = "PAUSE";
+      running = false; if (toggle) {toggle.textContent = 'STATIC · REDUCED MOTION';toggle.disabled=true;}
+
     } else {
       raf = requestAnimationFrame(frame);
     }

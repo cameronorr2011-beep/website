@@ -14,6 +14,7 @@ from seo_audit import ROOT, SITE, Page, pages, route, SITEMAP_EXCLUDED
 from build_home import build as build_home
 from build_research import build as build_research
 from link_topics import build as link_topics
+from design_system import build as build_design
 
 
 def build():
@@ -47,6 +48,7 @@ def build():
     text, n = re.subn(r'<!-- SEO:CYANO:START -->.*?<!-- SEO:CYANO:END -->', '<!-- SEO:CYANO:START -->\n' + links + '\n<!-- SEO:CYANO:END -->', text, flags=re.S)
     if n != 1: raise ValueError('Cyanoflow requires one static research marker pair')
     cyano.write_text(text, encoding='utf-8')
+    build_design()
     ns = 'http://www.sitemaps.org/schemas/sitemap/0.9'
     ET.register_namespace('', ns); tree = ET.Element('{' + ns + '}urlset')
     count = 0; seen = set()

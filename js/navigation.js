@@ -17,10 +17,15 @@
   var nav=document.getElementById("nav");
   var toggle=document.getElementById("navToggle");
   var menu=document.getElementById("mobileMenu");
-  function onScroll(){nav.classList.toggle("solid",window.scrollY>8);}
+  function onScroll(){if(nav)nav.classList.toggle("solid",window.scrollY>8);}
   onScroll();
   window.addEventListener("scroll",onScroll,{passive:true});
-  if(toggle)toggle.addEventListener("click",function(){
+  function closeMenu(){if(!menu||!toggle)return;menu.hidden=true;toggle.setAttribute('aria-expanded','false');toggle.textContent='Menu';}
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&menu&&!menu.hidden){closeMenu();toggle.focus();}});
+  document.addEventListener('click',function(e){if(menu&&!menu.hidden&&!menu.contains(e.target)&&!toggle.contains(e.target))closeMenu();});
+  matchMedia('(min-width:1101px)').addEventListener('change',closeMenu);
+  document.querySelectorAll('.nav-links a,.mobile-menu a').forEach(function(a){if(new URL(a.href).pathname===location.pathname&&!new URL(a.href).hash)a.setAttribute('aria-current','page');});
+  if(toggle&&menu)toggle.addEventListener("click",function(){
     var open=menu.hidden;
     menu.hidden=!open;
     toggle.setAttribute("aria-expanded",open?"true":"false");
