@@ -7,6 +7,7 @@ export default async function(page){
  const routes=list.map(p=>new URL(p.url||p.canonical).pathname);
  const errors=[];const failed=[];
  page.on('pageerror',e=>errors.push({url:page.url(),message:e.message}));
+ page.on('console',message=>{if(message.type()==='error')errors.push({url:page.url(),message:message.text()});});
  page.on('response',r=>{if(r.status()>=400&&['script','stylesheet','image'].includes(r.request().resourceType()))failed.push({url:r.url(),status:r.status()});});
  let checks=0;
  for(const width of [390,1280]){
