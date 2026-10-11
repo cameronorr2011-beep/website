@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#071716">
+  <title>PHYCOFRONTIER — Algae Discovery Expedition</title>
+  <meta name="description" content="Explore a living fictional world, collect algae samples, and build a network of microfluidic research devices.">
+  <link rel="canonical" href="https://orrbiologicals.com/demo/">
+  <meta property="og:title" content="PHYCOFRONTIER — Algae Discovery Expedition">
+  <meta property="og:description" content="Explore a living fictional world, collect algae samples, and build a network of microfluidic research devices.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://orrbiologicals.com/demo/">
+  <meta property="og:image" content="https://orrbiologicals.com/assets/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="PHYCOFRONTIER — Algae Discovery Expedition">
+  <meta name="twitter:description" content="A fictional 2D algae discovery expedition by Orr Biologicals.">
+  <meta name="twitter:image" content="https://orrbiologicals.com/assets/og.png">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"PHYCOFRONTIER — Algae Discovery Expedition","url":"https://orrbiologicals.com/demo/","description":"A fictional 2D algae discovery expedition with simulated organisms and microfluidic research devices."}</script>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-game="loading">
+  <h1 class="sr-only">PHYCOFRONTIER — Algae Discovery Expedition</h1>
+  <main id="gameShell">
+    <canvas id="world" aria-label="2D PHYCOFRONTIER expedition world" tabindex="0"></canvas>
+    <div class="vignette" aria-hidden="true"></div>
+    <header class="game-header">
+      <a class="brand" href="/">ORR <span>BIOLOGICALS</span><small>FIELD SYSTEMS / 01</small></a>
+      <div class="title-lockup"><strong>PHYCO<span>FRONTIER</span></strong><small>ALGAE DISCOVERY EXPEDITION</small></div>
+      <div class="header-actions"><span class="save-state" id="saveState">LOCAL SAVE READY</span><button id="soundButton" aria-pressed="false">◉ SOUND OFF</button><button data-panel="map">M MAP</button><button data-action="pause">Ⅱ PAUSE</button></div>
+    </header>
+    <section class="hud-top" aria-live="polite">
+      <div class="region-readout"><span class="eyebrow">CURRENT HABITAT</span><strong id="regionName">Verdant Estuary</strong><small id="regionType">WETLAND · EXPEDITION SITE 01</small></div>
+      <div class="resource-strip"><div><span>RESEARCH</span><b id="credits">120</b></div><div><span>DATA</span><b id="data">0</b></div><div><span>MATERIALS</span><b id="materials">42</b></div><div><span>SAMPLES</span><b id="samples">0 / 8</b></div><div><span>POWER</span><b id="power">100%</b></div></div>
+    </section>
+    <section class="objective" id="objective" role="status"><span class="objective-mark">◈</span><div><span class="eyebrow">EXPEDITION DIRECTIVE</span><strong id="objectiveText">Scan the shoreline habitat, then collect your first environmental sample.</strong></div><button data-action="scan">F SCAN</button></section>
+    <section class="environment-readout" id="environmentReadout" aria-live="polite"><span class="eyebrow">LIVE ENVIRONMENT</span><span id="environmentText">TEMPERATURE — · SALINITY — · pH — · LIGHT —</span></section>
+    <div class="crosshair" aria-hidden="true"><i></i></div>
+    <section class="bottom-hint"><span><b>A D / ← →</b> MOVE</span><span><b>SPACE</b> JUMP / SWIM</span><span><b>E</b> INTERACT</span><span><b>F</b> SCAN</span><span><b>M</b> MAP</span></section>
+    <nav class="quick-nav" aria-label="Expedition tools"><button data-panel="devices"><i>◌</i><span>DEVICES</span><b id="deviceCount">1</b></button><button data-panel="archive"><i>✦</i><span>ARCHIVE</span><b id="archiveCount">0</b></button><button data-panel="tech"><i>⌁</i><span>TECH TREE</span><b id="techCount">0</b></button><button data-panel="journal"><i>≋</i><span>JOURNAL</span><b id="logCount">1</b></button></nav>
+    <div class="touch-controls" aria-label="Touch controls"><button data-key="left">◀</button><button data-key="jump">▲</button><button data-key="right">▶</button><button data-key="interact">E</button><button data-key="scan">F</button></div>
+    <div id="toast" class="toast" role="status"></div>
+  </main>
+  <section class="modal-shell" id="modalShell" hidden><div class="modal-backdrop" data-action="close-panel"></div><div class="game-panel" role="dialog" aria-modal="true" aria-labelledby="panelTitle"><header><div><span class="eyebrow" id="panelEyebrow">EXPEDITION SYSTEM</span><h2 id="panelTitle">Research devices</h2></div><button class="close-button" data-action="close-panel" aria-label="Close panel">×</button></header><div id="panelBody"></div></div></section>
+  <section class="pause-shell" id="pauseShell" hidden><div class="pause-card"><span class="eyebrow">EXPEDITION SUSPENDED</span><h2>Keep the culture alive.</h2><p>Your local field state is safe. Resume when you are ready to continue exploring.</p><button class="primary" data-action="resume">RESUME EXPEDITION</button><button data-action="save">SAVE PROGRESS</button><button data-action="reset">RESET LOCAL EXPEDITION</button></div></section>
+  <script type="module" src="app.mjs"></script>
+</body>
+</html>

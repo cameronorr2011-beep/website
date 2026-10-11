@@ -49,6 +49,11 @@ The Algaephyte workspace optionally connects to the read-only Pi 3 B+ bridge.
 are documented separately. Telemetry never changes the synthetic model or its
 saved/report data, and no actuator controls are exposed.
 
+The standalone `/demo/` route contains PHYCOFRONTIER, an original 2D algae
+discovery expedition with procedural habitats, sample processing, devices,
+research progression, and local saves. Its organism catalog is fictional and
+simulated; it is separate from the Algaephyte lab state.
+
 The historical architecture/refactor record below describes the older layout,
 not validated hardware performance or the current assembly source.
 
