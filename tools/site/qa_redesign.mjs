@@ -10,6 +10,8 @@ export default async function(page) {
     for(const route of routes) {
       const response=await page.goto(base+route);assert.equal(response.status(),200,route);
       await page.locator('h1').waitFor();
+      if(route==='/blog/') await page.waitForFunction(()=>[...document.querySelectorAll('.pick-card')].some(e=>!e.hidden)||!document.getElementById('pkFail').hidden);
+      await page.waitForFunction(()=>[...document.images].filter(i=>i.loading!=='lazy').every(i=>i.complete));
       const state=await page.evaluate(()=>({overflow:document.documentElement.scrollWidth>innerWidth+1,h1:document.querySelectorAll('h1').length,nav:document.querySelectorAll('#nav').length,menus:document.querySelectorAll('#mobileMenu').length,footer:document.querySelectorAll('.science-footer').length,broken:[...document.images].filter(i=>i.complete&&!i.naturalWidth).map(i=>i.src)}));
       assert.equal(state.overflow,false,`${width} ${route} overflows`);assert.equal(state.nav,1);assert.equal(state.menus,1);assert.equal(state.footer,1);assert.equal(state.h1,1);assert.deepEqual(state.broken,[]);
       layouts.push({width,route,...state});

@@ -5,6 +5,11 @@ ErrorDocument 404 /404.html
 
 Options -Indexes
 
+# Native modules in the retained expedition demo must have a JavaScript MIME.
+<IfModule mod_mime.c>
+AddType application/javascript .mjs
+</IfModule>
+
 # Block dotfiles (.env, .git) and source/tooling files from HTTP access.
 # Serves only site content; blocks anything sensitive that ends up in the
 # web root (scripts, backups, logs). 2.4 and 2.2 syntax both covered.

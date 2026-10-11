@@ -22,6 +22,13 @@ class DesignSystemTests(unittest.TestCase):
                     self.assertEqual(len(re.findall(r'href="/css/'+css+r'\.css',text)),1)
                 self.assertNotIn('fonts.googleapis.com/css',text)
 
+    def test_deployment_modules_and_brief_images(self):
+        apache=(ROOT/'.htaccess').read_text(encoding='utf-8-sig')
+        self.assertIn('AddType application/javascript .mjs',apache)
+        blog=(ROOT/'blog/index.html').read_text(encoding='utf-8')
+        self.assertNotIn('src=""',blog)
+        self.assertIn('width="1600" height="900"',blog)
+
     def test_motion_has_no_scientific_countup_or_decorative_loop(self):
         js=(ROOT/'js/animations.js').read_text(encoding='utf-8')
         self.assertNotIn('Math.random',js)
