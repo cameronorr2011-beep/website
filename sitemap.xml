@@ -1,6 +1,9 @@
 <?xml version='1.0' encoding='utf-8'?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://orrbiologicals.com/Simulation/</loc>
+  </url>
+  <url>
     <loc>https://orrbiologicals.com/algae-biotechnology/</loc>
   </url>
   <url>
@@ -216,8 +219,5 @@
   </url>
   <url>
     <loc>https://orrbiologicals.com/research/</loc>
-  </url>
-  <url>
-    <loc>https://orrbiologicals.com/Simulation/</loc>
   </url>
 </urlset>
