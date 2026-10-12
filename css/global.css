@@ -1,12 +1,12 @@
 /* Orr Biologicals · shared scientific interface. Tokens are defined only here. */
 :root{
-  --void:#f4f6f2;--void-2:#eaf0e9;--paper:#ffffff;--paper-2:#edf2ed;
-  --ink:#142c24;--ink-soft:#40594f;--mute:#53695f;--rule:#d5dfd7;
-  --leaf:#28674f;--leaf-2:#28674f;--leaf-deep:#18513b;--leaf-soft:#e5eee6;
+  --void:#f2f6f2;--void-2:#e7f0ea;--paper:#fbfdfb;--paper-2:#eaf2ec;
+  --ink:#102c22;--ink-soft:#3f5d50;--mute:#647a6e;--rule:#cfddd4;
+  --leaf:#2d7657;--leaf-2:#6fa982;--leaf-deep:#16523b;--leaf-soft:#e3efe6;
   --cyan:#167078;--copper:#8b6237;--warn:#a23e2a;
   --sans:"DM Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
   --serif:Georgia,"Times New Roman",serif;--mono:ui-monospace,SFMono-Regular,Consolas,monospace;
-  --max:1200px;--radius:8px;--fast:140ms;--motion:240ms;--reveal:360ms;
+  --max:1200px;--radius:12px;--fast:140ms;--motion:240ms;--reveal:360ms;
   --ease:cubic-bezier(.2,.65,.3,1);
   --dvoid:#0c211a;--dvoid-2:#102a21;--dpanel:#102a21;--dpanel-2:#15362b;
   --dink:#eff5ef;--dink-soft:#c7d8cd;--d-mute:#acc3b5;--drule:#355247;
@@ -17,7 +17,7 @@
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:96px}
-body{margin:0;background:var(--void);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased}
+body{margin:0;background:linear-gradient(180deg,#f7faf7 0,var(--void) 34rem),var(--void);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased}
 img{display:block;max-width:100%;height:auto}
 a{color:inherit;text-decoration:none}
 button,input,select,textarea{font:inherit}
@@ -29,13 +29,13 @@ button:active:not(:disabled),.btn:active{transform:translateY(1px)}
 ::selection{background:#c5ddcc;color:var(--ink)}
 [hidden]{display:none!important}
 .wrap,.orr-container{width:min(100% - 48px,var(--max));margin-inline:auto;padding:0}
-.section,.orr-section{padding:72px 0;border-top:1px solid var(--rule)}
+.section,.orr-section{padding:88px 0;border-top:1px solid var(--rule)}
 .section.alt{background:var(--void-2)}
 .section.dark{background:var(--dvoid);color:var(--dink);--ink:var(--dink);--ink-soft:var(--dink-soft);--mute:var(--d-mute);--rule:var(--drule);--paper-2:var(--dpanel-2)}
-.eyebrow,.orr-eyebrow{font:500 11px/1.6 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--leaf-deep);margin:0 0 16px}
+.eyebrow,.orr-eyebrow{font:500 10px/1.6 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--leaf-deep);margin:0 0 16px}
 .section.dark .eyebrow{color:var(--dleaf)}
-.h-display,h1,h2,h3,h4{font-family:var(--sans);font-weight:500;text-wrap:balance}
-.h-display{font-size:clamp(1.8rem,3.5vw,2.8rem);line-height:1.15;letter-spacing:-.035em;margin:16px 0;max-width:24ch}
+.h-display,h1,h2,h3,h4{font-family:var(--sans);font-weight:560;text-wrap:balance}
+.h-display{font-size:clamp(1.8rem,3.5vw,2.8rem);line-height:1.12;letter-spacing:-.045em;margin:16px 0;max-width:24ch}
 .lede{font-size:18px;line-height:1.7;color:var(--ink-soft);max-width:60ch}
 .serif{font-family:var(--serif)}.mono{font-family:var(--mono)}.mute{color:var(--mute)}
 p{overflow-wrap:break-word}
@@ -50,5 +50,23 @@ input[type=number],input[type=text],input[type=email],textarea,select{max-width:
 ::view-transition-new(root){animation:page-in 180ms var(--ease) both}
 @keyframes page-out{to{opacity:0}}
 @keyframes page-in{from{opacity:0}to{opacity:1}}
-@media(max-width:640px){.wrap,.orr-container{width:calc(100% - 36px)}.section,.orr-section{padding:48px 0}.lede{font-size:17px}}
+@media(max-width:640px){.wrap,.orr-container{width:calc(100% - 36px)}.section,.orr-section{padding:60px 0}.lede{font-size:17px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}::view-transition-old(root),::view-transition-new(root){animation:none!important}}
+
+/* Immersive workspaces opt out of the public reading surface. These scoped
+   rules run after the shared shell so route-specific apps keep their own
+   dark instrument palette. */
+body:has(.sim-app),body:has(.lab-shell){background:#06100c;color:#eaf6ec}
+body:has(.sim-app)> .nav,body:has(.lab-shell)> .nav{background:rgba(6,16,11,.94);border-color:rgba(163,225,170,.14);backdrop-filter:blur(16px)}
+body:has(.sim-app)> .nav .mark,body:has(.lab-shell)> .nav .mark{color:#eaf6ec}
+body:has(.sim-app)> .nav .mark svg,body:has(.lab-shell)> .nav .mark svg{color:#91e49c}
+body:has(.sim-app)> .nav .mark small,body:has(.lab-shell)> .nav .mark small{color:#8da696}
+body:has(.sim-app)> .nav .nav-links a,body:has(.lab-shell)> .nav .nav-links a{color:#b9cdbd}
+body:has(.sim-app)> .nav .nav-links a:hover,body:has(.lab-shell)> .nav .nav-links a:hover,body:has(.sim-app)> .nav .nav-links a[aria-current=page],body:has(.lab-shell)> .nav .nav-links a[aria-current=page]{color:#b5ffc0}
+body:has(.sim-app)> .nav .nav-toggle,body:has(.lab-shell)> .nav .nav-toggle{color:#eaf6ec;border-color:rgba(163,225,170,.2)}
+body:has(.sim-app)> .mobile-menu,body:has(.lab-shell)> .mobile-menu{background:#06100c;border-color:rgba(163,225,170,.14);color:#eaf6ec}
+body:has(.sim-app)> .science-footer{display:none}
+body:has(.sim-app) .sim-app{background:#06100c}
+body:has(.sim-app) .sim-sidebar{top:82px;height:calc(100vh - 82px)}
+body:has(.sim-app) .sim-main{background:#06100c}
+body:has(.sim-app) .sim-view{color:#eaf6ec}

@@ -1,22 +1,23 @@
 /* Shared navigation: stable height, restrained selection, no decorative animation. */
-.nav{position:sticky;top:0;z-index:100;background:var(--void);border-bottom:1px solid var(--rule)}
-.nav-in{width:min(100% - 48px,var(--max));margin:auto;min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.nav{position:sticky;top:0;z-index:100;background:color-mix(in srgb,var(--void) 92%,transparent);border-bottom:1px solid var(--rule);backdrop-filter:blur(14px);transition:background var(--motion) var(--ease),box-shadow var(--motion) var(--ease)}
+.nav.solid{background:color-mix(in srgb,var(--void) 98%,transparent);box-shadow:0 10px 30px rgba(16,44,34,.06)}
+.nav-in{width:min(100% - 48px,var(--max));margin:auto;min-height:82px;display:flex;align-items:center;justify-content:space-between;gap:24px}
 .mark{display:flex;align-items:center;gap:11px;flex-shrink:0}
-.mark svg{width:30px;height:30px;color:var(--leaf)}
+.mark svg{width:36px;height:36px;padding:6px;color:var(--leaf);background:var(--leaf-soft);border:1px solid var(--rule);border-radius:50%}
 .mark b{display:block;font:600 17px/1.2 var(--sans);letter-spacing:-.025em}
 .mark small{display:block;font:10px/1.7 var(--mono);color:var(--mute);letter-spacing:.06em}
-.nav-links{display:flex;align-items:center;gap:22px}
-.nav-links a{position:relative;font-size:13px;color:var(--ink-soft);padding:12px 0;transition:color var(--fast) var(--ease)}
+.nav-links{display:flex;align-items:center;gap:18px}
+.nav-links a{position:relative;font-size:12.5px;font-weight:500;color:var(--ink-soft);padding:12px 0;transition:color var(--fast) var(--ease)}
 .nav-links a:hover,.nav-links a[aria-current=page]{color:var(--leaf-deep)}
 .nav-links a[aria-current=page]::after{content:"";position:absolute;bottom:4px;left:0;right:0;height:2px;background:var(--leaf)}
-.btn-white,.btn-ghost,.orr-btn,.btn{display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:44px;padding:11px 18px;border:1px solid var(--rule);border-radius:var(--radius);font:500 14px/1.4 var(--sans);transition:background var(--fast) var(--ease),border-color var(--fast) var(--ease),transform var(--fast) var(--ease)}
+.btn-white,.btn-ghost,.orr-btn,.btn{display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:44px;padding:11px 18px;border:1px solid var(--rule);border-radius:10px;font:600 13px/1.4 var(--sans);transition:background var(--fast) var(--ease),border-color var(--fast) var(--ease),transform var(--fast) var(--ease),box-shadow var(--fast) var(--ease)}
 .btn-white,.orr-btn-dark,.btn-primary{background:var(--leaf-deep);color:white}
 .nav-links .btn-white{padding:10px 16px;color:white}
-.btn-white:hover,.orr-btn-dark:hover,.btn-primary:hover{background:#246447;color:white}
+.btn-white:hover,.orr-btn-dark:hover,.btn-primary:hover{background:#246447;color:white;box-shadow:0 8px 18px rgba(24,81,59,.18);transform:translateY(-1px)}
 .btn-ghost:hover,.orr-btn-outline:hover{background:var(--void-2);border-color:var(--leaf)}
 .btn-leaf{color:var(--leaf-deep);text-decoration:underline;text-underline-offset:5px}
 .nav-toggle{display:none;min-height:44px;padding:10px 14px;background:transparent;border:1px solid var(--rule);border-radius:var(--radius)}
-.mobile-menu{position:fixed;inset:76px 0 auto;background:var(--void);border-bottom:1px solid var(--rule);padding:12px 24px 24px;z-index:99;max-height:calc(100dvh - 76px);overflow:auto;box-shadow:0 16px 24px #142c2410}
+.mobile-menu{position:fixed;inset:82px 0 auto;background:var(--void);border-bottom:1px solid var(--rule);padding:12px 24px 24px;z-index:99;max-height:calc(100dvh - 82px);overflow:auto;box-shadow:0 16px 24px #142c2410}
 .mobile-menu a{display:block;padding:12px 0;border-bottom:1px solid var(--rule);font-size:16px}
 @media(max-width:1100px){.nav-links{display:none}.nav-toggle{display:block}}
-@media(max-width:640px){.nav-in{width:calc(100% - 36px)}.mark small{font-size:9px}}
+@media(max-width:640px){.nav-in{width:calc(100% - 36px);min-height:72px}.mobile-menu{inset:72px 0 auto;max-height:calc(100dvh - 72px)}.mark small{font-size:9px}.mark b{font-size:16px}}

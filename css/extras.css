@@ -27,11 +27,11 @@
 
 /* ---------- article / insights pages (cream) ---------- */
 .art-body{background:var(--void);color:var(--ink);font-family:var(--serif)}
-.art-shell{max-width:1080px;margin:0 auto;padding:110px 22px 80px}
-.art-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:40px;font-family:var(--mono);font-size:12px}
+.art-shell{max-width:1080px;margin:0 auto;padding:98px 22px 96px}
+.art-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:44px;padding-bottom:16px;border-bottom:1px solid var(--rule);font-family:var(--mono);font-size:11px;letter-spacing:.05em}
 .art-top a{color:var(--ink-soft);text-decoration:none}
 .art-top a:hover{color:var(--leaf-deep)}
-.art-cat{color:var(--leaf-deep);letter-spacing:.14em;text-transform:uppercase;font-size:11px;font-family:var(--mono);margin-bottom:14px}.art-body h1{font-family:var(--sans);font-size:clamp(2rem,5.4vw,3.1rem);line-height:1.08;letter-spacing:-.03em;margin-bottom:18px;color:var(--ink)}
+.art-cat{display:inline-flex;padding:6px 10px;border:1px solid var(--rule);border-radius:999px;background:var(--leaf-soft);color:var(--leaf-deep);letter-spacing:.14em;text-transform:uppercase;font-size:10px;font-family:var(--mono);margin-bottom:18px}.art-body h1{font-family:var(--sans);font-size:clamp(2.4rem,5.4vw,4rem);line-height:1.02;letter-spacing:-.055em;margin-bottom:18px;color:var(--ink)}
 .art-meta{color:var(--ink-soft);font-size:15px;line-height:1.75;font-family:var(--serif);max-width:66ch;margin-bottom:36px}
 .prose p{margin:0 0 1.25em;line-height:1.85;color:var(--ink-soft);font-size:1.09rem}
 .prose h2{font-family:var(--sans);font-size:1.5rem;letter-spacing:-.02em;margin:2.2em 0 .7em;color:var(--ink)}
@@ -55,7 +55,7 @@
 .ins-card h2{font-size:1.22rem;font-family:var(--sans);letter-spacing:-.01em;margin:18px 22px 8px;color:var(--ink)}
 .ins-card p{font-size:1rem;line-height:1.65;color:var(--ink-soft);font-family:var(--serif);margin:0 22px 20px;flex:1}
 .ins-card small{display:block;margin:0 22px 22px;color:var(--leaf-deep);font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase}
-@media (max-width:900px){.art-shell{padding:96px 18px 64px}}
+@media (max-width:900px){.art-shell{padding:76px 18px 64px}.art-body h1{font-size:clamp(2.2rem,8vw,3.4rem)}}
 
 /* ---------- applications: stage ration table ---------- */
 .app-table-wrap{overflow-x:auto;margin:0 0 1.25em;border:1px solid var(--rule);border-radius:12px;background:var(--paper)}

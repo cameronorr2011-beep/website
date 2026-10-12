@@ -2,7 +2,7 @@
 import re
 from seo_audit import ROOT, pages
 
-VERSION = '20261011'
+VERSION = '20261012'
 
 
 def apply(text):
