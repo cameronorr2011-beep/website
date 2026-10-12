@@ -15,7 +15,9 @@ class ResearchLabContractTests(unittest.TestCase):
         self.assertIn('id="workspaceContent"', text)
         self.assertIn('id="exportReport"', text)
         self.assertIn('id="importFile"', text)
-        self.assertTrue('SYNTHETIC DATA' in text or 'SYNTHETIC MODE' in text)
+        self.assertTrue(any(marker in text for marker in (
+            'SYNTHETIC DATA', 'SYNTHETIC MODE', 'SYNTHETIC + DEVICE OPT-IN',
+        )))
         self.assertTrue('js/lab-app.js' in text or 'dist/lab-' in text)
         self.assertNotIn('Algae Living — Grow. Evolve. Survive.', text)
         self.assertNotIn('cdn.jsdelivr.net', text)

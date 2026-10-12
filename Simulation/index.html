@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <title>Algal Digital Lab | Synthetic Microalgae Simulation | Orr Biologicals</title>
+  <meta name="description" content="Run reproducible, clearly labeled synthetic microalgae growth experiments in the Orr Biologicals Algal Digital Lab. Configure conditions, inspect a procedural 3D reactor, save runs locally, and export the model trace.">
+  <meta name="theme-color" content="#07110e">
+  <link rel="canonical" href="https://orrbiologicals.com/Simulation/">
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:opsz,ital,wght@8..60,0,400;8..60,0,500&display=swap" rel="stylesheet">
+  <meta property="og:title" content="Algal Digital Lab | Orr Biologicals">
+  <meta property="og:description" content="A browser-based synthetic microalgae simulation studio with reproducible runs, local experiment records, and a procedural 3D virtual reactor.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://orrbiologicals.com/Simulation/">
+  <meta property="og:image" content="https://orrbiologicals.com/assets/og.png">
+  <meta property="og:site_name" content="Orr Biologicals">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Algal Digital Lab | Orr Biologicals">
+  <meta name="twitter:description" content="Run reproducible synthetic microalgae growth experiments in a local-first browser research workspace.">
+  <meta name="twitter:image" content="https://orrbiologicals.com/assets/og.png">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@graph":[
+    {"@type":"WebPage","@id":"https://orrbiologicals.com/Simulation/#page","url":"https://orrbiologicals.com/Simulation/","name":"Algal Digital Lab | Orr Biologicals","description":"A browser-based synthetic microalgae simulation studio with reproducible runs, local experiment records, and a procedural 3D virtual reactor.","isPartOf":{"@id":"https://orrbiologicals.com/#site"}},
+    {"@type":"WebApplication","@id":"https://orrbiologicals.com/Simulation/#app","name":"Algal Digital Lab","url":"https://orrbiologicals.com/Simulation/","applicationCategory":"EducationalApplication","operatingSystem":"Any","isAccessibleForFree":true,"description":"A local-first browser workspace for exploring an illustrative, deterministic algal biomass model. Results are synthetic computational outputs, not measurements or process guarantees."}
+  ]}
+  </script>
+  <link rel="stylesheet" href="css/simulation.css?v=20261010a">
+</head>
+<body>
+  <a class="sim-skip" href="#simulation-main">Skip to simulation workspace</a>
+  <div class="sim-app" id="simApp" data-sim-boot="pending">
+    <aside class="sim-sidebar" aria-label="Algal Digital Lab navigation">
+      <a class="sim-brand" href="/" aria-label="Orr Biologicals home">
+        <svg viewBox="0 0 32 32" aria-hidden="true">
+          <circle cx="16" cy="16" r="14" fill="none" stroke="currentColor" stroke-opacity=".32"/>
+          <path d="M8 23c3-2.6 3-10.5 8-10.5S21 23 24 23M7 14c3-2.6 3.5-6.5 9-6.5s6 3.9 9 6.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+        <span><strong>Orr Biologicals</strong><small>ALGAL DIGITAL LAB</small></span>
+      </a>
+      <div class="sim-sidebar-status"><span class="status-orb"></span><span>LOCAL-FIRST WORKSPACE</span></div>
+      <nav class="sim-nav" aria-label="Lab views">
+        <p class="sim-nav-label">Workspace</p>
+        <button class="sim-nav-item" type="button" data-view="dashboard"><span class="nav-glyph">⌂</span><span>Dashboard</span><kbd>01</kbd></button>
+        <button class="sim-nav-item is-active" type="button" data-view="laboratory" aria-current="page"><span class="nav-glyph">◉</span><span>Virtual Laboratory</span><kbd>02</kbd></button>
+        <button class="sim-nav-item" type="button" data-view="simulations"><span class="nav-glyph">∿</span><span>Simulations</span><kbd>03</kbd></button>
+        <button class="sim-nav-item" type="button" data-view="strains"><span class="nav-glyph">✣</span><span>Strain Explorer</span><kbd>04</kbd></button>
+        <button class="sim-nav-item" type="button" data-view="experiments"><span class="nav-glyph">▤</span><span>Experiments</span><kbd>05</kbd></button>
+        <p class="sim-nav-label sim-nav-label-lower">Research notes</p>
+        <button class="sim-nav-item" type="button" data-view="assistant"><span class="nav-glyph">✧</span><span>Assistant</span><kbd>06</kbd></button>
+         <button class="sim-nav-item" type="button" data-view="notebook"><span class="nav-glyph">✎</span><span>Notebook</span><kbd>07</kbd></button>
+         <button class="sim-nav-item" type="button" data-view="reports"><span class="nav-glyph">▥</span><span>Reports</span><kbd>08</kbd></button>
+         <button class="sim-nav-item" type="button" data-view="settings"><span class="nav-glyph">⚙</span><span>Settings</span><kbd>09</kbd></button>
+      </nav>
+      <div class="sim-sidebar-bottom">
+        <div class="sim-model-badge"><span class="model-icon">∑</span><span><b>Model v1.0</b><small>Fixed-step Euler · illustrative</small></span></div>
+        <button class="sim-settings-link" type="button" data-view="settings"><span>⚙</span> Settings &amp; data</button>
+        <a class="sim-exit-link" href="/"><span>↗</span> Exit to Orr Biologicals</a>
+      </div>
+    </aside>
+
+    <main class="sim-main" id="simulation-main">
+      <header class="sim-topbar">
+         <div class="sim-breadcrumb"><span>Orr Biologicals</span><i>/</i><strong id="simBreadcrumb">Virtual Laboratory</strong></div>
+         <div class="sim-top-actions">
+           <span class="sim-project-chip" id="projectChip"><span class="chip-dot"></span><span id="projectChipText">Untitled culture study</span></span>
+           <label style="display:flex;align-items:center;gap:6px;color:var(--sim-mute);font:9px var(--sim-mono);white-space:nowrap"><span>PROJECT</span><select id="projectSelector" class="sim-select" aria-label="Open project" style="width:min(190px,22vw);height:34px"><option>Loading projects…</option></select></label>
+           <button class="sim-icon-action" type="button" data-action="new-project" aria-label="Create a new project" title="Create a new project">＋</button>
+          <button class="sim-top-action" type="button" data-action="save-project">Save project <span>⌘S</span></button>
+          <button class="sim-run-action" type="button" data-action="run"><span class="run-icon">▶</span> Run simulation <span>⌘↵</span></button>
+        </div>
+      </header>
+      <div class="sim-view" id="simView" aria-live="polite">
+        <section class="sim-nojs-panel">
+          <p class="sim-eyebrow">Orr Biologicals · research workspace</p>
+          <h1>Algal Digital Lab</h1>
+          <p>Configure and run a synthetic microalgae growth experiment in your browser. JavaScript is required for the interactive laboratory.</p>
+        </section>
+      </div>
+    </main>
+  </div>
+  <div class="sim-toast" id="simToast" role="status" aria-live="polite"></div>
+  <script type="module" src="dist/simulation-KYWQ2JUT.js"></script>
+</body>
+</html>

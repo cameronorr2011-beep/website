@@ -17,9 +17,11 @@ python -m unittest discover -s tools -p 'test_*.py'
 python tools/site/seo_audit.py --out docs/seo/current
 python tools/site/serve_preview.py  # http://127.0.0.1:8876
 npm run test:lab
+npm run test:simulation
 npm run test:expedition
 npm run test:server
 npm run build:lab
+npm run build:simulation
 python -m unittest discover -s hardware/pi-sensors -p 'test_*.py'
 # with the preview running, use the browser-automation runner:
 node C:/Users/Cameron/.claude/skills/browser-automation/browser.mjs http://127.0.0.1:8876/game/ --script tools/qa_lab.mjs
@@ -50,7 +52,13 @@ verified on Apache/production after merge and deployment. There is no TypeScript
 `npm run test:lab` and `npm run build:lab` verify and bundle the lab. The lab ships its
 Three.js runtime as committed, content-hashed static assets; it needs no Node
 runtime, database, API key, or network service after deployment. A Canvas
-accessibility fallback remains available when WebGL cannot initialize.
+accessibility fallback remains available when WebGL cannot initialize. The
+`/Simulation/` route is the Algal Digital Lab: a separate local-first workspace
+for a versioned illustrative biomass model, a procedural Three.js reactor with
+a Canvas projection fallback, scenario comparison, notebook records, and
+synthetic CSV/report exports. Organism names are reference labels and all
+parameters remain illustrative placeholders; browser-local records are not
+authenticated accounts or cloud storage.
 
 The Algaephyte workspace optionally connects to the read-only Pi 3 B+ bridge.
 [Setup, wiring, calibration, and LAN/TLS requirements](hardware/pi-sensors/README.md)

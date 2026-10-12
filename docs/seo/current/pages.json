@@ -6057,7 +6057,7 @@
     ],
     "journey_stage": "Learn / evaluate research concepts",
     "cluster": "Site",
-    "content_words": 230,
+    "content_words": 231,
     "content_quality": "Editorial review required; word count is not a quality score",
     "internal_links_in": [
       "https://orrbiologicals.com/",
@@ -6380,10 +6380,11 @@
     ],
     "journey_stage": "Learn / evaluate research concepts",
     "cluster": "Site",
-    "content_words": 2355,
+    "content_words": 2359,
     "content_quality": "Editorial review required; word count is not a quality score",
     "internal_links_in": [
       "https://orrbiologicals.com/404",
+      "https://orrbiologicals.com/Simulation/",
       "https://orrbiologicals.com/algae-biotechnology/",
       "https://orrbiologicals.com/algaephyte/",
       "https://orrbiologicals.com/applications/",
@@ -6461,6 +6462,7 @@
       "https://orrbiologicals.com/#top",
       "https://orrbiologicals.com/#twin",
       "https://orrbiologicals.com/LICENSE",
+      "https://orrbiologicals.com/Simulation/",
       "https://orrbiologicals.com/algae-biotechnology/",
       "https://orrbiologicals.com/algaephyte/",
       "https://orrbiologicals.com/applications/",
@@ -7191,6 +7193,67 @@
       "twitter:card": "summary_large_image",
       "twitter:title": "Algae Cultivation & Single-Cell Research Methods | Orr Biologicals",
       "twitter:description": "Explore Algaephyte cultivation models, Cyanoflow single-cell methods, species guides and transparent research-status labels. Concepts are not validated results.",
+      "twitter:image": "https://orrbiologicals.com/assets/og.png"
+    }
+  },
+  {
+    "url": "https://orrbiologicals.com/Simulation/",
+    "file": "Simulation/index.html",
+    "current_title": "Algal Digital Lab | Synthetic Microalgae Simulation | Orr Biologicals",
+    "recommended_title": "Algal Digital Lab | Synthetic Microalgae Simulation | Orr Biologicals",
+    "current_description": "Run reproducible, clearly labeled synthetic microalgae growth experiments in the Orr Biologicals Algal Digital Lab. Configure conditions, inspect a procedural 3D reactor, save runs locally, and export the model trace.",
+    "recommended_description": "Run reproducible, clearly labeled synthetic microalgae growth experiments in the Orr Biologicals Algal Digital Lab. Configure conditions, inspect a procedural 3D reactor, save runs locally, and export the model trace.",
+    "h1": [
+      "Algal Digital Lab"
+    ],
+    "h2": [],
+    "intent": "Navigational / educational",
+    "primary_topic": "Algal Digital Lab",
+    "secondary_topics": [],
+    "journey_stage": "Learn / evaluate research concepts",
+    "cluster": "Site",
+    "content_words": 114,
+    "content_quality": "Editorial review required; word count is not a quality score",
+    "internal_links_in": [
+      "https://orrbiologicals.com/"
+    ],
+    "internal_links_out": [
+      "https://orrbiologicals.com/",
+      "https://orrbiologicals.com/Simulation/#simulation-main"
+    ],
+    "external_sources": [],
+    "canonical": "https://orrbiologicals.com/Simulation/",
+    "schema_types": [
+      "WebPage",
+      "WebApplication"
+    ],
+    "schema_errors": [],
+    "images": [],
+    "image_quality": "Illustrations vs measurements must be labeled; no pixel review implied",
+    "image_alt_quality": {
+      "missing": 0,
+      "empty": 0
+    },
+    "indexability": "indexable",
+    "importance": "High",
+    "action": "KEEP",
+    "h1_count": 1,
+    "duplicate_ids": [],
+    "meta": {
+      "": "",
+      "viewport": "width=device-width, initial-scale=1",
+      "referrer": "strict-origin-when-cross-origin",
+      "description": "Run reproducible, clearly labeled synthetic microalgae growth experiments in the Orr Biologicals Algal Digital Lab. Configure conditions, inspect a procedural 3D reactor, save runs locally, and export the model trace.",
+      "theme-color": "#07110e",
+      "og:title": "Algal Digital Lab | Orr Biologicals",
+      "og:description": "A browser-based synthetic microalgae simulation studio with reproducible runs, local experiment records, and a procedural 3D virtual reactor.",
+      "og:type": "website",
+      "og:url": "https://orrbiologicals.com/Simulation/",
+      "og:image": "https://orrbiologicals.com/assets/og.png",
+      "og:site_name": "Orr Biologicals",
+      "twitter:card": "summary_large_image",
+      "twitter:title": "Algal Digital Lab | Orr Biologicals",
+      "twitter:description": "Run reproducible synthetic microalgae growth experiments in a local-first browser research workspace.",
       "twitter:image": "https://orrbiologicals.com/assets/og.png"
     }
   },

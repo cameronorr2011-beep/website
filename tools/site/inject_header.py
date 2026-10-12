@@ -30,6 +30,7 @@ HEADER = """<header class="nav" id="nav">
       <a href="/applications/">Applications</a>
       <a href="/algaephyte/">Algaephyte</a>
       <a href="/blog/">Blog</a>
+      <a href="/Simulation/">Digital lab</a>
       <a href="/game/">Game</a>
       <a class="btn-white" href="/#deploy">Contact</a>
     </nav>
@@ -41,6 +42,7 @@ HEADER = """<header class="nav" id="nav">
   <a href="/applications/">Applications</a>
   <a href="/algaephyte/">Algaephyte</a>
   <a href="/blog/">Blog</a>
+  <a href="/Simulation/">Digital lab</a>
   <a href="/game/">Game</a>
   <a href="/#deploy">Contact</a>
 </div>
@@ -67,12 +69,17 @@ SMALL_NEW = '<small>ALGAEPHYTE &middot; CYANOFLOW</small>'
 def upgrade_nav(html: str) -> str:
     """Ensure an existing header carries the Cyanoflow link + wordmark."""
     def add_link(block: str) -> str:
-        if 'href="/cyanoflow"' in block:
-            return block
-        return re.sub(
-            r'(\n([ \t]*)<a href="/applications/">Applications</a>)',
-            r'\1\n\2<a href="/cyanoflow">Cyanoflow</a>',
-            block, count=1)
+        if 'href="/cyanoflow"' not in block:
+            block = re.sub(
+                r'(\n([ \t]*)<a href="/applications/">Applications</a>)',
+                r'\1\n\2<a href="/cyanoflow">Cyanoflow</a>',
+                block, count=1)
+        if 'href="/Simulation/"' not in block:
+            block = re.sub(
+                r'(\n([ \t]*)<a href="/blog/">Blog</a>)',
+                r'\1\n\2<a href="/Simulation/">Digital lab</a>',
+                block, count=1)
+        return block
 
     html = re.sub(r'<nav class="nav-links"[^>]*>.*?</nav>',
                   lambda m: add_link(m.group(0)), html, flags=re.S)

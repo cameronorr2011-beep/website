@@ -13,7 +13,14 @@ entry point is `game/index.html`, and simulation state stays in the browser.
 An optional, separately installed Python service in `hardware/pi-sensors/`
 provides read-only Raspberry Pi telemetry; it does not run on the website host.
 
-The `/game/` experience is an interactive synthetic research lab with a
+The `/Simulation/` experience is a separate Algal Digital Lab workspace for a
+versioned illustrative biomass model. It keeps project, experiment, run, and
+notebook records in a browser-local schema, exposes fixed-step integration,
+scenario comparison, CSV/report export, and renders the same state in a
+procedural Three.js virtual reactor with a Canvas projection fallback. The
+organism catalog is reference/illustrative only; it is not a calibrated species
+model, physical digital twin, sensor store, or AI service. The `/game/`
+experience remains the interactive synthetic research lab with a
 PHYCOFRONTIER expedition mode. Its browser engine links a deterministic probe
 world (movement, environmental gradients, uncertain scans, sample custody,
 fouling/cleaning, recovery, and autonomous decisions) to the seeded Cyanoflow
@@ -58,6 +65,11 @@ Canvas projection remains available when WebGL cannot initialize.
    validation. A separate Python service reads DS18B20 and MCP3008 interfaces
    only. Mock telemetry remains explicitly synthetic; failed or stale readings
    are not usable measurements. There is no actuator route or AI API client.
+8. **Algal Digital Lab boundary is explicit** — `/Simulation/` is a static,
+   local-first computational product surface. Its optional Node adapter is an
+   unauthenticated development persistence endpoint, not a multi-user SaaS
+   backend. No account, billing, cloud AI, database, or biological validation
+   is claimed by the route.
 
 ## Prioritized implementation checklist
 
@@ -82,6 +94,9 @@ Canvas projection remains available when WebGL cannot initialize.
       status indicators, animated culture bubbles, and chip-flow markers.
 - [x] Keep workspace tabs, camera buttons, object selection, and the Canvas
       fallback synchronized with the synthetic state.
+- [x] Add the standalone `/Simulation/` Algal Digital Lab workflow with
+      versioned inputs/outputs, local records, scenario comparison, notebook
+      entries, CSV/report export, and a procedural 3D reactor fallback.
 
 ### P1 — product completion within the static architecture
 
@@ -141,6 +156,15 @@ and exported data.
   and malformed-state rejection passing.
 - `npm run test:server` — optional backend health, file-backed state round-trip,
   payload limits, and idempotent event handling passing.
+- `npm run test:simulation` — deterministic Algal Digital Lab engine and
+  persistence contract tests passing, including reproducibility, validation,
+  JSON/CSV round trips, provenance, and quota rollback.
+- `npm run build:simulation` — content-hashed static `/Simulation/` bundle
+  generated with the self-hosted Three.js dependency.
+- `tools/qa_simulation.mjs` — local browser workflow passed for WebGL, profile
+  and geometry changes, completed run persistence, notebook save, mobile fit,
+  and the local assistant provenance boundary. This QA does not claim a
+  production SaaS backend or biological measurement validity.
 - `tools/qa_expedition.mjs` — local WebGL and `?render=2d` browser flows passed:
   expedition boot, hotspot selection, scan, sample custody, Cyanoflow linking,
   cultivation workflow, local save, mobile fit, and zero console/request
