@@ -215,6 +215,13 @@ button:disabled { cursor: not-allowed; opacity: .48; }
 .status-pill.amber { color: var(--sim-amber); }
 .status-pill.red { color: var(--sim-red); }
 .quick-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 9px; }
+.workflow-panel { overflow: hidden; }
+.workflow-steps { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 9px; }
+.workflow-steps button { min-height: 134px; padding: 16px; color: var(--sim-ink-soft); text-align: left; background: rgba(255, 255, 255, .025); border: 1px solid var(--sim-border); border-radius: 10px; cursor: pointer; transition: transform .18s ease, border-color .18s ease, background .18s ease; }
+.workflow-steps button:hover, .workflow-steps button:focus-visible { transform: translateY(-2px); color: var(--sim-ink); background: rgba(145, 228, 156, .08); border-color: rgba(145, 228, 156, .42); outline: none; }
+.workflow-steps span { display: block; margin-bottom: 21px; color: var(--sim-green); font: 11px/1 var(--sim-mono); letter-spacing: .08em; }
+.workflow-steps b { display: block; color: var(--sim-ink); font: 600 13px/1.25 var(--sim-sans); }
+.workflow-steps small { display: block; margin-top: 8px; color: var(--sim-mute); font: 12px/1.4 var(--sim-serif); }
 .quick-card { display: flex; flex-direction: column; justify-content: space-between; min-height: 106px; padding: 14px; color: var(--sim-ink-soft); background: rgba(255, 255, 255, .025); border: 1px solid var(--sim-border); border-radius: 10px; text-align: left; transition: border-color .2s ease, background .2s ease, transform .2s ease; }
 .quick-card:hover { background: rgba(145, 228, 156, .07); border-color: var(--sim-border-strong); transform: translateY(-2px); }
 .quick-card b { color: var(--sim-ink); font-size: 12px; }
@@ -425,6 +432,7 @@ button:disabled { cursor: not-allowed; opacity: .48; }
   .provenance-note { margin-top: 0; }
   .lab-analysis-grid { grid-template-columns: 1fr; }
   .dashboard-hero { grid-template-columns: 1fr; }
+  .workflow-steps { grid-template-columns: repeat(2, 1fr); }
   .catalog-grid { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 760px) {
@@ -476,6 +484,7 @@ button:disabled { cursor: not-allowed; opacity: .48; }
   .compare-row { grid-template-columns: 1fr; }
   .compare-row > span { display: none; }
   .catalog-grid, .settings-grid, .assistant-grid, .report-sections, .note-layout { grid-template-columns: 1fr; }
+  .workflow-steps { grid-template-columns: 1fr; }
   .view-toolbar { display: block; }
   .toolbar-actions { margin-top: 11px; }
   .report-header { display: block; }

@@ -4,121 +4,54 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="referrer" content="strict-origin-when-cross-origin">
-<title>Orr Biologicals Research Lab | Algaephyte + Cyanoflow</title>
-<meta name="description" content="A synthetic, reproducible browser laboratory for exploring Algaephyte cultivation models and Cyanoflow single-cell workflows. Simulation only; no hardware measurements are implied.">
+<title>Microflux Field Study | Orr Biologicals Research Lab</title>
+<meta name="description" content="Explore a synthetic 2D microfluidic field map, recover rare algae strain signals, and grow valuable cultures in upgradeable bioreactors. Simulation only; no hardware measurements are implied.">
 <meta name="robots" content="noindex">
 <link rel="canonical" href="https://orrbiologicals.com/game/">
 <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="css/lab.css?v=20261012">
 <link rel="stylesheet" href="/css/global.css?v=20261012">
 <link rel="stylesheet" href="/css/header.css?v=20261012">
 <link rel="stylesheet" href="/css/orr-home.css?v=20261012">
-<link rel="stylesheet" href="/css/animations.css?v=20261012">
+<link rel="stylesheet" href="css/pixel-world.css?v=20261012">
 </head>
-<body>
+<body class="pixel-lab-page">
 <header class="nav" id="nav">
-<div class="nav-in"><a class="mark" href="/" aria-label="Orr Biologicals home">
-<svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="14" fill="none" stroke="currentColor"/><path d="M9 23c6-3 0-14 7-14s1 11 7 14M8 15c4-5 12-5 16 0" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
-<span><b>Orr Biologicals</b><small>ALGAE &amp; SINGLE-CELL RESEARCH</small></span></a>
-<nav class="nav-links" aria-label="Primary"><a href="/algaephyte/">Algaephyte</a><a href="/cyanoflow">Cyanoflow</a><a href="/research/">Research</a><a href="/applications/">Species &amp; guides</a><a href="/blog/">Journal</a><a href="/Simulation/">Digital lab</a><a href="/game/">Research lab</a><a class="btn-white" href="/#deploy">Contact</a></nav>
-<button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="mobileMenu">Menu</button></div></header>
-<nav class="mobile-menu" id="mobileMenu" aria-label="Mobile primary" hidden>
-<a href="/algaephyte/">Algaephyte · cultivation</a><a href="/cyanoflow">Cyanoflow · single cells</a><a href="/research/">Research methods</a><a href="/applications/">Species &amp; cultivation guides</a><a href="/blog/">Research journal</a><a href="/Simulation/">Algal Digital Lab</a><a href="/game/">Interactive research lab</a><a href="/downloads/">App downloads</a><a href="/#deploy">Contact the project</a></nav>
-<a class="skip" href="#workspace">Skip to lab workspace</a>
-<header class="lab-header">
-  <a class="lab-brand" href="/" aria-label="Orr Biologicals home">
-    <svg viewBox="0 0 28 28" aria-hidden="true"><circle cx="14" cy="14" r="13" fill="none" stroke="currentColor" stroke-opacity=".35"/><path d="M7 20c2.6-2.2 2.6-9.8 7-9.8S16.4 20 21 20M6 12c2.6-2.2 2.6-6 7-6s4.4 3.8 7 6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-    <span><strong>Orr Biologicals</strong><small>RESEARCH LAB · SYNTHETIC MODE · DEVICE OPT-IN</small></span>
-  </a>
-  <div class="lab-header-copy"><span class="eyebrow">Interactive digital laboratory</span><h1>Algaephyte <i>×</i> Cyanoflow</h1></div>
-  <div class="header-actions"><span class="data-pill"><i></i>SYNTHETIC · LOCAL-FIRST</span><button class="sound-btn" id="soundToggle" type="button" aria-pressed="false">♫ Ambient off</button><a href="/" class="back-link">Exit lab</a></div>
+  <div class="nav-in"><a class="mark" href="/" aria-label="Orr Biologicals home"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="14" fill="none" stroke="currentColor"/><path d="M9 23c6-3 0-14 7-14s1 11 7 14M8 15c4-5 12-5 16 0" fill="none" stroke="currentColor" stroke-width="1.5"/></svg><span><b>Orr Biologicals</b><small>ALGAE &amp; SINGLE-CELL RESEARCH</small></span></a><nav class="nav-links" aria-label="Primary"><a href="/algaephyte/">Algaephyte</a><a href="/cyanoflow">Cyanoflow</a><a href="/research/">Research</a><a href="/applications/">Species &amp; guides</a><a href="/blog/">Journal</a><a href="/Simulation/">Digital lab</a><a href="/game/">Research lab</a><a class="btn-white" href="/#deploy">Contact</a></nav><button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="mobileMenu">Menu</button></div>
+</header>
+<nav class="mobile-menu" id="mobileMenu" aria-label="Mobile primary" hidden><a href="/algaephyte/">Algaephyte · cultivation</a><a href="/cyanoflow">Cyanoflow · single cells</a><a href="/research/">Research methods</a><a href="/applications/">Species &amp; cultivation guides</a><a href="/blog/">Research journal</a><a href="/Simulation/">Algal Digital Lab</a><a href="/game/">Interactive research lab</a><a href="/downloads/">App downloads</a><a href="/#deploy">Contact the project</a></nav>
+<a class="skip" href="#fieldStudy">Skip to field study</a>
+
+<header class="pixel-header">
+  <a class="pixel-brand" href="/" aria-label="Orr Biologicals home"><span class="brand-mark">⌁</span><span><b>ORR BIOLOGICALS</b><small>MICROFLUX FIELD STUDY</small></span></a>
+  <div class="pixel-header-title"><span class="pixel-eyebrow">RESEARCH LAB // SECTOR 01</span><h1>Find the signal. Grow the future.</h1></div>
+  <div class="pixel-header-actions"><span class="synthetic-pill"><i></i>SYNTHETIC MODE</span><button class="reset-pixel" id="resetStudy" type="button">Reset study</button><a href="/" class="pixel-exit">Exit lab</a></div>
 </header>
 
-<main class="lab-shell" id="labApp">
-  <aside class="lab-sidebar" aria-label="Laboratory controls">
-    <section class="side-intro">
-      <p class="eyebrow">Research workspace</p>
-      <p>Follow a synthetic environmental sample from collection through single-cell isolation and into a controllable Algaephyte culture model.</p>
-    </section>
+<main id="fieldStudy" class="pixel-shell">
+  <section class="mission-banner"><div><p class="pixel-eyebrow">Your motive</p><h2>Explore microfluidic channels, recover rare strains, and turn them into a living research economy.</h2><p>Use the field map to find signals. Tune the device to improve one-to-five-star rarity odds. Then buy better bioreactors, grow valuable cultures, and decide what to investigate next.</p></div><div class="mission-steps" aria-label="Field study loop"><span class="is-current"><b>01</b>Explore</span><span><b>02</b>Recover</span><span><b>03</b>Upgrade</span><span><b>04</b>Grow</span></div></section>
 
-    <nav class="lab-tabs" aria-label="Laboratory views">
-      <button class="lab-tab" data-mode="expedition"><span class="tab-index">01</span><span><b>Expedition</b><small>Deploy &amp; discover</small></span></button>
-      <button class="lab-tab is-active" data-mode="overview"><span class="tab-index">02</span><span><b>Overview</b><small>Research trace</small></span></button>
-      <button class="lab-tab" data-mode="algaephyte"><span class="tab-index">03</span><span><b>Algaephyte</b><small>Cultivation model</small></span></button>
-      <button class="lab-tab" data-mode="cyanoflow"><span class="tab-index">04</span><span><b>Cyanoflow</b><small>Single-cell pipeline</small></span></button>
-      <button class="lab-tab" data-mode="cell"><span class="tab-index">05</span><span><b>Cell inspector</b><small>Trace a candidate</small></span></button>
-      <button class="lab-tab" data-mode="history"><span class="tab-index">06</span><span><b>Experiments</b><small>Compare and report</small></span></button>
-    </nav>
+  <section class="pixel-layout">
+    <aside class="pixel-sidebar" aria-label="Field study status">
+      <div class="resource-grid"><div><span>Credits</span><strong id="creditReadout">0</strong><small>culture economy</small></div><div><span>Samples</span><strong id="sampleReadout">0</strong><small>signals recovered</small></div><div><span>Biomass</span><strong id="biomassReadout">0</strong><small>units harvested</small></div><div><span id="dayReadout">DAY 01</span><strong>LOCAL</strong><small>save active</small></div></div>
+      <section class="objective-card"><div class="objective-top"><span class="pixel-eyebrow">Current objective</span><span class="objective-pulse"></span></div><h2 id="objectiveTitle">Recover your first strain</h2><p id="objectiveDetail">Travel to Mossline Marsh and scan a microfluidic sample.</p></section>
+      <nav class="pixel-tabs" aria-label="Field study sections"><button data-screen="world" class="is-active"><span>⌁</span><b>Field map</b><small>Explore channels</small></button><button data-screen="device"><span>◈</span><b>Microfluidics</b><small>Improve rarity</small></button><button data-screen="reactors"><span>◉</span><b>Reactor bay</b><small>Grow value</small></button><button data-screen="collection"><span>✦</span><b>Strain archive</b><small>Choose a culture</small></button></nav>
+      <section class="field-log"><div class="side-heading"><span>Field log</span><span class="mono">LOCAL</span></div><ul id="fieldLog"></ul></section>
+      <p class="sidebar-note">No account required · no actuators · synthetic rules only</p>
+    </aside>
 
-    <section class="side-controls">
-      <div class="side-heading"><span>Simulation clock</span><span class="clock-badge" id="clockState">PAUSED</span></div>
-      <div class="clock-readout" id="clockReadout">Day 0 · 00:00</div>
-      <div class="control-row">
-        <button class="control-btn primary" id="runToggle" type="button">Start run</button>
-        <button class="control-btn" id="stepRun" type="button">+15 min</button>
-      </div>
-      <label class="field-label" for="speedSelect">Simulation speed</label>
-      <select class="field" id="speedSelect"><option value="1">1× · 1 min / sec</option><option value="5">5× · 5 min / sec</option><option value="20">20× · 20 min / sec</option><option value="60">60× · 1 h / sec</option></select>
-      <div class="control-row"><button class="text-btn" id="resetRun" type="button">Reset scenario</button><button class="text-btn" id="newSeed" type="button">New seed</button></div>
-    </section>
-
-    <section class="side-controls">
-      <div class="side-heading"><span>Scenario</span><span class="mono" id="seedLabel">ORR-ALGAE-001</span></div>
-      <label class="field-label" for="scenarioSelect">Algaephyte conditions</label>
-      <select class="field" id="scenarioSelect"><option value="baseline">Baseline culture</option><option value="lightStress">High-light stress</option><option value="carbonLimited">Carbon limitation</option><option value="oxygenStress">Low gas exchange</option></select>
-      <label class="field-label" for="seedInput">Reproducible seed</label>
-      <div class="seed-row"><input class="field" id="seedInput" value="ORR-ALGAE-001" maxlength="64"><button class="icon-btn" id="applySeed" type="button" aria-label="Apply seed">↗</button></div>
-    </section>
-
-    <section class="side-controls persistence">
-      <div class="side-heading"><span>Local records</span><span class="mono" id="saveState">NOT SAVED</span></div>
-      <div class="control-row"><button class="text-btn" id="saveLocal" type="button">Save locally</button><button class="text-btn" id="exportState" type="button">Export JSON</button></div>
-      <div class="control-row"><button class="text-btn" id="exportReport" type="button">Export report</button><button class="text-btn" id="importState" type="button">Import JSON</button></div>
-      <input type="file" id="importFile" accept="application/json,.json" hidden>
-    </section>
-    <p class="side-footer">No account required · no actuators · <span id="backendStatus">local browser record</span></p>
-  </aside>
-
-  <section class="lab-content">
-    <div class="workspace-bar">
-      <div><span class="eyebrow" id="viewEyebrow">Digital lab / research trace</span><h2 id="viewTitle">One sample, two research questions.</h2></div>
-      <div class="camera-controls" role="group" aria-label="Camera view"><span class="control-caption">Camera</span><button class="camera-btn" data-camera="expedition" type="button">Expedition</button><button class="camera-btn is-active" data-camera="laboratory" type="button">Lab</button><button class="camera-btn" data-camera="algaephyte" type="button">Culture</button><button class="camera-btn" data-camera="cyanoflow" type="button">Chip</button><button class="camera-btn" data-camera="cell" type="button">Cell</button></div>
-    </div>
-
-    <div class="scene-frame" id="sceneFrame">
-      <canvas id="labCanvas" tabindex="0" aria-label="Interactive 3D synthetic research world and laboratory. Use the camera buttons, keyboard movement, or drag to orbit."></canvas>
-      <div class="scene-loading" id="sceneLoading"><span class="loader"></span><span>Loading laboratory renderer…</span></div>
-      <div class="scene-legend" id="sceneLegend"><span><i class="legend-dot green" id="legendPrimaryDot"></i><span id="legendPrimary">Algaephyte vessel</span></span><span><i class="legend-dot cyan" id="legendSecondaryDot"></i><span id="legendSecondary">Cyanoflow chip</span></span><span><i class="legend-dot amber"></i><span id="legendAccent">Selected cell</span></span></div>
-      <div class="scene-hint" id="sceneHint">Drag to orbit · scroll to zoom · click a cell to inspect</div>
-      <div class="scene-status" id="sceneStatus" role="status">WebGL laboratory · synthetic state linked</div>
-    </div>
-
-    <section class="metric-grid" aria-label="Current synthetic metrics">
-      <article class="metric-card"><span class="metric-label" id="metricHealthLabel">Culture health</span><strong id="metricHealth">Healthy</strong><small id="metricHealthNote">Model state</small></article>
-      <article class="metric-card"><span class="metric-label" id="metricBiomassLabel">Biomass</span><strong id="metricBiomass">0.80 g</strong><small id="metricBiomassNote">0.044 g/L</small></article>
-      <article class="metric-card"><span class="metric-label" id="metricGrowthLabel">Growth rate</span><strong id="metricGrowth">0.00 / day</strong><small id="metricGrowthNote">Monod · light · stress</small></article>
-      <article class="metric-card"><span class="metric-label" id="metricPipelineLabel">Pipeline</span><strong id="metricPipeline">Sample</strong><small id="metricPipelineNote">36 synthetic cells</small></article>
-    </section>
-
-    <section class="workspace" id="workspace" aria-live="polite">
-      <div id="workspaceContent"></div>
+    <section class="pixel-main">
+      <div class="map-heading"><div><span class="pixel-eyebrow">Open world / 2D pixel sector</span><h2>Microfluidic frontier</h2></div><div class="map-controls"><span><i class="legend-signal"></i>recoverable channel</span><span><i class="legend-player"></i>your field unit</span></div></div>
+      <div class="canvas-frame"><canvas id="worldCanvas" width="640" height="360" tabindex="0" aria-label="2D pixel-art microfluidic field map. Use WASD or arrow keys to move and click a channel to travel."></canvas><div class="canvas-hint">WASD / ARROWS TO MOVE · CLICK A CHANNEL TO TRAVEL</div><div class="scan-reticle" aria-hidden="true"></div></div>
+      <section class="world-panel" id="worldPanel" aria-live="polite"></section>
+      <div class="pixel-disclaimer"><span>i</span><p><b>Simulation boundary.</b> Strains, rarity odds, credits, and growth values are game mechanics for a synthetic research-lab experience. They do not describe real organism performance, identification, or cultivation instructions.</p></div>
     </section>
   </section>
 </main>
 
-<div class="toast" id="toast" role="status" aria-live="polite"></div>
-<script type="module" src="dist/lab-7GUM32JD.js"></script>
-
-
+<div class="pixel-toast" id="pixelToast" role="status" aria-live="polite"></div>
+<script type="module" src="dist/lab-APH2MQUH.js"></script>
 <script defer src="/js/navigation.js?v=20261012"></script>
-<footer class="science-footer"><div class="wrap footer-layout">
-<div><a class="footer-brand" href="/">Orr Biologicals</a><p>Algae cultivation. Individual cells.<br>Research in the open.</p><small>Research concepts in development.<br>No validated hardware performance claimed.</small></div>
-<nav aria-label="Footer platforms"><h2>Explore</h2><a href="/algaephyte/">Algaephyte</a><a href="/cyanoflow">Cyanoflow</a><a href="/Simulation/">Algal Digital Lab</a><a href="/game/">Research lab</a><a href="/demo/">Expedition demo</a><a href="/downloads/">App downloads</a></nav>
-<nav aria-label="Footer resources"><h2>Learn</h2><a href="/research/">Research methods</a><a href="/applications/">Species &amp; guides</a><a href="/blog/">Research journal</a><a href="/glossary">Glossary</a><a href="/#faq">Project FAQ</a></nav>
-<div><h2>Get in touch</h2><a href="mailto:service@orrbiologicals.com">service@orrbiologicals.com</a><p><a href="https://www.youtube.com/@OrrBiologicals" target="_blank" rel="noreferrer">Development on YouTube ↗</a></p></div>
-</div><div class="wrap footer-base"><span>© 2026 Orr Biologicals</span><nav aria-label="Legal"><a href="/privacy">Privacy</a><a href="/terms">Terms</a><a href="/disclaimer">Scientific disclaimer</a><a href="/LICENSE" download>MIT License</a></nav></div></footer>
+<footer class="science-footer"><div class="wrap footer-layout"><div><a class="footer-brand" href="/">Orr Biologicals</a><p>Algae cultivation. Individual cells.<br>Research in the open.</p><small>Research concepts in development.<br>No validated hardware performance claimed.</small></div><nav aria-label="Footer platforms"><h2>Explore</h2><a href="/algaephyte/">Algaephyte</a><a href="/cyanoflow">Cyanoflow</a><a href="/Simulation/">Algal Digital Lab</a><a href="/game/">Research lab</a><a href="/demo/">Expedition demo</a><a href="/downloads/">App downloads</a></nav><nav aria-label="Footer resources"><h2>Learn</h2><a href="/research/">Research methods</a><a href="/applications/">Species &amp; guides</a><a href="/blog/">Research journal</a><a href="/glossary">Glossary</a><a href="/#faq">Project FAQ</a></nav><div><h2>Get in touch</h2><a href="mailto:service@orrbiologicals.com">service@orrbiologicals.com</a><p><a href="https://www.youtube.com/@OrrBiologicals" target="_blank" rel="noreferrer">Development on YouTube ↗</a></p></div></div><div class="wrap footer-base"><span>© 2026 Orr Biologicals</span><nav aria-label="Legal"><a href="/privacy">Privacy</a><a href="/terms">Terms</a><a href="/disclaimer">Scientific disclaimer</a><a href="/LICENSE" download>MIT License</a></nav></div></footer>
 <script defer src="/js/animations.js?v=20261012"></script>
 </body>
 </html>
