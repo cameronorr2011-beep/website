@@ -25,6 +25,21 @@ class ResearchLabContractTests(unittest.TestCase):
         self.assertNotIn('Algae Living — Grow. Evolve. Survive.', text)
         self.assertNotIn('cdn.jsdelivr.net', text)
 
+    def test_microflux_starts_in_ocean_and_has_local_biome_art(self):
+        app = (ROOT / "game/js/pixel-world-app.js").read_text(encoding="utf-8")
+        self.assertIn('SAVE_KEY = "orr-microflux-field-study-v2"', app)
+        self.assertIn('unlockedZones: ["ocean"]', app)
+        self.assertIn('asset: "assets/ocean-scene.webp"', app)
+        self.assertIn('asset: "assets/marsh-scene.webp"', app)
+        self.assertIn('asset: "assets/thermal-scene.webp"', app)
+        self.assertIn('asset: "assets/night-scene.webp"', app)
+        for asset in (
+            "ocean-scene.webp", "ocean-foreground.webp", "marsh-scene.webp",
+            "marsh-foreground.webp", "thermal-scene.webp", "thermal-foreground.webp",
+            "night-scene.webp", "night-foreground.webp", "research-sub.svg",
+        ):
+            self.assertTrue((ROOT / "game/assets" / asset).exists(), asset)
+
     def test_engine_is_deterministic_and_has_both_domains(self):
         text = (ROOT / "game/js/lab-engine.js").read_text(encoding="utf-8")
         for symbol in (
