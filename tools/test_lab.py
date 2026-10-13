@@ -15,9 +15,10 @@ class ResearchLabContractTests(unittest.TestCase):
         self.assertIn('id="worldPanel"', text)
         self.assertIn('id="objectiveTitle"', text)
         self.assertIn('id="creditReadout"', text)
-        self.assertIn('data-screen="device"', text)
-        self.assertIn('data-screen="reactors"', text)
-        self.assertIn('data-screen="collection"', text)
+        self.assertIn('id="mapDeck"', text)
+        self.assertIn('id="harvestButton"', text)
+        self.assertIn('id="flowReadout"', text)
+        self.assertIn('data-action="harvest"', text)
         self.assertTrue(any(marker in text for marker in (
             'SYNTHETIC DATA', 'SYNTHETIC MODE', 'SYNTHETIC + DEVICE OPT-IN',
         )))
@@ -25,20 +26,18 @@ class ResearchLabContractTests(unittest.TestCase):
         self.assertNotIn('Algae Living — Grow. Evolve. Survive.', text)
         self.assertNotIn('cdn.jsdelivr.net', text)
 
-    def test_microflux_starts_in_ocean_and_has_local_biome_art(self):
+    def test_microflux_starts_with_a_quiet_local_rack(self):
         app = (ROOT / "game/js/pixel-world-app.js").read_text(encoding="utf-8")
-        self.assertIn('SAVE_KEY = "orr-microflux-field-study-v2"', app)
-        self.assertIn('unlockedZones: ["ocean"]', app)
-        self.assertIn('asset: "assets/ocean-scene.webp"', app)
-        self.assertIn('asset: "assets/marsh-scene.webp"', app)
-        self.assertIn('asset: "assets/thermal-scene.webp"', app)
-        self.assertIn('asset: "assets/night-scene.webp"', app)
-        for asset in (
-            "ocean-scene.webp", "ocean-foreground.webp", "marsh-scene.webp",
-            "marsh-foreground.webp", "thermal-scene.webp", "thermal-foreground.webp",
-            "night-scene.webp", "night-foreground.webp", "research-sub.svg",
-        ):
-            self.assertTrue((ROOT / "game/assets" / asset).exists(), asset)
+        self.assertIn('SAVE_KEY = "orr-microflux-rack-v1"', app)
+        self.assertIn('activeMap: "water"', app)
+        self.assertIn('unlockedMaps: ["water"]', app)
+        self.assertIn('name: "Azure Basin"', app)
+        self.assertIn('name: "Amber Sandline"', app)
+        self.assertIn('name: "Moss Soil"', app)
+        self.assertIn('function applyAwaytime()', app)
+        self.assertIn('function harvest()', app)
+        self.assertIn('function upgradeDevice()', app)
+        self.assertIn('function drawRack(', app)
 
     def test_engine_is_deterministic_and_has_both_domains(self):
         text = (ROOT / "game/js/lab-engine.js").read_text(encoding="utf-8")

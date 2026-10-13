@@ -1,60 +1,54 @@
 /*
- * Microflux Field Study
- * A small, deterministic, local-first 2D game layer for the Research Lab.
- * The values are game rules and synthetic interface state, not cultivation advice.
+ * Microflux / Quiet Culture Co.
+ *
+ * A local-first, low-pressure clicker about tending illustrated microfluidic
+ * racks. All currencies, species, maps, and growth rules are fictional game
+ * systems. Nothing here is a cultivation protocol or a hardware claim.
  */
 
-const SAVE_KEY = "orr-microflux-field-study-v2";
+const SAVE_KEY = "orr-microflux-rack-v1";
 const MAX_DEVICE_LEVEL = 5;
 
-const STRAINS = [
-  { id: "mossline-azure", name: "Mossline Azure", tier: 1, value: 34, yield: 0.16, color: "#67e8a5", zones: ["ocean", "marsh"], note: "A resilient starter culture with a cool blue signal." },
-  { id: "reed-gold", name: "Reed Gold", tier: 1, value: 42, yield: 0.19, color: "#f2c66d", zones: ["marsh", "thermal"], note: "Warm gold filaments found along the reed shelf." },
-  { id: "tide-coral", name: "Tide Coral", tier: 2, value: 86, yield: 0.24, color: "#ff8a78", zones: ["ocean", "night"], note: "A coral pulse that prefers moving water." },
-  { id: "glass-kelp", name: "Glass Kelp", tier: 2, value: 104, yield: 0.27, color: "#6be3e8", zones: ["ocean", "marsh"], note: "Transparent blades refract the channel lights." },
-  { id: "ember-cyan", name: "Ember Cyan", tier: 3, value: 188, yield: 0.33, color: "#ff9d4d", zones: ["thermal"], note: "A bright thermophile marker with a high-value signal." },
-  { id: "violet-rift", name: "Violet Rift", tier: 3, value: 246, yield: 0.38, color: "#c59aff", zones: ["night", "thermal"], note: "A deep violet bloom glimpsed beyond the warm vents." },
-  { id: "aurora-silk", name: "Aurora Silk", tier: 4, value: 430, yield: 0.48, color: "#9ff7e4", zones: ["night"], note: "A spectral thread that appears only in the dark channel." },
-  { id: "prism-heart", name: "Prism Heart", tier: 5, value: 920, yield: 0.62, color: "#ffe8a4", zones: ["night"], note: "The five-star signal. Rare, luminous, and worth protecting." },
+const MAPS = [
+  { id: "water", name: "Azure Basin", short: "water", unlockCost: 0, requiredLevel: 1, color: "#68bdb6", multiplier: 1, description: "soft water and a dependable first loop", note: "The first tray likes a little attention, then it learns the rhythm." },
+  { id: "sand", name: "Amber Sandline", short: "sand", unlockCost: 180, requiredLevel: 2, color: "#d9a956", multiplier: 1.35, description: "warm sand channels with brighter yields", note: "The sand map holds heat longer. Let the gold dust settle before you tend it." },
+  { id: "soil", name: "Moss Soil", short: "soil", unlockCost: 520, requiredLevel: 3, color: "#76986d", multiplier: 1.8, description: "root-dark channels full of patient growth", note: "Nothing rushes in the soil map. That is why its cultures are worth waiting for." },
+  { id: "peat", name: "Moonlit Peat", short: "peat", unlockCost: 1250, requiredLevel: 4, color: "#a888bc", multiplier: 2.45, description: "a dusk map for the rarest quiet blooms", note: "The peat loop only glows when the room is still." },
 ];
 
-const ZONES = [
-  { id: "ocean", name: "Azure Ocean Shelf", short: "O-01", unlockCost: 0, requiredDevice: 1, color: "#58dbe5", asset: "assets/ocean-scene.webp", foreground: "assets/ocean-foreground.webp", description: "Sunlit reef channels · reliable starter finds", position: { x: 34, y: 70, w: 178, h: 112 }, beacon: { x: 320, y: 220 }, strains: ["mossline-azure", "tide-coral", "glass-kelp"] },
-  { id: "marsh", name: "Mossline Marsh", short: "M-02", unlockCost: 180, requiredDevice: 2, color: "#72dc9b", asset: "assets/marsh-scene.webp", foreground: "assets/marsh-foreground.webp", description: "Shallow green channels · reed-gold signals", position: { x: 250, y: 38, w: 170, h: 116 }, beacon: { x: 340, y: 220 }, strains: ["mossline-azure", "reed-gold", "glass-kelp"] },
-  { id: "thermal", name: "Thermal Shelf", short: "V-03", unlockCost: 420, requiredDevice: 3, color: "#ff9c58", asset: "assets/thermal-scene.webp", foreground: "assets/thermal-foreground.webp", description: "Warm vents · the first three-star threshold", position: { x: 454, y: 76, w: 150, h: 114 }, beacon: { x: 320, y: 230 }, strains: ["reed-gold", "ember-cyan", "violet-rift"] },
-  { id: "night", name: "Nocturne Trench", short: "N-04", unlockCost: 900, requiredDevice: 4, color: "#c9a0ff", asset: "assets/night-scene.webp", foreground: "assets/night-foreground.webp", description: "Blackwater trench · four and five-star possibilities", position: { x: 200, y: 220, w: 230, h: 105 }, beacon: { x: 320, y: 210 }, strains: ["tide-coral", "violet-rift", "aurora-silk", "prism-heart"] },
-];
-
-const REACTORS = [
-  { id: "starter", name: "Petri Loop", subtitle: "Field starter", cost: 0, capacity: 1, speed: 1, color: "#68e8a8", description: "A dependable single-slot loop for your first recovered strain." },
-  { id: "prism", name: "Prism Rack", subtitle: "Two-channel rig", cost: 260, capacity: 2, speed: 1.35, color: "#6be3e8", description: "More headroom and brighter growth telemetry." },
-  { id: "halo", name: "Halo Array", subtitle: "Research-grade bay", cost: 720, capacity: 3, speed: 1.8, color: "#c89aff", description: "A high-capacity array built for valuable late-game strains." },
+const SPECIES = [
+  { id: "mint-comet", name: "Mint Comet", map: "water", color: "#8fcf9c", value: 5, note: "a kind little starter culture" },
+  { id: "glass-thread", name: "Glass Thread", map: "water", color: "#75bfc6", value: 8, note: "catches the light at the edge of a channel" },
+  { id: "gold-dust", name: "Gold Dust", map: "sand", color: "#e5b45a", value: 15, note: "warm flecks that settle into the sand" },
+  { id: "coral-ribbon", name: "Coral Ribbon", map: "sand", color: "#df896d", value: 22, note: "a slow ribbon with a bright pulse" },
+  { id: "moss-lantern", name: "Moss Lantern", map: "soil", color: "#8dae6f", value: 36, note: "green light threaded through root-dark soil" },
+  { id: "velvet-spore", name: "Velvet Spore", map: "soil", color: "#aa7a91", value: 49, note: "soft violet motes under the surface" },
+  { id: "night-pearl", name: "Night Pearl", map: "peat", color: "#baa0de", value: 86, note: "a small moon that prefers patient keepers" },
 ];
 
 const $ = (selector) => document.querySelector(selector);
 const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
-const number = (value, digits = 0) => Number(value || 0).toLocaleString(undefined, { maximumFractionDigits: digits });
-const stars = (tier) => "★".repeat(tier) + "☆".repeat(5 - tier);
-const strainById = (id) => STRAINS.find((strain) => strain.id === id);
-const zoneById = (id) => ZONES.find((zone) => zone.id === id);
-const reactorById = (id) => REACTORS.find((reactor) => reactor.id === id);
+const money = (value) => Math.floor(Number(value || 0)).toLocaleString();
+const decimal = (value, digits = 1) => Number(value || 0).toLocaleString(undefined, { maximumFractionDigits: digits });
+const mapById = (id) => MAPS.find((map) => map.id === id) || MAPS[0];
+const speciesById = (id) => SPECIES.find((species) => species.id === id) || SPECIES[0];
 
 function defaultState() {
   return {
-    credits: 220,
-    samples: 0,
+    credits: 80,
+    cells: 0,
     biomass: 0,
     day: 1,
-    device: { level: 1 },
-    unlockedZones: ["ocean"],
-    activeZone: "ocean",
-    discovered: [],
-    activeScreen: "world",
-    activeReactor: "starter",
-    selectedStrain: null,
-    player: { x: 260, y: 220 },
-    reactors: { starter: { owned: true, level: 1, progress: 0, biomass: 0, strainId: null } },
-    log: ["Field kit online. Azure Ocean Shelf is ready for your first scan."],
+    deviceLevel: 1,
+    rackLevel: 1,
+    activeMap: "water",
+    unlockedMaps: ["water"],
+    discovered: ["mint-comet"],
+    activeSpecies: "mint-comet",
+    progress: 46,
+    totalHarvests: 0,
+    lastSavedAt: Date.now(),
+    log: ["The starter loop is flowing. A mint comet is waiting in the first tray."],
   };
 }
 
@@ -63,392 +57,514 @@ function loadState() {
     const saved = JSON.parse(localStorage.getItem(SAVE_KEY) || "null");
     if (!saved) return defaultState();
     const fresh = defaultState();
-    return {
-      ...fresh,
-      ...saved,
-      device: { ...fresh.device, ...(saved.device || {}) },
-      player: { ...fresh.player, ...(saved.player || {}) },
-      unlockedZones: Array.isArray(saved.unlockedZones) ? saved.unlockedZones : fresh.unlockedZones,
-      discovered: Array.isArray(saved.discovered) ? saved.discovered : [],
-      reactors: { ...fresh.reactors, ...(saved.reactors || {}) },
-      log: Array.isArray(saved.log) ? saved.log.slice(0, 8) : fresh.log,
-    };
+    const merged = { ...fresh, ...saved };
+    merged.unlockedMaps = Array.isArray(saved.unlockedMaps) && saved.unlockedMaps.length ? saved.unlockedMaps : fresh.unlockedMaps;
+    merged.discovered = Array.isArray(saved.discovered) && saved.discovered.length ? saved.discovered : fresh.discovered;
+    merged.log = Array.isArray(saved.log) && saved.log.length ? saved.log.slice(0, 6) : fresh.log;
+    merged.deviceLevel = clamp(Number(merged.deviceLevel) || 1, 1, MAX_DEVICE_LEVEL);
+    merged.rackLevel = clamp(Number(merged.rackLevel) || 1, 1, 8);
+    merged.progress = clamp(Number(merged.progress) || 0, 0, 100);
+    if (!merged.unlockedMaps.includes(merged.activeMap)) merged.activeMap = merged.unlockedMaps[0];
+    if (!merged.discovered.includes(merged.activeSpecies)) merged.activeSpecies = merged.discovered[0];
+    return merged;
   } catch {
     return defaultState();
   }
 }
 
 const state = loadState();
-const sceneImages = new Map();
-const foregroundImages = new Map();
-const submersibleImage = new Image();
-submersibleImage.src = "assets/research-sub.svg";
 let toastTimer;
 let frame = 0;
+let lastFrameTime = performance.now();
+const sparks = [];
 
-function sceneImage(zone, foreground = false) {
-  const cache = foreground ? foregroundImages : sceneImages;
-  const path = foreground ? zone.foreground : zone.asset;
-  if (!cache.has(zone.id)) {
-    const image = new Image();
-    image.onload = () => drawWorld();
-    image.src = path;
-    cache.set(zone.id, image);
-  }
-  return cache.get(zone.id);
+function currentMap() { return mapById(state.activeMap); }
+function currentSpecies() { return speciesById(state.activeSpecies); }
+function deviceUpgradeCost() { return Math.round(90 * Math.pow(state.deviceLevel, 1.45)); }
+function rackUpgradeCost() { return Math.round(110 + state.rackLevel * 95); }
+function flowRate() {
+  return 0.32 * state.rackLevel * currentMap().multiplier * (1 + (state.deviceLevel - 1) * 0.13);
+}
+function cycleDuration() {
+  return Math.max(18, 44 - state.deviceLevel * 3 - state.rackLevel * 2);
+}
+function harvestValue() {
+  return Math.round(4 + currentSpecies().value + state.deviceLevel * 2 + state.rackLevel * 3 + currentMap().multiplier * 4);
+}
+function biomassValue() {
+  return .45 + currentMap().multiplier * .25 + state.rackLevel * .12;
 }
 
 function save() {
-  try { localStorage.setItem(SAVE_KEY, JSON.stringify(state)); } catch { /* private browsing can deny storage */ }
+  try {
+    state.lastSavedAt = Date.now();
+    localStorage.setItem(SAVE_KEY, JSON.stringify(state));
+  } catch { /* private browsing can deny local storage */ }
 }
 
 function announce(message, tone = "normal") {
   state.log.unshift(message);
-  state.log = state.log.slice(0, 8);
+  state.log = state.log.slice(0, 6);
   const toast = $("#pixelToast");
   if (toast) {
     toast.textContent = message;
     toast.dataset.tone = tone;
     toast.classList.add("is-visible");
     window.clearTimeout(toastTimer);
-    toastTimer = window.setTimeout(() => toast.classList.remove("is-visible"), 2800);
+    toastTimer = window.setTimeout(() => toast.classList.remove("is-visible"), 2600);
   }
   save();
 }
 
-function activeReactor() {
-  return state.reactors[state.activeReactor] || state.reactors.starter;
-}
-
-function rarityOdds() {
-  const odds = [58, 25, 11, 5, 1];
-  for (let level = 1; level < state.device.level; level += 1) {
-    odds[0] -= 3;
-    odds[1] -= 1;
-    odds[2] += 1;
-    odds[3] += 2;
-    odds[4] += 1;
+function applyAwaytime() {
+  const elapsed = clamp((Date.now() - Number(state.lastSavedAt || Date.now())) / 1000, 0, 60 * 60 * 8);
+  if (elapsed < 8) return;
+  const passiveCredits = flowRate() * elapsed;
+  state.credits += passiveCredits;
+  state.biomass += biomassValue() * elapsed / 28;
+  state.progress += 100 * elapsed / cycleDuration();
+  let cycles = 0;
+  while (state.progress >= 100) {
+    state.progress -= 100;
+    cycles += 1;
+    state.cells += 1;
+    state.totalHarvests += 1;
+    state.credits += harvestValue() * 1.25;
   }
-  return odds;
+  if (cycles) state.log.unshift(`While you were away, ${cycles} quiet bloom${cycles === 1 ? "" : "s"} finished.`);
+  save();
 }
 
-function weightedTier() {
-  const roll = Math.random() * 100;
-  let cursor = 0;
-  for (const [index, chance] of rarityOdds().entries()) {
-    cursor += chance;
-    if (roll <= cursor) return index + 1;
+function addSparks(count = 10, burst = 1) {
+  for (let index = 0; index < count; index += 1) {
+    sparks.push({
+      angle: Math.PI * 2 * index / count + Math.random() * .25,
+      distance: 8 + Math.random() * 22,
+      speed: (.25 + Math.random() * .45) * burst,
+      life: 1,
+      size: 2 + Math.random() * 3,
+      color: ["#fff2b8", "#f2c66d", "#d6ecbb", "#f3a78d"][index % 4],
+    });
   }
-  return 5;
 }
 
-function currentObjective() {
-  if (!state.discovered.length) return { label: "Recover your first strain", detail: "Pilot through the Azure Ocean Shelf and scan a microfluidic sample." };
-  if (state.device.level < 2) return { label: "Tune the microfluidic device", detail: "Upgrade your scanner to improve two-star and above odds." };
-  if (!state.unlockedZones.includes("marsh")) return { label: "Open Mossline Marsh", detail: "Save 180 credits, then leave the ocean for the reed channels." };
-  if (!state.selectedStrain) return { label: "Choose a strain to grow", detail: "Open Collection and assign one recovered strain to the Petri Loop." };
-  const reactor = activeReactor();
-  if (reactor.progress >= 100) return { label: "Harvest a valuable culture", detail: "Your reactor is ready. Harvest it from the Reactor Bay." };
-  if (reactor.progress > 0) return { label: "Keep the culture moving", detail: "Advance the active reactor until the culture reaches 100%." };
-  return { label: "Start your first culture", detail: "Advance the active reactor to grow the selected strain." };
-}
-
-function travel(zoneId) {
-  const zone = zoneById(zoneId);
-  if (!zone) return;
-  if (!state.unlockedZones.includes(zoneId)) {
-    if (state.device.level < zone.requiredDevice) { announce(`${zone.name} needs a level ${zone.requiredDevice} device.`, "warn"); return; }
-    if (state.credits < zone.unlockCost) { announce(`${zone.name} needs ${number(zone.unlockCost)} credits to open.`, "warn"); return; }
-    state.credits -= zone.unlockCost;
-    state.unlockedZones.push(zoneId);
-    announce(`${zone.name} unlocked. New channel data is available.`);
+function harvest() {
+  const payout = harvestValue();
+  state.credits += payout;
+  state.cells += 1;
+  state.biomass += biomassValue();
+  state.totalHarvests += 1;
+  state.progress += 12 + state.deviceLevel * 1.5;
+  let fullBloom = false;
+  if (state.progress >= 100) {
+    state.progress -= 100;
+    const bloomBonus = Math.round(payout * 1.8);
+    state.credits += bloomBonus;
+    state.cells += 1;
+    state.biomass += biomassValue() * 1.5;
+    fullBloom = true;
+    announce(`A full bloom opened. +${money(payout + bloomBonus)} credits and two cells.`, "success");
+  } else {
+    announce(`The ${currentSpecies().name} answered. +${money(payout)} credits.`, "success");
   }
-  state.activeZone = zoneId;
-  state.player.x = zone.beacon.x - 76;
-  state.player.y = zone.beacon.y + 27;
-  state.activeScreen = "world";
-  announce(`Travelled to ${zone.name}. Scan the channel for a signal.`);
+  addSparks(fullBloom ? 22 : 11, fullBloom ? 1.5 : 1);
   render();
 }
 
-function scan() {
-  const zone = zoneById(state.activeZone);
-  if (!zone || !state.unlockedZones.includes(zone.id)) return;
-  const tier = weightedTier();
-  const candidates = zone.strains.map(strainById).filter(Boolean);
-  const tierCandidates = candidates.filter((strain) => strain.tier === tier);
-  const pool = tierCandidates.length ? tierCandidates : candidates.filter((strain) => strain.tier <= tier).length ? candidates.filter((strain) => strain.tier <= tier) : candidates;
-  const strain = pool[Math.floor(Math.random() * pool.length)];
-  state.samples += 1;
-  const isNew = !state.discovered.includes(strain.id);
-  if (isNew) state.discovered.push(strain.id);
-  const creditFind = 8 + strain.tier * 7;
-  state.credits += creditFind;
-  announce(`${isNew ? "Recovered" : "Reconfirmed"} ${strain.name} · ${stars(strain.tier)} · +${creditFind} credits.`, isNew ? "success" : "normal");
-  if (isNew && !state.selectedStrain) state.selectedStrain = strain.id;
+function advanceTime(seconds) {
+  const secondsToUse = clamp(seconds, 0, 8);
+  state.day += secondsToUse / 60;
+  state.credits += flowRate() * secondsToUse;
+  state.biomass += biomassValue() * secondsToUse / 28;
+  state.progress += 100 * secondsToUse / cycleDuration();
+  while (state.progress >= 100) {
+    state.progress -= 100;
+    state.cells += 1;
+    state.totalHarvests += 1;
+    state.credits += harvestValue() * 1.25;
+    addSparks(5, .45);
+  }
+  if (secondsToUse >= 1) save();
+}
+
+function discoverForMap(mapId) {
+  const first = SPECIES.find((species) => species.map === mapId && !state.discovered.includes(species.id));
+  if (first) {
+    state.discovered.push(first.id);
+    state.activeSpecies = first.id;
+    announce(`${first.name} found its way into the archive.`, "success");
+  }
+}
+
+function travel(mapId) {
+  const map = mapById(mapId);
+  if (!state.unlockedMaps.includes(mapId)) {
+    if (state.deviceLevel < map.requiredLevel) {
+      announce(`${map.name} opens at device level ${map.requiredLevel}.`, "warn");
+      return;
+    }
+    if (state.credits < map.unlockCost) {
+      announce(`${map.name} needs ${money(map.unlockCost)} credits to open.`, "warn");
+      return;
+    }
+    state.credits -= map.unlockCost;
+    state.unlockedMaps.push(mapId);
+    announce(`${map.name} opened. The rack is ready for a new kind of ground.`, "success");
+  }
+  state.activeMap = mapId;
+  if (!SPECIES.some((species) => species.id === state.activeSpecies && species.map === mapId)) discoverForMap(mapId);
+  state.progress = Math.max(state.progress, 18);
   render();
 }
 
 function upgradeDevice() {
-  if (state.device.level >= MAX_DEVICE_LEVEL) { announce("Microfluidic device is at maximum tuning.", "warn"); return; }
-  const cost = 95 * state.device.level;
-  if (state.credits < cost) { announce(`Need ${number(cost)} credits to tune the device.`, "warn"); return; }
+  if (state.deviceLevel >= MAX_DEVICE_LEVEL) {
+    announce("The device is tuned as far as this little bay can take it.", "warn");
+    return;
+  }
+  const cost = deviceUpgradeCost();
+  if (state.credits < cost) {
+    announce(`The next device tune needs ${money(cost)} credits.`, "warn");
+    return;
+  }
   state.credits -= cost;
-  state.device.level += 1;
-  announce(`Device tuned to level ${state.device.level}. Rare-signal odds improved.`, "success");
+  state.deviceLevel += 1;
+  announce(`Device tuned to level ${state.deviceLevel}. More maps are beginning to make sense.`, "success");
+  addSparks(16, 1.1);
   render();
 }
 
-function selectStrain(strainId) {
-  if (!state.discovered.includes(strainId)) return;
-  state.selectedStrain = strainId;
-  const reactor = activeReactor();
-  if (reactor && reactor.progress === 0) reactor.strainId = strainId;
-  announce(`${strainById(strainId).name} assigned to ${reactorById(state.activeReactor).name}.`);
-  render();
-}
-
-function selectReactor(reactorId) {
-  const reactor = state.reactors[reactorId];
-  if (!reactor?.owned) return;
-  state.activeReactor = reactorId;
-  if (reactor.strainId) state.selectedStrain = reactor.strainId;
-  announce(`${reactorById(reactorId).name} is now the active culture bay.`);
-  render();
-}
-
-function buyReactor(reactorId) {
-  const blueprint = reactorById(reactorId);
-  if (!blueprint || state.reactors[reactorId]?.owned) return;
-  if (state.credits < blueprint.cost) { announce(`Need ${number(blueprint.cost)} credits to build ${blueprint.name}.`, "warn"); return; }
-  state.credits -= blueprint.cost;
-  state.reactors[reactorId] = { owned: true, level: 1, progress: 0, biomass: 0, strainId: null };
-  state.activeReactor = reactorId;
-  announce(`${blueprint.name} built. Select a recovered strain to begin.`, "success");
-  render();
-}
-
-function upgradeReactor() {
-  const reactor = activeReactor();
-  const blueprint = reactorById(state.activeReactor);
-  if (reactor.level >= 5) { announce(`${blueprint.name} is fully upgraded.`, "warn"); return; }
-  const cost = Math.round(80 * blueprint.cost / 100 + reactor.level * 70 + blueprint.capacity * 45);
-  if (state.credits < cost) { announce(`Need ${number(cost)} credits to upgrade ${blueprint.name}.`, "warn"); return; }
+function upgradeRack() {
+  const cost = rackUpgradeCost();
+  if (state.credits < cost) {
+    announce(`The next rack brace needs ${money(cost)} credits.`, "warn");
+    return;
+  }
   state.credits -= cost;
-  reactor.level += 1;
-  announce(`${blueprint.name} upgraded to Mk ${reactor.level}. Growth output increased.`, "success");
+  state.rackLevel += 1;
+  announce(`Rack brace fitted. Flow is now ${decimal(flowRate())} credits per second.`, "success");
   render();
 }
 
-function advanceCulture() {
-  const reactor = activeReactor();
-  const blueprint = reactorById(state.activeReactor);
-  const strain = strainById(reactor.strainId || state.selectedStrain);
-  if (!strain || !state.discovered.includes(strain.id)) { announce("Assign a recovered strain before advancing the culture.", "warn"); state.activeScreen = "collection"; render(); return; }
-  reactor.strainId = strain.id;
-  if (reactor.progress >= 100) { announce("Culture is ready to harvest.", "warn"); return; }
-  const progressGain = Math.round((18 + reactor.level * 5) * blueprint.speed);
-  const biomassGain = strain.yield * (1 + reactor.level * 0.16) * blueprint.capacity;
-  reactor.progress = clamp(reactor.progress + progressGain, 0, 100);
-  reactor.biomass += biomassGain;
-  state.day += 1;
-  announce(`${strain.name} advanced +${progressGain}% · +${number(biomassGain, 2)} biomass units.`);
+function selectSpecies(speciesId) {
+  const species = speciesById(speciesId);
+  if (!state.discovered.includes(speciesId)) return;
+  state.activeSpecies = species.id;
+  announce(`${species.name} is now resting in the active loop.`);
   render();
 }
 
-function harvest() {
-  const reactor = activeReactor();
-  const strain = strainById(reactor.strainId);
-  if (!strain || reactor.progress < 100) { announce("The culture needs to reach 100% before harvest.", "warn"); return; }
-  const value = Math.round(reactor.biomass * strain.value * (1 + reactor.level * 0.08));
-  state.credits += value;
-  state.biomass += reactor.biomass;
-  announce(`Harvested ${number(reactor.biomass, 2)} units of ${strain.name} · +${number(value)} credits.`, "success");
-  reactor.progress = 0;
-  reactor.biomass = 0;
-  reactor.strainId = null;
-  render();
+function currentObjective() {
+  if (state.totalHarvests < 1) return ["Wake the first culture", "Tap the glowing bloom once. Your rack will keep growing after that."];
+  if (state.deviceLevel < 2) return ["Make the rack a little wider", `Save ${money(deviceUpgradeCost())} credits to tune the device and open the sand map.`];
+  if (!state.unlockedMaps.includes("sand")) return ["Open the sand map", "A new tray is waiting in Amber Sandline. Choose it from the little maps below."];
+  if (state.rackLevel < 2) return ["Give the rack another channel", `Fit the next brace for ${money(rackUpgradeCost())} credits and let the bay earn while you are away.`];
+  return ["Keep a good rhythm", "Tend the bloom when you are here. The rack will do the quiet work when you are not."];
 }
 
-function updateScreen(screen) {
-  state.activeScreen = screen;
-  render();
-}
-
-function renderWorldPanel() {
-  const zone = zoneById(state.activeZone);
-  return `<div class="panel-kicker">Field map / ${zone.short}</div><h2>${zone.name}</h2><p class="panel-lede">${zone.description}. Walk the channels with <kbd>WASD</kbd> or arrow keys, then recover a signal at the active scan point.</p><div class="world-actions"><button class="pixel-button primary" data-action="scan">⌁ Scan microfluidic sample</button><button class="pixel-button" data-screen="device">Tune device →</button></div><div class="zone-grid">${ZONES.map((item) => { const unlocked = state.unlockedZones.includes(item.id); const active = state.activeZone === item.id; return `<button class="zone-card ${active ? "is-active" : ""} ${unlocked ? "" : "is-locked"}" data-action="travel" data-zone-id="${item.id}"><span class="zone-color" style="--zone:${item.color}"></span><span class="zone-card-copy"><b>${item.short} · ${item.name}</b><small>${unlocked ? item.description : `Unlock · ${number(item.unlockCost)} cr · device ${item.requiredDevice}`}</small></span><span class="zone-state">${active ? "HERE" : unlocked ? "GO" : "LOCKED"}</span></button>`; }).join("")}</div><div class="map-tip"><span class="tip-icon">✦</span><span><b>Field objective</b>${currentObjective().detail}</span></div>`;
-}
-
-function renderDevicePanel() {
-  const nextCost = state.device.level < MAX_DEVICE_LEVEL ? 95 * state.device.level : 0;
-  return `<div class="panel-kicker">Microfluidic device / tuning bay</div><h2>Make rare signals more likely.</h2><p class="panel-lede">Every scan rolls across five rarity bands. Device tuning shifts probability toward the valuable upper tiers; it never guarantees a result.</p><div class="device-level"><div><span>Current tuning</span><strong>LEVEL ${state.device.level} <i>${"▰".repeat(state.device.level)}${"▱".repeat(MAX_DEVICE_LEVEL - state.device.level)}</i></strong></div><button class="pixel-button primary" data-action="upgrade-device" ${state.device.level >= MAX_DEVICE_LEVEL ? "disabled" : ""}>${state.device.level >= MAX_DEVICE_LEVEL ? "Max tuning" : `Tune · ${number(nextCost)} cr`}</button></div><div class="rarity-table"><div class="rarity-row header"><span>Rarity</span><span>Signal class</span><span>Chance</span></div>${rarityOdds().map((chance, index) => `<div class="rarity-row"><span class="star-score tier-${index + 1}">${stars(index + 1)}</span><b>${["Common", "Uncommon", "Rare", "Ultra", "Mythic"][index]}</b><strong>${chance}%</strong></div>`).join("")}</div><div class="map-tip"><span class="tip-icon">i</span><span><b>Why upgrade?</b>At level 1, five-star signals are a 1% roll. At level 5, that roll becomes 5% and four-star signals become 11%.</span></div>`;
-}
-
-function renderReactorsPanel() {
-  const active = activeReactor();
-  const blueprint = reactorById(state.activeReactor);
-  const strain = strainById(active.strainId);
-  const upgradeCost = active.level < 5 ? Math.round(80 * blueprint.cost / 100 + active.level * 70 + blueprint.capacity * 45) : 0;
-  return `<div class="panel-kicker">Reactor bay / growth economy</div><h2>Turn a recovered signal into value.</h2><p class="panel-lede">Assign a strain, advance the synthetic culture one day at a time, then harvest its game value when the bay reaches 100%.</p><div class="reactor-grid">${REACTORS.map((item) => { const unit = state.reactors[item.id]; const owned = unit?.owned; const activeClass = state.activeReactor === item.id; return `<article class="reactor-card ${activeClass ? "is-active" : ""} ${owned ? "" : "is-locked"}"><div class="reactor-card-top"><span class="reactor-glyph" style="--reactor:${item.color}">◉</span><span><b>${item.name}</b><small>${item.subtitle}</small></span><em>${owned ? `MK ${unit.level}` : `${number(item.cost)} CR`}</em></div><p>${item.description}</p>${owned ? `<button class="pixel-button ${activeClass ? "primary" : ""}" data-action="select-reactor" data-reactor-id="${item.id}">${activeClass ? "Active bay" : "Select bay"}</button>` : `<button class="pixel-button" data-action="buy-reactor" data-reactor-id="${item.id}">Build reactor · ${number(item.cost)} cr</button>`}</article>`; }).join("")}</div><section class="culture-console"><div class="culture-console-head"><div><span class="panel-kicker">Active culture</span><h3>${strain ? strain.name : "Awaiting a recovered strain"}</h3></div><span class="star-score tier-${strain?.tier || 1}">${strain ? stars(strain.tier) : "—"}</span></div><div class="culture-bar"><span style="width:${active.progress}%"></span></div><div class="culture-stats"><span><small>Progress</small><b>${active.progress}%</b></span><span><small>Biomass</small><b>${number(active.biomass, 2)}</b></span><span><small>Output</small><b>${strain ? `${number(strain.value)} cr/u` : "—"}</b></span></div><div class="world-actions"><button class="pixel-button primary" data-action="advance-culture">＋ Advance one day</button><button class="pixel-button" data-action="harvest" ${active.progress < 100 ? "disabled" : ""}>Harvest culture</button><button class="text-button" data-action="upgrade-reactor" ${active.level >= 5 ? "disabled" : ""}>Upgrade bay · ${active.level >= 5 ? "MAX" : `${number(upgradeCost)} cr`}</button></div></section>`;
-}
-
-function renderCollectionPanel() {
-  const recovered = STRAINS.filter((strain) => state.discovered.includes(strain.id));
-  return `<div class="panel-kicker">Strain archive / recovered signals</div><h2>Build a collection worth growing.</h2><p class="panel-lede">Recovered strains stay in your local archive. Pick one to assign to the active reactor; higher tiers carry more value and longer-term upgrade goals.</p><div class="collection-grid">${STRAINS.map((strain) => { const found = state.discovered.includes(strain.id); const selected = state.selectedStrain === strain.id; return `<button class="strain-card ${found ? "is-found" : "is-hidden"} ${selected ? "is-selected" : ""}" data-action="select-strain" data-strain-id="${strain.id}" ${found ? "" : "disabled"}><span class="strain-orb" style="--strain:${strain.color}">${found ? "✦" : "?"}</span><span class="strain-card-main"><b>${found ? strain.name : "Unknown signal"}</b><small>${found ? strain.note : `Recover from ${strain.zones.map((id) => zoneById(id).short).join(" / ")}`}</small></span><span class="strain-card-meta"><em>${found ? stars(strain.tier) : "?????"}</em><strong>${found ? `${number(strain.value)} cr/u` : "LOCKED"}</strong></span></button>`; }).join("")}</div><div class="archive-footer"><span>${recovered.length}/${STRAINS.length} signals catalogued</span><span>Samples recovered: ${number(state.samples)}</span></div>`;
+function renderMapDeck() {
+  const deck = $("#mapDeck");
+  if (!deck) return;
+  deck.innerHTML = MAPS.map((map) => {
+    const unlocked = state.unlockedMaps.includes(map.id);
+    const active = state.activeMap === map.id;
+    const lockedText = state.deviceLevel < map.requiredLevel
+      ? `device ${map.requiredLevel} needed`
+      : `${money(map.unlockCost)} credits`;
+    return `<button class="map-card ${active ? "is-active" : ""} ${unlocked ? "" : "is-locked"}" style="--map-color:${map.color}" data-action="travel" data-map-id="${map.id}" type="button" aria-label="${unlocked ? `Visit ${map.name}` : `Unlock ${map.name}`}\"><b>${map.name}</b><small>${map.description}</small><em>${active ? "CURRENT MAP" : unlocked ? "visit map →" : lockedText}</em></button>`;
+  }).join("");
 }
 
 function renderPanel() {
-  const screen = state.activeScreen;
-  if (screen === "device") return renderDevicePanel();
-  if (screen === "reactors") return renderReactorsPanel();
-  if (screen === "collection") return renderCollectionPanel();
-  return renderWorldPanel();
+  const map = currentMap();
+  const species = currentSpecies();
+  const objective = currentObjective();
+  const deviceCost = deviceUpgradeCost();
+  const rackCost = rackUpgradeCost();
+  const availableSpecies = SPECIES.filter((item) => state.discovered.includes(item.id));
+  const deviceButton = state.deviceLevel >= MAX_DEVICE_LEVEL
+    ? `<button class="pixel-button" type="button" disabled>device fully tuned</button>`
+    : `<button class="pixel-button" data-action="upgrade-device" type="button" ${state.credits < deviceCost ? "disabled" : ""}>tune device · ${money(deviceCost)}</button>`;
+  return `<div class="panel-heading"><div><span class="panel-kicker">Culture ledger / ${map.short}</span><h2>Let it be a little alive.</h2><p class="panel-lede">The rack is an idle culture farm. Tap for a small burst, or close the tab and come back to a finished bloom.</p></div><span class="species-orb" style="--species:${species.color}" aria-hidden="true">✦</span></div>
+    <div class="culture-card"><div class="culture-row"><span>active culture</span><strong>LOOP ${String(state.rackLevel).padStart(2, "0")}</strong></div><div class="culture-intro"><div><b>${species.name}</b><small>${species.note}</small></div></div><div class="progress-track" aria-label="Culture progress"><span style="width:${state.progress}%"></span></div><div class="culture-stats"><span>growth<strong>${Math.round(state.progress)}%</strong></span><span>next tap<strong>+${money(harvestValue())}</strong></span><span>flow<strong>${decimal(flowRate())}/s</strong></span></div><div class="action-row"><button class="pixel-button primary" data-action="harvest" type="button">tend the bloom</button><button class="pixel-button" data-action="upgrade-rack" type="button" ${state.credits < rackCost ? "disabled" : ""}>brace rack · ${money(rackCost)}</button></div></div>
+    <div class="upgrade-box"><div class="upgrade-row"><div><b>Device tuning · level ${state.deviceLevel}</b><small>improves flow and opens new maps</small></div>${deviceButton}</div><div class="upgrade-row"><div><b>Map multiplier · ×${decimal(map.multiplier, 2)}</b><small>${map.note}</small></div><span class="panel-kicker">${objective[0]}</span></div></div>
+    <div class="species-list" aria-label="Culture archive">${availableSpecies.map((item) => `<button class="species-choice ${item.id === state.activeSpecies ? "is-selected" : ""}" data-action="select-species" data-species-id="${item.id}" type="button"><span class="mini-orb" style="--species:${item.color}"></span><span><b>${item.name}</b><small>${item.note}</small></span><strong>+${item.value}</strong></button>`).join("")}</div>`;
 }
 
 function render() {
-  $("#creditReadout").textContent = number(state.credits);
-  $("#sampleReadout").textContent = number(state.samples);
-  $("#biomassReadout").textContent = number(state.biomass, 2);
-  $("#dayReadout").textContent = `DAY ${String(state.day).padStart(2, "0")}`;
-  $("#objectiveTitle").textContent = currentObjective().label;
-  $("#objectiveDetail").textContent = currentObjective().detail;
-  $("#worldPanel").innerHTML = renderPanel();
-  $("#fieldLog").innerHTML = state.log.slice(0, 4).map((entry) => `<li>${entry}</li>`).join("");
-  document.querySelectorAll("[data-screen]").forEach((button) => button.classList.toggle("is-active", button.dataset.screen === state.activeScreen));
+  const map = currentMap();
+  const objective = currentObjective();
+  const species = currentSpecies();
+  const creditReadout = $("#creditReadout");
+  const sampleReadout = $("#sampleReadout");
+  const biomassReadout = $("#biomassReadout");
+  const flowReadout = $("#flowReadout");
+  if (creditReadout) creditReadout.textContent = money(state.credits);
+  if (sampleReadout) sampleReadout.textContent = money(state.cells);
+  if (biomassReadout) biomassReadout.textContent = decimal(state.biomass, 1);
+  if (flowReadout) flowReadout.textContent = `${decimal(flowRate())}/s`;
+  if ($("#dayReadout")) $("#dayReadout").textContent = String(Math.max(1, Math.floor(state.day))).padStart(2, "0");
+  if ($("#zoneName")) $("#zoneName").textContent = map.name;
+  if ($("#zoneMeta")) $("#zoneMeta").textContent = `${map.short} map · ${species.name.toLowerCase()} loop`;
+  if ($("#objectiveTitle")) $("#objectiveTitle").textContent = objective[0];
+  if ($("#objectiveDetail")) $("#objectiveDetail").textContent = objective[1];
+  if ($("#fieldNote")) $("#fieldNote").textContent = map.note;
+  if ($("#harvestHint")) $("#harvestHint").textContent = state.progress > 86 ? "the bloom is almost open" : `${Math.round(state.progress)}% through this quiet cycle`;
+  if ($("#harvestValue")) $("#harvestValue").textContent = `+${money(harvestValue())}`;
+  if ($("#worldPanel")) $("#worldPanel").innerHTML = renderPanel();
+  if ($("#fieldLog")) $("#fieldLog").innerHTML = state.log.slice(0, 4).map((entry) => `<li>${entry}</li>`).join("");
+  renderMapDeck();
   save();
   drawWorld();
 }
 
-function pixelText(ctx, text, x, y, color = "#e9f7e8", size = 10) {
-  ctx.fillStyle = color;
-  ctx.font = `${size}px monospace`;
-  ctx.fillText(text, Math.round(x), Math.round(y));
+function roundRect(ctx, x, y, width, height, radius) {
+  const r = Math.min(radius, width / 2, height / 2);
+  ctx.beginPath();
+  ctx.moveTo(x + r, y);
+  ctx.arcTo(x + width, y, x + width, y + height, r);
+  ctx.arcTo(x + width, y + height, x, y + height, r);
+  ctx.arcTo(x, y + height, x, y, r);
+  ctx.arcTo(x, y, x + width, y, r);
+  ctx.closePath();
+}
+
+function ellipse(ctx, x, y, radiusX, radiusY, fill, stroke = null) {
+  ctx.beginPath();
+  ctx.ellipse(x, y, radiusX, radiusY, 0, 0, Math.PI * 2);
+  if (fill) { ctx.fillStyle = fill; ctx.fill(); }
+  if (stroke) { ctx.strokeStyle = stroke; ctx.stroke(); }
+}
+
+function drawMapGround(ctx, map, width, height) {
+  if (map.id === "water") {
+    ctx.fillStyle = "#a8cec0";
+    ctx.fillRect(0, 0, width, height);
+    for (let row = 0; row < 11; row += 1) {
+      ctx.beginPath();
+      ctx.moveTo(0, 56 + row * 47);
+      for (let x = 0; x <= width; x += 30) ctx.quadraticCurveTo(x + 15, 48 + row * 47 + Math.sin(x * .03 + row) * 6, x + 30, 56 + row * 47);
+      ctx.strokeStyle = `rgba(251, 255, 235, ${.16 + (row % 3) * .04})`;
+      ctx.lineWidth = row % 3 === 0 ? 2 : 1;
+      ctx.stroke();
+    }
+    for (let index = 0; index < 25; index += 1) {
+      const x = (index * 97) % width;
+      const y = 35 + (index * 53) % height;
+      ellipse(ctx, x, y, 2 + index % 3, 1, "rgba(41, 108, 103, .17)");
+    }
+  } else if (map.id === "sand") {
+    const sand = ctx.createLinearGradient(0, 0, 0, height);
+    sand.addColorStop(0, "#e3c78e"); sand.addColorStop(1, "#c99e61");
+    ctx.fillStyle = sand; ctx.fillRect(0, 0, width, height);
+    for (let row = 0; row < 7; row += 1) {
+      ctx.beginPath(); ctx.moveTo(0, 80 + row * 76);
+      for (let x = 0; x <= width; x += 46) ctx.quadraticCurveTo(x + 23, 65 + row * 76 + Math.sin(x * .025 + row) * 15, x + 46, 80 + row * 76);
+      ctx.strokeStyle = "rgba(255, 244, 198, .25)"; ctx.lineWidth = 3; ctx.stroke();
+    }
+    for (let index = 0; index < 35; index += 1) {
+      ellipse(ctx, (index * 83) % width, 40 + (index * 41) % height, 2 + index % 4, 1 + index % 2, "rgba(120, 78, 38, .18)");
+    }
+  } else if (map.id === "soil") {
+    const soil = ctx.createLinearGradient(0, 0, 0, height);
+    soil.addColorStop(0, "#b7c096"); soil.addColorStop(.3, "#87966f"); soil.addColorStop(1, "#554d40");
+    ctx.fillStyle = soil; ctx.fillRect(0, 0, width, height);
+    for (let row = 0; row < 5; row += 1) {
+      ctx.fillStyle = `rgba(53, 53, 40, ${.12 + row * .04})`;
+      ctx.fillRect(0, 110 + row * 74, width, 2);
+    }
+    ctx.strokeStyle = "rgba(227, 235, 177, .42)"; ctx.lineWidth = 2;
+    for (let index = 0; index < 14; index += 1) {
+      const x = 35 + index * 74;
+      ctx.beginPath(); ctx.moveTo(x, 30); ctx.bezierCurveTo(x - 15, 130, x + 20, 150, x - 8, 250); ctx.bezierCurveTo(x - 20, 330, x + 7, 400, x - 12, 520); ctx.stroke();
+    }
+  } else {
+    const peat = ctx.createLinearGradient(0, 0, 0, height);
+    peat.addColorStop(0, "#677582"); peat.addColorStop(.5, "#3d4c54"); peat.addColorStop(1, "#242f38");
+    ctx.fillStyle = peat; ctx.fillRect(0, 0, width, height);
+    for (let index = 0; index < 28; index += 1) {
+      const x = (index * 71) % width; const y = 45 + (index * 37) % height;
+      ellipse(ctx, x, y, 3 + index % 4, 1 + index % 2, `rgba(190, 164, 220, ${.14 + (index % 3) * .04})`);
+    }
+    ctx.strokeStyle = "rgba(224, 213, 167, .34)"; ctx.lineWidth = 2;
+    for (let index = 0; index < 12; index += 1) { ctx.beginPath(); ctx.moveTo(40 + index * 84, 510); ctx.quadraticCurveTo(55 + index * 84, 390, 45 + index * 84, 260); ctx.stroke(); }
+  }
+}
+
+function drawAlgae(ctx, x, y, color, scale = 1, time = 0) {
+  ctx.save();
+  ctx.translate(x, y);
+  ctx.scale(scale, scale);
+  ctx.lineCap = "round";
+  for (let strand = 0; strand < 7; strand += 1) {
+    const lean = Math.sin(time * .0016 + strand * 1.7) * (5 + strand);
+    ctx.beginPath();
+    ctx.moveTo((strand - 3) * 4, 12);
+    ctx.bezierCurveTo((strand - 3) * 5 + lean, -4, (strand - 3) * 8 - lean, -18, (strand - 3) * 3 + lean, -28 - strand * 2);
+    ctx.strokeStyle = strand % 2 ? color : "rgba(245, 247, 194, .78)";
+    ctx.lineWidth = strand % 3 === 0 ? 3.2 : 1.7;
+    ctx.stroke();
+  }
+  ellipse(ctx, 0, 13, 20, 5, `${color}45`);
+  ctx.restore();
+}
+
+function drawRack(ctx, map, width, height, time) {
+  const rackX = 132;
+  const rackY = 86;
+  const rackW = width - 264;
+  const rackH = height - 172;
+  const species = currentSpecies();
+  const pulse = 1 + Math.sin(time * .002) * .035;
+
+  ellipse(ctx, width / 2 + 8, rackY + rackH + 30, rackW * .48, 25, "rgba(21, 65, 61, .2)");
+
+  ctx.save();
+  ctx.translate(12, 9);
+  roundRect(ctx, rackX, rackY, rackW, rackH, 27);
+  ctx.fillStyle = "rgba(30, 75, 70, .22)"; ctx.fill();
+  ctx.restore();
+
+  roundRect(ctx, rackX, rackY, rackW, rackH, 27);
+  const glass = ctx.createLinearGradient(rackX, rackY, rackX + rackW, rackY + rackH);
+  glass.addColorStop(0, "rgba(247, 253, 232, .64)"); glass.addColorStop(.42, "rgba(212, 246, 219, .25)"); glass.addColorStop(1, "rgba(117, 189, 177, .32)");
+  ctx.fillStyle = glass; ctx.fill();
+  ctx.strokeStyle = "rgba(250, 255, 234, .8)"; ctx.lineWidth = 3; ctx.stroke();
+  ctx.strokeStyle = `${map.color}70`; ctx.lineWidth = 1; ctx.stroke();
+
+  // Four looping channels: a deliberately legible little device, not a sci-fi HUD.
+  const left = rackX + 64;
+  const right = rackX + rackW - 64;
+  for (let row = 0; row < 4; row += 1) {
+    const y = rackY + 70 + row * 63;
+    ctx.beginPath();
+    ctx.moveTo(left, y);
+    ctx.bezierCurveTo(left + 74, y - 26, left + 116, y - 26, left + 153, y);
+    ctx.bezierCurveTo(left + 207, y + 37, right - 165, y + 37, right - 104, y);
+    ctx.bezierCurveTo(right - 61, y - 26, right - 31, y - 18, right, y);
+    ctx.strokeStyle = "rgba(39, 103, 99, .25)"; ctx.lineWidth = 17; ctx.stroke();
+    ctx.strokeStyle = "rgba(252, 255, 233, .84)"; ctx.lineWidth = 10; ctx.stroke();
+    ctx.strokeStyle = `${map.color}90`; ctx.lineWidth = 4; ctx.stroke();
+    const flowX = left + ((time * (.045 + row * .004) + row * 80) % (right - left));
+    ellipse(ctx, flowX, y, 4, 4, map.color);
+    ellipse(ctx, flowX - 10, y, 2, 2, `${map.color}99`);
+  }
+
+  // Valves, screws, and the small handmade-looking labels around the rack.
+  for (let index = 0; index < 5; index += 1) {
+    const x = rackX + 50 + index * ((rackW - 100) / 4);
+    ellipse(ctx, x, rackY + rackH - 34, 7, 7, "#f7f1d8", "rgba(38, 89, 82, .5)");
+    ctx.beginPath(); ctx.moveTo(x - 3, rackY + rackH - 34); ctx.lineTo(x + 3, rackY + rackH - 34); ctx.strokeStyle = "#557f76"; ctx.lineWidth = 1; ctx.stroke();
+  }
+  ctx.fillStyle = "rgba(25, 75, 71, .58)";
+  ctx.font = "10px IBM Plex Mono, monospace";
+  ctx.fillText("MICROFLUX / RACK 01", rackX + 27, rackY + 27);
+  ctx.fillText(`MAP · ${map.short.toUpperCase()}`, rackX + rackW - 117, rackY + 27);
+
+  const bloomX = width / 2;
+  const bloomY = rackY + rackH / 2 + 14;
+  const halo = 55 * pulse;
+  const glow = ctx.createRadialGradient(bloomX, bloomY, 5, bloomX, bloomY, halo * 1.8);
+  glow.addColorStop(0, `${species.color}65`); glow.addColorStop(.5, `${species.color}20`); glow.addColorStop(1, `${species.color}00`);
+  ctx.fillStyle = glow; ctx.beginPath(); ctx.arc(bloomX, bloomY, halo * 1.8, 0, Math.PI * 2); ctx.fill();
+  ctx.strokeStyle = `${species.color}85`; ctx.lineWidth = 1.5; ctx.beginPath(); ctx.arc(bloomX, bloomY, halo, 0, Math.PI * 2); ctx.stroke();
+  drawAlgae(ctx, bloomX, bloomY + 13, species.color, 1.45 * pulse, time);
+  for (let mote = 0; mote < 9; mote += 1) {
+    const angle = time * .00035 + mote * .7;
+    const orbit = 30 + (mote % 3) * 11;
+    ellipse(ctx, bloomX + Math.cos(angle) * orbit, bloomY + Math.sin(angle) * orbit * .62, 2 + mote % 2, 2 + mote % 2, mote % 2 ? `${species.color}cc` : "#fff1bc");
+  }
+  ctx.fillStyle = "rgba(255, 253, 235, .72)";
+  ctx.font = "10px IBM Plex Mono, monospace";
+  ctx.textAlign = "center";
+  ctx.fillText(`BLOOM ${Math.round(state.progress)}%`, bloomX, bloomY + 67);
+  ctx.textAlign = "left";
+
+  // A slim glass feed bottle makes the rack read as a real object in a place.
+  const bottleX = rackX + rackW + 28;
+  const bottleY = rackY + 50;
+  roundRect(ctx, bottleX, bottleY, 54, 108, 13); ctx.fillStyle = "rgba(244, 252, 225, .45)"; ctx.fill(); ctx.strokeStyle = "rgba(255, 255, 226, .72)"; ctx.lineWidth = 2; ctx.stroke();
+  roundRect(ctx, bottleX + 17, bottleY - 13, 20, 20, 6); ctx.fillStyle = "#e9dcae"; ctx.fill(); ctx.strokeStyle = "rgba(98, 103, 73, .5)"; ctx.stroke();
+  ctx.fillStyle = `${species.color}95`; ctx.fillRect(bottleX + 7, bottleY + 54, 40, 45);
+  ctx.fillStyle = "rgba(31, 77, 70, .7)"; ctx.font = "8px IBM Plex Mono, monospace"; ctx.fillText("SEED", bottleX + 11, bottleY + 45); ctx.fillText("MIX", bottleX + 14, bottleY + 113);
 }
 
 function drawWorld() {
   const canvas = $("#worldCanvas");
   if (!canvas) return;
   const ctx = canvas.getContext("2d");
-  const W = canvas.width;
-  const H = canvas.height;
-  const zone = zoneById(state.activeZone) || ZONES[0];
-  const scene = sceneImage(zone);
-  const foreground = sceneImage(zone, true);
-  ctx.imageSmoothingEnabled = true;
-  ctx.fillStyle = "#07151a";
-  ctx.fillRect(0, 0, W, H);
-  if (scene?.complete) ctx.drawImage(scene, 0, 0, W, H);
-  else {
-    const fallback = ctx.createLinearGradient(0, 0, 0, H);
-    fallback.addColorStop(0, zone.id === "ocean" ? "#117b98" : "#102a36");
-    fallback.addColorStop(1, "#07151a");
-    ctx.fillStyle = fallback;
-    ctx.fillRect(0, 0, W, H);
-  }
-  const vignette = ctx.createLinearGradient(0, 0, 0, H);
-  vignette.addColorStop(0, "rgba(3, 13, 24, .7)");
-  vignette.addColorStop(.24, "rgba(3, 13, 24, 0)");
-  vignette.addColorStop(.78, "rgba(3, 8, 19, 0)");
-  vignette.addColorStop(1, "rgba(3, 8, 19, .72)");
-  ctx.fillStyle = vignette;
-  ctx.fillRect(0, 0, W, H);
+  const width = canvas.width;
+  const height = canvas.height;
+  const map = currentMap();
+  const time = performance.now();
+  ctx.clearRect(0, 0, width, height);
+  drawMapGround(ctx, map, width, height);
 
-  const beaconX = zone.beacon.x;
-  const beaconY = zone.beacon.y;
-  const pulse = 25 + Math.sin(frame / 12) * 5;
-  const beaconGlow = ctx.createRadialGradient(beaconX, beaconY, 4, beaconX, beaconY, pulse * 2.5);
-  beaconGlow.addColorStop(0, `${zone.color}aa`);
-  beaconGlow.addColorStop(1, `${zone.color}00`);
-  ctx.fillStyle = beaconGlow;
-  ctx.beginPath(); ctx.arc(beaconX, beaconY, pulse * 2.5, 0, Math.PI * 2); ctx.fill();
-  ctx.strokeStyle = `${zone.color}b8`;
-  ctx.lineWidth = 2;
-  ctx.beginPath(); ctx.arc(beaconX, beaconY, pulse, 0, Math.PI * 2); ctx.stroke();
-  ctx.strokeStyle = `${zone.color}55`;
-  ctx.beginPath(); ctx.arc(beaconX, beaconY, pulse + 12, 0, Math.PI * 2); ctx.stroke();
-  ctx.fillStyle = "rgba(6, 20, 30, .84)";
-  ctx.fillRect(beaconX - 48, beaconY + 27, 96, 20);
-  pixelText(ctx, "SIGNAL NODE", beaconX - 36, beaconY + 41, zone.color, 8);
+  // Soft sun patch and paper-like speckles stop the scene feeling like a flat gradient.
+  const sun = ctx.createRadialGradient(width * .14, height * .14, 5, width * .14, height * .14, 270);
+  sun.addColorStop(0, "rgba(255, 250, 211, .36)"); sun.addColorStop(1, "rgba(255, 250, 211, 0)");
+  ctx.fillStyle = sun; ctx.fillRect(0, 0, width, height);
+  drawRack(ctx, map, width, height, time);
 
-  const player = state.player;
-  ctx.strokeStyle = `${zone.color}44`;
-  ctx.lineWidth = 1;
-  ctx.setLineDash([5, 8]);
-  ctx.beginPath(); ctx.moveTo(player.x, player.y); ctx.lineTo(beaconX, beaconY); ctx.stroke(); ctx.setLineDash([]);
-  if (submersibleImage.complete) ctx.drawImage(submersibleImage, player.x - 46, player.y - 25, 92, 52);
-  else {
-    ctx.fillStyle = "#eebc56"; ctx.beginPath(); ctx.ellipse(player.x, player.y, 34, 14, 0, 0, Math.PI * 2); ctx.fill();
-  }
-  for (let i = 0; i < 3; i += 1) {
-    const rise = (frame * (.28 + i * .1) + i * 21) % 48;
-    ctx.strokeStyle = `${zone.color}88`;
-    ctx.lineWidth = 1.5;
-    ctx.beginPath(); ctx.arc(player.x - 24 + i * 10, player.y - 32 - rise, 2 + i, 0, Math.PI * 2); ctx.stroke();
-  }
-  if (foreground?.complete) ctx.drawImage(foreground, 0, 0, W, H);
-  ctx.fillStyle = "rgba(4, 13, 22, .72)";
-  ctx.fillRect(14, 14, 242, 45);
-  pixelText(ctx, `${zone.short}  /  ${zone.name.toUpperCase()}`, 26, 33, "#ecf7e8", 10);
-  pixelText(ctx, `BIOME SIGNAL  ${state.unlockedZones.includes(zone.id) ? "ONLINE" : "LOCKED"}`, 26, 48, zone.color, 8);
-  ctx.fillStyle = "rgba(4, 13, 22, .74)";
-  ctx.fillRect(W - 184, 14, 170, 45);
-  pixelText(ctx, "FIELD UNIT  01", W - 168, 33, "#ecf7e8", 9);
-  pixelText(ctx, "CLICK TO PILOT  ·  SCAN BELOW", W - 168, 48, "#cbd9bd", 7);
-  pixelText(ctx, `MICROFLUX FIELD STUDY // ${zone.name.toUpperCase()}`, 16, H - 15, "#d2eee1", 8);
+  sparks.forEach((spark) => {
+    const distance = spark.distance + (1 - spark.life) * 58 * spark.speed;
+    const x = width / 2 + Math.cos(spark.angle) * distance;
+    const y = height / 2 + 34 + Math.sin(spark.angle) * distance * .62;
+    ctx.globalAlpha = clamp(spark.life, 0, 1);
+    ellipse(ctx, x, y, spark.size, spark.size, spark.color);
+  });
+  ctx.globalAlpha = 1;
+
+  ctx.fillStyle = "rgba(25, 62, 60, .55)";
+  ctx.font = "10px IBM Plex Mono, monospace";
+  ctx.fillText(`${map.name.toUpperCase()}  ·  ${currentSpecies().name.toUpperCase()}`, 24, height - 24);
+  ctx.fillStyle = "rgba(250, 247, 222, .7)";
+  ctx.font = "11px DM Sans, sans-serif";
+  ctx.fillText("leave it humming", width - 130, height - 24);
 }
 
-function animateWorld() {
+function animateWorld(now) {
+  const elapsed = Math.min(8, Math.max(0, (now - lastFrameTime) / 1000));
+  lastFrameTime = now;
   frame += 1;
+  if (elapsed > 0) advanceTime(elapsed);
+  sparks.forEach((spark) => { spark.life -= elapsed * .95; spark.distance += elapsed * 7; });
+  while (sparks.length && sparks[0].life <= 0) sparks.shift();
+  if (frame % 60 === 0) render();
   drawWorld();
   window.requestAnimationFrame(animateWorld);
 }
 
-function movePlayer(dx, dy) {
-  state.player.x = clamp(state.player.x + dx, 18, 622);
-  state.player.y = clamp(state.player.y + dy, 20, 330);
-  drawWorld();
-}
-
 function handleClick(event) {
-  const actionTarget = event.target.closest("[data-action]");
-  const screenTarget = event.target.closest("[data-screen]");
-  if (screenTarget) { updateScreen(screenTarget.dataset.screen); return; }
-  if (!actionTarget) return;
-  const action = actionTarget.dataset.action;
-  if (action === "scan") scan();
-  if (action === "upgrade-device") upgradeDevice();
-  if (action === "travel") travel(actionTarget.dataset.zoneId);
-  if (action === "select-strain") selectStrain(actionTarget.dataset.strainId);
-  if (action === "select-reactor") selectReactor(actionTarget.dataset.reactorId);
-  if (action === "buy-reactor") buyReactor(actionTarget.dataset.reactorId);
-  if (action === "upgrade-reactor") upgradeReactor();
-  if (action === "advance-culture") advanceCulture();
+  const target = event.target.closest("[data-action]");
+  if (!target) return;
+  const action = target.dataset.action;
   if (action === "harvest") harvest();
+  if (action === "travel") travel(target.dataset.mapId);
+  if (action === "upgrade-device") upgradeDevice();
+  if (action === "upgrade-rack") upgradeRack();
+  if (action === "select-species") selectSpecies(target.dataset.speciesId);
 }
 
-function handleKeydown(event) {
-  if (["INPUT", "TEXTAREA", "SELECT", "BUTTON"].includes(document.activeElement?.tagName)) return;
-  const moves = { ArrowUp: [0, -7], w: [0, -7], W: [0, -7], ArrowDown: [0, 7], s: [0, 7], S: [0, 7], ArrowLeft: [-7, 0], a: [-7, 0], A: [-7, 0], ArrowRight: [7, 0], d: [7, 0], D: [7, 0] };
-  if (!moves[event.key]) return;
-  event.preventDefault();
-  movePlayer(...moves[event.key]);
+function resetStudy() {
+  if (!window.confirm("Start a new quiet culture study and lose this local rack?")) return;
+  Object.assign(state, defaultState());
+  sparks.length = 0;
+  announce("A fresh rack is flowing in the Azure Basin.", "success");
+  render();
 }
 
-function handleCanvasClick(event) {
-  const canvas = $("#worldCanvas");
-  const rect = canvas.getBoundingClientRect();
-  const x = (event.clientX - rect.left) * canvas.width / rect.width;
-  const y = (event.clientY - rect.top) * canvas.height / rect.height;
-  state.player.x = clamp(x, 38, canvas.width - 38);
-  state.player.y = clamp(y, 86, canvas.height - 58);
-  drawWorld();
-}
+document.addEventListener("click", handleClick);
+document.addEventListener("keydown", (event) => {
+  if (["INPUT", "TEXTAREA", "SELECT"].includes(document.activeElement?.tagName)) return;
+  if (event.key === " " || event.key.toLowerCase() === "e") {
+    event.preventDefault();
+    harvest();
+  }
+});
+$("#worldCanvas")?.addEventListener("click", harvest);
+$("#resetStudy")?.addEventListener("click", resetStudy);
 
-$("#worldPanel").addEventListener("click", handleClick);
-$(".pixel-sidebar").addEventListener("click", handleClick);
-document.addEventListener("keydown", handleKeydown);
-$("#worldCanvas").addEventListener("click", handleCanvasClick);
-$("#resetStudy").addEventListener("click", () => { if (window.confirm("Reset your local field study and lose its discoveries?")) { Object.assign(state, defaultState()); announce("Field study reset. Start in the Azure Ocean Shelf."); render(); } });
+applyAwaytime();
 render();
-animateWorld();
+window.requestAnimationFrame(animateWorld);
