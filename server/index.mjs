@@ -10,6 +10,7 @@ export const DATA_DIR = path.join(SERVER_DIR, "data");
 export const DEFAULT_HOST = "127.0.0.1";
 export const DEFAULT_PORT = 8787;
 export const MAX_BODY_BYTES = 64 * 1024;
+export const API_KEY_HEADER = "x-api-key";
 
 const MAX_PLAYER_ID_LENGTH = 128;
 const MAX_IDEMPOTENCY_KEY_LENGTH = 128;
@@ -31,6 +32,7 @@ function createStore(dataDir, maxBodyBytes) {
     statesDir: path.join(root, "states"),
     eventsDir: path.join(root, "events"),
     maxBodyBytes,
+    apiKey: null,
     ready: null,
     locks: new Map(),
   };
@@ -105,9 +107,17 @@ function sendError(response, error) {
 function setCorsHeaders(response) {
   response.setHeader("Access-Control-Allow-Origin", "*");
   response.setHeader("Access-Control-Allow-Methods", "GET, PUT, POST, OPTIONS");
-  response.setHeader("Access-Control-Allow-Headers", "Content-Type, Idempotency-Key");
+  response.setHeader("Access-Control-Allow-Headers", "Content-Type, Idempotency-Key, X-API-Key");
   response.setHeader("Vary", "Origin");
   response.setHeader("X-Content-Type-Options", "nosniff");
+}
+
+function authorizeRequest(request, store) {
+  if (!store.apiKey) return;
+  const supplied = request.headers[API_KEY_HEADER];
+  if (typeof supplied !== "string" || supplied.length === 0 || supplied !== store.apiKey) {
+    throw new HttpError(401, "invalid_api_key", "This development API requires the configured X-API-Key header.");
+  }
 }
 
 function readRequestBody(request, maxBytes) {
@@ -278,6 +288,7 @@ export async function handleRequest(request, response, store) {
   }
 
   try {
+    authorizeRequest(request, store);
     await ensureDataDirectories(store);
     const url = new URL(request.url ?? "/", "http://127.0.0.1");
     if (url.pathname === "/health") {
@@ -308,6 +319,11 @@ export function createServer(options = {}) {
     throw new TypeError("maxBodyBytes must be a positive integer");
   }
   const store = createStore(dataDir, maxBodyBytes);
+  const configuredApiKey = options.apiKey ?? process.env.ORR_API_KEY ?? process.env.API_KEY ?? "";
+  if (configuredApiKey !== "" && (typeof configuredApiKey !== "string" || configuredApiKey.length < 8 || configuredApiKey.length > 256)) {
+    throw new TypeError("apiKey must be empty or a string between 8 and 256 characters.");
+  }
+  store.apiKey = configuredApiKey || null;
   const server = http.createServer((request, response) => {
     void handleRequest(request, response, store);
   });

@@ -303,3 +303,15 @@ input[type="range"]::-moz-range-thumb { width: 12px; height: 12px; border: 2px s
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
 }
+
+/* Research-lab stage treatment: the 3D viewport is the instrument, not a
+   backdrop behind the controls. */
+.scene-frame { border-color: rgba(124,226,160,.36); background: radial-gradient(circle at 52% 44%, rgba(47,164,112,.22), transparent 48%), #06120e; box-shadow: 0 26px 90px rgba(0,0,0,.34), inset 0 0 0 1px rgba(114,222,213,.07); }
+.scene-frame::after { content: ""; position: absolute; inset: 14px; border: 1px solid rgba(124,226,160,.12); border-radius: 12px; background-image: linear-gradient(rgba(124,226,160,.05) 1px, transparent 1px), linear-gradient(90deg, rgba(124,226,160,.05) 1px, transparent 1px); background-size: 34px 34px; mask-image: linear-gradient(135deg,#000,transparent 78%); pointer-events: none; }
+.workspace-bar { padding: 10px 0 12px; }
+.workspace-bar h2 { text-shadow: 0 0 30px rgba(124,226,160,.16); }
+.metric-card { background: linear-gradient(145deg, rgba(19,54,40,.78), rgba(7,23,17,.72)); box-shadow: 0 12px 30px rgba(0,0,0,.12); }
+.workspace-card { background: linear-gradient(140deg, rgba(18,52,39,.78), rgba(6,21,15,.78)); box-shadow: 0 18px 45px rgba(0,0,0,.12); }
+.source-bridge { background: linear-gradient(120deg, rgba(24,93,79,.62), rgba(7,20,15,.8)); box-shadow: 0 18px 55px rgba(0,0,0,.2); }
+.backend-key-field { margin-top: 14px; }
+.backend-key-input { max-width: 420px; }

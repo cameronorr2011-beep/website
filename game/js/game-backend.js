@@ -8,31 +8,45 @@
  */
 
 const CONFIG_KEY = "orr-biologicals-game-api";
+const API_KEY_STORAGE = "orr-biologicals-game-api-key";
 
 function configuredBaseUrl() {
   try {
     const queryValue = new URLSearchParams(globalThis.location?.search || "").get("api");
+    const queryKey = new URLSearchParams(globalThis.location?.search || "").get("apiKey");
     const storedValue = globalThis.localStorage?.getItem(CONFIG_KEY);
+    const storedKey = globalThis.sessionStorage?.getItem(API_KEY_STORAGE);
     const value = String(queryValue || storedValue || "").trim();
-    return value ? value.replace(/\/$/, "") : "";
+    return { url: value ? value.replace(/\/$/, "") : "", key: String(queryKey || storedKey || "").trim() };
   } catch {
-    return "";
+    return { url: "", key: "" };
   }
 }
 
 async function request(baseUrl, path, options = {}) {
-  const response = await fetch(`${baseUrl}${path}`, {
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), 8000);
+  const { key } = configuredBaseUrl();
+  let response;
+  try {
+    response = await fetch(`${baseUrl}${path}`, {
     ...options,
-    headers: { "Content-Type": "application/json", ...(options.headers || {}) },
-  });
+      signal: controller.signal,
+      headers: { "Content-Type": "application/json", ...(key ? { "X-API-Key": key } : {}), ...(options.headers || {}) },
+    });
+  } catch (error) {
+    throw new Error(error?.name === "AbortError" ? "Backend request timed out after 8 seconds." : `Backend could not be reached: ${error.message}`);
+  } finally {
+    clearTimeout(timer);
+  }
   const body = await response.json().catch(() => ({}));
   if (!response.ok) throw new Error(body.message || body.error || `Backend request failed (${response.status})`);
   return body;
 }
 
 export function backendStatus() {
-  const baseUrl = configuredBaseUrl();
-  return { configured: Boolean(baseUrl), baseUrl: baseUrl || null, label: baseUrl ? "optional dev backend" : "local browser only" };
+  const { url, key } = configuredBaseUrl();
+  return { configured: Boolean(url), baseUrl: url || null, keyConfigured: Boolean(key), label: url ? "optional dev backend" : "local browser only" };
 }
 
 export async function checkBackend() {
@@ -61,6 +75,17 @@ export function rememberBackendUrl(value) {
     else globalThis.localStorage?.removeItem(CONFIG_KEY);
   } catch {
     // The game still works as a local-only application when storage is blocked.
+  }
+  return backendStatus();
+}
+
+export function rememberBackendKey(value) {
+  const normalized = String(value || "").trim();
+  try {
+    if (normalized) globalThis.sessionStorage?.setItem(API_KEY_STORAGE, normalized);
+    else globalThis.sessionStorage?.removeItem(API_KEY_STORAGE);
+  } catch {
+    // Session storage is optional; the endpoint can still be public/local.
   }
   return backendStatus();
 }

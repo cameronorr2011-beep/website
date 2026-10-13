@@ -47,6 +47,7 @@ const state = {
   assistantAnswer: null,
   assistantQuestion: "",
   backendUrl: "",
+  backendKey: "",
   noteDraft: { title: "", content: "" },
   comparisonSelection: null,
   playbackIndex: -1,
@@ -60,6 +61,28 @@ const state = {
   chartResizeObserver: null,
   toastTimer: 0,
 };
+
+const BACKEND_URL_STORAGE = "orr-biologicals-digital-lab-api";
+const BACKEND_KEY_STORAGE = "orr-biologicals-digital-lab-api-key";
+
+function readBackendConfig() {
+  try {
+    const params = new URLSearchParams(window.location.search);
+    const url = String(params.get("api") || sessionStorage.getItem(BACKEND_URL_STORAGE) || "").trim();
+    const key = String(params.get("apiKey") || sessionStorage.getItem(BACKEND_KEY_STORAGE) || "").trim();
+    return { url, key };
+  } catch {
+    return { url: "", key: "" };
+  }
+}
+
+function backendOptions(config = readBackendConfig()) {
+  return {
+    backendBaseUrl: config.url || undefined,
+    backendHeaders: config.key ? { "X-API-Key": config.key } : undefined,
+    backendTimeoutMs: 8000,
+  };
+}
 
 function readView() {
   const requested = window.location.hash.slice(1).split("?")[0];
@@ -404,8 +427,11 @@ function restoreActiveProject(project) {
 }
 
 function initializePersistence() {
+  const backendConfig = readBackendConfig();
+  state.backendUrl = backendConfig.url;
+  state.backendKey = backendConfig.key;
   try {
-    state.db = createLabPersistence({ playerId: "digital-lab-local" });
+    state.db = createLabPersistence({ playerId: "digital-lab-local", ...backendOptions(backendConfig) });
   } catch (error) {
     state.db = createLabPersistence({ playerId: "digital-lab-local", storage: createMemoryStorage() });
     state.persistenceWarning = `Browser storage could not be opened (${error.message}). The unreadable original was left untouched; this session is using an in-memory workspace and will not survive reload.`;
@@ -436,7 +462,6 @@ function initializePersistence() {
   const active = projects.find((project) => project.id === workspace?.activeProjectId) || projects[0];
   restoreActiveProject(active);
   if (!window.location.hash && VIEW_KEYS.has(workspace?.view)) state.view = workspace.view;
-  state.backendUrl = "";
   state.initializing = false;
   persistProjectState({ showError: false });
 }
@@ -838,7 +863,18 @@ function render() {
   viewRoot.innerHTML = `${renderPersistentWarning()}${(views[state.view] || renderLaboratory)()}`;
   if (state.view === "settings") {
     const backendCard = Array.from(viewRoot.querySelectorAll(".settings-card")).find((card) => card.querySelector("h2")?.textContent.trim() === "Optional development backend");
-    backendCard?.remove();
+    if (backendCard) {
+      const description = backendCard.querySelector("p");
+      if (description) description.textContent = "Use an explicit HTTP(S) origin for the separately installed Node service. An optional X-API-Key stays in this browser session and is never exported with research data.";
+      const urlInput = backendCard.querySelector("#backendUrl");
+      if (urlInput && !backendCard.querySelector("#backendKey")) {
+        urlInput.insertAdjacentHTML("afterend", `<label class="field-group"><span class="field-label">API key <em>session only</em></span><input class="sim-input" id="backendKey" type="password" autocomplete="off" placeholder="Only if the server requires one" value="${escapeHtml(state.backendKey)}"></label>`);
+      }
+      const settingsActions = backendCard.querySelector(".settings-actions");
+      if (settingsActions && !settingsActions.querySelector('[data-action="backend-health"]')) {
+        settingsActions.insertAdjacentHTML("beforeend", `<button class="sim-button" type="button" data-action="backend-health"${state.db.backendStatus().configured ? "" : " disabled"}>Check connection</button>`);
+      }
+    }
     const subtitle = viewRoot.querySelector(".sim-page-subtitle");
     if (subtitle) subtitle.textContent = "Local browser storage, project drafts, saved outputs, and workspace JSON are managed here. No backend or AI provider is connected on this route.";
   }
@@ -1272,13 +1308,28 @@ function runAssistant() {
 
 function configureBackend() {
   const value = document.querySelector("#backendUrl")?.value.trim() || "";
+  const key = document.querySelector("#backendKey")?.value.trim() || "";
   try {
-    state.db = createLabPersistence({ playerId: "digital-lab-local", backendBaseUrl: value || undefined });
+    if (value) sessionStorage.setItem(BACKEND_URL_STORAGE, value);
+    else sessionStorage.removeItem(BACKEND_URL_STORAGE);
+    if (key) sessionStorage.setItem(BACKEND_KEY_STORAGE, key);
+    else sessionStorage.removeItem(BACKEND_KEY_STORAGE);
+    state.db = createLabPersistence({ playerId: "digital-lab-local", ...backendOptions({ url: value, key }) });
     state.project = state.db.getProject(state.project?.id) || state.db.listProjects()[0] || state.db.createProject({ name: state.form.projectName || "Untitled culture study", description: "A local-first synthetic microalgae growth investigation.", organism: profileLabel(state.form.organism), model: MODEL_VERSION, tags: ["synthetic", "computational"] });
     state.backendUrl = value;
-    showToast(value ? "Optional backend origin configured; no sync has run." : "Backend cleared; local browser mode restored.");
+    state.backendKey = key;
+    showToast(value ? "Backend configured. Check the connection before syncing." : "Backend cleared; local browser mode restored.");
     render();
   } catch (error) { showToast(`Backend origin rejected: ${error.message}`, "error"); }
+}
+
+async function checkBackend() {
+  try {
+    const result = await state.db.checkBackend();
+    showToast(`Backend responded: ${result.service || "health check passed"}.`);
+  } catch (error) {
+    showToast(`Backend check failed: ${error.message}`, "error");
+  }
 }
 
 async function syncBackend() {
@@ -1335,6 +1386,7 @@ function handleClick(event) {
     "delete-note": () => deleteNote(target.dataset.noteId),
     "assistant-run": runAssistant,
     "configure-backend": configureBackend,
+    "backend-health": checkBackend,
     "sync-backend": syncBackend,
     "reset-workspace": resetWorkspace,
     "open-run-note": () => { state.noteDraft = { title: state.output ? `${state.output.scenario.label} interpretation` : "", content: "" }; setView("notebook"); },

@@ -44,7 +44,7 @@ import {
   serializeState as serializeExpeditionState,
   setAutonomy,
 } from "./expedition-engine.js";
-import { backendStatus, checkBackend, saveBackendState } from "./game-backend.js";
+import { backendStatus, checkBackend, rememberBackendKey, saveBackendState } from "./game-backend.js";
 
 const $ = (selector) => document.querySelector(selector);
 const $$ = (selector) => [...document.querySelectorAll(selector)];
@@ -361,9 +361,18 @@ function renderWorkspace() {
   refs.content.innerHTML = mode === "expedition" ? renderExpedition() : mode === "overview" ? renderOverview() : mode === "algaephyte" ? renderAlgaephyte() : mode === "cyanoflow" ? renderCyanoflow() : mode === "cell" ? renderCell() : renderHistory();
   if (mode === "overview") refs.content.insertAdjacentHTML("beforeend", analysisMarkup());
   if (mode === "history") refs.content.insertAdjacentHTML("afterbegin", `<div class="workspace-card"><div class="card-heading"><div><span class="eyebrow">Comparison view</span><h3>Final biomass by run</h3></div><span class="badge amber">SYNTHETIC</span></div>${comparisonMarkup()}</div>`);
+  mountBackendBridgeControls();
   refs.viewEyebrow.textContent = viewCopy[mode][0];
   refs.viewTitle.textContent = viewCopy[mode][1];
   $$(".lab-tab").forEach((tab) => tab.classList.toggle("is-active", tab.dataset.mode === mode));
+}
+
+function mountBackendBridgeControls() {
+  const card = [...refs.content.querySelectorAll(".workspace-card")].find((item) => item.querySelector("h3")?.textContent.trim() === "Keep this expedition reproducible.");
+  if (!card || card.querySelector("#backendApiKey")) return;
+  const actions = card.querySelector(".action-row");
+  if (!actions) return;
+  actions.insertAdjacentHTML("beforebegin", `<label class="field-label backend-key-field" for="backendApiKey">API key <em>session only · optional</em></label><input class="field backend-key-input" id="backendApiKey" type="password" autocomplete="off" placeholder="Only if your local server requires X-API-Key">`);
 }
 
 function render() {
@@ -456,9 +465,11 @@ function handleExpeditionAction(action, target) {
     downloadText(`orr-expedition-${expedition.seed.toLowerCase().replace(/[^a-z0-9]+/g, "-")}.json`, serializeExpeditionState(expedition));
     showToast("Expedition JSON exported with observed/inferred provenance.");
   } else if (action === "backend-health") {
+    rememberBackendKey($("#backendApiKey")?.value || "");
     checkBackend().then((result) => showToast(result.connected ? "Optional backend is reachable." : "No optional backend is configured.")).catch((error) => showToast(`Backend unavailable: ${error.message}`));
     return;
   } else if (action === "backend-save") {
+    rememberBackendKey($("#backendApiKey")?.value || "");
     const playerId = `orr-local-${state.seed.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`;
     saveBackendState(playerId, { lab: JSON.parse(serializeState(state)), expedition: JSON.parse(serializeExpeditionState(expedition)) })
       .then(() => showToast("Full synthetic record synced to the optional development backend."))

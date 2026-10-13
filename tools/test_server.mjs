@@ -140,7 +140,19 @@ try {
   assert.equal(missingKey.status, 400);
   assert.equal(missingKey.body.error, "missing_idempotency_key");
 
-  console.log("server: health, persistent state round-trip, validation limits, and idempotent events passed");
+  await closeServer(server);
+  server = await startServer({ host: "127.0.0.1", port: 0, dataDir, apiKey: "test-api-key-123" });
+  const authAddress = server.address();
+  assert.equal(typeof authAddress, "object");
+  const authBaseUrl = `http://127.0.0.1:${authAddress.port}`;
+  const unauthorizedHealth = await requestJson(authBaseUrl, "/health");
+  assert.equal(unauthorizedHealth.status, 401);
+  assert.equal(unauthorizedHealth.body.error, "invalid_api_key");
+  const authorizedHealth = await requestJson(authBaseUrl, "/health", { headers: { "X-API-Key": "test-api-key-123" } });
+  assert.equal(authorizedHealth.status, 200);
+  assert.equal(authorizedHealth.body.ok, true);
+
+  console.log("server: health, persistent state round-trip, validation limits, idempotent events, and API-key auth passed");
 } finally {
   if (server) await closeServer(server);
   await rm(dataDir, { recursive: true, force: true });

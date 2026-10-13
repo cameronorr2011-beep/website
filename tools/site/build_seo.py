@@ -28,11 +28,27 @@ def build():
           'cyanoflow': [a for a in articles if a['product'] == 'Cyanoflow']}
     (ROOT / 'blog/data/kb.json').write_text(json.dumps(kb, ensure_ascii=False, indent=1) + '\n', encoding='utf-8')
     directory = []
+    image_by_slug = {
+        'single-cell-microalgae-microfluidics': ('/assets/cyano/chip.jpg', 'Illustrative microfluidic algae chip'),
+        'vision-contamination-detection': ('/assets/cyano/microscope.jpg', 'Illustrative microscope imaging setup'),
+        'digital-twins-biological-cultivation': ('/assets/images/instrument-photo.jpg', 'Illustrative algae cultivation instrument'),
+        'digital-twin-droop-steele-model': ('/assets/cyano/culture.jpg', 'Illustrative green algae culture vessels'),
+        'six-culture-signals-main-senses': ('/assets/images/hero.jpg', 'Illustrative photobioreactor vessel'),
+        'control-loop-architecture': ('/assets/images/instrument-photo.jpg', 'Illustrative monitored culture vessel'),
+        'light-temperature-mixing': ('/assets/cyano/culture.jpg', 'Illustrative algae culture flasks'),
+        'spirulina-is-a-cyanobacterium': ('/assets/cyano/hero-field.jpg', 'Illustrative Spirulina microscopy field'),
+    }
+    fallback_images = [
+        ('/assets/images/microscopy/sim-field.jpg', 'Illustrative algae microscopy field'),
+        ('/assets/cyano/hero-field.jpg', 'Illustrative single-cell algae field'),
+        ('/assets/images/instrument-photo.jpg', 'Illustrative cultivation instrument'),
+    ]
     for key, label in (('algaephyte', 'Algaephyte — cultivation, sensing and bounded control'),
                        ('cyanoflow', 'Cyanoflow and shared imaging methods')):
         directory.append('<h3 class="kb-h">' + label + '</h3>\n<div class="rot-grid kb-grid">')
-        for a in kb[key]:
-            directory.append('<a class="rot-card kb-card" href="' + html.escape(a['url'], quote=True) + '"><span class="rt-body">'
+        for index, a in enumerate(kb[key]):
+            image, alt = image_by_slug.get(a['slug'], fallback_images[index % len(fallback_images)])
+            directory.append('<a class="rot-card kb-card" href="' + html.escape(a['url'], quote=True) + '"><span class="kb-media"><img src="' + image + '" alt="' + html.escape(alt, quote=True) + '" loading="lazy" width="1536" height="1024"></span><span class="rt-body">'
                 + '<span class="kb-tag">' + html.escape(a['product']) + '</span><h3>' + html.escape(a['title']) + '</h3>'
                 + '<p>' + html.escape(a['dek']) + '</p><span class="rt-foot"><b>' + html.escape(a['date'])
                 + '</b><span class="rt-go">Read the note</span></span></span></a>')

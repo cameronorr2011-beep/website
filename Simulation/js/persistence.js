@@ -910,6 +910,7 @@ export function createBackendAdapter(options = {}) {
   const baseUrl = explicitSameOrigin ? "" : rawBaseText.replace(/\/$/, "");
   const configured = (baseUrl.length > 0 || explicitSameOrigin) && options.enabled !== false;
   const fetchImpl = options.fetchImpl;
+  const timeoutMs = Number.isInteger(options.timeoutMs) ? options.timeoutMs : 8000;
   if (configured && baseUrl.length > 0) {
     let url;
     try {
@@ -936,20 +937,29 @@ export function createBackendAdapter(options = {}) {
     return baseUrl ? new URL(path, `${baseUrl}/`).toString() : path;
   }
 
+  function healthEndpoint() {
+    return baseUrl ? new URL("/health", `${baseUrl}/`).toString() : "/health";
+  }
+
   async function request(playerId, requestOptions) {
     if (!configured) throw new PersistenceError("BACKEND_NOT_CONFIGURED", "No optional persistence backend is configured.");
     const requestFetch = fetchImpl ?? globalThis.fetch;
     if (typeof requestFetch !== "function") throw new PersistenceError("BACKEND_UNAVAILABLE", "The configured persistence backend needs a fetch implementation.");
     let response;
+    const controller = typeof AbortController === "function" ? new AbortController() : null;
+    const timeout = controller ? globalThis.setTimeout?.(() => controller.abort(), timeoutMs) : null;
     try {
       response = await requestFetch(endpoint(playerId), {
         ...requestOptions,
         credentials: "omit",
         cache: "no-store",
+        ...(controller ? { signal: controller.signal } : {}),
         headers: { "Content-Type": "application/json", ...(options.headers ?? {}), ...(requestOptions.headers ?? {}) },
       });
     } catch (error) {
-      throw new PersistenceError("BACKEND_REQUEST_FAILED", "The optional persistence backend could not be reached.", error);
+      throw new PersistenceError("BACKEND_REQUEST_FAILED", error?.name === "AbortError" ? `The optional persistence backend timed out after ${timeoutMs} ms.` : "The optional persistence backend could not be reached.", error);
+    } finally {
+      if (timeout !== null) globalThis.clearTimeout?.(timeout);
     }
     if (response.status === 404 && requestOptions.method === "GET") return null;
     let body;
@@ -977,6 +987,29 @@ export function createBackendAdapter(options = {}) {
       const response = await request(playerId, { method: "GET" });
       if (response === null) return null;
       return cloneJson(response.state, "backend state");
+    },
+    async health() {
+      const requestFetch = fetchImpl ?? globalThis.fetch;
+      if (typeof requestFetch !== "function") throw new PersistenceError("BACKEND_UNAVAILABLE", "The configured persistence backend needs a fetch implementation.");
+      const controller = typeof AbortController === "function" ? new AbortController() : null;
+      const timeout = controller ? globalThis.setTimeout?.(() => controller.abort(), timeoutMs) : null;
+      let response;
+      try {
+        response = await requestFetch(healthEndpoint(), {
+          method: "GET", credentials: "omit", cache: "no-store",
+          ...(controller ? { signal: controller.signal } : {}),
+          headers: { ...(options.headers ?? {}) },
+        });
+      } catch (error) {
+        throw new PersistenceError("BACKEND_REQUEST_FAILED", error?.name === "AbortError" ? `The optional persistence backend timed out after ${timeoutMs} ms.` : "The optional persistence backend could not be reached.", error);
+      } finally {
+        if (timeout !== null) globalThis.clearTimeout?.(timeout);
+      }
+      const body = await response.json().catch(() => null);
+      if (!response.ok || !isPlainObject(body) || body.ok !== true) {
+        throw new PersistenceError("BACKEND_REQUEST_FAILED", body?.message || `The optional persistence backend returned HTTP ${response.status}.`);
+      }
+      return body;
     },
     async save(playerId, state) {
       const body = cloneJson(state, "backend state");
@@ -1008,6 +1041,7 @@ export class LabPersistence {
       baseUrl: options.backendBaseUrl ?? options.apiBaseUrl,
       fetchImpl: options.fetchImpl,
       headers: options.backendHeaders,
+      timeoutMs: options.backendTimeoutMs,
     });
 
     const raw = readStorageValue(this.storage, this.storageKey);
@@ -1246,6 +1280,13 @@ export class LabPersistence {
 
   async syncToBackend() {
     return this.saveToBackend();
+  }
+
+  async checkBackend() {
+    if (!this.backend || this.backend.configured !== true || typeof this.backend.health !== "function") {
+      throw new PersistenceError("BACKEND_NOT_CONFIGURED", "No optional persistence backend is configured.");
+    }
+    return this.backend.health();
   }
 
   /* Convenience methods make route code self-documenting while generic CRUD

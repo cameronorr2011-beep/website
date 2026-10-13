@@ -117,9 +117,9 @@
     ctx.arcTo(x,y,x+w,y,rr);
     ctx.closePath();
   }
-  function draw(now){
-    raf=0;
-    if(!running||!visible||document.hidden)return;
+   function draw(now,allowOffscreen){
+     raf=0;
+     if(!running||document.hidden||(!visible&&!allowOffscreen))return;
     if(now-lastFrame<33){raf=requestAnimationFrame(draw);return;}
     lastFrame=now;
     var dt=Math.min(.05,(now-t0)/1000);t0=now;
@@ -232,7 +232,7 @@
     ctx.beginPath();ctx.arc(cx-colW*0.34,bot+30,3,0,Math.PI*2);ctx.fill();
 
     canvas.dataset.frames=String(Number(canvas.dataset.frames||0)+1);
-    if(!reduced.matches&&now<animateUntil){canvas.dataset.motionState='responding';raf=requestAnimationFrame(draw);}else{canvas.dataset.motionState='idle';}
+     if(visible&&!reduced.matches&&now<animateUntil){canvas.dataset.motionState='responding';raf=requestAnimationFrame(draw);}else{canvas.dataset.motionState='idle';}
   }
   function respond(){if(!visible||document.hidden)return;animateUntil=performance.now()+650;if(!raf)raf=requestAnimationFrame(draw);}
   new IntersectionObserver(function(entries){visible=entries[0].isIntersecting;if(visible)respond();else{cancelAnimationFrame(raf);raf=0;canvas.dataset.motionState='offscreen';}},{threshold:.01}).observe(canvas);
@@ -240,8 +240,11 @@
   reduced.addEventListener('change',respond);
   document.querySelectorAll('#simControls input').forEach(function(input){input.addEventListener('input',respond);});
   document.getElementById('simReset').addEventListener('click',respond);
-  new ResizeObserver(respond).observe(canvas.parentElement);
+   new ResizeObserver(respond).observe(canvas.parentElement);
   var simInputs=function(){return {light:parseFloat(document.querySelector('[data-ctl="light"] input').value)||.52,carbon:parseFloat(document.querySelector('[data-ctl="carbon"] input').value)||.72,air:parseFloat(document.querySelector('[data-ctl="air"] input').value)||.58};};
-  respond();
-})();
+   /* Paint a real first frame even when the long homepage canvas starts below
+      the fold. The observer takes over animation once the visitor reaches it. */
+   draw(performance.now(),true);
+   respond();
+ })();
 

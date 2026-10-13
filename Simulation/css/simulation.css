@@ -499,3 +499,15 @@ button:disabled { cursor: not-allowed; opacity: .48; }
   .three-fields { grid-template-columns: 1fr 1fr; }
   .three-fields > :last-child { grid-column: span 2; }
 }
+
+/* Instrument polish: give the workspace a clear visual hierarchy instead of
+   making every panel compete at the same weight. */
+.sim-topbar { box-shadow: 0 12px 40px rgba(0,0,0,.14); }
+.sim-view { background: radial-gradient(900px 360px at 58% 2%, rgba(52,156,91,.10), transparent 72%); }
+.lab-title-bar { padding: 22px 24px; border: 1px solid rgba(145,228,156,.16); border-radius: 18px; background: linear-gradient(120deg, rgba(24,66,42,.62), rgba(7,21,14,.3)); box-shadow: 0 20px 70px rgba(0,0,0,.18); }
+.lab-title-bar h2 { font-size: clamp(30px, 4vw, 52px); }
+.lab-title-bar p { color: #bfd9c7; font-size: 14px; }
+.visual-panel { background: radial-gradient(circle at 55% 42%, rgba(50,164,95,.18), transparent 38%), #07130f; }
+.visual-panel::after { content: ""; position: absolute; inset: 18px; border: 1px solid rgba(145,228,156,.10); border-radius: 12px; background-image: linear-gradient(rgba(145,228,156,.06) 1px, transparent 1px), linear-gradient(90deg, rgba(145,228,156,.06) 1px, transparent 1px); background-size: 32px 32px; mask-image: linear-gradient(135deg,#000,transparent 85%); pointer-events: none; }
+.scene-kicker strong { text-shadow: 0 0 22px rgba(181,255,192,.28); }
+.settings-card code { color: var(--sim-cyan); font: 10px var(--sim-mono); }
