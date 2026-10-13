@@ -9,12 +9,15 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 class ResearchLabContractTests(unittest.TestCase):
-    def test_lab_entry_uses_the_new_application_surface(self):
+    def test_lab_entry_uses_the_microflux_application_surface(self):
         text = (ROOT / "game/index.html").read_text(encoding="utf-8")
-        self.assertIn('id="labCanvas"', text)
-        self.assertIn('id="workspaceContent"', text)
-        self.assertIn('id="exportReport"', text)
-        self.assertIn('id="importFile"', text)
+        self.assertIn('id="worldCanvas"', text)
+        self.assertIn('id="worldPanel"', text)
+        self.assertIn('id="objectiveTitle"', text)
+        self.assertIn('id="creditReadout"', text)
+        self.assertIn('data-screen="device"', text)
+        self.assertIn('data-screen="reactors"', text)
+        self.assertIn('data-screen="collection"', text)
         self.assertTrue(any(marker in text for marker in (
             'SYNTHETIC DATA', 'SYNTHETIC MODE', 'SYNTHETIC + DEVICE OPT-IN',
         )))
