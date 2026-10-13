@@ -1,0 +1,55 @@
+{
+  "date": "2026-10-12",
+  "model": "openai/gpt-oss-120b",
+  "generated_at": "2026-10-13T01:45:25Z",
+  "picks": [
+    {
+      "pmid": "42842084",
+      "title": "Sustainable polyhydroxybutyrate production and characterization from Chlorella vulgaris cultivated on waste-derived carbon sources.",
+      "journal": "World journal of microbiology &amp; biotechnology",
+      "year": "2026",
+      "pub_date": "2026-10-07",
+      "url": "https://doi.org/10.1007/s11274-026-05316-y",
+      "topic": "Biofuels",
+      "hook": "Chlorella vulgaris turns waste carbon into biodegradable PHB bioplastic.",
+      "article": "A recent study set out to see whether the green micro‑alga Chlorella vulgaris could be grown on carbon sources derived from waste and used to make polyhydroxybutyrate (PHB), a biodegradable plastic.\n\nThe researchers cultivated Chlorella vulgaris in laboratory‑scale cultures, feeding the algae with carbon streams obtained from waste streams or by‑product streams, and then measured the amount of PHB that the cells accumulated.\n\nThe work showed that the algae were able to produce PHB when supplied with these waste‑derived carbon sources, confirming the feasibility of turning waste into a valuable bioplastic feedstock.\n\nThis finding is interesting because it points to a way of lowering the cost and environmental impact of bioplastic production by using cheap, renewable waste streams.",
+      "why": "Turning waste into algae‑derived biodegradable plastic could make sustainable packaging more affordable."
+    },
+    {
+      "pmid": "42859277",
+      "title": "Biochemical and molecular insights into the antibiofilm and antivirulence effects of a B-phycoerythrin-rich&#xa0;extract from Porphyridium cruentum against Pseudomonas aeruginosa.",
+      "journal": "Biodegradation",
+      "year": "2026",
+      "pub_date": "2026-10-10",
+      "url": "https://doi.org/10.1007/s10532-026-10386-8",
+      "topic": "Health",
+      "hook": "Porphyridium cruentum extract blocks Pseudomonas biofilms, offering a new anti‑virulence tool.",
+      "article": "A recent study set out to see whether a pigment protein called B‑phycoerythrin, taken from the red microalga Porphyridium cruentum, could stop the harmful bacterium Pseudomonas aeruginosa from forming protective biofilms and expressing virulence factors.\n\nThe researchers prepared an extract rich in B‑phycoerythrin from the algae and tested it against the laboratory strain P. aeruginosa PAO1 using standard microbiological assays that measure biofilm formation and virulence‑related activities.\n\nThe extract was found to significantly inhibit the bacterium’s ability to develop biofilms and to interfere with quorum‑sensing mechanisms, the cell‑to‑cell communication system that controls many pathogenic traits.\n\nThese findings suggest that algae‑derived B‑phycoerythrin could become a natural tool for controlling bacterial infections without relying on traditional antibiotics.",
+      "why": "Algal B‑phycoerythrin may offer a green, anti‑virulence strategy to curb harmful bacterial biofilms."
+    },
+    {
+      "pmid": "42837825",
+      "title": "Climate warming enhances aerobic methane emissions from invasive Raphidiopsis raciborskii blooms.",
+      "journal": "Water research",
+      "year": "2026",
+      "pub_date": "2026-10-02",
+      "url": "https://doi.org/10.1016/j.watres.2026.127057",
+      "topic": "Climate",
+      "hook": "Warmer waters boost methane release from invasive Raphidiopsis blooms, amplifying climate feedbacks.",
+      "article": "A recent study examined whether warming temperatures affect the amount of methane released by blooms of the invasive cyanobacterium Raphidiopsis raciborskii. Researchers carried out a seven‑month in‑situ field monitoring campaign in a subtropical drinking‑water reservoir and complemented it with controlled laboratory experiments. They found that higher water temperatures increased aerobic methane production associated with the cyanobacterial blooms. This suggests that climate warming could boost methane emissions from freshwater systems dominated by invasive cyanobacteria.\n\nUnderstanding this link is important because freshwater bodies contribute a large share of global methane, a potent greenhouse gas, and rising emissions could amplify climate change.",
+      "why": "Warmer waters may cause invasive cyanobacteria to release more methane, affecting greenhouse‑gas budgets and water‑resource management."
+    },
+    {
+      "pmid": "42832884",
+      "title": "A 3D-printed algal-bacterial microreactor for photobiological hydrogen production coupled with actual wastewater treatment.",
+      "journal": "Water research",
+      "year": "2026",
+      "pub_date": "2026-10-03",
+      "url": "https://doi.org/10.1016/j.watres.2026.127071",
+      "topic": "Cultivation",
+      "hook": "A 3D‑printed algal‑bacterial microreactor produces hydrogen while cleaning real wastewater.",
+      "article": "A recent study set out to combine microalgae‑driven photobiological hydrogen production with real wastewater treatment in a single device. The researchers built a small‑scale microreactor by 3D‑printing a chamber that holds both algae and bacteria, allowing light‑driven hydrogen generation while the microbes clean the water.\n\nThey tested the reactor using actual wastewater, letting the algae remove phosphorus and nitrogen while the bacteria helped sequester carbon dioxide during hydrogen evolution. The design aimed to overcome typical hurdles such as the oxygen sensitivity of hydrogen‑producing enzymes.\n\nThe study demonstrated that the 3D‑printed algal‑bacterial microreactor could simultaneously produce hydrogen and reduce nutrient loads in wastewater, showing a functional integration of energy capture and water purification.\n\nThis approach is interesting because it points to a way of generating clean fuel while treating waste streams, potentially adding value to both energy and water management systems.",
+      "why": "Integrating hydrogen production with wastewater cleanup could make algae biotechnologies more economically viable."
+    }
+  ]
+}
