@@ -1,0 +1,55 @@
+{
+  "date": "2026-10-13",
+  "model": "openai/gpt-oss-120b",
+  "generated_at": "2026-10-13T23:33:06Z",
+  "picks": [
+    {
+      "pmid": "42851150",
+      "title": "Volatile organic compounds from microalgae: sources, chemical diversity, biosynthesis, and bioactive potential.",
+      "journal": "Preparative biochemistry &amp; biotechnology",
+      "year": "2026",
+      "pub_date": "2026-10-09",
+      "url": "https://doi.org/10.1080/10826068.2026.2741198",
+      "topic": "Biotech",
+      "hook": "Microalgae emit diverse VOCs that can be harvested for eco‑friendly fragrances and bioactive agents.",
+      "article": "A recent study set out to gather what is known about the tiny, scent‑producing chemicals that microalgae release into their surroundings. \n\nThe authors examined published research on a wide variety of microalgal species, compiling information on how these volatile organic compounds (VOCs) are made, what chemical families they belong to, and what effects they can have. \n\nThey found that microalgae are prolific sources of low‑molecular‑weight metabolites that influence atmospheric chemistry, aquatic ecosystem dynamics, water quality, and the formation of off‑flavors and odors. Despite their ecological importance and growing interest for biotechnological uses, the diversity and functions of these VOCs remain comparatively under‑explored. \n\nUnderstanding these hidden chemicals could help improve water management and guide the development of algae‑based products.",
+      "why": "Knowing algae‑derived VOCs can aid water quality monitoring and inspire new sustainable bioproducts."
+    },
+    {
+      "pmid": "42853350",
+      "title": "CRISPR-enhanced microalgae for carbon sequestration and carotenoid production: opportunities and fundamental constraints.",
+      "journal": "Bioresources and bioprocessing",
+      "year": "2026",
+      "pub_date": "2026-10-09",
+      "url": "https://doi.org/10.1186/s40643-026-01136-y",
+      "topic": "Carbon Sequestration",
+      "hook": "CRISPR‑edited microalgae boost CO₂ capture and carotenoid yields, but face fundamental metabolic limits.",
+      "article": "A recent study set out to explore how CRISPR‑based genome editing could improve microalgae for two purposes: pulling carbon dioxide out of the atmosphere and making valuable pigments like lutein and astaxanthin.\n\nThe researchers used CRISPR tools to modify the genetic makeup of a microalgal species, then measured its ability to convert CO2 and to produce the target carotenoids under laboratory conditions.\n\nThey found that, despite the promise of gene editing, industrial‑scale performance is still limited by low carbon conversion efficiency, reduced photosynthetic activity, and competing metabolic pathways that cap product yields.\n\nUnderstanding these fundamental constraints is important for guiding future engineering efforts and making algae‑based carbon capture and pigment production more viable.",
+      "why": "Knowing the bottlenecks helps focus algae engineering toward real‑world carbon capture and sustainable pigment supply."
+    },
+    {
+      "pmid": "42829155",
+      "title": "Metabolic rewiring of Synechococcus elongatus PCC 7942 enhances astaxanthin production from CO<sub>2</sub>.",
+      "journal": "Bioresource technology",
+      "year": "2026",
+      "pub_date": "2026-10-03",
+      "url": "https://doi.org/10.1016/j.biortech.2026.136006",
+      "topic": "Biofuels",
+      "hook": "Rewired Synechococcus strains crank out astaxanthin from CO₂, showcasing a new route to high‑value pigments.",
+      "article": "A recent study set out to boost the production of astaxanthin, a valuable pigment, using the photosynthetic bacterium Synechococcus elongatus PCC 7942 that naturally fixes carbon dioxide.\n\nThe researchers engineered the strain S2‑0 by adjusting the supply of building‑block molecules, reshaping the metabolic pathway layout, and applying factor engineering to redirect carbon flow toward astaxanthin.\n\nThe engineered cyanobacteria showed enhanced astaxanthin production, demonstrating that coordinated regulation of precursor supply, pathway topology, and transcriptional factors can improve the yield of this high‑value compound.\n\nThis work shows how metabolic rewiring can turn CO₂‑fixing microbes into more efficient factories for valuable products.",
+      "why": "It points to greener ways to make astaxanthin, a pigment used in foods and cosmetics, from carbon dioxide."
+    },
+    {
+      "pmid": "42853009",
+      "title": "Safety Assessment of Red Algae-Derived Ingredients as Used in Cosmetics.",
+      "journal": "International journal of toxicology",
+      "year": "2026",
+      "pub_date": "2026-10-09",
+      "url": "https://doi.org/10.1177/10915818261474837",
+      "topic": "Health",
+      "hook": "Red‑algae ingredients pass safety screens for cosmetics, opening algae‑based beauty products to market.",
+      "article": "A recent study set out to evaluate whether ingredients derived from red algae that appear in cosmetics are safe for consumers.\n\nThe expert panel examined sixty red‑algae derived substances listed in the International Cosmetic Ingredient Dictionary, checking their scientific names and typical uses.\n\nThe assessment found that most of these ingredients are reported to function as skin‑conditioning agents, and many of the listed names correspond to the same underlying chemical when matched to accepted scientific nomenclature.\n\nUnderstanding that these algae‑based compounds are largely used for skin care and share common identities helps regulators and manufacturers confirm their safety profile.",
+      "why": "Clarifying the safety and identity of red algae skin‑conditioning agents supports trustworthy cosmetic formulations."
+    }
+  ]
+}
