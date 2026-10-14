@@ -1,45 +1,40 @@
-# Orr Biologicals Microflux: Rack Run
+# Orr Biologicals BioRealm
 
-`/game/` is an active, local-first microfluidic algae clicker. Culture pulses
-move through illustrated rack lanes and the player catches them as they enter a
-collection gate.
+`/game/` is a calm, local-first discovery and cultivation game. Explore distinct
+synthetic field biomes, purchase and install microfluidic discovery devices, reveal
+five-star species records, and assign discovered strains to photobioreactors. The
+reactors are the principal long-term income engine: patient cultivation fills glass
+vessels that can be harvested for credits.
 
-## The game loop
+## Loop
 
-1. Pick an unlocked rack map.
-2. Watch the active lanes and click a culture pulse when it reaches the gate.
-3. Catch several pulses in a row to build a combo multiplier.
-4. Avoid red contaminants; a contaminant breaks the combo and costs credits.
-5. Fill the batch meter for a large biomass/credit payout and a new device level.
-6. Spend profit on modules that change how the active run feels.
-7. Unlock new maps with different lane rules, target speeds, and target mixes.
+1. Claim the one-time field-study grant and purchase a Screening Chip.
+2. Select a biome in the Field Atlas and begin a slow discovery survey.
+3. Wait for the device to finish, then choose when to reveal the deterministic result.
+4. Add the species to the Living Archive and place compatible strains in reactors.
+5. Harvest passive biomass, reinvest in better devices, vessel tiers, research, and
+   new field sites.
 
-The primary action is real Canvas hit testing: clicks outside the gate are early,
-clicks on the gate can be good or perfect, missed blooms expire, and contaminants
-are hazards. The keyboard-friendly **tend at the gate** button and `Space`/`E`
-shortcut only catch a pulse that is currently inside the gate; they do not create
-an unconditional payout.
+The game includes Freshwater, Lake Shelf, Moist Sand, Saltwater Coast, Garden Soil,
+Forest Soil, Wetlands, Thermal Springs, and Night Tide. Their pools, costs, durations,
+environmental preferences, and rarity weighting are materially different. Species use
+real genus names where useful (including Arthrospira, Chlorella, Nannochloropsis,
+Tetraselmis, Pavlova, and Isochrysis), alongside explicitly fictional game strains.
 
-## Maps and modules
+## Persistence and simulation boundary
 
-- **Azure Basin** — three clear, steady lanes for learning the timing.
-- **Amber Sandline** — branching channels and faster golden pulses.
-- **Moss Soil** — four offset lanes with slower, more valuable blooms.
-- **Moonlit Peat** — darker phases with rare luminous pulses.
+Progress is stored locally under the versioned `orr-biorealm-v1` key. Saves include a
+world seed, equipment, discoveries, reactor timestamps, settings, and event state.
+Offline production is timestamp-based, capped at eight hours, and settled before a
+save so reloading cannot duplicate a return batch. Invalid saves are rejected without
+overwriting the raw record; v1/v2 Rack Run saves can be migrated into a fresh BioRealm
+laboratory.
 
-The rack can be fitted with an Optical Gate, Pressure Regulator, Channel Splitter,
-Dense Inoculum, Combo Stabilizer, and Auto Pipette. The first five alter active
-play or active rewards; the Auto Pipette is intentionally small and only supports
-away-time progress instead of replacing the clicker loop.
+All species values, rarity odds, growth traits, device behavior, reactor economics,
+events, illustrations, and audio are fictional game mechanics. The experience does
+not identify organisms, control hardware, or provide a real cultivation protocol.
 
-## Simulation boundary
-
-Species, targets, maps, credits, biomass, combo rules, and device effects are
-fictional game mechanics. They are not organism identification, a cultivation
-protocol, a device specification, or a claim about real performance. The page is
-marked `SYNTHETIC MODE` and stores only game state in browser storage.
-
-## Run locally
+## Local run
 
 From the repository root:
 
@@ -48,26 +43,30 @@ npm run build:lab
 python tools/site/serve_preview.py
 ```
 
-Open <http://127.0.0.1:8876/game/>. The page uses the content-hashed bundle
-generated at `game/dist/lab-*.js`; it does not require a database, API key, or
-external runtime dependency.
+Open <http://127.0.0.1:8876/game/>. The deployment is static and self-contained; it
+does not require a database, API key, backend, CDN, external image, or audio request.
+The build writes a content-hashed ESM bundle to `game/dist/` and updates
+`game/index.html`.
 
 ## Checks
 
 ```powershell
-python -m unittest discover -s tools -p 'test_*.py'
+node tools/test_biorealm_engine.mjs
+python -m unittest tools.test_lab
 npm run test:lab
 npm run test:simulation
 npm run test:expedition
 npm run test:server
 ```
 
-With the preview server running, browser QA for the active route is:
+With the preview server running, the active route smoke test is:
 
 ```powershell
-node C:/Users/Cameron/.claude/skills/browser-automation/browser.mjs http://127.0.0.1:8876/game/ --script tools/qa_rack_game.mjs
+node C:/Users/Cameron/.claude/skills/browser-automation/browser.mjs http://127.0.0.1:8876/game/ --script tools/qa_biorealm.mjs
 ```
 
-All generated targets and values remain synthetic. The independent deterministic
-lab, simulation, provider, expedition, and optional backend modules are retained
-for the broader site and continue to be checked separately.
+The browser check covers a fresh grant, device purchase and installation, a
+Freshwater expedition, a deterministic completed reveal, archive persistence,
+reactor rendering, zero essential request/console failures, and 390px overflow.
+The optional `?qa=1` URL only exposes an in-memory test clock button to avoid a
+30-second browser wait; it is not shown during normal play.

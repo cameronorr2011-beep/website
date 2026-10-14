@@ -9,37 +9,39 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 class ResearchLabContractTests(unittest.TestCase):
-    def test_lab_entry_uses_the_microflux_application_surface(self):
+    def test_lab_entry_uses_the_biorealm_application_surface(self):
         text = (ROOT / "game/index.html").read_text(encoding="utf-8")
-        self.assertIn('id="worldCanvas"', text)
-        self.assertIn('id="worldPanel"', text)
-        self.assertIn('id="objectiveTitle"', text)
-        self.assertIn('id="creditReadout"', text)
-        self.assertIn('id="mapDeck"', text)
-        self.assertIn('id="harvestButton"', text)
-        self.assertIn('id="flowReadout"', text)
-        self.assertIn('data-action="tend-current"', text)
+        for marker in (
+            'id="biorealmApp"', 'id="gameNav"', 'id="gameView"',
+            'id="creditsReadout"', 'id="incomeReadout"',
+            'id="biomassReadout"', 'id="archiveReadout"',
+            'data-view="expedition"', 'data-view="reactors"',
+            'data-view="collection"', 'data-view="research"',
+        ):
+            self.assertIn(marker, text)
         self.assertTrue(any(marker in text for marker in (
             'SYNTHETIC DATA', 'SYNTHETIC MODE', 'SYNTHETIC + DEVICE OPT-IN',
         )))
-        self.assertTrue('js/lab-app.js' in text or 'dist/lab-' in text)
+        self.assertTrue('dist/lab-' in text or 'dist/bio-' in text)
         self.assertNotIn('Algae Living — Grow. Evolve. Survive.', text)
         self.assertNotIn('cdn.jsdelivr.net', text)
 
-    def test_microflux_starts_with_a_quiet_local_rack(self):
-        app = (ROOT / "game/js/pixel-world-app.js").read_text(encoding="utf-8")
-        self.assertIn('SAVE_KEY = "orr-microflux-rack-v2"', app)
-        self.assertIn('activeMap: "water"', app)
-        self.assertIn('unlockedMaps: ["water"]', app)
-        self.assertIn('name: "Azure Basin"', app)
-        self.assertIn('name: "Amber Sandline"', app)
-        self.assertIn('name: "Moss Soil"', app)
-        self.assertIn('function applyAwaytime()', app)
-        self.assertIn('function tendAtPoint(', app)
-        self.assertIn('function registerCatch(', app)
-        self.assertIn('function buyUpgrade(', app)
-        self.assertIn('function finishBatch()', app)
-        self.assertIn('function drawRack(', app)
+    def test_biorealm_has_the_complete_progression_surface(self):
+        app = (ROOT / "game/js/biorealm-app.js").read_text(encoding="utf-8")
+        engine = (ROOT / "game/js/biorealm-engine.js").read_text(encoding="utf-8")
+        scene = (ROOT / "game/js/biorealm-scene.js").read_text(encoding="utf-8")
+        audio = (ROOT / "game/js/biorealm-audio.js").read_text(encoding="utf-8")
+        for marker in (
+            'SAVE_KEY', 'createInitialState', 'applyOffline', 'collectExpedition',
+            'startExpedition', 'harvestAll', 'assignSpecies', 'buyReactor',
+            'buyUpgrade', 'renderScene', 'exportSave',
+        ):
+            self.assertIn(marker, app if marker in app else engine)
+        for marker in ('BIOMES', 'SPECIES', 'DEVICES', 'REACTOR_TIERS', 'UPGRADES', 'EVENTS', 'serializeState', 'safeLoad'):
+            self.assertIn(marker, engine)
+        self.assertIn('createScene', scene)
+        self.assertIn('speciesPortrait', scene)
+        self.assertIn('createAmbientAudio', audio)
 
     def test_engine_is_deterministic_and_has_both_domains(self):
         text = (ROOT / "game/js/lab-engine.js").read_text(encoding="utf-8")
