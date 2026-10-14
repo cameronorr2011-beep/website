@@ -1,29 +1,39 @@
 /*
- * Microflux / Quiet Culture Co.
+ * Microflux / Rack Run
  *
- * A local-first, low-pressure clicker about tending illustrated microfluidic
- * racks. All currencies, species, maps, and growth rules are fictional game
- * systems. Nothing here is a cultivation protocol or a hardware claim.
+ * An active, local-first clicker about catching synthetic algae pulses as they
+ * arrive at a microfluidic collection gate. Every organism, reward, map rule,
+ * and device effect is fictional game logic, not a cultivation protocol.
  */
 
-const SAVE_KEY = "orr-microflux-rack-v1";
+const SAVE_KEY = "orr-microflux-rack-v2";
+const OLD_SAVE_KEY = "orr-microflux-rack-v1";
 const MAX_DEVICE_LEVEL = 5;
 
 const MAPS = [
-  { id: "water", name: "Azure Basin", short: "water", unlockCost: 0, requiredLevel: 1, color: "#68bdb6", multiplier: 1, description: "soft water and a dependable first loop", note: "The first tray likes a little attention, then it learns the rhythm." },
-  { id: "sand", name: "Amber Sandline", short: "sand", unlockCost: 180, requiredLevel: 2, color: "#d9a956", multiplier: 1.35, description: "warm sand channels with brighter yields", note: "The sand map holds heat longer. Let the gold dust settle before you tend it." },
-  { id: "soil", name: "Moss Soil", short: "soil", unlockCost: 520, requiredLevel: 3, color: "#76986d", multiplier: 1.8, description: "root-dark channels full of patient growth", note: "Nothing rushes in the soil map. That is why its cultures are worth waiting for." },
-  { id: "peat", name: "Moonlit Peat", short: "peat", unlockCost: 1250, requiredLevel: 4, color: "#a888bc", multiplier: 2.45, description: "a dusk map for the rarest quiet blooms", note: "The peat loop only glows when the room is still." },
+  { id: "water", name: "Azure Basin", short: "water", unlockCost: 0, requiredLevel: 1, color: "#68bdb6", multiplier: 1, lanes: 3, speed: .92, spawn: .96, rule: "steady", description: "three clear lanes · steady pulses", note: "The starter basin is honest. Follow the green pulse to the gate." },
+  { id: "sand", name: "Amber Sandline", short: "sand", unlockCost: 280, requiredLevel: 2, color: "#e0ad56", multiplier: 1.35, lanes: 3, speed: 1.12, spawn: .88, rule: "branch", description: "split channels · quick gold pulses", note: "The sandline branches. Watch the gold pulse choose a side." },
+  { id: "soil", name: "Moss Soil", short: "soil", unlockCost: 900, requiredLevel: 3, color: "#86a472", multiplier: 1.85, lanes: 4, speed: .78, spawn: .8, rule: "rooted", description: "four offset lanes · patient high value", note: "Root-dark channels move slowly, but a perfect catch is worth the wait." },
+  { id: "peat", name: "Moonlit Peat", short: "peat", unlockCost: 2200, requiredLevel: 4, color: "#ac8bc0", multiplier: 2.6, lanes: 3, speed: 1.3, spawn: .72, rule: "eclipse", description: "dark phases · rare luminous blooms", note: "The peat rack dims between pulses. Keep your eyes on the little light." },
 ];
 
 const SPECIES = [
-  { id: "mint-comet", name: "Mint Comet", map: "water", color: "#8fcf9c", value: 5, note: "a kind little starter culture" },
-  { id: "glass-thread", name: "Glass Thread", map: "water", color: "#75bfc6", value: 8, note: "catches the light at the edge of a channel" },
-  { id: "gold-dust", name: "Gold Dust", map: "sand", color: "#e5b45a", value: 15, note: "warm flecks that settle into the sand" },
-  { id: "coral-ribbon", name: "Coral Ribbon", map: "sand", color: "#df896d", value: 22, note: "a slow ribbon with a bright pulse" },
-  { id: "moss-lantern", name: "Moss Lantern", map: "soil", color: "#8dae6f", value: 36, note: "green light threaded through root-dark soil" },
-  { id: "velvet-spore", name: "Velvet Spore", map: "soil", color: "#aa7a91", value: 49, note: "soft violet motes under the surface" },
-  { id: "night-pearl", name: "Night Pearl", map: "peat", color: "#baa0de", value: 86, note: "a small moon that prefers patient keepers" },
+  { id: "mint-comet", name: "Mint Comet", map: "water", color: "#91d39a", value: 6, note: "a bright, friendly starter culture" },
+  { id: "glass-thread", name: "Glass Thread", map: "water", color: "#79c7cf", value: 10, note: "catches a blue edge in the flow" },
+  { id: "gold-dust", name: "Gold Dust", map: "sand", color: "#efbd5d", value: 18, note: "warm flecks that split at the branch" },
+  { id: "coral-ribbon", name: "Coral Ribbon", map: "sand", color: "#e58b73", value: 27, note: "a slow ribbon with a bright pulse" },
+  { id: "moss-lantern", name: "Moss Lantern", map: "soil", color: "#9fbc78", value: 43, note: "green light threaded through root-dark soil" },
+  { id: "velvet-spore", name: "Velvet Spore", map: "soil", color: "#b27f9b", value: 59, note: "soft violet motes under the surface" },
+  { id: "night-pearl", name: "Night Pearl", map: "peat", color: "#c4a7e5", value: 96, note: "a small moon for patient keepers" },
+];
+
+const UPGRADES = [
+  { id: "gate", name: "Optical Gate", glyph: "◌", max: 4, baseCost: 110, description: "wider perfect window", effect: (level) => `gate radius +${level * 5}px` },
+  { id: "regulator", name: "Pressure Regulator", glyph: "≈", max: 4, baseCost: 135, description: "slows culture pulses", effect: (level) => `pulse speed −${level * 9}%` },
+  { id: "splitter", name: "Channel Splitter", glyph: "Y", max: 2, baseCost: 300, description: "adds a live channel", effect: (level) => `${level + 3} lanes in water` },
+  { id: "inoculum", name: "Dense Inoculum", glyph: "✦", max: 4, baseCost: 190, description: "raises every clean catch", effect: (level) => `catch value +${level * 18}%` },
+  { id: "stabilizer", name: "Combo Stabilizer", glyph: "⌁", max: 3, baseCost: 225, description: "holds your streak longer", effect: (level) => `combo window +${(level * .35).toFixed(2)}s` },
+  { id: "pipette", name: "Auto Pipette", glyph: "↓", max: 4, baseCost: 360, description: "small away-time support", effect: (level) => `${(level * .22).toFixed(2)} credits / second` },
 ];
 
 const $ = (selector) => document.querySelector(selector);
@@ -32,74 +42,107 @@ const money = (value) => Math.floor(Number(value || 0)).toLocaleString();
 const decimal = (value, digits = 1) => Number(value || 0).toLocaleString(undefined, { maximumFractionDigits: digits });
 const mapById = (id) => MAPS.find((map) => map.id === id) || MAPS[0];
 const speciesById = (id) => SPECIES.find((species) => species.id === id) || SPECIES[0];
+const upgradeById = (id) => UPGRADES.find((upgrade) => upgrade.id === id);
 
 function defaultState() {
   return {
-    credits: 80,
-    cells: 0,
+    credits: 120,
     biomass: 0,
+    cells: 0,
     day: 1,
+    run: 1,
     deviceLevel: 1,
-    rackLevel: 1,
     activeMap: "water",
     unlockedMaps: ["water"],
     discovered: ["mint-comet"],
     activeSpecies: "mint-comet",
-    progress: 46,
-    totalHarvests: 0,
+    upgrades: { gate: 0, regulator: 0, splitter: 0, inoculum: 0, stabilizer: 0, pipette: 0 },
+    combo: 0,
+    bestCombo: 0,
+    comboTimer: 0,
+    batchProgress: 0,
+    totalBatches: 0,
+    hits: 0,
+    perfects: 0,
+    misses: 0,
+    totalTargets: 0,
     lastSavedAt: Date.now(),
-    log: ["The starter loop is flowing. A mint comet is waiting in the first tray."],
+    log: ["Rack online. The first Mint Comet is moving toward the collection gate."],
   };
+}
+
+function migrateOldSave() {
+  try {
+    const old = JSON.parse(localStorage.getItem(OLD_SAVE_KEY) || "null");
+    if (!old) return null;
+    const fresh = defaultState();
+    fresh.credits = Number(old.credits) || fresh.credits;
+    fresh.biomass = Number(old.biomass) || 0;
+    fresh.cells = Number(old.cells) || 0;
+    fresh.discovered = Array.isArray(old.discovered) && old.discovered.length ? ["mint-comet", ...old.discovered.filter((id) => SPECIES.some((species) => species.id === id))] : fresh.discovered;
+    fresh.log = ["Your old culture notes were moved into Rack Run.", ...(Array.isArray(old.log) ? old.log.slice(0, 4) : [])].slice(0, 6);
+    return fresh;
+  } catch { return null; }
 }
 
 function loadState() {
   try {
-    const saved = JSON.parse(localStorage.getItem(SAVE_KEY) || "null");
+    const saved = JSON.parse(localStorage.getItem(SAVE_KEY) || "null") || migrateOldSave();
     if (!saved) return defaultState();
     const fresh = defaultState();
-    const merged = { ...fresh, ...saved };
+    const merged = { ...fresh, ...saved, upgrades: { ...fresh.upgrades, ...(saved.upgrades || {}) } };
     merged.unlockedMaps = Array.isArray(saved.unlockedMaps) && saved.unlockedMaps.length ? saved.unlockedMaps : fresh.unlockedMaps;
-    merged.discovered = Array.isArray(saved.discovered) && saved.discovered.length ? saved.discovered : fresh.discovered;
+    merged.discovered = Array.isArray(saved.discovered) && saved.discovered.length ? [...new Set(saved.discovered)] : fresh.discovered;
     merged.log = Array.isArray(saved.log) && saved.log.length ? saved.log.slice(0, 6) : fresh.log;
     merged.deviceLevel = clamp(Number(merged.deviceLevel) || 1, 1, MAX_DEVICE_LEVEL);
-    merged.rackLevel = clamp(Number(merged.rackLevel) || 1, 1, 8);
-    merged.progress = clamp(Number(merged.progress) || 0, 0, 100);
-    if (!merged.unlockedMaps.includes(merged.activeMap)) merged.activeMap = merged.unlockedMaps[0];
-    if (!merged.discovered.includes(merged.activeSpecies)) merged.activeSpecies = merged.discovered[0];
+    merged.activeMap = merged.unlockedMaps.includes(merged.activeMap) ? merged.activeMap : merged.unlockedMaps[0];
+    merged.activeSpecies = merged.discovered.includes(merged.activeSpecies) ? merged.activeSpecies : merged.discovered[0];
     return merged;
-  } catch {
-    return defaultState();
-  }
+  } catch { return defaultState(); }
 }
 
 const state = loadState();
-let toastTimer;
+const targets = [];
+const effects = [];
+let runActive = true;
+let spawnTimer = .15;
+let targetId = 0;
 let frame = 0;
 let lastFrameTime = performance.now();
-const sparks = [];
+let toastTimer;
+let audioContext;
 
 function currentMap() { return mapById(state.activeMap); }
 function currentSpecies() { return speciesById(state.activeSpecies); }
-function deviceUpgradeCost() { return Math.round(90 * Math.pow(state.deviceLevel, 1.45)); }
-function rackUpgradeCost() { return Math.round(110 + state.rackLevel * 95); }
-function flowRate() {
-  return 0.32 * state.rackLevel * currentMap().multiplier * (1 + (state.deviceLevel - 1) * 0.13);
+function upgradeLevel(id) { return Number(state.upgrades?.[id] || 0); }
+function upgradeCost(id) { const upgrade = upgradeById(id); const level = upgradeLevel(id); return Math.round(upgrade.baseCost * Math.pow(1.65, level)); }
+function laneCount() { return Math.min(currentMap().lanes + upgradeLevel("splitter"), 5); }
+function gateRadius() { return 27 + upgradeLevel("gate") * 5; }
+function comboWindow() { return 2.05 + upgradeLevel("stabilizer") * .35; }
+function targetSpeed() { return currentMap().speed * (1 - upgradeLevel("regulator") * .09); }
+function batchGoal() { return 12 + upgradeLevel("inoculum") * 2; }
+function multiplier() {
+  if (state.combo >= 20) return 3;
+  if (state.combo >= 10) return 2;
+  if (state.combo >= 5) return 1.5;
+  return 1;
 }
-function cycleDuration() {
-  return Math.max(18, 44 - state.deviceLevel * 3 - state.rackLevel * 2);
+function passiveRate() { return upgradeLevel("pipette") * .22 * currentMap().multiplier; }
+function accuracy() { return state.hits + state.misses ? state.hits / (state.hits + state.misses) * 100 : 0; }
+function baseReward(type = "bloom") {
+  const typeMultiplier = type === "gold" ? 3 : type === "debris" ? 0 : 1;
+  return Math.max(1, Math.round((currentSpecies().value + 6 + currentMap().multiplier * 4) * (1 + upgradeLevel("inoculum") * .18) * typeMultiplier));
 }
-function harvestValue() {
-  return Math.round(4 + currentSpecies().value + state.deviceLevel * 2 + state.rackLevel * 3 + currentMap().multiplier * 4);
-}
-function biomassValue() {
-  return .45 + currentMap().multiplier * .25 + state.rackLevel * .12;
+function targetReward(type, grade) {
+  const gradeMultiplier = grade === "perfect" ? 1.35 : grade === "good" ? 1 : .65;
+  return Math.max(1, Math.round(baseReward(type) * gradeMultiplier * multiplier()));
 }
 
 function save() {
   try {
     state.lastSavedAt = Date.now();
     localStorage.setItem(SAVE_KEY, JSON.stringify(state));
-  } catch { /* private browsing can deny local storage */ }
+  } catch { /* local storage is optional */ }
 }
 
 function announce(message, tone = "normal") {
@@ -111,80 +154,228 @@ function announce(message, tone = "normal") {
     toast.dataset.tone = tone;
     toast.classList.add("is-visible");
     window.clearTimeout(toastTimer);
-    toastTimer = window.setTimeout(() => toast.classList.remove("is-visible"), 2600);
+    toastTimer = window.setTimeout(() => toast.classList.remove("is-visible"), 2200);
   }
   save();
 }
 
 function applyAwaytime() {
   const elapsed = clamp((Date.now() - Number(state.lastSavedAt || Date.now())) / 1000, 0, 60 * 60 * 8);
-  if (elapsed < 8) return;
-  const passiveCredits = flowRate() * elapsed;
-  state.credits += passiveCredits;
-  state.biomass += biomassValue() * elapsed / 28;
-  state.progress += 100 * elapsed / cycleDuration();
-  let cycles = 0;
-  while (state.progress >= 100) {
-    state.progress -= 100;
-    cycles += 1;
-    state.cells += 1;
-    state.totalHarvests += 1;
-    state.credits += harvestValue() * 1.25;
-  }
-  if (cycles) state.log.unshift(`While you were away, ${cycles} quiet bloom${cycles === 1 ? "" : "s"} finished.`);
+  if (elapsed < 8 || !passiveRate()) return;
+  const support = passiveRate() * elapsed;
+  state.credits += support;
+  state.biomass += support / 14;
+  state.log.unshift(`While you were away, the Auto Pipette added ${money(support)} credits.`);
+  state.log = state.log.slice(0, 6);
   save();
 }
 
-function addSparks(count = 10, burst = 1) {
+function beep(kind = "good") {
+  try {
+    audioContext ||= new AudioContext();
+    const oscillator = audioContext.createOscillator();
+    const gain = audioContext.createGain();
+    const frequencies = { good: 420, perfect: 620, gold: 760, bad: 150, batch: 880 };
+    oscillator.frequency.value = frequencies[kind] || frequencies.good;
+    oscillator.type = kind === "bad" ? "sine" : "triangle";
+    gain.gain.setValueAtTime(.0001, audioContext.currentTime);
+    gain.gain.exponentialRampToValueAtTime(kind === "bad" ? .035 : .055, audioContext.currentTime + .01);
+    gain.gain.exponentialRampToValueAtTime(.0001, audioContext.currentTime + (kind === "batch" ? .35 : .16));
+    oscillator.connect(gain).connect(audioContext.destination);
+    oscillator.start(); oscillator.stop(audioContext.currentTime + .4);
+  } catch { /* audio is an optional reward layer */ }
+}
+
+function randomTargetType() {
+  const roll = Math.random();
+  if (roll < .08 && currentMap().rule !== "eclipse") return "gold";
+  if (roll > .93) return "debris";
+  return "bloom";
+}
+
+function spawnTarget(forceType = null) {
+  const target = {
+    id: targetId += 1,
+    type: forceType || randomTargetType(),
+    lane: Math.floor(Math.random() * laneCount()),
+    progress: 0,
+    wobble: Math.random() * Math.PI * 2,
+    age: 0,
+  };
+  targets.push(target);
+  state.totalTargets += 1;
+}
+
+function resetRun() {
+  targets.length = 0;
+  effects.length = 0;
+  spawnTimer = .1;
+  state.combo = 0;
+  state.comboTimer = 0;
+  state.batchProgress = 0;
+  runActive = true;
+  spawnTarget("bloom");
+  spawnTarget("bloom");
+  render();
+}
+
+function targetPoint(target) {
+  const map = currentMap();
+  const x = 124 + target.progress * 660;
+  const baseY = 145 + target.lane * 75;
+  let y = baseY;
+  if (map.rule === "branch") y += Math.sin(target.progress * Math.PI) * (target.lane % 2 ? -34 : 34);
+  if (map.rule === "rooted") y += Math.sin(target.progress * Math.PI * 2 + target.wobble) * 8;
+  if (map.rule === "eclipse") y += Math.sin(target.progress * Math.PI) * (target.lane === 1 ? 22 : -18);
+  return { x, y };
+}
+
+function gateRange() {
+  const gateX = 785;
+  const width = 36 + upgradeLevel("gate") * 7;
+  return { min: gateX - width, max: gateX + width, center: gateX };
+}
+
+function isAtGate(target) {
+  const point = targetPoint(target);
+  const range = gateRange();
+  return point.x >= range.min - 17 && point.x <= range.max + 17;
+}
+
+function addEffect(x, y, text, color, kind = "burst") {
+  effects.push({ x, y, text, color, kind, life: 1, particles: [] });
+  const count = kind === "batch" ? 30 : kind === "bad" ? 9 : 16;
   for (let index = 0; index < count; index += 1) {
-    sparks.push({
-      angle: Math.PI * 2 * index / count + Math.random() * .25,
-      distance: 8 + Math.random() * 22,
-      speed: (.25 + Math.random() * .45) * burst,
-      life: 1,
-      size: 2 + Math.random() * 3,
-      color: ["#fff2b8", "#f2c66d", "#d6ecbb", "#f3a78d"][index % 4],
+    effects[effects.length - 1].particles.push({
+      angle: Math.PI * 2 * index / count + Math.random() * .2,
+      distance: 4 + Math.random() * 13,
+      speed: kind === "batch" ? 1.5 : 1,
+      size: 1.5 + Math.random() * 3,
+      color: kind === "bad" ? "#f0a08b" : ["#fff2b8", "#f0c56b", "#d3e9b7", color][index % 4],
     });
   }
 }
 
-function harvest() {
-  const payout = harvestValue();
-  state.credits += payout;
-  state.cells += 1;
-  state.biomass += biomassValue();
-  state.totalHarvests += 1;
-  state.progress += 12 + state.deviceLevel * 1.5;
-  let fullBloom = false;
-  if (state.progress >= 100) {
-    state.progress -= 100;
-    const bloomBonus = Math.round(payout * 1.8);
-    state.credits += bloomBonus;
-    state.cells += 1;
-    state.biomass += biomassValue() * 1.5;
-    fullBloom = true;
-    announce(`A full bloom opened. +${money(payout + bloomBonus)} credits and two cells.`, "success");
-  } else {
-    announce(`The ${currentSpecies().name} answered. +${money(payout)} credits.`, "success");
-  }
-  addSparks(fullBloom ? 22 : 11, fullBloom ? 1.5 : 1);
+function resetCombo(reason = "") {
+  if (state.combo > 0 && reason) announce(reason, "warn");
+  state.combo = 0;
+  state.comboTimer = 0;
+}
+
+function finishBatch() {
+  const bonus = Math.round((95 + currentSpecies().value * 2) * currentMap().multiplier * (1 + upgradeLevel("inoculum") * .15));
+  state.credits += bonus;
+  state.biomass += 5 + currentMap().multiplier;
+  state.cells += 2;
+    state.totalBatches += 1;
+  state.deviceLevel = clamp(Math.max(state.deviceLevel || 1, Math.min(MAX_DEVICE_LEVEL, 1 + state.totalBatches)), 1, MAX_DEVICE_LEVEL);
+  state.day += 1;
+  state.run += 1;
+  state.batchProgress = 0;
+  state.combo = Math.max(state.combo, 3);
+  addEffect(785, 285, `BATCH +${money(bonus)}`, "#f0c56b", "batch");
+  announce(`Batch complete. +${money(bonus)} credits and a fresh run is ready.`, "success");
+  beep("batch");
+}
+
+function registerCatch(target, grade) {
+  const point = targetPoint(target);
+  const reward = targetReward(target.type, grade);
+  state.hits += 1;
+  state.cells += target.type === "gold" ? 2 : 1;
+  state.biomass += (target.type === "gold" ? 2.2 : 1) * currentMap().multiplier;
+  state.credits += reward;
+  state.combo += target.type === "gold" ? 2 : 1;
+  state.bestCombo = Math.max(state.bestCombo, state.combo);
+  state.comboTimer = comboWindow();
+  state.batchProgress += target.type === "gold" ? 2 : 1;
+  addEffect(point.x, point.y, `${grade === "perfect" ? "PERFECT" : "GOOD"}  +${money(reward)}`, target.type === "gold" ? "#f0c56b" : currentSpecies().color, target.type === "gold" ? "batch" : "burst");
+  beep(target.type === "gold" ? "gold" : grade);
+  if (state.batchProgress >= batchGoal()) finishBatch();
+  else if (state.combo === 5 || state.combo === 10 || state.combo === 20) announce(`${state.combo} hit combo · ×${multiplier()} payout`, "success");
   render();
 }
 
-function advanceTime(seconds) {
-  const secondsToUse = clamp(seconds, 0, 8);
-  state.day += secondsToUse / 60;
-  state.credits += flowRate() * secondsToUse;
-  state.biomass += biomassValue() * secondsToUse / 28;
-  state.progress += 100 * secondsToUse / cycleDuration();
-  while (state.progress >= 100) {
-    state.progress -= 100;
-    state.cells += 1;
-    state.totalHarvests += 1;
-    state.credits += harvestValue() * 1.25;
-    addSparks(5, .45);
+function registerDebris(target) {
+  const point = targetPoint(target);
+  state.misses += 1;
+  state.credits = Math.max(0, state.credits - 4);
+  addEffect(point.x, point.y, "FLOW DISTURBED", "#e58b73", "bad");
+  resetCombo("A contaminant slipped through. Combo reset.");
+  beep("bad");
+  render();
+}
+
+function missTarget(target, late = false) {
+  if (target.type === "debris") return;
+  state.misses += 1;
+  if (state.combo > 0) resetCombo(late ? "A bloom passed the gate. Combo reset." : "The pulse faded. Keep watching the lane.");
+  addEffect(targetPoint(target).x, targetPoint(target).y, "MISSED", "#efb3a0", "bad");
+  render();
+}
+
+function removeTarget(target) {
+  const index = targets.indexOf(target);
+  if (index >= 0) targets.splice(index, 1);
+}
+
+function tendAtPoint(x, y, keyboard = false) {
+  const candidates = targets
+    .map((target) => ({ target, point: targetPoint(target) }))
+    .filter(({ target, point }) => {
+      const range = gateRange();
+      return isAtGate(target) && Math.hypot(point.x - x, point.y - y) <= gateRadius() + (target.type === "gold" ? 7 : 0) && point.x >= range.min - 25 && point.x <= range.max + 25;
+    })
+    .sort((a, b) => Math.abs(a.point.x - gateRange().center) - Math.abs(b.point.x - gateRange().center));
+  const candidate = candidates[0];
+  if (!candidate && keyboard) {
+    const gateTarget = targets.find((target) => isAtGate(target));
+    if (gateTarget) return tendAtPoint(...Object.values(targetPoint(gateTarget)), false);
+    addEffect(gateRange().center, 280, "WAIT FOR THE PULSE", "#e9c879", "bad");
+    beep("bad");
+    render();
+    return;
   }
-  if (secondsToUse >= 1) save();
+  if (candidate) {
+    const distance = Math.abs(candidate.point.x - gateRange().center);
+    const perfect = distance <= Math.max(10, 18 + upgradeLevel("gate") * 2);
+    const grade = perfect ? "perfect" : "good";
+    const target = candidate.target;
+    removeTarget(target);
+    if (target.type === "debris") registerDebris(target);
+    else registerCatch(target, grade);
+    return;
+  }
+  const nearby = targets.find((target) => {
+    const point = targetPoint(target);
+    return Math.hypot(point.x - x, point.y - y) <= gateRadius() + 12;
+  });
+  if (nearby && !isAtGate(nearby)) {
+    addEffect(x, y, "TOO EARLY", "#e9c879", "bad");
+    render();
+    return;
+  }
+  if (x > gateRange().min - 25 && x < gateRange().max + 25) {
+    state.misses += 1;
+    resetCombo("Empty gate. Combo reset.");
+    addEffect(x, y, "MISSED", "#efb3a0", "bad");
+    beep("bad");
+    render();
+  }
+}
+
+function tendCurrent() {
+  const gateTarget = targets
+    .filter((target) => isAtGate(target))
+    .sort((a, b) => Math.abs(targetPoint(a).x - gateRange().center) - Math.abs(targetPoint(b).x - gateRange().center))[0];
+  if (!gateTarget) {
+    addEffect(gateRange().center, 280, "WAIT FOR THE PULSE", "#e9c879", "bad");
+    beep("bad");
+    render();
+    return;
+  }
+  const point = targetPoint(gateTarget);
+  tendAtPoint(point.x, point.y, true);
 }
 
 function discoverForMap(mapId) {
@@ -192,74 +383,54 @@ function discoverForMap(mapId) {
   if (first) {
     state.discovered.push(first.id);
     state.activeSpecies = first.id;
-    announce(`${first.name} found its way into the archive.`, "success");
+    announce(`${first.name} entered the culture archive.`, "success");
   }
 }
 
 function travel(mapId) {
   const map = mapById(mapId);
   if (!state.unlockedMaps.includes(mapId)) {
-    if (state.deviceLevel < map.requiredLevel) {
-      announce(`${map.name} opens at device level ${map.requiredLevel}.`, "warn");
+    if (state.deviceLevel && state.deviceLevel < map.requiredLevel) {
+      announce(`${map.name} opens after device level ${map.requiredLevel}.`, "warn");
       return;
     }
     if (state.credits < map.unlockCost) {
-      announce(`${map.name} needs ${money(map.unlockCost)} credits to open.`, "warn");
+      announce(`${map.name} needs ${money(map.unlockCost)} credits from active runs.`, "warn");
       return;
     }
     state.credits -= map.unlockCost;
     state.unlockedMaps.push(mapId);
-    announce(`${map.name} opened. The rack is ready for a new kind of ground.`, "success");
+    announce(`${map.name} unlocked. New lanes are ready.`, "success");
   }
   state.activeMap = mapId;
   if (!SPECIES.some((species) => species.id === state.activeSpecies && species.map === mapId)) discoverForMap(mapId);
-  state.progress = Math.max(state.progress, 18);
-  render();
+  resetRun();
 }
 
-function upgradeDevice() {
-  if (state.deviceLevel >= MAX_DEVICE_LEVEL) {
-    announce("The device is tuned as far as this little bay can take it.", "warn");
-    return;
-  }
-  const cost = deviceUpgradeCost();
+function buyUpgrade(upgradeId) {
+  const upgrade = upgradeById(upgradeId);
+  const level = upgradeLevel(upgradeId);
+  if (!upgrade || level >= upgrade.max) return;
+  const cost = upgradeCost(upgradeId);
   if (state.credits < cost) {
-    announce(`The next device tune needs ${money(cost)} credits.`, "warn");
+    announce(`${upgrade.name} needs ${money(cost)} credits.`, "warn");
     return;
   }
   state.credits -= cost;
-  state.deviceLevel += 1;
-  announce(`Device tuned to level ${state.deviceLevel}. More maps are beginning to make sense.`, "success");
-  addSparks(16, 1.1);
+  state.upgrades[upgradeId] = level + 1;
+  announce(`${upgrade.name} is now level ${level + 1}. ${upgrade.effect(level + 1)}.`, "success");
+  addEffect(785, 280, upgrade.name.toUpperCase(), currentMap().color, "batch");
+  beep("perfect");
   render();
 }
 
-function upgradeRack() {
-  const cost = rackUpgradeCost();
-  if (state.credits < cost) {
-    announce(`The next rack brace needs ${money(cost)} credits.`, "warn");
-    return;
-  }
-  state.credits -= cost;
-  state.rackLevel += 1;
-  announce(`Rack brace fitted. Flow is now ${decimal(flowRate())} credits per second.`, "success");
-  render();
-}
-
-function selectSpecies(speciesId) {
-  const species = speciesById(speciesId);
-  if (!state.discovered.includes(speciesId)) return;
-  state.activeSpecies = species.id;
-  announce(`${species.name} is now resting in the active loop.`);
-  render();
-}
-
-function currentObjective() {
-  if (state.totalHarvests < 1) return ["Wake the first culture", "Tap the glowing bloom once. Your rack will keep growing after that."];
-  if (state.deviceLevel < 2) return ["Make the rack a little wider", `Save ${money(deviceUpgradeCost())} credits to tune the device and open the sand map.`];
-  if (!state.unlockedMaps.includes("sand")) return ["Open the sand map", "A new tray is waiting in Amber Sandline. Choose it from the little maps below."];
-  if (state.rackLevel < 2) return ["Give the rack another channel", `Fit the next brace for ${money(rackUpgradeCost())} credits and let the bay earn while you are away.`];
-  return ["Keep a good rhythm", "Tend the bloom when you are here. The rack will do the quiet work when you are not."];
+function objective() {
+  if (!state.hits) return ["Catch your first pulse", "Click a green culture pulse when it reaches the gold collection gate."];
+  if (state.bestCombo < 5) return ["Build a five-hit combo", "Clean catches keep the multiplier alive. The gate forgives a little, but not everything."];
+  if (state.totalBatches < 1) return ["Fill the batch meter", `Catch ${batchGoal()} culture units to complete this run and earn a bonus payout.`];
+  const nextLocked = MAPS.find((map) => !state.unlockedMaps.includes(map.id));
+  if (nextLocked) return [`Open ${nextLocked.name}`, `Your next rack map costs ${money(nextLocked.unlockCost)} credits and needs device level ${nextLocked.requiredLevel}.`];
+  return ["Keep the streak alive", "Perfect catches, module upgrades, and new maps are waiting in the flow."];
 }
 
 function renderMapDeck() {
@@ -268,54 +439,65 @@ function renderMapDeck() {
   deck.innerHTML = MAPS.map((map) => {
     const unlocked = state.unlockedMaps.includes(map.id);
     const active = state.activeMap === map.id;
-    const lockedText = state.deviceLevel < map.requiredLevel
-      ? `device ${map.requiredLevel} needed`
-      : `${money(map.unlockCost)} credits`;
-    return `<button class="map-card ${active ? "is-active" : ""} ${unlocked ? "" : "is-locked"}" style="--map-color:${map.color}" data-action="travel" data-map-id="${map.id}" type="button" aria-label="${unlocked ? `Visit ${map.name}` : `Unlock ${map.name}`}\"><b>${map.name}</b><small>${map.description}</small><em>${active ? "CURRENT MAP" : unlocked ? "visit map →" : lockedText}</em></button>`;
+    const lockText = state.deviceLevel && state.deviceLevel < map.requiredLevel ? `device ${map.requiredLevel} needed` : `${money(map.unlockCost)} credits`;
+    return `<button class="map-card ${active ? "is-active" : ""} ${unlocked ? "" : "is-locked"}" style="--map-color:${map.color}" data-action="travel" data-map-id="${map.id}" type="button" aria-label="${unlocked ? `Play ${map.name}` : `Unlock ${map.name}`}\"><b>${map.name}</b><small>${map.description}</small><em>${active ? "CURRENT MAP" : unlocked ? "play map →" : lockText}</em></button>`;
+  }).join("");
+}
+
+function renderUpgradeDeck() {
+  return UPGRADES.map((upgrade) => {
+    const level = upgradeLevel(upgrade.id);
+    const maxed = level >= upgrade.max;
+    const cost = upgradeCost(upgrade.id);
+    return `<div class="module-card ${maxed ? "is-max" : ""}"><span class="module-glyph">${upgrade.glyph}</span><span><b>${upgrade.name} · ${level}/${upgrade.max}</b><small>${upgrade.description} · ${upgrade.effect(level || 1)}</small></span><button class="pixel-button" data-action="buy-upgrade" data-upgrade-id="${upgrade.id}" type="button" ${maxed || state.credits < cost ? "disabled" : ""}>${maxed ? "MAX" : money(cost)}</button></div>`;
   }).join("");
 }
 
 function renderPanel() {
   const map = currentMap();
   const species = currentSpecies();
-  const objective = currentObjective();
-  const deviceCost = deviceUpgradeCost();
-  const rackCost = rackUpgradeCost();
-  const availableSpecies = SPECIES.filter((item) => state.discovered.includes(item.id));
-  const deviceButton = state.deviceLevel >= MAX_DEVICE_LEVEL
-    ? `<button class="pixel-button" type="button" disabled>device fully tuned</button>`
-    : `<button class="pixel-button" data-action="upgrade-device" type="button" ${state.credits < deviceCost ? "disabled" : ""}>tune device · ${money(deviceCost)}</button>`;
-  return `<div class="panel-heading"><div><span class="panel-kicker">Culture ledger / ${map.short}</span><h2>Let it be a little alive.</h2><p class="panel-lede">The rack is an idle culture farm. Tap for a small burst, or close the tab and come back to a finished bloom.</p></div><span class="species-orb" style="--species:${species.color}" aria-hidden="true">✦</span></div>
-    <div class="culture-card"><div class="culture-row"><span>active culture</span><strong>LOOP ${String(state.rackLevel).padStart(2, "0")}</strong></div><div class="culture-intro"><div><b>${species.name}</b><small>${species.note}</small></div></div><div class="progress-track" aria-label="Culture progress"><span style="width:${state.progress}%"></span></div><div class="culture-stats"><span>growth<strong>${Math.round(state.progress)}%</strong></span><span>next tap<strong>+${money(harvestValue())}</strong></span><span>flow<strong>${decimal(flowRate())}/s</strong></span></div><div class="action-row"><button class="pixel-button primary" data-action="harvest" type="button">tend the bloom</button><button class="pixel-button" data-action="upgrade-rack" type="button" ${state.credits < rackCost ? "disabled" : ""}>brace rack · ${money(rackCost)}</button></div></div>
-    <div class="upgrade-box"><div class="upgrade-row"><div><b>Device tuning · level ${state.deviceLevel}</b><small>improves flow and opens new maps</small></div>${deviceButton}</div><div class="upgrade-row"><div><b>Map multiplier · ×${decimal(map.multiplier, 2)}</b><small>${map.note}</small></div><span class="panel-kicker">${objective[0]}</span></div></div>
-    <div class="species-list" aria-label="Culture archive">${availableSpecies.map((item) => `<button class="species-choice ${item.id === state.activeSpecies ? "is-selected" : ""}" data-action="select-species" data-species-id="${item.id}" type="button"><span class="mini-orb" style="--species:${item.color}"></span><span><b>${item.name}</b><small>${item.note}</small></span><strong>+${item.value}</strong></button>`).join("")}</div>`;
+  const nearGate = targets.find((target) => isAtGate(target));
+  const targetText = nearGate ? (nearGate.type === "gold" ? "GOLDEN PULSE" : nearGate.type === "debris" ? "CONTAMINANT" : "CULTURE PULSE") : "WATCHING LANES";
+  const nextMap = MAPS.find((item) => !state.unlockedMaps.includes(item.id));
+  return `<div class="panel-heading"><div><span class="panel-kicker">Rack controls / ${map.short}</span><h2>Make the catch.</h2><p class="panel-lede">Pulses only pay when they reach the collection gate. Build a streak, fill a batch, then reinvest the profit.</p></div><span class="species-orb" style="--species:${species.color}" aria-hidden="true">✦</span></div><div class="run-summary"><div><span>current culture</span><strong>${species.name}</strong></div><div><span>at the gate</span><strong>${targetText}</strong></div><div><span>best combo</span><strong>${state.bestCombo} hits</strong></div><div><span>batch bonus</span><strong>${state.totalBatches}</strong></div></div><div class="module-heading"><span>Rack modules</span><strong>${nextMap ? `next map · ${nextMap.name}` : "all maps open"}</strong></div><div class="module-grid">${renderUpgradeDeck()}</div>`;
+}
+
+function updateHud() {
+  const objectivePair = objective();
+  const current = targets.find((target) => isAtGate(target));
+  const targetValue = current ? targetReward(current.type, "good") : 0;
+  const canvas = $("#worldCanvas");
+  if (canvas) canvas.dataset.targets = JSON.stringify(targets.map((target) => ({ type: target.type, x: targetPoint(target).x, y: targetPoint(target).y, atGate: isAtGate(target) })));
+  if ($("#creditReadout")) $("#creditReadout").textContent = money(state.credits);
+  if ($("#biomassReadout")) $("#biomassReadout").textContent = decimal(state.biomass, 1);
+  if ($("#sampleReadout")) $("#sampleReadout").textContent = money(state.cells);
+  if ($("#flowReadout")) $("#flowReadout").textContent = `${decimal(passiveRate())}/s`;
+  if ($("#dayReadout")) $("#dayReadout").textContent = String(Math.max(1, Math.floor(state.day))).padStart(2, "0");
+  if ($("#runReadout")) $("#runReadout").textContent = String(state.run).padStart(2, "0");
+  if ($("#zoneName")) $("#zoneName").textContent = currentMap().name;
+  if ($("#headerStatus")) $("#headerStatus").textContent = runActive ? "watching the gate" : "rack paused";
+  if ($("#runStatus")) $("#runStatus").textContent = runActive ? "RUNNING" : "PAUSED";
+  $(".run-state")?.classList.toggle("is-paused", !runActive);
+  if ($("#startRun")) $("#startRun").textContent = runActive ? "pause rack" : "resume rack";
+  if ($("#comboReadout")) $("#comboReadout").textContent = state.combo;
+  if ($("#multiplierReadout")) $("#multiplierReadout").textContent = `×${multiplier()}`;
+  if ($("#accuracyReadout")) $("#accuracyReadout").textContent = state.hits + state.misses ? `${Math.round(accuracy())}%` : "—";
+  if ($("#streakReadout")) $("#streakReadout").textContent = state.bestCombo ? `best ${state.bestCombo} · ${state.perfects} perfect` : "start catching";
+  if ($("#batchReadout")) $("#batchReadout").textContent = `${state.batchProgress}/${batchGoal()}`;
+  if ($("#batchProgress")) $("#batchProgress").style.width = `${clamp(state.batchProgress / batchGoal() * 100, 0, 100)}%`;
+  if ($("#comboTimer")) $("#comboTimer").style.width = `${clamp(state.comboTimer / comboWindow() * 100, 0, 100)}%`;
+  if ($("#objectiveTitle")) $("#objectiveTitle").textContent = objectivePair[0];
+  if ($("#objectiveDetail")) $("#objectiveDetail").textContent = objectivePair[1];
+  if ($("#harvestHint")) $("#harvestHint").textContent = current ? (current.type === "debris" ? "do not catch this one" : "inside the collection ring") : "click a pulse when it enters the ring";
+  if ($("#harvestValue")) $("#harvestValue").textContent = current ? `+${money(targetValue)}` : "+0";
 }
 
 function render() {
-  const map = currentMap();
-  const objective = currentObjective();
-  const species = currentSpecies();
-  const creditReadout = $("#creditReadout");
-  const sampleReadout = $("#sampleReadout");
-  const biomassReadout = $("#biomassReadout");
-  const flowReadout = $("#flowReadout");
-  if (creditReadout) creditReadout.textContent = money(state.credits);
-  if (sampleReadout) sampleReadout.textContent = money(state.cells);
-  if (biomassReadout) biomassReadout.textContent = decimal(state.biomass, 1);
-  if (flowReadout) flowReadout.textContent = `${decimal(flowRate())}/s`;
-  if ($("#dayReadout")) $("#dayReadout").textContent = String(Math.max(1, Math.floor(state.day))).padStart(2, "0");
-  if ($("#zoneName")) $("#zoneName").textContent = map.name;
-  if ($("#zoneMeta")) $("#zoneMeta").textContent = `${map.short} map · ${species.name.toLowerCase()} loop`;
-  if ($("#objectiveTitle")) $("#objectiveTitle").textContent = objective[0];
-  if ($("#objectiveDetail")) $("#objectiveDetail").textContent = objective[1];
-  if ($("#fieldNote")) $("#fieldNote").textContent = map.note;
-  if ($("#harvestHint")) $("#harvestHint").textContent = state.progress > 86 ? "the bloom is almost open" : `${Math.round(state.progress)}% through this quiet cycle`;
-  if ($("#harvestValue")) $("#harvestValue").textContent = `+${money(harvestValue())}`;
+  updateHud();
   if ($("#worldPanel")) $("#worldPanel").innerHTML = renderPanel();
   if ($("#fieldLog")) $("#fieldLog").innerHTML = state.log.slice(0, 4).map((entry) => `<li>${entry}</li>`).join("");
   renderMapDeck();
   save();
-  drawWorld();
 }
 
 function roundRect(ctx, x, y, width, height, radius) {
@@ -336,235 +518,202 @@ function ellipse(ctx, x, y, radiusX, radiusY, fill, stroke = null) {
   if (stroke) { ctx.strokeStyle = stroke; ctx.stroke(); }
 }
 
-function drawMapGround(ctx, map, width, height) {
+function drawGround(ctx, map, width, height, now) {
   if (map.id === "water") {
-    ctx.fillStyle = "#a8cec0";
-    ctx.fillRect(0, 0, width, height);
-    for (let row = 0; row < 11; row += 1) {
-      ctx.beginPath();
-      ctx.moveTo(0, 56 + row * 47);
-      for (let x = 0; x <= width; x += 30) ctx.quadraticCurveTo(x + 15, 48 + row * 47 + Math.sin(x * .03 + row) * 6, x + 30, 56 + row * 47);
-      ctx.strokeStyle = `rgba(251, 255, 235, ${.16 + (row % 3) * .04})`;
-      ctx.lineWidth = row % 3 === 0 ? 2 : 1;
-      ctx.stroke();
-    }
-    for (let index = 0; index < 25; index += 1) {
-      const x = (index * 97) % width;
-      const y = 35 + (index * 53) % height;
-      ellipse(ctx, x, y, 2 + index % 3, 1, "rgba(41, 108, 103, .17)");
+    ctx.fillStyle = "#8fc3b8"; ctx.fillRect(0, 0, width, height);
+    for (let row = 0; row < 13; row += 1) {
+      ctx.beginPath(); ctx.moveTo(0, 42 + row * 43);
+      for (let x = 0; x <= width; x += 32) ctx.quadraticCurveTo(x + 16, 32 + row * 43 + Math.sin(x * .03 + row) * 6, x + 32, 42 + row * 43);
+      ctx.strokeStyle = `rgba(250, 255, 229, ${.14 + (row % 3) * .035})`; ctx.lineWidth = row % 3 === 0 ? 2 : 1; ctx.stroke();
     }
   } else if (map.id === "sand") {
-    const sand = ctx.createLinearGradient(0, 0, 0, height);
-    sand.addColorStop(0, "#e3c78e"); sand.addColorStop(1, "#c99e61");
-    ctx.fillStyle = sand; ctx.fillRect(0, 0, width, height);
+    const gradient = ctx.createLinearGradient(0, 0, 0, height); gradient.addColorStop(0, "#e7c889"); gradient.addColorStop(1, "#bd8e55");
+    ctx.fillStyle = gradient; ctx.fillRect(0, 0, width, height);
     for (let row = 0; row < 7; row += 1) {
-      ctx.beginPath(); ctx.moveTo(0, 80 + row * 76);
-      for (let x = 0; x <= width; x += 46) ctx.quadraticCurveTo(x + 23, 65 + row * 76 + Math.sin(x * .025 + row) * 15, x + 46, 80 + row * 76);
-      ctx.strokeStyle = "rgba(255, 244, 198, .25)"; ctx.lineWidth = 3; ctx.stroke();
-    }
-    for (let index = 0; index < 35; index += 1) {
-      ellipse(ctx, (index * 83) % width, 40 + (index * 41) % height, 2 + index % 4, 1 + index % 2, "rgba(120, 78, 38, .18)");
+      ctx.beginPath(); ctx.moveTo(0, 76 + row * 76);
+      for (let x = 0; x <= width; x += 46) ctx.quadraticCurveTo(x + 23, 60 + row * 76 + Math.sin(x * .025 + row) * 14, x + 46, 76 + row * 76);
+      ctx.strokeStyle = "rgba(255, 245, 194, .22)"; ctx.lineWidth = 3; ctx.stroke();
     }
   } else if (map.id === "soil") {
-    const soil = ctx.createLinearGradient(0, 0, 0, height);
-    soil.addColorStop(0, "#b7c096"); soil.addColorStop(.3, "#87966f"); soil.addColorStop(1, "#554d40");
-    ctx.fillStyle = soil; ctx.fillRect(0, 0, width, height);
-    for (let row = 0; row < 5; row += 1) {
-      ctx.fillStyle = `rgba(53, 53, 40, ${.12 + row * .04})`;
-      ctx.fillRect(0, 110 + row * 74, width, 2);
-    }
-    ctx.strokeStyle = "rgba(227, 235, 177, .42)"; ctx.lineWidth = 2;
-    for (let index = 0; index < 14; index += 1) {
-      const x = 35 + index * 74;
-      ctx.beginPath(); ctx.moveTo(x, 30); ctx.bezierCurveTo(x - 15, 130, x + 20, 150, x - 8, 250); ctx.bezierCurveTo(x - 20, 330, x + 7, 400, x - 12, 520); ctx.stroke();
-    }
+    const gradient = ctx.createLinearGradient(0, 0, 0, height); gradient.addColorStop(0, "#b7c397"); gradient.addColorStop(.28, "#7f966f"); gradient.addColorStop(1, "#4c443b");
+    ctx.fillStyle = gradient; ctx.fillRect(0, 0, width, height);
+    ctx.strokeStyle = "rgba(229, 239, 177, .35)"; ctx.lineWidth = 2;
+    for (let index = 0; index < 14; index += 1) { ctx.beginPath(); ctx.moveTo(20 + index * 74, 14); ctx.bezierCurveTo(5 + index * 74, 160, 48 + index * 74, 230, 15 + index * 74, 520); ctx.stroke(); }
+    for (let row = 0; row < 5; row += 1) { ctx.fillStyle = `rgba(47, 48, 38, ${.1 + row * .035})`; ctx.fillRect(0, 112 + row * 75, width, 3); }
   } else {
-    const peat = ctx.createLinearGradient(0, 0, 0, height);
-    peat.addColorStop(0, "#677582"); peat.addColorStop(.5, "#3d4c54"); peat.addColorStop(1, "#242f38");
-    ctx.fillStyle = peat; ctx.fillRect(0, 0, width, height);
-    for (let index = 0; index < 28; index += 1) {
-      const x = (index * 71) % width; const y = 45 + (index * 37) % height;
-      ellipse(ctx, x, y, 3 + index % 4, 1 + index % 2, `rgba(190, 164, 220, ${.14 + (index % 3) * .04})`);
-    }
-    ctx.strokeStyle = "rgba(224, 213, 167, .34)"; ctx.lineWidth = 2;
-    for (let index = 0; index < 12; index += 1) { ctx.beginPath(); ctx.moveTo(40 + index * 84, 510); ctx.quadraticCurveTo(55 + index * 84, 390, 45 + index * 84, 260); ctx.stroke(); }
+    const gradient = ctx.createLinearGradient(0, 0, 0, height); gradient.addColorStop(0, "#62727a"); gradient.addColorStop(.5, "#3b4b54"); gradient.addColorStop(1, "#202c35");
+    ctx.fillStyle = gradient; ctx.fillRect(0, 0, width, height);
+    for (let index = 0; index < 38; index += 1) ellipse(ctx, (index * 71) % width, 35 + (index * 37) % height, 2 + index % 4, 1 + index % 2, `rgba(199, 171, 223, ${.12 + (index % 3) * .035})`);
+    ctx.strokeStyle = "rgba(230, 220, 175, .27)"; ctx.lineWidth = 2;
+    for (let index = 0; index < 12; index += 1) { ctx.beginPath(); ctx.moveTo(40 + index * 84, 520); ctx.quadraticCurveTo(55 + index * 84, 390, 45 + index * 84, 260); ctx.stroke(); }
   }
+  const sun = ctx.createRadialGradient(width * .14, height * .12, 4, width * .14, height * .12, 280);
+  sun.addColorStop(0, map.id === "peat" ? "rgba(206, 184, 247, .17)" : "rgba(255, 250, 211, .33)"); sun.addColorStop(1, "rgba(255, 250, 211, 0)");
+  ctx.fillStyle = sun; ctx.fillRect(0, 0, width, height);
+  if (map.rule === "eclipse" && Math.sin(now * .00045) < -.15) { ctx.fillStyle = "rgba(22, 30, 42, .23)"; ctx.fillRect(0, 0, width, height); }
 }
 
-function drawAlgae(ctx, x, y, color, scale = 1, time = 0) {
-  ctx.save();
-  ctx.translate(x, y);
-  ctx.scale(scale, scale);
-  ctx.lineCap = "round";
+function drawAlgae(ctx, x, y, color, scale = 1, now = 0) {
+  ctx.save(); ctx.translate(x, y); ctx.scale(scale, scale); ctx.lineCap = "round";
   for (let strand = 0; strand < 7; strand += 1) {
-    const lean = Math.sin(time * .0016 + strand * 1.7) * (5 + strand);
-    ctx.beginPath();
-    ctx.moveTo((strand - 3) * 4, 12);
-    ctx.bezierCurveTo((strand - 3) * 5 + lean, -4, (strand - 3) * 8 - lean, -18, (strand - 3) * 3 + lean, -28 - strand * 2);
-    ctx.strokeStyle = strand % 2 ? color : "rgba(245, 247, 194, .78)";
-    ctx.lineWidth = strand % 3 === 0 ? 3.2 : 1.7;
-    ctx.stroke();
+    const lean = Math.sin(now * .0016 + strand * 1.7) * (5 + strand);
+    ctx.beginPath(); ctx.moveTo((strand - 3) * 4, 12); ctx.bezierCurveTo((strand - 3) * 5 + lean, -4, (strand - 3) * 8 - lean, -18, (strand - 3) * 3 + lean, -28 - strand * 2);
+    ctx.strokeStyle = strand % 2 ? color : "rgba(245, 247, 194, .72)"; ctx.lineWidth = strand % 3 === 0 ? 3.1 : 1.6; ctx.stroke();
   }
-  ellipse(ctx, 0, 13, 20, 5, `${color}45`);
   ctx.restore();
 }
 
-function drawRack(ctx, map, width, height, time) {
-  const rackX = 132;
-  const rackY = 86;
-  const rackW = width - 264;
-  const rackH = height - 172;
-  const species = currentSpecies();
-  const pulse = 1 + Math.sin(time * .002) * .035;
-
-  ellipse(ctx, width / 2 + 8, rackY + rackH + 30, rackW * .48, 25, "rgba(21, 65, 61, .2)");
-
-  ctx.save();
-  ctx.translate(12, 9);
-  roundRect(ctx, rackX, rackY, rackW, rackH, 27);
-  ctx.fillStyle = "rgba(30, 75, 70, .22)"; ctx.fill();
-  ctx.restore();
-
-  roundRect(ctx, rackX, rackY, rackW, rackH, 27);
-  const glass = ctx.createLinearGradient(rackX, rackY, rackX + rackW, rackY + rackH);
-  glass.addColorStop(0, "rgba(247, 253, 232, .64)"); glass.addColorStop(.42, "rgba(212, 246, 219, .25)"); glass.addColorStop(1, "rgba(117, 189, 177, .32)");
-  ctx.fillStyle = glass; ctx.fill();
-  ctx.strokeStyle = "rgba(250, 255, 234, .8)"; ctx.lineWidth = 3; ctx.stroke();
-  ctx.strokeStyle = `${map.color}70`; ctx.lineWidth = 1; ctx.stroke();
-
-  // Four looping channels: a deliberately legible little device, not a sci-fi HUD.
-  const left = rackX + 64;
-  const right = rackX + rackW - 64;
-  for (let row = 0; row < 4; row += 1) {
-    const y = rackY + 70 + row * 63;
-    ctx.beginPath();
-    ctx.moveTo(left, y);
-    ctx.bezierCurveTo(left + 74, y - 26, left + 116, y - 26, left + 153, y);
-    ctx.bezierCurveTo(left + 207, y + 37, right - 165, y + 37, right - 104, y);
-    ctx.bezierCurveTo(right - 61, y - 26, right - 31, y - 18, right, y);
-    ctx.strokeStyle = "rgba(39, 103, 99, .25)"; ctx.lineWidth = 17; ctx.stroke();
-    ctx.strokeStyle = "rgba(252, 255, 233, .84)"; ctx.lineWidth = 10; ctx.stroke();
-    ctx.strokeStyle = `${map.color}90`; ctx.lineWidth = 4; ctx.stroke();
-    const flowX = left + ((time * (.045 + row * .004) + row * 80) % (right - left));
-    ellipse(ctx, flowX, y, 4, 4, map.color);
-    ellipse(ctx, flowX - 10, y, 2, 2, `${map.color}99`);
+function drawChannel(ctx, lane, map, now) {
+  const y = 145 + lane * 75;
+  const branch = map.rule === "branch" ? (lane % 2 ? -34 : 34) : 0;
+  const left = 124; const right = 784;
+  ctx.beginPath(); ctx.moveTo(left, y); ctx.bezierCurveTo(left + 100, y - 28, left + 130, y + branch, left + 238, y + branch / 2); ctx.bezierCurveTo(left + 340, y - branch / 2, right - 132, y - branch, right, y);
+  ctx.strokeStyle = "rgba(31, 87, 83, .27)"; ctx.lineWidth = 20; ctx.stroke();
+  ctx.strokeStyle = "rgba(247, 254, 229, .76)"; ctx.lineWidth = 12; ctx.stroke();
+  ctx.strokeStyle = `${map.color}b8`; ctx.lineWidth = 5; ctx.stroke();
+  for (let dash = 0; dash < 5; dash += 1) {
+    const dashX = left + ((now * .08 + dash * 137 + lane * 31) % (right - left));
+    ellipse(ctx, dashX, y + Math.sin((dashX + lane) * .03) * 3, 3, 3, `${map.color}cc`);
   }
+}
 
-  // Valves, screws, and the small handmade-looking labels around the rack.
-  for (let index = 0; index < 5; index += 1) {
-    const x = rackX + 50 + index * ((rackW - 100) / 4);
-    ellipse(ctx, x, rackY + rackH - 34, 7, 7, "#f7f1d8", "rgba(38, 89, 82, .5)");
-    ctx.beginPath(); ctx.moveTo(x - 3, rackY + rackH - 34); ctx.lineTo(x + 3, rackY + rackH - 34); ctx.strokeStyle = "#557f76"; ctx.lineWidth = 1; ctx.stroke();
-  }
-  ctx.fillStyle = "rgba(25, 75, 71, .58)";
-  ctx.font = "10px IBM Plex Mono, monospace";
-  ctx.fillText("MICROFLUX / RACK 01", rackX + 27, rackY + 27);
-  ctx.fillText(`MAP · ${map.short.toUpperCase()}`, rackX + rackW - 117, rackY + 27);
+function drawRack(ctx, map, width, height, now) {
+  const x = 74; const y = 78; const rackWidth = 820; const rackHeight = 360;
+  ellipse(ctx, width / 2 + 8, y + rackHeight + 31, 355, 26, "rgba(14, 53, 54, .25)");
+  roundRect(ctx, x + 10, y + 12, rackWidth, rackHeight, 28); ctx.fillStyle = "rgba(15, 61, 62, .24)"; ctx.fill();
+  roundRect(ctx, x, y, rackWidth, rackHeight, 28);
+  const glass = ctx.createLinearGradient(x, y, x + rackWidth, y + rackHeight); glass.addColorStop(0, "rgba(248, 255, 234, .55)"); glass.addColorStop(.45, "rgba(190, 239, 218, .2)"); glass.addColorStop(1, "rgba(91, 166, 165, .3)");
+  ctx.fillStyle = glass; ctx.fill(); ctx.strokeStyle = "rgba(248, 255, 232, .78)"; ctx.lineWidth = 3; ctx.stroke(); ctx.strokeStyle = `${map.color}99`; ctx.lineWidth = 1; ctx.stroke();
+  ctx.fillStyle = "rgba(28, 78, 74, .64)"; ctx.font = "10px IBM Plex Mono, monospace"; ctx.fillText("MICROFLUX / RACK RUN", x + 25, y + 27); ctx.fillText(`LANES ${laneCount()} · ${map.rule.toUpperCase()}`, x + rackWidth - 170, y + 27);
+  for (let lane = 0; lane < laneCount(); lane += 1) drawChannel(ctx, lane, map, now);
+  for (let valve = 0; valve < 5; valve += 1) { const valveX = x + 54 + valve * 178; ellipse(ctx, valveX, y + rackHeight - 29, 7, 7, "#f7f1d8", "rgba(38, 89, 82, .55)"); }
+  for (let lane = 0; lane < laneCount(); lane += 1) { const yLane = 145 + lane * 75; ellipse(ctx, x + 38, yLane, 11, 11, `${currentSpecies().color}74`, "rgba(252, 255, 229, .75)"); ellipse(ctx, x + 38, yLane, 4, 4, currentSpecies().color); }
+  const gate = gateRange();
+  const gateGlow = ctx.createLinearGradient(gate.center - 22, 0, gate.center + 22, 0); gateGlow.addColorStop(0, "rgba(255, 235, 160, 0)"); gateGlow.addColorStop(.5, "rgba(255, 235, 160, .22)"); gateGlow.addColorStop(1, "rgba(255, 235, 160, 0)");
+  ctx.fillStyle = gateGlow; ctx.fillRect(gate.center - 30, y + 36, 60, rackHeight - 70);
+  ctx.strokeStyle = "#fff0b0"; ctx.lineWidth = 2; ctx.setLineDash([8, 8]); ctx.beginPath(); ctx.moveTo(gate.center, y + 35); ctx.lineTo(gate.center, y + rackHeight - 28); ctx.stroke(); ctx.setLineDash([]);
+  ctx.fillStyle = "#fff1b3"; ctx.font = "9px IBM Plex Mono, monospace"; ctx.textAlign = "center"; ctx.fillText("COLLECTION GATE", gate.center, y + rackHeight + 19); ctx.textAlign = "left";
+  roundRect(ctx, x + rackWidth - 51, y + 49, 30, 74, 9); ctx.fillStyle = "rgba(246, 253, 225, .35)"; ctx.fill(); ctx.strokeStyle = "rgba(255, 255, 224, .65)"; ctx.lineWidth = 2; ctx.stroke(); ctx.fillStyle = `${currentSpecies().color}b0`; ctx.fillRect(x + rackWidth - 45, y + 83, 18, 33); ctx.fillStyle = "rgba(28, 78, 74, .72)"; ctx.font = "7px IBM Plex Mono, monospace"; ctx.fillText("SEED", x + rackWidth - 47, y + 74);
+}
 
-  const bloomX = width / 2;
-  const bloomY = rackY + rackH / 2 + 14;
-  const halo = 55 * pulse;
-  const glow = ctx.createRadialGradient(bloomX, bloomY, 5, bloomX, bloomY, halo * 1.8);
-  glow.addColorStop(0, `${species.color}65`); glow.addColorStop(.5, `${species.color}20`); glow.addColorStop(1, `${species.color}00`);
-  ctx.fillStyle = glow; ctx.beginPath(); ctx.arc(bloomX, bloomY, halo * 1.8, 0, Math.PI * 2); ctx.fill();
-  ctx.strokeStyle = `${species.color}85`; ctx.lineWidth = 1.5; ctx.beginPath(); ctx.arc(bloomX, bloomY, halo, 0, Math.PI * 2); ctx.stroke();
-  drawAlgae(ctx, bloomX, bloomY + 13, species.color, 1.45 * pulse, time);
-  for (let mote = 0; mote < 9; mote += 1) {
-    const angle = time * .00035 + mote * .7;
-    const orbit = 30 + (mote % 3) * 11;
-    ellipse(ctx, bloomX + Math.cos(angle) * orbit, bloomY + Math.sin(angle) * orbit * .62, 2 + mote % 2, 2 + mote % 2, mote % 2 ? `${species.color}cc` : "#fff1bc");
+function drawTarget(ctx, target, now) {
+  const { x, y } = targetPoint(target);
+  const pulse = 1 + Math.sin(now * .008 + target.wobble) * .08;
+  if (target.type === "debris") {
+    ctx.save(); ctx.translate(x, y); ctx.rotate(now * .002 + target.wobble); ctx.fillStyle = "#d77e72"; ctx.strokeStyle = "#ffe1b4"; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(-12, -12); ctx.lineTo(12, -6); ctx.lineTo(8, 12); ctx.lineTo(-11, 8); ctx.closePath(); ctx.fill(); ctx.stroke(); ctx.restore();
+    return;
   }
-  ctx.fillStyle = "rgba(255, 253, 235, .72)";
-  ctx.font = "10px IBM Plex Mono, monospace";
-  ctx.textAlign = "center";
-  ctx.fillText(`BLOOM ${Math.round(state.progress)}%`, bloomX, bloomY + 67);
+  const color = target.type === "gold" ? "#f0c56b" : currentSpecies().color;
+  const radius = target.type === "gold" ? 19 : 16;
+  const glow = ctx.createRadialGradient(x, y, 2, x, y, radius * 3); glow.addColorStop(0, `${color}b8`); glow.addColorStop(1, `${color}00`); ctx.fillStyle = glow; ctx.beginPath(); ctx.arc(x, y, radius * 3, 0, Math.PI * 2); ctx.fill();
+  ctx.strokeStyle = `${color}cc`; ctx.lineWidth = 2; ctx.beginPath(); ctx.arc(x, y, radius * pulse, 0, Math.PI * 2); ctx.stroke();
+  if (target.type === "gold") { ctx.save(); ctx.translate(x, y); ctx.rotate(Math.PI / 4); roundRect(ctx, -12, -12, 24, 24, 5); ctx.fillStyle = color; ctx.fill(); ctx.restore(); }
+  else { ellipse(ctx, x, y, radius * .82, radius * .7, color); drawAlgae(ctx, x, y + 4, color, .48 * pulse, now); }
+  ellipse(ctx, x - 4, y - 5, 3, 3, "rgba(255, 255, 227, .9)");
+}
+
+function drawEffects(ctx, now) {
+  effects.forEach((effect) => {
+    const rise = (1 - effect.life) * 34;
+    ctx.globalAlpha = clamp(effect.life, 0, 1);
+    ctx.fillStyle = effect.color;
+    ctx.font = `${effect.kind === "batch" ? "bold 14px" : "bold 11px"} IBM Plex Mono, monospace`;
+    ctx.textAlign = "center";
+    ctx.fillText(effect.text, effect.x, effect.y - rise - 14);
+    effect.particles.forEach((particle) => {
+      const distance = particle.distance + (1 - effect.life) * 48 * particle.speed;
+      ellipse(ctx, effect.x + Math.cos(particle.angle) * distance, effect.y + Math.sin(particle.angle) * distance, particle.size, particle.size, particle.color);
+    });
+  });
   ctx.textAlign = "left";
-
-  // A slim glass feed bottle makes the rack read as a real object in a place.
-  const bottleX = rackX + rackW + 28;
-  const bottleY = rackY + 50;
-  roundRect(ctx, bottleX, bottleY, 54, 108, 13); ctx.fillStyle = "rgba(244, 252, 225, .45)"; ctx.fill(); ctx.strokeStyle = "rgba(255, 255, 226, .72)"; ctx.lineWidth = 2; ctx.stroke();
-  roundRect(ctx, bottleX + 17, bottleY - 13, 20, 20, 6); ctx.fillStyle = "#e9dcae"; ctx.fill(); ctx.strokeStyle = "rgba(98, 103, 73, .5)"; ctx.stroke();
-  ctx.fillStyle = `${species.color}95`; ctx.fillRect(bottleX + 7, bottleY + 54, 40, 45);
-  ctx.fillStyle = "rgba(31, 77, 70, .7)"; ctx.font = "8px IBM Plex Mono, monospace"; ctx.fillText("SEED", bottleX + 11, bottleY + 45); ctx.fillText("MIX", bottleX + 14, bottleY + 113);
+  ctx.globalAlpha = 1;
 }
 
-function drawWorld() {
+function drawWorld(now) {
   const canvas = $("#worldCanvas");
   if (!canvas) return;
   const ctx = canvas.getContext("2d");
-  const width = canvas.width;
-  const height = canvas.height;
+  const width = canvas.width; const height = canvas.height;
   const map = currentMap();
-  const time = performance.now();
   ctx.clearRect(0, 0, width, height);
-  drawMapGround(ctx, map, width, height);
-
-  // Soft sun patch and paper-like speckles stop the scene feeling like a flat gradient.
-  const sun = ctx.createRadialGradient(width * .14, height * .14, 5, width * .14, height * .14, 270);
-  sun.addColorStop(0, "rgba(255, 250, 211, .36)"); sun.addColorStop(1, "rgba(255, 250, 211, 0)");
-  ctx.fillStyle = sun; ctx.fillRect(0, 0, width, height);
-  drawRack(ctx, map, width, height, time);
-
-  sparks.forEach((spark) => {
-    const distance = spark.distance + (1 - spark.life) * 58 * spark.speed;
-    const x = width / 2 + Math.cos(spark.angle) * distance;
-    const y = height / 2 + 34 + Math.sin(spark.angle) * distance * .62;
-    ctx.globalAlpha = clamp(spark.life, 0, 1);
-    ellipse(ctx, x, y, spark.size, spark.size, spark.color);
-  });
-  ctx.globalAlpha = 1;
-
-  ctx.fillStyle = "rgba(25, 62, 60, .55)";
-  ctx.font = "10px IBM Plex Mono, monospace";
-  ctx.fillText(`${map.name.toUpperCase()}  ·  ${currentSpecies().name.toUpperCase()}`, 24, height - 24);
-  ctx.fillStyle = "rgba(250, 247, 222, .7)";
-  ctx.font = "11px DM Sans, sans-serif";
-  ctx.fillText("leave it humming", width - 130, height - 24);
+  drawGround(ctx, map, width, height, now);
+  drawRack(ctx, map, width, height, now);
+  targets.forEach((target) => drawTarget(ctx, target, now));
+  drawEffects(ctx, now);
+  ctx.fillStyle = "rgba(19, 59, 59, .68)"; ctx.font = "10px IBM Plex Mono, monospace"; ctx.fillText(`${map.name.toUpperCase()}  /  ${currentSpecies().name.toUpperCase()}`, 23, height - 23);
+  ctx.textAlign = "right"; ctx.fillStyle = "rgba(255, 246, 210, .82)"; ctx.font = "11px DM Sans, sans-serif"; ctx.fillText(runActive ? "click at the gate" : "rack paused", width - 23, height - 23); ctx.textAlign = "left";
 }
 
-function animateWorld(now) {
-  const elapsed = Math.min(8, Math.max(0, (now - lastFrameTime) / 1000));
+function advanceGame(seconds) {
+  if (!runActive) return;
+  state.day += seconds / 85;
+  state.credits += passiveRate() * seconds;
+  state.biomass += passiveRate() * seconds / 20;
+  state.comboTimer = Math.max(0, state.comboTimer - seconds);
+  if (state.combo > 0 && state.comboTimer <= 0) resetCombo();
+  spawnTimer -= seconds;
+  if (spawnTimer <= 0) {
+    spawnTarget();
+    spawnTimer = currentMap().spawn * (0.78 + Math.random() * .45);
+  }
+  const expired = [];
+  targets.forEach((target) => {
+    target.age += seconds;
+    target.progress += seconds * targetSpeed() / 5.4;
+    if (target.progress >= 1) expired.push(target);
+  });
+  expired.forEach((target) => { removeTarget(target); missTarget(target, true); });
+  effects.forEach((effect) => { effect.life -= seconds * 1.7; });
+  while (effects.length && effects[0].life <= 0) effects.shift();
+}
+
+function animate(now) {
+  const seconds = Math.min(.12, Math.max(0, (now - lastFrameTime) / 1000));
   lastFrameTime = now;
   frame += 1;
-  if (elapsed > 0) advanceTime(elapsed);
-  sparks.forEach((spark) => { spark.life -= elapsed * .95; spark.distance += elapsed * 7; });
-  while (sparks.length && sparks[0].life <= 0) sparks.shift();
-  if (frame % 60 === 0) render();
-  drawWorld();
-  window.requestAnimationFrame(animateWorld);
+  advanceGame(seconds);
+  if (frame % 6 === 0) updateHud();
+  if (frame % 60 === 0) { save(); render(); }
+  drawWorld(now);
+  window.requestAnimationFrame(animate);
 }
 
 function handleClick(event) {
   const target = event.target.closest("[data-action]");
   if (!target) return;
   const action = target.dataset.action;
-  if (action === "harvest") harvest();
+  if (action === "tend-current") tendCurrent();
+  if (action === "toggle-run") { runActive = !runActive; updateHud(); beep(runActive ? "good" : "bad"); }
   if (action === "travel") travel(target.dataset.mapId);
-  if (action === "upgrade-device") upgradeDevice();
-  if (action === "upgrade-rack") upgradeRack();
-  if (action === "select-species") selectSpecies(target.dataset.speciesId);
+  if (action === "buy-upgrade") buyUpgrade(target.dataset.upgradeId);
+}
+
+function handleCanvasClick(event) {
+  const canvas = $("#worldCanvas");
+  if (!canvas) return;
+  const rect = canvas.getBoundingClientRect();
+  const x = (event.clientX - rect.left) * canvas.width / rect.width;
+  const y = (event.clientY - rect.top) * canvas.height / rect.height;
+  tendAtPoint(x, y);
 }
 
 function resetStudy() {
-  if (!window.confirm("Start a new quiet culture study and lose this local rack?")) return;
+  if (!window.confirm("Reset Rack Run and lose this local study?")) return;
   Object.assign(state, defaultState());
-  sparks.length = 0;
-  announce("A fresh rack is flowing in the Azure Basin.", "success");
+  resetRun();
+  announce("Fresh rack online. Catch the first pulse at the gate.", "success");
   render();
 }
 
 document.addEventListener("click", handleClick);
 document.addEventListener("keydown", (event) => {
   if (["INPUT", "TEXTAREA", "SELECT"].includes(document.activeElement?.tagName)) return;
-  if (event.key === " " || event.key.toLowerCase() === "e") {
-    event.preventDefault();
-    harvest();
-  }
+  if (event.key === " " || event.key.toLowerCase() === "e") { event.preventDefault(); tendCurrent(); }
 });
-$("#worldCanvas")?.addEventListener("click", harvest);
+$("#worldCanvas")?.addEventListener("click", handleCanvasClick);
 $("#resetStudy")?.addEventListener("click", resetStudy);
 
 applyAwaytime();
+resetRun();
 render();
-window.requestAnimationFrame(animateWorld);
+window.requestAnimationFrame(animate);

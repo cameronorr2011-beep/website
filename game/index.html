@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="referrer" content="strict-origin-when-cross-origin">
-<title>Microflux | Orr Biologicals</title>
-<meta name="description" content="A slow, illustrated microfluidic algae clicker about tending tiny living cultures, opening new maps, and building a quiet research profit. Simulation only; no hardware measurements are implied.">
+<title>Microflux: Rack Run | Orr Biologicals</title>
+<meta name="description" content="A polished synthetic microfluidic algae clicker. Catch living culture pulses at the collection gate, build a combo, upgrade your rack, and unlock new maps. Simulation only; no hardware measurements are implied.">
 <meta name="robots" content="noindex">
 <link rel="canonical" href="https://orrbiologicals.com/game/">
 <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
@@ -15,7 +15,7 @@
 <link rel="stylesheet" href="/css/orr-home.css?v=20261012">
 <link rel="stylesheet" href="/css/animations.css?v=20261012">
 </head>
-<body class="pixel-lab-page quiet-game-page">
+<body class="pixel-lab-page rack-run-page">
 <header class="nav" id="nav">
 <div class="nav-in"><a class="mark" href="/" aria-label="Orr Biologicals home">
 <svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="14" fill="none" stroke="currentColor"/><path d="M9 23c6-3 0-14 7-14s1 11 7 14M8 15c4-5 12-5 16 0" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
@@ -24,36 +24,37 @@
 <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="mobileMenu">Menu</button></div></header>
 <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile primary" hidden>
 <a href="/algaephyte/">Algaephyte · cultivation</a><a href="/cyanoflow">Cyanoflow · single cells</a><a href="/research/">Research methods</a><a href="/applications/">Species &amp; cultivation guides</a><a href="/blog/">Research journal</a><a href="/Simulation/">Algal Digital Lab</a><a href="/game/">Interactive research lab</a><a href="/downloads/">App downloads</a><a href="/#deploy">Contact the project</a></nav>
-<a class="skip" href="#fieldStudy">Skip to field study</a>
+<a class="skip" href="#fieldStudy">Skip to rack run</a>
 
-<header class="pixel-header quiet-header">
-  <a class="pixel-brand" href="/" aria-label="Orr Biologicals home"><span class="brand-mark">⌁</span><span><b>ORR BIOLOGICALS</b><small>MICROFLUX CULTURE CO.</small></span></a>
-  <div class="quiet-header-title"><span class="pixel-eyebrow">A SMALL RESEARCH GAME // 01</span><span class="quiet-status"><i></i>the racks are humming</span></div>
-  <div class="pixel-header-actions"><span class="synthetic-pill"><i></i>SYNTHETIC MODE</span><button class="reset-pixel" id="resetStudy" type="button">start over</button><a href="/" class="pixel-exit">leave bay</a></div>
+<header class="pixel-header game-header">
+  <a class="pixel-brand" href="/" aria-label="Orr Biologicals home"><span class="brand-mark">⌁</span><span><b>ORR BIOLOGICALS</b><small>MICROFLUX / RACK RUN</small></span></a>
+  <div class="game-header-title"><span class="pixel-eyebrow">ACTIVE CULTURE SIM // 02</span><span class="game-status"><i></i><span id="headerStatus">rack warming up</span></span></div>
+  <div class="pixel-header-actions"><span class="synthetic-pill"><i></i>SYNTHETIC MODE</span><button class="reset-pixel" id="resetStudy" type="button">reset run</button><a href="/" class="pixel-exit">leave bay</a></div>
 </header>
 
-<main id="fieldStudy" class="pixel-shell quiet-shell">
-  <section class="quiet-hero"><div><p class="pixel-eyebrow">Microflux / day <span id="dayReadout">01</span></p><h1>A small farm for invisible life.</h1><p>Lay a rack of tiny channels over water, sand, and soil. Tap the bloom when it is ready, let the rest grow while you are away, and build a calmer kind of fortune.</p></div><div class="hero-stamp" aria-label="Game promise"><span>slow play</span><strong>good things<br>take time</strong><small>no timers · no noise · just flow</small></div></section>
+<main id="fieldStudy" class="pixel-shell run-shell">
+  <section class="run-hero"><div><p class="pixel-eyebrow">Microflux / rack run <span id="dayReadout">01</span></p><h1>Catch the glow.<br><em>Grow the rack.</em></h1><p>Living culture is moving through the channels. Catch each pulse at the collection gate, keep your combo alive, and turn a beautiful run into a better device.</p></div><div class="run-badge"><span>RUN <b id="runReadout">01</b></span><strong>good timing<br>makes good culture</strong><small>move with the rack · do not rush the room</small></div></section>
 
-  <section class="quiet-layout">
-    <section class="rack-column" aria-label="Microfluidic culture rack">
-      <div class="rack-heading"><div><span class="pixel-eyebrow">Active rack / <span id="zoneName">Azure Basin</span></span><h2>Watch the culture move.</h2></div><div class="rack-meta"><span id="zoneMeta">water map · starter loop</span><span class="live-dot"><i></i>LIVE</span></div></div>
-      <div class="canvas-frame rack-frame"><canvas id="worldCanvas" width="960" height="560" tabindex="0" aria-label="Illustrated microfluidic rack. Click the glowing culture bloom to harvest credits and cells."></canvas><button class="harvest-button" id="harvestButton" data-action="harvest" type="button"><span class="harvest-icon">✦</span><span><b>tend the bloom</b><small id="harvestHint">ready for a gentle tap</small></span><strong id="harvestValue">+1</strong></button><div class="canvas-hint">CLICK THE BLOOM · OR JUST LET IT GROW</div></div>
-      <div class="rack-caption"><div class="objective-card"><div class="objective-top"><span class="pixel-eyebrow">A little nudge</span><span class="objective-pulse"></span></div><h2 id="objectiveTitle">Wake the first culture</h2><p id="objectiveDetail">Tap the glowing bloom once. Your rack will keep growing after that.</p></div><div class="field-note"><span class="note-mark">✎</span><p><b>Field note</b><span id="fieldNote">The first tray likes a little attention, then it learns the rhythm.</span></p></div></div>
-      <section class="map-shelf"><div class="shelf-heading"><span class="pixel-eyebrow">Your little maps</span><span>upgrades open new ground</span></div><div id="mapDeck" class="map-deck" aria-live="polite"></div></section>
+  <section class="run-layout">
+    <section class="play-column" aria-label="Microflux active rack">
+      <div class="play-toolbar"><div><span class="pixel-eyebrow">Active map / <span id="zoneName">Azure Basin</span></span><h2>Run the collection gate.</h2></div><div class="toolbar-actions"><span class="run-state"><i></i><span id="runStatus">RUNNING</span></span><button class="pixel-button" id="startRun" data-action="toggle-run" type="button">pause rack</button></div></div>
+      <div class="canvas-frame rack-run-frame"><canvas id="worldCanvas" width="960" height="560" tabindex="0" aria-label="Microfluidic rack run. Click a culture pulse when it reaches the glowing collection gate on the right side of the rack."></canvas><button class="harvest-button" id="harvestButton" data-action="tend-current" type="button"><span class="harvest-icon">✦</span><span><b>tend at the gate</b><small id="harvestHint">click a pulse when it enters the ring</small></span><strong id="harvestValue">+0</strong></button><div class="canvas-legend"><span><i class="legend-bloom"></i>culture pulse</span><span><i class="legend-gold"></i>golden pulse</span><span><i class="legend-gate"></i>collection gate</span></div></div>
+      <div class="run-hud" aria-live="polite"><div class="combo-card"><span>COMBO</span><strong id="comboReadout">0</strong><em id="multiplierReadout">×1</em><div class="combo-track"><i id="comboTimer"></i></div></div><div class="hud-card"><span>ACCURACY</span><strong id="accuracyReadout">—</strong><small id="streakReadout">start catching</small></div><div class="hud-card batch-card"><span>BATCH</span><strong id="batchReadout">0/12</strong><div class="batch-track"><i id="batchProgress"></i></div></div></div>
+      <div class="run-message"><div class="message-pip">✦</div><div><span class="pixel-eyebrow">Run objective</span><h2 id="objectiveTitle">Catch your first pulse</h2><p id="objectiveDetail">Click a green culture pulse when it reaches the gold collection gate.</p></div><span class="message-key"><kbd>SPACE</kbd> tend</span></div>
+      <section class="map-shelf"><div class="shelf-heading"><span class="pixel-eyebrow">Rack maps</span><span>new lanes, new rules</span></div><div id="mapDeck" class="map-deck" aria-live="polite"></div></section>
     </section>
 
-    <aside class="quiet-rail" aria-label="Culture controls and resources">
-      <div class="resource-strip"><div><span>credits</span><strong id="creditReadout">0</strong><small>slow profit</small></div><div><span>cells</span><strong id="sampleReadout">0</strong><small>tended</small></div><div><span>biomass</span><strong id="biomassReadout">0</strong><small>grown</small></div><div><span>flow</span><strong id="flowReadout">0/s</strong><small>while away</small></div></div>
-      <section class="world-panel quiet-panel" id="worldPanel" aria-live="polite"></section>
-      <section class="field-log quiet-log"><div class="side-heading"><span>Small discoveries</span><span class="mono">LOCAL SAVE</span></div><ul id="fieldLog"></ul></section>
-      <div class="pixel-disclaimer"><span>i</span><p><b>Simulation boundary.</b> Species, values, and growth are gentle game abstractions. This is not a culture protocol or a claim about real organism performance.</p></div>
+    <aside class="control-rail" aria-label="Rack controls and resources">
+      <div class="resource-strip"><div><span>credits</span><strong id="creditReadout">0</strong><small>run profit</small></div><div><span>biomass</span><strong id="biomassReadout">0</strong><small>harvested</small></div><div><span>cells</span><strong id="sampleReadout">0</strong><small>caught</small></div><div><span>flow</span><strong id="flowReadout">0/s</strong><small>auto support</small></div></div>
+      <section class="world-panel control-panel" id="worldPanel" aria-live="polite"></section>
+      <section class="field-log run-log"><div class="side-heading"><span>Run log</span><span class="mono">LOCAL SAVE</span></div><ul id="fieldLog"></ul></section>
+      <div class="pixel-disclaimer"><span>i</span><p><b>Simulation boundary.</b> Targets, species, rewards, and device behavior are fictional game mechanics. This is not a culture protocol or a claim about real organism performance.</p></div>
     </aside>
   </section>
 </main>
 
 <div class="pixel-toast" id="pixelToast" role="status" aria-live="polite"></div>
-<script type="module" src="dist/lab-NW6UYU25.js"></script>
+<script type="module" src="dist/lab-HZBKSRT5.js"></script>
 <script defer src="/js/navigation.js?v=20261012"></script>
 <footer class="science-footer"><div class="wrap footer-layout">
 <div><a class="footer-brand" href="/">Orr Biologicals</a><p>Algae cultivation. Individual cells.<br>Research in the open.</p><small>Research concepts in development.<br>No validated hardware performance claimed.</small></div>

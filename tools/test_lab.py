@@ -18,7 +18,7 @@ class ResearchLabContractTests(unittest.TestCase):
         self.assertIn('id="mapDeck"', text)
         self.assertIn('id="harvestButton"', text)
         self.assertIn('id="flowReadout"', text)
-        self.assertIn('data-action="harvest"', text)
+        self.assertIn('data-action="tend-current"', text)
         self.assertTrue(any(marker in text for marker in (
             'SYNTHETIC DATA', 'SYNTHETIC MODE', 'SYNTHETIC + DEVICE OPT-IN',
         )))
@@ -28,15 +28,17 @@ class ResearchLabContractTests(unittest.TestCase):
 
     def test_microflux_starts_with_a_quiet_local_rack(self):
         app = (ROOT / "game/js/pixel-world-app.js").read_text(encoding="utf-8")
-        self.assertIn('SAVE_KEY = "orr-microflux-rack-v1"', app)
+        self.assertIn('SAVE_KEY = "orr-microflux-rack-v2"', app)
         self.assertIn('activeMap: "water"', app)
         self.assertIn('unlockedMaps: ["water"]', app)
         self.assertIn('name: "Azure Basin"', app)
         self.assertIn('name: "Amber Sandline"', app)
         self.assertIn('name: "Moss Soil"', app)
         self.assertIn('function applyAwaytime()', app)
-        self.assertIn('function harvest()', app)
-        self.assertIn('function upgradeDevice()', app)
+        self.assertIn('function tendAtPoint(', app)
+        self.assertIn('function registerCatch(', app)
+        self.assertIn('function buyUpgrade(', app)
+        self.assertIn('function finishBatch()', app)
         self.assertIn('function drawRack(', app)
 
     def test_engine_is_deterministic_and_has_both_domains(self):
