@@ -3,7 +3,7 @@ export default async function(page) {
   const base = new URL(page.url()).origin;
   const errors=[];page.on('pageerror',e=>errors.push(e.message));
   await page.addInitScript(()=>localStorage.setItem('ob-cookie-consent',JSON.stringify({v:'1',choice:'essential'})));
-  const routes=['/','/algaephyte/','/cyanoflow','/research/','/blog/','/applications/','/applications/species/arthrospira','/applications/how-to-grow-a-microalgae-culture','/glossary','/privacy','/terms','/disclaimer','/downloads/','/game/'];
+  const routes=['/','/algaephyte/','/cyanoflow','/research/','/blog/','/glossary','/privacy','/terms','/disclaimer','/downloads/','/game/'];
   const layouts=[];
   for(const width of [390,1280]) {
     await page.setViewportSize({width,height:850});

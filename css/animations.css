@@ -5,4 +5,5 @@
 .stage-enter{animation:stageEnter var(--motion) var(--ease) both}
 .dash-flow{stroke-dasharray:none;animation:none}
 .scan-line,.hero-atmo,.noise{display:none}
+@media(prefers-reduced-motion:no-preference){.product-specs article{transition:border-color var(--fast) var(--ease),background var(--fast) var(--ease)}.product-specs article:hover{background:var(--paper-2)}}
 @media(prefers-reduced-motion:reduce){.section-reveal.in,.stage-enter{animation:none}}

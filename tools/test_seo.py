@@ -115,8 +115,8 @@ class SEOTests(unittest.TestCase):
     def test_modular_home_sources_and_build_entrypoints(self):
         from build_home import render
         self.assertEqual((ROOT / 'index.html').read_text(encoding='utf-8'), render())
-        self.assertIn('understanding algae', Page(render()).headings['h1'][0].lower())
-        self.assertIn('single cells', Page(render()).headings['h1'][0].lower())
+        self.assertIn('living', Page(render()).headings['h1'][0].lower())
+        self.assertIn('system', Page(render()).headings['h1'][0].lower())
         for name in ('build.ps1', 'rebuild.ps1'):
             text = (ROOT / name).read_text(encoding='utf-8-sig')
             self.assertNotIn('SliceLines', text)
@@ -130,17 +130,14 @@ class SEOTests(unittest.TestCase):
             self.assertGreater(len(page.headings['h2']), 5)
             self.assertGreater(len(' '.join(page.text).split()), 400)
             self.assertIn('href="/research/"', text)
-        for path in (ROOT / 'applications/species').glob('*.html'):
-            text = path.read_text(encoding='utf-8')
-            for link in ('/microalgae-cultivation/', '/photobioreactors/', '/algaephyte/', '/cyanoflow'):
-                self.assertIn('href="' + link + '"', text)
         blog = (ROOT / 'blog/index.html').read_text(encoding='utf-8')
         self.assertLess(blog.index('id="picks"'), blog.index('id="kb"'))
-        for public in ('/blog/', '/applications/', '/cyanoflow', '/assets/', '/blog/data/'):
+        for public in ('/blog/', '/cyanoflow', '/assets/', '/blog/data/'):
             self.assertNotIn('Disallow: ' + public, (ROOT / 'robots.txt').read_text())
+        self.assertFalse((ROOT / 'applications/index.html').exists())
 
     def test_header_navigation_is_consistent(self):
-        expected = ('/research/', '/applications/', '/algaephyte/', '/cyanoflow', '/blog/', '/game/', '/#deploy')
+        expected = ('/research/', '/algaephyte/', '/cyanoflow', '/blog/', '/game/', '/#deploy')
         for path in pages():
             text = path.read_text(encoding='utf-8-sig')
             m = re.search(r'<header class="nav"[^>]*>[\s\S]*?</header>', text)
@@ -149,6 +146,7 @@ class SEOTests(unittest.TestCase):
             with self.subTest(page=route(path)):
                 for href in expected:
                     self.assertIn('href="' + href + '"', header)
+                self.assertNotIn('href="/applications/', header)
                 self.assertNotIn('/#products', header)
                 self.assertNotIn('Pilot access', header)
                 self.assertIn('>Contact</a>', header)

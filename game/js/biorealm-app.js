@@ -159,6 +159,10 @@ function renderView() {
   settleProduction(state, now()); tickExpeditions(state, now());
   const templates = { lab: labView, expedition: expeditionView, reactors: reactorsView, collection: collectionView, research: researchView, settings: settingsView };
   refs.view.innerHTML = templates[activeView](); refs.objective = $("#objectiveCard");
+  const heading = $(".view-heading h1", refs.view);
+  if (heading && activeView === "lab") heading.innerHTML = "Bring a field sample into <em>culture.</em>";
+  if (heading && activeView === "expedition") heading.innerHTML = "Choose a field site, then <em>run a survey.</em>";
+  if (heading && activeView === "reactors") heading.innerHTML = "Give the culture a <em>steady vessel.</em>";
   if (activeView === "collection") $$(".species-portrait", refs.view).forEach((portrait, index) => { portrait.innerHTML = speciesPortrait(SPECIES[index], state.discovered.includes(SPECIES[index].id)); });
   if (activeView === "settings") {
     const card = refs.view.querySelector(".settings-card");

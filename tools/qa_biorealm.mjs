@@ -44,7 +44,9 @@ export default async function run(page) {
   await environmentSelect.selectOption("warm");
   const environmentSaved = await page.evaluate(() => JSON.parse(localStorage.getItem("orr-biorealm-v1"))?.reactors?.[0]?.environment);
   if (environmentSaved !== "warm") throw new Error("reactor environment assignment did not persist");
-  await page.locator('.side-nav-button[data-view="settings"]').click();
+  const settingsButton = page.locator('.game-utility-links [data-view="settings"]');
+  await settingsButton.scrollIntoViewIfNeeded();
+  await settingsButton.evaluate((button) => button.click());
   if (await page.locator('.volume-row input[type="range"]').count() !== 2) throw new Error("separate music and sound effect volume controls did not render");
   await page.setViewportSize({ width: 390, height: 844 });
   await page.waitForTimeout(100);

@@ -14,7 +14,7 @@ export default async function run(page) {
     new PerformanceObserver(list => {for (const x of list.getEntries()) window.__seoMetrics.longTasks.push(x.duration);}).observe({type: 'longtask', buffered: true});
   });
   const localURLs = JSON.parse(readFileSync('docs/seo/current/pages.json', 'utf8')).filter(x => x.indexability === 'indexable').map(x => new URL(x.url).pathname);
-  const routes = live ? ['/', '/cyanoflow', '/blog/', '/applications/', '/blog/spirulina-is-a-cyanobacterium'] : localURLs;
+  const routes = live ? ['/', '/cyanoflow', '/blog/', '/blog/spirulina-is-a-cyanobacterium'] : localURLs;
   for (const path of routes) {
     const response = await page.goto(base + path, {waitUntil: 'load'});
     if (response.status() !== 200) throw new Error(`${path}: ${response.status()}`);
@@ -50,7 +50,7 @@ export default async function run(page) {
   const checkpoint = () => {mkdirSync('docs/seo', {recursive:true}); writeFileSync(out, JSON.stringify({target:base,results,mobile,errors,failures,incomplete:true},null,2));};
   checkpoint();
   await page.setViewportSize({width: 390, height: 844});
-  for (const path of live ? ['/', '/cyanoflow', '/blog/'] : ['/', '/cyanoflow', '/blog/', '/research/', '/glossary', '/blog/single-cell-microalgae-microfluidics', '/algae-biotechnology/', '/microalgae-cultivation/', '/photobioreactors/', '/algaephyte/', '/applications/', '/applications/species/pavlova']) {
+  for (const path of live ? ['/', '/cyanoflow', '/blog/'] : ['/', '/cyanoflow', '/blog/', '/research/', '/glossary', '/blog/single-cell-microalgae-microfluidics', '/algae-biotechnology/', '/microalgae-cultivation/', '/photobioreactors/', '/algaephyte/']) {
     await page.goto(base + path, {waitUntil: 'load'});
     const measure = await page.evaluate(() => ({width: innerWidth, scrollWidth: document.documentElement.scrollWidth}));
     mobile.push({path, ...measure}); checkpoint();

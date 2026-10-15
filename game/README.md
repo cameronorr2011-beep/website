@@ -1,19 +1,17 @@
 # Orr Biologicals BioRealm
 
-`/game/` is a calm, local-first discovery and cultivation game. Explore distinct
-synthetic field biomes, purchase and install microfluidic discovery devices, reveal
-five-star species records, and assign discovered strains to photobioreactors. The
-reactors are the principal long-term income engine: patient cultivation fills glass
-vessels that can be harvested for credits.
+`/game/` is a calm, local-first discovery and cultivation game with two primary
+screens: **Cultivate** and **Discover**. Explore synthetic field biomes, reveal
+species records, and assign discovered strains to photobioreactors. Archive,
+research, and save settings remain quiet utility views rather than competing with
+the main loop.
 
 ## Loop
 
-1. Claim the one-time field-study grant and purchase a Screening Chip.
-2. Select a biome in the Field Atlas and begin a slow discovery survey.
-3. Wait for the device to finish, then choose when to reveal the deterministic result.
-4. Add the species to the Living Archive and place compatible strains in reactors.
-5. Harvest passive biomass, reinvest in better devices, vessel tiers, research, and
-   new field sites.
+1. Start on **Cultivate** and claim the one-time field-study grant.
+2. Move to **Discover**, choose a field site, and run a survey.
+3. Reveal the deterministic result when the sample is ready.
+4. Return to **Cultivate**, place the record in glass, and harvest patient growth.
 
 The game includes Freshwater, Lake Shelf, Moist Sand, Saltwater Coast, Garden Soil,
 Forest Soil, Wetlands, Thermal Springs, and Night Tide. Their pools, costs, durations,
@@ -38,9 +36,9 @@ not identify organisms, control hardware, or provide a real cultivation protocol
 
 From the repository root:
 
-```powershell
+```bash
 npm run build:lab
-python tools/site/serve_preview.py
+python3 tools/site/serve_preview.py
 ```
 
 Open <http://127.0.0.1:8876/game/>. The deployment is static and self-contained; it
@@ -50,7 +48,7 @@ The build writes a content-hashed ESM bundle to `game/dist/` and updates
 
 ## Checks
 
-```powershell
+```bash
 node tools/test_biorealm_engine.mjs
 python -m unittest tools.test_lab
 npm run test:lab
@@ -61,8 +59,9 @@ npm run test:server
 
 With the preview server running, the active route smoke test is:
 
-```powershell
-node C:/Users/Cameron/.claude/skills/browser-automation/browser.mjs http://127.0.0.1:8876/game/ --script tools/qa_biorealm.mjs
+```bash
+# Use any Playwright-compatible browser runner available in your environment.
+# The repository QA script is: tools/qa_biorealm.mjs
 ```
 
 The browser check covers a fresh grant, device purchase and installation, a

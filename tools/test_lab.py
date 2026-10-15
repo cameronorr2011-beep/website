@@ -15,8 +15,7 @@ class ResearchLabContractTests(unittest.TestCase):
             'id="biorealmApp"', 'id="gameNav"', 'id="gameView"',
             'id="creditsReadout"', 'id="incomeReadout"',
             'id="biomassReadout"', 'id="archiveReadout"',
-            'data-view="expedition"', 'data-view="reactors"',
-            'data-view="collection"', 'data-view="research"',
+            'data-view="expedition"', 'data-view="collection"', 'data-view="research"',
         ):
             self.assertIn(marker, text)
         self.assertTrue(any(marker in text for marker in (

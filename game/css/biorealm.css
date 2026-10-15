@@ -14,7 +14,7 @@
   --br-coral: #db8e79;
   --br-radius: 16px;
   --br-mono: "IBM Plex Mono", Consolas, monospace;
-  --br-sans: "DM Sans", system-ui, sans-serif;
+  --br-sans: "Space Grotesk", "Avenir Next", "Trebuchet MS", Arial, sans-serif;
   --br-serif: "Source Serif 4", Georgia, serif;
 }
 
@@ -375,6 +375,13 @@ button:focus-visible, input:focus-visible, .file-button:focus-within { outline: 
 .science-footer { margin-top: 0; border-top: 1px solid var(--br-line); background: rgba(3, 13, 15, .78); }
 .science-footer .footer-layout, .science-footer .footer-base { color: var(--br-soft); }
 
+/* Two clear decisions are the game shell: cultivate or discover. Archive,
+   research, and settings remain available as quiet utility links instead of
+   competing with the main loop. */
+.game-utility-links{display:flex;gap:6px;padding:5px 0 0 34px}.game-utility-links .utility-button{display:inline-flex;width:auto;grid-template-columns:none;min-height:0;padding:6px 7px;color:var(--br-muted);background:transparent;font:9px var(--br-mono)}.game-utility-links .utility-button:hover{color:var(--br-ink);border-color:var(--br-line-bright)}
+.resource-bar{display:flex;flex-wrap:wrap;gap:8px;padding:12px clamp(16px,4vw,56px);border-bottom:0;background:transparent}.resource,.condition{flex:1 1 140px;min-height:58px;padding:9px 12px;border:1px solid var(--br-line);border-radius:9px;background:rgba(4,16,18,.5)}.resource b,.condition b{font-size:16px;margin-top:4px}.condition{border-right:1px solid var(--br-line);background:rgba(117,200,190,.05)}
+.game-main{padding-top:clamp(24px,4vw,52px)}.view-heading h1{font-size:clamp(31px,4vw,56px)}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .01ms !important; scroll-behavior: auto !important; transition-duration: .01ms !important; }
 }
@@ -394,16 +401,16 @@ button:focus-visible, input:focus-visible, .file-button:focus-within { outline: 
   .game-title { margin: 17px 0; text-align: left; }
   .game-actions { flex-wrap: wrap; }
   .resource-bar { grid-template-columns: repeat(2, 1fr); }
-  .condition { grid-column: 1 / -1; border-top: 1px solid var(--br-line); }
+  .condition { flex-basis: 100%; }
   .game-layout { display: block; }
   .game-sidebar { padding: 14px; border-right: 0; border-bottom: 1px solid var(--br-line); }
   .sidebar-intro, .sidebar-boundary { display: none; }
-  .game-nav { grid-template-columns: repeat(3, 1fr); gap: 3px; }
+  .game-nav { grid-template-columns: repeat(2, 1fr); gap: 3px; }
   .side-nav-button { display: block; padding: 8px 5px; text-align: center; }
   .side-nav-button span { display: block; padding: 0; margin-bottom: 4px; }
   .side-nav-button b { font-size: 9px; }
   .side-nav-button small { display: none; }
-  .sidebar-note { display: none; }
+  .sidebar-note { display: none; }.game-utility-links{grid-column:1/-1;justify-content:center;padding:2px 0 0}
   .game-main { padding: 24px 13px 50px; }
   .view-heading { display: block; }
   .heading-note, .seed-note, .income-banner, .research-meter, .archive-stamp { display: inline-flex; margin-top: 18px; }

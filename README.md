@@ -1,223 +1,100 @@
-# Orr Biologicals — algae cultivation and single-cell research
+# Orr Biologicals
 
-## Current build and SEO checks
+Orr Biologicals is a static, local-first research site about algae cultivation,
+single-cell observation, and citizen-science tools. **Algaephyte** and
+**Cyanoflow** are concept builds in development; the site does not claim
+validated hardware performance, species identification, food safety, or a
+finished product for sale.
 
-`index.html` is generated from **`sections/head.html` and
-`sections/home-body.html`**. Edit those source partials, not the generated page.
-`sections/header.html` and `sections/footer.html` are shared build inputs on
-all public pages through `tools/site/design_system.py`. Other historical
-`sections/` fragments are archival and are not assembled. Shared color,
-typography and motion tokens live only in `css/global.css`. See
-[`docs/INTERFACE-RESET.md`](docs/INTERFACE-RESET.md) for design and verification. Both `build.ps1` and `rebuild.ps1` run the current modular build;
-the destructive legacy single-file splitter has been retired.
+The public experience is intentionally dark, quiet, and readable. The homepage
+uses a self-hosted looping culture-flow render; it does not depend on a video
+CDN, AI image service, or external runtime. The Journal (`/blog/`) is the
+active source of truth for research notes. The former `/applications/` silo has
+been retired; old application URLs redirect to the Journal through `.htaccess`.
+
+## Requirements
+
+- Node.js 24.x, pinned by `.nvmrc` and `package.json`
+- npm 11.x (the repository records `npm@11.16.0`)
+- Python 3.12+ for the deterministic static/SEO build
+- Docker 24+ if you prefer the container workflow
+
+No API key, database, cloud account, or hardware is required for the static
+site, the simulation, or BioRealm.
+
+## Clean checkout: install, build, run
+
+```bash
+git clone https://github.com/cameronorr2011-beep/website.git
+cd website
+cp .env.example .env
+npm ci
+npm run build
+npm run server:static
+```
+
+Open <http://127.0.0.1:8080/>. The static server is implemented with Node
+built-ins in `tools/static-server.mjs`; it serves directory indexes and clean
+`.html` routes without installing a web framework.
+
+If Python is exposed as `python` rather than `python3`, run the equivalent
+build steps directly:
 
 ```bash
 python tools/site/build_seo.py
-python -m unittest discover -s tools -p 'test_*.py'
-python tools/site/seo_audit.py --out docs/seo/current
-python tools/site/serve_preview.py  # http://127.0.0.1:8876
+npm run build:lab
+npm run build:simulation
+node tools/static-server.mjs
+```
+
+## One test command
+
+```bash
+npm test
+```
+
+This runs the standard-library public-site regression suite and the deterministic
+BioRealm engine test. The suite checks generated metadata, internal links,
+retired application routes, shared navigation, scientific disclosures, and
+the local game persistence boundary.
+
+Useful focused checks:
+
+```bash
 npm run test:lab
 npm run test:simulation
 npm run test:expedition
 npm run test:server
-npm run build:lab
-npm run build:simulation
-python -m unittest discover -s hardware/pi-sensors -p 'test_*.py'
-# with the preview running, use the browser-automation runner:
-node C:/Users/Cameron/.claude/skills/browser-automation/browser.mjs http://127.0.0.1:8876/game/ --script tools/qa_lab.mjs
-# Optional device QA: start the synthetic Pi service in another terminal first.
-python hardware/pi-sensors/sensor_service.py --mode mock --allow-origin http://127.0.0.1:8876
-node C:/Users/Cameron/.claude/skills/browser-automation/browser.mjs http://127.0.0.1:8876/game/ --script tools/qa_lab_device.mjs
+node tools/test_biorealm_atmosphere.mjs
 ```
 
-The build regenerates the homepage, seven curated knowledge resources,
-contextual topic links, static blog/Cyanoflow reading directories and the
-canonical sitemap. Sources for the resources are `build_research.py` and
-`topics.py`; shared article/species links live in `link_topics.py`.
-Privacy, terms and disclaimer remain accessible but are deliberately omitted
-from the search-content sitemap. Lastmod is never set to build time.
-`normalize_metadata.py` handles existing hand-maintained page metadata only;
-it must not copy a generated homepage back over authoritative source partials.
-Do not rerun the historical `enrich_notes.py` to date future unrelated edits:
-its explicit 2026-10-04 date documents this editorial update only.
+## Docker
 
-Full audit, individual page review, 40-topic roadmap, live baseline and
-measurement plan: [`docs/seo/AUDIT.md`](docs/seo/AUDIT.md). Browser tests:
-`tools/site/qa_redesign.mjs`, `qa_all_routes.mjs`, and `qa_motion_lab.mjs`
-(Playwright Page scripts for the browser-automation runner). Generate the
-all-route inventory first with `python tools/site/seo_audit.py --out docs/redesign-seo`.
-The older `qa_seo.mjs` describes the prior homepage layout.
-The preview does **not** execute Apache `.htaccess`; server redirects must be
-verified on Apache/production after merge and deployment. There is no TypeScript typecheck;
-`npm run test:lab` and `npm run build:lab` verify and bundle the lab. The lab ships its
-Three.js runtime as committed, content-hashed static assets; it needs no Node
-runtime, database, API key, or network service after deployment. A Canvas
-accessibility fallback remains available when WebGL cannot initialize. The
-`/Simulation/` route is the Algal Digital Lab: a separate local-first workspace
-for a versioned illustrative biomass model, a procedural Three.js reactor with
-a Canvas projection fallback, scenario comparison, notebook records, and
-synthetic CSV/report exports. Organism names are reference labels and all
-parameters remain illustrative placeholders; browser-local records are not
-authenticated accounts or cloud storage.
+Build and run the same reproducible static site in a container:
 
-The Algaephyte workspace optionally connects to the read-only Pi 3 B+ bridge.
-[Setup, wiring, calibration, and LAN/TLS requirements](hardware/pi-sensors/README.md)
-are documented separately. Telemetry never changes the synthetic model or its
-saved/report data, and no actuator controls are exposed.
-
-The `/game/` route now contains PHYCOFRONTIER as its 3D deterministic algae
-discovery expedition, linked to the Algaephyte/Cyanoflow research lab state.
-It includes procedural environment types, probe movement, uncertain signals,
-sample custody, autonomous cleaning, recovery, local saves, and Canvas fallback.
-The optional `server/` service is a loopback-only development persistence API;
-the deployed static site remains local-first unless an explicit API URL is
-configured. The standalone `/demo/` route remains a separate original 2D
-prototype with its own local state.
-
-The historical architecture/refactor record below describes the older layout,
-not validated hardware performance or the current assembly source.
-
----
-
-Refactored from the single-file `NEW 67.html` (≈1 MB, self-contained) into a
-modular, maintainable project. **Same website. Same functionality. Same visual
-identity.** The public site describes a standalone Raspberry Pi 5 + Coral edge architecture; it does not claim that every runtime component is contained in this static-site repository.
-
-Open `index.html` directly in a browser — it works over `file://` and `http://`
-exactly like the original.
-
----
-
-## Structure
-
-```
-orr-biologicals/
-├── index.html              ← the assembled page (generated by build.ps1)
-├── applications/           ← knowledge hub: microalgae cultivation, aquaculture live feeds,
-│   │                          ten species guides and algal biotechnology (applications/index.html)
-│   └── species/            ← one guide per organism (Arthrospira, Chlorella, Pavlova, …)
-├── build.ps1               ← splits the original file and rebuilds index.html
-├── sections/               ← one HTML partial per page section
-│   ├── header.html         ← nav + mobile menu (logo, links, theme is CSS-only)
-│   ├── hero.html           ← hero (headline, SVG/CSS wordmark, canvas, parallax)
-│   ├── ticker.html         ← scrolling ticker rail
-│   ├── simulation.html     ← live model / dashboard (PBR-style live render)
-│   ├── stack.html          ← layered product stack (interactive tabs)
-│   ├── system.html         ← “How the system works” essay + control loop
-│   ├── signals.html        ← six-sensor grid
-│   ├── twin.html           ← digital twin essay (Droop / Steele / Beer–Lambert)
-│   ├── safety.html         ← three safety gates
-│   ├── mesh.html           ← federated MQTT mesh + parameter mesh SVG
-│   ├── instrument.html     ← instrument section (self-hosted stack)
-│   ├── impact.html         ← scale/yield animation
-│   ├── journal.html        ← development record (accordion)
-│   ├── faults.html         ← troubleshooting accordion
-│   ├── faq.html            ← FAQ accordion
-│   ├── deploy.html         ← pilot-access reservation form
-│   └── footer.html         ← footer (links, contact, YouTube, disclaimer)
-├── css/                    ← one stylesheet per component (styles untouched)
-│   ├── global.css          ← tokens, reset, typography, shared utilities
-│   ├── header.css hero.css ticker.css dashboard.css stack.css system.css
-│   ├── signals.css safety.css mesh.css instrument.css impact.css
-│   ├── accordions.css journal.css deploy.css footer.css animations.css
-├── js/                     ← logic grouped by responsibility
-│   ├── simulator.js        ← el(), health(), impact()  (physics + DOM helper)
-│   ├── site.js             ← data + all content renderers
-│   ├── main-dashboard.js   ← live simulation wiring + culture render + dose calc
-│   ├── navigation.js       ← nav state, mobile menu, deploy mailto form
-│   ├── consent.js          ← cookie/localStorage consent banner (all pages)
-│   └── animations.js       ← reveal-on-scroll, count-up, atmosphere, parallax
-└── assets/
-    ├── images/             ← hero.jpg, instrument-photo.jpg
-    ├── microscopy/         ← sim-field.jpg, bench-photo.jpg
-    ├── icons/              ← (future icon assets)
-    └── fonts/              ← (future font assets)
+```bash
+docker build -t orr-biologicals .
+docker run --rm -p 8080:8080 orr-biologicals
 ```
 
-### Rebuilding
+Open <http://127.0.0.1:8080/>. The `Dockerfile` installs the locked npm
+dependencies, regenerates the SEO/static outputs, rebuilds the lab bundles, and
+then runs the built site on port 8080. No secrets are copied into the image.
 
-The single file is not a target to re-edit. To regenerate the project from the
-original source file (or from an edited `sections/ css/ js/`):
+## Project map
 
-```powershell
-powershell -File build.ps1            # from the orr-biologicals/ folder
+```text
+sections/                 authoritative homepage and shared shell partials
+css/                      shared dark editorial interface and motion tokens
+js/culture-cascade.js     deterministic looping hero culture-flow render
+algaephyte/               Algaephyte product brief and research notes
+cyanoflow.html            Cyanoflow product brief and chip visualization
+blog/                     Journal source of truth and generated article index
+research/                 methodology hub
+Simulation/               simplified Algal Digital Lab workspace
+game/                     two-primary-screen BioRealm cultivation game
+tools/site/               deterministic static/SEO assembly
+tools/static-server.mjs   dependency-free local production-like server
+server/                   optional loopback development persistence API
+Dockerfile                clean Linux build and run path
 ```
-
-`build.ps1` verifies itself: it asserts the CSS / JS / section slices are a
-*lossless* partition of the original (no lost, duplicated, or reordered bytes),
-decodes and validates the embedded JPEGs, and confirms every stylesheet and
-script is linked.
-
-## What changed (and what deliberately did not)
-
-**Behaviour changes**
-- Four `data:`-URI JPEGs were extracted to `assets/images/` and the `<img src>`
-  values updated — byte-for-byte identical images, but now real files.
-- The one inline `<style>` and one inline `<script>` became external files.
-- Nothing else changed: every text string, link, animation, canvas, SVG, form,
-  and interaction is copied verbatim from the original.
-
-**Deliberate adaptations to the requested target structure**
-
-- The request assumed the site contains multiple pages (`pages/cultivation.html`,
-  `game/lab.html`, `pages/reserve.html`, `pages/articles.html`, `about.html` **etc.**).
-  The current single file `NEW 67.html` contains **none of those sections** — no
-  lab game, no reserve UI, no cultivation page. Creating them would have meant
-  inventing features, so they were **not** created. The existing single-page flow
-  is preserved as one `index.html`; every real section of the file is factored
-  into `sections/`.
-- `js/theme.js` was not created because the site has no theme switcher (the
-  palette is fixed by the CSS variables in `global.css`).
-- `js/charts.js` was not created because the only SVG chart (the 72 h forecast)
-  is part of the live dashboard, so it lives in `js/main-dashboard.js`.
-- ES modules (`<script type="module">`) would break when opening `index.html`
-  from disk via `file://` (browsers block module CORS there). Plain
-  `<script defer>` retains the original behavior under both `file://` and an
-  HTTP server, so classic scripts with `defer` were used.
-- `@media` queries stay next to the component they style (as in the original) —
-  no separate `responsive.css` is needed because the responsive rules were
-  interleaved, not isolated.
-
----
-
-## Development record
-
-The build pipeline runs this list of checks on every build:
-
-1. CSS slices re-joined == original `<style>` body (exact).
-2. JS slices re-joined == original `<script>` body (exact).
-3. Each `sections/*.html` partial appears verbatim inside the original `<body>`.
-4. No `data:` URI remains in any project file.
-5. All 4 decoded JPEGs start with valid JPEG magic bytes.
-6. Index links exactly 17 stylesheets and 5 scripts.
-7. Every `href="…"` / `src="…"` in the new page existed in the original.
-
-And an end-to-end headless-Chrome comparison of the original vs. the rebuilt
-page renders **identical DOMs** (JS-generated content, canvas sizes, computed
-styles, 0 console exceptions).
-
-## Standalone edge architecture
-
-At runtime, Algaephyte is designed to operate without a laptop, cloud AI, or
-internet connection in its control loop:
-
-- **Raspberry Pi 5:** sensor ingestion, telemetry, physics-based digital twin,
-  deterministic local policy, logging, and safety validation.
-- **Coral USB Accelerator:** a fully quantized YOLO-class TensorFlow Lite model
-  for experimental visual flags. Vision can inform caution, but cannot actuate.
-- **Local Qwen assistant:** a small quantized Qwen model runs on the Pi 5 CPU
-  for explanations and structured operator interaction. It is optional, has no
-  actuator authority, and cannot bypass policy or safety validation.
-- **Actuation:** proposals pass deterministic hard limits and twin simulation
-  before commands are sent to the hardware controller, which has independent
-  clamps and watchdog behavior.
-- **Fallback:** if the Coral, local model, network, or dashboard is unavailable,
-  conservative sensor-plus-twin control continues on the Pi.
-
-Model training and Edge TPU compilation are preparation steps performed before
-installation. The installed Pi receives the compiled model and runs inference
-locally; no external computer is required during cultivation.
-
-The current public site is documentation and presentation. Runtime modules,
-model files, and hardware deployment remain maintained in the main
-`Mycophyte-and-Algaephyte` repository until separately released.

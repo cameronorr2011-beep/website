@@ -1,5 +1,5 @@
 /* Shared navigation: stable height, restrained selection, no decorative animation. */
-.nav{position:sticky;top:0;z-index:100;background:color-mix(in srgb,var(--void) 92%,transparent);border-bottom:1px solid var(--rule);backdrop-filter:blur(14px);transition:background var(--motion) var(--ease),box-shadow var(--motion) var(--ease)}
+.nav{position:sticky;top:0;z-index:100;background:color-mix(in srgb,var(--void) 90%,transparent);border-bottom:1px solid var(--rule);backdrop-filter:blur(18px);transition:background var(--motion) var(--ease),box-shadow var(--motion) var(--ease)}
 .nav.solid{background:color-mix(in srgb,var(--void) 98%,transparent);box-shadow:0 10px 30px rgba(16,44,34,.06)}
 .nav-in{width:min(100% - 48px,var(--max));margin:auto;min-height:82px;display:flex;align-items:center;justify-content:space-between;gap:24px}
 .mark{display:flex;align-items:center;gap:11px;flex-shrink:0}
@@ -11,9 +11,9 @@
 .nav-links a:hover,.nav-links a[aria-current=page]{color:var(--leaf-deep)}
 .nav-links a[aria-current=page]::after{content:"";position:absolute;bottom:4px;left:0;right:0;height:2px;background:var(--leaf)}
 .btn-white,.btn-ghost,.orr-btn,.btn{display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:44px;padding:11px 18px;border:1px solid var(--rule);border-radius:10px;font:600 13px/1.4 var(--sans);transition:background var(--fast) var(--ease),border-color var(--fast) var(--ease),transform var(--fast) var(--ease),box-shadow var(--fast) var(--ease)}
-.btn-white,.orr-btn-dark,.btn-primary{background:var(--leaf-deep);color:white}
-.nav-links .btn-white{padding:10px 16px;color:white}
-.btn-white:hover,.orr-btn-dark:hover,.btn-primary:hover{background:#246447;color:white;box-shadow:0 8px 18px rgba(24,81,59,.18);transform:translateY(-1px)}
+.btn-white,.orr-btn-dark,.btn-primary{background:var(--leaf);color:#07130f}
+.nav-links .btn-white{padding:10px 16px;color:#07130f}
+.btn-white:hover,.orr-btn-dark:hover,.btn-primary:hover{background:var(--leaf-2);color:#07130f;box-shadow:0 8px 18px rgba(0,0,0,.2);transform:translateY(-1px)}
 .btn-ghost:hover,.orr-btn-outline:hover{background:var(--void-2);border-color:var(--leaf)}
 .btn-leaf{color:var(--leaf-deep);text-decoration:underline;text-underline-offset:5px}
 .nav-toggle{display:none;min-height:44px;padding:10px 14px;background:transparent;border:1px solid var(--rule);border-radius:var(--radius)}

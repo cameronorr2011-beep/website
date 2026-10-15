@@ -2,10 +2,28 @@
 import re
 from seo_audit import ROOT, pages
 
-VERSION = '20261012'
+VERSION = '20261014'
+
+
+def migrate_legacy_application_links(text):
+    """Keep the journal as the living index after retiring /applications/."""
+    replacements = (
+        ('/applications/species/arthrospira', '/blog/spirulina-is-a-cyanobacterium'),
+        ('/applications/species/chlorella', '/glossary#microalgae'),
+        ('/applications/#species', '/blog/'),
+        ('/applications/#aquaculture', '/blog/'),
+    )
+    for old, new in replacements:
+        text = text.replace(old, new)
+    # Retire deep application slugs instead of manufacturing /blog/<slug>
+    # articles that do not exist. The methodology hub is the honest fallback.
+    text = re.sub(r'/applications/[^"\'\s<]+', '/research/', text)
+    text = text.replace('/applications/', '/blog/')
+    return text
 
 
 def apply(text):
+    text = migrate_legacy_application_links(text)
     header = (ROOT / 'sections/header.html').read_text(encoding='utf-8').strip()
     footer = (ROOT / 'sections/footer.html').read_text(encoding='utf-8').strip()
     # All pages use the same static markup, including without JavaScript.

@@ -2,6 +2,9 @@
   "name": "orr-biologicals-site",
   "private": true,
   "scripts": {
+    "build": "python3 tools/site/build_seo.py && npm run build:lab && npm run build:simulation",
+    "test": "node tools/test_all.mjs",
+    "server:static": "node tools/static-server.mjs",
     "build:lab": "node tools/build_lab.mjs",
     "build:field-art": "python tools/build_field_art.py",
     "build:simulation": "node tools/build_simulation.mjs",
@@ -12,5 +15,7 @@
     "test:expedition": "node tools/test_expedition_engine.mjs"
   },
   "dependencies": { "three": "0.180.0" },
-  "devDependencies": { "esbuild": "0.25.10" }
+  "devDependencies": { "esbuild": "0.25.10" },
+  "engines": { "node": ">=24 <25" },
+  "packageManager": "npm@11.16.0"
 }

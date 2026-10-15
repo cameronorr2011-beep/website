@@ -73,9 +73,9 @@ Redirect 301 /projects                                 /#stack
 Redirect 301 /lab                                      /game/
 # Algaephyte now has a dedicated research pillar; preserve the no-slash alias.
 RedirectMatch 301 ^/algaephyte$ /algaephyte/
-# Exact-match only: a plain `Redirect /applications /applications/` prefix-matches
-# the trailing-slash path too and loops forever (ERR_TOO_MANY_REDIRECTS).
-RedirectMatch 301 ^/applications$ /applications/
+# Applications was retired as a top-level content silo. Preserve old bookmarks
+# without keeping a second source of truth: the journal now owns active notes.
+RedirectMatch 301 ^/applications(?:/.*)?$ /blog/
 RedirectMatch 301 ^/blog$ /blog/
 Redirect 301 /what-is-main-plain-language              /blog/what-is-main-plain-language
 # Restored control-loop article redirect is defined above (never homepage).
@@ -106,7 +106,7 @@ Redirect 301 /mycophyte                                /
 # Cyanoflow research platform (standalone page)
 RedirectMatch 301 ^/CyanoFlow/?$ /cyanoflow
 # Legacy species page still appears in search results.
-RedirectMatch 301 ^/pavlova-lutheri(?:\.html)?/?$ /applications/species/pavlova
+RedirectMatch 301 ^/pavlova-lutheri(?:\.html)?/?$ /blog/
 
 # --- clean URLs: serve /slug -> slug.html (internal), and 301 the reverse --
 RewriteCond %{THE_REQUEST} \s/([^\s?]+)\.html[\s?] [NC]

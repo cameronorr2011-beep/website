@@ -44,7 +44,7 @@ class SiteCopyTests(unittest.TestCase):
         self.assertNotIn('offers', data['@graph'][-1])
 
     def test_assets_and_local_anchors(self):
-        for name in ('index.html', 'cyanoflow.html', 'applications/index.html', 'blog/index.html', 'disclaimer.html'):
+        for name in ('index.html', 'cyanoflow.html', 'blog/index.html', 'disclaimer.html'):
             with self.subTest(page=name):
                 page = Page((ROOT / name).read_text(encoding='utf-8'))
                 self.assertEqual(len(page.ids), len(set(page.ids)))
@@ -64,6 +64,7 @@ class SiteCopyTests(unittest.TestCase):
         for value in ('assets/images/hero.jpg', 'assets/images/microscopy/bench-photo.jpg', 'assets/images/instrument-photo.jpg', 'id="cultureSim"', 'id="simControls"', 'id="dVol"'):
             self.assertIn(value, text)
         self.assertIn('id="chipSim"', (ROOT / 'cyanoflow.html').read_text(encoding='utf-8'))
+        self.assertFalse((ROOT / 'applications/index.html').exists())
 
     def test_blog_pipeline_and_data_contract(self):
         workflow = (ROOT / '.github/workflows/focus-of-the-day.yml').read_text(encoding='utf-8')
