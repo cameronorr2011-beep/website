@@ -14,8 +14,15 @@
     "test:server": "node tools/test_server.mjs",
     "test:expedition": "node tools/test_expedition_engine.mjs"
   },
-  "dependencies": { "three": "0.180.0" },
-  "devDependencies": { "esbuild": "0.25.10" },
-  "engines": { "node": ">=24 <25" },
+  "dependencies": {
+    "three": "0.180.0",
+    "zod": "4.6.7"
+  },
+  "devDependencies": {
+    "esbuild": "0.25.10"
+  },
+  "engines": {
+    "node": ">=24 <25"
+  },
   "packageManager": "npm@11.16.0"
 }
