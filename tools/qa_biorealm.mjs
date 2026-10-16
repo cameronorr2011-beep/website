@@ -6,7 +6,7 @@ export default async function run(page) {
 
   const fresh = await page.evaluate(() => ({
     title: document.title,
-    heading: document.querySelector("#gameView h1")?.textContent,
+    heading: (document.querySelector("#gameView h1") || document.querySelector("#gameView .view-title"))?.textContent,
     credits: document.querySelector("#creditsReadout")?.textContent,
     grant: Boolean(document.querySelector('[data-action="claim-grant"]')),
     rackSlots: document.querySelectorAll(".empty-slot").length,

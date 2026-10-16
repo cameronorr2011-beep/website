@@ -78,8 +78,8 @@ a { color: inherit; }
 
 .game-main { min-width: 0; padding: 32px clamp(16px, 3.8vw, 57px) 70px; }
 .view-heading { display: flex; justify-content: space-between; align-items: flex-end; gap: 26px; margin-bottom: 25px; }
-.view-heading h1 { max-width: 750px; margin: 8px 0 9px; color: var(--br-ink); font: 500 clamp(32px, 4.2vw, 60px)/.96 var(--br-sans); letter-spacing: -.075em; }
-.view-heading h1 em { color: var(--br-coral); font-style: normal; }
+.view-heading h1, .view-heading .view-title { max-width: 750px; margin: 8px 0 9px; color: var(--br-ink); font: 500 clamp(32px, 4.2vw, 60px)/.96 var(--br-sans); letter-spacing: -.075em; }
+.view-heading h1 em, .view-heading .view-title em { color: var(--br-coral); font-style: normal; }
 .view-heading p { max-width: 650px; margin: 0; color: var(--br-soft); font: 15px/1.55 var(--br-serif); }
 .split-heading { align-items: center; }
 .heading-note, .seed-note, .income-banner, .research-meter, .archive-stamp { flex: 0 0 auto; padding: 15px 17px; border: 1px solid var(--br-line); border-radius: 12px; background: rgba(117, 200, 190, .06); color: var(--br-muted); font: 9px/1.5 var(--br-mono); }
@@ -380,7 +380,7 @@ button:focus-visible, input:focus-visible, .file-button:focus-within { outline: 
    competing with the main loop. */
 .game-utility-links{display:flex;gap:6px;padding:5px 0 0 34px}.game-utility-links .utility-button{display:inline-flex;width:auto;grid-template-columns:none;min-height:0;padding:6px 7px;color:var(--br-muted);background:transparent;font:9px var(--br-mono)}.game-utility-links .utility-button:hover{color:var(--br-ink);border-color:var(--br-line-bright)}
 .resource-bar{display:flex;flex-wrap:wrap;gap:8px;padding:12px clamp(16px,4vw,56px);border-bottom:0;background:transparent}.resource,.condition{flex:1 1 140px;min-height:58px;padding:9px 12px;border:1px solid var(--br-line);border-radius:9px;background:rgba(4,16,18,.5)}.resource b,.condition b{font-size:16px;margin-top:4px}.condition{border-right:1px solid var(--br-line);background:rgba(117,200,190,.05)}
-.game-main{padding-top:clamp(24px,4vw,52px)}.view-heading h1{font-size:clamp(31px,4vw,56px)}
+.game-main{padding-top:clamp(24px,4vw,52px)}.view-heading h1,.view-heading .view-title{font-size:clamp(31px,4vw,56px)}
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .01ms !important; scroll-behavior: auto !important; transition-duration: .01ms !important; }
@@ -414,7 +414,7 @@ button:focus-visible, input:focus-visible, .file-button:focus-within { outline: 
   .game-main { padding: 24px 13px 50px; }
   .view-heading { display: block; }
   .heading-note, .seed-note, .income-banner, .research-meter, .archive-stamp { display: inline-flex; margin-top: 18px; }
-  .view-heading h1 { font-size: 43px; }
+  .view-heading h1, .view-heading .view-title { font-size: 43px; }
   .scene-card { min-height: 250px; }
   .scene-card canvas { min-height: 250px; }
   .scene-legend { right: 10px; left: auto; display: grid; gap: 5px; }
@@ -433,7 +433,7 @@ button:focus-visible, input:focus-visible, .file-button:focus-within { outline: 
   .resource { padding: 11px 12px; }
   .resource b { font-size: 16px; }
   .resource small { font-size: 8px; }
-  .view-heading h1 { font-size: 39px; }
+  .view-heading h1, .view-heading .view-title { font-size: 39px; }
   .objective-card { grid-template-columns: 34px minmax(0, 1fr); }
   .objective-reward { grid-column: 2; }
   .device-grid { grid-template-columns: 1fr; }

@@ -2,7 +2,7 @@
 import re
 from seo_audit import ROOT, pages
 
-VERSION = '20261014'
+VERSION = '20261015'
 
 
 def migrate_legacy_application_links(text):
@@ -43,7 +43,7 @@ def apply(text):
     if '/js/navigation.js' not in text:
         text = text.replace('</body>', f'<script defer src="/js/navigation.js?v={VERSION}"></script>\n</body>')
     text = re.sub(r'(<(?:link|script)\b[^>]*(?:href|src)="/?(?:css|js)/[^"?]+)(?:\?[^" ]*)?("[^>]*>)', r'\1?v=' + VERSION + r'\2', text)
-    text = re.sub(r'(<meta name="theme-color" content=")[^"]+', r'\g<1>#0c211a', text)
+    text = re.sub(r'(<meta name="theme-color" content=")[^"]+', r'\g<1>#f6f2e8', text)
     # Preserve existing main targets; older article pages used a div shell.
     if '<main' not in text:
         text = text.replace('<div class="art-shell">', '<main id="main" class="art-shell">', 1)

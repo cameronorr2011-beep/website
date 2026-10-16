@@ -115,8 +115,10 @@ class SEOTests(unittest.TestCase):
     def test_modular_home_sources_and_build_entrypoints(self):
         from build_home import render
         self.assertEqual((ROOT / 'index.html').read_text(encoding='utf-8'), render())
-        self.assertIn('living', Page(render()).headings['h1'][0].lower())
-        self.assertIn('system', Page(render()).headings['h1'][0].lower())
+        h1 = Page(render()).headings['h1'][0].lower()
+        self.assertIn('biotechnology', h1)
+        self.assertIn('living', h1)
+        self.assertIn('system', h1)
         for name in ('build.ps1', 'rebuild.ps1'):
             text = (ROOT / name).read_text(encoding='utf-8-sig')
             self.assertNotIn('SliceLines', text)
