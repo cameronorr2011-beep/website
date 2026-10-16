@@ -1,0 +1,55 @@
+{
+  "date": "2026-10-16",
+  "model": "openai/gpt-oss-120b",
+  "generated_at": "2026-10-16T22:21:47Z",
+  "picks": [
+    {
+      "pmid": "42838245",
+      "title": "Programmable microalgae: Engineering sense-decide-adapt systems for dynamic environmental performance.",
+      "journal": "Biotechnology advances",
+      "year": "2026",
+      "pub_date": "2026-10-06",
+      "url": "https://doi.org/10.1016/j.biotechadv.2026.109068",
+      "topic": "Engineering",
+      "hook": "Programmable microalgae sense, decide, and adapt to changing environments for boosted industrial performance.",
+      "article": "A recent study set out to give microalgae the ability to sense changing conditions, decide how to respond, and then adjust their metabolism accordingly. Researchers built so‑called sense‑decide‑adapt (SDA) systems that let engineered algae detect shifts in light, temperature, carbon dioxide, salinity and nutrient levels that can vary from seconds to seasons.\n\nThe team used genetically engineered microalgal strains and introduced sensor modules that detect specific environmental cues. These sensors were wired to signaling pathways that trigger physiological changes, such as nutrient‑sensing, photoprotection, carbon‑concentrating and osmotic programs. Experiments were carried out under controlled laboratory conditions to benchmark the engineered cells against standard strains.\n\nThe engineered algae successfully integrated environmental signals and altered their physiology in real time, demonstrating that SDA circuits can close the performance gap between laboratory‑tested strains and those grown in fluctuating industrial settings.\n\nThis work shows a path toward algae that can maintain high productivity even as outdoor cultivation conditions change, which could make algal bioprocesses more reliable and cost‑effective.",
+      "why": "Dynamic, self‑adjusting algae could keep yields stable in real‑world farms, boosting the economics of algal bio‑products."
+    },
+    {
+      "pmid": "42873337",
+      "title": "Kinetic modelling of Chlorella spp. wastewater treatment and resource recovery in the food industry.",
+      "journal": "Bioresources and bioprocessing",
+      "year": "2026",
+      "pub_date": "2026-10-14",
+      "url": "https://doi.org/10.1186/s40643-026-01145-x",
+      "topic": "Wastewater Treatment",
+      "hook": "Kinetic model shows how Chlorella spp. clean food‑industry wastewater while recovering valuable resources.",
+      "article": "A recent study set out to understand how the microalga Chlorella spp. can be used to clean wastewater from the food and beverage industry while also producing useful biomass. The researchers applied kinetic modelling, a mathematical approach that describes how fast the algae grow and remove contaminants, using data from laboratory‑scale experiments with Chlorella grown on typical industry effluents. The model showed that Chlorella can simultaneously remove carbon and nutrient loads and generate biomass that could be further processed for value‑added products. This dual benefit of waste cleanup and resource recovery makes the approach promising for more sustainable food‑industry operations.",
+      "why": "It shows algae can turn food‑industry waste into clean water and useful biomass, supporting greener production."
+    },
+    {
+      "pmid": "42834963",
+      "title": "Microalgae-based biosensing technologies for environmental monitoring and emerging food safety applications: Opportunities and challenges.",
+      "journal": "iScience",
+      "year": "2026",
+      "pub_date": "2026-09-24",
+      "url": "https://doi.org/10.1016/j.isci.2026.117590",
+      "topic": "Biosensing",
+      "hook": "Microalgae‑based sensors promise rapid, low‑cost detection of contaminants and food‑safety hazards.",
+      "article": "A recent study looked at how tiny algae could be turned into practical sensors for checking water quality and food safety. The researchers examined the ways micro‑algae respond to pollutants and how those responses might be captured as readable signals.\n\nThey reviewed the biological mechanisms that underlie algae’s sensing abilities, focusing on changes in photosynthesis, respiration, enzyme activity, and metabolism that occur when contaminants are present. The study considered how these biochemical shifts can be transformed into optical (light‑based) or electrochemical outputs.\n\nThe authors found that while micro‑algae have long been explored as biological sensing elements, moving them into robust, field‑ready devices is still hampered by issues such as keeping the cells alive, ensuring they react only to the target chemical, and integrating the biological component with electronic hardware.\n\nThe work highlights both the promise of algae‑based biosensors and the technical hurdles that must be cleared before they can be widely deployed.",
+      "why": "Understanding these challenges helps guide the development of algae sensors that could monitor pollutants and ensure food safety."
+    },
+    {
+      "pmid": "42874270",
+      "title": "Phormidolide D, a novel cytotoxic cyanobacterial macrolide: Assessing its effects on the extracellular matrix, apoptosis, and angiogenesis.",
+      "journal": "Bioorganic chemistry",
+      "year": "2026",
+      "pub_date": "2026-10-12",
+      "url": "https://doi.org/10.1016/j.bioorg.2026.110637",
+      "topic": "Health",
+      "hook": "New cyanobacterial macrolide Phormidolide D shows potent anti‑cancer activity by targeting apoptosis and angiogenesis.",
+      "article": "A recent study set out to discover a new halogenated compound from marine cyanobacteria and to see how it affects cells involved in tissue structure, programmed cell death, and new blood vessel formation.\n\nThe researchers isolated a novel macrolide named phormidolide D from cyanobacterial material and used chemical analysis to determine its structure. They then tested the purified compound in laboratory assays that measure effects on the extracellular matrix, apoptosis, and angiogenesis.\n\nThe work showed that phormidolide D is cytotoxic, meaning it can kill cells, and it influences pathways linked to the extracellular matrix, triggers apoptosis, and interferes with angiogenesis.\n\nThese findings are interesting because they add a new candidate molecule to the pool of cyanobacterial metabolites that could be explored for anticancer drug development.",
+      "why": "Phormidolide D’s ability to kill cells and block blood‑vessel growth makes it a promising lead for future cancer‑fighting therapies."
+    }
+  ]
+}
