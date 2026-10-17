@@ -116,9 +116,8 @@ class SEOTests(unittest.TestCase):
         from build_home import render
         self.assertEqual((ROOT / 'index.html').read_text(encoding='utf-8'), render())
         h1 = Page(render()).headings['h1'][0].lower()
-        self.assertIn('biotechnology', h1)
-        self.assertIn('living', h1)
-        self.assertIn('system', h1)
+        self.assertEqual(h1, 'where biotechnology meets ai.')
+        self.assertIn('<p class="orr-hero-deck">Reading living systems in motion', render())
         for name in ('build.ps1', 'rebuild.ps1'):
             text = (ROOT / name).read_text(encoding='utf-8-sig')
             self.assertNotIn('SliceLines', text)
