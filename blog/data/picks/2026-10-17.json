@@ -1,0 +1,55 @@
+{
+  "date": "2026-10-17",
+  "model": "openai/gpt-oss-120b",
+  "generated_at": "2026-10-17T21:54:28Z",
+  "picks": [
+    {
+      "pmid": "42851150",
+      "title": "Volatile organic compounds from microalgae: sources, chemical diversity, biosynthesis, and bioactive potential.",
+      "journal": "Preparative biochemistry &amp; biotechnology",
+      "year": "2026",
+      "pub_date": "2026-10-09",
+      "url": "https://doi.org/10.1080/10826068.2026.2741198",
+      "topic": "Bioactive VOCs",
+      "hook": "Microalgae emit diverse volatile compounds with potential pharmaceutical and atmospheric roles.",
+      "article": "A recent study set out to map the volatile organic compounds (VOCs) that micro‑algae release and to assess what these chemicals might do for the environment and for biotechnology. The authors examined existing reports on the types of low‑molecular‑weight metabolites produced by a variety of micro‑algal species, describing how they are made and what biological activities have been observed.\n\nThe work involved a literature‑based survey of micro‑algal VOCs, cataloguing the chemical classes that have been identified and summarising the pathways that generate them. No new experiments were performed; instead the authors compiled and compared data from many prior studies.\n\nThe study found that micro‑algae emit a broad spectrum of VOCs that influence atmospheric chemistry, aquatic ecosystem dynamics and water quality, especially through the formation of off‑flavours and odours. It also highlighted that, despite their ecological importance and growing biotechnological interest, these compounds remain comparatively under‑explored.\n\nUnderstanding the diversity and functions of algal VOCs is useful because it points to new opportunities for using algae to produce valuable chemicals or to manage water‑related issues.",
+      "why": "Knowing which VOCs algae make can help develop sustainable sources of fragrances, bio‑actives, or water‑quality indicators."
+    },
+    {
+      "pmid": "42853350",
+      "title": "CRISPR-enhanced microalgae for carbon sequestration and carotenoid production: opportunities and fundamental constraints.",
+      "journal": "Bioresources and bioprocessing",
+      "year": "2026",
+      "pub_date": "2026-10-09",
+      "url": "https://doi.org/10.1186/s40643-026-01136-y",
+      "topic": "Genetic Engineering",
+      "hook": "CRISPR upgrades microalgae to boost CO₂ capture and carotenoid yields, but reveals key biological limits.",
+      "article": "A recent study examined whether CRISPR gene editing could make microalgae better at pulling carbon dioxide out of the air and producing valuable pigments like lutein and astaxanthin. The researchers used CRISPR/Cas tools to modify the algae’s genome and then measured carbon capture and pigment output under laboratory conditions. They found that, despite the genetic changes, industrial performance was still limited by low carbon conversion efficiency, reduced photosynthetic performance, and competing metabolic pathways that restrict product yield. The work highlights that while CRISPR offers powerful ways to tweak algae, fundamental biological constraints must be addressed before large‑scale applications become viable.\n\nThis insight is useful because it points to the need for deeper metabolic engineering to unlock algae’s potential for sustainable carbon capture and high‑value bioproducts.",
+      "why": "Understanding these limits helps guide future algae engineering for greener carbon capture and pigment production."
+    },
+    {
+      "pmid": "42864619",
+      "title": "Valorization of sugar industry byproducts for cost-effective Chlorella vulgaris MU-22 production: assessment of bioactive extracts and biofertilizer potential on bell pepper (Capsicum annuum).",
+      "journal": "BMC plant biology",
+      "year": "2026",
+      "pub_date": "2026-10-07",
+      "url": "https://doi.org/10.1186/s12870-026-09964-y",
+      "topic": "Cultivation",
+      "hook": "Sugar‑industry waste fuels cheap Chlorella growth, yielding antioxidant extracts and a plant‑friendly biofertilizer.",
+      "article": "A recent study set out to lower the cost of growing the freshwater microalga Chlorella vulgaris MU‑22 by feeding it cheap leftovers from the sugar industry. The researchers added hydrolyzed molasses, a low‑cost by‑product of sugar processing, to a standard growth medium called Bold Basal Medium.\n\nThey cultivated the algae in laboratory‑scale batches, measuring growth and then extracting compounds from the harvested biomass. The extracts were tested for bioactive properties, and the leftover algae material was evaluated as a biofertilizer on bell pepper plants.\n\nThe study found that supplementing the growth medium with hydrolyzed molasses supported the production of Chlorella vulgaris MU‑22 and that the resulting extracts showed bioactivity, while the algae‑based residue improved pepper growth.\n\nThese results suggest a way to turn sugar industry waste into a cheaper source of valuable algae and a useful agricultural amendment.",
+      "why": "Turning cheap sugar by‑products into algae and biofertilizer could make algal bioproducts more affordable and sustainable."
+    },
+    {
+      "pmid": "42859277",
+      "title": "Biochemical and molecular insights into the antibiofilm and antivirulence effects of a B-phycoerythrin-rich&#xa0;extract from Porphyridium cruentum against Pseudomonas aeruginosa.",
+      "journal": "Biodegradation",
+      "year": "2026",
+      "pub_date": "2026-10-10",
+      "url": "https://doi.org/10.1007/s10532-026-10386-8",
+      "topic": "Health",
+      "hook": "A Porphyridium‑derived phycoerythrin extract blocks Pseudomonas biofilms, hinting at algae‑based antivirulence drugs.",
+      "article": "A recent study set out to see whether an extract rich in B‑phycoerythrin, a light‑absorbing protein from the red microalga Porphyridium cruentum, could stop the harmful bacterium Pseudomonas aeruginosa from forming protective biofilms and expressing disease‑causing traits.\n\nThe researchers prepared a B‑phycoerythrin extract from the algae and tested its activity against the P. aeruginosa PAO1 strain using standard laboratory assays that measure biofilm formation and virulence factor production.\n\nThe phyco‑protein was found to significantly inhibit biofilm development and interfere with quorum sensing mechanisms, the bacterial communication system that regulates virulence.\n\nThese findings suggest that algae‑derived compounds could offer a novel, anti‑infective approach that targets bacterial behavior rather than killing the cells outright.",
+      "why": "Algal pigments that block bacterial communication may become new tools for safer infection control."
+    }
+  ]
+}
