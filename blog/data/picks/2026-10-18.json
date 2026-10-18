@@ -1,0 +1,55 @@
+{
+  "date": "2026-10-18",
+  "model": "openai/gpt-oss-120b",
+  "generated_at": "2026-10-18T22:06:04Z",
+  "picks": [
+    {
+      "pmid": "42892548",
+      "title": "From oleaginous microalga to marine chassis: synthetic biology and process-aware biomanufacturing in Nannochloropsis.",
+      "journal": "Biotechnology advances",
+      "year": "2026",
+      "pub_date": "2026-10-17",
+      "url": "https://doi.org/10.1016/j.biotechadv.2026.109079",
+      "topic": "Synthetic Biofuels",
+      "hook": "Engineered Nannochloropsis turns marine microalgae into a chassis for high‑value oil production.",
+      "article": "A recent study set out to turn the oleaginous (oil‑producing) microalga Nannochloropsis, traditionally valued for its EPA‑rich lipids, into a versatile platform for marine phototrophic biomanufacturing.\n\nThe researchers combined a broad suite of synthetic‑biology tools—including genome‑scale resources, efficient nuclear transformation, homologous recombination, CRISPR/Cas editing, marker recycling, defined integration sites, and modular multigene assembly—to re‑engineer the organism.\n\nUsing these capabilities, they demonstrated the ability to alter carbon allocation pathways in Nannochloropsis, laying the groundwork for producing non‑native compounds in a marine chassis.\n\nThis work is interesting because it expands the toolbox for engineering algae, opening new routes to sustainable production of valuable chemicals from seawater‑based cultures.",
+      "why": "It shows how algae can be rewired to make diverse products, boosting marine biotech and reducing reliance on land‑based crops."
+    },
+    {
+      "pmid": "42891879",
+      "title": "Microalgae-based removal and biodegradation of antibiotics: mechanisms, synergistic consortia, and engineering prospects.",
+      "journal": "Biodegradation",
+      "year": "2026",
+      "pub_date": "2026-10-17",
+      "url": "https://doi.org/10.1007/s10532-026-10393-9",
+      "topic": "Antibiotic Bioremediation",
+      "hook": "Microalgae consortia break down aquatic antibiotics, offering a green route to curb resistance spread.",
+      "article": "A recent study looked at how tiny algae can both sense the presence of antibiotic pollutants in water and break them down. The researchers reviewed existing work on microalgae that remove and biodegrade antibiotics, focusing on how the algae’s own sorption (sticking to chemicals) and enzyme‑driven transformation, especially via the chloroplast protein P450, work together.\n\nThe review gathered findings from laboratory experiments that used various microalgal species, measuring how efficiently they bind and chemically alter antibiotic molecules. It highlighted that combining algae with other microbes in synergistic consortia can boost removal rates.\n\nThe authors concluded that integrating biosorption and enzymatic degradation offers a promising route for engineering algae‑based systems to clean antibiotic‑contaminated waters.\n\nUnderstanding these mechanisms could help develop greener water‑treatment technologies that limit the spread of antibiotic resistance.",
+      "why": "Such algae‑based cleanup could provide a sustainable way to reduce antibiotic pollution and curb resistance in the environment."
+    },
+    {
+      "pmid": "42892369",
+      "title": "Engineering Chlamydomonas reinhardtii as a microalgal cell factory for recombinant human serum albumin production.",
+      "journal": "Bioresource technology",
+      "year": "2026",
+      "pub_date": "2026-10-17",
+      "url": "https://doi.org/10.1016/j.biortech.2026.136084",
+      "topic": "Health Engineering",
+      "hook": "Chlamydomonas reinhardtii rewired to secrete human serum albumin, a step toward algae‑based pharma.",
+      "article": "A recent study set out to turn the green alga Chlamydomonas reinhardtii into a tiny factory that can make human serum albumin, a valuable protein used in medicine. The researchers rewired the alga’s genetic circuitry by optimizing the expression cassette—a DNA segment that drives protein production—and by applying sequential nuclear transformation, which means they introduced the gene into the alga’s nucleus in multiple steps to boost expression. This engineering approach succeeded in enhancing transgene expression, leading to the identification of recombinant human serum albumin production in the microalgal host.\n\nThe work demonstrates that microalgae can be engineered to produce complex human proteins, opening a path toward cheaper and more sustainable biomanufacturing.\n\nWhy it matters: Using algae to make therapeutic proteins could lower costs and reduce environmental impact of drug production.",
+      "why": "Algal production of human serum albumin could make this essential protein cheaper and greener."
+    },
+    {
+      "pmid": "42879924",
+      "title": "Solar-hydrodynamic energy coupling enables round-the-clock algal inactivation in natural waters.",
+      "journal": "Journal of hazardous materials",
+      "year": "2026",
+      "pub_date": "2026-10-12",
+      "url": "https://doi.org/10.1016/j.jhazmat.2026.143898",
+      "topic": "Bloom Control",
+      "hook": "Solar‑hydrodynamic coupling powers continuous algal inactivation, tackling harmful blooms day and night.",
+      "article": "A recent study set out to find a way to keep harmful algal blooms under control in natural waters around the clock, even when sunlight and other energy sources are intermittent.\n\nThe researchers combined ambient solar energy with the motion of water (hydrodynamic energy) using a floating catalyst that can both harvest energy and target reactive species (RS) that drive algal growth. The approach was tested in situ, meaning directly in the water where the algae were present.\n\nThey report that this piezo‑photocatalytic strategy—where \"piezo\" refers to energy from water movement and \"photocatalytic\" to light‑driven reactions—allowed continuous algal inactivation by regulating the reactive species and using the floating catalyst.\n\nThe work shows a promising route to manage algal blooms without relying on constant external power or chemicals, offering a potentially sustainable tool for water quality protection.",
+      "why": "It points to a low‑energy, continuous method for cleaning water that could be scaled for real‑world bloom control."
+    }
+  ]
+}
