@@ -1,0 +1,55 @@
+{
+  "date": "2026-10-19",
+  "model": "openai/gpt-oss-120b",
+  "generated_at": "2026-10-19T23:14:25Z",
+  "picks": [
+    {
+      "pmid": "42831353",
+      "title": "Matrix matters: the importance of the food matrix in bioaccessibility and basolateral recovery of microalgal-sourced DHA.",
+      "journal": "Food &amp; function",
+      "year": "2026",
+      "pub_date": "2026-10-19",
+      "url": "https://doi.org/10.1039/d6fo02980a",
+      "topic": "Health Nutrition",
+      "hook": "Microalgal DHA's bioaccessibility spikes when the food matrix is optimized, boosting its nutritional punch.",
+      "article": "A recent study set out to see how the food matrix – the surrounding ingredients in a meal – affects how well omega‑3 fatty acids from microalgae, specifically docosahexaenoic acid (DHA), become available for absorption and later appear on the other side of intestinal cells.\n\nThe researchers used DHA derived from microalgal oil and incorporated it into different food matrices, comparing the standard encapsulated form (triacylglycerol, TAG) with other formats. They measured how much DHA was released during simulated digestion and how much crossed an intestinal cell layer in a laboratory model.\n\nThe work showed that the surrounding food matrix can influence both the digestive release (bioaccessibility) and the subsequent transport (basolateral recovery) of microalgal‑sourced DHA.\n\nUnderstanding these effects is useful because it helps design foods and supplements that deliver omega‑3s more efficiently to consumers.",
+      "why": "Optimizing the food matrix can boost the nutritional impact of algae‑derived DHA in everyday diets."
+    },
+    {
+      "pmid": "42889848",
+      "title": "Integrating Machine Learning for Predictive Modeling of Carbon Sequestration in Mixed Microalgal Systems.",
+      "journal": "ACS omega",
+      "year": "2026",
+      "pub_date": "2026-10-02",
+      "url": "https://doi.org/10.1021/acsomega.6c07718",
+      "topic": "Climate Carbon",
+      "hook": "Machine‑learning predicts how mixed microalgae capture carbon, pointing to smarter sequestration designs.",
+      "article": "A recent study set out to see how well mixed microalgal cultures can capture carbon under different growing conditions. The researchers grew mixed microalgae in laboratory experiments, varying five key factors: inoculation concentration, initial inoculation ratio, nitrate concentration, CO₂ gas flow rate, and CO₂ concentration.\n\nThey measured how each factor influenced carbon sequestration performance, comparing mixed cultures to pure strains. The results showed that adjusting these parameters could significantly affect the amount of carbon fixed by the algae.\n\nUnderstanding which conditions boost carbon capture helps design more efficient algae-based systems for reducing greenhouse gases.",
+      "why": "Optimizing growth conditions can make algae farms better at pulling CO₂ from the atmosphere."
+    },
+    {
+      "pmid": "42869192",
+      "title": "Single-cell elemental analysis of Limnospira platensis and Chlorella vulgaris using novel downward-pointing inductively coupled plasma time-of-flight mass spectrometry with emphasis on iron bioaccumulation.",
+      "journal": "Bioresource technology",
+      "year": "2026",
+      "pub_date": "2026-10-13",
+      "url": "https://doi.org/10.1016/j.biortech.2026.136047",
+      "topic": "Single‑cell Methods",
+      "hook": "A new downward‑pointing ICP‑TOF mass spectrometer maps elemental makeup of Limnospira and Chlorella at single‑cell resolution.",
+      "article": "A recent study set out to map how individual cells of two popular microalgae, Limnospira platensis and Chlorella vulgaris, take up essential minerals such as iron, calcium and magnesium. The researchers used a newly developed downward‑pointing inductively coupled plasma time‑of‑flight mass spectrometer, which can measure the elemental composition of single cells rather than bulk samples.\n\nThey grew the two algae under standard laboratory conditions and then introduced the cells into the instrument, which vaporises each cell and analyses the resulting ions to determine the amounts of each element present. This approach allowed them to see variation from one cell to the next within the same culture.\n\nThe study showed that, unlike bulk analyses, the single‑cell technique revealed distinct intercellular differences in iron accumulation, highlighting that not all cells store the same amount of this nutrient. The authors note that such variability could be important for understanding the nutritional value of microalgae.\n\nUnderstanding cell‑to‑cell mineral differences helps improve the use of microalgae as nutrient‑dense food ingredients.",
+      "why": "It shows microalgae can vary in iron content at the single‑cell level, informing more precise nutritional profiling for food applications."
+    },
+    {
+      "pmid": "42859201",
+      "title": "Expression of the SARS-CoV-2 nucleocapsid (N) gene in Chlorella vulgaris via electroporation-mediated transformation.",
+      "journal": "Archives of microbiology",
+      "year": "2026",
+      "pub_date": "2026-10-10",
+      "url": "https://doi.org/10.1007/s00203-026-05249-y",
+      "topic": "Genetic Engineering",
+      "hook": "Electroporation delivers the SARS‑CoV‑2 nucleocapsid gene into Chlorella vulgaris, opening algae as vaccine platforms.",
+      "article": "A recent study set out to see whether the tiny green alga Chlorella vulgaris could be used as a tiny factory to make a piece of the SARS‑CoV‑2 virus called the nucleocapsid (N) protein. The researchers introduced the viral N gene into the alga using electroporation, a method that briefly applies an electric pulse to open tiny pores in the cell membrane so DNA can enter. They used a recombinant plasmid called pCAMBIA1303 as the DNA carrier.\n\nAfter the electric treatment, the algae were grown under standard laboratory conditions and screened for the presence of the viral gene. The work demonstrated that the N gene could be stably integrated and expressed in C. vulgaris.\n\nThis finding shows that microalgae such as C. vulgaris can serve as a scalable platform for producing viral proteins, which could be useful for research or diagnostic purposes.",
+      "why": "Algal production of viral proteins offers a low‑cost, high‑volume route for making reagents needed in COVID‑19 testing and vaccine research."
+    }
+  ]
+}
