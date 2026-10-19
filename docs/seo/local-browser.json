@@ -1,7 +1,61 @@
 {
-  "testedAt": "2026-10-11T02:13:38.476Z",
+  "testedAt": "2026-10-16T02:40:52.381Z",
   "target": "http://127.0.0.1:8876",
   "results": [
+    {
+      "path": "/Simulation/",
+      "status": 200,
+      "title": "Algal Digital Lab | Synthetic Microalgae Simulation | Orr Biologicals",
+      "h1": [
+        "One question. One trace."
+      ],
+      "canonical": "https://orrbiologicals.com/Simulation/",
+      "schemas": [
+        {
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "WebPage",
+              "@id": "https://orrbiologicals.com/Simulation/#page",
+              "url": "https://orrbiologicals.com/Simulation/",
+              "name": "Algal Digital Lab | Orr Biologicals",
+              "description": "A browser-based synthetic microalgae simulation studio with reproducible runs, local experiment records, and a procedural 3D virtual reactor.",
+              "isPartOf": {
+                "@id": "https://orrbiologicals.com/#site"
+              }
+            },
+            {
+              "@type": "WebApplication",
+              "@id": "https://orrbiologicals.com/Simulation/#app",
+              "name": "Algal Digital Lab",
+              "url": "https://orrbiologicals.com/Simulation/",
+              "applicationCategory": "EducationalApplication",
+              "operatingSystem": "Any",
+              "isAccessibleForFree": true,
+              "description": "A local-first browser workspace for exploring an illustrative, deterministic algal biomass model. Results are synthetic computational outputs, not measurements or process guarantees."
+            }
+          ]
+        }
+      ],
+      "nav": [
+        {
+          "ttfb": 5.199999988079071,
+          "domContentLoaded": 120.59999999403954
+        }
+      ],
+      "metrics": {
+        "lcp": null,
+        "cls": 0,
+        "longTasks": []
+      },
+      "payload": {
+        "requests": 9,
+        "transferred": 787566,
+        "js": 697952,
+        "css": 88823,
+        "images": 791
+      }
+    },
     {
       "path": "/algae-biotechnology/",
       "status": 200,
@@ -46,20 +100,20 @@
       ],
       "nav": [
         {
-          "ttfb": 25,
-          "domContentLoaded": 157.8999999910593
+          "ttfb": 4.700000017881393,
+          "domContentLoaded": 49.80000001192093
         }
       ],
       "metrics": {
-        "lcp": 208,
-        "cls": 0.016401280721028647,
+        "lcp": null,
+        "cls": 0,
         "longTasks": []
       },
       "payload": {
-        "requests": 5,
-        "transferred": 36004,
-        "js": 8887,
-        "css": 26326,
+        "requests": 9,
+        "transferred": 71695,
+        "js": 9760,
+        "css": 61144,
         "images": 791
       }
     },
@@ -107,2489 +161,21 @@
       ],
       "nav": [
         {
-          "ttfb": 10.5,
-          "domContentLoaded": 57.29999999701977
-        }
-      ],
-      "metrics": {
-        "lcp": 64,
-        "cls": 0.016401280721028647,
-        "longTasks": []
-      },
-      "payload": {
-        "requests": 5,
-        "transferred": 36004,
-        "js": 8887,
-        "css": 26326,
-        "images": 791
-      }
-    },
-    {
-      "path": "/applications/algae-rations-for-bivalve-larvae",
-      "status": 200,
-      "title": "Algae Rations for Bivalve Larvae | Orr Biologicals",
-      "h1": [
-        "Stage-Specific Algae Rations for Bivalve Larvae"
-      ],
-      "canonical": "https://orrbiologicals.com/applications/algae-rations-for-bivalve-larvae",
-      "schemas": [
-        {
-          "@context": "https://schema.org",
-          "@graph": [
-            {
-              "@type": "Article",
-              "headline": "Algae Rations for Bivalve Larvae | Orr Biologicals",
-              "description": "Typical published feed rations for oyster, mussel and clam larvae by stage — Isochrysis, Pavlova and Chaetoceros ratios — and where the Algaephyte platform applies.",
-              "image": "https://orrbiologicals.com/assets/images/library/bivalve-larvae.svg",
-              "datePublished": "2026-08-31",
-              "dateModified": "2026-10-04",
-              "author": {
-                "@type": "Organization",
-                "name": "Orr Biologicals",
-                "url": "https://orrbiologicals.com/"
-              },
-              "publisher": {
-                "@type": "Organization",
-                "name": "Orr Biologicals",
-                "url": "https://orrbiologicals.com/"
-              },
-              "mainEntityOfPage": "https://orrbiologicals.com/applications/algae-rations-for-bivalve-larvae"
-            },
-            {
-              "@type": "BreadcrumbList",
-              "itemListElement": [
-                {
-                  "@type": "ListItem",
-                  "position": 1,
-                  "name": "Orr Biologicals",
-                  "item": "https://orrbiologicals.com/"
-                },
-                {
-                  "@type": "ListItem",
-                  "position": 2,
-                  "name": "Applications",
-                  "item": "https://orrbiologicals.com/applications/"
-                },
-                {
-                  "@type": "ListItem",
-                  "position": 3,
-                  "name": "Algae Rations for Bivalve Larvae | Orr Biologicals",
-                  "item": "https://orrbiologicals.com/applications/algae-rations-for-bivalve-larvae"
-                }
-              ]
-            },
-            {
-              "@type": "FAQPage",
-              "mainEntity": [
-                {
-                  "@type": "Question",
-                  "name": "Do bivalve larvae eat spirulina?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "No — Arthrospira filaments are far too large for a first-feeding bivalve gut. Bivalve hatcheries feed small marine microalgae such as Isochrysis, Pavlova and Chaetoceros. Spirulina matters to us as the organism our platform was built on, not as a larval feed."
-                  }
-                },
-                {
-                  "@type": "Question",
-                  "name": "Are these ration numbers universal?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "No. They are typical published starting points for oysters, mussels and clams. Every hatchery validates against its own species, water and batch, and adjusts."
-                  }
-                },
-                {
-                  "@type": "Question",
-                  "name": "Why do rations change with larval stage?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Gut size, digestive capability and energy demand all change as larvae develop. Small flagellates open the cycle; diatoms join as guts grow; density climbs toward metamorphosis."
-                  }
-                }
-              ]
-            }
-          ]
-        }
-      ],
-      "nav": [
-        {
-          "ttfb": 13.600000008940697,
-          "domContentLoaded": 158.40000000596046
-        }
-      ],
-      "metrics": {
-        "lcp": 236,
-        "cls": 0.027057612895965574,
-        "longTasks": []
-      },
-      "payload": {
-        "requests": 6,
-        "transferred": 39201,
-        "js": 8887,
-        "css": 26326,
-        "images": 2786
-      }
-    },
-    {
-      "path": "/applications/best-microalgae-for-copepod-culture",
-      "status": 200,
-      "title": "Best Microalgae for Copepod Culture | Orr Biologicals",
-      "h1": [
-        "Best Microalgae for Copepod Culture: an Honest Comparison"
-      ],
-      "canonical": "https://orrbiologicals.com/applications/best-microalgae-for-copepod-culture",
-      "schemas": [
-        {
-          "@context": "https://schema.org",
-          "@graph": [
-            {
-              "@type": "Article",
-              "headline": "Best Microalgae for Copepod Culture | Orr Biologicals",
-              "description": "Isochrysis, Pavlova, Nannochloropsis, Tetraselmis, Chaetoceros and Rhodomonas compared for copepod culture — sizes, strengths, and why no single species is universally best.",
-              "image": "https://orrbiologicals.com/assets/images/library/microscopy-field.svg",
-              "datePublished": "2026-08-31",
-              "dateModified": "2026-10-04",
-              "author": {
-                "@type": "Organization",
-                "name": "Orr Biologicals",
-                "url": "https://orrbiologicals.com/"
-              },
-              "publisher": {
-                "@type": "Organization",
-                "name": "Orr Biologicals",
-                "url": "https://orrbiologicals.com/"
-              },
-              "mainEntityOfPage": "https://orrbiologicals.com/applications/best-microalgae-for-copepod-culture"
-            },
-            {
-              "@type": "BreadcrumbList",
-              "itemListElement": [
-                {
-                  "@type": "ListItem",
-                  "position": 1,
-                  "name": "Orr Biologicals",
-                  "item": "https://orrbiologicals.com/"
-                },
-                {
-                  "@type": "ListItem",
-                  "position": 2,
-                  "name": "Applications",
-                  "item": "https://orrbiologicals.com/applications/"
-                },
-                {
-                  "@type": "ListItem",
-                  "position": 3,
-                  "name": "Best Microalgae for Copepod Culture | Orr Biologicals",
-                  "item": "https://orrbiologicals.com/applications/best-microalgae-for-copepod-culture"
-                }
-              ]
-            },
-            {
-              "@type": "FAQPage",
-              "mainEntity": [
-                {
-                  "@type": "Question",
-                  "name": "What is the single best algae for copepods?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "There isn't one. Copepod species differ in what they capture and digest, and algae differ in cell size and nutritional profile. Most successful cultures run a mix — commonly a small DHA-rich flagellate plus a larger green cell — and validate against egg production."
-                  }
-                },
-                {
-                  "@type": "Question",
-                  "name": "Is Nannochloropsis good for copepods?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "It is a workhorse for green water and rotifers, and some copepods do well with it, but its very small, thick-walled cells suit some grazers better than others. It is usually one component of a diet rather than the whole ration."
-                  }
-                },
-                {
-                  "@type": "Question",
-                  "name": "Do I need a live microalgae culture, or is preserved feed fine?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Preserved concentrates are convenient backups, but live, freshly harvested cells generally give the best reproduction. If your copepod output matters, learn to <a href='/applications/how-to-grow-a-microalgae-culture'>grow your own algae</a>."
-                  }
-                }
-              ]
-            }
-          ]
-        }
-      ],
-      "nav": [
-        {
-          "ttfb": 12.199999988079071,
-          "domContentLoaded": 100.79999999701977
-        }
-      ],
-      "metrics": {
-        "lcp": 148,
-        "cls": 0.07155747604370118,
-        "longTasks": []
-      },
-      "payload": {
-        "requests": 6,
-        "transferred": 38749,
-        "js": 8887,
-        "css": 26326,
-        "images": 2334
-      }
-    },
-    {
-      "path": "/applications/how-to-feed-copepods",
-      "status": 200,
-      "title": "How to Feed Copepods With Phytoplankton | Orr Biologicals",
-      "h1": [
-        "How to Feed Copepods With Phytoplankton"
-      ],
-      "canonical": "https://orrbiologicals.com/applications/how-to-feed-copepods",
-      "schemas": [
-        {
-          "@context": "https://schema.org",
-          "@graph": [
-            {
-              "@type": "Article",
-              "headline": "How to Feed Copepods With Phytoplankton | Orr Biologicals",
-              "description": "Why cultured microalgae make the best copepod feed, which factors actually matter — cell size, density, nutrition — and why different copepod species respond differently.",
-              "image": "https://orrbiologicals.com/assets/images/library/copepod-feeding.svg",
-              "datePublished": "2026-08-31",
-              "dateModified": "2026-10-04",
-              "author": {
-                "@type": "Organization",
-                "name": "Orr Biologicals",
-                "url": "https://orrbiologicals.com/"
-              },
-              "publisher": {
-                "@type": "Organization",
-                "name": "Orr Biologicals",
-                "url": "https://orrbiologicals.com/"
-              },
-              "mainEntityOfPage": "https://orrbiologicals.com/applications/how-to-feed-copepods"
-            },
-            {
-              "@type": "BreadcrumbList",
-              "itemListElement": [
-                {
-                  "@type": "ListItem",
-                  "position": 1,
-                  "name": "Orr Biologicals",
-                  "item": "https://orrbiologicals.com/"
-                },
-                {
-                  "@type": "ListItem",
-                  "position": 2,
-                  "name": "Applications",
-                  "item": "https://orrbiologicals.com/applications/"
-                },
-                {
-                  "@type": "ListItem",
-                  "position": 3,
-                  "name": "How to Feed Copepods With Phytoplankton | Orr Biologicals",
-                  "item": "https://orrbiologicals.com/applications/how-to-feed-copepods"
-                }
-              ]
-            },
-            {
-              "@type": "FAQPage",
-              "mainEntity": [
-                {
-                  "@type": "Question",
-                  "name": "How much phytoplankton do copepods need?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Copepods feed continuously, so most culturists feed small amounts often rather than one large dose. The right density depends on the copepod species, life stage, volume and harvest schedule — start low, watch the water clear, and adjust. Published hatchery manuals give starting densities for the species you keep, and they vary widely between species."
-                  }
-                },
-                {
-                  "@type": "Question",
-                  "name": "Can copepods starve in green water?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Yes. Green coloration is not nutrition. A diet of the wrong cell size, senescent algae, or a mono-diet missing essential fatty acids can leave copepods food-limited even when the tank looks green. Egg production and nauplii counts are better signals than colour."
-                  }
-                },
-                {
-                  "@type": "Question",
-                  "name": "Should I feed one algae species or a mix?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Mixed diets generally support better reproduction than any single species, because algae differ in size, digestibility and fatty-acid profile. Many aquaculturists pair a small flagellate such as Isochrysis with a larger green cell such as Tetraselmis. Treat that as a starting point and validate with your own animals."
-                  }
-                }
-              ]
-            }
-          ]
-        }
-      ],
-      "nav": [
-        {
-          "ttfb": 15.900000005960464,
-          "domContentLoaded": 105.40000000596046
-        }
-      ],
-      "metrics": {
-        "lcp": 120,
-        "cls": 0.027040761987368267,
-        "longTasks": []
-      },
-      "payload": {
-        "requests": 7,
-        "transferred": 39761,
-        "js": 8887,
-        "css": 26326,
-        "images": 3346
-      }
-    },
-    {
-      "path": "/applications/how-to-grow-a-microalgae-culture",
-      "status": 200,
-      "title": "How to Grow a Microalgae Culture | Orr Biologicals",
-      "h1": [
-        "How to Grow a Microalgae Culture"
-      ],
-      "canonical": "https://orrbiologicals.com/applications/how-to-grow-a-microalgae-culture",
-      "schemas": [
-        {
-          "@context": "https://schema.org",
-          "@graph": [
-            {
-              "@type": "Article",
-              "headline": "How to Grow a Microalgae Culture | Orr Biologicals",
-              "description": "Microalgae cultivation explained for beginners: vessels, light, nutrients, temperature, mixing and monitoring — and why parameters vary by species and strain.",
-              "image": "https://orrbiologicals.com/assets/images/library/culture-vessels.svg",
-              "datePublished": "2026-08-31",
-              "dateModified": "2026-10-04",
-              "author": {
-                "@type": "Organization",
-                "name": "Orr Biologicals",
-                "url": "https://orrbiologicals.com/"
-              },
-              "publisher": {
-                "@type": "Organization",
-                "name": "Orr Biologicals",
-                "url": "https://orrbiologicals.com/"
-              },
-              "mainEntityOfPage": "https://orrbiologicals.com/applications/how-to-grow-a-microalgae-culture"
-            },
-            {
-              "@type": "BreadcrumbList",
-              "itemListElement": [
-                {
-                  "@type": "ListItem",
-                  "position": 1,
-                  "name": "Orr Biologicals",
-                  "item": "https://orrbiologicals.com/"
-                },
-                {
-                  "@type": "ListItem",
-                  "position": 2,
-                  "name": "Applications",
-                  "item": "https://orrbiologicals.com/applications/"
-                },
-                {
-                  "@type": "ListItem",
-                  "position": 3,
-                  "name": "How to Grow a Microalgae Culture | Orr Biologicals",
-                  "item": "https://orrbiologicals.com/applications/how-to-grow-a-microalgae-culture"
-                }
-              ]
-            },
-            {
-              "@type": "FAQPage",
-              "mainEntity": [
-                {
-                  "@type": "Question",
-                  "name": "What do microalgae need to grow?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Four inputs: light (not too little, not too much), a nutrient medium matched to the species, a workable temperature, and mixing or agitation that keeps cells in the light and gas exchange happening. Everything else is refinement."
-                  }
-                },
-                {
-                  "@type": "Question",
-                  "name": "How long does a culture take to grow?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "It depends on the species and conditions. Under good conditions many cultured species double daily or faster in early growth phase, then slow as density rises. Timelines differ by species and setup — track your own doubling times rather than trusting generic numbers."
-                  }
-                },
-                {
-                  "@type": "Question",
-                  "name": "Why did my culture turn pale or yellow?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Common causes: nutrient exhaustion (the culture ate its medium), light stress or photoinhibition, temperature outside the comfortable range, or contamination. Pale growth after a dense phase is often simple hunger — subculture into fresh medium."
-                  }
-                }
-              ]
-            }
-          ]
-        }
-      ],
-      "nav": [
-        {
-          "ttfb": 12,
-          "domContentLoaded": 101.8999999910593
-        }
-      ],
-      "metrics": {
-        "lcp": 112,
-        "cls": 0.04938431930541992,
-        "longTasks": []
-      },
-      "payload": {
-        "requests": 7,
-        "transferred": 39100,
-        "js": 8887,
-        "css": 26326,
-        "images": 2685
-      }
-    },
-    {
-      "path": "/applications/how-to-scale-a-microalgae-culture",
-      "status": 200,
-      "title": "How to Scale a Microalgae Culture Up | Orr Biologicals",
-      "h1": [
-        "How to Scale a Microalgae Culture"
-      ],
-      "canonical": "https://orrbiologicals.com/applications/how-to-scale-a-microalgae-culture",
-      "schemas": [
-        {
-          "@context": "https://schema.org",
-          "@graph": [
-            {
-              "@type": "Article",
-              "headline": "How to Scale a Microalgae Culture Up | Orr Biologicals",
-              "description": "Scaling microalgae from starter to production volume: transfer ratios, growth phase timing, light through dense culture, and keeping reserves alive.",
-              "image": "https://orrbiologicals.com/assets/images/library/scaling.svg",
-              "datePublished": "2026-08-31",
-              "dateModified": "2026-10-04",
-              "author": {
-                "@type": "Organization",
-                "name": "Orr Biologicals",
-                "url": "https://orrbiologicals.com/"
-              },
-              "publisher": {
-                "@type": "Organization",
-                "name": "Orr Biologicals",
-                "url": "https://orrbiologicals.com/"
-              },
-              "mainEntityOfPage": "https://orrbiologicals.com/applications/how-to-scale-a-microalgae-culture"
-            },
-            {
-              "@type": "BreadcrumbList",
-              "itemListElement": [
-                {
-                  "@type": "ListItem",
-                  "position": 1,
-                  "name": "Orr Biologicals",
-                  "item": "https://orrbiologicals.com/"
-                },
-                {
-                  "@type": "ListItem",
-                  "position": 2,
-                  "name": "Applications",
-                  "item": "https://orrbiologicals.com/applications/"
-                },
-                {
-                  "@type": "ListItem",
-                  "position": 3,
-                  "name": "How to Scale a Microalgae Culture Up | Orr Biologicals",
-                  "item": "https://orrbiologicals.com/applications/how-to-scale-a-microalgae-culture"
-                }
-              ]
-            },
-            {
-              "@type": "FAQPage",
-              "mainEntity": [
-                {
-                  "@type": "Question",
-                  "name": "How fast can I scale up?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Limited by your culture's growth. A common pattern is stepping up when the current vessel is visibly dense, seeding the next size at a modest inoculation. Jump too far too fast and the inoculum takes weeks to establish while contaminants do not. Step sizes depend on species and season — observe, don't calculate on faith."
-                  }
-                },
-                {
-                  "@type": "Question",
-                  "name": "Why does a scaled-up culture grow slower than the flask did?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Light. In small vessels nearly every cell sees light; in large vessels most cells are shaded by other cells most of the time. Surface-to-volume ratio, not your skill, changed. Larger systems compensate with thin columns, mixing and artificial light."
-                  }
-                },
-                {
-                  "@type": "Question",
-                  "name": "How many reserve cultures should I keep?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "At least one younger culture per strain you cannot afford to lose — two if it is precious. Reserves live small and slow; they are insurance, not production."
-                  }
-                }
-              ]
-            }
-          ]
-        }
-      ],
-      "nav": [
-        {
-          "ttfb": 13.700000002980232,
-          "domContentLoaded": 105.20000000298023
-        }
-      ],
-      "metrics": {
-        "lcp": 120,
-        "cls": 0.027040761987368267,
-        "longTasks": []
-      },
-      "payload": {
-        "requests": 6,
-        "transferred": 37847,
-        "js": 8887,
-        "css": 26326,
-        "images": 1432
-      }
-    },
-    {
-      "path": "/applications/how-to-start-a-phytoplankton-culture",
-      "status": 200,
-      "title": "How to Start a Phytoplankton Culture | Orr Biologicals",
-      "h1": [
-        "How to Start a Phytoplankton Culture"
-      ],
-      "canonical": "https://orrbiologicals.com/applications/how-to-start-a-phytoplankton-culture",
-      "schemas": [
-        {
-          "@context": "https://schema.org",
-          "@graph": [
-            {
-              "@type": "Article",
-              "headline": "How to Start a Phytoplankton Culture | Orr Biologicals",
-              "description": "The first two weeks of a phytoplankton culture: sourcing starter material, first vessels, first feeding of the culture, and the mistakes that kill new cultures.",
-              "image": "https://orrbiologicals.com/assets/images/library/starter-culture.svg",
-              "datePublished": "2026-08-31",
-              "dateModified": "2026-10-04",
-              "author": {
-                "@type": "Organization",
-                "name": "Orr Biologicals",
-                "url": "https://orrbiologicals.com/"
-              },
-              "publisher": {
-                "@type": "Organization",
-                "name": "Orr Biologicals",
-                "url": "https://orrbiologicals.com/"
-              },
-              "mainEntityOfPage": "https://orrbiologicals.com/applications/how-to-start-a-phytoplankton-culture"
-            },
-            {
-              "@type": "BreadcrumbList",
-              "itemListElement": [
-                {
-                  "@type": "ListItem",
-                  "position": 1,
-                  "name": "Orr Biologicals",
-                  "item": "https://orrbiologicals.com/"
-                },
-                {
-                  "@type": "ListItem",
-                  "position": 2,
-                  "name": "Applications",
-                  "item": "https://orrbiologicals.com/applications/"
-                },
-                {
-                  "@type": "ListItem",
-                  "position": 3,
-                  "name": "How to Start a Phytoplankton Culture | Orr Biologicals",
-                  "item": "https://orrbiologicals.com/applications/how-to-start-a-phytoplankton-culture"
-                }
-              ]
-            },
-            {
-              "@type": "FAQPage",
-              "mainEntity": [
-                {
-                  "@type": "Question",
-                  "name": "Where do I get starter phytoplankton?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "From culture collections, established aquaculture suppliers, or a trusted fellow hobbyist's live culture. Wild capture from ponds or seawater is possible but brings contamination and unknown species — a poor first project."
-                  }
-                },
-                {
-                  "@type": "Question",
-                  "name": "Which species should a beginner start with?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Start with a forgiving, fast-growing species. For marine work, Nannochloropsis and Tetraselmis are the classic beginner choices because they tolerate imperfect care. Delicate flagellates like Rhodomonas are rewarding but punishing for a first attempt."
-                  }
-                },
-                {
-                  "@type": "Question",
-                  "name": "How do I know the culture is taking off?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Within days the water should deepen in colour and stay uniform when swirled. A culture that stays clear, settles out, or smells off is not established — check light, temperature and cleanliness before blaming the starter."
-                  }
-                }
-              ]
-            }
-          ]
-        }
-      ],
-      "nav": [
-        {
-          "ttfb": 20.19999998807907,
-          "domContentLoaded": 140.3999999910593
-        }
-      ],
-      "metrics": {
-        "lcp": 152,
-        "cls": 0.04948926786581675,
-        "longTasks": []
-      },
-      "payload": {
-        "requests": 7,
-        "transferred": 38908,
-        "js": 8887,
-        "css": 26326,
-        "images": 2493
-      }
-    },
-    {
-      "path": "/applications/",
-      "status": 200,
-      "title": "Applications: Microalgae and Phytoplankton Hub | Orr Biologicals",
-      "h1": [
-        "Microalgae knowledge: cultivation, species and applications"
-      ],
-      "canonical": "https://orrbiologicals.com/applications/",
-      "schemas": [
-        {
-          "@context": "https://schema.org",
-          "@graph": [
-            {
-              "@type": "CollectionPage",
-              "name": "Applications: Microalgae and Phytoplankton Hub | Orr Biologicals",
-              "description": "The Algaephyte knowledge hub: microalgae cultivation, phytoplankton species guides, aquaculture live feeds and algal biotechnology — practical, honest, illustrated.",
-              "url": "https://orrbiologicals.com/applications/",
-              "publisher": {
-                "@type": "Organization",
-                "name": "Orr Biologicals",
-                "url": "https://orrbiologicals.com/"
-              }
-            },
-            {
-              "@type": "BreadcrumbList",
-              "itemListElement": [
-                {
-                  "@type": "ListItem",
-                  "position": 1,
-                  "name": "Orr Biologicals",
-                  "item": "https://orrbiologicals.com/"
-                },
-                {
-                  "@type": "ListItem",
-                  "position": 2,
-                  "name": "Applications",
-                  "item": "https://orrbiologicals.com/applications/"
-                },
-                {
-                  "@type": "ListItem",
-                  "position": 3,
-                  "name": "Applications: Microalgae and Phytoplankton Hub | Orr Biologicals",
-                  "item": "https://orrbiologicals.com/applications/"
-                }
-              ]
-            }
-          ]
-        }
-      ],
-      "nav": [
-        {
-          "ttfb": 27.600000008940697,
-          "domContentLoaded": 367.1000000089407
+          "ttfb": 3.7999999821186066,
+          "domContentLoaded": 43.599999994039536
         }
       ],
       "metrics": {
         "lcp": null,
-        "cls": 0.02178253948688507,
-        "longTasks": [
-          280
-        ]
-      },
-      "payload": {
-        "requests": 10,
-        "transferred": 54011,
-        "js": 8887,
-        "css": 26326,
-        "images": 8026
-      }
-    },
-    {
-      "path": "/applications/microalgae-for-marine-fish-larvae",
-      "status": 200,
-      "title": "Microalgae in Marine Fish Larviculture | Orr Biologicals",
-      "h1": [
-        "How Microalgae Are Used to Feed Marine Fish Larvae"
-      ],
-      "canonical": "https://orrbiologicals.com/applications/microalgae-for-marine-fish-larvae",
-      "schemas": [
-        {
-          "@context": "https://schema.org",
-          "@graph": [
-            {
-              "@type": "Article",
-              "headline": "Microalgae in Marine Fish Larviculture | Orr Biologicals",
-              "description": "How phytoplankton fits marine larviculture: green water, rotifers and Artemia enrichment, and the fatty acids that decide larval survival.",
-              "image": "https://orrbiologicals.com/assets/images/library/fish-larvae.svg",
-              "datePublished": "2026-08-31",
-              "dateModified": "2026-10-04",
-              "author": {
-                "@type": "Organization",
-                "name": "Orr Biologicals",
-                "url": "https://orrbiologicals.com/"
-              },
-              "publisher": {
-                "@type": "Organization",
-                "name": "Orr Biologicals",
-                "url": "https://orrbiologicals.com/"
-              },
-              "mainEntityOfPage": "https://orrbiologicals.com/applications/microalgae-for-marine-fish-larvae"
-            },
-            {
-              "@type": "BreadcrumbList",
-              "itemListElement": [
-                {
-                  "@type": "ListItem",
-                  "position": 1,
-                  "name": "Orr Biologicals",
-                  "item": "https://orrbiologicals.com/"
-                },
-                {
-                  "@type": "ListItem",
-                  "position": 2,
-                  "name": "Applications",
-                  "item": "https://orrbiologicals.com/applications/"
-                },
-                {
-                  "@type": "ListItem",
-                  "position": 3,
-                  "name": "Microalgae in Marine Fish Larviculture | Orr Biologicals",
-                  "item": "https://orrbiologicals.com/applications/microalgae-for-marine-fish-larvae"
-                }
-              ]
-            },
-            {
-              "@type": "FAQPage",
-              "mainEntity": [
-                {
-                  "@type": "Question",
-                  "name": "Do fish larvae eat microalgae directly?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "A few graze algae early on, but most marine fish larvae feed on zooplankton — rotifers, copepods and Artemia nauplii. Microalgae are added to tanks largely as 'green water': they stabilise water quality, keep live feeds nutritious and improve contrast for visual feeders. Larval diets differ enormously between species, so treat general practice as a starting point."
-                  }
-                },
-                {
-                  "@type": "Question",
-                  "name": "What is green water?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Green water is the practice of adding live microalgae to larval rearing tanks at low density. It moderates light, supports the nutritional value of zooplankton in the tank and can dampen bacterial blooms. Hardy small species such as Nannochloropsis, Tetraselmis and Isochrysis dominate the practice."
-                  }
-                },
-                {
-                  "@type": "Question",
-                  "name": "Why not just use enriched Artemia throughout?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Artemia nauplii are convenient but nutritionally incomplete until enriched, and many small-mouthed larvae cannot take them at first feeding. Copepods that have eaten algae arrive pre-loaded with the fatty acids larvae need. Hence the algae-first food web."
-                  }
-                }
-              ]
-            }
-          ]
-        }
-      ],
-      "nav": [
-        {
-          "ttfb": 28.700000002980232,
-          "domContentLoaded": 218.5
-        }
-      ],
-      "metrics": {
-        "lcp": 240,
-        "cls": 0.03417136100927989,
+        "cls": 0,
         "longTasks": []
       },
       "payload": {
-        "requests": 6,
-        "transferred": 39230,
-        "js": 8887,
-        "css": 26326,
-        "images": 2815
-      }
-    },
-    {
-      "path": "/applications/microalgal-biotechnology",
-      "status": 200,
-      "title": "Microalgal Biotechnology: Pigments and Lipids | Orr Biologicals",
-      "h1": [
-        "Microalgal Biotechnology: Pigments, Lipids, Proteins and Beyond"
-      ],
-      "canonical": "https://orrbiologicals.com/applications/microalgal-biotechnology",
-      "schemas": [
-        {
-          "@context": "https://schema.org",
-          "@graph": [
-            {
-              "@type": "Article",
-              "headline": "Microalgal Biotechnology: Pigments and Lipids | Orr Biologicals",
-              "description": "What industry extracts from microalgae — astaxanthin, beta-carotene, phycocyanin, EPA, DHA, protein — which species produce them, and what is honestly established.",
-              "image": "https://orrbiologicals.com/assets/images/library/biotech-compounds.svg",
-              "datePublished": "2026-08-31",
-              "dateModified": "2026-10-04",
-              "author": {
-                "@type": "Organization",
-                "name": "Orr Biologicals",
-                "url": "https://orrbiologicals.com/"
-              },
-              "publisher": {
-                "@type": "Organization",
-                "name": "Orr Biologicals",
-                "url": "https://orrbiologicals.com/"
-              },
-              "mainEntityOfPage": "https://orrbiologicals.com/applications/microalgal-biotechnology"
-            },
-            {
-              "@type": "BreadcrumbList",
-              "itemListElement": [
-                {
-                  "@type": "ListItem",
-                  "position": 1,
-                  "name": "Orr Biologicals",
-                  "item": "https://orrbiologicals.com/"
-                },
-                {
-                  "@type": "ListItem",
-                  "position": 2,
-                  "name": "Applications",
-                  "item": "https://orrbiologicals.com/applications/"
-                },
-                {
-                  "@type": "ListItem",
-                  "position": 3,
-                  "name": "Microalgal Biotechnology: Pigments and Lipids | Orr Biologicals",
-                  "item": "https://orrbiologicals.com/applications/microalgal-biotechnology"
-                }
-              ]
-            },
-            {
-              "@type": "FAQPage",
-              "mainEntity": [
-                {
-                  "@type": "Question",
-                  "name": "Which microalgal products are commercially established?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "The clearest examples: beta-carotene from Dunaliella salina, astaxanthin from Haematococcus pluvialis, whole-cell Arthrospira (Spirulina) and Chlorella as foods and supplements, and Nannochloropsis- and Isochrysis-type algae as aquaculture feeds. Many other proposed products remain at research or pilot scale."
-                  }
-                },
-                {
-                  "@type": "Question",
-                  "name": "Why is microalgal biotech harder than it sounds?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Growing the organism is only step one; the compound has to be induced, extracted and purified economically, against cheap competing sources. Many published lab results never survive contact with a balance sheet."
-                  }
-                },
-                {
-                  "@type": "Question",
-                  "name": "Are microalgae still considered for biofuels?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "They were heavily researched for two decades; the economics proved difficult and most commercial effort moved toward higher-value products like nutraceuticals and feeds, with fuel as a co-product concept rather than the main business."
-                  }
-                }
-              ]
-            }
-          ]
-        }
-      ],
-      "nav": [
-        {
-          "ttfb": 23.5,
-          "domContentLoaded": 189.79999999701977
-        }
-      ],
-      "metrics": {
-        "lcp": 212,
-        "cls": 0.03413591599464416,
-        "longTasks": [
-          54
-        ]
-      },
-      "payload": {
-        "requests": 6,
-        "transferred": 38108,
-        "js": 8887,
-        "css": 26326,
-        "images": 1693
-      }
-    },
-    {
-      "path": "/applications/pavlova-vs-isochrysis",
-      "status": 200,
-      "title": "Pavlova vs Isochrysis for Aquaculture | Orr Biologicals",
-      "h1": [
-        "Pavlova vs Isochrysis for Aquaculture"
-      ],
-      "canonical": "https://orrbiologicals.com/applications/pavlova-vs-isochrysis",
-      "schemas": [
-        {
-          "@context": "https://schema.org",
-          "@graph": [
-            {
-              "@type": "Article",
-              "headline": "Pavlova vs Isochrysis for Aquaculture | Orr Biologicals",
-              "description": "Two small haptophyte flagellates that dominate marine hatchery feeds — how their nutrition, culture behaviour and uses differ, and why many systems run both.",
-              "image": "https://orrbiologicals.com/assets/images/library/pavlova-vs-isochrysis.svg",
-              "datePublished": "2026-08-31",
-              "dateModified": "2026-10-04",
-              "author": {
-                "@type": "Organization",
-                "name": "Orr Biologicals",
-                "url": "https://orrbiologicals.com/"
-              },
-              "publisher": {
-                "@type": "Organization",
-                "name": "Orr Biologicals",
-                "url": "https://orrbiologicals.com/"
-              },
-              "mainEntityOfPage": "https://orrbiologicals.com/applications/pavlova-vs-isochrysis"
-            },
-            {
-              "@type": "BreadcrumbList",
-              "itemListElement": [
-                {
-                  "@type": "ListItem",
-                  "position": 1,
-                  "name": "Orr Biologicals",
-                  "item": "https://orrbiologicals.com/"
-                },
-                {
-                  "@type": "ListItem",
-                  "position": 2,
-                  "name": "Applications",
-                  "item": "https://orrbiologicals.com/applications/"
-                },
-                {
-                  "@type": "ListItem",
-                  "position": 3,
-                  "name": "Pavlova vs Isochrysis for Aquaculture | Orr Biologicals",
-                  "item": "https://orrbiologicals.com/applications/pavlova-vs-isochrysis"
-                }
-              ]
-            },
-            {
-              "@type": "FAQPage",
-              "mainEntity": [
-                {
-                  "@type": "Question",
-                  "name": "Which is better, Pavlova or Isochrysis?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Neither is universally better. Both are small haptophytes with strong lipid profiles; they differ in emphasis (Pavlova is notable for EPA as well as DHA, Isochrysis/T-Iso is the classic DHA source) and in culture behaviour. Many hatcheries run both as a blend."
-                  }
-                },
-                {
-                  "@type": "Question",
-                  "name": "Can I substitute one for the other in a feeding protocol?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Sometimes, but not blindly. Size and digestibility are similar enough that substitution often works; the fatty-acid balance your animals receive will change, and long-run reproductive output can differ. Change one variable at a time and watch egg or larval performance."
-                  }
-                },
-                {
-                  "@type": "Question",
-                  "name": "Why are both called haptophytes?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Both belong to the haptophyte algae — a group characterised by a unique appendage (the haptonema) and similar pigment chemistry. That shared biochemistry is why their nutritional roles overlap."
-                  }
-                }
-              ]
-            }
-          ]
-        }
-      ],
-      "nav": [
-        {
-          "ttfb": 24.599999994039536,
-          "domContentLoaded": 227.20000000298023
-        }
-      ],
-      "metrics": {
-        "lcp": 288,
-        "cls": 0.027148909807205197,
-        "longTasks": [
-          51
-        ]
-      },
-      "payload": {
-        "requests": 6,
-        "transferred": 39353,
-        "js": 8887,
-        "css": 26326,
-        "images": 2938
-      }
-    },
-    {
-      "path": "/applications/phytoplankton-aquaculture-food-webs",
-      "status": 200,
-      "title": "Phytoplankton and Aquaculture Food Webs | Orr Biologicals",
-      "h1": [
-        "How Phytoplankton Supports Aquaculture Food Webs"
-      ],
-      "canonical": "https://orrbiologicals.com/applications/phytoplankton-aquaculture-food-webs",
-      "schemas": [
-        {
-          "@context": "https://schema.org",
-          "@graph": [
-            {
-              "@type": "Article",
-              "headline": "Phytoplankton and Aquaculture Food Webs | Orr Biologicals",
-              "description": "From microalgae to copepods, rotifers and Artemia to fish and shellfish larvae: how trophic chains carry nutrition through an aquaculture system.",
-              "image": "https://orrbiologicals.com/assets/images/library/food-web.svg",
-              "datePublished": "2026-08-31",
-              "dateModified": "2026-10-04",
-              "author": {
-                "@type": "Organization",
-                "name": "Orr Biologicals",
-                "url": "https://orrbiologicals.com/"
-              },
-              "publisher": {
-                "@type": "Organization",
-                "name": "Orr Biologicals",
-                "url": "https://orrbiologicals.com/"
-              },
-              "mainEntityOfPage": "https://orrbiologicals.com/applications/phytoplankton-aquaculture-food-webs"
-            },
-            {
-              "@type": "BreadcrumbList",
-              "itemListElement": [
-                {
-                  "@type": "ListItem",
-                  "position": 1,
-                  "name": "Orr Biologicals",
-                  "item": "https://orrbiologicals.com/"
-                },
-                {
-                  "@type": "ListItem",
-                  "position": 2,
-                  "name": "Applications",
-                  "item": "https://orrbiologicals.com/applications/"
-                },
-                {
-                  "@type": "ListItem",
-                  "position": 3,
-                  "name": "Phytoplankton and Aquaculture Food Webs | Orr Biologicals",
-                  "item": "https://orrbiologicals.com/applications/phytoplankton-aquaculture-food-webs"
-                }
-              ]
-            },
-            {
-              "@type": "FAQPage",
-              "mainEntity": [
-                {
-                  "@type": "Question",
-                  "name": "What eats phytoplankton in aquaculture?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Filter and grazing animals: bivalve larvae and adults, rotifers, copepods, Artemia, and the earlier stages of shrimp and some fish. Everything further up the chain eats them second-hand, through those grazers."
-                  }
-                },
-                {
-                  "@type": "Question",
-                  "name": "What is trophic upgrading?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "When zooplankton convert a mediocre algal diet into their own body tissue — including fatty acids they synthesise or concentrate — the resulting prey is more nutritious than what was fed. Feeding algae to copepods before feeding copepods to larvae is trophic upgrading in action."
-                  }
-                },
-                {
-                  "@type": "Question",
-                  "name": "Do ponds count as phytoplankton systems?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Yes. Extensive and semi-intensive aquaculture fertilises ponds to grow natural phytoplankton blooms that feed the food web in place. The same biology as intensive live feeds, just run in the pond instead of a flask."
-                  }
-                }
-              ]
-            }
-          ]
-        }
-      ],
-      "nav": [
-        {
-          "ttfb": 28.400000005960464,
-          "domContentLoaded": 212
-        }
-      ],
-      "metrics": {
-        "lcp": 240,
-        "cls": 0.03417136100927989,
-        "longTasks": [
-          51
-        ]
-      },
-      "payload": {
-        "requests": 6,
-        "transferred": 39286,
-        "js": 8887,
-        "css": 26326,
-        "images": 2871
-      }
-    },
-    {
-      "path": "/applications/prevent-contamination-microalgae-cultures",
-      "status": 200,
-      "title": "Contamination Control in Microalgae Cultures | Orr Biologicals",
-      "h1": [
-        "How to Prevent Contamination in Microalgae Cultures"
-      ],
-      "canonical": "https://orrbiologicals.com/applications/prevent-contamination-microalgae-cultures",
-      "schemas": [
-        {
-          "@context": "https://schema.org",
-          "@graph": [
-            {
-              "@type": "Article",
-              "headline": "Contamination Control in Microalgae Cultures | Orr Biologicals",
-              "description": "What contaminates algae cultures, how contamination arrives, the habits that prevent it, and when to rescue versus discard a crashed culture.",
-              "image": "https://orrbiologicals.com/assets/images/library/contamination.svg",
-              "datePublished": "2026-08-31",
-              "dateModified": "2026-10-04",
-              "author": {
-                "@type": "Organization",
-                "name": "Orr Biologicals",
-                "url": "https://orrbiologicals.com/"
-              },
-              "publisher": {
-                "@type": "Organization",
-                "name": "Orr Biologicals",
-                "url": "https://orrbiologicals.com/"
-              },
-              "mainEntityOfPage": "https://orrbiologicals.com/applications/prevent-contamination-microalgae-cultures"
-            },
-            {
-              "@type": "BreadcrumbList",
-              "itemListElement": [
-                {
-                  "@type": "ListItem",
-                  "position": 1,
-                  "name": "Orr Biologicals",
-                  "item": "https://orrbiologicals.com/"
-                },
-                {
-                  "@type": "ListItem",
-                  "position": 2,
-                  "name": "Applications",
-                  "item": "https://orrbiologicals.com/applications/"
-                },
-                {
-                  "@type": "ListItem",
-                  "position": 3,
-                  "name": "Contamination Control in Microalgae Cultures | Orr Biologicals",
-                  "item": "https://orrbiologicals.com/applications/prevent-contamination-microalgae-cultures"
-                }
-              ]
-            },
-            {
-              "@type": "FAQPage",
-              "mainEntity": [
-                {
-                  "@type": "Question",
-                  "name": "What are the usual contaminants?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Bacteria (usually present, a problem when they dominate), grazing protozoa such as ciliates and amoebae, rotifers and other zooplankton that eat cultures from within, fungi, and faster-growing algae that outcompete your strain. Each has a signature: grazing makes cultures clear from dense, bacterial takeover smells, weed algae change the texture."
-                  }
-                },
-                {
-                  "@type": "Question",
-                  "name": "Can I save a contaminated culture?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Sometimes, depending on the contaminant and the species. Grazers can sometimes be excluded by mesh or settling; some contaminants are outgrown by re-dosing nutrients and keeping conditions strongly favourable to your strain. Honestly, most contaminated small cultures are cheaper to discard and restart from your reserve — which is why reserves exist."
-                  }
-                },
-                {
-                  "@type": "Question",
-                  "name": "Does everything need to be sterile?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "No. Most applied microalgae culture is 'clean', not sterile: bleach-washed vessels, filtered or boiled water, clean hands and tools, covered vessels. Full aseptic technique matters for axenic lab work, not for live-feed culture rooms."
-                  }
-                }
-              ]
-            }
-          ]
-        }
-      ],
-      "nav": [
-        {
-          "ttfb": 28.400000005960464,
-          "domContentLoaded": 174.1000000089407
-        }
-      ],
-      "metrics": {
-        "lcp": 196,
-        "cls": 0.03417136100927989,
-        "longTasks": [
-          50
-        ]
-      },
-      "payload": {
-        "requests": 6,
-        "transferred": 38365,
-        "js": 8887,
-        "css": 26326,
-        "images": 1950
-      }
-    },
-    {
-      "path": "/applications/species/arthrospira",
-      "status": 200,
-      "title": "Arthrospira (Spirulina): Species Guide | Orr Biologicals",
-      "h1": [
-        "Arthrospira (Spirulina)"
-      ],
-      "canonical": "https://orrbiologicals.com/applications/species/arthrospira",
-      "schemas": [
-        {
-          "@context": "https://schema.org",
-          "@graph": [
-            {
-              "@type": "Article",
-              "headline": "Arthrospira (Spirulina): Species Guide | Orr Biologicals",
-              "description": "Arthrospira platensis — the filamentous cyanobacterium sold as Spirulina: appearance, culture characteristics, nutrition, phycocyanin, and why alkaline medium is its biosecurity.",
-              "image": "https://orrbiologicals.com/assets/images/library/species/arthrospira.svg",
-              "datePublished": "2026-08-31",
-              "dateModified": "2026-10-04",
-              "author": {
-                "@type": "Organization",
-                "name": "Orr Biologicals",
-                "url": "https://orrbiologicals.com/"
-              },
-              "publisher": {
-                "@type": "Organization",
-                "name": "Orr Biologicals",
-                "url": "https://orrbiologicals.com/"
-              },
-              "mainEntityOfPage": "https://orrbiologicals.com/applications/species/arthrospira"
-            },
-            {
-              "@type": "BreadcrumbList",
-              "itemListElement": [
-                {
-                  "@type": "ListItem",
-                  "position": 1,
-                  "name": "Orr Biologicals",
-                  "item": "https://orrbiologicals.com/"
-                },
-                {
-                  "@type": "ListItem",
-                  "position": 2,
-                  "name": "Applications",
-                  "item": "https://orrbiologicals.com/applications/"
-                },
-                {
-                  "@type": "ListItem",
-                  "position": 3,
-                  "name": "Species",
-                  "item": "https://orrbiologicals.com/applications/#species"
-                },
-                {
-                  "@type": "ListItem",
-                  "position": 4,
-                  "name": "Arthrospira (Spirulina): Species Guide | Orr Biologicals",
-                  "item": "https://orrbiologicals.com/applications/species/arthrospira"
-                }
-              ]
-            },
-            {
-              "@type": "FAQPage",
-              "mainEntity": [
-                {
-                  "@type": "Question",
-                  "name": "Is Spirulina a plant?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "No. Arthrospira is a cyanobacterium — a photosynthetic bacterium. It shares oxygenic photosynthesis with algae and plants, which is why it behaves like an alga in culture, but taxonomically it is a bacterium."
-                  }
-                },
-                {
-                  "@type": "Question",
-                  "name": "Why is Spirulina culture 'self-protecting'?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Its preferred medium is so alkaline and carbonate-rich that most bacteria, fungi and grazers cannot live in it. Contamination control is built into the chemistry, which is unusual among cultivated microorganisms."
-                  }
-                },
-                {
-                  "@type": "Question",
-                  "name": "Can I feed Spirulina to marine larvae?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Generally no — the filaments are too large for first-feeding guts. Marine live feeds use small microalgae such as Isochrysis, Pavlova and Chaetoceros. See our bivalve rations article for stage-specific detail."
-                  }
-                }
-              ]
-            }
-          ]
-        }
-      ],
-      "nav": [
-        {
-          "ttfb": 26.80000001192093,
-          "domContentLoaded": 247
-        }
-      ],
-      "metrics": {
-        "lcp": 272,
-        "cls": 0.027957055966059366,
-        "longTasks": [
-          58
-        ]
-      },
-      "payload": {
-        "requests": 6,
-        "transferred": 38157,
-        "js": 8887,
-        "css": 26326,
-        "images": 1742
-      }
-    },
-    {
-      "path": "/applications/species/chaetoceros",
-      "status": 200,
-      "title": "Chaetoceros: Species Guide | Orr Biologicals",
-      "h1": [
-        "Chaetoceros"
-      ],
-      "canonical": "https://orrbiologicals.com/applications/species/chaetoceros",
-      "schemas": [
-        {
-          "@context": "https://schema.org",
-          "@graph": [
-            {
-              "@type": "Article",
-              "headline": "Chaetoceros: Species Guide | Orr Biologicals",
-              "description": "Chaetoceros — the chain-forming diatom of bivalve and shrimp hatcheries: appearance, silicate needs, culture traits, and how it fits stage-specific rations.",
-              "image": "https://orrbiologicals.com/assets/images/library/species/chaetoceros.svg",
-              "datePublished": "2026-08-31",
-              "dateModified": "2026-10-04",
-              "author": {
-                "@type": "Organization",
-                "name": "Orr Biologicals",
-                "url": "https://orrbiologicals.com/"
-              },
-              "publisher": {
-                "@type": "Organization",
-                "name": "Orr Biologicals",
-                "url": "https://orrbiologicals.com/"
-              },
-              "mainEntityOfPage": "https://orrbiologicals.com/applications/species/chaetoceros"
-            },
-            {
-              "@type": "BreadcrumbList",
-              "itemListElement": [
-                {
-                  "@type": "ListItem",
-                  "position": 1,
-                  "name": "Orr Biologicals",
-                  "item": "https://orrbiologicals.com/"
-                },
-                {
-                  "@type": "ListItem",
-                  "position": 2,
-                  "name": "Applications",
-                  "item": "https://orrbiologicals.com/applications/"
-                },
-                {
-                  "@type": "ListItem",
-                  "position": 3,
-                  "name": "Species",
-                  "item": "https://orrbiologicals.com/applications/#species"
-                },
-                {
-                  "@type": "ListItem",
-                  "position": 4,
-                  "name": "Chaetoceros: Species Guide | Orr Biologicals",
-                  "item": "https://orrbiologicals.com/applications/species/chaetoceros"
-                }
-              ]
-            },
-            {
-              "@type": "FAQPage",
-              "mainEntity": [
-                {
-                  "@type": "Question",
-                  "name": "Why do hatcheries use Chaetoceros instead of other diatoms?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Chain-forming cells with setae are easy for many grazers to capture, the species grow fast, and they tolerate hatchery conditions better than many diatoms."
-                  }
-                },
-                {
-                  "@type": "Question",
-                  "name": "Do Chaetoceros cultures need special nutrients?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Silicate is the non-negotiable one — it is a diatom. Standard marine media with silicate (f/2 includes it) cover the requirement."
-                  }
-                },
-                {
-                  "@type": "Question",
-                  "name": "Why does my Chaetoceros culture settle out?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Chains clump and sink when mixing is poor or cultures are left static. Diatom cultures generally need more agitation than flagellates."
-                  }
-                }
-              ]
-            }
-          ]
-        }
-      ],
-      "nav": [
-        {
-          "ttfb": 34.099999994039536,
-          "domContentLoaded": 239.5
-        }
-      ],
-      "metrics": {
-        "lcp": 272,
-        "cls": 0.027420808911323546,
-        "longTasks": [
-          59
-        ]
-      },
-      "payload": {
-        "requests": 6,
-        "transferred": 39984,
-        "js": 8887,
-        "css": 26326,
-        "images": 3569
-      }
-    },
-    {
-      "path": "/applications/species/chlorella",
-      "status": 200,
-      "title": "Chlorella: Species Guide | Orr Biologicals",
-      "h1": [
-        "Chlorella"
-      ],
-      "canonical": "https://orrbiologicals.com/applications/species/chlorella",
-      "schemas": [
-        {
-          "@context": "https://schema.org",
-          "@graph": [
-            {
-              "@type": "Article",
-              "headline": "Chlorella: Species Guide | Orr Biologicals",
-              "description": "Chlorella — the spherical freshwater green alga: appearance, culture characteristics, protein content, applications in aquaculture and nutrition, and honest caveats.",
-              "image": "https://orrbiologicals.com/assets/images/library/species/chlorella.svg",
-              "datePublished": "2026-08-31",
-              "dateModified": "2026-10-04",
-              "author": {
-                "@type": "Organization",
-                "name": "Orr Biologicals",
-                "url": "https://orrbiologicals.com/"
-              },
-              "publisher": {
-                "@type": "Organization",
-                "name": "Orr Biologicals",
-                "url": "https://orrbiologicals.com/"
-              },
-              "mainEntityOfPage": "https://orrbiologicals.com/applications/species/chlorella"
-            },
-            {
-              "@type": "BreadcrumbList",
-              "itemListElement": [
-                {
-                  "@type": "ListItem",
-                  "position": 1,
-                  "name": "Orr Biologicals",
-                  "item": "https://orrbiologicals.com/"
-                },
-                {
-                  "@type": "ListItem",
-                  "position": 2,
-                  "name": "Applications",
-                  "item": "https://orrbiologicals.com/applications/"
-                },
-                {
-                  "@type": "ListItem",
-                  "position": 3,
-                  "name": "Species",
-                  "item": "https://orrbiologicals.com/applications/#species"
-                },
-                {
-                  "@type": "ListItem",
-                  "position": 4,
-                  "name": "Chlorella: Species Guide | Orr Biologicals",
-                  "item": "https://orrbiologicals.com/applications/species/chlorella"
-                }
-              ]
-            },
-            {
-              "@type": "FAQPage",
-              "mainEntity": [
-                {
-                  "@type": "Question",
-                  "name": "Is Chlorella good for marine tanks?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Some brackish-tolerant strains are used, but classic freshwater Chlorella does not thrive at full marine salinity. Marine green water usually uses Nannochloropsis or Tetraselmis instead."
-                  }
-                },
-                {
-                  "@type": "Question",
-                  "name": "Why is Chlorella grown in closed systems?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Small grazing zooplankton can demolish an open Chlorella culture quickly. Closed or covered culture keeps grazers out."
-                  }
-                },
-                {
-                  "@type": "Question",
-                  "name": "Chlorella vs Spirulina — which is better?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Different organisms for different purposes. Chlorella is a freshwater spherical green alga; Arthrospira is an alkaline filamentous cyanobacterium. Both are protein-rich foods; neither is universally 'better'."
-                  }
-                }
-              ]
-            }
-          ]
-        }
-      ],
-      "nav": [
-        {
-          "ttfb": 25.099999994039536,
-          "domContentLoaded": 219.69999998807907
-        }
-      ],
-      "metrics": {
-        "lcp": 248,
-        "cls": 0.027395599722862242,
-        "longTasks": [
-          62
-        ]
-      },
-      "payload": {
-        "requests": 6,
-        "transferred": 38753,
-        "js": 8887,
-        "css": 26326,
-        "images": 2338
-      }
-    },
-    {
-      "path": "/applications/species/dunaliella",
-      "status": 200,
-      "title": "Dunaliella: Species Guide | Orr Biologicals",
-      "h1": [
-        "Dunaliella"
-      ],
-      "canonical": "https://orrbiologicals.com/applications/species/dunaliella",
-      "schemas": [
-        {
-          "@context": "https://schema.org",
-          "@graph": [
-            {
-              "@type": "Article",
-              "headline": "Dunaliella: Species Guide | Orr Biologicals",
-              "description": "Dunaliella salina — the hypersaline green flagellate behind natural beta-carotene: appearance, culture traits, osmotic tricks and commercial uses.",
-              "image": "https://orrbiologicals.com/assets/images/library/species/dunaliella.svg",
-              "datePublished": "2026-08-31",
-              "dateModified": "2026-10-04",
-              "author": {
-                "@type": "Organization",
-                "name": "Orr Biologicals",
-                "url": "https://orrbiologicals.com/"
-              },
-              "publisher": {
-                "@type": "Organization",
-                "name": "Orr Biologicals",
-                "url": "https://orrbiologicals.com/"
-              },
-              "mainEntityOfPage": "https://orrbiologicals.com/applications/species/dunaliella"
-            },
-            {
-              "@type": "BreadcrumbList",
-              "itemListElement": [
-                {
-                  "@type": "ListItem",
-                  "position": 1,
-                  "name": "Orr Biologicals",
-                  "item": "https://orrbiologicals.com/"
-                },
-                {
-                  "@type": "ListItem",
-                  "position": 2,
-                  "name": "Applications",
-                  "item": "https://orrbiologicals.com/applications/"
-                },
-                {
-                  "@type": "ListItem",
-                  "position": 3,
-                  "name": "Species",
-                  "item": "https://orrbiologicals.com/applications/#species"
-                },
-                {
-                  "@type": "ListItem",
-                  "position": 4,
-                  "name": "Dunaliella: Species Guide | Orr Biologicals",
-                  "item": "https://orrbiologicals.com/applications/species/dunaliella"
-                }
-              ]
-            },
-            {
-              "@type": "FAQPage",
-              "mainEntity": [
-                {
-                  "@type": "Question",
-                  "name": "Why does Dunaliella turn orange?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Stress — high light, high salt, nutrient limitation — triggers beta-carotene accumulation as a photoprotective measure. The orange cells are the product."
-                  }
-                },
-                {
-                  "@type": "Question",
-                  "name": "Can I culture Dunaliella at home?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "<em>D. salina</em> needs hypersaline water — inconvenient but protective, since few contaminants follow it. Other species grow at normal salinity but bring normal contamination risks."
-                  }
-                },
-                {
-                  "@type": "Question",
-                  "name": "Is algal beta-carotene different from synthetic?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "It is a natural mixed-isomer form extracted from algae and commands a premium in food and supplement markets. The market distinguishes the source, not the molecule alone."
-                  }
-                }
-              ]
-            }
-          ]
-        }
-      ],
-      "nav": [
-        {
-          "ttfb": 31.299999997019768,
-          "domContentLoaded": 213.90000000596046
-        }
-      ],
-      "metrics": {
-        "lcp": 248,
-        "cls": 0.027408204317092896,
-        "longTasks": [
-          61
-        ]
-      },
-      "payload": {
-        "requests": 6,
-        "transferred": 38808,
-        "js": 8887,
-        "css": 26326,
-        "images": 2393
-      }
-    },
-    {
-      "path": "/applications/species/haematococcus",
-      "status": 200,
-      "title": "Haematococcus: Species Guide | Orr Biologicals",
-      "h1": [
-        "Haematococcus"
-      ],
-      "canonical": "https://orrbiologicals.com/applications/species/haematococcus",
-      "schemas": [
-        {
-          "@context": "https://schema.org",
-          "@graph": [
-            {
-              "@type": "Article",
-              "headline": "Haematococcus: Species Guide | Orr Biologicals",
-              "description": "Haematococcus pluvialis — the green alga that turns red: appearance, two-stage culture, astaxanthin accumulation, and its role in aquaculture pigmentation.",
-              "image": "https://orrbiologicals.com/assets/images/library/species/haematococcus.svg",
-              "datePublished": "2026-08-31",
-              "dateModified": "2026-10-04",
-              "author": {
-                "@type": "Organization",
-                "name": "Orr Biologicals",
-                "url": "https://orrbiologicals.com/"
-              },
-              "publisher": {
-                "@type": "Organization",
-                "name": "Orr Biologicals",
-                "url": "https://orrbiologicals.com/"
-              },
-              "mainEntityOfPage": "https://orrbiologicals.com/applications/species/haematococcus"
-            },
-            {
-              "@type": "BreadcrumbList",
-              "itemListElement": [
-                {
-                  "@type": "ListItem",
-                  "position": 1,
-                  "name": "Orr Biologicals",
-                  "item": "https://orrbiologicals.com/"
-                },
-                {
-                  "@type": "ListItem",
-                  "position": 2,
-                  "name": "Applications",
-                  "item": "https://orrbiologicals.com/applications/"
-                },
-                {
-                  "@type": "ListItem",
-                  "position": 3,
-                  "name": "Species",
-                  "item": "https://orrbiologicals.com/applications/#species"
-                },
-                {
-                  "@type": "ListItem",
-                  "position": 4,
-                  "name": "Haematococcus: Species Guide | Orr Biologicals",
-                  "item": "https://orrbiologicals.com/applications/species/haematococcus"
-                }
-              ]
-            },
-            {
-              "@type": "FAQPage",
-              "mainEntity": [
-                {
-                  "@type": "Question",
-                  "name": "Why is astaxanthin expensive?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Haematococcus grows slowly, needs a two-stage process, and must be stressed carefully to produce the pigment — all against cheap synthetic alternatives that lack the natural market's premium."
-                  }
-                },
-                {
-                  "@type": "Question",
-                  "name": "Can Haematococcus be used as a live feed?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Rarely — its cells are large and slow to mass-produce. Its role is extraction and pigmentation, not daily rations."
-                  }
-                },
-                {
-                  "@type": "Question",
-                  "name": "Green cells and red cells are the same organism?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Yes. Motile green cells in growth phase; the same individuals become large red cysts under stress, storing astaxanthin to protect themselves."
-                  }
-                }
-              ]
-            }
-          ]
-        }
-      ],
-      "nav": [
-        {
-          "ttfb": 24.5,
-          "domContentLoaded": 196.29999999701977
-        }
-      ],
-      "metrics": {
-        "lcp": 236,
-        "cls": 0.027447818756103515,
-        "longTasks": [
-          60
-        ]
-      },
-      "payload": {
-        "requests": 6,
-        "transferred": 38413,
-        "js": 8887,
-        "css": 26326,
-        "images": 1998
-      }
-    },
-    {
-      "path": "/applications/species/isochrysis-tisochrysis",
-      "status": 200,
-      "title": "Isochrysis (T-Iso): Species Guide | Orr Biologicals",
-      "h1": [
-        "Isochrysis (Tisochrysis)"
-      ],
-      "canonical": "https://orrbiologicals.com/applications/species/isochrysis-tisochrysis",
-      "schemas": [
-        {
-          "@context": "https://schema.org",
-          "@graph": [
-            {
-              "@type": "Article",
-              "headline": "Isochrysis (T-Iso): Species Guide | Orr Biologicals",
-              "description": "Isochrysis galbana and its thermotolerant strain Tisochrysis lutea (T-Iso): appearance, culture traits, DHA-rich lipids, and why it is the marine hatchery default.",
-              "image": "https://orrbiologicals.com/assets/images/library/species/isochrysis.svg",
-              "datePublished": "2026-08-31",
-              "dateModified": "2026-10-04",
-              "author": {
-                "@type": "Organization",
-                "name": "Orr Biologicals",
-                "url": "https://orrbiologicals.com/"
-              },
-              "publisher": {
-                "@type": "Organization",
-                "name": "Orr Biologicals",
-                "url": "https://orrbiologicals.com/"
-              },
-              "mainEntityOfPage": "https://orrbiologicals.com/applications/species/isochrysis-tisochrysis"
-            },
-            {
-              "@type": "BreadcrumbList",
-              "itemListElement": [
-                {
-                  "@type": "ListItem",
-                  "position": 1,
-                  "name": "Orr Biologicals",
-                  "item": "https://orrbiologicals.com/"
-                },
-                {
-                  "@type": "ListItem",
-                  "position": 2,
-                  "name": "Applications",
-                  "item": "https://orrbiologicals.com/applications/"
-                },
-                {
-                  "@type": "ListItem",
-                  "position": 3,
-                  "name": "Species",
-                  "item": "https://orrbiologicals.com/applications/#species"
-                },
-                {
-                  "@type": "ListItem",
-                  "position": 4,
-                  "name": "Isochrysis (T-Iso): Species Guide | Orr Biologicals",
-                  "item": "https://orrbiologicals.com/applications/species/isochrysis-tisochrysis"
-                }
-              ]
-            },
-            {
-              "@type": "FAQPage",
-              "mainEntity": [
-                {
-                  "@type": "Question",
-                  "name": "What does T-Iso stand for?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "'Tahitian Isochrysis' — a thermotolerant strain isolated from Tahiti, now classified as its own species, Tisochrysis lutea. It is what most hatcheries mean when they say 'Iso'."
-                  }
-                },
-                {
-                  "@type": "Question",
-                  "name": "Does Isochrysis need aeration?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "It is a motile flagellate but still benefits from gentle mixing to keep cells distributed and gas exchange happening. Most hatcheries aerate all flagellate cultures."
-                  }
-                },
-                {
-                  "@type": "Question",
-                  "name": "Isochrysis vs Nannochloropsis?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Isochrysis is the nutritious, slightly delicate DHA source; Nannochloropsis is the hardy, EPA-rich green-water workhorse. Most systems run both."
-                  }
-                }
-              ]
-            }
-          ]
-        }
-      ],
-      "nav": [
-        {
-          "ttfb": 28.200000002980232,
-          "domContentLoaded": 191.70000000298023
-        }
-      ],
-      "metrics": {
-        "lcp": 220,
-        "cls": 0.027942879199981688,
-        "longTasks": [
-          55
-        ]
-      },
-      "payload": {
-        "requests": 6,
-        "transferred": 38907,
-        "js": 8887,
-        "css": 26326,
-        "images": 2492
-      }
-    },
-    {
-      "path": "/applications/species/nannochloropsis",
-      "status": 200,
-      "title": "Nannochloropsis: Species Guide | Orr Biologicals",
-      "h1": [
-        "Nannochloropsis"
-      ],
-      "canonical": "https://orrbiologicals.com/applications/species/nannochloropsis",
-      "schemas": [
-        {
-          "@context": "https://schema.org",
-          "@graph": [
-            {
-              "@type": "Article",
-              "headline": "Nannochloropsis: Species Guide | Orr Biologicals",
-              "description": "Nannochloropsis — the tiny, hardy eustigmatophyte behind marine green water: appearance, culture traits, EPA content, and its role in rotifer and copepod systems.",
-              "image": "https://orrbiologicals.com/assets/images/library/species/nannochloropsis.svg",
-              "datePublished": "2026-08-31",
-              "dateModified": "2026-10-04",
-              "author": {
-                "@type": "Organization",
-                "name": "Orr Biologicals",
-                "url": "https://orrbiologicals.com/"
-              },
-              "publisher": {
-                "@type": "Organization",
-                "name": "Orr Biologicals",
-                "url": "https://orrbiologicals.com/"
-              },
-              "mainEntityOfPage": "https://orrbiologicals.com/applications/species/nannochloropsis"
-            },
-            {
-              "@type": "BreadcrumbList",
-              "itemListElement": [
-                {
-                  "@type": "ListItem",
-                  "position": 1,
-                  "name": "Orr Biologicals",
-                  "item": "https://orrbiologicals.com/"
-                },
-                {
-                  "@type": "ListItem",
-                  "position": 2,
-                  "name": "Applications",
-                  "item": "https://orrbiologicals.com/applications/"
-                },
-                {
-                  "@type": "ListItem",
-                  "position": 3,
-                  "name": "Species",
-                  "item": "https://orrbiologicals.com/applications/#species"
-                },
-                {
-                  "@type": "ListItem",
-                  "position": 4,
-                  "name": "Nannochloropsis: Species Guide | Orr Biologicals",
-                  "item": "https://orrbiologicals.com/applications/species/nannochloropsis"
-                }
-              ]
-            },
-            {
-              "@type": "FAQPage",
-              "mainEntity": [
-                {
-                  "@type": "Question",
-                  "name": "Why is Nannochloropsis so popular?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Hardiness, high density, EPA content and small cell size. It is the species most likely to survive a beginner's learning curve."
-                  }
-                },
-                {
-                  "@type": "Question",
-                  "name": "Can copepods live on Nannochloropsis alone?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Some can; many do better on a mixed diet that includes flagellates, and its thick wall defeats some grazers. See our copepod culture comparison."
-                  }
-                },
-                {
-                  "@type": "Question",
-                  "name": "Is Nannochloropsis a green alga?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "It looks like one, but taxonomically it is an eustigmatophyte — a different lineage with a very small chloroplast and no chlorophyll b."
-                  }
-                }
-              ]
-            }
-          ]
-        }
-      ],
-      "nav": [
-        {
-          "ttfb": 27.399999991059303,
-          "domContentLoaded": 199.3999999910593
-        }
-      ],
-      "metrics": {
-        "lcp": 216,
-        "cls": 0.02747302794456482,
-        "longTasks": [
-          51
-        ]
-      },
-      "payload": {
-        "requests": 6,
-        "transferred": 41326,
-        "js": 8887,
-        "css": 26326,
-        "images": 4911
-      }
-    },
-    {
-      "path": "/applications/species/pavlova",
-      "status": 200,
-      "title": "Pavlova: Species Guide | Orr Biologicals",
-      "h1": [
-        "Pavlova"
-      ],
-      "canonical": "https://orrbiologicals.com/applications/species/pavlova",
-      "schemas": [
-        {
-          "@context": "https://schema.org",
-          "@graph": [
-            {
-              "@type": "Article",
-              "headline": "Pavlova: Species Guide | Orr Biologicals",
-              "description": "Pavlova lutheri — the small haptophyte flagellate prized in bivalve hatcheries: appearance, culture traits, EPA and DHA profile, and how it compares to Isochrysis.",
-              "image": "https://orrbiologicals.com/assets/images/library/species/pavlova.svg",
-              "datePublished": "2026-08-31",
-              "dateModified": "2026-10-04",
-              "author": {
-                "@type": "Organization",
-                "name": "Orr Biologicals",
-                "url": "https://orrbiologicals.com/"
-              },
-              "publisher": {
-                "@type": "Organization",
-                "name": "Orr Biologicals",
-                "url": "https://orrbiologicals.com/"
-              },
-              "mainEntityOfPage": "https://orrbiologicals.com/applications/species/pavlova"
-            },
-            {
-              "@type": "BreadcrumbList",
-              "itemListElement": [
-                {
-                  "@type": "ListItem",
-                  "position": 1,
-                  "name": "Orr Biologicals",
-                  "item": "https://orrbiologicals.com/"
-                },
-                {
-                  "@type": "ListItem",
-                  "position": 2,
-                  "name": "Applications",
-                  "item": "https://orrbiologicals.com/applications/"
-                },
-                {
-                  "@type": "ListItem",
-                  "position": 3,
-                  "name": "Species",
-                  "item": "https://orrbiologicals.com/applications/#species"
-                },
-                {
-                  "@type": "ListItem",
-                  "position": 4,
-                  "name": "Pavlova: Species Guide | Orr Biologicals",
-                  "item": "https://orrbiologicals.com/applications/species/pavlova"
-                }
-              ]
-            },
-            {
-              "@type": "FAQPage",
-              "mainEntity": [
-                {
-                  "@type": "Question",
-                  "name": "Is Pavlova hard to culture?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "It is moderately demanding — easier than Rhodomonas, less indifferent to neglect than Nannochloropsis. Clean technique and steady conditions suit it."
-                  }
-                },
-                {
-                  "@type": "Question",
-                  "name": "What do strain designations like 'Pavlova 410' mean?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "They identify specific isolates held by culture collections. Strains of the same species can differ measurably in growth and composition."
-                  }
-                },
-                {
-                  "@type": "Question",
-                  "name": "Can Pavlova replace Isochrysis in a feed protocol?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Sometimes, but not blindly — the fatty-acid balance changes. See our comparison article for what to watch."
-                  }
-                }
-              ]
-            }
-          ]
-        }
-      ],
-      "nav": [
-        {
-          "ttfb": 23.30000001192093,
-          "domContentLoaded": 184.30000001192093
-        }
-      ],
-      "metrics": {
-        "lcp": 224,
-        "cls": 0.027368589878082272,
-        "longTasks": [
-          55
-        ]
-      },
-      "payload": {
-        "requests": 7,
-        "transferred": 39680,
-        "js": 8887,
-        "css": 26326,
-        "images": 3265
-      }
-    },
-    {
-      "path": "/applications/species/phaeodactylum",
-      "status": 200,
-      "title": "Phaeodactylum: Species Guide | Orr Biologicals",
-      "h1": [
-        "Phaeodactylum"
-      ],
-      "canonical": "https://orrbiologicals.com/applications/species/phaeodactylum",
-      "schemas": [
-        {
-          "@context": "https://schema.org",
-          "@graph": [
-            {
-              "@type": "Article",
-              "headline": "Phaeodactylum: Species Guide | Orr Biologicals",
-              "description": "Phaeodactylum tricornutum — the model marine diatom: fusiform shapes, EPA-rich lipids, fucoxanthin, and why researchers and feed rooms both keep it.",
-              "image": "https://orrbiologicals.com/assets/images/library/species/phaeodactylum.svg",
-              "datePublished": "2026-08-31",
-              "dateModified": "2026-10-04",
-              "author": {
-                "@type": "Organization",
-                "name": "Orr Biologicals",
-                "url": "https://orrbiologicals.com/"
-              },
-              "publisher": {
-                "@type": "Organization",
-                "name": "Orr Biologicals",
-                "url": "https://orrbiologicals.com/"
-              },
-              "mainEntityOfPage": "https://orrbiologicals.com/applications/species/phaeodactylum"
-            },
-            {
-              "@type": "BreadcrumbList",
-              "itemListElement": [
-                {
-                  "@type": "ListItem",
-                  "position": 1,
-                  "name": "Orr Biologicals",
-                  "item": "https://orrbiologicals.com/"
-                },
-                {
-                  "@type": "ListItem",
-                  "position": 2,
-                  "name": "Applications",
-                  "item": "https://orrbiologicals.com/applications/"
-                },
-                {
-                  "@type": "ListItem",
-                  "position": 3,
-                  "name": "Species",
-                  "item": "https://orrbiologicals.com/applications/#species"
-                },
-                {
-                  "@type": "ListItem",
-                  "position": 4,
-                  "name": "Phaeodactylum: Species Guide | Orr Biologicals",
-                  "item": "https://orrbiologicals.com/applications/species/phaeodactylum"
-                }
-              ]
-            },
-            {
-              "@type": "FAQPage",
-              "mainEntity": [
-                {
-                  "@type": "Question",
-                  "name": "Why is Phaeodactylum called a model organism?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "It was an early diatom with a published genome and has the best genetic tools of any diatom. Much of what is known about diatom metabolism comes from studying it."
-                  }
-                },
-                {
-                  "@type": "Question",
-                  "name": "Why does it have three shapes?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "It is pleomorphic — fusiform, triradiate and oval forms appear depending on conditions and strain. The fusiform form is what most cultures maintain."
-                  }
-                },
-                {
-                  "@type": "Question",
-                  "name": "Do I need to add silica?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "For any diatom, yes: silicate is a structural nutrient for the cell wall. Standard marine media such as f/2 include it."
-                  }
-                }
-              ]
-            }
-          ]
-        }
-      ],
-      "nav": [
-        {
-          "ttfb": 24.799999997019768,
-          "domContentLoaded": 177.3999999910593
-        }
-      ],
-      "metrics": {
-        "lcp": 212,
-        "cls": 0.027449499368667602,
-        "longTasks": [
-          56
-        ]
-      },
-      "payload": {
-        "requests": 6,
-        "transferred": 38041,
-        "js": 8887,
-        "css": 26326,
-        "images": 1626
-      }
-    },
-    {
-      "path": "/applications/species/tetraselmis",
-      "status": 200,
-      "title": "Tetraselmis: Species Guide | Orr Biologicals",
-      "h1": [
-        "Tetraselmis"
-      ],
-      "canonical": "https://orrbiologicals.com/applications/species/tetraselmis",
-      "schemas": [
-        {
-          "@context": "https://schema.org",
-          "@graph": [
-            {
-              "@type": "Article",
-              "headline": "Tetraselmis: Species Guide | Orr Biologicals",
-              "description": "Tetraselmis — the larger motile green flagellate with starch and lipid reserves: appearance, culture traits, aquaculture uses and reported antibacterial activity.",
-              "image": "https://orrbiologicals.com/assets/images/library/species/tetraselmis.svg",
-              "datePublished": "2026-08-31",
-              "dateModified": "2026-10-04",
-              "author": {
-                "@type": "Organization",
-                "name": "Orr Biologicals",
-                "url": "https://orrbiologicals.com/"
-              },
-              "publisher": {
-                "@type": "Organization",
-                "name": "Orr Biologicals",
-                "url": "https://orrbiologicals.com/"
-              },
-              "mainEntityOfPage": "https://orrbiologicals.com/applications/species/tetraselmis"
-            },
-            {
-              "@type": "BreadcrumbList",
-              "itemListElement": [
-                {
-                  "@type": "ListItem",
-                  "position": 1,
-                  "name": "Orr Biologicals",
-                  "item": "https://orrbiologicals.com/"
-                },
-                {
-                  "@type": "ListItem",
-                  "position": 2,
-                  "name": "Applications",
-                  "item": "https://orrbiologicals.com/applications/"
-                },
-                {
-                  "@type": "ListItem",
-                  "position": 3,
-                  "name": "Species",
-                  "item": "https://orrbiologicals.com/applications/#species"
-                },
-                {
-                  "@type": "ListItem",
-                  "position": 4,
-                  "name": "Tetraselmis: Species Guide | Orr Biologicals",
-                  "item": "https://orrbiologicals.com/applications/species/tetraselmis"
-                }
-              ]
-            },
-            {
-              "@type": "FAQPage",
-              "mainEntity": [
-                {
-                  "@type": "Question",
-                  "name": "Is Tetraselmis good for beginners?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Yes — among the most forgiving marine species, which is why it pairs with Nannochloropsis as a standard starter pair."
-                  }
-                },
-                {
-                  "@type": "Question",
-                  "name": "Why is Tetraselmis described as antibacterial?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Several studies report antibacterial effects from Tetraselmis cells or extracts in larviculture. Promising and increasingly used, but not a substitute for hygiene."
-                  }
-                },
-                {
-                  "@type": "Question",
-                  "name": "Tetraselmis vs Chlorella?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Both green algae; Tetraselmis is marine-friendly, larger and motile, Chlorella smaller, non-motile and mostly freshwater. They rarely substitute for each other."
-                  }
-                }
-              ]
-            }
-          ]
-        }
-      ],
-      "nav": [
-        {
-          "ttfb": 24.400000005960464,
-          "domContentLoaded": 171.40000000596046
-        }
-      ],
-      "metrics": {
-        "lcp": 188,
-        "cls": 0.027420808911323546,
-        "longTasks": [
-          54
-        ]
-      },
-      "payload": {
-        "requests": 6,
-        "transferred": 39329,
-        "js": 8887,
-        "css": 26326,
-        "images": 2914
-      }
-    },
-    {
-      "path": "/applications/why-isochrysis-matters-aquaculture",
-      "status": 200,
-      "title": "Why Isochrysis (T-Iso) Matters in Aquaculture | Orr Biologicals",
-      "h1": [
-        "Why Isochrysis Matters in Aquaculture"
-      ],
-      "canonical": "https://orrbiologicals.com/applications/why-isochrysis-matters-aquaculture",
-      "schemas": [
-        {
-          "@context": "https://schema.org",
-          "@graph": [
-            {
-              "@type": "Article",
-              "headline": "Why Isochrysis (T-Iso) Matters in Aquaculture | Orr Biologicals",
-              "description": "Isochrysis is the marine hatchery's default flagellate: small, wall-free, DHA-rich and easy to culture. What it is, what it feeds, and where it falls short.",
-              "image": "https://orrbiologicals.com/assets/images/library/isochrysis-cells.svg",
-              "datePublished": "2026-08-31",
-              "dateModified": "2026-10-04",
-              "author": {
-                "@type": "Organization",
-                "name": "Orr Biologicals",
-                "url": "https://orrbiologicals.com/"
-              },
-              "publisher": {
-                "@type": "Organization",
-                "name": "Orr Biologicals",
-                "url": "https://orrbiologicals.com/"
-              },
-              "mainEntityOfPage": "https://orrbiologicals.com/applications/why-isochrysis-matters-aquaculture"
-            },
-            {
-              "@type": "BreadcrumbList",
-              "itemListElement": [
-                {
-                  "@type": "ListItem",
-                  "position": 1,
-                  "name": "Orr Biologicals",
-                  "item": "https://orrbiologicals.com/"
-                },
-                {
-                  "@type": "ListItem",
-                  "position": 2,
-                  "name": "Applications",
-                  "item": "https://orrbiologicals.com/applications/"
-                },
-                {
-                  "@type": "ListItem",
-                  "position": 3,
-                  "name": "Why Isochrysis (T-Iso) Matters in Aquaculture | Orr Biologicals",
-                  "item": "https://orrbiologicals.com/applications/why-isochrysis-matters-aquaculture"
-                }
-              ]
-            },
-            {
-              "@type": "FAQPage",
-              "mainEntity": [
-                {
-                  "@type": "Question",
-                  "name": "Is Isochrysis the same as T-Iso?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Not quite. T-Iso (now Tisochrysis lutea) is a thermotolerant strain selected from Isochrysis galbana; it tolerates warmer culture conditions than the original strain. Both are small haptophyte flagellates used the same way, and both are often just called 'Iso'."
-                  }
-                },
-                {
-                  "@type": "Question",
-                  "name": "Why is Isochrysis so widely used in hatcheries?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Because it ticks the practical boxes at once: small cells suitable for first-feeding larvae and bivalves, no rigid cell wall (easy to digest), a DHA-rich lipid profile, and cultures that grow reliably under hatchery conditions."
-                  }
-                },
-                {
-                  "@type": "Question",
-                  "name": "What are Isochrysis's weaknesses?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "It is less hardy than Nannochloropsis or Tetraselmis, can be outcompeted by contaminants, and is a poor sole diet where EPA-heavy rations are needed. Most hatcheries blend it rather than rely on it alone."
-                  }
-                }
-              ]
-            }
-          ]
-        }
-      ],
-      "nav": [
-        {
-          "ttfb": 26.899999991059303,
-          "domContentLoaded": 197.8999999910593
-        }
-      ],
-      "metrics": {
-        "lcp": 216,
-        "cls": 0.027148909807205197,
-        "longTasks": []
-      },
-      "payload": {
-        "requests": 6,
-        "transferred": 39696,
-        "js": 8887,
-        "css": 26326,
-        "images": 3281
+        "requests": 9,
+        "transferred": 71695,
+        "js": 9760,
+        "css": 61144,
+        "images": 791
       }
     },
     {
@@ -2647,21 +233,21 @@
       ],
       "nav": [
         {
-          "ttfb": 27.799999997019768,
-          "domContentLoaded": 220.59999999403954
+          "ttfb": 3.5,
+          "domContentLoaded": 34.400000005960464
         }
       ],
       "metrics": {
-        "lcp": 252,
-        "cls": 0.1686610008213255,
+        "lcp": null,
+        "cls": 0.018480119228363037,
         "longTasks": []
       },
       "payload": {
-        "requests": 5,
-        "transferred": 36415,
-        "js": 8887,
-        "css": 26326,
-        "images": 0
+        "requests": 9,
+        "transferred": 71695,
+        "js": 9760,
+        "css": 61144,
+        "images": 791
       }
     },
     {
@@ -2719,21 +305,21 @@
       ],
       "nav": [
         {
-          "ttfb": 25,
-          "domContentLoaded": 188.1000000089407
+          "ttfb": 4,
+          "domContentLoaded": 31.69999998807907
         }
       ],
       "metrics": {
-        "lcp": 216,
-        "cls": 0.16802928125858307,
+        "lcp": null,
+        "cls": 0,
         "longTasks": []
       },
       "payload": {
-        "requests": 5,
-        "transferred": 36415,
-        "js": 8887,
-        "css": 26326,
-        "images": 0
+        "requests": 9,
+        "transferred": 71695,
+        "js": 9760,
+        "css": 61144,
+        "images": 791
       }
     },
     {
@@ -2791,21 +377,21 @@
       ],
       "nav": [
         {
-          "ttfb": 27.599999994039536,
-          "domContentLoaded": 192.69999998807907
+          "ttfb": 4,
+          "domContentLoaded": 40.599999994039536
         }
       ],
       "metrics": {
-        "lcp": 212,
-        "cls": 0.16812883627414704,
+        "lcp": null,
+        "cls": 0,
         "longTasks": []
       },
       "payload": {
-        "requests": 5,
-        "transferred": 36415,
-        "js": 8887,
-        "css": 26326,
-        "images": 0
+        "requests": 9,
+        "transferred": 71695,
+        "js": 9760,
+        "css": 61144,
+        "images": 791
       }
     },
     {
@@ -2863,21 +449,21 @@
       ],
       "nav": [
         {
-          "ttfb": 27.700000002980232,
-          "domContentLoaded": 199.5
+          "ttfb": 4.4000000059604645,
+          "domContentLoaded": 36.099999994039536
         }
       ],
       "metrics": {
-        "lcp": 216,
-        "cls": 0.16724695731533898,
+        "lcp": 44,
+        "cls": 0.014024714165263704,
         "longTasks": []
       },
       "payload": {
-        "requests": 5,
-        "transferred": 36415,
-        "js": 8887,
-        "css": 26326,
-        "images": 0
+        "requests": 9,
+        "transferred": 71695,
+        "js": 9760,
+        "css": 61144,
+        "images": 791
       }
     },
     {
@@ -2935,23 +521,21 @@
       ],
       "nav": [
         {
-          "ttfb": 20.299999997019768,
-          "domContentLoaded": 173.3999999910593
+          "ttfb": 4.199999988079071,
+          "domContentLoaded": 35.5
         }
       ],
       "metrics": {
-        "lcp": 196,
-        "cls": 0.17325240770975747,
-        "longTasks": [
-          53
-        ]
+        "lcp": 48,
+        "cls": 0,
+        "longTasks": []
       },
       "payload": {
-        "requests": 5,
-        "transferred": 36415,
-        "js": 8887,
-        "css": 26326,
-        "images": 0
+        "requests": 9,
+        "transferred": 71695,
+        "js": 9760,
+        "css": 61144,
+        "images": 791
       }
     },
     {
@@ -3009,21 +593,21 @@
       ],
       "nav": [
         {
-          "ttfb": 27.69999998807907,
-          "domContentLoaded": 180.5
+          "ttfb": 4.5,
+          "domContentLoaded": 33.70000001788139
         }
       ],
       "metrics": {
-        "lcp": 200,
-        "cls": 0.16720487386650507,
+        "lcp": null,
+        "cls": 0.018449623982111613,
         "longTasks": []
       },
       "payload": {
-        "requests": 5,
-        "transferred": 36415,
-        "js": 8887,
-        "css": 26326,
-        "images": 0
+        "requests": 9,
+        "transferred": 71695,
+        "js": 9760,
+        "css": 61144,
+        "images": 791
       }
     },
     {
@@ -3081,23 +665,21 @@
       ],
       "nav": [
         {
-          "ttfb": 26.799999997019768,
-          "domContentLoaded": 211.20000000298023
+          "ttfb": 4.0999999940395355,
+          "domContentLoaded": 30
         }
       ],
       "metrics": {
-        "lcp": 224,
-        "cls": 0.17094810675250158,
-        "longTasks": [
-          51
-        ]
+        "lcp": null,
+        "cls": 0.018449623982111613,
+        "longTasks": []
       },
       "payload": {
-        "requests": 5,
-        "transferred": 36415,
-        "js": 8887,
-        "css": 26326,
-        "images": 0
+        "requests": 9,
+        "transferred": 71695,
+        "js": 9760,
+        "css": 61144,
+        "images": 791
       }
     },
     {
@@ -3155,21 +737,21 @@
       ],
       "nav": [
         {
-          "ttfb": 24.80000001192093,
-          "domContentLoaded": 181.6000000089407
+          "ttfb": 3.899999976158142,
+          "domContentLoaded": 35.5
         }
       ],
       "metrics": {
-        "lcp": 196,
-        "cls": 0.19417971316973368,
+        "lcp": null,
+        "cls": 0,
         "longTasks": []
       },
       "payload": {
-        "requests": 5,
-        "transferred": 36415,
-        "js": 8887,
-        "css": 26326,
-        "images": 0
+        "requests": 9,
+        "transferred": 71695,
+        "js": 9760,
+        "css": 61144,
+        "images": 791
       }
     },
     {
@@ -3227,21 +809,21 @@
       ],
       "nav": [
         {
-          "ttfb": 28.700000002980232,
-          "domContentLoaded": 207.3999999910593
+          "ttfb": 5,
+          "domContentLoaded": 33.5
         }
       ],
       "metrics": {
-        "lcp": 232,
-        "cls": 0.1652644839419259,
+        "lcp": 44,
+        "cls": 0.018449623982111613,
         "longTasks": []
       },
       "payload": {
-        "requests": 5,
-        "transferred": 36415,
-        "js": 8887,
-        "css": 26326,
-        "images": 0
+        "requests": 9,
+        "transferred": 71695,
+        "js": 9760,
+        "css": 61144,
+        "images": 791
       }
     },
     {
@@ -3299,23 +881,21 @@
       ],
       "nav": [
         {
-          "ttfb": 29,
-          "domContentLoaded": 182.59999999403954
+          "ttfb": 4.4000000059604645,
+          "domContentLoaded": 31.5
         }
       ],
       "metrics": {
-        "lcp": 204,
-        "cls": 0.17040808023346796,
-        "longTasks": [
-          52
-        ]
+        "lcp": 44,
+        "cls": 0,
+        "longTasks": []
       },
       "payload": {
-        "requests": 5,
-        "transferred": 36415,
-        "js": 8887,
-        "css": 26326,
-        "images": 0
+        "requests": 9,
+        "transferred": 71695,
+        "js": 9760,
+        "css": 61144,
+        "images": 791
       }
     },
     {
@@ -3373,21 +953,21 @@
       ],
       "nav": [
         {
-          "ttfb": 28,
-          "domContentLoaded": 179.8999999910593
+          "ttfb": 4.800000011920929,
+          "domContentLoaded": 35.10000002384186
         }
       ],
       "metrics": {
-        "lcp": 200,
-        "cls": 0.1477236040830612,
+        "lcp": 44,
+        "cls": 0.014024714165263704,
         "longTasks": []
       },
       "payload": {
-        "requests": 5,
-        "transferred": 36415,
-        "js": 8887,
-        "css": 26326,
-        "images": 0
+        "requests": 9,
+        "transferred": 71695,
+        "js": 9760,
+        "css": 61144,
+        "images": 791
       }
     },
     {
@@ -3409,23 +989,21 @@
       ],
       "nav": [
         {
-          "ttfb": 23.900000005960464,
-          "domContentLoaded": 289.6000000089407
+          "ttfb": 3.9000000059604645,
+          "domContentLoaded": 45.19999998807907
         }
       ],
       "metrics": {
-        "lcp": 352,
-        "cls": 0.10931148910522462,
-        "longTasks": [
-          168
-        ]
+        "lcp": null,
+        "cls": 0,
+        "longTasks": []
       },
       "payload": {
-        "requests": 10,
-        "transferred": 763638,
-        "js": 8887,
-        "css": 26326,
-        "images": 648064
+        "requests": 13,
+        "transferred": 603601,
+        "js": 9760,
+        "css": 61144,
+        "images": 418121
       }
     },
     {
@@ -3483,21 +1061,21 @@
       ],
       "nav": [
         {
-          "ttfb": 21,
-          "domContentLoaded": 184.09999999403954
+          "ttfb": 4.9000000059604645,
+          "domContentLoaded": 32.900000005960464
         }
       ],
       "metrics": {
-        "lcp": 212,
-        "cls": 0.14801791371239556,
+        "lcp": 44,
+        "cls": 0.014024714165263704,
         "longTasks": []
       },
       "payload": {
-        "requests": 5,
-        "transferred": 36415,
-        "js": 8887,
-        "css": 26326,
-        "images": 0
+        "requests": 9,
+        "transferred": 71695,
+        "js": 9760,
+        "css": 61144,
+        "images": 791
       }
     },
     {
@@ -3555,23 +1133,21 @@
       ],
       "nav": [
         {
-          "ttfb": 23.599999994039536,
-          "domContentLoaded": 174
+          "ttfb": 3.4000000059604645,
+          "domContentLoaded": 27.30000001192093
         }
       ],
       "metrics": {
-        "lcp": 192,
-        "cls": 0.15248551440238953,
-        "longTasks": [
-          50
-        ]
+        "lcp": 36,
+        "cls": 0.014047895510991414,
+        "longTasks": []
       },
       "payload": {
-        "requests": 5,
-        "transferred": 36415,
-        "js": 8887,
-        "css": 26326,
-        "images": 0
+        "requests": 9,
+        "transferred": 71695,
+        "js": 9760,
+        "css": 61144,
+        "images": 791
       }
     },
     {
@@ -3629,21 +1205,21 @@
       ],
       "nav": [
         {
-          "ttfb": 20.700000002980232,
-          "domContentLoaded": 174.70000000298023
+          "ttfb": 3,
+          "domContentLoaded": 32.599999994039536
         }
       ],
       "metrics": {
-        "lcp": 196,
-        "cls": 0.16907796560393437,
+        "lcp": 44,
+        "cls": 0.014024714165263704,
         "longTasks": []
       },
       "payload": {
-        "requests": 5,
-        "transferred": 36415,
-        "js": 8887,
-        "css": 26326,
-        "images": 0
+        "requests": 9,
+        "transferred": 71695,
+        "js": 9760,
+        "css": 61144,
+        "images": 791
       }
     },
     {
@@ -3704,21 +1280,21 @@
       ],
       "nav": [
         {
-          "ttfb": 25,
-          "domContentLoaded": 159.70000000298023
+          "ttfb": 4.200000017881393,
+          "domContentLoaded": 36.099999994039536
         }
       ],
       "metrics": {
         "lcp": null,
-        "cls": 0.019221883138020833,
+        "cls": 0,
         "longTasks": []
       },
       "payload": {
-        "requests": 4,
-        "transferred": 35213,
-        "js": 8887,
-        "css": 26326,
-        "images": 0
+        "requests": 9,
+        "transferred": 71695,
+        "js": 9760,
+        "css": 61144,
+        "images": 791
       }
     },
     {
@@ -3776,21 +1352,21 @@
       ],
       "nav": [
         {
-          "ttfb": 28,
-          "domContentLoaded": 183.79999999701977
+          "ttfb": 4.9000000059604645,
+          "domContentLoaded": 32.099999994039536
         }
       ],
       "metrics": {
-        "lcp": 204,
-        "cls": 0.1673716886970732,
+        "lcp": 40,
+        "cls": 0.02804942833052741,
         "longTasks": []
       },
       "payload": {
-        "requests": 5,
-        "transferred": 36415,
-        "js": 8887,
-        "css": 26326,
-        "images": 0
+        "requests": 9,
+        "transferred": 71695,
+        "js": 9760,
+        "css": 61144,
+        "images": 791
       }
     },
     {
@@ -3848,21 +1424,21 @@
       ],
       "nav": [
         {
-          "ttfb": 27,
-          "domContentLoaded": 192.29999999701977
+          "ttfb": 3.300000011920929,
+          "domContentLoaded": 39.400000005960464
         }
       ],
       "metrics": {
-        "lcp": 208,
-        "cls": 0.15559156506591373,
+        "lcp": 56,
+        "cls": 0.014024714165263704,
         "longTasks": []
       },
       "payload": {
-        "requests": 5,
-        "transferred": 36415,
-        "js": 8887,
-        "css": 26326,
-        "images": 0
+        "requests": 9,
+        "transferred": 71695,
+        "js": 9760,
+        "css": 61144,
+        "images": 791
       }
     },
     {
@@ -3920,21 +1496,21 @@
       ],
       "nav": [
         {
-          "ttfb": 28,
-          "domContentLoaded": 182.59999999403954
+          "ttfb": 4,
+          "domContentLoaded": 40.30000001192093
         }
       ],
       "metrics": {
-        "lcp": 204,
-        "cls": 0.1499588103691737,
+        "lcp": 48,
+        "cls": 0.014024714165263704,
         "longTasks": []
       },
       "payload": {
-        "requests": 5,
-        "transferred": 36415,
-        "js": 8887,
-        "css": 26326,
-        "images": 0
+        "requests": 9,
+        "transferred": 71695,
+        "js": 9760,
+        "css": 61144,
+        "images": 791
       }
     },
     {
@@ -3992,21 +1568,21 @@
       ],
       "nav": [
         {
-          "ttfb": 28.5,
-          "domContentLoaded": 183.90000000596046
+          "ttfb": 3.699999988079071,
+          "domContentLoaded": 37.5
         }
       ],
       "metrics": {
-        "lcp": 200,
-        "cls": 0.1524418525695801,
+        "lcp": 48,
+        "cls": 0.014047895510991414,
         "longTasks": []
       },
       "payload": {
-        "requests": 5,
-        "transferred": 36415,
-        "js": 8887,
-        "css": 26326,
-        "images": 0
+        "requests": 9,
+        "transferred": 71695,
+        "js": 9760,
+        "css": 61144,
+        "images": 791
       }
     },
     {
@@ -4064,23 +1640,21 @@
       ],
       "nav": [
         {
-          "ttfb": 27.19999998807907,
-          "domContentLoaded": 195.79999999701977
+          "ttfb": 3.5999999940395355,
+          "domContentLoaded": 44.20000001788139
         }
       ],
       "metrics": {
-        "lcp": 216,
-        "cls": 0.1730704909298155,
-        "longTasks": [
-          51
-        ]
+        "lcp": 56,
+        "cls": 0,
+        "longTasks": []
       },
       "payload": {
-        "requests": 5,
-        "transferred": 36415,
-        "js": 8887,
-        "css": 26326,
-        "images": 0
+        "requests": 9,
+        "transferred": 71695,
+        "js": 9760,
+        "css": 61144,
+        "images": 791
       }
     },
     {
@@ -4138,21 +1712,21 @@
       ],
       "nav": [
         {
-          "ttfb": 28,
-          "domContentLoaded": 190.90000000596046
+          "ttfb": 7.4000000059604645,
+          "domContentLoaded": 55.900000005960464
         }
       ],
       "metrics": {
-        "lcp": 212,
-        "cls": 0.17088679916328853,
+        "lcp": 72,
+        "cls": 0.018449623982111613,
         "longTasks": []
       },
       "payload": {
-        "requests": 5,
-        "transferred": 36415,
-        "js": 8887,
-        "css": 26326,
-        "images": 0
+        "requests": 9,
+        "transferred": 71695,
+        "js": 9760,
+        "css": 61144,
+        "images": 791
       }
     },
     {
@@ -4210,23 +1784,21 @@
       ],
       "nav": [
         {
-          "ttfb": 21,
-          "domContentLoaded": 179.20000000298023
+          "ttfb": 6.199999988079071,
+          "domContentLoaded": 48.599999994039536
         }
       ],
       "metrics": {
-        "lcp": 200,
-        "cls": 0.1475418123404185,
-        "longTasks": [
-          52
-        ]
+        "lcp": 56,
+        "cls": 0.014071076856719123,
+        "longTasks": []
       },
       "payload": {
-        "requests": 5,
-        "transferred": 36415,
-        "js": 8887,
-        "css": 26326,
-        "images": 0
+        "requests": 9,
+        "transferred": 71695,
+        "js": 9760,
+        "css": 61144,
+        "images": 791
       }
     },
     {
@@ -4284,21 +1856,21 @@
       ],
       "nav": [
         {
-          "ttfb": 29.900000005960464,
-          "domContentLoaded": 183
+          "ttfb": 6.9000000059604645,
+          "domContentLoaded": 66
         }
       ],
       "metrics": {
-        "lcp": 200,
-        "cls": 0.14939099033673606,
+        "lcp": 72,
+        "cls": 0.014047895510991414,
         "longTasks": []
       },
       "payload": {
-        "requests": 5,
-        "transferred": 36415,
-        "js": 8887,
-        "css": 26326,
-        "images": 0
+        "requests": 9,
+        "transferred": 71695,
+        "js": 9760,
+        "css": 61144,
+        "images": 791
       }
     },
     {
@@ -4356,24 +1928,21 @@
       ],
       "nav": [
         {
-          "ttfb": 26.099999994039536,
-          "domContentLoaded": 1228.7999999970198
+          "ttfb": 5.600000023841858,
+          "domContentLoaded": 226.60000002384186
         }
       ],
       "metrics": {
-        "lcp": 1232,
-        "cls": 0.00045387211110856795,
-        "longTasks": [
-          200,
-          343
-        ]
+        "lcp": 220,
+        "cls": 0,
+        "longTasks": []
       },
       "payload": {
-        "requests": 12,
-        "transferred": 898494,
-        "js": 39319,
-        "css": 26326,
-        "images": 831614
+        "requests": 14,
+        "transferred": 620844,
+        "js": 40758,
+        "css": 94152,
+        "images": 485934
       }
     },
     {
@@ -4395,20 +1964,22 @@
       ],
       "nav": [
         {
-          "ttfb": 30.399999991059303,
-          "domContentLoaded": 405.69999998807907
+          "ttfb": 7.9000000059604645,
+          "domContentLoaded": 527.4000000059605
         }
       ],
       "metrics": {
-        "lcp": null,
-        "cls": 0.0034786302116182116,
-        "longTasks": []
+        "lcp": 736,
+        "cls": 0.002363367133670383,
+        "longTasks": [
+          128
+        ]
       },
       "payload": {
-        "requests": 8,
-        "transferred": 65384,
-        "js": 0,
-        "css": 14161,
+        "requests": 14,
+        "transferred": 111790,
+        "js": 6366,
+        "css": 53770,
         "images": 0
       }
     },
@@ -4423,21 +1994,21 @@
       "schemas": [],
       "nav": [
         {
-          "ttfb": 27.299999997019768,
-          "domContentLoaded": 327.59999999403954
+          "ttfb": 8.099999994039536,
+          "domContentLoaded": 203.7000000178814
         }
       ],
       "metrics": {
-        "lcp": 360,
-        "cls": 0.08503421510590448,
+        "lcp": null,
+        "cls": 0.032174344261487325,
         "longTasks": []
       },
       "payload": {
-        "requests": 5,
-        "transferred": 36250,
-        "js": 8887,
-        "css": 26326,
-        "images": 0
+        "requests": 9,
+        "transferred": 71695,
+        "js": 9760,
+        "css": 61144,
+        "images": 791
       }
     },
     {
@@ -4451,22 +2022,22 @@
       "schemas": [],
       "nav": [
         {
-          "ttfb": 28.799999997019768,
-          "domContentLoaded": 61.3999999910593
+          "ttfb": 10.400000005960464,
+          "domContentLoaded": 208.90000000596046
         }
       ],
       "metrics": {
         "lcp": null,
         "cls": 0,
         "longTasks": [
-          120
+          86
         ]
       },
       "payload": {
-        "requests": 3,
-        "transferred": 33203,
-        "js": 0,
-        "css": 32412,
+        "requests": 8,
+        "transferred": 49074,
+        "js": 6366,
+        "css": 41917,
         "images": 791
       }
     },
@@ -4514,29 +2085,29 @@
       ],
       "nav": [
         {
-          "ttfb": 33.29999999701977,
-          "domContentLoaded": 204.40000000596046
+          "ttfb": 10.799999982118607,
+          "domContentLoaded": 142.89999997615814
         }
       ],
       "metrics": {
         "lcp": null,
-        "cls": 0.019221883138020833,
+        "cls": 0.02039958424038357,
         "longTasks": []
       },
       "payload": {
-        "requests": 5,
-        "transferred": 36004,
-        "js": 8887,
-        "css": 26326,
+        "requests": 9,
+        "transferred": 71695,
+        "js": 9760,
+        "css": 61144,
         "images": 791
       }
     },
     {
       "path": "/",
       "status": 200,
-      "title": "Algae Biotechnology, Cultivation & Single-Cell Research | Orr Biologicals",
+      "title": "Orr Biologicals | Biotechnology Meets AI",
       "h1": [
-        "Algae biotechnologyresearch, cultivationand single cells."
+        "Where biotechnology meets AI.Reading living systems in motion — from single-cell discovery to bounded biological control."
       ],
       "canonical": "https://orrbiologicals.com/",
       "schemas": [
@@ -4550,7 +2121,7 @@
               "url": "https://orrbiologicals.com/",
               "email": "service@orrbiologicals.com",
               "logo": "https://orrbiologicals.com/assets/og.png",
-              "description": "Orr Biologicals is developing Algaephyte and Cyanoflow to make algae cultivation and single-cell research more accessible. The platforms are research concepts, not validated products."
+              "description": "Orr Biologicals pioneers AI systems for breakthroughs in biotechnology, computational biology, biological discovery, and intelligent scientific instrumentation. Our platforms are research concepts in development, not validated commercial products."
             },
             {
               "@type": "WebSite",
@@ -4563,9 +2134,19 @@
             },
             {
               "@type": "CreativeWork",
+              "@id": "https://orrbiologicals.com/#cyanoflow",
+              "name": "Cyanoflow research concept",
+              "description": "An autonomous environmental microfluidic and single-cell discovery concept for isolating, imaging, and investigating microalgae and cellular variation. In development; no validated hardware performance is claimed.",
+              "creator": {
+                "@id": "https://orrbiologicals.com/#org"
+              },
+              "url": "https://orrbiologicals.com/cyanoflow"
+            },
+            {
+              "@type": "CreativeWork",
               "@id": "https://orrbiologicals.com/#algaephyte",
               "name": "Algaephyte research concept",
-              "description": "A proposed microalgae cultivation system combining sensors, growth models, camera checks and independent actuator limits. In development; no validated performance or purchase availability is claimed.",
+              "description": "A proposed AI-assisted microalgae cultivation and biological monitoring system combining sensors, physics-informed growth models, camera checks, and independent actuator limits. In development; no validated performance or purchase availability is claimed.",
               "creator": {
                 "@id": "https://orrbiologicals.com/#org"
               },
@@ -4576,25 +2157,21 @@
       ],
       "nav": [
         {
-          "ttfb": 27.599999994039536,
-          "domContentLoaded": 1409.7000000029802
+          "ttfb": 7.5,
+          "domContentLoaded": 228.69999998807907
         }
       ],
       "metrics": {
-        "lcp": 880,
-        "cls": 0.03224377036094666,
-        "longTasks": [
-          102,
-          121,
-          309
-        ]
+        "lcp": 444,
+        "cls": 0,
+        "longTasks": []
       },
       "payload": {
-        "requests": 28,
-        "transferred": 392330,
-        "js": 37539,
-        "css": 84334,
-        "images": 268973
+        "requests": 25,
+        "transferred": 238984,
+        "js": 44403,
+        "css": 77402,
+        "images": 117179
       }
     },
     {
@@ -4641,8 +2218,8 @@
       ],
       "nav": [
         {
-          "ttfb": 21.700000002980232,
-          "domContentLoaded": 264.29999999701977
+          "ttfb": 8.400000005960464,
+          "domContentLoaded": 144.09999999403954
         }
       ],
       "metrics": {
@@ -4651,11 +2228,11 @@
         "longTasks": []
       },
       "payload": {
-        "requests": 4,
-        "transferred": 35213,
-        "js": 8887,
-        "css": 26326,
-        "images": 0
+        "requests": 9,
+        "transferred": 71695,
+        "js": 9760,
+        "css": 61144,
+        "images": 791
       }
     },
     {
@@ -4702,20 +2279,20 @@
       ],
       "nav": [
         {
-          "ttfb": 24.399999991059303,
-          "domContentLoaded": 148.59999999403954
+          "ttfb": 8.199999988079071,
+          "domContentLoaded": 109.19999998807907
         }
       ],
       "metrics": {
-        "lcp": 168,
-        "cls": 0.016401280721028647,
+        "lcp": 124,
+        "cls": 0.015974674423535666,
         "longTasks": []
       },
       "payload": {
-        "requests": 5,
-        "transferred": 36004,
-        "js": 8887,
-        "css": 26326,
+        "requests": 9,
+        "transferred": 71695,
+        "js": 9760,
+        "css": 61144,
         "images": 791
       }
     },
@@ -4730,21 +2307,21 @@
       "schemas": [],
       "nav": [
         {
-          "ttfb": 27.099999994039536,
-          "domContentLoaded": 190.8999999910593
+          "ttfb": 7.799999982118607,
+          "domContentLoaded": 115.19999998807907
         }
       ],
       "metrics": {
-        "lcp": 208,
-        "cls": 0.06266594632466635,
+        "lcp": 152,
+        "cls": 0,
         "longTasks": []
       },
       "payload": {
-        "requests": 5,
-        "transferred": 36250,
-        "js": 8887,
-        "css": 26326,
-        "images": 0
+        "requests": 9,
+        "transferred": 71695,
+        "js": 9760,
+        "css": 61144,
+        "images": 791
       }
     },
     {
@@ -4791,21 +2368,21 @@
       ],
       "nav": [
         {
-          "ttfb": 27.100000008940697,
-          "domContentLoaded": 165
+          "ttfb": 7.300000011920929,
+          "domContentLoaded": 106.2000000178814
         }
       ],
       "metrics": {
-        "lcp": null,
-        "cls": 0.016401280721028647,
+        "lcp": 120,
+        "cls": 0.015974674423535666,
         "longTasks": []
       },
       "payload": {
-        "requests": 4,
-        "transferred": 35213,
-        "js": 8887,
-        "css": 26326,
-        "images": 0
+        "requests": 9,
+        "transferred": 71695,
+        "js": 9760,
+        "css": 61144,
+        "images": 791
       }
     },
     {
@@ -4819,21 +2396,21 @@
       "schemas": [],
       "nav": [
         {
-          "ttfb": 20.299999997019768,
-          "domContentLoaded": 161.6000000089407
+          "ttfb": 9.799999982118607,
+          "domContentLoaded": 92.5
         }
       ],
       "metrics": {
-        "lcp": 176,
-        "cls": 0.09965864896774292,
+        "lcp": null,
+        "cls": 0,
         "longTasks": []
       },
       "payload": {
-        "requests": 5,
-        "transferred": 36250,
-        "js": 8887,
-        "css": 26326,
-        "images": 0
+        "requests": 9,
+        "transferred": 71695,
+        "js": 9760,
+        "css": 61144,
+        "images": 791
       }
     }
   ],
@@ -4885,16 +2462,6 @@
     },
     {
       "path": "/algaephyte/",
-      "width": 390,
-      "scrollWidth": 390
-    },
-    {
-      "path": "/applications/",
-      "width": 390,
-      "scrollWidth": 390
-    },
-    {
-      "path": "/applications/species/pavlova",
       "width": 390,
       "scrollWidth": 390
     }

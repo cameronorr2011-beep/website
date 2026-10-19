@@ -1,0 +1,55 @@
+{
+  "date": "2026-10-15",
+  "model": "openai/gpt-oss-120b",
+  "generated_at": "2026-10-15T22:49:03Z",
+  "picks": [
+    {
+      "pmid": "42869192",
+      "title": "Single-cell elemental analysis of Limnospira platensis and Chlorella vulgaris using novel downward-pointing inductively coupled plasma time-of-flight mass spectrometry with emphasis on iron bioaccumulation.",
+      "journal": "Bioresource technology",
+      "year": "2026",
+      "pub_date": "2026-10-13",
+      "url": "https://doi.org/10.1016/j.biortech.2026.136047",
+      "topic": "Single-cell",
+      "hook": "Novel ICP-TOF-MS reveals elemental makeup of Limnospira and Chlorella, linking nutrients to health benefits.",
+      "article": "A recent study set out to map how individual cells of two popular microalgae, Limnospira platensis and Chlorella vulgaris, accumulate essential minerals such as iron, calcium and magnesium. The researchers used a new type of inductively coupled plasma time‑of‑flight mass spectrometer that shoots the sample upward so that ions travel downward, allowing them to measure the elemental composition of single cells.\n\nThey applied this technique directly to cultures of the two algae, capturing the elemental signatures of many individual cells without needing to grind the biomass into a bulk sample. This approach revealed the distribution of iron and other minerals at the single‑cell level, highlighting differences that bulk measurements would miss.\n\nThe findings show that iron bioaccumulation can vary markedly between individual cells of the same species, providing a more nuanced picture of the nutritional potential of these microalgae.\n\nUnderstanding these cell‑to‑cell variations is useful for improving the nutritional quality of algae‑based foods and for optimizing cultivation strategies that aim to enhance mineral content.",
+      "why": "Knowing how individual algae cells store iron helps boost the nutritional value of algae foods."
+    },
+    {
+      "pmid": "42874982",
+      "title": "Health Risks of Cyanotoxin Contamination in Dietary Supplements: Mechanistic Insights into Organ-Specific Toxicity.",
+      "journal": "Food and chemical toxicology : an international journal published for the British Industrial Biological Research Association",
+      "year": "2026",
+      "pub_date": "2026-10-14",
+      "url": "https://doi.org/10.1016/j.fct.2026.116449",
+      "topic": "Health",
+      "hook": "Cyanotoxin residues in supplements trigger organ‑specific toxicity, warning consumers of hidden risks.",
+      "article": "A recent study set out to understand how toxins produced by cyanobacteria and microalgae end up in dietary supplements and what damage they can cause to different body organs. The researchers examined commercially available supplements made from Arthospira (formerly Spirulina), Aphanizomenon flos‑aqe, and Chlorella, looking at the molecular mechanisms behind organ‑specific toxicity.\n\nThey reviewed the occurrence of cyanotoxins in these products and compiled data on how the toxins interact with cellular pathways in various organs. The analysis focused on the biochemical processes that lead to damage in the liver, kidneys, and other tissues.\n\nThe study found that cyanotoxin contamination is present in the examined supplements and that the toxins trigger distinct molecular events that can harm specific organs, although the abstract does not provide exact quantitative results.\n\nUnderstanding these mechanisms is important because it helps assess the safety of popular algae‑based supplements and guides better regulation and consumer choices.",
+      "why": "It highlights potential health risks of algae supplements, informing safer use in everyday nutrition."
+    },
+    {
+      "pmid": "42862464",
+      "title": "Plastic-algae interactions in freshwater and marine systems: mechanisms, evidence and prospects for bioremediation.",
+      "journal": "World journal of microbiology &amp; biotechnology",
+      "year": "2026",
+      "pub_date": "2026-10-12",
+      "url": "https://doi.org/10.1007/s11274-026-05322-0",
+      "topic": "Environment",
+      "hook": "Plastic‑algae interactions uncover mechanisms that could turn polluted waters into bioremediation sites.",
+      "article": "A recent study set out to examine how plastics interact with algae in both freshwater and marine environments, and whether these interactions could be harnessed for cleaning up plastic pollution.\n\nThe authors reviewed peer‑reviewed research published between 2015 and 2020, focusing on the ways polymer fragments break down into micro‑ and nanoplastics that disperse through rivers, lakes and oceans and come into contact with algal cells.\n\nThe review found that algae can attract and bind plastic particles, offering a biological complement to physical and chemical cleanup methods. By attaching to plastics, algae may help aggregate or immobilize debris, although the abstract does not provide quantitative outcomes.\n\nUnderstanding these natural algae‑plastic associations could inform future bioremediation strategies that use algae to capture or degrade plastic waste.",
+      "why": "Algal binding of plastics may provide a low‑cost, eco‑friendly tool for reducing plastic pollution in water bodies."
+    },
+    {
+      "pmid": "42837622",
+      "title": "Cell-type-specific glutamine synthetase inhibition reveals the intercellular nitrogen economy in Anabaena sp. PCC 7120.",
+      "journal": "Plant physiology",
+      "year": "2026",
+      "pub_date": "2026-10-06",
+      "url": "https://doi.org/10.1093/plphys/kiag745",
+      "topic": "Engineering",
+      "hook": "Cell‑type‑specific glutamine synthetase inhibition maps nitrogen flow in Anabaena, aiding cyanobacterial engineering.",
+      "article": "A recent study set out to uncover how two different cell types in the filamentous cyanobacterium Anabaena share nitrogen. The researchers wanted to see what role the enzyme glutamine synthetase (GS), which incorporates nitrogen into organic molecules, plays in this partnership.\n\nThey used a genetic trick to turn off the GS gene only in one cell type at a time, allowing them to observe the effects of GS loss without affecting the whole organism. The work was done on the model strain Anabaena sp. PCC 7120, a filamentous cyanobacterium that forms nitrogen‑fixing heterocysts alongside photosynthetic vegetative cells.\n\nThe results showed that inhibiting GS in either cell type disrupted the normal nitrogen economy between the two, confirming that GS activity in both heterocysts and vegetative cells is essential for their coordinated nitrogen handling.\n\nUnderstanding this intercellular nitrogen sharing helps clarify fundamental cyanobacterial biology and could inform strategies to harness these microbes for sustainable nitrogen management.",
+      "why": "It reveals how cyanobacteria balance nitrogen, a key insight for developing algae‑based biofertilizers."
+    }
+  ]
+}

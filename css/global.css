@@ -1,23 +1,27 @@
-/* Orr Biologicals · shared scientific interface. Tokens are defined only here. */
+/* Orr Biologicals · shared scientific interface. Tokens are defined only here.
+   Art Direction: Living Botanical Monograph × Computational Bio-Intelligence */
 :root{
-  --void:#07130f;--void-2:#0d2118;--paper:#10291f;--paper-2:#16382a;
-  --ink:#edf6ef;--ink-soft:#c5d8ca;--mute:#91a99a;--rule:#284b3a;
-  --leaf:#9ac7a1;--leaf-2:#c0dfc4;--leaf-deep:#6db27e;--leaf-soft:#193b2a;
-  --cyan:#7ec9c0;--copper:#d2a86e;--warn:#dd8c7b;
-  --sans:"Space Grotesk","Avenir Next","Trebuchet MS",Arial,sans-serif;
-  --serif:"Fraunces","Iowan Old Style","Baskerville",Georgia,serif;--mono:"IBM Plex Mono","Cascadia Mono",Consolas,monospace;
-  --max:1200px;--radius:12px;--fast:140ms;--motion:240ms;--reveal:360ms;
+  /* Editorial botanical paper (primary reading surface) */
+  --void:#f6f2e8;--void-2:#ebe4d4;--paper:#fdfbf6;--paper-2:#e3dbc7;
+  --ink:#111914;--ink-soft:#344238;--mute:#5c6b5f;--rule:#cfc6b3;
+  --leaf:#1b4d32;--leaf-2:#133824;--leaf-deep:#0f2e1d;--leaf-soft:#e2ebe3;
+  --cyan:#0c6268;--copper:#996124;--warn:#b54434;
+  --sans:"Bricolage Grotesque","Space Grotesk","Avenir Next","Segoe UI",sans-serif;
+  --serif:"Newsreader","Fraunces","Iowan Old Style","Baskerville",Georgia,serif;
+  --mono:"IBM Plex Mono","Cascadia Mono",Consolas,monospace;
+  --max:1280px;--radius:10px;--fast:140ms;--motion:240ms;--reveal:360ms;
   --ease:cubic-bezier(.2,.65,.3,1);
-  --dvoid:#07130f;--dvoid-2:#0d2118;--dpanel:#10291f;--dpanel-2:#16382a;
-  --dink:#edf6ef;--dink-soft:#c5d8ca;--d-mute:#91a99a;--drule:#284b3a;
-  --dleaf:#a8d2ae;--dleaf-2:#c0dfc4;
+  /* Dark optical & computational instrument chassis (scoped to instrument/sim/notebook bands) */
+  --dvoid:#07130f;--dvoid-2:#0c1e17;--dpanel:#10261d;--dpanel-2:#153226;
+  --dink:#edf5ef;--dink-soft:#bdd1c2;--d-mute:#88a190;--drule:#244434;
+  --dleaf:#94d29f;--dleaf-2:#bde5c4;
   --orr-paper:var(--void);--orr-ink:var(--ink);--orr-ink-soft:var(--ink-soft);
   --orr-green:var(--leaf);--orr-lime:#dcebdc;--orr-line:var(--rule);
   --orr-hover:var(--leaf-deep);--orr-sans:var(--sans);--orr-mono:var(--mono);
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:96px}
-body{margin:0;background:linear-gradient(180deg,#081711 0,var(--void) 34rem),var(--void);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased}
+body{margin:0;background:var(--void);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
 img{display:block;max-width:100%;height:auto}
 a{color:inherit;text-decoration:none}
 button,input,select,textarea{font:inherit}
@@ -25,21 +29,22 @@ button{color:inherit;cursor:pointer}
 button:disabled{opacity:.55;cursor:not-allowed}
 button,a,input,select,textarea{touch-action:manipulation}
 button:active:not(:disabled),.btn:active{transform:translateY(1px)}
-:focus-visible{outline:3px solid var(--cyan);outline-offset:4px}
-::selection{background:#9ac7a1;color:#07130f}
+:focus-visible{outline:2.5px solid var(--leaf);outline-offset:3px}
+.section.dark :focus-visible,#simulation :focus-visible{outline-color:var(--dleaf)}
+::selection{background:var(--leaf);color:#fdfbf6}
 [hidden]{display:none!important}
 .wrap,.orr-container{width:min(100% - 48px,var(--max));margin-inline:auto;padding:0}
-.section,.orr-section{padding:clamp(72px,9vw,132px) 0;border-top:1px solid var(--rule)}
+.section,.orr-section{padding:clamp(72px,8.5vw,124px) 0;border-top:1px solid var(--rule)}
 .section.alt{background:var(--void-2)}
-.section.dark{background:var(--dvoid);color:var(--dink);--ink:var(--dink);--ink-soft:var(--dink-soft);--mute:var(--d-mute);--rule:var(--drule);--paper-2:var(--dpanel-2)}
-.eyebrow,.orr-eyebrow{font:500 10px/1.6 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--leaf);margin:0 0 16px}
-.section.dark .eyebrow{color:var(--dleaf)}
-.h-display,h1,h2,h3,h4{font-family:var(--sans);font-weight:560;text-wrap:balance}
-.h-display{font-size:clamp(1.8rem,3.5vw,2.8rem);line-height:1.12;letter-spacing:-.045em;margin:16px 0;max-width:24ch}
+.section.dark{background:var(--dvoid);color:var(--dink);--ink:var(--dink);--ink-soft:var(--dink-soft);--mute:var(--d-mute);--rule:var(--drule);--paper:var(--dpanel);--paper-2:var(--dpanel-2);--leaf:var(--dleaf);--leaf-2:var(--dleaf-2);--leaf-deep:var(--dleaf)}
+.eyebrow,.orr-eyebrow{font:600 10.5px/1.6 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--leaf);margin:0 0 14px}
+.section.dark .eyebrow,.section.dark .orr-eyebrow{color:var(--dleaf)}
+.h-display,h1,h2,h3,h4{font-family:var(--sans);font-weight:580;text-wrap:balance;color:var(--ink)}
+.h-display{font-size:clamp(1.9rem,3.6vw,3rem);line-height:1.08;letter-spacing:-.04em;margin:14px 0;max-width:24ch}
 .lede{font-size:18px;line-height:1.7;color:var(--ink-soft);max-width:60ch}
 .serif{font-family:var(--serif)}.mono{font-family:var(--mono)}.mute{color:var(--mute)}
 p{overflow-wrap:break-word}
-.skip,.skip-link{position:fixed;top:8px;left:-999px;z-index:200;background:var(--ink);color:#fff;padding:12px 18px;border-radius:var(--radius)}
+.skip,.skip-link{position:fixed;top:8px;left:-999px;z-index:200;background:var(--ink);color:var(--paper);padding:12px 18px;border-radius:var(--radius);font-family:var(--mono);font-size:12px}
 .skip:focus,.skip-link:focus{left:12px}
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 summary{cursor:pointer;min-height:44px}
@@ -50,23 +55,24 @@ input[type=number],input[type=text],input[type=email],textarea,select{max-width:
 ::view-transition-new(root){animation:page-in 180ms var(--ease) both}
 @keyframes page-out{to{opacity:0}}
 @keyframes page-in{from{opacity:0}to{opacity:1}}
-@media(max-width:640px){.wrap,.orr-container{width:calc(100% - 36px)}.section,.orr-section{padding:60px 0}.lede{font-size:17px}}
+@media(max-width:640px){.wrap,.orr-container{width:calc(100% - 36px)}.section,.orr-section{padding:56px 0}.lede{font-size:17px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}::view-transition-old(root),::view-transition-new(root){animation:none!important}}
 
 /* Immersive workspaces opt out of the public reading surface. These scoped
    rules run after the shared shell so route-specific apps keep their own
    dark instrument palette. */
-body:has(.sim-app),body:has(.lab-shell){background:#06100c;color:#eaf6ec}
-body:has(.sim-app)> .nav,body:has(.lab-shell)> .nav{background:rgba(6,16,11,.94);border-color:rgba(163,225,170,.14);backdrop-filter:blur(16px)}
-body:has(.sim-app)> .nav .mark,body:has(.lab-shell)> .nav .mark{color:#eaf6ec}
-body:has(.sim-app)> .nav .mark svg,body:has(.lab-shell)> .nav .mark svg{color:#91e49c}
-body:has(.sim-app)> .nav .mark small,body:has(.lab-shell)> .nav .mark small{color:#8da696}
-body:has(.sim-app)> .nav .nav-links a,body:has(.lab-shell)> .nav .nav-links a{color:#b9cdbd}
-body:has(.sim-app)> .nav .nav-links a:hover,body:has(.lab-shell)> .nav .nav-links a:hover,body:has(.sim-app)> .nav .nav-links a[aria-current=page],body:has(.lab-shell)> .nav .nav-links a[aria-current=page]{color:#b5ffc0}
-body:has(.sim-app)> .nav .nav-toggle,body:has(.lab-shell)> .nav .nav-toggle{color:#eaf6ec;border-color:rgba(163,225,170,.2)}
-body:has(.sim-app)> .mobile-menu,body:has(.lab-shell)> .mobile-menu{background:#06100c;border-color:rgba(163,225,170,.14);color:#eaf6ec}
+body:has(.sim-app),body:has(.lab-shell),body:has(#biorealmApp){background:#06100c;color:#eaf6ec}
+body:has(.sim-app)> .nav,body:has(.lab-shell)> .nav,body:has(#biorealmApp)> .nav{background:rgba(6,16,11,.94);border-color:rgba(163,225,170,.14);backdrop-filter:blur(16px)}
+body:has(.sim-app)> .nav .mark,body:has(.lab-shell)> .nav .mark,body:has(#biorealmApp)> .nav .mark{color:#eaf6ec}
+body:has(.sim-app)> .nav .mark svg,body:has(.lab-shell)> .nav .mark svg,body:has(#biorealmApp)> .nav .mark svg{color:#91e49c;background:rgba(145,228,156,.1);border-color:rgba(145,228,156,.24)}
+body:has(.sim-app)> .nav .mark small,body:has(.lab-shell)> .nav .mark small,body:has(#biorealmApp)> .nav .mark small{color:#8da696}
+body:has(.sim-app)> .nav .nav-links a,body:has(.lab-shell)> .nav .nav-links a,body:has(#biorealmApp)> .nav .nav-links a{color:#b9cdbd}
+body:has(.sim-app)> .nav .nav-links a:hover,body:has(.lab-shell)> .nav .nav-links a:hover,body:has(#biorealmApp)> .nav .nav-links a:hover,body:has(.sim-app)> .nav .nav-links a[aria-current=page],body:has(.lab-shell)> .nav .nav-links a[aria-current=page],body:has(#biorealmApp)> .nav .nav-links a[aria-current=page]{color:#b5ffc0}
+body:has(.sim-app)> .nav .nav-links .btn-white,body:has(.lab-shell)> .nav .nav-links .btn-white,body:has(#biorealmApp)> .nav .nav-links .btn-white{background:#94d29f;color:#06100c;border-color:#94d29f}
+body:has(.sim-app)> .nav .nav-toggle,body:has(.lab-shell)> .nav .nav-toggle,body:has(#biorealmApp)> .nav .nav-toggle{color:#eaf6ec;border-color:rgba(163,225,170,.2)}
+body:has(.sim-app)> .mobile-menu,body:has(.lab-shell)> .mobile-menu,body:has(#biorealmApp)> .mobile-menu{background:#06100c;border-color:rgba(163,225,170,.14);color:#eaf6ec}
 body:has(.sim-app)> .science-footer{display:none}
 body:has(.sim-app) .sim-app{background:#06100c}
-body:has(.sim-app) .sim-sidebar{top:82px;height:calc(100vh - 82px)}
+body:has(.sim-app) .sim-sidebar{top:78px;height:calc(100vh - 78px)}
 body:has(.sim-app) .sim-main{background:#06100c}
 body:has(.sim-app) .sim-view{color:#eaf6ec}
