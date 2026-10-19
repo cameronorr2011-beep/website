@@ -289,6 +289,24 @@ function collectCitationReferences(value, path = "report", result = []) {
   return result;
 }
 
+function collectInvalidCitationReferences(value, path = "report", result = []) {
+  if (Array.isArray(value)) {
+    value.forEach((item, index) => collectInvalidCitationReferences(item, `${path}[${index}]`, result));
+    return result;
+  }
+  if (!value || typeof value !== "object") return result;
+  for (const [key, child] of Object.entries(value)) {
+    const childPath = `${path}.${key}`;
+    if (key === "invalidSourceIds" || key.toLocaleLowerCase().endsWith("invalidsourceids")) {
+      if (Array.isArray(child)) child.forEach((sourceId, index) => result.push({ sourceId, path: `${childPath}[${index}]` }));
+      else result.push({ sourceId: child, path: childPath });
+      continue;
+    }
+    collectInvalidCitationReferences(child, childPath, result);
+  }
+  return result;
+}
+
 function isExplicitStatus(value) {
   return typeof value === "string" && EPISTEMIC_STATUS_VALUES.includes(value);
 }
@@ -323,6 +341,10 @@ export function validateCitationAudit(report, claims = [], sources = []) {
   const reportReferences = collectCitationReferences(report, "report");
   const claimReferences = collectCitationReferences(claims, "claims");
   const references = [...reportReferences, ...claimReferences];
+  const invalidReferences = [
+    ...collectInvalidCitationReferences(report, "report"),
+    ...collectInvalidCitationReferences(claims, "claims"),
+  ];
   const unknownSourceIds = [...new Set(references
     .filter((reference) => typeof reference.sourceId !== "string" || !knownSourceIds.has(reference.sourceId))
     .map((reference) => reference.sourceId)
@@ -336,6 +358,14 @@ export function validateCitationAudit(report, claims = [], sources = []) {
         message: `Citation does not resolve to a supplied source: ${String(reference.sourceId)}`,
       });
     }
+  }
+
+  for (const reference of invalidReferences) {
+    errors.push({
+      code: "unknown_source_id",
+      path: reference.path.split(/[.[\]]/).filter(Boolean),
+      message: `Model supplied a citation that was rejected during normalization: ${String(reference.sourceId)}`,
+    });
   }
 
   const substantiveCollections = [

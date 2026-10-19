@@ -31,7 +31,7 @@
 <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile primary" hidden>
 <a href="/algaephyte/">Algaephyte · cultivation</a><a href="/cyanoflow">Cyanoflow · single cells</a><a href="/research/">Research methods</a><a href="/blog/">Journal · field notes</a><a href="/Simulation/">Algal Digital Lab</a><a href="/game/">Interactive research lab</a><a href="/downloads/">App downloads</a><a href="/#deploy">Contact the project</a></nav>
 <a class="skip" href="#papertrail-main">Skip to PaperTrail workspace</a>
-<div class="papertrail-app" data-api-base="">
+<div class="papertrail-app">
   <header class="pt-header">
     <a class="pt-brand" href="/" aria-label="Return to Orr Biologicals home">
       <span class="pt-brand-mark" aria-hidden="true">∿</span>
@@ -39,6 +39,7 @@
     </a>
     <div class="pt-header-meta">
       <span><i class="pt-live-dot" aria-hidden="true"></i><span id="pt-header-live">live mode unavailable</span></span>
+      <button class="pt-button pt-button--quiet" id="pt-open-settings" type="button">Configure API</button>
       <a href="/">return to site ↗</a>
     </div>
   </header>
@@ -66,18 +67,63 @@
       </aside>
     </section>
 
+    <section class="pt-new-investigation" aria-labelledby="pt-new-investigation-title">
+      <div class="pt-new-investigation-heading">
+        <p class="pt-eyebrow">NEW INVESTIGATION</p>
+        <h2 id="pt-new-investigation-title">Ask a bounded research question</h2>
+        <p>Use the supplied example or write your own question. Demo mode stays deterministic; live mode contacts only the explicitly configured local API boundary.</p>
+      </div>
+      <form class="pt-investigation-form" id="pt-investigation-form">
+        <div class="pt-form-field pt-form-field--wide">
+          <label for="pt-question">Question <span aria-hidden="true">*</span></label>
+          <textarea id="pt-question" name="question" rows="3" required maxlength="1000">Does increasing light intensity consistently improve microalgae biomass productivity?</textarea>
+          <small class="pt-form-help">Required. The demo uses the fixed evidence packet; live mode sends this question to the configured boundary.</small>
+        </div>
+        <div class="pt-form-field">
+          <label for="pt-example-question">Selectable example</label>
+          <select id="pt-example-question" name="exampleQuestion">
+            <option value="">Choose an example…</option>
+            <option value="Does increasing light intensity consistently improve microalgae biomass productivity?">Light intensity and biomass productivity</option>
+            <option value="What evidence supports a temperature range for a named microalgae culture?">Temperature range evidence</option>
+          </select>
+        </div>
+        <div class="pt-form-field">
+          <label for="pt-max-results">Maximum results</label>
+          <input id="pt-max-results" name="maxResults" type="number" min="1" max="100" value="25" inputmode="numeric">
+          <small class="pt-form-help">Provider records requested in live mode.</small>
+        </div>
+        <div class="pt-form-field">
+          <label for="pt-depth">Search depth</label>
+          <input id="pt-depth" name="depth" type="number" min="1" max="8" value="2" inputmode="numeric">
+          <small class="pt-form-help">Bounded query/debate depth for live mode.</small>
+        </div>
+        <fieldset class="pt-mode-field">
+          <legend>Mode</legend>
+          <label><input type="radio" name="mode" value="demo" checked> <span>Demo · deterministic offline</span></label>
+          <label><input type="radio" name="mode" value="live"> <span>Live · configured API boundary</span></label>
+        </fieldset>
+        <div class="pt-form-status" id="pt-mode-status" role="status" aria-live="polite">DEMO MODE / OFFLINE DETERMINISTIC RUN</div>
+        <div class="pt-form-actions">
+          <button class="pt-button pt-button--primary" id="pt-submit-investigation" type="submit">Start investigation <span aria-hidden="true">→</span></button>
+          <button class="pt-button pt-button--secondary" id="pt-cancel-live" type="button" hidden>Cancel live run</button>
+        </div>
+        <p class="pt-form-error" id="pt-form-error" role="alert" hidden></p>
+      </form>
+    </section>
+
     <div class="pt-workspace">
       <aside class="pt-sidebar" aria-label="PaperTrail navigation and system state">
         <div class="pt-sidebar-block">
           <p class="pt-sidebar-title">Investigation workspace</p>
           <nav class="pt-tab-list" id="pt-tabs" role="tablist" aria-label="Investigation views">
-            <button class="pt-tab" id="pt-tab-overview" type="button" role="tab" aria-selected="true" aria-controls="pt-panel" data-view="overview"><span class="pt-tab-number">01</span><span>Overview</span></button>
-            <button class="pt-tab" id="pt-tab-agents" type="button" role="tab" aria-selected="false" aria-controls="pt-panel" data-view="agents"><span class="pt-tab-number">02</span><span>Agent roles</span></button>
-            <button class="pt-tab" id="pt-tab-evidence" type="button" role="tab" aria-selected="false" aria-controls="pt-panel" data-view="evidence"><span class="pt-tab-number">03</span><span>Evidence</span></button>
-            <button class="pt-tab" id="pt-tab-claims" type="button" role="tab" aria-selected="false" aria-controls="pt-panel" data-view="claims"><span class="pt-tab-number">04</span><span>Claims</span></button>
-            <button class="pt-tab" id="pt-tab-debate" type="button" role="tab" aria-selected="false" aria-controls="pt-panel" data-view="debate"><span class="pt-tab-number">05</span><span>Debate</span></button>
-            <button class="pt-tab" id="pt-tab-graph" type="button" role="tab" aria-selected="false" aria-controls="pt-panel" data-view="graph"><span class="pt-tab-number">06</span><span>Trace table</span></button>
-            <button class="pt-tab" id="pt-tab-report" type="button" role="tab" aria-selected="false" aria-controls="pt-panel" data-view="report"><span class="pt-tab-number">07</span><span>Final report</span></button>
+             <button class="pt-tab" id="pt-tab-overview" type="button" role="tab" aria-selected="true" aria-controls="pt-panel" data-view="overview"><span class="pt-tab-number">01</span><span>Overview</span></button>
+             <button class="pt-tab" id="pt-tab-agents" type="button" role="tab" aria-selected="false" aria-controls="pt-panel" data-view="agents"><span class="pt-tab-number">02</span><span>Agent roles</span></button>
+            <button class="pt-tab" id="pt-tab-lab" type="button" role="tab" aria-selected="false" aria-controls="pt-panel" data-view="lab"><span class="pt-tab-number">03</span><span>Agent laboratory</span></button>
+            <button class="pt-tab" id="pt-tab-evidence" type="button" role="tab" aria-selected="false" aria-controls="pt-panel" data-view="evidence"><span class="pt-tab-number">04</span><span>Evidence</span></button>
+            <button class="pt-tab" id="pt-tab-claims" type="button" role="tab" aria-selected="false" aria-controls="pt-panel" data-view="claims"><span class="pt-tab-number">05</span><span>Claims</span></button>
+            <button class="pt-tab" id="pt-tab-debate" type="button" role="tab" aria-selected="false" aria-controls="pt-panel" data-view="debate"><span class="pt-tab-number">06</span><span>Debate</span></button>
+            <button class="pt-tab" id="pt-tab-graph" type="button" role="tab" aria-selected="false" aria-controls="pt-panel" data-view="graph"><span class="pt-tab-number">07</span><span>Trace table</span></button>
+            <button class="pt-tab" id="pt-tab-report" type="button" role="tab" aria-selected="false" aria-controls="pt-panel" data-view="report"><span class="pt-tab-number">08</span><span>Final report</span></button>
           </nav>
         </div>
 
@@ -89,7 +135,7 @@
         <div class="pt-live-card" id="pt-live-card" data-state="unavailable">
           <span class="pt-live-label" id="pt-live-label">LIVE MODE UNAVAILABLE</span>
           <strong id="pt-live-title">No backend configured</strong>
-          <p id="pt-live-copy">This demo has no live research mode. Configure an explicit backend to check availability; no backend is required for this workspace.</p>
+           <p id="pt-live-copy">Live mode is unavailable until you configure an explicit local API boundary. No backend is required for the offline demo.</p>
           <button class="pt-button pt-button--quiet" id="pt-api-check" type="button" hidden>Check configured backend</button>
         </div>
       </aside>
@@ -100,7 +146,7 @@
             <p class="pt-kicker" id="pt-view-kicker">Investigation state</p>
             <h2 id="pt-view-title">Overview</h2>
           </div>
-          <span class="pt-synthetic-label">SYNTHETIC DEMONSTRATION DATA</span>
+           <span class="pt-synthetic-label">SYNTHETIC DEMONSTRATION DATA</span>
         </div>
         <div class="pt-panel" id="pt-panel" role="tabpanel" aria-labelledby="pt-tab-overview" tabindex="0" aria-live="polite"></div>
       </section>
@@ -114,11 +160,33 @@
 
   <div class="pt-toast" id="pt-toast" role="status" aria-live="polite" aria-atomic="true"></div>
 
+  <dialog class="pt-dialog" id="pt-settings-dialog" aria-labelledby="pt-settings-title">
+    <div class="pt-dialog-inner">
+      <span class="pt-status-label">LOCAL API BOUNDARY</span>
+      <h2 id="pt-settings-title">Configure live mode</h2>
+      <p>Enter the separately started PaperTrail API base URL. The browser stores only this URL and never accepts provider credentials.</p>
+      <form id="pt-settings-form">
+        <div class="pt-form-field">
+          <label for="pt-api-base">API base URL</label>
+          <input id="pt-api-base" name="apiBase" type="url" inputmode="url" autocomplete="off" placeholder="http://127.0.0.1:8788">
+          <small class="pt-form-help">http(s) only. Example: http://127.0.0.1:8788</small>
+        </div>
+        <p class="pt-form-error" id="pt-settings-error" role="alert" hidden></p>
+        <p class="pt-settings-state" id="pt-settings-state" role="status"></p>
+        <div class="pt-dialog-actions">
+          <button class="pt-button pt-button--secondary" id="pt-remove-api" type="button">Remove URL</button>
+          <button class="pt-button pt-button--secondary" id="pt-cancel-settings" type="button">Close</button>
+          <button class="pt-button pt-button--primary" id="pt-save-settings" type="submit">Save URL</button>
+        </div>
+      </form>
+    </div>
+  </dialog>
+
   <dialog class="pt-dialog" id="pt-reset-dialog" aria-labelledby="pt-reset-title">
     <div class="pt-dialog-inner">
       <span class="pt-status-label">RESET CONFIRMATION</span>
       <h2 id="pt-reset-title">Clear this PaperTrail session?</h2>
-      <p>The saved workflow, agent outputs, debate, claims, and report will be replaced with the empty/new demo state. The synthetic source catalog remains available.</p>
+       <p>The saved workflow, agent outputs, debate, claims, and report will be replaced with the empty/new demo state. A saved live snapshot remains available until you start another live investigation or remove it.</p>
       <div class="pt-dialog-actions">
         <button class="pt-button pt-button--secondary" id="pt-cancel-reset" type="button">Keep session</button>
         <button class="pt-button pt-button--primary" id="pt-confirm-reset" type="button">Reset demo</button>
@@ -126,7 +194,7 @@
     </div>
   </dialog>
 
-  <noscript><p class="pt-noscript">PaperTrail needs JavaScript for the persisted workflow controls. The page is a local synthetic demonstration and does not contact a research API.</p></noscript>
+  <noscript><p class="pt-noscript">PaperTrail needs JavaScript for the persisted workflow controls. The offline demo does not contact a research API.</p></noscript>
 </div>
 <script type="module" src="/papertrail/js/app.js"></script>
 <script defer src="/js/navigation.js?v=20261014"></script>

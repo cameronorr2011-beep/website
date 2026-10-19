@@ -148,6 +148,38 @@ async function testTimeoutAndProviderFailure() {
   assert.equal(result.providerStatuses.crossref.status, "error");
   assert.ok(result.warnings.some((warning) => warning.includes("timed out")));
   assert.ok(result.warnings.some((warning) => warning.includes("provider offline")));
+
+  const controller = new AbortController();
+  const cancellationFetch = async (_url, { signal }) => ({
+    ok: true,
+    status: 200,
+    async json() {
+      await new Promise((resolve, reject) => {
+        if (signal.aborted) {
+          const error = new Error("aborted by test");
+          error.name = "AbortError";
+          reject(error);
+          return;
+        }
+        signal.addEventListener("abort", () => {
+          const error = new Error("aborted by test");
+          error.name = "AbortError";
+          reject(error);
+        }, { once: true });
+      });
+      return { esearchresult: { idlist: ["12345"] } };
+    },
+  });
+  const cancellationProviders = createLiteratureProviders({ fetchImpl: cancellationFetch, timeoutMs: 1_000 });
+  const cancelled = retrieveSources({
+    question: "cancelled query",
+    options: { providers: ["pubmed"], maxQueries: 1 },
+    providers: cancellationProviders,
+    signal: controller.signal,
+  });
+  await new Promise((resolve) => setTimeout(resolve, 5));
+  controller.abort();
+  await assert.rejects(cancelled, /cancelled|abort/i, "literature retrieval should propagate cancellation instead of returning a provider warning");
 }
 
 async function testCitationAudit() {

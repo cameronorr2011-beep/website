@@ -8,6 +8,8 @@ const PUBMED_FETCH_URL = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.f
 const CROSSREF_WORKS_URL = "https://api.crossref.org/works";
 const DEFAULT_TIMEOUT_MS = 15_000;
 const DEFAULT_USER_AGENT = "PaperTrail/1.0 (research evidence retrieval; contact unavailable)";
+const RESPONSE_SIGNAL = Symbol("papertrail-response-signal");
+const RESPONSE_CLEANUP = Symbol("papertrail-response-cleanup");
 
 function cleanText(value) {
   if (value === null || value === undefined) return null;
@@ -354,48 +356,91 @@ function timeoutError(provider) {
   return error;
 }
 
-async function fetchWithTimeout(fetchImpl, url, init, timeoutMs, provider) {
+async function fetchWithTimeout(fetchImpl, url, init, timeoutMs, provider, parentSignal) {
   const controller = new AbortController();
+  const abortFromParent = () => controller.abort(parentSignal?.reason);
+  if (parentSignal?.aborted) abortFromParent();
+  else parentSignal?.addEventListener("abort", abortFromParent, { once: true });
   const timer = setTimeout(() => controller.abort(), timeoutMs);
+  let handedOff = false;
+  const cleanup = () => {
+    clearTimeout(timer);
+    parentSignal?.removeEventListener("abort", abortFromParent);
+  };
   try {
     const response = await fetchImpl(String(url), { ...init, signal: controller.signal });
     const status = Number(response?.status);
     if (response?.ok === false || (Number.isFinite(status) && (status === 429 || status >= 400))) {
       throw new ProviderHttpError(provider, Number.isFinite(status) ? status : 500, url);
     }
+    response[RESPONSE_SIGNAL] = controller.signal;
+    response[RESPONSE_CLEANUP] = cleanup;
+    handedOff = true;
     return response;
   } catch (error) {
+    if (parentSignal?.aborted) {
+      throw cancellationError(provider);
+    }
     if (controller.signal.aborted) throw timeoutError(provider);
     throw error;
   } finally {
-    clearTimeout(timer);
+    if (!handedOff) cleanup();
   }
 }
 
-async function readWithTimeout(reader, timeoutMs, provider) {
+function cancellationRequested(signal) {
+  return Boolean(signal?.aborted);
+}
+
+function cancellationError(provider) {
+  const error = new Error(`${provider} request cancelled`);
+  error.name = "AbortError";
+  error.code = "ABORT_ERR";
+  return error;
+}
+
+async function readWithTimeout(reader, timeoutMs, provider, signal) {
   let timer;
+  let onAbort;
+  const cancellation = signal ? new Promise((_, reject) => {
+    onAbort = () => reject(cancellationError(provider));
+    if (signal.aborted) onAbort();
+    else signal.addEventListener("abort", onAbort, { once: true });
+  }) : null;
   try {
     return await Promise.race([
       reader(),
       new Promise((_, reject) => {
         timer = setTimeout(() => reject(timeoutError(provider)), timeoutMs);
       }),
+      ...(cancellation ? [cancellation] : []),
     ]);
   } finally {
     clearTimeout(timer);
+    if (signal && onAbort) signal.removeEventListener("abort", onAbort);
   }
 }
 
-async function responseJson(response, timeoutMs, provider) {
-  if (typeof response?.json === "function") return readWithTimeout(() => response.json(), timeoutMs, provider);
-  if (typeof response?.text === "function") return readWithTimeout(async () => JSON.parse(await response.text()), timeoutMs, provider);
-  throw new Error("Provider response had no JSON reader");
+async function responseJson(response, timeoutMs, provider, signal) {
+  try {
+    const bodySignal = response?.[RESPONSE_SIGNAL] ?? signal;
+    if (typeof response?.json === "function") return await readWithTimeout(() => response.json(), timeoutMs, provider, bodySignal);
+    if (typeof response?.text === "function") return await readWithTimeout(async () => JSON.parse(await response.text()), timeoutMs, provider, bodySignal);
+    throw new Error("Provider response had no JSON reader");
+  } finally {
+    response?.[RESPONSE_CLEANUP]?.();
+  }
 }
 
-async function responseText(response, timeoutMs, provider) {
-  if (typeof response?.text === "function") return readWithTimeout(() => response.text(), timeoutMs, provider);
-  if (typeof response?.json === "function") return readWithTimeout(async () => JSON.stringify(await response.json()), timeoutMs, provider);
-  throw new Error("Provider response had no text reader");
+async function responseText(response, timeoutMs, provider, signal) {
+  try {
+    const bodySignal = response?.[RESPONSE_SIGNAL] ?? signal;
+    if (typeof response?.text === "function") return await readWithTimeout(() => response.text(), timeoutMs, provider, bodySignal);
+    if (typeof response?.json === "function") return await readWithTimeout(async () => JSON.stringify(await response.json()), timeoutMs, provider, bodySignal);
+    throw new Error("Provider response had no text reader");
+  } finally {
+    response?.[RESPONSE_CLEANUP]?.();
+  }
 }
 
 function statusForError(error) {
@@ -476,8 +521,9 @@ function createPubMedProvider({ fetchImpl, timeoutMs, userAgent, baseUrl = PUBME
       const warnings = [];
       let searchData;
       try {
-        searchData = await responseJson(await fetchWithTimeout(fetchImpl, searchUrl, { headers }, timeoutMs, "pubmed"), timeoutMs, "pubmed");
+        searchData = await responseJson(await fetchWithTimeout(fetchImpl, searchUrl, { headers }, timeoutMs, "pubmed", context.signal), timeoutMs, "pubmed", context.signal);
       } catch (error) {
+        if (cancellationRequested(context.signal)) throw error;
         return { records: [], warnings: [warningForError("pubmed", error)], status: statusForError(error) };
       }
       const ids = searchData?.esearchresult?.idlist;
@@ -493,8 +539,9 @@ function createPubMedProvider({ fetchImpl, timeoutMs, userAgent, baseUrl = PUBME
       }).toString();
       let summaryData;
       try {
-        summaryData = await responseJson(await fetchWithTimeout(fetchImpl, summaryEndpoint, { headers }, timeoutMs, "pubmed"), timeoutMs, "pubmed");
+        summaryData = await responseJson(await fetchWithTimeout(fetchImpl, summaryEndpoint, { headers }, timeoutMs, "pubmed", context.signal), timeoutMs, "pubmed", context.signal);
       } catch (error) {
+        if (cancellationRequested(context.signal)) throw error;
         return { records: [], warnings: [...warnings, warningForError("pubmed", error)], status: statusForError(error) };
       }
       const summaryResult = summaryData?.result;
@@ -514,9 +561,10 @@ function createPubMedProvider({ fetchImpl, timeoutMs, userAgent, baseUrl = PUBME
           ...(context.email ? { email: context.email } : {}),
         }).toString();
         try {
-          const xml = await responseText(await fetchWithTimeout(fetchImpl, fetchEndpoint, { headers: { ...headers, Accept: "application/xml" } }, timeoutMs, "pubmed"), timeoutMs, "pubmed");
+          const xml = await responseText(await fetchWithTimeout(fetchImpl, fetchEndpoint, { headers: { ...headers, Accept: "application/xml" } }, timeoutMs, "pubmed", context.signal), timeoutMs, "pubmed", context.signal);
           abstractRecords = parsePubmedFetchXml(xml);
         } catch (error) {
+          if (cancellationRequested(context.signal)) throw error;
           warnings.push(warningForError("pubmed", error));
         }
       }
@@ -554,8 +602,8 @@ function createCrossrefProvider({ fetchImpl, timeoutMs, userAgent, baseUrl = CRO
         ...(context.email ? { mailto: context.email } : {}),
       }).toString();
       try {
-        const response = await fetchWithTimeout(fetchImpl, endpoint, { headers: { Accept: "application/json", "User-Agent": userAgent } }, timeoutMs, "crossref");
-        const data = await responseJson(response, timeoutMs, "crossref");
+        const response = await fetchWithTimeout(fetchImpl, endpoint, { headers: { Accept: "application/json", "User-Agent": userAgent } }, timeoutMs, "crossref", context.signal);
+        const data = await responseJson(response, timeoutMs, "crossref", context.signal);
         const items = data?.message?.items;
         if (!Array.isArray(items)) return { records: [], warnings: ["[crossref] malformed works response: message.items is missing"], status: "malformed" };
         if (items.length === 0) return { records: [], warnings: [], status: "empty" };
@@ -563,6 +611,7 @@ function createCrossrefProvider({ fetchImpl, timeoutMs, userAgent, baseUrl = CRO
         if (records.length === 0) return { records, warnings: ["[crossref] response contained no records with usable title and provider ID"], status: "malformed" };
         return { records, warnings: [], status: "ok" };
       } catch (error) {
+        if (cancellationRequested(context.signal)) throw error;
         return { records: [], warnings: [warningForError("crossref", error)], status: statusForError(error) };
       }
     },
@@ -611,7 +660,7 @@ function providerFor(providers, name) {
  * Run bounded provider searches. A failed provider contributes a warning and
  * status only; no placeholder or fabricated source is returned.
  */
-export async function retrieveSources({ question, options = {}, providers } = {}) {
+export async function retrieveSources({ question, options = {}, providers, signal } = {}) {
   const parsedOptions = ResearchOptionsSchema.parse(options);
   const queries = buildSearchQueries(question, parsedOptions);
   const warnings = [];
@@ -621,6 +670,12 @@ export async function retrieveSources({ question, options = {}, providers } = {}
   const maxPerProvider = parsedOptions.perProviderMaxResults ?? parsedOptions.maxResults;
 
   for (const providerName of parsedOptions.providers) {
+    if (cancellationRequested(signal)) {
+      const error = new Error("PaperTrail literature retrieval cancelled");
+      error.name = "AbortError";
+      error.code = "ABORT_ERR";
+      throw error;
+    }
     const provider = providerFor(providers, providerName);
     const providerWarnings = [];
     let providerCount = 0;
@@ -634,6 +689,12 @@ export async function retrieveSources({ question, options = {}, providers } = {}
     }
 
     for (const query of queries) {
+      if (cancellationRequested(signal)) {
+        const error = new Error("PaperTrail literature retrieval cancelled");
+        error.name = "AbortError";
+        error.code = "ABORT_ERR";
+        throw error;
+      }
       if (providerCount >= maxPerProvider) break;
       queryCount += 1;
       try {
@@ -641,6 +702,7 @@ export async function retrieveSources({ question, options = {}, providers } = {}
           ...parsedOptions,
           maxResults: Math.min(maxPerProvider - providerCount, parsedOptions.maxResults),
           retrievedAt: retrieved,
+          signal,
         });
         const resultWarnings = Array.isArray(result?.warnings) ? result.warnings.map(String) : [];
         providerWarnings.push(...resultWarnings);
@@ -666,6 +728,7 @@ export async function retrieveSources({ question, options = {}, providers } = {}
         if (normalized.length > 0) status = providerWarnings.length > 0 ? "partial" : "ok";
         else if (result?.status) status = String(result.status);
       } catch (error) {
+        if (cancellationRequested(signal)) throw error;
         const warning = warningForError(providerName, error);
         providerWarnings.push(warning);
         warnings.push(warning);

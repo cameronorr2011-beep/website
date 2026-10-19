@@ -103,6 +103,7 @@ class PaperTrailContractTests(unittest.TestCase):
             'id="pt-storage-card"',
             'id="pt-live-card"',
             'data-view="agents"',
+            'data-view="lab"',
             'data-view="evidence"',
             'data-view="claims"',
             'data-view="debate"',
@@ -122,12 +123,83 @@ class PaperTrailContractTests(unittest.TestCase):
             "DEBATE",
             "GRAPH",
             "REPORT",
+            "renderLab",
             "advanceRun",
             "renderClaims",
             "exportJson",
         ):
             self.assertIn(marker, self.app_text)
         self.assertIn("schemaVersion", self.store_text)
+
+    def test_new_investigation_form_and_settings_boundary(self):
+        for marker in (
+            'id="pt-investigation-form"',
+            'id="pt-question"',
+            'name="question"',
+            'required',
+            'id="pt-max-results"',
+            'name="maxResults"',
+            'id="pt-depth"',
+            'name="depth"',
+            'id="pt-mode-status"',
+            'value="demo"',
+            'value="live"',
+            'id="pt-settings-dialog"',
+            'id="pt-api-base"',
+            'id="pt-remove-api"',
+            'id="pt-cancel-live"',
+        ):
+            self.assertIn(marker, self.page_text)
+        self.assertRegex(self.page_text, r'<select[^>]+id="pt-example-question"')
+        self.assertRegex(self.page_text, r'<input[^>]+id="pt-api-base"[^>]+type="url"')
+        self.assertNotRegex(self.page_text, r'<input[^>]+(?:api[_-]?key|access[_-]?token|password)[^>]*>')
+        self.assertIn("papertrail.api-base.v1", self.store_text)
+        self.assertIn("http(s)", self.page_text)
+
+    def test_live_transport_and_recovery_contract(self):
+        for method in (
+            "getHealth",
+            "getModels",
+            "createSession",
+            "getSession",
+            "startRun",
+            "cancel",
+            "subscribeEvents",
+        ):
+            self.assertIn(method, self.api_text)
+        for endpoint in ("/health", "/models", "/sessions", "/run", "/events", "/cancel"):
+            self.assertIn(endpoint, self.api_text)
+        for marker in (
+            "credentials: \"omit\"",
+            "EventSource",
+            "after=",
+            "maxReconnects",
+            "startPolling",
+            "run_interrupted",
+            "STALE / UNKNOWN LIVE SNAPSHOT",
+            "RUN INTERRUPTED / START A NEW LIVE INVESTIGATION",
+            "LIVE_STORE_KEY",
+            "loadLiveSession",
+            "saveLiveSession",
+            "clearLiveSession",
+        ):
+            self.assertIn(marker, "\n".join((self.api_text, self.store_text, self.app_text)))
+
+    def test_live_provenance_cancel_and_external_link_markers(self):
+        for marker in (
+            "VERIFIED PROVIDER METADATA",
+            "AI-GENERATED INTERPRETATION",
+            "ABSTRACT ONLY / FULL TEXT NOT PROVIDED",
+            "FULL TEXT AVAILABLE",
+            "Citation audit",
+            "cancelLive",
+            "Start a new live investigation",
+            "stale or unknown",
+            'rel="noreferrer noopener"',
+        ):
+            self.assertIn(marker.lower(), self.runtime_text.lower())
+        self.assertIn("pt-live-source-grid", self.app_text)
+        self.assertIn("pt-trace-table", self.css_text + self.app_text)
 
     def test_synthetic_labeling_and_demo_link_boundary(self):
         self.assertIn('const DEMO_LABEL = "SYNTHETIC DEMONSTRATION DATA"', self.app_text)

@@ -127,6 +127,14 @@ function sourceSet(sources) {
     .filter((id) => typeof id === "string" && id.length > 0));
 }
 
+function citationIds(value) {
+  if (!value || typeof value !== "object") return [];
+  return uniqueStrings([
+    ...(Array.isArray(value.sourceIds) ? value.sourceIds : []),
+    ...(typeof value.sourceId === "string" ? [value.sourceId] : []),
+  ]);
+}
+
 function sourceForPrompt(source) {
   return {
     id: source.id,
@@ -224,12 +232,11 @@ function redactSecrets(value, depth = 0) {
 function traceableItem(item, knownIds, fallbackStatus = EPISTEMIC_STATUSES.UNRESOLVED) {
   if (!item || typeof item !== "object") return null;
   const output = redactSecrets({ ...item });
-  const suppliedIds = [
-    ...(Array.isArray(output.sourceIds) ? output.sourceIds : []),
-    ...(typeof output.sourceId === "string" ? [output.sourceId] : []),
-  ];
+  const suppliedIds = citationIds(output);
+  const invalidSourceIds = suppliedIds.filter((id) => !knownIds.has(id));
   output.sourceIds = uniqueStrings(suppliedIds).filter((id) => knownIds.has(id));
   if (output.sourceId !== undefined && !knownIds.has(output.sourceId)) delete output.sourceId;
+  if (invalidSourceIds.length > 0) output.invalidSourceIds = invalidSourceIds;
   if (!textValue(output)) return null;
   if (!Array.isArray(output.sourceIds) || output.sourceIds.length === 0) {
     if (!EPISTEMIC_STATUS_VALUES.includes(output.epistemicStatus) || output.epistemicStatus === EPISTEMIC_STATUSES.REPORTED_FINDING) {
@@ -243,7 +250,10 @@ const TRACEABLE_ARRAY_KEYS = ["findings", "interpretations", "hypotheses", "unre
 
 function normalizeReport(report, knownIds) {
   if (!report || typeof report !== "object") return null;
+  const rawReport = redactSecrets(report);
+  const invalidSourceIds = citationIds(rawReport).filter((id) => !knownIds.has(id));
   const output = redactSecrets(sanitizeReportCitations(report, [...knownIds]));
+  if (invalidSourceIds.length > 0) output.invalidSourceIds = invalidSourceIds;
   output.sourceIds = uniqueStrings(output.sourceIds).filter((id) => knownIds.has(id));
   output.summarySourceIds = uniqueStrings(output.summarySourceIds).filter((id) => knownIds.has(id));
   output.sections = (Array.isArray(output.sections) ? output.sections : [])
@@ -265,8 +275,10 @@ function normalizeOutput(raw, definition, sources) {
   const candidate = redactSecrets(raw);
   if (!candidate || typeof candidate !== "object" || Array.isArray(candidate)) return null;
   const output = { ...candidate };
+  const invalidSourceIds = citationIds(candidate).filter((id) => !knownIds.has(id));
   output.role = typeof output.role === "string" && output.role.trim() ? output.role.trim() : definition.id;
   output.sourceIds = uniqueStrings(output.sourceIds).filter((id) => knownIds.has(id));
+  if (invalidSourceIds.length > 0) output.invalidSourceIds = invalidSourceIds;
   if (output.sourceIds.length === 0 && (!EPISTEMIC_STATUS_VALUES.includes(output.epistemicStatus) || output.epistemicStatus === EPISTEMIC_STATUSES.REPORTED_FINDING)) {
     output.epistemicStatus = EPISTEMIC_STATUSES.UNRESOLVED;
   }

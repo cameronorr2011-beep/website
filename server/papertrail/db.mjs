@@ -138,6 +138,15 @@ const MIGRATIONS = [
       CREATE INDEX IF NOT EXISTS claim_evidence_session_id_claim_idx ON claim_evidence(session_id, claim_id);
     `,
   },
+  {
+    version: 2,
+    sql: `
+      ALTER TABLE sessions ADD COLUMN run_owner TEXT;
+      ALTER TABLE sessions ADD COLUMN run_started_at TEXT;
+      ALTER TABLE sessions ADD COLUMN run_lease_expires_at TEXT;
+      CREATE INDEX IF NOT EXISTS sessions_run_lease_idx ON sessions(status, run_lease_expires_at);
+    `,
+  },
 ];
 
 function cloneJson(value) {
@@ -166,6 +175,19 @@ function timestamp(now) {
   return new Date().toISOString();
 }
 
+function leaseExpiry(startedAt, leaseMs) {
+  const parsed = Date.parse(startedAt);
+  const base = Number.isFinite(parsed) ? parsed : Date.now();
+  return new Date(base + leaseMs).toISOString();
+}
+
+function runOwnershipError(sessionId) {
+  const error = new Error(`PaperTrail run ownership was lost for session ${sessionId}`);
+  error.code = "RUN_INTERRUPTED";
+  error.status = "interrupted";
+  return error;
+}
+
 function ensureDatabaseParent(dbPath) {
   if (dbPath === ":memory:" || dbPath.startsWith("file:")) return;
   mkdirSync(path.dirname(path.resolve(dbPath)), { recursive: true });
@@ -181,9 +203,12 @@ function runMigrations(db, now) {
   const hasMigration = db.prepare("SELECT 1 AS present FROM schema_migrations WHERE version = ?");
   const recordMigration = db.prepare("INSERT INTO schema_migrations(version, applied_at) VALUES (?, ?)");
   for (const migration of MIGRATIONS) {
-    if (hasMigration.get(migration.version)) continue;
     db.exec("BEGIN IMMEDIATE");
     try {
+      if (hasMigration.get(migration.version)) {
+        db.exec("COMMIT");
+        continue;
+      }
       db.exec(migration.sql);
       recordMigration.run(migration.version, timestamp(now));
       db.exec("COMMIT");
@@ -209,6 +234,7 @@ function rowToSession(row) {
     cancelRequested: Boolean(row.cancel_requested),
     createdAt: row.created_at,
     updatedAt: row.updated_at,
+    runStartedAt: row.run_started_at ?? null,
   };
 }
 
@@ -404,51 +430,73 @@ export function createPaperTrailStore(config = {}) {
     return db.prepare("SELECT * FROM sessions ORDER BY updated_at DESC, id DESC LIMIT ?").all(boundedLimit).map(rowToSession);
   }
 
-  function updateSession(id, patch = {}) {
+  function updateSession(id, patch = {}, options = {}) {
     assertOpen();
     requireSession(db, id);
-    const updates = [];
-    const values = [];
-    if (patch.question !== undefined) {
-      if (typeof patch.question !== "string" || patch.question.trim().length === 0) throw new TypeError("question must be non-empty");
-      updates.push("question = ?");
-      values.push(patch.question.trim());
-    }
-    if (patch.options !== undefined) {
-      const options = ResearchOptionsSchema.parse(patch.options);
-      updates.push("options_json = ?");
-      values.push(serialize(options));
-    }
-    if (patch.model !== undefined) {
-      if (patch.model !== null && (typeof patch.model !== "string" || patch.model.trim().length === 0)) throw new TypeError("model must be a non-empty string or null");
-      updates.push("model = ?");
-      values.push(patch.model === null ? null : patch.model.trim());
-    }
-    if (patch.status !== undefined) {
-      if (typeof patch.status !== "string" || patch.status.trim().length === 0) throw new TypeError("status must be a non-empty string");
-      updates.push("status = ?");
-      values.push(patch.status.trim());
-    }
-    if (patch.cancelRequested !== undefined) {
-      updates.push("cancel_requested = ?");
-      values.push(patch.cancelRequested ? 1 : 0);
-    }
-    updates.push("updated_at = ?");
-    values.push(timestamp(now));
-    values.push(id);
-    db.prepare(`UPDATE sessions SET ${updates.join(", ")} WHERE id = ?`).run(...values);
-    return getSession(id);
+    const owner = options?.runOwner;
+    const write = () => {
+      const updatedAt = timestamp(now);
+      if (owner !== undefined) assertRunOwner(id, owner);
+      const updates = [];
+      const values = [];
+      if (patch.question !== undefined) {
+        if (typeof patch.question !== "string" || patch.question.trim().length === 0) throw new TypeError("question must be non-empty");
+        updates.push("question = ?");
+        values.push(patch.question.trim());
+      }
+      if (patch.options !== undefined) {
+        const parsedOptions = ResearchOptionsSchema.parse(patch.options);
+        updates.push("options_json = ?");
+        values.push(serialize(parsedOptions));
+      }
+      if (patch.model !== undefined) {
+        if (patch.model !== null && (typeof patch.model !== "string" || patch.model.trim().length === 0)) throw new TypeError("model must be a non-empty string or null");
+        updates.push("model = ?");
+        values.push(patch.model === null ? null : patch.model.trim());
+      }
+      if (patch.status !== undefined) {
+        if (typeof patch.status !== "string" || patch.status.trim().length === 0) throw new TypeError("status must be a non-empty string");
+        updates.push("status = ?");
+        values.push(patch.status.trim());
+      }
+      if (patch.cancelRequested !== undefined) {
+        updates.push("cancel_requested = ?");
+        values.push(patch.cancelRequested ? 1 : 0);
+      }
+      updates.push("updated_at = ?");
+      values.push(updatedAt);
+      values.push(id);
+      const where = owner === undefined
+        ? "id = ?"
+        : "id = ? AND run_owner = ? AND UPPER(status) = 'RUNNING' AND (run_lease_expires_at IS NULL OR run_lease_expires_at > ?)";
+      if (owner !== undefined) values.push(owner, updatedAt);
+      const result = db.prepare(`UPDATE sessions SET ${updates.join(", ")} WHERE ${where}`).run(...values);
+      if (owner !== undefined && Number(result.changes) !== 1) throw runOwnershipError(id);
+      return getSession(id);
+    };
+    return owner === undefined ? write() : transaction(db, write);
   }
 
-  function addEvent(sessionId, type, payload = null) {
+  function addEvent(sessionId, type, payload = null, options = {}) {
     assertOpen();
     requireSession(db, sessionId);
     if (typeof type !== "string" || type.trim().length === 0) throw new TypeError("event type must be non-empty");
-    const createdAt = timestamp(now);
-    const result = db.prepare("INSERT INTO events(session_id, type, payload_json, created_at) VALUES (?, ?, ?, ?)").run(sessionId, type.trim(), serialize(payload), createdAt);
-    const row = db.prepare("SELECT * FROM events WHERE id = ?").get(result.lastInsertRowid);
-    db.prepare("UPDATE sessions SET updated_at = ? WHERE id = ?").run(createdAt, sessionId);
-    return rowToEvent(row);
+    const owner = options?.runOwner;
+    const write = () => {
+      if (owner !== undefined) assertRunOwner(sessionId, owner);
+      const createdAt = timestamp(now);
+      const result = db.prepare("INSERT INTO events(session_id, type, payload_json, created_at) VALUES (?, ?, ?, ?)").run(sessionId, type.trim(), serialize(payload), createdAt);
+      const row = db.prepare("SELECT * FROM events WHERE id = ?").get(result.lastInsertRowid);
+      const update = owner === undefined
+        ? db.prepare("UPDATE sessions SET updated_at = ? WHERE id = ?")
+        : db.prepare("UPDATE sessions SET updated_at = ? WHERE id = ? AND run_owner = ? AND UPPER(status) = 'RUNNING' AND (run_lease_expires_at IS NULL OR run_lease_expires_at > ?)");
+      const updateResult = owner === undefined
+        ? update.run(createdAt, sessionId)
+        : update.run(createdAt, sessionId, owner, createdAt);
+      if (owner !== undefined && Number(updateResult.changes) !== 1) throw runOwnershipError(sessionId);
+      return rowToEvent(row);
+    };
+    return owner === undefined ? write() : transaction(db, write);
   }
 
   function listEvents(sessionId, afterId = 0) {
@@ -547,11 +595,14 @@ export function createPaperTrailStore(config = {}) {
     return getStoredSource(sessionId, parsed.id);
   }
 
-  function upsertSources(sessionId, sources = []) {
+  function upsertSources(sessionId, sources = [], options = {}) {
     assertOpen();
     requireSession(db, sessionId);
     if (!Array.isArray(sources)) throw new TypeError("sources must be an array");
-    return transaction(db, () => sources.map((source) => writeSource(sessionId, source)));
+    return transaction(db, () => {
+      if (options?.runOwner !== undefined) assertRunOwner(sessionId, options.runOwner);
+      return sources.map((source) => writeSource(sessionId, source));
+    });
   }
 
   function getSessionBundle(sessionId) {
@@ -586,54 +637,65 @@ export function createPaperTrailStore(config = {}) {
     if (typeof sessionId !== "string" || sessionId.length === 0) throw new TypeError("createAgentRun requires sessionId");
     requireSession(db, sessionId);
     const id = input.id ?? randomUUID();
-    const createdAt = timestamp(now);
-    const startedAt = input.startedAt ?? createdAt;
-    db.prepare(`
-      INSERT INTO agent_runs(id, session_id, role, status, model, input_json, output_json, error, created_at, started_at, finished_at, updated_at)
-      VALUES (?, ?, ?, ?, ?, ?, NULL, NULL, ?, ?, NULL, ?)
-    `).run(
-      id,
-      sessionId,
-      String(input.role ?? "agent"),
-      String(input.status ?? "running"),
-      input.model ?? null,
-      input.input === undefined ? null : serialize(input.input),
-      createdAt,
-      startedAt,
-      createdAt,
-    );
-    return rowToAgentRun(db.prepare("SELECT * FROM agent_runs WHERE id = ?").get(id));
+    const write = () => {
+      if (input.runOwner !== undefined) assertRunOwner(sessionId, input.runOwner);
+      const createdAt = timestamp(now);
+      const startedAt = input.startedAt ?? createdAt;
+      db.prepare(`
+        INSERT INTO agent_runs(id, session_id, role, status, model, input_json, output_json, error, created_at, started_at, finished_at, updated_at)
+        VALUES (?, ?, ?, ?, ?, ?, NULL, NULL, ?, ?, NULL, ?)
+      `).run(
+        id,
+        sessionId,
+        String(input.role ?? "agent"),
+        String(input.status ?? "running"),
+        input.model ?? null,
+        input.input === undefined ? null : serialize(input.input),
+        createdAt,
+        startedAt,
+        createdAt,
+      );
+      if (input.runOwner !== undefined) assertRunOwner(sessionId, input.runOwner);
+      return rowToAgentRun(db.prepare("SELECT * FROM agent_runs WHERE id = ?").get(id));
+    };
+    return input.runOwner === undefined ? write() : transaction(db, write);
   }
 
-  function finishAgentRun(id, patch = {}) {
+  function finishAgentRun(id, patch = {}, options = {}) {
     assertOpen();
-    const current = db.prepare("SELECT * FROM agent_runs WHERE id = ?").get(id);
-    if (!current) throw new Error(`PaperTrail agent run not found: ${id}`);
-    const finishedAt = patch.finishedAt ?? timestamp(now);
-    const updates = ["status = ?", "finished_at = ?", "updated_at = ?"];
-    const values = [String(patch.status ?? "completed"), finishedAt, timestamp(now)];
-    if (patch.output !== undefined) {
-      updates.push("output_json = ?");
-      values.push(serialize(patch.output));
-    }
-    if (patch.error !== undefined) {
-      updates.push("error = ?");
-      values.push(patch.error === null ? null : String(patch.error));
-    }
-    if (patch.model !== undefined) {
-      updates.push("model = ?");
-      values.push(patch.model);
-    }
-    values.push(id);
-    db.prepare(`UPDATE agent_runs SET ${updates.join(", ")} WHERE id = ?`).run(...values);
-    return rowToAgentRun(db.prepare("SELECT * FROM agent_runs WHERE id = ?").get(id));
+    const write = () => {
+      const current = db.prepare("SELECT * FROM agent_runs WHERE id = ?").get(id);
+      if (!current) throw new Error(`PaperTrail agent run not found: ${id}`);
+      if (options?.runOwner !== undefined) assertRunOwner(current.session_id, options.runOwner);
+      const finishedAt = patch.finishedAt ?? timestamp(now);
+      const updates = ["status = ?", "finished_at = ?", "updated_at = ?"];
+      const values = [String(patch.status ?? "completed"), finishedAt, timestamp(now)];
+      if (patch.output !== undefined) {
+        updates.push("output_json = ?");
+        values.push(serialize(patch.output));
+      }
+      if (patch.error !== undefined) {
+        updates.push("error = ?");
+        values.push(patch.error === null ? null : String(patch.error));
+      }
+      if (patch.model !== undefined) {
+        updates.push("model = ?");
+        values.push(patch.model);
+      }
+      values.push(id);
+      db.prepare(`UPDATE agent_runs SET ${updates.join(", ")} WHERE id = ?`).run(...values);
+      if (options?.runOwner !== undefined) assertRunOwner(current.session_id, options.runOwner);
+      return rowToAgentRun(db.prepare("SELECT * FROM agent_runs WHERE id = ?").get(id));
+    };
+    return options?.runOwner === undefined ? write() : transaction(db, write);
   }
 
-  function saveClaims(sessionId, claims = []) {
+  function saveClaims(sessionId, claims = [], options = {}) {
     assertOpen();
     requireSession(db, sessionId);
     if (!Array.isArray(claims)) throw new TypeError("claims must be an array");
     return transaction(db, () => {
+      if (options?.runOwner !== undefined) assertRunOwner(sessionId, options.runOwner);
       const saved = [];
       for (const rawClaim of claims) {
         const candidate = {
@@ -691,55 +753,207 @@ export function createPaperTrailStore(config = {}) {
         }
         saved.push(claim);
       }
-      db.prepare("UPDATE sessions SET updated_at = ? WHERE id = ?").run(timestamp(now), sessionId);
+      const updatedAt = timestamp(now);
+      const sessionUpdate = options?.runOwner === undefined
+        ? db.prepare("UPDATE sessions SET updated_at = ? WHERE id = ?")
+        : db.prepare("UPDATE sessions SET updated_at = ? WHERE id = ? AND run_owner = ? AND UPPER(status) = 'RUNNING' AND (run_lease_expires_at IS NULL OR run_lease_expires_at > ?)");
+      const updateResult = options?.runOwner === undefined
+        ? sessionUpdate.run(updatedAt, sessionId)
+        : sessionUpdate.run(updatedAt, sessionId, options.runOwner, updatedAt);
+      if (options?.runOwner !== undefined && Number(updateResult.changes) !== 1) throw runOwnershipError(sessionId);
       return saved;
     });
   }
 
-  function saveDebate(sessionId, debate) {
+  function saveDebate(sessionId, debate, options = {}) {
     assertOpen();
     requireSession(db, sessionId);
     const value = cloneJson(debate);
-    const nowValue = timestamp(now);
-    db.prepare(`
-      INSERT INTO debates(session_id, data_json, created_at, updated_at)
-      VALUES (?, ?, ?, ?)
-      ON CONFLICT(session_id) DO UPDATE SET data_json = excluded.data_json, updated_at = excluded.updated_at
-    `).run(sessionId, serialize(value), nowValue, nowValue);
-    db.prepare("UPDATE sessions SET updated_at = ? WHERE id = ?").run(nowValue, sessionId);
-    return value;
+    const write = () => {
+      if (options?.runOwner !== undefined) assertRunOwner(sessionId, options.runOwner);
+      const nowValue = timestamp(now);
+      db.prepare(`
+        INSERT INTO debates(session_id, data_json, created_at, updated_at)
+        VALUES (?, ?, ?, ?)
+        ON CONFLICT(session_id) DO UPDATE SET data_json = excluded.data_json, updated_at = excluded.updated_at
+      `).run(sessionId, serialize(value), nowValue, nowValue);
+      const update = options?.runOwner === undefined
+        ? db.prepare("UPDATE sessions SET updated_at = ? WHERE id = ?")
+        : db.prepare("UPDATE sessions SET updated_at = ? WHERE id = ? AND run_owner = ? AND UPPER(status) = 'RUNNING' AND (run_lease_expires_at IS NULL OR run_lease_expires_at > ?)");
+      const updateResult = options?.runOwner === undefined
+        ? update.run(nowValue, sessionId)
+        : update.run(nowValue, sessionId, options.runOwner, nowValue);
+      if (options?.runOwner !== undefined && Number(updateResult.changes) !== 1) throw runOwnershipError(sessionId);
+      return value;
+    };
+    return options?.runOwner === undefined ? write() : transaction(db, write);
   }
 
-  function saveReport(sessionId, report, audit = null) {
+  function saveReport(sessionId, report, audit = null, options = {}) {
     assertOpen();
     requireSession(db, sessionId);
     const parsedReport = ReportSchema.parse(report);
-    const nowValue = timestamp(now);
-    db.prepare(`
-      INSERT INTO reports(session_id, report_json, audit_json, created_at, updated_at)
-      VALUES (?, ?, ?, ?, ?)
-      ON CONFLICT(session_id) DO UPDATE SET report_json = excluded.report_json, audit_json = excluded.audit_json, updated_at = excluded.updated_at
-    `).run(sessionId, serialize(parsedReport), audit === undefined ? null : serialize(audit), nowValue, nowValue);
-    db.prepare("UPDATE sessions SET updated_at = ? WHERE id = ?").run(nowValue, sessionId);
-    return { report: parsedReport, audit: cloneJson(audit) };
+    const write = () => {
+      if (options?.runOwner !== undefined) assertRunOwner(sessionId, options.runOwner);
+      const nowValue = timestamp(now);
+      db.prepare(`
+        INSERT INTO reports(session_id, report_json, audit_json, created_at, updated_at)
+        VALUES (?, ?, ?, ?, ?)
+        ON CONFLICT(session_id) DO UPDATE SET report_json = excluded.report_json, audit_json = excluded.audit_json, updated_at = excluded.updated_at
+      `).run(sessionId, serialize(parsedReport), audit === undefined ? null : serialize(audit), nowValue, nowValue);
+      const update = options?.runOwner === undefined
+        ? db.prepare("UPDATE sessions SET updated_at = ? WHERE id = ?")
+        : db.prepare("UPDATE sessions SET updated_at = ? WHERE id = ? AND run_owner = ? AND UPPER(status) = 'RUNNING' AND (run_lease_expires_at IS NULL OR run_lease_expires_at > ?)");
+      const updateResult = options?.runOwner === undefined
+        ? update.run(nowValue, sessionId)
+        : update.run(nowValue, sessionId, options.runOwner, nowValue);
+      if (options?.runOwner !== undefined && Number(updateResult.changes) !== 1) throw runOwnershipError(sessionId);
+      return { report: parsedReport, audit: cloneJson(audit) };
+    };
+    return options?.runOwner === undefined ? write() : transaction(db, write);
+  }
+
+  function finalizeSession(sessionId, status, payload = {}, options = {}) {
+    assertOpen();
+    requireSession(db, sessionId);
+    if (typeof status !== "string" || status.trim().length === 0) throw new TypeError("final session status must be a non-empty string");
+    const write = () => {
+      if (options?.runOwner !== undefined) assertRunOwner(sessionId, options.runOwner);
+      const nowValue = timestamp(now);
+      const current = getSession(sessionId);
+      const effectiveStatus = current.cancelRequested && status.trim().toUpperCase() !== "CANCELLED" ? "CANCELLED" : status.trim();
+      const where = options?.runOwner === undefined ? "id = ?" : "id = ? AND run_owner = ? AND UPPER(status) = 'RUNNING' AND (run_lease_expires_at IS NULL OR run_lease_expires_at > ?)";
+      const values = options?.runOwner === undefined ? [effectiveStatus, nowValue, sessionId] : [effectiveStatus, nowValue, sessionId, options.runOwner, nowValue];
+      const result = db.prepare(`UPDATE sessions SET status = ?, updated_at = ? WHERE ${where}`).run(...values);
+      if (Number(result.changes) !== 1) throw runOwnershipError(sessionId);
+      const eventPayload = { ...(payload && typeof payload === "object" ? payload : {}), status: effectiveStatus };
+      const eventResult = db.prepare("INSERT INTO events(session_id, type, payload_json, created_at) VALUES (?, ?, ?, ?)").run(sessionId, "stage_change", serialize(eventPayload), nowValue);
+      const eventRow = db.prepare("SELECT * FROM events WHERE id = ?").get(eventResult.lastInsertRowid);
+      return { session: getSession(sessionId), event: rowToEvent(eventRow) };
+    };
+    return transaction(db, write);
   }
 
   function requestCancel(sessionId) {
     assertOpen();
     requireSession(db, sessionId);
-    const current = getSession(sessionId);
-    if (!current.cancelRequested) {
+    return transaction(db, () => {
+      const current = getSession(sessionId);
+      if (!["RUNNING", "NEW"].includes(String(current.status).toUpperCase()) || current.cancelRequested) return current;
       const nowValue = timestamp(now);
-      db.prepare("UPDATE sessions SET cancel_requested = 1, updated_at = ? WHERE id = ?").run(nowValue, sessionId);
-      db.prepare("INSERT INTO events(session_id, type, payload_json, created_at) VALUES (?, ?, ?, ?)").run(sessionId, "cancel_requested", serialize({}), nowValue);
-    }
-    return getSession(sessionId);
+      const result = db.prepare("UPDATE sessions SET cancel_requested = 1, updated_at = ? WHERE id = ? AND UPPER(status) IN ('RUNNING', 'NEW') AND cancel_requested = 0").run(nowValue, sessionId);
+      if (Number(result.changes) === 1) {
+        db.prepare("INSERT INTO events(session_id, type, payload_json, created_at) VALUES (?, ?, ?, ?)").run(sessionId, "cancel_requested", serialize({}), nowValue);
+      }
+      return getSession(sessionId);
+    });
   }
 
   function isCancelRequested(sessionId) {
     assertOpen();
     const row = db.prepare("SELECT cancel_requested FROM sessions WHERE id = ?").get(sessionId);
     return Boolean(row?.cancel_requested);
+  }
+
+  function assertRunOwner(sessionId, owner) {
+    assertOpen();
+    if (typeof owner !== "string" || owner.trim().length === 0) throw new TypeError("run owner must be a non-empty string");
+    const row = db.prepare("SELECT status, run_owner, run_lease_expires_at FROM sessions WHERE id = ?").get(sessionId);
+    if (!row) throw new Error(`PaperTrail session not found: ${sessionId}`);
+    const nowValue = timestamp(now);
+    if (String(row.status).toUpperCase() !== "RUNNING" || row.run_owner !== owner || (row.run_lease_expires_at && row.run_lease_expires_at <= nowValue)) throw runOwnershipError(sessionId);
+    return true;
+  }
+
+  function claimRun(sessionId, owner, leaseMs = 30_000) {
+    assertOpen();
+    if (typeof owner !== "string" || owner.trim().length === 0) throw new TypeError("run owner must be a non-empty string");
+    if (!Number.isInteger(leaseMs) || leaseMs < 1_000 || leaseMs > 24 * 60 * 60 * 1_000) throw new TypeError("leaseMs must be an integer from 1000 through 86400000");
+    return transaction(db, () => {
+      const current = db.prepare("SELECT status, cancel_requested FROM sessions WHERE id = ?").get(sessionId);
+      if (!current) throw new Error(`PaperTrail session not found: ${sessionId}`);
+      if (String(current.status).toUpperCase() !== "NEW" || current.cancel_requested) return null;
+      const startedAt = timestamp(now);
+      const result = db.prepare(`
+        UPDATE sessions
+        SET status = 'RUNNING', run_owner = ?, run_started_at = ?, run_lease_expires_at = ?, updated_at = ?
+        WHERE id = ? AND UPPER(status) = 'NEW' AND cancel_requested = 0
+      `).run(owner, startedAt, leaseExpiry(startedAt, leaseMs), startedAt, sessionId);
+      if (Number(result.changes) !== 1) return null;
+      return getSession(sessionId);
+    });
+  }
+
+  function heartbeatRun(sessionId, owner, leaseMs = 30_000) {
+    assertOpen();
+    if (typeof owner !== "string" || owner.trim().length === 0) throw new TypeError("run owner must be a non-empty string");
+    if (!Number.isInteger(leaseMs) || leaseMs < 1_000 || leaseMs > 24 * 60 * 60 * 1_000) throw new TypeError("leaseMs must be an integer from 1000 through 86400000");
+    return transaction(db, () => {
+      const heartbeatAt = timestamp(now);
+      const current = db.prepare("SELECT status, run_owner, cancel_requested, run_lease_expires_at FROM sessions WHERE id = ?").get(sessionId);
+      if (!current || String(current.status).toUpperCase() !== "RUNNING" || current.run_owner !== owner || current.cancel_requested || (current.run_lease_expires_at && current.run_lease_expires_at <= heartbeatAt)) return false;
+      db.prepare("UPDATE sessions SET run_lease_expires_at = ?, updated_at = ? WHERE id = ? AND run_owner = ? AND UPPER(status) = 'RUNNING'")
+        .run(leaseExpiry(heartbeatAt, leaseMs), heartbeatAt, sessionId, owner);
+      return true;
+    });
+  }
+
+  function releaseRun(sessionId, owner) {
+    assertOpen();
+    if (typeof owner !== "string" || owner.trim().length === 0) throw new TypeError("run owner must be a non-empty string");
+    return transaction(db, () => {
+      const current = db.prepare("SELECT run_owner FROM sessions WHERE id = ?").get(sessionId);
+      if (!current || current.run_owner !== owner) return false;
+      const updatedAt = timestamp(now);
+      db.prepare("UPDATE sessions SET run_owner = NULL, run_lease_expires_at = NULL, updated_at = ? WHERE id = ? AND run_owner = ?")
+        .run(updatedAt, sessionId, owner);
+      return true;
+    });
+  }
+
+  /**
+   * A PaperTrail API process owns the in-flight worker in memory.  If that
+   * process is restarted, a persisted RUNNING row has no worker left to
+   * finish it.  Reconcile only expired leases at process startup while
+   * preserving all sources, agent runs, events, claims, and reports already
+   * written. Older databases without lease metadata are treated as expired.
+   */
+  function reconcileInterruptedRuns() {
+    assertOpen();
+    const recoveredAt = timestamp(now);
+    return transaction(db, () => {
+      const rows = db.prepare(`
+        SELECT id, cancel_requested
+        FROM sessions
+        WHERE UPPER(status) = 'RUNNING'
+          AND (run_lease_expires_at IS NULL OR run_lease_expires_at <= ?)
+        ORDER BY id ASC
+      `).all(recoveredAt);
+      const recovered = [];
+      for (const row of rows) {
+        const status = row.cancel_requested ? "CANCELLED" : "PARTIAL";
+        const interruptedAgentStatus = row.cancel_requested ? "cancelled" : "interrupted";
+        const reason = row.cancel_requested
+          ? "The PaperTrail API restarted after cancellation was requested; no worker remained to finish the transition."
+          : "The PaperTrail API restarted before this investigation reached a terminal state; previously persisted work was preserved.";
+        const unfinishedAgents = db.prepare("SELECT COUNT(*) AS count FROM agent_runs WHERE session_id = ? AND COALESCE(LOWER(status), '') NOT IN ('completed', 'complete', 'cancelled', 'failed', 'interrupted')").get(row.id);
+        db.prepare("UPDATE agent_runs SET status = ?, finished_at = ?, error = COALESCE(error, ?), updated_at = ? WHERE session_id = ? AND COALESCE(LOWER(status), '') NOT IN ('completed', 'complete', 'cancelled', 'failed', 'interrupted')")
+          .run(interruptedAgentStatus, recoveredAt, reason, recoveredAt, row.id);
+        db.prepare("UPDATE sessions SET status = ?, run_owner = NULL, run_lease_expires_at = NULL, updated_at = ? WHERE id = ? AND UPPER(status) = 'RUNNING'")
+          .run(status, recoveredAt, row.id);
+        db.prepare("INSERT INTO events(session_id, type, payload_json, created_at) VALUES (?, ?, ?, ?)")
+          .run(row.id, "run_interrupted", serialize({
+            code: "RUN_INTERRUPTED",
+            previousStatus: "RUNNING",
+            status,
+            reason,
+            recoveredAt,
+            agentRunsInterrupted: Number(unfinishedAgents?.count ?? 0),
+          }), recoveredAt);
+        recovered.push(getSession(row.id));
+      }
+      return recovered;
+    });
   }
 
   function close() {
@@ -762,8 +976,14 @@ export function createPaperTrailStore(config = {}) {
     saveClaims,
     saveDebate,
     saveReport,
+    finalizeSession,
     requestCancel,
     isCancelRequested,
+    assertRunOwner,
+    claimRun,
+    heartbeatRun,
+    releaseRun,
+    reconcileInterruptedRuns,
     close,
   };
 }

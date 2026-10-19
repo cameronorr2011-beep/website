@@ -31,6 +31,7 @@ RewriteEngine On
 # Redirects. Never add a prefix `Redirect 301 /docs ...` here or it would win
 # over this F rule (see the exact-match /docs redirect below).
 RewriteRule ^(?:sections|tools|docs)(?:/|$) - [F,L]
+RewriteRule ^(?:server|node_modules|\.git)(?:/|$) - [F,L]
 
 # Normalize directory index aliases before the generic .html redirect.
 RewriteCond %{THE_REQUEST} \s/+(.*/)?index(?:\.html)?(?:[?\s]) [NC]

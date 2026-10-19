@@ -5,6 +5,7 @@
     "build": "python3 tools/site/build_seo.py && npm run build:lab && npm run build:simulation",
     "test": "node tools/test_all.mjs",
     "server:static": "node tools/static-server.mjs",
+    "server:papertrail": "node server/papertrail/index.mjs",
     "build:lab": "node tools/build_lab.mjs",
     "build:field-art": "python tools/build_field_art.py",
     "build:simulation": "node tools/build_simulation.mjs",
@@ -12,7 +13,8 @@
     "test:simulation": "node tools/test_simulation_engine.mjs && node tools/test_simulation_persistence.mjs",
     "server": "node server/index.mjs",
     "test:server": "node tools/test_server.mjs",
-    "test:expedition": "node tools/test_expedition_engine.mjs"
+    "test:expedition": "node tools/test_expedition_engine.mjs",
+    "test:papertrail": "node tools/test_papertrail_literature.mjs && node tools/test_papertrail_groq.mjs && node tools/test_papertrail_orchestrator.mjs && node tools/test_papertrail_api.mjs"
   },
   "dependencies": {
     "three": "0.180.0",

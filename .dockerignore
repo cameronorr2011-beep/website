@@ -8,3 +8,5 @@ server/data/events
 docs/seo
 __pycache__
 *.pyc
+*.sqlite
+*.sqlite-*

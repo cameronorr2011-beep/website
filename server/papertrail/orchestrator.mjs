@@ -2,6 +2,7 @@ import { createHash } from "node:crypto";
 
 import { createGroqClient } from "./groq.mjs";
 import {
+  AGENT_PROMPT_VERSION,
   runAdjudicator,
   runExperimentalist,
   runInvestigator,
@@ -310,6 +311,7 @@ function claimCandidates(outputs, sources) {
     const statement = textValue(item);
     if (!statement) continue;
     const sourceIds = uniqueStrings(item.sourceIds).filter((id) => knownIds.has(id));
+    const invalidSourceIds = uniqueStrings(item.invalidSourceIds);
     let epistemicStatus = EPISTEMIC_STATUS_VALUES.includes(item.epistemicStatus) ? item.epistemicStatus : undefined;
     if (sourceIds.length === 0 && (!epistemicStatus || epistemicStatus === EPISTEMIC_STATUSES.REPORTED_FINDING)) epistemicStatus = EPISTEMIC_STATUSES.UNRESOLVED;
     const key = `${candidate.kind}\u0000${statement}\u0000${sourceIds.join(",")}`;
@@ -321,6 +323,7 @@ function claimCandidates(outputs, sources) {
       id: `claim-${hashId(`${candidate.role}:${key}`)}`,
       statement: truncate(statement, 8_000),
       sourceIds,
+      ...(invalidSourceIds.length > 0 ? { invalidSourceIds } : {}),
       ...(epistemicStatus ? { epistemicStatus } : {}),
       evidenceIds,
       evidencePassages,
@@ -389,14 +392,30 @@ function normalizeReportCandidate(rawReport, adjudication, { sessionId, question
 
 function finalAudit(report, claims, sources) {
   const knownIds = sourceIdsOf(sources);
+  const originalAudit = validateCitationAudit(report, claims, sources);
   const sanitized = sanitizeReportCitations(report, [...knownIds]);
   const knownClaimIds = new Set((Array.isArray(claims) ? claims : []).map((claim) => claim?.id).filter(Boolean));
   if (sanitized && Array.isArray(sanitized.claimIds)) sanitized.claimIds = sanitized.claimIds.filter((id) => knownClaimIds.has(id));
   const parsed = ReportSchema.safeParse(sanitized);
   const reportForAudit = parsed.success ? parsed.data : sanitized;
+  const sanitizedAudit = validateCitationAudit(reportForAudit, claims, sources);
+  const errors = [...originalAudit.errors, ...sanitizedAudit.errors];
+  const warnings = [...originalAudit.warnings, ...sanitizedAudit.warnings];
+  const uniqueIssues = (items) => items.filter((item, index) => {
+    const key = `${item.code}|${item.path?.join(".") || ""}|${item.message}`;
+    return items.findIndex((candidate) => `${candidate.code}|${candidate.path?.join(".") || ""}|${candidate.message}` === key) === index;
+  });
   return {
     report: reportForAudit,
-    audit: validateCitationAudit(reportForAudit, claims, sources),
+    audit: {
+      ...sanitizedAudit,
+      valid: originalAudit.valid && sanitizedAudit.valid,
+      ok: originalAudit.ok && sanitizedAudit.ok,
+      errors: uniqueIssues(errors),
+      warnings: uniqueIssues(warnings),
+      citedSourceIds: [...new Set([...originalAudit.citedSourceIds, ...sanitizedAudit.citedSourceIds])],
+      unknownSourceIds: [...new Set([...originalAudit.unknownSourceIds, ...sanitizedAudit.unknownSourceIds])],
+    },
   };
 }
 
@@ -405,6 +424,10 @@ function assertStore(store) {
   for (const method of required) {
     if (typeof store?.[method] !== "function") throw new TypeError(`PaperTrail store is missing ${method}()`);
   }
+}
+
+function isRunOwnershipLost(error) {
+  return error?.code === "RUN_INTERRUPTED" && error?.status === "interrupted";
 }
 
 /**
@@ -421,6 +444,7 @@ export async function runInvestigation({
   groq,
   signal,
   onEvent,
+  runOwner,
 } = {}) {
   assertStore(store);
   if (typeof sessionId !== "string" || !sessionId.trim()) throw new TypeError("runInvestigation requires sessionId");
@@ -448,9 +472,35 @@ export async function runInvestigation({
     criticalErrors: [],
   };
 
+  const ownedOptions = () => runOwner === undefined ? {} : { runOwner };
+
+  async function ensureRunOwnership(stage) {
+    if (runOwner === undefined || typeof store.assertRunOwner !== "function") return;
+    try {
+      await store.assertRunOwner(sessionId, runOwner);
+    } catch (error) {
+      if (isRunOwnershipLost(error)) throw error;
+      const ownershipError = new Error(`PaperTrail run ownership was lost during ${stage}`);
+      ownershipError.code = "RUN_INTERRUPTED";
+      ownershipError.status = "interrupted";
+      ownershipError.cause = error;
+      throw ownershipError;
+    }
+  }
+
+  async function notify(event) {
+    if (typeof onEvent !== "function") return;
+    try {
+      await onEvent(event);
+    } catch {
+      // A streaming/UI observer cannot invalidate persisted research state.
+    }
+  }
+
   async function emit(type, payload = {}) {
+    await ensureRunOwnership(`event:${type}`);
     const safePayload = safeEventPayload(payload);
-    const persisted = await store.addEvent(sessionId, type, safePayload);
+    const persisted = await store.addEvent(sessionId, type, safePayload, ownedOptions());
     const event = {
       id: persisted?.id,
       sessionId,
@@ -458,17 +508,12 @@ export async function runInvestigation({
       payload: safePayload,
       createdAt: persisted?.createdAt ?? new Date().toISOString(),
     };
-    if (typeof onEvent === "function") {
-      try {
-        await onEvent(event);
-      } catch {
-        // A streaming/UI observer cannot invalidate persisted research state.
-      }
-    }
+    await notify(event);
     return event;
   }
 
   async function checkCancellation(stage) {
+    await ensureRunOwnership(stage);
     const requested = Boolean(signal?.aborted) || Boolean(await store.isCancelRequested?.(sessionId));
     if (requested) throw new CancellationError(stage);
   }
@@ -476,8 +521,8 @@ export async function runInvestigation({
   async function markCancelled(stage) {
     if (state.cancellationMarked) return;
     state.cancellationMarked = true;
-    await store.updateSession(sessionId, { status: "CANCELLED" });
-    await emit(EVENT_TYPES.STAGE, { stage, status: "CANCELLED" });
+    await ensureRunOwnership(`cancel:${stage}`);
+    await emit(EVENT_TYPES.STAGE, { stage, status: "CANCELLING" });
   }
 
   async function runAgent(role, runner, input) {
@@ -485,10 +530,12 @@ export async function runInvestigation({
     const run = await store.createAgentRun({
       sessionId,
       role,
+      ...(runOwner === undefined ? {} : { runOwner }),
       model: modelOf(groqClient),
       input: {
         question: truncate(effectiveQuestion, 2_000),
         sourceIds: state.sources.map((source) => source.id),
+        promptVersion: AGENT_PROMPT_VERSION,
         round: input.round ?? null,
         contextRoles: input.context && typeof input.context === "object" ? Object.keys(input.context) : [],
       },
@@ -507,13 +554,16 @@ export async function runInvestigation({
           }
         },
       });
-      await store.finishAgentRun(run.id, { status: "completed", output, model: modelOf(groqClient) });
+      await ensureRunOwnership(`agent:${role}:completion`);
+      await store.finishAgentRun(run.id, { status: "completed", output, model: modelOf(groqClient) }, ownedOptions());
       await emit(EVENT_TYPES.AGENT_COMPLETION, { agentRunId: run.id, role, round: input.round ?? null, sourceIds: output?.sourceIds ?? [] });
       return { output, run, error: null };
     } catch (error) {
+      if (isRunOwnershipLost(error)) throw error;
       const details = errorInfo(error);
       const status = isCancelledError(error) ? "cancelled" : "failed";
-      await store.finishAgentRun(run.id, { status, error: details.message, model: modelOf(groqClient) });
+      await ensureRunOwnership(`agent:${role}:error`);
+      await store.finishAgentRun(run.id, { status, error: details.message, model: modelOf(groqClient) }, ownedOptions());
       await emit(EVENT_TYPES.AGENT_ERROR, { agentRunId: run.id, role, round: input.round ?? null, ...details });
       return { output: null, run, error: details };
     }
@@ -521,10 +571,12 @@ export async function runInvestigation({
 
   async function persistDebate(debate) {
     state.debate = cloneJson(debate);
-    await store.saveDebate(sessionId, state.debate);
+    await ensureRunOwnership("debate");
+    await store.saveDebate(sessionId, state.debate, ownedOptions());
   }
 
   async function finishReport(rawReport, claims, status, statusReasons = []) {
+    await ensureRunOwnership("report");
     let report = rawReport;
     let audit;
     const warnings = [...state.retrieval.warnings, ...statusReasons];
@@ -554,7 +606,21 @@ export async function runInvestigation({
       });
       const fallback = finalAudit(report, [], state.sources);
       report = fallback.report;
-      audit = fallback.audit;
+      const preservedErrors = [...audited.audit.errors, ...fallback.audit.errors];
+      const preservedWarnings = [...audited.audit.warnings, ...fallback.audit.warnings];
+      const uniqueAuditItems = (items) => items.filter((item, index) => {
+        const key = `${item.code}|${item.path?.join(".") || ""}|${item.message}`;
+        return items.findIndex((candidate) => `${candidate.code}|${candidate.path?.join(".") || ""}|${candidate.message}` === key) === index;
+      });
+      audit = {
+        ...fallback.audit,
+        valid: false,
+        ok: false,
+        errors: uniqueAuditItems(preservedErrors),
+        warnings: uniqueAuditItems(preservedWarnings),
+        citedSourceIds: [...new Set([...audited.audit.citedSourceIds, ...fallback.audit.citedSourceIds])],
+        unknownSourceIds: [...new Set([...audited.audit.unknownSourceIds, ...fallback.audit.unknownSourceIds])],
+      };
       status = status === "CANCELLED" ? status : "PARTIAL";
     } else {
       report = audited.report;
@@ -570,7 +636,8 @@ export async function runInvestigation({
       unknownSourceIds: audit.unknownSourceIds,
     });
     try {
-      await store.saveReport(sessionId, report, audit);
+      await ensureRunOwnership("report_persistence");
+      await store.saveReport(sessionId, report, audit, ownedOptions());
       state.reportSaved = true;
     } catch (error) {
       state.criticalErrors.push(errorInfo(error));
@@ -578,20 +645,28 @@ export async function runInvestigation({
       status = status === "CANCELLED" ? status : "PARTIAL";
     }
     await emit(EVENT_TYPES.REPORT, {
-      status,
+      status: "REPORT_READY",
       reportId: report.id,
       sourceCount: state.sources.length,
       claimCount: claims.length,
       auditValid: audit.valid,
     });
-    await store.updateSession(sessionId, { status });
-    state.finalStatus = status;
-    await emit(EVENT_TYPES.STAGE, { stage: "finished", status });
+    let finalStatus = status;
+    if (typeof store.finalizeSession === "function") {
+      const finalized = await store.finalizeSession(sessionId, status, { stage: "finished" }, ownedOptions());
+      await notify(finalized.event);
+      finalStatus = finalized.session.status;
+    } else {
+      await store.updateSession(sessionId, { status }, ownedOptions());
+      await emit(EVENT_TYPES.STAGE, { stage: "finished", status });
+    }
+    state.finalStatus = finalStatus;
     return redactBundle(await store.getSessionBundle(sessionId));
   }
 
   try {
-    await store.updateSession(sessionId, { status: "RUNNING" });
+    await ensureRunOwnership("start");
+    await store.updateSession(sessionId, { status: "RUNNING" }, ownedOptions());
     await emit(EVENT_TYPES.STAGE, { stage: "retrieval", status: "RUNNING" });
     await checkCancellation("retrieval");
 
@@ -604,12 +679,14 @@ export async function runInvestigation({
       question: effectiveQuestion,
       options: researchOptions,
       providers: literatureProviders,
+      signal,
     });
     const retrievedSources = validatedSources(state.retrieval.sources);
     if (retrievedSources.length !== (Array.isArray(state.retrieval.sources) ? state.retrieval.sources.length : 0)) {
       state.retrieval.warnings = [...(state.retrieval.warnings ?? []), "Some provider records failed source-schema validation and were excluded."];
     }
-    state.sources = validatedSources(await store.upsertSources(sessionId, retrievedSources));
+    await ensureRunOwnership("source_persistence");
+    state.sources = validatedSources(await store.upsertSources(sessionId, retrievedSources, ownedOptions()));
     if (state.sources.length === 0 && retrievedSources.length > 0) state.sources = retrievedSources;
     await emit(EVENT_TYPES.SOURCE_RETRIEVAL, {
       queries: state.retrieval.queries,
@@ -744,7 +821,8 @@ export async function runInvestigation({
     ];
     const claimInputs = claimCandidates(outputsForClaims, state.sources);
     try {
-      const savedClaims = await store.saveClaims(sessionId, claimInputs);
+      await ensureRunOwnership("claims_persistence");
+      const savedClaims = await store.saveClaims(sessionId, claimInputs, ownedOptions());
       state.claims = Array.isArray(savedClaims) ? savedClaims.filter((claim) => ClaimSchema.safeParse(claim).success) : claimInputs;
     } catch (error) {
       state.claims = [];
@@ -760,9 +838,10 @@ export async function runInvestigation({
     for (const round of debateRounds) if (round.errors.length > 0) reasons.push("one or more debate agents were incomplete");
     if (adjudicationRun.error) reasons.push("Adjudicator was unavailable or malformed");
     if (state.criticalErrors.length > 0) reasons.push("a persistence operation failed");
-    const status = reasons.length === 0 && state.audit?.valid !== false ? "COMPLETED" : "PARTIAL";
+      const status = reasons.length === 0 && state.audit?.valid !== false ? "COMPLETED" : "PARTIAL";
     return await finishReport(adjudicationRun.output?.report ?? null, state.claims, status, reasons);
   } catch (error) {
+    if (isRunOwnershipLost(error)) return redactBundle(await store.getSessionBundle(sessionId));
     if (isCancelledError(error)) {
       await markCancelled(error.stage ?? "pipeline");
       try {

@@ -17,6 +17,8 @@ const TYPES = new Map([
 
 function safePath(requestUrl) {
   const pathname = decodeURIComponent(new URL(requestUrl || "/", "http://localhost").pathname);
+  const blocked = /^(?:\/(?:server|tools|docs|sections|node_modules|\.git)(?:\/|$)|\/(?:\.env|\.gitignore|\.gitattributes)(?:$|\/))/i;
+  if (blocked.test(pathname)) return null;
   const relative = pathname.replace(/^\/+/, "");
   const candidate = path.resolve(ROOT, relative);
   if (candidate !== ROOT && !candidate.startsWith(`${ROOT}${path.sep}`)) return null;

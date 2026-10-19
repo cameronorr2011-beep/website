@@ -1,17 +1,39 @@
 import { createApiTransport } from "/papertrail/js/api.js";
-import { clearSession, createSession, exportSessionJson, loadSession, saveSession } from "/papertrail/js/store.js";
+import {
+  clearApiBase,
+  clearLiveSession,
+  clearSession,
+  createSession,
+  exportSessionJson,
+  loadApiBase,
+  loadLiveSession,
+  loadSession,
+  saveApiBase,
+  saveLiveSession,
+  saveSession,
+} from "/papertrail/js/store.js";
 
 const DEMO_LABEL = "SYNTHETIC DEMONSTRATION DATA";
+const LIVE_PROVIDER_LABEL = "VERIFIED PROVIDER METADATA";
+const LIVE_AI_LABEL = "AI-GENERATED INTERPRETATION";
 const QUESTION = "Does increasing light intensity consistently improve microalgae biomass productivity?";
 const VIEW_META = {
   overview: ["Investigation state", "Overview"],
   agents: ["Four-role pipeline", "Agent roles"],
+  lab: ["Execution records", "Agent laboratory"],
   evidence: ["Source packet", "Evidence browser"],
   claims: ["Traceable assertions", "Claims"],
   debate: ["Adversarial review", "Debate"],
   graph: ["Claim / evidence links", "Trace table"],
   report: ["Adjudicated output", "Final report"],
 };
+const LIVE_AGENT_ROLES = [
+  ["investigator", "Investigator", "Builds the first source-grounded interpretation."],
+  ["skeptic", "Skeptic", "Challenges overreach, missing citations, and weak inferences."],
+  ["experimentalist", "Experimentalist", "Turns unresolved questions into proposed tests."],
+  ["adjudicator", "Adjudicator", "Weighs the debate and prepares the audited report."],
+];
+const DEMO_PROMPT_VERSION = "papertrail-demo-v1";
 
 const SOURCES = [
   {
@@ -352,13 +374,31 @@ const claimById = new Map(CLAIMS.map((claim) => [claim.id, claim]));
 const app = document.querySelector(".papertrail-app");
 const panel = document.getElementById("pt-panel");
 const dialog = document.getElementById("pt-reset-dialog");
-const api = createApiTransport({ baseUrl: app?.dataset.apiBase || "" });
+const settingsDialog = document.getElementById("pt-settings-dialog");
+const storedApiBase = loadApiBase();
+let api = createApiTransport({ baseUrl: storedApiBase.value });
 let currentView = "overview";
 let runTimer = null;
 let toastTimer = null;
-let storageMode = "local";
-let storageError = "";
+let storageMode = storedApiBase.storageMode;
+let storageError = storedApiBase.storageError;
 let sessionRecovered = false;
+let mode = "demo";
+let liveSnapshot = null;
+let liveStale = false;
+let liveError = "";
+let liveTransportState = "idle";
+let liveStorageMode = storedApiBase.storageMode;
+let liveStorageError = storedApiBase.storageError;
+let liveRecovered = false;
+let liveSubscription = null;
+let liveRefreshPromise = null;
+let liveGeneration = 0;
+let lastLiveErrorToast = "";
+let liveClaimId = null;
+let apiBoundaryError = "";
+let apiProviderIssue = "";
+let evidenceQuery = "";
 
 function copy(value) {
   return value == null ? value : JSON.parse(JSON.stringify(value));
@@ -373,13 +413,155 @@ function html(value) {
     .replaceAll("'", "&#39;");
 }
 
+function liveBundle() {
+  return liveSnapshot || {
+    session: null,
+    events: [],
+    sources: [],
+    agentRuns: [],
+    claims: [],
+    evidence: [],
+    evidenceLinks: [],
+    debate: null,
+    report: null,
+    audit: null,
+  };
+}
+
+function liveSession() {
+  return liveBundle().session || {};
+}
+
+function liveStatus() {
+  return String(liveSession().status || "UNKNOWN").toUpperCase();
+}
+
+function safeHttpUrl(value) {
+  if (!value) return null;
+  try {
+    const parsed = new URL(String(value));
+    return ["http:", "https:"].includes(parsed.protocol) ? parsed.href : null;
+  } catch {
+    return null;
+  }
+}
+
+function liveSource(id) {
+  return (liveBundle().sources || []).find((item) => item?.id === id) || null;
+}
+
+function liveText(value, fallback = "") {
+  if (typeof value === "string" && value.trim()) return value.trim();
+  if (!value || typeof value !== "object") return fallback;
+  for (const key of ["text", "content", "statement", "claim", "detail", "observation", "summary", "headline", "executiveSummary", "summary"]) {
+    if (typeof value[key] === "string" && value[key].trim()) return value[key].trim();
+  }
+  return fallback;
+}
+
+function liveStatusBadge(status) {
+  return `<span class="pt-status-badge">${html(String(status || "STATUS NOT RETURNED").replaceAll("_", " "))}</span>`;
+}
+
+function liveExternalLink(value, label = value, className = "pt-live-source-link") {
+  const url = safeHttpUrl(value);
+  return url
+    ? `<a class="${html(className)}" href="${html(url)}" target="_blank" rel="noreferrer noopener">${html(label)}</a>`
+    : "";
+}
+
+function liveSourceIds(item) {
+  return [...new Set([
+    ...(Array.isArray(item?.sourceIds) ? item.sourceIds : []),
+    ...(typeof item?.sourceId === "string" ? [item.sourceId] : []),
+  ])];
+}
+
+function liveSourceTrace(ids = []) {
+  const validIds = ids.filter((id) => liveSource(id));
+  if (validIds.length === 0) return `<span class="pt-epistemic">NO DIRECT PROVIDER SOURCE LINK RECORDED</span>`;
+  return `<ul class="pt-live-trace-list" aria-label="Provider source trace">${validIds.map((id) => {
+    const item = liveSource(id);
+    const url = item?.sourceUrl || item?.sourceUrls?.[0];
+    const link = liveExternalLink(url, url, "pt-live-source-link");
+    return `<li><strong class="pt-source-id">${html(id)}</strong> · ${html(item?.title || "Provider source")}${link || `<span class="pt-epistemic">No valid http(s) source URL supplied.</span>`}</li>`;
+  }).join("")}</ul>`;
+}
+
+function renderLiveTraceable(item, context = "interpretation") {
+  if (!item || typeof item !== "object") return "";
+  const text = liveText(item, "No text returned.");
+  const status = item.epistemicStatus || item.status || (context === "provider" ? "reported_finding" : "unresolved");
+  return `<article class="pt-live-result-card"><div class="pt-live-status-line"><span class="${context === "provider" ? "pt-provider-badge" : "pt-ai-badge"}">${html(context === "provider" ? LIVE_PROVIDER_LABEL : LIVE_AI_LABEL)}</span>${liveStatusBadge(status)}</div><p>${html(text)}</p>${liveSourceTrace(liveSourceIds(item))}</article>`;
+}
+
+function renderLiveTraceableList(items, emptyText = "No result has been persisted yet.", context = "interpretation") {
+  const values = Array.isArray(items) ? items.filter(Boolean) : [];
+  return values.length ? `<div class="pt-live-role-list">${values.map((item) => renderLiveTraceable(item, context)).join("")}</div>` : `<div class="pt-live-empty">${html(emptyText)}</div>`;
+}
+
+function latestLiveRun(role) {
+  const runs = (liveBundle().agentRuns || []).filter((run) => run?.role === role);
+  return runs[runs.length - 1] || null;
+}
+
+function liveRunErrors() {
+  const errors = [];
+  for (const run of liveBundle().agentRuns || []) {
+    if (run?.error) errors.push({ role: run.role || "agent", message: run.error, status: run.status || "failed" });
+  }
+  for (const event of liveBundle().events || []) {
+    if (["error", "agent_error"].includes(event?.type)) {
+      const payload = event.payload || {};
+      errors.push({ role: payload.role || payload.stage || "pipeline", message: payload.message || payload.error || "The live run reported an error.", status: payload.status || payload.code || "error" });
+    }
+  }
+  const seen = new Set();
+  return errors.filter((item) => {
+    const key = `${item.role}|${item.message}`;
+    if (seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
+}
+
+function renderLiveErrors() {
+  const errors = liveRunErrors();
+  if (!errors.length) return "";
+  return `<section class="pt-live-error" aria-label="Live run errors"><strong>Agent or pipeline errors are part of this live record</strong><ul class="pt-live-error-list">${errors.map((item) => `<li><strong>${html(item.role)}</strong> · ${html(item.status)} · ${html(item.message)}</li>`).join("")}</ul></section>`;
+}
+
+function liveEventStage() {
+  const events = liveBundle().events || [];
+  const stageEvent = [...events].reverse().find((event) => event?.type === "stage_change" && event.payload?.stage);
+  return stageEvent?.payload?.stage || "awaiting persisted event";
+}
+
+function liveInterruption() {
+  return [...(liveBundle().events || [])].reverse().find((event) => event?.type === "run_interrupted") || null;
+}
+
+function liveEventMessage(event) {
+  const payload = event?.payload || {};
+  if (event?.type === "stage_change") return `stage: ${payload.stage || "unknown"}${payload.status ? ` · ${payload.status}` : ""}`;
+  if (event?.type === "source_retrieval") return `provider retrieval · ${payload.sourceCount ?? "?"} source records reported`;
+  if (event?.type === "agent_start") return `${payload.role || "agent"} started`;
+  if (event?.type === "agent_completion") return `${payload.role || "agent"} output persisted`;
+  if (event?.type === "agent_error") return `${payload.role || "agent"} error: ${payload.message || "error returned"}`;
+  if (event?.type === "audit") return `citation audit · ${payload.valid ? "valid" : "errors returned"}`;
+  if (event?.type === "report") return `report persisted · ${payload.status || "status not returned"}`;
+  if (event?.type === "error") return `${payload.stage || "pipeline"} error: ${payload.message || "error returned"}`;
+  if (event?.type === "run_interrupted") return `run interrupted · ${payload.status || "partial state preserved"}`;
+  return event?.type || "persisted event";
+}
+
 function source(id) {
   return sourceById.get(id) || { id, title: "Unknown source", url: "https://example.invalid/papertrail-demo/unknown", provenance: DEMO_LABEL };
 }
 
-function makeInitialSession() {
+function makeInitialSession(question = QUESTION) {
   return createSession({
-    question: QUESTION,
+    question: question || QUESTION,
     agentRoles: AGENT_ROLES,
     sources: SOURCES,
     records: RECORDS,
@@ -393,6 +575,12 @@ storageMode = loaded.storageMode;
 storageError = loaded.storageError;
 sessionRecovered = loaded.recovered;
 currentView = state.selection?.view && VIEW_META[state.selection.view] ? state.selection.view : "overview";
+const loadedLive = loadLiveSession();
+liveSnapshot = loadedLive.snapshot;
+liveStorageMode = loadedLive.storageMode;
+liveStorageError = loadedLive.storageError;
+liveRecovered = loadedLive.recovered;
+if (liveSnapshot) mode = "live";
 
 function syntheticLabel(text = DEMO_LABEL) {
   return `<span class="pt-synthetic-label">${html(text)}</span>`;
@@ -424,6 +612,55 @@ function statusForAgent(agentId) {
 }
 
 function renderStatus() {
+  if (mode === "live") {
+    const session = liveSession();
+    const status = liveStatus();
+    const statusLabel = document.getElementById("pt-status-label");
+    const statusTitle = document.getElementById("pt-status-title");
+    const statusCopy = document.getElementById("pt-status-copy");
+    const progressFill = document.getElementById("pt-progress-fill");
+    const progressStage = document.getElementById("pt-progress-stage");
+    const progressState = document.getElementById("pt-progress-state");
+    const startButton = document.getElementById("pt-start");
+    const cancelButton = document.getElementById("pt-cancel-live");
+    const completedRoles = new Set((liveBundle().agentRuns || []).filter((run) => ["completed", "complete"].includes(String(run?.status).toLowerCase())).map((run) => run.role)).size;
+    const interruption = liveInterruption();
+    const interrupted = Boolean(interruption && !liveStale);
+    const interruptionReason = interruption?.payload?.reason || "The API restarted before the worker reached a terminal state.";
+    const normalizedState = liveStale ? "stale" : status.toLowerCase();
+    statusLabel.dataset.state = normalizedState;
+    statusLabel.textContent = liveStale ? `${status} / STALE SNAPSHOT` : interrupted ? `${status} / INTERRUPTED` : status;
+    statusTitle.textContent = liveStale
+      ? "Last live snapshot needs revalidation"
+      : interrupted ? "Live run was interrupted"
+        : status === "RUNNING" ? `Live run at ${liveEventStage()}`
+        : status === "COMPLETED" ? "Live report is available"
+          : status === "PARTIAL" ? "Live run completed with limitations"
+            : status === "CANCELLED" ? "Live run was cancelled"
+              : status === "FAILED" ? "Live run failed" : "Live session is waiting to run";
+    statusCopy.textContent = liveStale
+      ? "The configured API could not revalidate this persisted bundle. Displayed results are stale or unknown; completion is not being asserted as current."
+      : liveError || (interrupted
+        ? `${interruptionReason} Previously persisted sources and outputs remain inspectable. Start a new live investigation from the form below; do not treat this partial record as a completed report.`
+        : status === "RUNNING"
+          ? "The server owns progress. PaperTrail displays only persisted events and bundle data; no client progress is synthesized."
+        : status === "COMPLETED"
+          ? "The server returned a completed bundle. Inspect provider metadata, agent interpretations, debate, audit, and limitations."
+          : status === "PARTIAL" ? "The server returned a partial result. Agent errors, provider warnings, and citation limitations remain visible."
+            : status === "CANCELLED" ? "The server recorded cancellation. The persisted partial bundle remains inspectable."
+              : status === "FAILED" ? "The server recorded a failed run. Inspect the reported agent or pipeline errors below." : "No live run has started for this session.");
+    progressFill.style.width = `${Math.min(100, (completedRoles / LIVE_AGENT_ROLES.length) * 100)}%`;
+    progressStage.textContent = `${completedRoles} / ${LIVE_AGENT_ROLES.length} role outputs recorded`;
+    progressState.textContent = `${status.toLowerCase()}${liveStale ? " / stale" : ""}`;
+    document.getElementById("pt-session-id").textContent = session.id || "LIVE SESSION";
+    startButton.textContent = "Start demo investigation →";
+    startButton.disabled = false;
+    cancelButton.hidden = !(status === "RUNNING" && !liveStale);
+    cancelButton.disabled = liveTransportState === "cancelling";
+    document.getElementById("pt-header-live").textContent = api.configured ? "local API boundary" : "live mode unavailable";
+    return;
+  }
+
   const completeCount = state.workflow.completedAgentIds.length;
   const total = state.workflow.totalSteps || AGENT_ROLES.length;
   const statusLabel = document.getElementById("pt-status-label");
@@ -457,22 +694,27 @@ function renderStatus() {
   progressStage.textContent = `${completeCount} / ${total} roles complete`;
   progressState.textContent = state.status;
   document.getElementById("pt-session-id").textContent = state.sessionId;
-  document.getElementById("pt-header-live").textContent = api.configured ? "backend configured" : "live mode unavailable";
+  document.getElementById("pt-header-live").textContent = api.configured ? "local API boundary" : "live mode unavailable";
+  document.getElementById("pt-cancel-live").hidden = true;
 }
 
 function renderStorage() {
   const card = document.getElementById("pt-storage-card");
   const title = document.getElementById("pt-storage-title");
   const copyText = document.getElementById("pt-storage-copy");
-  card.dataset.mode = storageMode;
-  if (storageMode === "local") {
-    title.textContent = "LOCAL STORAGE ACTIVE";
-    copyText.textContent = sessionRecovered ? "Version 1 session recovered from this browser." : "Version 1 session state will recover on reload.";
+  const activeStorageMode = mode === "live" ? liveStorageMode : storageMode;
+  const activeStorageError = mode === "live" ? liveStorageError : storageError;
+  card.dataset.mode = activeStorageMode;
+  if (activeStorageMode === "local") {
+    title.textContent = mode === "live" ? "LIVE SNAPSHOT STORAGE ACTIVE" : "LOCAL STORAGE ACTIVE";
+    copyText.textContent = mode === "live"
+      ? liveRecovered ? "Version 1 live metadata, results, and events recovered from this browser." : "Version 1 live metadata, results, and events will recover on reload."
+      : sessionRecovered ? "Version 1 session recovered from this browser." : "Version 1 session state will recover on reload.";
   } else {
     title.textContent = "STORAGE UNAVAILABLE";
-    copyText.textContent = "Session is held in memory only and may not survive reload.";
+    copyText.textContent = "Reload recovery is unavailable; this session is held in memory only.";
   }
-  if (storageError) card.title = storageError;
+  if (activeStorageError) card.title = activeStorageError;
 }
 
 function renderApiState() {
@@ -485,13 +727,25 @@ function renderApiState() {
     card.dataset.state = "unavailable";
     label.textContent = "LIVE MODE UNAVAILABLE";
     title.textContent = "No backend configured";
-    copyText.textContent = "This demo has no live research mode. Configure an explicit backend to check availability; no backend is required for this workspace.";
+    copyText.textContent = "Live mode is unavailable until you configure an explicit local API boundary. No backend is required for the offline demo.";
     checkButton.hidden = true;
+  } else if (liveStale || apiBoundaryError) {
+    card.dataset.state = "unavailable";
+    label.textContent = "API UNAVAILABLE / LIVE MODE UNAVAILABLE";
+    title.textContent = "Configured backend could not be confirmed";
+    copyText.textContent = `${apiBoundaryError || liveError || "The saved live bundle could not be revalidated."} The offline demo remains available.`;
+    checkButton.hidden = false;
+  } else if (apiProviderIssue) {
+    card.dataset.state = "configured";
+    label.textContent = "API AVAILABLE / PROVIDER UNAVAILABLE";
+    title.textContent = "API boundary responded";
+    copyText.textContent = `${apiProviderIssue} The server owns provider credentials; the offline demo remains available.`;
+    checkButton.hidden = false;
   } else {
     card.dataset.state = "configured";
-    label.textContent = "API CONFIGURED / STATUS UNKNOWN";
+    label.textContent = "LOCAL API BOUNDARY";
     title.textContent = "Backend boundary is explicit";
-    copyText.textContent = "PaperTrail will only contact the configured base. The synthetic demo remains usable if the backend is unavailable.";
+    copyText.textContent = "PaperTrail contacts only the configured base with credentials omitted. Provider credentials remain server-side.";
     checkButton.hidden = false;
   }
 }
@@ -557,12 +811,46 @@ function renderAgents() {
   return `<p class="pt-panel-lede">The role metadata stays separate from generated summaries. Each completed output is labeled ${DEMO_LABEL} and retains its source IDs, while a queued role makes no claim.</p><div class="pt-agent-grid">${AGENT_ROLES.map(renderAgentCard).join("")}</div>`;
 }
 
+function runDuration(run) {
+  if (!run?.startedAt || !run?.finishedAt) return "not completed";
+  const duration = Date.parse(run.finishedAt) - Date.parse(run.startedAt);
+  return Number.isFinite(duration) && duration >= 0 ? `${duration} ms` : "not returned";
+}
+
+function renderLiveLabRecord(role, name, focus) {
+  const run = latestLiveRun(role);
+  const input = run?.input || {};
+  return `<article class="pt-lab-record"><div class="pt-card-heading"><span class="pt-source-id">${html(role)}</span>${liveStatusBadge(run?.status || "queued")}</div><h3>${html(name)}</h3><p class="pt-agent-focus">${html(focus)}</p><dl class="pt-lab-meta"><div><dt>Prompt version</dt><dd>${html(input.promptVersion || "not returned by server")}</dd></div><div><dt>Model identifier</dt><dd>${html(run?.model || "not returned")}</dd></div><div><dt>Execution duration</dt><dd>${html(runDuration(run))}</dd></div><div><dt>Token usage</dt><dd>not recorded by this API</dd></div><div><dt>Source IDs supplied</dt><dd class="pt-source-id">${html((input.sourceIds || []).join(", ") || "none")}</dd></div></dl>${run?.error ? `<div class="pt-live-error"><strong>VALIDATION / EXECUTION ERROR</strong><p>${html(run.error)}</p></div>` : `<p class="pt-epistemic">Structured output is persisted separately from provider metadata. Inspect Agent roles for the returned interpretation.</p>`}</article>`;
+}
+
+function renderDemoLabRecord(agent) {
+  const output = state.analysis.agentOutputs[agent.id];
+  const status = statusForAgent(agent.id);
+  return `<article class="pt-lab-record"><div class="pt-card-heading"><span class="pt-source-id">${html(agent.code)}</span><span class="pt-state-label">${html(status)}</span></div><h3>${html(agent.name)}</h3><p class="pt-agent-focus">${html(agent.focus)}</p><dl class="pt-lab-meta"><div><dt>Prompt version</dt><dd>${DEMO_PROMPT_VERSION}</dd></div><div><dt>Model identifier</dt><dd>deterministic fixture / no model call</dd></div><div><dt>Execution duration</dt><dd>synthetic staged release</dd></div><div><dt>Token usage</dt><dd>not applicable</dd></div><div><dt>Source IDs supplied</dt><dd class="pt-source-id">${html(output ? outputSourceIds(output).join(", ") : "none")}</dd></div></dl><p class="pt-epistemic">${DEMO_LABEL}. This laboratory record does not claim an external model execution.</p></article>`;
+}
+
+function renderLab() {
+  if (mode === "live") {
+    return `${liveConnectionBanner()}<p class="pt-panel-lede">The laboratory exposes only execution facts persisted by the server: role, prompt version when recorded, model identifier, duration, supplied source IDs, validation errors, and token-usage availability. It does not expose secrets or claim telemetry the API did not record.</p><div class="pt-lab-grid">${LIVE_AGENT_ROLES.map(([role, name, focus]) => renderLiveLabRecord(role, name, focus)).join("")}</div>${renderLiveErrors()}`;
+  }
+  return `<p class="pt-panel-lede">The offline laboratory mirrors the four analytical boundaries without pretending that a language model ran. Every record is ${DEMO_LABEL}.</p><div class="pt-lab-grid">${AGENT_ROLES.map(renderDemoLabRecord).join("")}</div>`;
+}
+
 function renderSourceCard(item) {
   return `<article class="pt-source-card"><div class="pt-card-heading"><span class="pt-source-id">${html(item.id)}</span>${syntheticLabel(item.provenance)}</div><div><h3>${html(item.title)}</h3><p class="pt-source-kind">${html(item.kind)}</p></div><div class="pt-source-meta"><span><strong>record date:</strong> ${html(item.date)}</span><span><strong>scope:</strong> ${html(item.scope)}</span></div><p class="pt-source-description">${html(item.description)}</p><p class="pt-source-method"><strong>Method boundary:</strong> ${html(item.method)}</p><div class="pt-source-link-wrap"><small>Non-real source link · navigation disabled</small><a class="pt-demo-link" href="${html(item.url)}" data-demo-link data-source-id="${html(item.id)}">${html(item.url)}</a></div></article>`;
 }
 
+function matchesEvidenceQuery(item) {
+  if (!evidenceQuery) return true;
+  const haystack = [item?.id, item?.title, item?.kind, item?.scope, item?.description, item?.condition, item?.value, item?.observation, item?.provider, item?.doi, item?.pmid]
+    .filter(Boolean).join(" ").toLocaleLowerCase();
+  return haystack.includes(evidenceQuery);
+}
+
 function renderEvidence() {
-  return `<p class="pt-panel-lede">The source layer below is original synthetic metadata. It is intentionally separate from generated agent summaries. Source IDs are stable, and every link is visibly marked as a non-real demo record.</p><div class="pt-source-grid">${SOURCES.map(renderSourceCard).join("")}</div><h3 class="pt-record-heading">Synthetic evidence records</h3><div class="pt-record-list">${RECORDS.map((record) => `<article class="pt-record-card"><div><span class="pt-source-id">${html(record.id)}</span><h4>${html(record.condition)}</h4><small class="pt-epistemic">${html(record.sourceId)}</small></div><div><div class="pt-record-value">${html(record.value)} <small>${html(record.unit)}</small></div><p>${html(record.observation)}</p></div><div><p class="pt-record-uncertainty">${html(record.uncertainty)}</p>${syntheticLabel(record.provenance)}</div></article>`).join("")}</div>`;
+  const sources = SOURCES.filter(matchesEvidenceQuery);
+  const records = RECORDS.filter(matchesEvidenceQuery);
+  return `<p class="pt-panel-lede">The source layer below is original synthetic metadata. It is intentionally separate from generated agent summaries. Source IDs are stable, and every link is visibly marked as a non-real demo record.</p><div class="pt-evidence-search-row"><label for="pt-evidence-search">Search synthetic sources and records</label><input id="pt-evidence-search" data-evidence-search type="search" value="${html(evidenceQuery)}" placeholder="title, source ID, condition…"><span>${sources.length} sources · ${records.length} records</span></div><div class="pt-source-grid">${sources.length ? sources.map(renderSourceCard).join("") : `<div class="pt-live-empty">No synthetic evidence matches this search.</div>`}</div><h3 class="pt-record-heading">Synthetic evidence records</h3><div class="pt-record-list">${records.length ? records.map((record) => `<article class="pt-record-card"><div><span class="pt-source-id">${html(record.id)}</span><h4>${html(record.condition)}</h4><small class="pt-epistemic">${html(record.sourceId)}</small></div><div><div class="pt-record-value">${html(record.value)} <small>${html(record.unit)}</small></div><p>${html(record.observation)}</p></div><div><p class="pt-record-uncertainty">${html(record.uncertainty)}</p>${syntheticLabel(record.provenance)}</div></article>`).join("") : `<div class="pt-live-empty">No synthetic evidence records match this search.</div>`}</div>`;
 }
 
 function renderClaimDetail(claim) {
@@ -602,12 +890,129 @@ function renderReport() {
   return `<article class="pt-report"><div class="pt-report-heading"><div>${syntheticLabel(report.label)}<h3>${html(report.title)}</h3><p class="pt-epistemic" style="margin:10px 0 0">${html(report.status)} · generated by ${html(report.generatedBy)}</p></div><span class="pt-source-id">${html(report.id)}</span></div><div class="pt-report-summary"><p>${html(report.executiveSummary)}</p>${trace(report.summarySourceIds)}</div><div class="pt-report-grid">${report.sections.map((section, index) => `<section class="pt-report-section${index === 2 ? " pt-report-section--wide" : ""}"><h4>${html(section.heading)}</h4><p>${html(section.text)}</p><p class="pt-epistemic" style="margin-top:10px">${html(section.qualifier)} · source IDs: ${html(section.sourceIds.join(", "))}</p>${trace(section.sourceIds)}</section>`).join("")}<section class="pt-report-section pt-report-section--wide"><h4>Limitations and unresolved questions</h4><ul class="pt-limitations">${report.limitations.map((item) => `<li>${html(item)}</li>`).join("")}</ul></section></div><div class="pt-export-row"><p>Export includes schema version, source metadata, agent outputs, claims, debate, trace edges, and report.</p><button class="pt-button pt-button--primary" type="button" data-action="export">Export session JSON <span aria-hidden="true">↓</span></button></div></article>`;
 }
 
+function liveConnectionBanner() {
+  if (liveStale) return `<div class="pt-live-banner" data-state="error"><strong>STALE / UNKNOWN LIVE SNAPSHOT</strong><p>${html(liveError || "The saved server bundle could not be revalidated. Its contents remain visible as the last persisted response.")}</p></div>`;
+  const interruption = liveInterruption();
+  if (interruption) return `<div class="pt-live-banner" data-state="error"><strong>RUN INTERRUPTED / START A NEW LIVE INVESTIGATION</strong><p>${html(interruption.payload?.reason || "The API restarted before the live worker reached a terminal state.")} Previously persisted data remains visible, but this session is not a completed report.</p></div>`;
+  if (liveError) return `<div class="pt-live-banner" data-state="error"><strong>LIVE API ERROR</strong><p>${html(liveError)}</p></div>`;
+  if (liveTransportState === "polling") return `<div class="pt-live-banner"><strong>POLLING FALLBACK ACTIVE</strong><p>EventSource is unavailable or reconnecting. The client is polling the persisted session bundle with a bounded window.</p></div>`;
+  if (liveTransportState === "reconnecting") return `<div class="pt-live-banner"><strong>RECONNECTING TO LIVE EVENTS</strong><p>The last persisted event ID will be replayed. Reconnect attempts are bounded.</p></div>`;
+  if (liveTransportState === "sse") return `<div class="pt-live-banner"><strong>LIVE EVENT STREAM CONNECTED</strong><p>Server events are being replayed from the persisted event ID. Displayed progress is server-reported.</p></div>`;
+  return `<div class="pt-live-banner"><strong>LOCAL API BOUNDARY</strong><p>Provider records and agent results below are from the configured server session. AI-generated interpretations remain distinct from provider-reported metadata.</p></div>`;
+}
+
+function renderLiveEvents() {
+  const events = liveBundle().events || [];
+  if (!events.length) return `<div class="pt-live-empty">No persisted server events have been returned yet.</div>`;
+  return `<ul class="pt-live-event-list" aria-label="Persisted live events">${events.slice(-40).map((event) => `<li><time datetime="${html(event.createdAt || "")}">#${html(event.id)}</time><span><strong>${html(event.type || "event")}</strong> · ${html(liveEventMessage(event))}</span></li>`).join("")}</ul>`;
+}
+
+function renderLiveOverview() {
+  const session = liveSession();
+  if (!session.id) return `<div class="pt-live-empty"><strong>No live session is loaded.</strong><p>Choose Live mode in the new investigation form after configuring the local API boundary.</p></div>`;
+  const bundle = liveBundle();
+  const status = liveStatus();
+  return `${liveConnectionBanner()}<section class="pt-panel-heading"><div><h3>${html(session.question || "Live investigation")}</h3><p class="pt-panel-lede">Server status: ${html(status)}. This overview reports stored bundle data and persisted events; it does not invent progress or provider findings.</p></div>${liveStatusBadge(status)}</section><div class="pt-stat-grid"><div class="pt-stat"><span>agent runs</span><strong>${html((bundle.agentRuns || []).length)}</strong><small>server records, including failures</small></div><div class="pt-stat"><span>sources</span><strong>${html((bundle.sources || []).length)}</strong><small>verified provider metadata records</small></div><div class="pt-stat"><span>claims</span><strong>${html((bundle.claims || []).length)}</strong><small>epistemic status shown per claim</small></div><div class="pt-stat"><span>trace links</span><strong>${html((bundle.evidenceLinks || []).length)}</strong><small>honest table fallback</small></div></div><div class="pt-overview-grid"><section class="pt-section-card"><h3>Persisted server events</h3><p>Last recorded stage: <span class="pt-mono">${html(liveEventStage())}</span></p>${renderLiveEvents()}</section><section class="pt-section-card"><h3>Session metadata</h3><div class="pt-live-result-meta"><span><strong>session:</strong> ${html(session.id)}</span><span><strong>created:</strong> ${html(session.createdAt || "not returned")}</span><span><strong>updated:</strong> ${html(session.updatedAt || "not returned")}</span><span><strong>model:</strong> ${html(session.model || "server default / not returned")}</span><span><strong>last event ID:</strong> ${html(liveSnapshot?.lastEventId ?? 0)}</span></div><p class="pt-epistemic">The browser stores session metadata, results, and events only. Provider credentials are not part of this snapshot.</p></section></div>${renderLiveErrors()}`;
+}
+
+function renderLiveAgentCard(role, name, focus) {
+  const run = latestLiveRun(role);
+  const output = run?.output;
+  const status = run?.status || "queued";
+  const arrays = ["findings", "interpretations", "hypotheses", "unresolved", "challenges", "proposedTests", "rebuttals"].flatMap((key) => Array.isArray(output?.[key]) ? output[key] : []);
+  const detail = output ? `${output.headline ? `<h4>${html(output.headline)}</h4>` : ""}${output.summary ? `<p>${html(output.summary)}</p>` : ""}${output.decision ? `<h4>Decision</h4>${renderLiveTraceable(output.decision)}` : ""}${renderLiveTraceableList(arrays, "This agent returned no traceable items.")}${output.report ? `<h4>Returned report candidate</h4>${renderLiveTraceable(output.report)}` : ""}` : `<div class="pt-live-empty">No output has been persisted for this role.</div>`;
+  const error = run?.error ? `<div class="pt-live-error"><strong>AGENT ERROR</strong><p>${html(run.error)}</p></div>` : "";
+  return `<article class="pt-live-agent-card" data-state="${html(String(status).toLowerCase())}"><div class="pt-card-heading"><span class="pt-source-id">${html(role)}</span>${liveStatusBadge(status)}</div><h3>${html(name)}</h3><p class="pt-agent-focus">${html(focus)}</p><div class="pt-live-status-line"><span class="pt-ai-badge">${LIVE_AI_LABEL}</span>${run?.model ? `<span>model: ${html(run.model)}</span>` : ""}</div><div style="margin-top:13px">${detail}</div>${error}</article>`;
+}
+
+function renderLiveAgents() {
+  return `${liveConnectionBanner()}<p class="pt-panel-lede">These four panels are distinct server agent roles. Their language is AI-generated interpretation and is not provider-reported metadata. Missing or failed runs remain visible.</p><div class="pt-live-agent-grid">${LIVE_AGENT_ROLES.map(([role, name, focus]) => renderLiveAgentCard(role, name, focus)).join("")}</div>${renderLiveErrors()}`;
+}
+
+function providerMetadataText(item) {
+  try {
+    const metadata = item?.providerMetadataByProvider || item?.providerMetadata;
+    return metadata === undefined ? "Provider returned no raw metadata object." : JSON.stringify(metadata, null, 2);
+  } catch {
+    return "Provider metadata could not be displayed as JSON.";
+  }
+}
+
+function renderLiveSourceCard(item) {
+  const sourceUrl = safeHttpUrl(item?.sourceUrl);
+  const alternateUrls = (Array.isArray(item?.sourceUrls) ? item.sourceUrls : []).map(safeHttpUrl).filter(Boolean).filter((url) => url !== sourceUrl);
+  const availability = item?.fullTextAvailable ? "FULL TEXT AVAILABLE" : "ABSTRACT ONLY / FULL TEXT NOT PROVIDED";
+  return `<article class="pt-live-source-card"><div class="pt-card-heading"><span class="pt-source-id">${html(item?.id || "source")}</span><span class="pt-provider-badge">${LIVE_PROVIDER_LABEL}</span></div><h3>${html(item?.title || "Untitled provider record")}</h3><div class="pt-live-status-line"><span>${html(item?.provider || "provider not returned")}</span><span>record: ${html(item?.providerRecordId || "not returned")}</span></div><div class="pt-live-source-meta"><span><strong>authors:</strong> ${html(Array.isArray(item?.authors) && item.authors.length ? item.authors.join(", ") : "not returned")}</span><span><strong>date:</strong> ${html(item?.date || "not returned")}</span><span><strong>DOI:</strong> ${html(item?.doi || "not returned")}</span><span><strong>PMID:</strong> ${html(item?.pmid || "not returned")}</span><span><strong>retrieved:</strong> ${html(item?.retrievedAt || "not returned")}</span><span><strong>metadata origin:</strong> ${html(item?.metadataOrigin || "provider")}</span></div><span class="pt-availability">${availability}</span>${item?.abstract ? `<p class="pt-live-abstract"><strong>Provider abstract:</strong><br>${html(item.abstract)}</p>` : `<p class="pt-live-abstract">Provider did not return an abstract. No full text is claimed.</p>`}${sourceUrl ? liveExternalLink(sourceUrl, sourceUrl) : `<p class="pt-epistemic">No valid http(s) source URL supplied by provider.</p>`}${alternateUrls.map((url) => liveExternalLink(url, `Alternate provider URL · ${url}`)).join("")}${item?.doi ? `<p class="pt-epistemic">DOI: ${html(item.doi)}</p>` : ""}<details class="pt-live-provider-details"><summary>Provider-reported metadata</summary><pre>${html(providerMetadataText(item))}</pre></details></article>`;
+}
+
+function renderLiveEvidence() {
+  const bundle = liveBundle();
+  const evidence = bundle.evidence || [];
+  const sources = (bundle.sources || []).filter(matchesEvidenceQuery);
+  const passages = evidence.filter(matchesEvidenceQuery);
+  return `${liveConnectionBanner()}<p class="pt-panel-lede">Source records are displayed as ${LIVE_PROVIDER_LABEL}. DOI, PMID, abstract, retrieval time, provider IDs, source URLs, and full-text availability are taken from the server bundle. Agent interpretations are rendered separately.</p><div class="pt-evidence-search-row"><label for="pt-evidence-search">Search provider sources and passages</label><input id="pt-evidence-search" data-evidence-search type="search" value="${html(evidenceQuery)}" placeholder="title, DOI, provider, source ID…"><span>${sources.length} sources · ${passages.length} passages</span></div><div class="pt-live-source-grid">${sources.length ? sources.map(renderLiveSourceCard).join("") : `<div class="pt-live-empty">No provider source records match this search.</div>`}</div><h3 class="pt-record-heading">Provider evidence passages</h3>${passages.length ? `<div class="pt-live-role-list">${passages.map((item) => renderLiveTraceable(item, "provider")).join("")}</div>` : `<div class="pt-live-empty">No evidence passages match this search.</div>`}`;
+}
+
+function renderLiveClaimDetail(claim) {
+  if (!claim) return `<div class="pt-live-empty">No claim is available in the current live bundle.</div>`;
+  const evidence = (liveBundle().evidence || []).filter((item) => (claim.evidenceIds || []).includes(item?.id));
+  return `<article class="pt-claim-detail"><div class="pt-live-status-line"><span class="pt-ai-badge">${LIVE_AI_LABEL}</span>${liveStatusBadge(claim.epistemicStatus || "unresolved")}</div><h3>${html(liveText(claim, "Claim text not returned."))}</h3>${claim.detail ? `<p>${html(claim.detail)}</p>` : ""}<dl class="pt-claim-meta"><div><dt>Claim ID</dt><dd class="pt-source-id">${html(claim.id)}</dd></div><div><dt>Epistemic status</dt><dd>${html(claim.epistemicStatus || "unresolved / status not returned")}</dd></div><div><dt>Confidence</dt><dd>${html(claim.confidence || "not returned")}</dd></div><div><dt>Evidence records</dt><dd class="pt-source-id">${html((claim.evidenceIds || []).join(", ") || "none")}</dd></div></dl><h4 class="pt-subheading">Provider source links</h4>${liveSourceTrace(claim.sourceIds || [])}<h4 class="pt-subheading">Evidence passage trace</h4>${evidence.length ? `<div class="pt-live-role-list">${evidence.map((item) => renderLiveTraceable(item, "provider")).join("")}</div>` : `<div class="pt-live-empty">No matching evidence passage was returned.</div>`}</article>`;
+}
+
+function renderLiveClaims() {
+  const claims = liveBundle().claims || [];
+  if (!claims.length) return `${liveConnectionBanner()}<div class="pt-live-empty">No claims have been persisted. The server may still be retrieving sources or may have returned a partial result without claims.</div>${renderLiveErrors()}`;
+  const selected = claims.find((claim) => claim.id === liveClaimId) || claims[0];
+  return `${liveConnectionBanner()}<p class="pt-panel-lede">Each claim is an AI-generated interpretation or unresolved statement with the epistemic status returned by the server. Provider source links are shown separately.</p><div class="pt-claim-layout"><div class="pt-claim-list" aria-label="Live claims">${claims.map((claim) => `<button class="pt-claim-select" type="button" data-live-claim-id="${html(claim.id)}" aria-pressed="${claim.id === selected.id ? "true" : "false"}"><strong>${html(claim.id)}</strong><small>${html(claim.epistemicStatus || "unresolved")}</small></button>`).join("")}</div>${renderLiveClaimDetail(selected)}</div>${renderLiveErrors()}`;
+}
+
+function renderLiveDebateItem(item, role = "debate") {
+  if (!item) return `<div class="pt-live-empty">No ${html(role)} was returned.</div>`;
+  return `<article class="pt-live-result-card"><div class="pt-live-status-line"><span class="pt-ai-badge">${LIVE_AI_LABEL}</span>${item.role ? `<span>${html(item.role)}</span>` : ""}${liveStatusBadge(item.epistemicStatus || "unresolved")}</div><p>${html(liveText(item, "Debate text not returned."))}</p>${liveSourceTrace(liveSourceIds(item))}</article>`;
+}
+
+function renderLiveDebate() {
+  const debate = liveBundle().debate;
+  const rounds = Array.isArray(debate?.rounds) ? debate.rounds : [];
+  if (!debate && !rounds.length) return `${liveConnectionBanner()}<div class="pt-live-empty">No persisted debate rounds are available yet.</div>${renderLiveErrors()}`;
+  return `${liveConnectionBanner()}<p class="pt-panel-lede">Debate rounds preserve objections and rebuttals returned by the server. They are AI-generated interpretations, not provider metadata.</p><div class="pt-live-debate-rounds">${rounds.length ? rounds.map((round) => `<section class="pt-live-round"><div class="pt-card-heading"><h3>Round ${html(round.round)}</h3><span class="pt-source-id">${html((round.errors || []).length ? "errors recorded" : "persisted")}</span></div><div class="pt-live-rounds"><div class="pt-live-round-section"><h4>Objections and proposed tests</h4>${renderLiveTraceableList(round.objections, "No objections or proposed tests returned.")}</div><div class="pt-live-round-section"><h4>Rebuttal</h4>${renderLiveDebateItem(round.rebuttal, "rebuttal")}</div>${(round.errors || []).length ? `<div class="pt-live-error"><strong>ROUND ERRORS</strong><ul class="pt-live-error-list">${round.errors.map((error) => `<li>${html(error?.role || "agent")} · ${html(error?.message || error)}</li>`).join("")}</ul></div>` : ""}</div></section>`).join("") : `<div class="pt-live-empty">The server returned debate metadata without a round list.</div>`}</div>${renderLiveErrors()}`;
+}
+
+function renderLiveGraph() {
+  const links = liveBundle().evidenceLinks || [];
+  return `${liveConnectionBanner()}<p class="pt-live-table-note"><strong>HONEST TABLE FALLBACK</strong><br>This view renders persisted claim/evidence links only. No force-directed graph or synthetic relationship is added by the browser.</p>${links.length ? `<div class="pt-table-wrap"><table class="pt-trace-table"><caption class="pt-mono" style="padding:12px;text-align:left;color:var(--pt-faint);font-size:10px">Live claim / evidence trace</caption><thead><tr><th>Claim ID</th><th>Evidence ID</th><th>Source ID</th><th>Relationship</th><th>Provider link</th></tr></thead><tbody>${links.map((link) => { const item = liveSource(link.sourceId); const url = item?.sourceUrl || item?.sourceUrls?.[0]; return `<tr><td>${html(link.claimId || "not returned")}</td><td>${html(link.evidenceId || "not returned")}</td><td>${html(link.sourceId || "not returned")}</td><td>${html(link.relationship || "not returned")}</td><td>${liveExternalLink(url, url || "no valid http(s) URL", "pt-live-source-link") || `<span class="pt-epistemic">No valid http(s) URL</span>`}</td></tr>`; }).join("")}</tbody></table></div>` : `<div class="pt-live-empty">No persisted evidence links are available. The table remains empty rather than inventing edges.</div>`}`;
+}
+
+function renderLiveReport() {
+  const report = liveBundle().report;
+  const audit = liveBundle().audit;
+  if (!report) return `${liveConnectionBanner()}<div class="pt-live-empty">No report has been persisted. The live run may still be active or may have failed before report persistence.</div>${renderLiveErrors()}`;
+  const sections = Array.isArray(report.sections) ? report.sections : [];
+  const findings = Array.isArray(report.findings) ? report.findings : [];
+  const limitations = Array.isArray(report.limitations) ? report.limitations : [];
+  return `${liveConnectionBanner()}<article class="pt-report"><div class="pt-report-heading"><div><span class="pt-ai-badge">${LIVE_AI_LABEL}</span><h3>${html(report.title || "Live PaperTrail report")}</h3><p class="pt-epistemic">${html(report.epistemicStatus || "status not returned")} · generated by ${html(report.generatedBy || "server")}</p></div><span class="pt-source-id">${html(report.id || "report")}</span></div><div class="pt-report-summary"><p>${html(report.executiveSummary || report.summary || "No executive summary returned.")}</p>${liveSourceTrace(report.summarySourceIds || report.sourceIds || [])}</div><div class="pt-report-grid">${sections.map((section, index) => `<section class="pt-report-section${index === sections.length - 1 ? " pt-report-section--wide" : ""}"><h4>${html(section.heading || section.title || "Report section")}</h4><p>${html(liveText(section, "No section text returned."))}</p>${liveStatusBadge(section.epistemicStatus || "unresolved")}${liveSourceTrace(section.sourceIds || [])}</section>`).join("")}${findings.length ? `<section class="pt-report-section pt-report-section--wide"><h4>Findings</h4>${renderLiveTraceableList(findings, "No findings returned.")}</section>` : ""}<section class="pt-report-section pt-report-section--wide"><h4>Limitations and unresolved questions</h4>${limitations.length ? `<ul class="pt-live-limitations">${limitations.map((item) => typeof item === "string" ? `<li>${html(item)}</li>` : `<li>${html(liveText(item, "Limitation text not returned."))}${liveSourceTrace(item.sourceIds || [])}</li>`).join("")}</ul>` : `<div class="pt-live-empty">No limitations were returned by the server.</div>`}</section></div>${audit ? `<section class="pt-live-audit" data-valid="${audit.valid === true ? "true" : "false"}"><div class="pt-card-heading"><h3>Citation audit</h3>${liveStatusBadge(audit.valid === true ? "valid" : "errors returned")}</div>${audit.errors?.length ? `<ul class="pt-live-error-list">${audit.errors.map((error) => `<li>${html(error.code || "audit error")} · ${html(error.message || error.path || "citation audit error")}</li>`).join("")}</ul>` : `<p>No citation audit errors were returned.</p>`}${audit.warnings?.length ? `<ul class="pt-live-limitations">${audit.warnings.map((warning) => `<li>${html(warning.message || warning.code || warning)}</li>`).join("")}</ul>` : ""}</section>` : `<section class="pt-live-audit"><h3>Citation audit</h3><p>No citation audit object was returned.</p></section>`}${renderLiveErrors()}<div class="pt-export-row"><p>Export contains sanitized live metadata, results, provider records, and persisted events.</p><button class="pt-button pt-button--primary" type="button" data-action="export-live">Export live session JSON <span aria-hidden="true">↓</span></button></div></article>`;
+}
+
+function renderLivePanel() {
+  const renderers = { overview: renderLiveOverview, agents: renderLiveAgents, lab: renderLab, evidence: renderLiveEvidence, claims: renderLiveClaims, debate: renderLiveDebate, graph: renderLiveGraph, report: renderLiveReport };
+  return renderers[currentView]();
+}
+
 function renderPanel() {
   const [kicker, title] = VIEW_META[currentView];
   document.getElementById("pt-view-kicker").textContent = kicker;
   document.getElementById("pt-view-title").textContent = title;
   panel.setAttribute("aria-labelledby", `pt-tab-${currentView}`);
-  const renderers = { overview: renderOverview, agents: renderAgents, evidence: renderEvidence, claims: renderClaims, debate: renderDebate, graph: renderGraph, report: renderReport };
+  const modeLabel = document.querySelector(".pt-content-heading > span");
+  if (mode === "live") {
+    modeLabel.className = "pt-live-mode-label";
+    modeLabel.textContent = liveStale ? "LIVE SNAPSHOT / STALE OR UNKNOWN" : "LIVE / PROVIDER-BACKED SESSION";
+    panel.innerHTML = renderLivePanel();
+    return;
+  }
+  modeLabel.className = "pt-synthetic-label";
+  modeLabel.textContent = DEMO_LABEL;
+  const renderers = { overview: renderOverview, agents: renderAgents, lab: renderLab, evidence: renderEvidence, claims: renderClaims, debate: renderDebate, graph: renderGraph, report: renderReport };
   panel.innerHTML = renderers[currentView]();
 }
 
@@ -621,23 +1026,365 @@ function renderAll() {
   renderStatus();
   renderStorage();
   renderApiState();
+  const heroLede = document.querySelector(".pt-hero-lede");
+  if (heroLede) heroLede.textContent = mode === "live"
+    ? "Follow a provider-backed investigation from verified source metadata through independent AI-generated interpretations, debate, adjudication, and a citation-audited report. The server owns the run and the browser displays its persisted results."
+    : "Follow one bounded investigation from a deterministic evidence packet through independent agent roles, disagreement, adjudication, and a traceable final report. The offline demo makes no live research claim.";
   renderTabs();
   renderPanel();
+  updateFormModeStatus();
 }
 
 function selectView(view, shouldPersist = true) {
   if (!VIEW_META[view]) return;
   currentView = view;
-  state.selection.view = view;
-  if (shouldPersist) persist();
+  if (mode === "demo") {
+    state.selection.view = view;
+    if (shouldPersist) persist();
+  }
   renderTabs();
   renderPanel();
 }
 
+function setFormError(message = "") {
+  const error = document.getElementById("pt-form-error");
+  error.textContent = message;
+  error.hidden = !message;
+}
+
+function updateFormModeStatus() {
+  const selected = document.querySelector("#pt-investigation-form input[name=mode]:checked")?.value || "demo";
+  const status = document.getElementById("pt-mode-status");
+  const submit = document.getElementById("pt-submit-investigation");
+  status.dataset.mode = selected;
+  if (selected === "live") {
+    status.textContent = api.configured ? "LIVE MODE / LOCAL API BOUNDARY READY" : "LIVE MODE / LIVE MODE UNAVAILABLE — CONFIGURE API URL";
+    submit.textContent = "Start live investigation →";
+  } else {
+    status.textContent = "DEMO MODE / OFFLINE DETERMINISTIC RUN";
+    submit.textContent = "Start demo investigation →";
+  }
+}
+
+function selectFormMode(value) {
+  const radio = document.querySelector(`#pt-investigation-form input[name=mode][value="${value}"]`);
+  if (radio) radio.checked = true;
+  updateFormModeStatus();
+}
+
+function formValues() {
+  const question = document.getElementById("pt-question").value.trim();
+  const maxResults = Math.max(1, Math.min(100, Number.parseInt(document.getElementById("pt-max-results").value, 10) || 25));
+  const depth = Math.max(1, Math.min(8, Number.parseInt(document.getElementById("pt-depth").value, 10) || 2));
+  const selectedMode = document.querySelector("#pt-investigation-form input[name=mode]:checked")?.value || "demo";
+  return { question, maxResults, depth, mode: selectedMode };
+}
+
+function persistLiveBundle(bundle) {
+  const result = saveLiveSession(bundle);
+  if (result.snapshot) liveSnapshot = result.snapshot;
+  liveStorageMode = result.storageMode;
+  liveStorageError = result.error;
+  return result;
+}
+
+function stopLiveSubscription() {
+  if (liveSubscription) liveSubscription.close();
+  liveSubscription = null;
+}
+
+function liveBundleEventId(bundle) {
+  const eventIds = Array.isArray(bundle?.events) ? bundle.events.map((event) => Number(event?.id)).filter(Number.isSafeInteger) : [];
+  return Math.max(0, Number(bundle?.lastEventId) || 0, ...eventIds);
+}
+
+function liveBundleIsFresh(bundle) {
+  if (!liveSnapshot || !bundle?.session || bundle.session.id !== liveSession().id) return true;
+  const currentEventId = liveBundleEventId(liveSnapshot);
+  const incomingEventId = liveBundleEventId(bundle);
+  if (incomingEventId < currentEventId) return false;
+  if (incomingEventId > currentEventId) return true;
+  const currentUpdated = Date.parse(liveSnapshot.session?.updatedAt || "");
+  const incomingUpdated = Date.parse(bundle.session?.updatedAt || "");
+  return !Number.isFinite(currentUpdated) || !Number.isFinite(incomingUpdated) || incomingUpdated >= currentUpdated;
+}
+
+function persistFreshLiveBundle(bundle) {
+  if (!liveBundleIsFresh(bundle)) return { ok: true, applied: false, snapshot: liveSnapshot };
+  const result = persistLiveBundle(bundle);
+  return { ...result, applied: true };
+}
+
+function applyLiveEvent(event) {
+  if (!event || !liveSnapshot || (event.sessionId && event.sessionId !== liveSession().id)) return;
+  const events = Array.isArray(liveSnapshot.events) ? liveSnapshot.events : [];
+  const eventId = Number(event.id);
+  if (Number.isSafeInteger(eventId) && events.some((item) => Number(item.id) === eventId)) return;
+  const next = {
+    ...liveSnapshot,
+    events: [...events, copy(event)].sort((left, right) => Number(left.id) - Number(right.id)),
+    session: {
+      ...liveSnapshot.session,
+      ...(event.type === "stage_change" && event.payload?.status ? { status: String(event.payload.status).toUpperCase() } : {}),
+      ...(event.type === "cancel_requested" ? { cancelRequested: true } : {}),
+      ...(event.createdAt ? { updatedAt: event.createdAt } : {}),
+    },
+  };
+  persistLiveBundle(next);
+  liveStale = false;
+}
+
+async function refreshLiveBundle({ render = true } = {}) {
+  const requestGeneration = liveGeneration;
+  const sessionId = liveSession().id;
+  if (!api.configured || !sessionId) return { ok: false, status: "not-configured", message: "Live mode is unavailable until a backend is configured." };
+  if (liveRefreshPromise?.generation === requestGeneration) return liveRefreshPromise.promise;
+  const promise = (async () => {
+    const result = await api.getSession(sessionId);
+    if (requestGeneration !== liveGeneration || liveSession().id !== sessionId) return { ...result, staleGeneration: true };
+    if (!result.ok || !result.data?.session) {
+      liveStale = true;
+      liveError = result.message;
+      apiBoundaryError = result.message;
+      if (render) renderAll();
+      return result;
+    }
+    const saved = persistFreshLiveBundle(result.data);
+    if (saved.applied === false) {
+      if (render) renderAll();
+      return { ...result, data: liveSnapshot, superseded: true };
+    }
+    liveStale = false;
+    liveError = "";
+    apiBoundaryError = "";
+    if (["COMPLETED", "PARTIAL", "CANCELLED", "FAILED"].includes(String(result.data.session.status).toUpperCase())) stopLiveSubscription();
+    if (render) renderAll();
+    return { ...result, data: saved.snapshot || result.data };
+  })();
+  liveRefreshPromise = { generation: requestGeneration, promise };
+  try {
+    return await promise;
+  } finally {
+    if (liveRefreshPromise?.promise === promise) liveRefreshPromise = null;
+  }
+}
+
+function reportLiveTransportError(message, stale = false) {
+  if (!message) return;
+  liveError = message;
+  liveStale = stale || liveStale;
+  if (lastLiveErrorToast !== message) {
+    lastLiveErrorToast = message;
+    showToast(message);
+  }
+  renderAll();
+}
+
+async function cancelOrphanedLiveStart(transport, sessionId) {
+  for (let attempt = 0; attempt < 6; attempt += 1) {
+    const observed = await transport.getSession(sessionId);
+    if (observed.ok && observed.data?.session) {
+      const status = String(observed.data.session.status || "").toUpperCase();
+      if (["COMPLETED", "PARTIAL", "CANCELLED", "FAILED"].includes(status)) return;
+      if (status === "RUNNING") {
+        await transport.cancel(sessionId);
+        return;
+      }
+    }
+    await new Promise((resolve) => window.setTimeout(resolve, 250));
+  }
+}
+
+function subscribeLiveEvents() {
+  const sessionId = liveSession().id;
+  if (!sessionId || !api.configured) return;
+  const subscriptionGeneration = liveGeneration;
+  const isCurrent = () => subscriptionGeneration === liveGeneration && liveSession().id === sessionId;
+  stopLiveSubscription();
+  liveTransportState = "connecting";
+  liveSubscription = api.subscribeEvents(sessionId, {
+    after: liveSnapshot?.lastEventId || 0,
+    maxReconnects: 3,
+    onStatus: (status) => {
+      if (!isCurrent()) return;
+      liveTransportState = status.mode || liveTransportState;
+      if (status.mode === "closed" && liveStatus() === "RUNNING") {
+        liveStale = true;
+        liveError = liveError || "The live event subscription closed before a terminal server status was revalidated.";
+        apiBoundaryError = liveError;
+      }
+      renderAll();
+    },
+    onEvent: async (event) => {
+      if (!isCurrent()) return;
+      applyLiveEvent(event);
+      liveError = "";
+      renderAll();
+      await refreshLiveBundle();
+    },
+    onBundle: (bundle) => {
+      if (!isCurrent()) return;
+      if (!bundle?.session) return;
+      persistFreshLiveBundle(bundle);
+      liveStale = false;
+      liveError = "";
+      renderAll();
+    },
+    onError: (error) => {
+      if (!isCurrent()) return;
+      if (["COMPLETED", "PARTIAL", "CANCELLED", "FAILED"].includes(liveStatus())) return;
+      reportLiveTransportError(error?.message || "The live event subscription is unavailable.", true);
+    },
+    onTerminal: () => {
+      if (!isCurrent()) return;
+      void refreshLiveBundle();
+    },
+  });
+}
+
+async function recoverLiveSession() {
+  if (mode !== "live" || !liveSnapshot) return;
+  const requestGeneration = liveGeneration;
+  const sessionId = liveSession().id;
+  liveStale = true;
+  liveTransportState = "recovering";
+  renderAll();
+  if (!api.configured) {
+    liveError = "No API base is configured, so this saved live bundle is stale or unknown.";
+    renderAll();
+    return;
+  }
+  const result = await refreshLiveBundle();
+  if (requestGeneration !== liveGeneration || mode !== "live" || liveSession().id !== sessionId) return;
+  if (!result.ok) return;
+  liveError = "";
+  if (liveStatus() === "RUNNING") subscribeLiveEvents();
+  renderAll();
+}
+
+async function startLive(values) {
+  if (!api.configured) {
+    setFormError("Live mode is unavailable. Configure an explicit http(s) API base URL first; the offline demo remains available.");
+    openSettingsDialog();
+    return;
+  }
+  if (liveStatus() === "RUNNING" && mode === "live" && !liveStale) {
+    setFormError("A live investigation is already running. Cancel it or inspect its persisted bundle before starting another.");
+    return;
+  }
+  window.clearTimeout(runTimer);
+  stopLiveSubscription();
+  setFormError("");
+  liveGeneration += 1;
+  const replacingLiveSnapshot = Boolean(liveSnapshot);
+  const replacingStaleSnapshot = liveStale;
+  const requestGeneration = liveGeneration;
+  const transport = api;
+  const isCurrentRequest = () => requestGeneration === liveGeneration && mode === "live" && api === transport;
+  liveClaimId = null;
+  mode = "live";
+  liveStale = replacingLiveSnapshot && replacingStaleSnapshot;
+  liveError = "";
+  apiBoundaryError = "";
+  liveTransportState = "starting";
+  currentView = "overview";
+  renderAll();
+  const options = { maxResults: values.maxResults, maxQueries: values.depth, includeAbstract: true };
+  const created = await transport.createSession({ question: values.question, options });
+  if (!isCurrentRequest()) return;
+  if (!created.ok || !created.data?.id) {
+    reportLiveTransportError(created.message || "The configured API could not create a live session.");
+    return;
+  }
+  const clearedPending = clearLiveSession();
+  liveSnapshot = null;
+  liveRecovered = false;
+  liveStorageMode = clearedPending.storageMode;
+  liveStorageError = clearedPending.error;
+  persistLiveBundle({
+    session: created.data,
+    events: [],
+    sources: [],
+    agentRuns: [],
+    claims: [],
+    evidence: [],
+    evidenceLinks: [],
+    debate: null,
+    report: null,
+    audit: null,
+  });
+  renderAll();
+  const started = await transport.startRun(created.data.id, { options });
+  if (!isCurrentRequest()) {
+    void cancelOrphanedLiveStart(transport, created.data.id).catch(() => {});
+    return;
+  }
+  if (!started.ok) {
+    const startError = started.message || "The configured API could not start the live run.";
+    reportLiveTransportError(startError, true);
+    await recoverLiveSession();
+    if (isCurrentRequest() && liveStatus() === "NEW") {
+      liveError = startError;
+      renderAll();
+    }
+    return;
+  }
+  liveStale = false;
+  persistLiveBundle({
+    session: started.data || created.data,
+    events: [],
+    sources: [],
+    agentRuns: [],
+    claims: [],
+    evidence: [],
+    evidenceLinks: [],
+    debate: null,
+    report: null,
+    audit: null,
+  });
+  liveRecovered = false;
+  renderAll();
+  subscribeLiveEvents();
+  await refreshLiveBundle();
+  if (!isCurrentRequest()) return;
+  showToast("Live investigation started. Displaying persisted server events and results.");
+}
+
+async function cancelLive() {
+  if (mode !== "live" || !liveSession().id || liveStatus() !== "RUNNING" || !api.configured) return;
+  const requestGeneration = liveGeneration;
+  const sessionId = liveSession().id;
+  const transport = api;
+  liveTransportState = "cancelling";
+  renderAll();
+  const result = await transport.cancel(sessionId);
+  if (requestGeneration !== liveGeneration || mode !== "live" || liveSession().id !== sessionId || api !== transport) return;
+  if (!result.ok) {
+    reportLiveTransportError(result.message || "The configured API could not accept cancellation.");
+    return;
+  }
+  if (liveSnapshot?.session) {
+    persistLiveBundle({ ...liveSnapshot, session: { ...liveSnapshot.session, cancelRequested: Boolean(result.data?.cancelRequested) } });
+  }
+  liveError = "Cancellation requested; waiting for the server to persist CANCELLED.";
+  renderAll();
+  await refreshLiveBundle();
+}
+
 function startDemo() {
+  if (mode === "live" && liveStatus() === "RUNNING") {
+    setFormError("A live run is active. Cancel the live run before starting the deterministic demo.");
+    return;
+  }
   if (state.status === "running") return;
   window.clearTimeout(runTimer);
+  stopLiveSubscription();
+  liveGeneration += 1;
+  mode = "demo";
+  selectFormMode("demo");
+  const question = document.getElementById("pt-question")?.value.trim() || QUESTION;
   state = makeInitialSession();
+  state.question = question;
   sessionRecovered = false;
   state.status = "running";
   state.runStartedAt = new Date().toISOString();
@@ -695,15 +1442,96 @@ function completeRun() {
 
 function resetDemo() {
   window.clearTimeout(runTimer);
+  stopLiveSubscription();
+  liveGeneration += 1;
+  mode = "demo";
   clearSession();
   state = makeInitialSession();
   sessionRecovered = false;
   currentView = "overview";
   storageMode = "local";
   storageError = "";
+  selectFormMode("demo");
   persist();
   renderAll();
   showToast("Session reset to the empty/new state.");
+}
+
+function openSettingsDialog() {
+  const input = document.getElementById("pt-api-base");
+  const error = document.getElementById("pt-settings-error");
+  const stateText = document.getElementById("pt-settings-state");
+  input.value = api.baseUrl || "";
+  error.textContent = "";
+  error.hidden = true;
+  stateText.textContent = api.configured ? `Configured local API boundary: ${api.baseUrl}` : "Live mode unavailable until an API base URL is saved.";
+  if (typeof settingsDialog.showModal === "function") settingsDialog.showModal();
+  else settingsDialog.setAttribute("open", "");
+  input.focus();
+}
+
+function closeSettingsDialog() {
+  if (typeof settingsDialog.close === "function") settingsDialog.close();
+  else settingsDialog.removeAttribute("open");
+}
+
+function setSettingsError(message = "") {
+  const error = document.getElementById("pt-settings-error");
+  error.textContent = message;
+  error.hidden = !message;
+}
+
+async function saveSettings(event) {
+  event.preventDefault();
+  const input = document.getElementById("pt-api-base");
+  const result = saveApiBase(input.value);
+  if (!result.ok) {
+    setSettingsError(result.error);
+    return;
+  }
+  liveGeneration += 1;
+  api = createApiTransport({ baseUrl: result.value });
+  apiBoundaryError = "";
+  apiProviderIssue = "";
+  if (result.storageMode === "memory") {
+    storageMode = "memory";
+    storageError = result.error;
+  }
+  setSettingsError("");
+  if (!api.configured) {
+    stopLiveSubscription();
+    if (mode === "live" && liveSnapshot) {
+      liveStale = true;
+      liveError = "The API base was removed. The saved live bundle is stale or unknown until a base is configured again.";
+    }
+    document.getElementById("pt-settings-state").textContent = "API base removed. Live mode unavailable; the offline demo remains usable.";
+  } else {
+    document.getElementById("pt-settings-state").textContent = `Saved local API boundary: ${api.baseUrl}`;
+  }
+  renderAll();
+  closeSettingsDialog();
+  if (api.configured) {
+    if (mode === "live" && liveSnapshot) await recoverLiveSession();
+    else await checkApi();
+  }
+}
+
+function removeApiBase() {
+  const result = clearApiBase();
+  liveGeneration += 1;
+  api = createApiTransport({ baseUrl: "" });
+  apiBoundaryError = "";
+  apiProviderIssue = "";
+  stopLiveSubscription();
+  if (mode === "live" && liveSnapshot) {
+    liveStale = true;
+    liveError = "The API base was removed. The saved live bundle is stale or unknown.";
+  }
+  const stateText = document.getElementById("pt-settings-state");
+  stateText.textContent = result.storageMode === "memory"
+    ? "API base removed for this tab. Reload recovery is unavailable."
+    : "API base removed. Live mode unavailable until a URL is saved.";
+  renderAll();
 }
 
 function openResetDialog() {
@@ -727,27 +1555,58 @@ function exportJson() {
   showToast("Session JSON export prepared. It contains synthetic data only.");
 }
 
+function exportLiveJson() {
+  if (!liveSnapshot) return;
+  const blob = new Blob([JSON.stringify(liveSnapshot, null, 2)], { type: "application/json" });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = "papertrail-live-session.json";
+  link.click();
+  window.setTimeout(() => URL.revokeObjectURL(url), 0);
+  showToast("Live session JSON export prepared from the persisted server snapshot.");
+}
+
 async function checkApi() {
-  if (!api.configured) return;
+  if (!api.configured) {
+    renderApiState();
+    return;
+  }
+  const requestGeneration = liveGeneration;
+  const transport = api;
+  const isCurrentCheck = () => requestGeneration === liveGeneration && api === transport;
   const card = document.getElementById("pt-live-card");
   const label = document.getElementById("pt-live-label");
   const title = document.getElementById("pt-live-title");
   const copyText = document.getElementById("pt-live-copy");
   label.textContent = "API CHECK IN PROGRESS";
   title.textContent = "Checking configured backend";
-  copyText.textContent = "Only the explicit API base is contacted. The local synthetic workflow is unchanged.";
-  const result = await api.checkHealth();
+  copyText.textContent = "Only the explicit API base is contacted. Provider credentials are not sent by the browser.";
+  const result = await transport.getHealth();
+  if (!isCurrentCheck()) return;
   if (result.ok) {
+    const models = await transport.getModels();
+    if (!isCurrentCheck()) return;
     card.dataset.state = "configured";
-    label.textContent = "API AVAILABLE / OPTIONAL";
+    label.textContent = models.ok && models.data?.available === false ? "API AVAILABLE / PROVIDER UNAVAILABLE" : "API AVAILABLE / OPTIONAL";
     title.textContent = "Backend responded";
-    copyText.textContent = "Live transport is available, but this vertical slice still presents the deterministic synthetic demo by default.";
+    const modelStatus = models.ok && models.data?.status ? ` Model status: ${models.data.status}.` : models.ok ? " Model status was not returned." : ` Model check failed: ${models.message}`;
+    copyText.textContent = `The local API boundary responded.${modelStatus} The offline demo remains available.`;
+    apiBoundaryError = "";
+    apiProviderIssue = models.ok && models.data?.available === false ? `Provider model status: ${models.data.status || "unavailable"}.` : models.ok ? "" : `Provider model check failed: ${models.message}`;
+    if (mode === "live" && liveSnapshot) await recoverLiveSession();
+    if (!isCurrentCheck()) return;
   } else {
     card.dataset.state = "unavailable";
-    label.textContent = "API UNAVAILABLE";
+    label.textContent = "API UNAVAILABLE / LIVE MODE UNAVAILABLE";
     title.textContent = "Configured backend could not be reached";
-    copyText.textContent = `${result.message} The synthetic demo remains available offline.`;
+    copyText.textContent = `${result.message} The offline demo remains available.`;
+    apiBoundaryError = result.message;
+    apiProviderIssue = "";
+    liveError = result.message;
+    if (mode === "live" && liveSnapshot) liveStale = true;
   }
+  renderAll();
 }
 
 document.getElementById("pt-start").addEventListener("click", startDemo);
@@ -755,6 +1614,26 @@ document.getElementById("pt-reset").addEventListener("click", openResetDialog);
 document.getElementById("pt-cancel-reset").addEventListener("click", closeResetDialog);
 document.getElementById("pt-confirm-reset").addEventListener("click", () => { closeResetDialog(); resetDemo(); });
 document.getElementById("pt-api-check").addEventListener("click", checkApi);
+document.getElementById("pt-open-settings").addEventListener("click", openSettingsDialog);
+document.getElementById("pt-cancel-settings").addEventListener("click", closeSettingsDialog);
+document.getElementById("pt-settings-form").addEventListener("submit", (event) => { void saveSettings(event); });
+document.getElementById("pt-remove-api").addEventListener("click", removeApiBase);
+document.getElementById("pt-cancel-live").addEventListener("click", () => { void cancelLive(); });
+document.getElementById("pt-example-question").addEventListener("change", (event) => {
+  if (event.target.value) document.getElementById("pt-question").value = event.target.value;
+});
+document.querySelectorAll("#pt-investigation-form input[name=mode]").forEach((input) => input.addEventListener("change", updateFormModeStatus));
+document.getElementById("pt-investigation-form").addEventListener("submit", (event) => {
+  event.preventDefault();
+  const form = event.currentTarget;
+  if (!form.checkValidity()) {
+    form.reportValidity();
+    return;
+  }
+  const values = formValues();
+  if (values.mode === "live") void startLive(values);
+  else startDemo();
+});
 
 document.getElementById("pt-tabs").addEventListener("click", (event) => {
   const tab = event.target.closest("[data-view]");
@@ -777,6 +1656,18 @@ document.getElementById("pt-tabs").addEventListener("keydown", (event) => {
   }
 });
 
+panel.addEventListener("input", (event) => {
+  const search = event.target.closest("[data-evidence-search]");
+  if (!search) return;
+  evidenceQuery = String(search.value || "").trim().toLocaleLowerCase().slice(0, 160);
+  renderPanel();
+  const next = panel.querySelector("[data-evidence-search]");
+  if (next) {
+    next.focus();
+    next.setSelectionRange(next.value.length, next.value.length);
+  }
+});
+
 panel.addEventListener("click", (event) => {
   const demoLink = event.target.closest("[data-demo-link]");
   if (demoLink) {
@@ -796,12 +1687,20 @@ panel.addEventListener("click", (event) => {
     renderPanel();
     return;
   }
+  const liveClaimButton = event.target.closest("[data-live-claim-id]");
+  if (liveClaimButton) {
+    liveClaimId = liveClaimButton.dataset.liveClaimId;
+    renderPanel();
+    return;
+  }
   const action = event.target.closest("[data-action]");
   if (!action) return;
   if (action.dataset.action === "start") startDemo();
   if (action.dataset.action === "export") exportJson();
+  if (action.dataset.action === "export-live") exportLiveJson();
 });
 
-if (state.status === "running") runTimer = window.setTimeout(advanceRun, 300);
+if (mode === "demo" && state.status === "running") runTimer = window.setTimeout(advanceRun, 300);
 renderAll();
-if (api.configured) checkApi();
+if (mode === "live") void recoverLiveSession();
+else if (api.configured) void checkApi();
