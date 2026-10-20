@@ -18,11 +18,11 @@
 <meta name="twitter:description" content="Explore Algaephyte’s proposed sensor-based cultivation, digital twin and bounded automation. Research design goals, not validated hardware or deployed products.">
 <meta name="twitter:image" content="https://orrbiologicals.com/assets/og.png">
 <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebPage", "@id": "https://orrbiologicals.com/algaephyte/#page", "url": "https://orrbiologicals.com/algaephyte/", "name": "AI-Assisted Microalgae Cultivation Research | Algaephyte", "description": "Explore Algaephyte’s proposed sensor-based cultivation, digital twin and bounded automation. Research design goals, not validated hardware or deployed products.", "isPartOf": {"@id": "https://orrbiologicals.com/#site"}}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Orr Biologicals", "item": "https://orrbiologicals.com/"}, {"@type": "ListItem", "position": 2, "name": "Algaephyte: AI-assisted microalgae cultivation research", "item": "https://orrbiologicals.com/algaephyte/"}]}]}</script>
-<link rel="stylesheet" href="/css/extras.css?v=20261015">
-<link rel="stylesheet" href="/css/global.css?v=20261015">
-<link rel="stylesheet" href="/css/header.css?v=20261015">
-<link rel="stylesheet" href="/css/orr-home.css?v=20261015">
-<link rel="stylesheet" href="/css/animations.css?v=20261015">
+<link rel="stylesheet" href="/css/extras.css?v=20261019">
+<link rel="stylesheet" href="/css/global.css?v=20261019">
+<link rel="stylesheet" href="/css/header.css?v=20261019">
+<link rel="stylesheet" href="/css/orr-home.css?v=20261019">
+<link rel="stylesheet" href="/css/animations.css?v=20261019">
 </head>
 <body class="art-body">
 <a class="skip" href="#main">Skip to content</a>
@@ -30,10 +30,10 @@
 <div class="nav-in"><a class="mark" href="/" aria-label="Orr Biologicals home">
 <svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="14" fill="none" stroke="currentColor"/><path d="M9 23c6-3 0-14 7-14s1 11 7 14M8 15c4-5 12-5 16 0" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
 <span><b>Orr Biologicals</b><small>BIOTECHNOLOGY &amp; AI RESEARCH</small></span></a>
-<nav class="nav-links" aria-label="Primary"><a href="/algaephyte/">Algaephyte</a><a href="/cyanoflow">Cyanoflow</a><a href="/research/">Research</a><a href="/blog/">Journal</a><a href="/Simulation/">Digital lab</a><a href="/game/">Research lab</a><a class="btn-white" href="/#deploy">Contact</a></nav>
+<nav class="nav-links" aria-label="Primary"><a href="/algaephyte/">Algaephyte</a><a href="/cyanoflow">Cyanoflow</a><a href="/research/">Research</a><a href="/blog/">Journal</a><a href="/Simulation/">Digital lab</a><a class="btn-white" href="/#deploy">Contact</a></nav>
 <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="mobileMenu">Menu</button></div></header>
 <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile primary" hidden>
-<a href="/algaephyte/">Algaephyte · cultivation</a><a href="/cyanoflow">Cyanoflow · single cells</a><a href="/research/">Research methods</a><a href="/blog/">Journal · field notes</a><a href="/Simulation/">Algal Digital Lab</a><a href="/game/">Interactive research lab</a><a href="/downloads/">App downloads</a><a href="/#deploy">Contact the project</a></nav>
+<a href="/algaephyte/">Algaephyte · cultivation</a><a href="/cyanoflow">Cyanoflow · single cells</a><a href="/research/">Research methods</a><a href="/blog/">Journal · field notes</a><a href="/Simulation/">Algal Digital Lab</a><a href="/downloads/">App downloads</a><a href="/#deploy">Contact the project</a></nav>
 
 <main id="main" class="art-shell"><nav class="art-top" aria-label="Breadcrumb"><a href="/">Orr Biologicals</a> / <a href="/research/">Research methods</a></nav>
 <p class="art-cat">Educational research guide · Concepts, not validated hardware</p><h1>Algaephyte: AI-assisted microalgae cultivation research</h1>
@@ -42,13 +42,13 @@
 <p class="dek">Algaephyte is Orr Biologicals' proposed intelligent microalgae cultivation system. It combines culture-level sensors, a growth model, optional camera analysis and bounded control proposals. It is a research concept in development, not a validated reactor or commercially deployed product.</p>
 <h2>What question does Algaephyte address?</h2>
 <p>The question is whether documented observations and a calibrated model can help a grower understand changing conditions without handing unrestricted actuator control to an AI model. Unlike <a href="/cyanoflow">Cyanoflow's single-cell discovery workflow</a>, Algaephyte concerns the environment of a growing culture: chemistry, illumination, mixing and gas exchange.</p>
-<p><a href="/microalgae-cultivation/">Microalgae cultivation fundamentals</a> establish the biology; <a href="/photobioreactors/">photobioreactor design</a> establishes why vessel geometry and transport matter. The hardware/software proposals on the <a href="/#inside">interactive architecture page</a> still require assembly, calibration and fault testing.</p>
+<p><a href="/microalgae-cultivation/">Microalgae cultivation fundamentals</a> establish the biology; <a href="/photobioreactors/">photobioreactor design</a> establishes why vessel geometry and transport matter. The hardware/software proposals on the <a href="/#thesis">interactive architecture page</a> still require assembly, calibration and fault testing.</p>
 <h2>Sensors: different signals, not one health number</h2>
 <p>The proposed inputs are pH, temperature, wall irradiance, optical density, dissolved oxygen and conductivity. Each can be wrong or ambiguous. An optical-density calibration depends on wavelength, path length, organism and conditions; cameras measure image features, not biochemical composition [1].</p>
 <p>Read <a href="/blog/six-culture-signals-main-senses">the six-channel sensor concept</a>, <a href="/blog/dissolved-oxygen-stress-signal">DO interpretation</a> and <a href="/blog/alkalinity-as-a-control-variable">alkalinity and carbon chemistry</a>. Record the measurement process before claiming an instrument detects a biological change.</p>
 <h2>Digital twin: predictions need held-out tests</h2>
 <p>Candidate model components include nutrient-quota kinetics, light-response curves and light attenuation. Their presence does not establish correct parameters or a useful forecast horizon. <a href="/blog/digital-twins-biological-cultivation">A biological digital twin</a> must be connected to observations; <a href="/blog/digital-twin-droop-steele-model">Droop and Steele design notes</a> explain some selected assumptions.</p>
-<p>Test predictions on runs or time periods excluded from fitting, document residual errors and specify where the model should refuse a forecast. The <a href="/#simulation">living culture simulation</a> is educational; its outputs are not measured reactor yield.</p>
+<p>Test predictions on runs or time periods excluded from fitting, document residual errors and specify where the model should refuse a forecast. The <a href="/Simulation/">living culture simulation</a> is educational; its outputs are not measured reactor yield.</p>
 <h2>Computer vision and edge AI</h2>
 <p>Local camera inference may offer another evidence stream, but bubbles, debris, focus and unseen organisms can confound classification. The <a href="/blog/vision-contamination-detection">vision limitations note</a> and <a href="/blog/edge-ai-biological-systems">edge-AI tradeoffs</a> are design context. No accuracy, inference speed, power draw or contamination-detection performance is established for an assembled Algaephyte instrument.</p>
 <h2>Bounded automation: proposals do not own pumps</h2>
@@ -65,17 +65,17 @@
 <p>The site makes no finished reactor offer, validated deployment, cultivation improvement or food-safety claim. <a href="/research/">Research status and methodology</a> defines the labels used here; <a href="/disclaimer">the scientific disclaimer</a> sets the safety scope.</p>
 <h2>Source reading and next steps</h2>
 <p>[1] <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9368473/">Schagerl et al. (2022), Estimating biomass and vitality of microalgae</a> supports the discussion of measurement proxies. For vessel selection, see <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9033726/">Benner et al. (2022), lab-scale photobioreactors</a>. Neither source validates Orr Biologicals hardware.</p>
-<p>Next: inspect <a href="/#system">the existing proposed control loop</a>, explore <a href="/#simulation">the model interface</a>, or <a href="/#deploy">discuss a research question</a>.</p>
+<p>Next: inspect <a href="/#systems">the existing proposed control loop</a>, explore <a href="/Simulation/">the model interface</a>, or <a href="/#deploy">discuss a research question</a>.</p>
 </div>
 <nav class="art-foot" aria-label="Next reading"><a href="/research/">Research methods</a><a href="/glossary">Glossary</a><a href="/blog/">All research notes</a><a href="/cyanoflow">Cyanoflow</a><a href="/privacy">Privacy</a><a href="/terms">Terms</a></nav></main>
-<script src="/js/consent.js?v=20261015" defer></script>
-<script src="/js/navigation.js?v=20261015" defer></script>
+<script src="/js/consent.js?v=20261019" defer></script>
+<script src="/js/navigation.js?v=20261019" defer></script>
 <footer class="science-footer"><div class="wrap footer-layout">
 <div><a class="footer-brand" href="/">Orr Biologicals</a><p>Where biotechnology meets AI.<br>Intelligent systems for biological discovery, single-cell analysis, and living cultivation.</p><small>Research concepts and computational tools in development.<br>No validated hardware performance or commercial deployment claimed.</small></div>
-<nav aria-label="Footer platforms"><h2>Research Portfolio</h2><a href="/algaephyte/">Algaephyte · Cultivation AI</a><a href="/cyanoflow">Cyanoflow · Single-Cell Discovery</a><a href="/Simulation/">Algal Digital Lab</a><a href="/game/">Interactive Research Lab</a><a href="/demo/">Expedition Demo</a><a href="/downloads/">App Downloads</a></nav>
-<nav aria-label="Footer resources"><h2>Knowledge &amp; Methods</h2><a href="/research/">Research Methodology</a><a href="/blog/">Research Journal</a><a href="/algae-biotechnology/">Algae Biotechnology</a><a href="/microalgae-cultivation/">Microalgae Cultivation</a><a href="/photobioreactors/">Photobioreactors</a><a href="/glossary">Scientific Glossary</a><a href="/#faq">Project FAQ</a></nav>
+<nav aria-label="Footer platforms"><h2>Research Portfolio</h2><a href="/algaephyte/">Algaephyte · Cultivation AI</a><a href="/cyanoflow">Cyanoflow · Single-Cell Discovery</a><a href="/Simulation/">Algal Digital Lab</a><a href="/demo/">Expedition Demo</a><a href="/downloads/">App Downloads</a></nav>
+<nav aria-label="Footer resources"><h2>Knowledge &amp; Methods</h2><a href="/research/">Research Methodology</a><a href="/blog/">Research Journal</a><a href="/algae-biotechnology/">Algae Biotechnology</a><a href="/microalgae-cultivation/">Microalgae Cultivation</a><a href="/photobioreactors/">Photobioreactors</a><a href="/glossary">Scientific Glossary</a><a href="/#deploy">Project correspondence</a></nav>
 <div><h2>Correspondence</h2><a href="mailto:service@orrbiologicals.com">service@orrbiologicals.com</a><p><a href="https://www.youtube.com/@OrrBiologicals" target="_blank" rel="noreferrer">Research updates on YouTube ↗</a></p><small>Open research notes · MIT-licensed site code</small></div>
 </div><div class="wrap footer-base"><span>© 2026 Orr Biologicals · Biology × Artificial Intelligence</span><nav aria-label="Legal"><a href="/privacy">Privacy</a><a href="/terms">Terms</a><a href="/disclaimer">Scientific disclaimer</a><a href="/LICENSE" download>MIT License</a></nav></div></footer>
-<script defer src="/js/animations.js?v=20261015"></script>
+<script defer src="/js/animations.js?v=20261019"></script>
 </body>
 </html>

@@ -2,7 +2,7 @@
 import re
 from seo_audit import ROOT, pages
 
-VERSION = '20261015'
+VERSION = '20261019'
 
 
 def migrate_legacy_application_links(text):
@@ -19,6 +19,19 @@ def migrate_legacy_application_links(text):
     # articles that do not exist. The methodology hub is the honest fallback.
     text = re.sub(r'/applications/[^"\'\s<]+', '/research/', text)
     text = text.replace('/applications/', '/blog/')
+    text = text.replace('<a href="/game/">Play Algae Living</a>', '<a href="/research/">Read the research methods</a>')
+    text = text.replace('<a class="chip" href="/game/">Algae Living game</a>', '<a class="chip" href="/research/">Research methods</a>')
+    text = text.replace('/game/', '/research/')
+    # Retarget anchors from the retired long-form homepage to the new
+    # editorial sections and the retained standalone simulation.
+    text = text.replace('/#systemss', '/#systems')
+    for old, new in (
+        ('/#inside', '/#thesis'),
+        ('/#system', '/#systems'),
+        ('/#simulation', '/Simulation/'),
+        ('/#stack', '/#systems'),
+    ):
+        text = re.sub(re.escape(old) + r'(?=["\'\s#<])', new, text)
     return text
 
 
@@ -37,7 +50,10 @@ def apply(text):
     text = re.sub(r'<link[^>]+href="/?css/(?:global|header|animations)\.css[^>]+>\s*', '', text)
     text = re.sub(r'<script[^>]+src="/?js/animations\.js[^>]*>\s*</script>\s*', '', text)
     text = re.sub(r'<link[^>]+href="/?css/orr-home\.css[^>]+>\s*', '', text)
+    text = re.sub(r'<link[^>]+href="/?css/home-premium\.css[^>]+>\s*', '', text)
     css = '\n'.join(f'<link rel="stylesheet" href="/css/{name}.css?v={VERSION}">' for name in ('global', 'header', 'orr-home', 'animations'))
+    if 'class="orr-home' in text:
+        css += f'\n<link rel="stylesheet" href="/css/home-premium.css?v={VERSION}">'
     text = text.replace('</head>', css + '\n</head>')
     text = text.replace('</body>', f'<script defer src="/js/animations.js?v={VERSION}"></script>\n</body>')
     if '/js/navigation.js' not in text:

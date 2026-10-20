@@ -41,13 +41,14 @@ class DesignSystemTests(unittest.TestCase):
 
     def test_deep_links_and_scientific_qualifications_remain(self):
         text=(ROOT/'index.html').read_text(encoding='utf-8')
-        for anchor in ('inside','system','stack','signals','twin','safety','mesh','journal','faults','faq','deploy','simulation','dVol','cultureSim'):
+        for anchor in ('main','top','thesis','systems','products','journal','deploy'):
             self.assertIn('id="'+anchor+'"',text)
-        for qualification in ('not measured laboratory data','Model assumptions','not a calibrated time-series prediction','not available for purchase or deployment','not tested','not a report from deployed instruments'):
-            if qualification=='not tested':
-                self.assertIn('Until tested',text)
-            else:self.assertIn(qualification,text)
-        self.assertIn('id="technical-notes"',text)
+        for qualification in ('Research concepts in development','Illustrative cultivation study','not measured telemetry','no commercial deployment'):
+            self.assertIn(qualification,text)
+        self.assertIn('premium-home',text)
+        self.assertIn('/css/home-premium.css',text)
+        self.assertNotIn('/papertrail/',text)
+        self.assertNotIn('/game/',text)
         self.assertIn('role="status" aria-live="polite"',text)
 
 if __name__=='__main__':unittest.main()

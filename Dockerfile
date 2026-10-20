@@ -9,7 +9,6 @@ COPY package.json package-lock.json ./
 RUN npm ci --ignore-scripts --no-audit --no-fund
 COPY . .
 RUN python3 tools/site/build_seo.py \
-  && npm run build:lab \
   && npm run build:simulation
 
 FROM node:24-bookworm-slim AS runtime

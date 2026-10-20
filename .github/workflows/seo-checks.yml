@@ -25,10 +25,10 @@ jobs:
           git diff --exit-code -- '*.html' sitemap.xml blog/data/kb.json
       - name: Validate all public pages and scientific status
         run: python -m unittest discover -s tools -p 'test_*.py'
-      - name: Verify the active application loop
+      - name: Verify the static regression suite
         run: npm test
       - name: Build committed browser bundles
-        run: npm run build:lab && npm run build:simulation
+        run: npm run build:simulation
       - name: Check browser script syntax
         run: |
           for file in js/*.js; do node --check "$file"; done

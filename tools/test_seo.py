@@ -116,8 +116,10 @@ class SEOTests(unittest.TestCase):
         from build_home import render
         self.assertEqual((ROOT / 'index.html').read_text(encoding='utf-8'), render())
         h1 = Page(render()).headings['h1'][0].lower()
-        self.assertEqual(h1, 'where biotechnology meets ai.')
-        self.assertIn('<p class="orr-hero-deck">Reading living systems in motion', render())
+        self.assertEqual(h1, 'make living systems legible.')
+        self.assertIn('class="premium-hero"', render())
+        self.assertIn('class="premium-system-card', render())
+        self.assertIn('Research concepts in development', render())
         for name in ('build.ps1', 'rebuild.ps1'):
             text = (ROOT / name).read_text(encoding='utf-8-sig')
             self.assertNotIn('SliceLines', text)
@@ -138,7 +140,7 @@ class SEOTests(unittest.TestCase):
         self.assertFalse((ROOT / 'applications/index.html').exists())
 
     def test_header_navigation_is_consistent(self):
-        expected = ('/research/', '/algaephyte/', '/cyanoflow', '/blog/', '/game/', '/#deploy')
+        expected = ('/research/', '/algaephyte/', '/cyanoflow', '/blog/', '/Simulation/', '/#deploy')
         for path in pages():
             text = path.read_text(encoding='utf-8-sig')
             m = re.search(r'<header class="nav"[^>]*>[\s\S]*?</header>', text)
@@ -147,13 +149,17 @@ class SEOTests(unittest.TestCase):
             with self.subTest(page=route(path)):
                 for href in expected:
                     self.assertIn('href="' + href + '"', header)
+                self.assertNotIn('href="/game/"', header)
+                self.assertNotIn('href="/papertrail/"', header)
                 self.assertNotIn('href="/applications/', header)
                 self.assertNotIn('/#products', header)
                 self.assertNotIn('Pilot access', header)
                 self.assertIn('>Contact</a>', header)
         home = (ROOT / 'index.html').read_text(encoding='utf-8')
-        for href in ('/blog/', '/game/', '/algaephyte/', '/cyanoflow'):
+        for href in ('/blog/', '/Simulation/', '/algaephyte/', '/cyanoflow'):
             self.assertIn('href="' + href + '"', home)
+        self.assertNotIn('/game/', home)
+        self.assertNotIn('/papertrail/', home)
 
     def test_prose_links_are_not_underlined(self):
         css = (ROOT / 'css/extras.css').read_text(encoding='utf-8')

@@ -31,9 +31,12 @@ class Page(HTMLParser):
 class SiteCopyTests(unittest.TestCase):
     def test_home_origin_and_status(self):
         text = (ROOT / 'index.html').read_text(encoding='utf-8')
-        self.assertIn('shocked by how hard it was to access algae biotechnology', text)
-        self.assertIn('college coursework and microbiology', text)
-        self.assertIn('not available for purchase or deployment', text)
+        self.assertIn('Make living systems', text)
+        self.assertIn('biology in motion', text)
+        self.assertIn('Research concepts in development', text)
+        self.assertIn('no commercial deployment', text)
+        self.assertNotIn('/papertrail/', text)
+        self.assertNotIn('/game/', text)
         self.assertNotRegex(text, r'AP-0[1-7]|PreOrder|orrSubscribeForm|orrSuccess')
 
     def test_home_metadata_is_valid_and_not_an_offer(self):
@@ -61,7 +64,7 @@ class SiteCopyTests(unittest.TestCase):
 
     def test_images_and_simulations_are_retained(self):
         text = (ROOT / 'index.html').read_text(encoding='utf-8')
-        for value in ('assets/images/hero.jpg', 'assets/images/microscopy/bench-photo.jpg', 'assets/images/instrument-photo.jpg', 'id="cultureSim"', 'id="simControls"', 'id="dVol"'):
+        for value in ('assets/images/hero.jpg', 'assets/cyano/culture.jpg', 'assets/images/instrument-photo.jpg', 'id="systems"', 'id="products"', 'id="deploy"'):
             self.assertIn(value, text)
         self.assertIn('id="chipSim"', (ROOT / 'cyanoflow.html').read_text(encoding='utf-8'))
         self.assertFalse((ROOT / 'applications/index.html').exists())

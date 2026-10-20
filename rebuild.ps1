@@ -4,7 +4,11 @@ param([switch]$Quiet)
 $ErrorActionPreference = 'Stop'
 Push-Location $PSScriptRoot
 try {
-  python tools/site/build_seo.py
+  if (Get-Command py -ErrorAction SilentlyContinue) {
+    py -3.12 tools/site/build_seo.py
+  } else {
+    python tools/site/build_seo.py
+  }
   if ($LASTEXITCODE -ne 0) { throw "Site build failed ($LASTEXITCODE)" }
 } finally {
   Pop-Location

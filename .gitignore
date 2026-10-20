@@ -12,5 +12,3 @@ node_modules/
 docs/lab-*.png
 docs/live-game.png
 docs/local-webgl.png
-*.sqlite
-*.sqlite-*
