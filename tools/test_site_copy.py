@@ -31,8 +31,10 @@ class Page(HTMLParser):
 class SiteCopyTests(unittest.TestCase):
     def test_home_origin_and_status(self):
         text = (ROOT / 'index.html').read_text(encoding='utf-8')
-        self.assertIn('Make living systems', text)
+        self.assertIn('Read the <em>living</em> signal.', text)
         self.assertIn('biology in motion', text)
+        self.assertIn('class="atlas-field"', text)
+        self.assertIn('homeCultureCanvas', text)
         self.assertIn('Research concepts in development', text)
         self.assertIn('no commercial deployment', text)
         self.assertNotIn('/papertrail/', text)

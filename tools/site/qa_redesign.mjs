@@ -61,7 +61,10 @@ export default async function run(page) {
 
   const home = await page.evaluate(() => ({
     title: document.title,
-    hero: document.querySelector('.premium-hero')?.textContent.includes('Make living systems'),
+    hero: document.querySelector('.premium-hero')?.textContent.includes('Read the living signal'),
+    field: Boolean(document.querySelector('.atlas-field')),
+    cultureCanvas: Boolean(document.querySelector('#homeCultureCanvas')),
+    chipCanvas: Boolean(document.querySelector('#homeChipCanvas')),
     systems: document.querySelectorAll('.premium-system-card').length,
     method: document.querySelectorAll('.premium-method-grid article').length,
     contact: Boolean(document.querySelector('#deployForm')),
@@ -69,11 +72,29 @@ export default async function run(page) {
     game: document.body.textContent.toLowerCase().includes('biorealm'),
   }));
   assert.equal(home.hero, true);
+  assert.equal(home.field, true);
+  assert.equal(home.cultureCanvas, true);
+  assert.equal(home.chipCanvas, true);
   assert.equal(home.systems, 2);
   assert.equal(home.method, 3);
   assert.equal(home.contact, true);
   assert.equal(home.papertrail, false);
   assert.equal(home.game, false);
+
+  await page.getByRole('button', { name: 'Track', exact: true }).click();
+  assert.equal(await page.locator('[data-home-chip-value]').textContent(), 'Frames · same cell');
+  await page.getByRole('button', { name: 'Inspect field', exact: false }).click();
+  assert.match(await page.locator('[data-home-culture-inspect]').textContent(), /Field sampled/);
+
+  await page.goto(base + '/algaephyte/', { waitUntil: 'domcontentloaded' });
+  await page.locator('#pulseModel').click();
+  assert.match(await page.locator('[data-model-clock]').textContent(), /T\+24 h/);
+  await page.locator('#resetModel').click();
+  assert.match(await page.locator('[data-model-clock]').textContent(), /T\+00 h/);
+
+  await page.goto(base + '/Simulation/', { waitUntil: 'domcontentloaded' });
+  await page.locator('#simView').waitFor();
+  assert.equal(await page.locator('.sim-app').getAttribute('data-sim-boot'), 'ready');
 
   await page.evaluate(async () => {
     for (let y = 0; y < document.body.scrollHeight; y += innerHeight) {
@@ -94,7 +115,7 @@ export default async function run(page) {
     passed: true,
     layouts: layouts.length,
     routes,
-    controls: 'responsive menu and premium homepage section checks',
+    controls: 'responsive menu, homepage field overlays, Algaephyte pulse/reset, and Digital Lab boot',
     errors,
     failedRequests,
   };

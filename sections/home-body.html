@@ -1,15 +1,25 @@
-<body class="orr-home premium-home"><a class="skip" href="#main">Skip to content</a>
+<body class="orr-home premium-home atlas-home"><a class="skip" href="#main">Skip to content</a>
 <main id="main">
   <section class="premium-hero" id="top" aria-labelledby="home-title">
     <div class="premium-shell premium-hero-grid">
       <div class="premium-hero-copy">
         <p class="premium-kicker">ORR BIOLOGICALS / INDEPENDENT BIOLOGICAL RESEARCH</p>
-        <h1 id="home-title">Make living systems <em>legible.</em></h1>
-        <p class="premium-lede">Computational tools and instrument concepts for observing, modeling, and safely exploring biology in motion.</p>
+        <h1 id="home-title">Read the <em>living</em> signal.</h1>
+        <p class="premium-lede">Tools for the moment between biology in motion and a person deciding what it means.</p>
         <div class="premium-actions"><a class="premium-button premium-button--dark" href="#systems">Explore the systems <span aria-hidden="true">↘</span></a><a class="premium-link" href="/research/">Read our methods <span aria-hidden="true">→</span></a></div>
         <p class="premium-note">Research concepts in development · Illustrative imagery is labeled · No validated hardware performance claimed</p>
       </div>
       <figure class="premium-hero-media"><img src="/assets/images/hero.jpg" width="1584" height="672" alt="Illustrative photobioreactor vessel with a luminous green culture" fetchpriority="high"><figcaption><span>01 / LIVING SYSTEMS</span><span>Illustrative cultivation study · not measured telemetry</span></figcaption></figure>
+    </div>
+  </section>
+
+  <section class="atlas-field" id="field-station" aria-labelledby="field-title">
+    <div class="premium-shell">
+      <div class="atlas-field-intro"><div><p class="premium-kicker">THE FIELD STATION / INTERACTIVE STUDY</p><h2 id="field-title">See the signal before it becomes a claim.</h2></div><div><p class="premium-kicker">OBSERVE · MODEL · VERIFY</p><p>Two synthetic instruments show how our concepts keep a living system, a model, and the limits of an observation in the same frame.</p></div></div>
+      <div class="atlas-field-grid">
+        <article class="atlas-field-card atlas-field-card--algae"><div class="atlas-field-copy"><p class="premium-kicker">01 / ALGAEPHYTE</p><h3>A culture with a readable pulse.</h3><p>Move through a proposed cultivation state. The chamber is illustrative; the controls are a visual model, not a live reactor.</p><a class="premium-link" href="/algaephyte/">Enter the cultivation concept <span aria-hidden="true">↗</span></a></div><div class="atlas-instrument"><div class="atlas-instrument-top"><span>culture chamber / synthetic view</span><b>OBSERVING</b></div><div class="atlas-canvas-wrap"><img src="/assets/cyano/culture.jpg" width="1536" height="1024" alt="Illustrative green algae culture vessels" loading="lazy"><canvas id="homeCultureCanvas" width="760" height="470" aria-label="Synthetic culture field visualization"></canvas><button class="atlas-inspect" type="button" data-home-culture-inspect>Inspect field <span aria-hidden="true">↗</span></button></div><small>Illustrative culture field · not measured telemetry</small></div></article>
+        <article class="atlas-field-card atlas-field-card--cyano"><div class="atlas-instrument"><div class="atlas-instrument-top"><span>microfluidic chip / synthetic view</span><b>TRACKING</b></div><div class="atlas-canvas-wrap"><img src="/assets/cyano/chip.jpg" width="1536" height="1024" alt="Illustrative microfluidic chip" loading="lazy"><canvas id="homeChipCanvas" width="760" height="470" aria-label="Synthetic microfluidic chip visualization"></canvas><div class="atlas-chip-tabs" role="group" aria-label="Synthetic chip stage"><button type="button" data-home-chip="load" class="is-active">Load</button><button type="button" data-home-chip="track">Track</button><button type="button" data-home-chip="recover">Recover</button></div></div><div class="atlas-readout" aria-live="polite"><span data-home-chip-label>STAGE / LOADING</span><strong data-home-chip-value>One cell · one compartment</strong><p data-home-chip-note>Keeping identity visible before a candidate becomes a conclusion.</p></div><small>Illustrative chip field · no phenotype claim</small></div><div class="atlas-field-copy"><p class="premium-kicker">02 / CYANOFLOW</p><h3>Find the variation averages hide.</h3><p>Follow a candidate through compartments, frames, and the evidence still needed to call a phenotype real.</p><a class="premium-link" href="/cyanoflow">Enter the single-cell concept <span aria-hidden="true">↗</span></a></div></article>
+      </div>
     </div>
   </section>
 
@@ -32,5 +42,5 @@
 
   <section class="premium-contact" id="deploy" aria-labelledby="contact-title"><div class="premium-shell premium-contact-grid"><div><p class="premium-kicker">RESEARCH CORRESPONDENCE</p><h2 id="contact-title">Have a biological question?</h2><p>Tell us what you are trying to observe, model, or validate. This form opens an email draft; nothing is sent until you choose to send it.</p></div><form class="premium-form" id="deployForm"><label for="fName">Name / organization<input id="fName" type="text" placeholder="Name, lab, or organization"></label><label for="fPlace">Location<input id="fPlace" type="text" placeholder="City, country"></label><label for="fGrow">Research or cultivation objective<textarea id="fGrow" placeholder="What are you trying to understand?"></textarea></label><input id="fHp" type="text" tabindex="-1" autocomplete="off" aria-hidden="true" class="premium-honeypot"><button class="premium-button premium-button--light" type="submit">Open an email draft <span aria-hidden="true">↗</span></button><p class="premium-form-status" id="formStatus" role="status" aria-live="polite"></p></form></div></section>
 </main>
-<script defer src="/js/navigation.js"></script><script defer src="/js/consent.js"></script><script defer src="/js/animations.js"></script><script defer src="/js/site.js"></script>
+<script defer src="/js/navigation.js"></script><script defer src="/js/consent.js"></script><script defer src="/js/animations.js"></script><script defer src="/js/site.js"></script><script defer src="/js/home-experience.js"></script>
 </body></html>

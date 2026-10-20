@@ -116,7 +116,7 @@ class SEOTests(unittest.TestCase):
         from build_home import render
         self.assertEqual((ROOT / 'index.html').read_text(encoding='utf-8'), render())
         h1 = Page(render()).headings['h1'][0].lower()
-        self.assertEqual(h1, 'make living systems legible.')
+        self.assertEqual(h1, 'read the living signal.')
         self.assertIn('class="premium-hero"', render())
         self.assertIn('class="premium-system-card', render())
         self.assertIn('Research concepts in development', render())
