@@ -56,7 +56,7 @@ def apply(text):
         css += f'\n<link rel="stylesheet" href="/css/home-premium.css?v={VERSION}">'
     text = text.replace('</head>', css + '\n</head>')
     text = text.replace('</body>', f'<script defer src="/js/animations.js?v={VERSION}"></script>\n</body>')
-    if '/js/navigation.js' not in text:
+    if '/js/navigation.js' not in text and './navigation.js' not in text:
         text = text.replace('</body>', f'<script defer src="/js/navigation.js?v={VERSION}"></script>\n</body>')
     text = re.sub(r'(<(?:link|script)\b[^>]*(?:href|src)="/?(?:css|js)/[^"?]+)(?:\?[^" ]*)?("[^>]*>)', r'\1?v=' + VERSION + r'\2', text)
     text = re.sub(r'(<meta name="theme-color" content=")[^"]+', r'\g<1>#f6f2e8', text)

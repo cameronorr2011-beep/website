@@ -1,0 +1,5 @@
+culture_id,condition,replicate,timestamp,biomass_mg_l,od600
+alpha,control,1,2026-01-01T00:00:00Z,100,0.12
+alpha,control,1,2026-01-03T00:00:00Z,not-a-number,0.12
+alpha,control,1,not-a-date,200,0.23
+alpha,control,1,2026-01-04T00:00:00Z,-2,0.12

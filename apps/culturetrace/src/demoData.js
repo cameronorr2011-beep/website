@@ -1,0 +1,29 @@
+export const DEMO_CSV = `culture_id,condition,replicate,timestamp,biomass_mg_l,od600,pH,temperature_c
+pond-a,control,1,2026-10-01T08:00:00Z,120,0.18,9.4,29.8
+pond-a,control,1,2026-10-02T08:00:00Z,220,0.31,9.6,30.1
+pond-a,control,1,2026-10-03T08:00:00Z,430,0.62,9.7,30.0
+pond-a,control,1,2026-10-04T20:00:00Z,460,0.64,9.8,30.2
+pond-a,control,1,2026-10-05T08:00:00Z,880,1.12,9.9,30.4
+pond-b,light-shift,1,2026-10-01T08:00:00Z,120,0.19,9.3,29.7
+pond-b,light-shift,1,2026-10-02T08:00:00Z,240,0.34,9.5,30.0
+pond-b,light-shift,1,2026-10-03T08:00:00Z,470,0.69,9.8,30.2
+pond-b,light-shift,1,2026-10-04T08:00:00Z,930,1.18,10.0,30.5
+pond-b,light-shift,1,2026-10-05T08:00:00Z,5000,1.23,10.1,30.6
+pond-c,control,1,2026-10-01T08:00:00Z,110,0.17,9.3,29.9
+pond-c,control,1,2026-10-02T08:00:00Z,110,0.17,9.3,29.9
+pond-c,control,1,2026-10-03T08:00:00Z,110,0.17,9.3,29.9
+pond-c,control,1,2026-10-04T08:00:00Z,110,0.17,9.3,29.9
+pond-c,control,1,2026-10-05T08:00:00Z,110,0.17,9.3,29.9`;
+
+export const DEMO_MAPPING = {
+  cultureId: "culture_id",
+  condition: "condition",
+  replicate: "replicate",
+  timestamp: "timestamp",
+  measurements: {
+    biomass: { column: "biomass_mg_l", unit: "mg/L" },
+    od600: { column: "od600", unit: "AU" },
+    pH: { column: "pH", unit: "pH" },
+    temperature: { column: "temperature_c", unit: "°C" },
+  },
+};

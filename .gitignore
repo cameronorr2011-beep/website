@@ -9,6 +9,8 @@ build-run.log
 # Python
 __pycache__/
 node_modules/
+apps/culturetrace/release/
+apps/culturetrace/dist/
 docs/lab-*.png
 docs/live-game.png
 docs/local-webgl.png

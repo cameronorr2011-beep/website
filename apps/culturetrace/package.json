@@ -1,0 +1,70 @@
+{
+  "name": "culturetrace",
+  "version": "0.1.0",
+  "private": true,
+  "author": "Orr Biologicals",
+  "license": "MIT",
+  "description": "Local-first scientific experiment analysis from Orr Biologicals",
+  "type": "module",
+  "main": "electron/main.cjs",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "dev:electron": "node scripts/build-electron.mjs && electron .",
+    "test": "node --test tests/*.test.mjs",
+    "build:web": "vite build",
+    "build:electron": "node scripts/build-electron.mjs && electron-builder --dir",
+    "package:win": "node scripts/build-electron.mjs && electron-builder --win nsis portable",
+    "lint": "node scripts/lint.mjs"
+  },
+  "dependencies": {
+    "react": "19.1.1",
+    "react-dom": "19.1.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "5.0.4",
+    "electron": "37.4.0",
+    "electron-builder": "26.0.12",
+    "vite": "7.1.7"
+  },
+  "build": {
+    "appId": "com.orrbiologicals.culturetrace",
+    "productName": "CultureTrace",
+    "artifactName": "CultureTrace-${version}-${os}-${arch}.${ext}",
+    "directories": {
+      "output": "release",
+      "buildResources": "assets/icons"
+    },
+    "files": [
+      "dist/**/*",
+      "electron/**/*",
+      "package.json"
+    ],
+    "win": {
+      "target": [
+        { "target": "nsis", "arch": ["x64"] },
+        { "target": "portable", "arch": ["x64"] }
+      ],
+      "icon": "assets/icons/culturetrace.ico",
+      "signAndEditExecutable": false
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "artifactName": "CultureTrace-${version}-win-${arch}-setup.${ext}"
+    },
+    "portable": {
+      "artifactName": "CultureTrace-${version}-win-${arch}-portable.${ext}"
+    },
+    "mac": {
+      "category": "public.app-category.science",
+      "icon": "assets/icons/culturetrace.icns"
+    },
+    "linux": {
+      "target": ["AppImage"],
+      "category": "Science",
+      "icon": "assets/icons"
+    }
+  }
+}

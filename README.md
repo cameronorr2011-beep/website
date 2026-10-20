@@ -25,6 +25,12 @@ No API key, database, cloud account, or hardware is required for the static
 site, the simulation, or the research pages. Journal automation can use
 `GROQ_API_KEY` in CI, but it is not needed for a local static build.
 
+CultureTrace is a separate, independently buildable Electron/React application
+under `apps/culturetrace/`. Its browser-compatible public route is built at
+`/culturetrace/`; the desktop app stores projects locally and keeps Groq behind
+the Electron main-process boundary. The default demonstration dataset and
+deterministic analysis work without a network or API key.
+
 ## Clean checkout: install, build, run
 
 ```bash
@@ -64,6 +70,10 @@ Useful focused checks:
 
 ```bash
 npm run test:simulation
+npm run test:culturetrace
+npm run build:culturetrace
+# Windows installer, when Electron packaging dependencies are available:
+npm run package:culturetrace
 python -m unittest tools.test_design_system
 ```
 
@@ -93,6 +103,8 @@ cyanoflow.html            Cyanoflow product brief and chip visualization
 blog/                     Journal source of truth and generated article index
 research/                 methodology hub
 Simulation/               simplified Algal Digital Lab workspace
+apps/culturetrace/        standalone React/Electron experiment analysis app
+culturetrace/             generated public CultureTrace browser route
 tools/site/               deterministic static/SEO assembly
 tools/static-server.mjs   dependency-free local production-like server
 Dockerfile                clean Linux build and run path
