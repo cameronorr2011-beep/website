@@ -1,0 +1,55 @@
+{
+  "date": "2026-10-22",
+  "model": "openai/gpt-oss-120b",
+  "generated_at": "2026-10-22T22:54:22Z",
+  "picks": [
+    {
+      "pmid": "42892548",
+      "title": "From oleaginous microalga to marine chassis: synthetic biology and process-aware biomanufacturing in Nannochloropsis.",
+      "journal": "Biotechnology advances",
+      "year": "2026",
+      "pub_date": "2026-10-17",
+      "url": "https://doi.org/10.1016/j.biotechadv.2026.109079",
+      "topic": "Bioengineering",
+      "hook": "Synthetic biology turns Nannochloropsis into a marine chassis for high‑value oil production.",
+      "article": "A recent study set out to turn the oil‑rich microalga Nannochloropsis into a versatile platform for marine‑based biomanufacturing. The researchers combined a suite of genetic tools—including genome‑wide resources, efficient nuclear transformation, homologous recombination, CRISPR/Cas editing, marker recycling, defined integration sites, and modular multigene assembly—to re‑engineer the organism.\n\nUsing these techniques they rewired carbon allocation pathways, enabling the microalga to produce new compounds beyond its natural EPA‑rich lipids. The work demonstrates that Nannochloropsis can serve as a chassis—a standardized host—for synthetic biology applications in the sea.\n\nThis is interesting because it opens the door to sustainably produce a range of valuable chemicals and materials directly from marine algae, expanding the toolbox for algae‑based biotechnology.",
+      "why": "It shows how engineered Nannochloropsis could become a marine factory for sustainable chemicals and fuels."
+    },
+    {
+      "pmid": "42891879",
+      "title": "Microalgae-based removal and biodegradation of antibiotics: mechanisms, synergistic consortia, and engineering prospects.",
+      "journal": "Biodegradation",
+      "year": "2026",
+      "pub_date": "2026-10-17",
+      "url": "https://doi.org/10.1007/s10532-026-10393-9",
+      "topic": "Bioremediation",
+      "hook": "Engineered microalgae consortia break down antibiotics, offering a green solution to water pollution.",
+      "article": "A recent study looked at how tiny algae can both sense the presence of antibiotics in water and break them down. \n\nThe researchers reviewed existing work on microalgae that remove and biodegrade antibiotics, focusing on how the organisms sense chemical stress and the role of enzymes, especially those linked to the chloroplast protein P450 and nitrogen pathways. \n\nThey found that microalgae can integrate biosorption (the sticking of pollutants to cell surfaces) with enzyme‑mediated transformation, creating a dual‑function platform for cleaning water. \n\nThis combination of physical capture and biochemical breakdown makes algae a promising tool for tackling antibiotic pollution in aquatic environments.",
+      "why": "Algae that both trap and degrade antibiotics could help keep waterways cleaner and curb resistance spread."
+    },
+    {
+      "pmid": "42879924",
+      "title": "Solar-hydrodynamic energy coupling enables round-the-clock algal inactivation in natural waters.",
+      "journal": "Journal of hazardous materials",
+      "year": "2026",
+      "pub_date": "2026-10-12",
+      "url": "https://doi.org/10.1016/j.jhazmat.2026.143898",
+      "topic": "HAB mitigation",
+      "hook": "Solar‑hydrodynamic coupling continuously inactivates harmful algal blooms without chemicals.",
+      "article": "A new study set out to see whether combining sunlight with water movement could keep harmful algae in check all day and night in natural water bodies. The researchers tested a piezo‑photocatalytic approach, which uses tiny catalysts that generate reactive species when they vibrate (piezo) and are illuminated (photo), and they floated these catalysts in the water while also regulating the reactive species that kill algae.\n\nThey deployed the floating catalyst system in situ, meaning directly in the water, and harvested both ambient solar energy and hydrodynamic (flow‑related) energy to power the reaction. By adjusting the amount of reactive species, they were able to maintain algal inactivation continuously.\n\nThe study showed that this combined energy harvesting strategy enabled round‑the‑clock in‑situ algal control, overcoming the usual limits of intermittent energy supply and the low recovery of conventional nanocatalysts.\n\nThis work is interesting because it points to a way of managing algal blooms using only natural energy sources, potentially reducing reliance on chemical treatments.",
+      "why": "It demonstrates a sustainable, energy‑self‑sufficient method for continuous algal bloom mitigation."
+    },
+    {
+      "pmid": "42901356",
+      "title": "Mechanisms insights into stable nitrogen removal and sustained NOB photoinhibition in a photo-rotating biological contactor enhanced PN-algal symbiotic system under dual low temperature and low-ammonia stress.",
+      "journal": "Bioresource technology",
+      "year": "2026",
+      "pub_date": "2026-10-20",
+      "url": "https://doi.org/10.1016/j.biortech.2026.136105",
+      "topic": "Nitrogen removal",
+      "hook": "A rotating photobioreactor stabilizes nitrogen removal by photoinhibiting nitrite‑oxidizing bacteria.",
+      "article": "A recent study set out to keep the troublesome nitrite‑oxidizing bacteria (NOB) from becoming active and unstable when treating wastewater at low temperature and low ammonia levels. The researchers built a blue‑light‑irradiated, rotating biological contactor that was paired with a partial nitrification‑algal (PN‑algal) symbiotic system.\n\nThey operated the device under dual stress conditions – low temperature and low NH4⁺ concentration – and examined how the light and rotation affected NOB activity and the overall nitrogen removal.\n\nThe work showed that the combined photo‑rotating setup could maintain stable nitrogen removal while keeping NOB photoinhibited, even under severe light shading that normally hampers such systems.\n\nThese findings suggest a practical way to improve low‑temperature, low‑ammonia wastewater treatment using algae‑bacteria partnerships.",
+      "why": "It points to a greener, more reliable method for removing nitrogen from cold, dilute waste streams."
+    }
+  ]
+}
