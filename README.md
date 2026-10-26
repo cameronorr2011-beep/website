@@ -74,8 +74,14 @@ npm run test:culturetrace
 npm run build:culturetrace
 # Windows installer, when Electron packaging dependencies are available:
 npm run package:culturetrace
-python -m unittest tools.test_design_system
+py -3.12 -m unittest tools.test_design_system tools.test_seo
 ```
+
+The public long-form routes use `css/site-redesign.css` as a shared dark
+research-dossier layer. Platform workspaces keep their own instrument palettes,
+while journal, methodology, education, legal and archive pages share the same
+navigation, typography, evidence-status treatment and responsive reading
+surface.
 
 ## Docker
 
@@ -97,15 +103,23 @@ the image.
 sections/                 authoritative homepage and shared shell partials
 css/                      shared editorial interface and motion tokens
 css/home-premium.css      homepage editorial redesign layer
+css/site-redesign.css     dark research-dossier layer for public reading routes
 js/                       shared navigation, disclosure, and page behaviors
 algaephyte/               Algaephyte product brief and research notes
 cyanoflow.html            Cyanoflow product brief and chip visualization
 blog/                     Journal source of truth and generated article index
 research/                 methodology hub
 Simulation/               simplified Algal Digital Lab workspace
+algae-growth/             standalone pixel-art algae growth field guide
 apps/culturetrace/        standalone React/Electron experiment analysis app
 culturetrace/             generated public CultureTrace browser route
 tools/site/               deterministic static/SEO assembly
 tools/static-server.mjs   dependency-free local production-like server
+tools/export_algae_growth.mjs  standalone HTML + MP4 export helper
 Dockerfile                clean Linux build and run path
 ```
+
+The interactive algae growth field guide runs at `/algae-growth/` and can be
+exported to the Windows Downloads folder with `node
+tools/export_algae_growth.mjs`. See `algae-growth/README.md` for the scientific
+accuracy note and offline export details.

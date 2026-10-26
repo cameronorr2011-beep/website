@@ -140,7 +140,7 @@ class SEOTests(unittest.TestCase):
         self.assertFalse((ROOT / 'applications/index.html').exists())
 
     def test_header_navigation_is_consistent(self):
-        expected = ('/research/', '/algaephyte/', '/cyanoflow', '/blog/', '/Simulation/', '/#deploy')
+        expected = ('/research/', '/algaephyte/', '/cyanoflow', '/blog/', '/Simulation/', '/algae-growth/', '/#deploy')
         for path in pages():
             text = path.read_text(encoding='utf-8-sig')
             m = re.search(r'<header class="nav"[^>]*>[\s\S]*?</header>', text)

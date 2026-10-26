@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="An interactive pixel-art field guide to how microalgae use light, carbon dioxide, water and nutrients to grow and divide.">
+  <meta name="theme-color" content="#071410">
+  <link rel="canonical" href="https://orrbiologicals.com/algae-growth/">
+  <meta property="og:title" content="Algae Growth — Pixel Field Guide | Orr Biologicals">
+  <meta property="og:description" content="An interactive pixel-art field guide to how microalgae use light, carbon dioxide, water and nutrients to grow and divide.">
+  <meta property="og:url" content="https://orrbiologicals.com/algae-growth/">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://orrbiologicals.com/assets/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Algae Growth — Pixel Field Guide | Orr Biologicals">
+  <meta name="twitter:description" content="An interactive pixel-art field guide to how microalgae use light, carbon dioxide, water and nutrients to grow and divide.">
+  <meta name="twitter:image" content="https://orrbiologicals.com/assets/og.png">
+  <title>Algae Growth — Pixel Field Guide | Orr Biologicals</title>
+  <link rel="stylesheet" href="growth.css?v=20261025">
+</head>
+<body class="growth-page">
+  <main id="main" class="growth-shell">
+    <section class="growth-intro" aria-labelledby="growth-title">
+      <div class="growth-intro-copy">
+        <p class="growth-kicker"><span class="kicker-dot"></span> Orr Biologicals / living systems lab</p>
+        <h1 id="growth-title">A tiny cell.<br><em>A whole culture.</em></h1>
+        <p class="growth-lede">Follow one green cell as it captures light, builds biomass, divides, and becomes a thriving microalgal culture.</p>
+        <div class="growth-intro-meta">
+          <span><b>07</b> scenes</span>
+          <span><b>01</b> illustrative model</span>
+          <span><b>∞</b> possible cultures</span>
+        </div>
+      </div>
+      <aside class="growth-intro-note" aria-label="Scientific framing">
+        <span class="note-index">FIELD NOTE 01</span>
+        <p>Light is the energy source. Carbon and nutrients become cell material. The balance between them shapes the culture.</p>
+        <span class="note-signature">BIOLOGY × PIXEL ART</span>
+      </aside>
+    </section>
+
+    <section class="growth-console" aria-label="Interactive algae growth animation">
+      <header class="growth-console-head">
+        <div>
+          <p class="console-eyebrow">MICROALGAE GROWTH / EXPLORATION MODE</p>
+          <h2 id="sceneTitle">01 · The starting culture</h2>
+        </div>
+        <div class="console-status"><span class="status-pulse"></span><span id="runStatus">RUNNING · ILLUSTRATIVE</span></div>
+      </header>
+
+      <div class="growth-stage-wrap">
+        <div class="growth-stage" id="growthStage">
+          <canvas id="growthCanvas" width="960" height="540" aria-label="Animated pixel-art visualization of algae cells growing in water"></canvas>
+          <div class="stage-corner stage-corner-tl"><span id="stageMode">MICROSCOPE / 1200×</span><span id="stageSpecies">ARTHROSPIRA · REFERENCE</span></div>
+          <div class="stage-corner stage-corner-br"><span id="stageClock">00:00</span><span id="stageScene">SCENE 01 / 07</span></div>
+          <div class="stage-caption" id="stageCaption">A few cells drift through a nutrient-rich water column.</div>
+          <div class="stage-scanline" aria-hidden="true"></div>
+        </div>
+        <p class="sr-only" id="canvasDescription">A live canvas animation. The current scene is the starting culture: a few green algal cells drift in water while light rays enter from above and nutrient particles move through the field.</p>
+      </div>
+
+      <div class="growth-timeline" aria-label="Animation progress">
+        <div class="timeline-labels"><span id="timelineCurrent">SCENE 01 / THE STARTING CULTURE</span><span id="timelineTime">00:00 / 00:46</span></div>
+        <input id="timeline" type="range" min="0" max="46" step="0.01" value="0" aria-label="Animation timeline">
+        <div class="timeline-ticks" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+      </div>
+
+      <div class="growth-controls" aria-label="Playback controls">
+        <div class="control-cluster control-cluster-main">
+          <button class="icon-button" id="playToggle" type="button" aria-label="Pause animation" aria-pressed="true"><span id="playIcon">Ⅱ</span></button>
+          <button class="text-button" id="restartButton" type="button">↺ <span>Restart</span></button>
+          <label class="select-control"><span>Speed</span><select id="speedSelect" aria-label="Playback speed"><option value="0.5">0.5×</option><option value="1" selected>1×</option><option value="1.5">1.5×</option><option value="2">2×</option></select></label>
+          <button class="text-button voice-button" id="voiceToggle" type="button" aria-pressed="false"><span class="voice-icon">◖</span><span id="voiceLabel">Voiceover</span></button>
+          <span class="sr-only" id="voiceStatus" role="status" aria-live="polite">Voiceover off.</span>
+        </div>
+        <div class="control-cluster control-cluster-view">
+          <button class="text-button is-active" id="microscopeButton" type="button" aria-pressed="true">◉ <span>Microscope</span></button>
+          <button class="text-button" id="cultureButton" type="button" aria-pressed="false">▱ <span>Culture view</span></button>
+          <button class="text-button" id="labelsToggle" type="button" aria-pressed="true">⌁ <span>Labels</span></button>
+        </div>
+      </div>
+
+      <div class="scene-rail" role="tablist" aria-label="Scenes">
+        <button class="scene-tab is-active" type="button" role="tab" aria-selected="true" data-scene="0"><b>01</b><span>Starting culture</span></button>
+        <button class="scene-tab" type="button" role="tab" aria-selected="false" data-scene="1"><b>02</b><span>Photosynthesis</span></button>
+        <button class="scene-tab" type="button" role="tab" aria-selected="false" data-scene="2"><b>03</b><span>Cellular growth</span></button>
+        <button class="scene-tab" type="button" role="tab" aria-selected="false" data-scene="3"><b>04</b><span>Cell division</span></button>
+        <button class="scene-tab" type="button" role="tab" aria-selected="false" data-scene="4"><b>05</b><span>Population growth</span></button>
+        <button class="scene-tab" type="button" role="tab" aria-selected="false" data-scene="5"><b>06</b><span>Limits &amp; stress</span></button>
+        <button class="scene-tab" type="button" role="tab" aria-selected="false" data-scene="6"><b>07</b><span>Culture system</span></button>
+      </div>
+    </section>
+
+    <section class="growth-lower-grid">
+      <article class="growth-panel story-panel" aria-live="polite">
+        <div class="panel-topline"><span class="panel-index" id="storyIndex">SCENE 01</span><div class="mode-switch" role="group" aria-label="Explanation detail"><button class="mode-button is-active" id="beginnerButton" type="button" aria-pressed="true">Beginner</button><button class="mode-button" id="advancedButton" type="button" aria-pressed="false">Advanced</button></div></div>
+        <h3 id="storyTitle">Start with a viable cell</h3>
+        <p id="storyBody">A small inoculum begins with water, dissolved carbon dioxide, light, and mineral nutrients. Each cell is a complete living system with its own boundary, pigments, and machinery for turning energy into new material.</p>
+        <div class="story-equation" id="storyEquation"><span>light</span><i>+</i><span>CO₂</span><i>+</i><span>H₂O</span><i>+</i><span>nutrients</span><b>→</b><strong>biomass + O₂</strong></div>
+        <p class="story-footnote" id="storyFootnote">The exact pigments, shape, and division rhythm vary by species and conditions.</p>
+      </article>
+
+      <aside class="growth-panel conditions-panel" aria-labelledby="conditionsTitle">
+        <div class="panel-topline"><span class="panel-index">LIVE INPUTS</span><span class="model-badge">ILLUSTRATIVE</span></div>
+        <h3 id="conditionsTitle">Culture conditions</h3>
+        <p class="panel-subtitle">Change the environment. The animation responds qualitatively — this is not a calibrated prediction.</p>
+        <div class="condition-list">
+          <label class="condition-row"><span class="condition-label"><b>Light</b><small id="lightReadout">68% · balanced</small></span><input id="lightInput" type="range" min="0" max="100" value="68" aria-label="Light intensity"><span class="condition-value" id="lightValue">68</span></label>
+          <label class="condition-row"><span class="condition-label"><b>Temperature</b><small id="tempReadout">24°C · near optimum</small></span><input id="tempInput" type="range" min="5" max="40" value="24" aria-label="Temperature in Celsius"><span class="condition-value" id="tempValue">24°</span></label>
+          <label class="condition-row"><span class="condition-label"><b>Nutrients</b><small id="nutrientReadout">76% · available</small></span><input id="nutrientInput" type="range" min="0" max="100" value="76" aria-label="Nutrient availability"><span class="condition-value" id="nutrientValue">76</span></label>
+          <label class="condition-row"><span class="condition-label"><b>CO₂</b><small id="co2Readout">62% · available</small></span><input id="co2Input" type="range" min="0" max="100" value="62" aria-label="Carbon dioxide availability"><span class="condition-value" id="co2Value">62</span></label>
+        </div>
+        <div class="condition-state" id="conditionState"><span class="state-led"></span><span>Balanced conditions support steady growth.</span></div>
+      </aside>
+
+      <aside class="growth-panel metrics-panel" aria-labelledby="metricsTitle">
+        <div class="panel-topline"><span class="panel-index">CULTURE READOUT</span><span class="metric-time" id="metricTime">T + 00:00</span></div>
+        <h3 id="metricsTitle">A population in motion</h3>
+        <div class="metric-big"><strong id="populationValue">12</strong><span>cells · illustrative</span></div>
+        <canvas id="populationGraph" width="460" height="150" aria-label="Illustrative population growth graph"></canvas>
+        <div class="metric-grid"><div><span>Growth signal</span><b id="growthRateValue">+0.8×</b></div><div><span>Biomass</span><b id="biomassValue">LOW</b></div><div><span>pH tendency</span><b id="phValue">STABLE</b></div><div><span>O₂</span><b id="oxygenValue">RISING</b></div></div>
+      </aside>
+    </section>
+
+    <section class="growth-footer-note">
+      <div><span class="footer-mark">OB</span><p><b>Scientific note</b> This experience separates photosynthesis, nutrient assimilation, cell growth, and reproduction. The population values and graph are an illustrative teaching model, not experimentally validated forecasts.</p></div>
+      <div class="footer-actions"><label class="motion-toggle"><input id="motionInput" type="checkbox"><span>Reduced motion</span></label><a href="/downloads/" class="back-link">↗ Downloads</a><a href="/" class="back-link">↗ Orr Biologicals</a></div>
+    </section>
+  </main>
+  <script src="growth.js?v=20261025"></script>
+</body>
+</html>

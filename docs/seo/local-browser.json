@@ -1,5 +1,5 @@
 {
-  "testedAt": "2026-10-16T02:40:52.381Z",
+  "testedAt": "2026-10-26T01:13:00.579Z",
   "target": "http://127.0.0.1:8876",
   "results": [
     {
@@ -39,8 +39,8 @@
       ],
       "nav": [
         {
-          "ttfb": 5.199999988079071,
-          "domContentLoaded": 120.59999999403954
+          "ttfb": 24.69999998807907,
+          "domContentLoaded": 244.59999999403954
         }
       ],
       "metrics": {
@@ -49,10 +49,10 @@
         "longTasks": []
       },
       "payload": {
-        "requests": 9,
-        "transferred": 787566,
-        "js": 697952,
-        "css": 88823,
+        "requests": 10,
+        "transferred": 806067,
+        "js": 698420,
+        "css": 106856,
         "images": 791
       }
     },
@@ -100,20 +100,20 @@
       ],
       "nav": [
         {
-          "ttfb": 4.700000017881393,
-          "domContentLoaded": 49.80000001192093
+          "ttfb": 12.400000005960464,
+          "domContentLoaded": 106.69999998807907
         }
       ],
       "metrics": {
         "lcp": null,
-        "cls": 0,
+        "cls": 0.017473313609759015,
         "longTasks": []
       },
       "payload": {
-        "requests": 9,
-        "transferred": 71695,
+        "requests": 10,
+        "transferred": 83858,
         "js": 9760,
-        "css": 61144,
+        "css": 73307,
         "images": 791
       }
     },
@@ -161,8 +161,8 @@
       ],
       "nav": [
         {
-          "ttfb": 3.7999999821186066,
-          "domContentLoaded": 43.599999994039536
+          "ttfb": 22.30000001192093,
+          "domContentLoaded": 275.90000000596046
         }
       ],
       "metrics": {
@@ -171,10 +171,10 @@
         "longTasks": []
       },
       "payload": {
-        "requests": 9,
-        "transferred": 71695,
-        "js": 9760,
-        "css": 61144,
+        "requests": 12,
+        "transferred": 100587,
+        "js": 12753,
+        "css": 87043,
         "images": 791
       }
     },
@@ -233,20 +233,20 @@
       ],
       "nav": [
         {
-          "ttfb": 3.5,
-          "domContentLoaded": 34.400000005960464
+          "ttfb": 94.19999998807907,
+          "domContentLoaded": 323.2999999821186
         }
       ],
       "metrics": {
-        "lcp": null,
-        "cls": 0.018480119228363037,
+        "lcp": 356,
+        "cls": 0.023498594164848327,
         "longTasks": []
       },
       "payload": {
-        "requests": 9,
-        "transferred": 71695,
+        "requests": 10,
+        "transferred": 83858,
         "js": 9760,
-        "css": 61144,
+        "css": 73307,
         "images": 791
       }
     },
@@ -305,20 +305,20 @@
       ],
       "nav": [
         {
-          "ttfb": 4,
-          "domContentLoaded": 31.69999998807907
+          "ttfb": 31.19999998807907,
+          "domContentLoaded": 578.6999999880791
         }
       ],
       "metrics": {
-        "lcp": null,
-        "cls": 0,
+        "lcp": 644,
+        "cls": 0.015063201387723288,
         "longTasks": []
       },
       "payload": {
-        "requests": 9,
-        "transferred": 71695,
+        "requests": 10,
+        "transferred": 83858,
         "js": 9760,
-        "css": 61144,
+        "css": 73307,
         "images": 791
       }
     },
@@ -377,21 +377,21 @@
       ],
       "nav": [
         {
-          "ttfb": 4,
-          "domContentLoaded": 40.599999994039536
+          "ttfb": 100.90000000596046,
+          "domContentLoaded": 677
         }
       ],
       "metrics": {
-        "lcp": null,
-        "cls": 0,
+        "lcp": 840,
+        "cls": 0.015063201387723288,
         "longTasks": []
       },
       "payload": {
         "requests": 9,
-        "transferred": 71695,
+        "transferred": 83067,
         "js": 9760,
-        "css": 61144,
-        "images": 791
+        "css": 73307,
+        "images": 0
       }
     },
     {
@@ -449,20 +449,20 @@
       ],
       "nav": [
         {
-          "ttfb": 4.4000000059604645,
-          "domContentLoaded": 36.099999994039536
+          "ttfb": 88.10000002384186,
+          "domContentLoaded": 1027.1000000238419
         }
       ],
       "metrics": {
-        "lcp": 44,
-        "cls": 0.014024714165263704,
+        "lcp": 1116,
+        "cls": 0.023498594164848327,
         "longTasks": []
       },
       "payload": {
-        "requests": 9,
-        "transferred": 71695,
+        "requests": 10,
+        "transferred": 83858,
         "js": 9760,
-        "css": 61144,
+        "css": 73307,
         "images": 791
       }
     },
@@ -521,20 +521,20 @@
       ],
       "nav": [
         {
-          "ttfb": 4.199999988079071,
-          "domContentLoaded": 35.5
+          "ttfb": 80.7999999821186,
+          "domContentLoaded": 822.7999999821186
         }
       ],
       "metrics": {
-        "lcp": 48,
-        "cls": 0,
+        "lcp": 876,
+        "cls": 0.023498594164848327,
         "longTasks": []
       },
       "payload": {
-        "requests": 9,
-        "transferred": 71695,
+        "requests": 10,
+        "transferred": 83858,
         "js": 9760,
-        "css": 61144,
+        "css": 73307,
         "images": 791
       }
     },
@@ -593,20 +593,20 @@
       ],
       "nav": [
         {
-          "ttfb": 4.5,
-          "domContentLoaded": 33.70000001788139
+          "ttfb": 103,
+          "domContentLoaded": 1018.1999999880791
         }
       ],
       "metrics": {
-        "lcp": null,
-        "cls": 0.018449623982111613,
+        "lcp": 1028,
+        "cls": 0.023498594164848327,
         "longTasks": []
       },
       "payload": {
-        "requests": 9,
-        "transferred": 71695,
+        "requests": 10,
+        "transferred": 83858,
         "js": 9760,
-        "css": 61144,
+        "css": 73307,
         "images": 791
       }
     },
@@ -665,20 +665,20 @@
       ],
       "nav": [
         {
-          "ttfb": 4.0999999940395355,
-          "domContentLoaded": 30
+          "ttfb": 78.2000000178814,
+          "domContentLoaded": 715.1000000238419
         }
       ],
       "metrics": {
-        "lcp": null,
-        "cls": 0.018449623982111613,
+        "lcp": 764,
+        "cls": 0.023498594164848327,
         "longTasks": []
       },
       "payload": {
-        "requests": 9,
-        "transferred": 71695,
+        "requests": 10,
+        "transferred": 83858,
         "js": 9760,
-        "css": 61144,
+        "css": 73307,
         "images": 791
       }
     },
@@ -737,20 +737,20 @@
       ],
       "nav": [
         {
-          "ttfb": 3.899999976158142,
-          "domContentLoaded": 35.5
+          "ttfb": 63,
+          "domContentLoaded": 468.90000000596046
         }
       ],
       "metrics": {
-        "lcp": null,
-        "cls": 0,
+        "lcp": 524,
+        "cls": 0.015063201387723288,
         "longTasks": []
       },
       "payload": {
-        "requests": 9,
-        "transferred": 71695,
+        "requests": 10,
+        "transferred": 83858,
         "js": 9760,
-        "css": 61144,
+        "css": 73307,
         "images": 791
       }
     },
@@ -809,20 +809,20 @@
       ],
       "nav": [
         {
-          "ttfb": 5,
-          "domContentLoaded": 33.5
+          "ttfb": 88.69999998807907,
+          "domContentLoaded": 509.40000000596046
         }
       ],
       "metrics": {
-        "lcp": 44,
-        "cls": 0.018449623982111613,
+        "lcp": 560,
+        "cls": 0.023498594164848327,
         "longTasks": []
       },
       "payload": {
-        "requests": 9,
-        "transferred": 71695,
+        "requests": 10,
+        "transferred": 83858,
         "js": 9760,
-        "css": 61144,
+        "css": 73307,
         "images": 791
       }
     },
@@ -881,20 +881,20 @@
       ],
       "nav": [
         {
-          "ttfb": 4.4000000059604645,
-          "domContentLoaded": 31.5
+          "ttfb": 79.09999999403954,
+          "domContentLoaded": 488.90000000596046
         }
       ],
       "metrics": {
-        "lcp": 44,
-        "cls": 0,
+        "lcp": 524,
+        "cls": 0.023498594164848327,
         "longTasks": []
       },
       "payload": {
-        "requests": 9,
-        "transferred": 71695,
+        "requests": 10,
+        "transferred": 83858,
         "js": 9760,
-        "css": 61144,
+        "css": 73307,
         "images": 791
       }
     },
@@ -953,21 +953,21 @@
       ],
       "nav": [
         {
-          "ttfb": 4.800000011920929,
-          "domContentLoaded": 35.10000002384186
+          "ttfb": 63.70000001788139,
+          "domContentLoaded": 435.7000000178814
         }
       ],
       "metrics": {
-        "lcp": 44,
-        "cls": 0.014024714165263704,
+        "lcp": null,
+        "cls": 0.015063201387723288,
         "longTasks": []
       },
       "payload": {
         "requests": 9,
-        "transferred": 71695,
+        "transferred": 83067,
         "js": 9760,
-        "css": 61144,
-        "images": 791
+        "css": 73307,
+        "images": 0
       }
     },
     {
@@ -989,20 +989,20 @@
       ],
       "nav": [
         {
-          "ttfb": 3.9000000059604645,
-          "domContentLoaded": 45.19999998807907
+          "ttfb": 75.19999998807907,
+          "domContentLoaded": 558.5999999940395
         }
       ],
       "metrics": {
-        "lcp": null,
+        "lcp": 620,
         "cls": 0,
         "longTasks": []
       },
       "payload": {
-        "requests": 13,
-        "transferred": 603601,
+        "requests": 14,
+        "transferred": 640745,
         "js": 9760,
-        "css": 61144,
+        "css": 73307,
         "images": 418121
       }
     },
@@ -1061,20 +1061,20 @@
       ],
       "nav": [
         {
-          "ttfb": 4.9000000059604645,
-          "domContentLoaded": 32.900000005960464
+          "ttfb": 60.400000005960464,
+          "domContentLoaded": 397.40000000596046
         }
       ],
       "metrics": {
-        "lcp": 44,
-        "cls": 0.014024714165263704,
+        "lcp": null,
+        "cls": 0.015063201387723288,
         "longTasks": []
       },
       "payload": {
-        "requests": 9,
-        "transferred": 71695,
+        "requests": 10,
+        "transferred": 83858,
         "js": 9760,
-        "css": 61144,
+        "css": 73307,
         "images": 791
       }
     },
@@ -1133,20 +1133,20 @@
       ],
       "nav": [
         {
-          "ttfb": 3.4000000059604645,
-          "domContentLoaded": 27.30000001192093
+          "ttfb": 31.099999994039536,
+          "domContentLoaded": 348.5
         }
       ],
       "metrics": {
-        "lcp": 36,
-        "cls": 0.014047895510991414,
+        "lcp": 388,
+        "cls": 0.015063201387723288,
         "longTasks": []
       },
       "payload": {
-        "requests": 9,
-        "transferred": 71695,
+        "requests": 10,
+        "transferred": 83858,
         "js": 9760,
-        "css": 61144,
+        "css": 73307,
         "images": 791
       }
     },
@@ -1205,20 +1205,20 @@
       ],
       "nav": [
         {
-          "ttfb": 3,
-          "domContentLoaded": 32.599999994039536
+          "ttfb": 40.599999994039536,
+          "domContentLoaded": 353.30000001192093
         }
       ],
       "metrics": {
-        "lcp": 44,
-        "cls": 0.014024714165263704,
+        "lcp": null,
+        "cls": 0.023498594164848327,
         "longTasks": []
       },
       "payload": {
-        "requests": 9,
-        "transferred": 71695,
+        "requests": 10,
+        "transferred": 83858,
         "js": 9760,
-        "css": 61144,
+        "css": 73307,
         "images": 791
       }
     },
@@ -1280,20 +1280,20 @@
       ],
       "nav": [
         {
-          "ttfb": 4.200000017881393,
-          "domContentLoaded": 36.099999994039536
+          "ttfb": 28.5,
+          "domContentLoaded": 283.40000000596046
         }
       ],
       "metrics": {
         "lcp": null,
-        "cls": 0,
+        "cls": 0.017473313609759015,
         "longTasks": []
       },
       "payload": {
-        "requests": 9,
-        "transferred": 71695,
+        "requests": 10,
+        "transferred": 83858,
         "js": 9760,
-        "css": 61144,
+        "css": 73307,
         "images": 791
       }
     },
@@ -1352,20 +1352,20 @@
       ],
       "nav": [
         {
-          "ttfb": 4.9000000059604645,
-          "domContentLoaded": 32.099999994039536
+          "ttfb": 72.09999999403954,
+          "domContentLoaded": 438.30000001192093
         }
       ],
       "metrics": {
-        "lcp": 40,
-        "cls": 0.02804942833052741,
+        "lcp": 508,
+        "cls": 0.023498594164848327,
         "longTasks": []
       },
       "payload": {
-        "requests": 9,
-        "transferred": 71695,
+        "requests": 10,
+        "transferred": 83858,
         "js": 9760,
-        "css": 61144,
+        "css": 73307,
         "images": 791
       }
     },
@@ -1424,20 +1424,20 @@
       ],
       "nav": [
         {
-          "ttfb": 3.300000011920929,
-          "domContentLoaded": 39.400000005960464
+          "ttfb": 30.5,
+          "domContentLoaded": 328.19999998807907
         }
       ],
       "metrics": {
-        "lcp": 56,
-        "cls": 0.014024714165263704,
+        "lcp": null,
+        "cls": 0.015063201387723288,
         "longTasks": []
       },
       "payload": {
-        "requests": 9,
-        "transferred": 71695,
+        "requests": 10,
+        "transferred": 83858,
         "js": 9760,
-        "css": 61144,
+        "css": 73307,
         "images": 791
       }
     },
@@ -1496,20 +1496,20 @@
       ],
       "nav": [
         {
-          "ttfb": 4,
-          "domContentLoaded": 40.30000001192093
+          "ttfb": 41,
+          "domContentLoaded": 297.10000002384186
         }
       ],
       "metrics": {
-        "lcp": 48,
-        "cls": 0.014024714165263704,
+        "lcp": null,
+        "cls": 0.015063201387723288,
         "longTasks": []
       },
       "payload": {
-        "requests": 9,
-        "transferred": 71695,
+        "requests": 10,
+        "transferred": 83858,
         "js": 9760,
-        "css": 61144,
+        "css": 73307,
         "images": 791
       }
     },
@@ -1568,20 +1568,20 @@
       ],
       "nav": [
         {
-          "ttfb": 3.699999988079071,
-          "domContentLoaded": 37.5
+          "ttfb": 29.80000001192093,
+          "domContentLoaded": 297.80000001192093
         }
       ],
       "metrics": {
-        "lcp": 48,
-        "cls": 0.014047895510991414,
+        "lcp": 328,
+        "cls": 0.015063201387723288,
         "longTasks": []
       },
       "payload": {
-        "requests": 9,
-        "transferred": 71695,
+        "requests": 10,
+        "transferred": 83858,
         "js": 9760,
-        "css": 61144,
+        "css": 73307,
         "images": 791
       }
     },
@@ -1640,20 +1640,20 @@
       ],
       "nav": [
         {
-          "ttfb": 3.5999999940395355,
-          "domContentLoaded": 44.20000001788139
+          "ttfb": 24.80000001192093,
+          "domContentLoaded": 316.09999999403954
         }
       ],
       "metrics": {
-        "lcp": 56,
-        "cls": 0,
+        "lcp": null,
+        "cls": 0.015063201387723288,
         "longTasks": []
       },
       "payload": {
-        "requests": 9,
-        "transferred": 71695,
+        "requests": 10,
+        "transferred": 83858,
         "js": 9760,
-        "css": 61144,
+        "css": 73307,
         "images": 791
       }
     },
@@ -1712,20 +1712,20 @@
       ],
       "nav": [
         {
-          "ttfb": 7.4000000059604645,
-          "domContentLoaded": 55.900000005960464
+          "ttfb": 50.099999994039536,
+          "domContentLoaded": 486.40000000596046
         }
       ],
       "metrics": {
-        "lcp": 72,
-        "cls": 0.018449623982111613,
+        "lcp": null,
+        "cls": 0.023498594164848327,
         "longTasks": []
       },
       "payload": {
-        "requests": 9,
-        "transferred": 71695,
+        "requests": 10,
+        "transferred": 83858,
         "js": 9760,
-        "css": 61144,
+        "css": 73307,
         "images": 791
       }
     },
@@ -1784,20 +1784,20 @@
       ],
       "nav": [
         {
-          "ttfb": 6.199999988079071,
-          "domContentLoaded": 48.599999994039536
+          "ttfb": 43.30000001192093,
+          "domContentLoaded": 552
         }
       ],
       "metrics": {
-        "lcp": 56,
-        "cls": 0.014071076856719123,
+        "lcp": 588,
+        "cls": 0.015063201387723288,
         "longTasks": []
       },
       "payload": {
-        "requests": 9,
-        "transferred": 71695,
+        "requests": 10,
+        "transferred": 83858,
         "js": 9760,
-        "css": 61144,
+        "css": 73307,
         "images": 791
       }
     },
@@ -1856,21 +1856,53 @@
       ],
       "nav": [
         {
-          "ttfb": 6.9000000059604645,
-          "domContentLoaded": 66
+          "ttfb": 44.69999998807907,
+          "domContentLoaded": 377.59999999403954
         }
       ],
       "metrics": {
-        "lcp": 72,
-        "cls": 0.014047895510991414,
+        "lcp": null,
+        "cls": 0.015063201387723288,
         "longTasks": []
       },
       "payload": {
-        "requests": 9,
-        "transferred": 71695,
+        "requests": 10,
+        "transferred": 83858,
         "js": 9760,
-        "css": 61144,
+        "css": 73307,
         "images": 791
+      }
+    },
+    {
+      "path": "/culturetrace/",
+      "status": 200,
+      "title": "CultureTrace | Evidence-first experiment analysis",
+      "h1": [
+        "Findings and evidence"
+      ],
+      "canonical": "https://orrbiologicals.com/culturetrace/",
+      "schemas": [],
+      "nav": [
+        {
+          "ttfb": 65.90000000596046,
+          "domContentLoaded": 566.5
+        }
+      ],
+      "metrics": {
+        "lcp": 772,
+        "cls": 0.8847222222222222,
+        "longTasks": [
+          79,
+          97,
+          62
+        ]
+      },
+      "payload": {
+        "requests": 12,
+        "transferred": 334472,
+        "js": 256836,
+        "css": 76735,
+        "images": 901
       }
     },
     {
@@ -1928,21 +1960,23 @@
       ],
       "nav": [
         {
-          "ttfb": 5.600000023841858,
-          "domContentLoaded": 226.60000002384186
+          "ttfb": 36.099999994039536,
+          "domContentLoaded": 1039.0999999940395
         }
       ],
       "metrics": {
-        "lcp": 220,
+        "lcp": 872,
         "cls": 0,
-        "longTasks": []
+        "longTasks": [
+          180
+        ]
       },
       "payload": {
         "requests": 14,
-        "transferred": 620844,
+        "transferred": 457557,
         "js": 40758,
-        "css": 94152,
-        "images": 485934
+        "css": 112799,
+        "images": 304000
       }
     },
     {
@@ -1964,22 +1998,23 @@
       ],
       "nav": [
         {
-          "ttfb": 7.9000000059604645,
-          "domContentLoaded": 527.4000000059605
+          "ttfb": 37,
+          "domContentLoaded": 676.1000000238419
         }
       ],
       "metrics": {
-        "lcp": 736,
-        "cls": 0.002363367133670383,
+        "lcp": 824,
+        "cls": 0.002267439550823636,
         "longTasks": [
-          128
+          172,
+          66
         ]
       },
       "payload": {
-        "requests": 14,
-        "transferred": 111790,
+        "requests": 15,
+        "transferred": 123647,
         "js": 6366,
-        "css": 53770,
+        "css": 65937,
         "images": 0
       }
     },
@@ -1994,20 +2029,20 @@
       "schemas": [],
       "nav": [
         {
-          "ttfb": 8.099999994039536,
-          "domContentLoaded": 203.7000000178814
+          "ttfb": 30,
+          "domContentLoaded": 507.7999999821186
         }
       ],
       "metrics": {
         "lcp": null,
-        "cls": 0.032174344261487325,
+        "cls": 0.054107019384702054,
         "longTasks": []
       },
       "payload": {
-        "requests": 9,
-        "transferred": 71695,
+        "requests": 10,
+        "transferred": 83858,
         "js": 9760,
-        "css": 61144,
+        "css": 73307,
         "images": 791
       }
     },
@@ -2022,22 +2057,20 @@
       "schemas": [],
       "nav": [
         {
-          "ttfb": 10.400000005960464,
-          "domContentLoaded": 208.90000000596046
+          "ttfb": 47.5,
+          "domContentLoaded": 382.60000002384186
         }
       ],
       "metrics": {
-        "lcp": null,
+        "lcp": 492,
         "cls": 0,
-        "longTasks": [
-          86
-        ]
+        "longTasks": []
       },
       "payload": {
-        "requests": 8,
-        "transferred": 49074,
+        "requests": 9,
+        "transferred": 61241,
         "js": 6366,
-        "css": 41917,
+        "css": 54084,
         "images": 791
       }
     },
@@ -2085,29 +2118,29 @@
       ],
       "nav": [
         {
-          "ttfb": 10.799999982118607,
-          "domContentLoaded": 142.89999997615814
+          "ttfb": 51.29999998211861,
+          "domContentLoaded": 389.09999999403954
         }
       ],
       "metrics": {
         "lcp": null,
-        "cls": 0.02039958424038357,
+        "cls": 0.02602921199798584,
         "longTasks": []
       },
       "payload": {
-        "requests": 9,
-        "transferred": 71695,
+        "requests": 10,
+        "transferred": 83858,
         "js": 9760,
-        "css": 61144,
+        "css": 73307,
         "images": 791
       }
     },
     {
       "path": "/",
       "status": 200,
-      "title": "Orr Biologicals | Biotechnology Meets AI",
+      "title": "Orr Biologicals | Read the living signal",
       "h1": [
-        "Where biotechnology meets AI.Reading living systems in motion — from single-cell discovery to bounded biological control."
+        "Read the living signal."
       ],
       "canonical": "https://orrbiologicals.com/",
       "schemas": [
@@ -2121,7 +2154,7 @@
               "url": "https://orrbiologicals.com/",
               "email": "service@orrbiologicals.com",
               "logo": "https://orrbiologicals.com/assets/og.png",
-              "description": "Orr Biologicals pioneers AI systems for breakthroughs in biotechnology, computational biology, biological discovery, and intelligent scientific instrumentation. Our platforms are research concepts in development, not validated commercial products."
+              "description": "Orr Biologicals builds computational tools and instrument concepts for observing, modeling, and safely exploring living biological systems. Research concepts in development; no validated commercial products claimed."
             },
             {
               "@type": "WebSite",
@@ -2136,7 +2169,7 @@
               "@type": "CreativeWork",
               "@id": "https://orrbiologicals.com/#cyanoflow",
               "name": "Cyanoflow research concept",
-              "description": "An autonomous environmental microfluidic and single-cell discovery concept for isolating, imaging, and investigating microalgae and cellular variation. In development; no validated hardware performance is claimed.",
+              "description": "A proposed microfluidic and single-cell discovery system for isolating, imaging, and investigating microalgae and cellular variation. In development; no validated hardware performance is claimed.",
               "creator": {
                 "@id": "https://orrbiologicals.com/#org"
               },
@@ -2146,32 +2179,32 @@
               "@type": "CreativeWork",
               "@id": "https://orrbiologicals.com/#algaephyte",
               "name": "Algaephyte research concept",
-              "description": "A proposed AI-assisted microalgae cultivation and biological monitoring system combining sensors, physics-informed growth models, camera checks, and independent actuator limits. In development; no validated performance or purchase availability is claimed.",
+              "description": "A proposed microalgae cultivation and biological monitoring system combining sensors, physics-informed growth models, camera checks, and independent actuator limits. In development; no validated performance or purchase availability is claimed.",
               "creator": {
                 "@id": "https://orrbiologicals.com/#org"
               },
-              "url": "https://orrbiologicals.com/#inside"
+              "url": "https://orrbiologicals.com/algaephyte/"
             }
           ]
         }
       ],
       "nav": [
         {
-          "ttfb": 7.5,
-          "domContentLoaded": 228.69999998807907
+          "ttfb": 37.30000001192093,
+          "domContentLoaded": 774.5999999940395
         }
       ],
       "metrics": {
-        "lcp": 444,
+        "lcp": 896,
         "cls": 0,
         "longTasks": []
       },
       "payload": {
-        "requests": 25,
-        "transferred": 238984,
-        "js": 44403,
-        "css": 77402,
-        "images": 117179
+        "requests": 15,
+        "transferred": 640858,
+        "js": 32438,
+        "css": 70126,
+        "images": 538294
       }
     },
     {
@@ -2218,20 +2251,20 @@
       ],
       "nav": [
         {
-          "ttfb": 8.400000005960464,
-          "domContentLoaded": 144.09999999403954
+          "ttfb": 49,
+          "domContentLoaded": 422.30000001192093
         }
       ],
       "metrics": {
         "lcp": null,
-        "cls": 0,
+        "cls": 0.017473313609759015,
         "longTasks": []
       },
       "payload": {
-        "requests": 9,
-        "transferred": 71695,
+        "requests": 10,
+        "transferred": 83858,
         "js": 9760,
-        "css": 61144,
+        "css": 73307,
         "images": 791
       }
     },
@@ -2279,20 +2312,20 @@
       ],
       "nav": [
         {
-          "ttfb": 8.199999988079071,
-          "domContentLoaded": 109.19999998807907
+          "ttfb": 33.80000001192093,
+          "domContentLoaded": 298.69999998807907
         }
       ],
       "metrics": {
-        "lcp": 124,
-        "cls": 0.015974674423535666,
+        "lcp": 340,
+        "cls": 0.017473313609759015,
         "longTasks": []
       },
       "payload": {
-        "requests": 9,
-        "transferred": 71695,
+        "requests": 10,
+        "transferred": 83858,
         "js": 9760,
-        "css": 61144,
+        "css": 73307,
         "images": 791
       }
     },
@@ -2307,20 +2340,20 @@
       "schemas": [],
       "nav": [
         {
-          "ttfb": 7.799999982118607,
-          "domContentLoaded": 115.19999998807907
+          "ttfb": 26,
+          "domContentLoaded": 253.5
         }
       ],
       "metrics": {
-        "lcp": 152,
-        "cls": 0,
+        "lcp": null,
+        "cls": 0.04410505366325379,
         "longTasks": []
       },
       "payload": {
-        "requests": 9,
-        "transferred": 71695,
+        "requests": 10,
+        "transferred": 83858,
         "js": 9760,
-        "css": 61144,
+        "css": 73307,
         "images": 791
       }
     },
@@ -2368,20 +2401,20 @@
       ],
       "nav": [
         {
-          "ttfb": 7.300000011920929,
-          "domContentLoaded": 106.2000000178814
+          "ttfb": 30.400000005960464,
+          "domContentLoaded": 359.60000002384186
         }
       ],
       "metrics": {
-        "lcp": 120,
-        "cls": 0.015974674423535666,
+        "lcp": null,
+        "cls": 0.017473313609759015,
         "longTasks": []
       },
       "payload": {
-        "requests": 9,
-        "transferred": 71695,
+        "requests": 10,
+        "transferred": 83858,
         "js": 9760,
-        "css": 61144,
+        "css": 73307,
         "images": 791
       }
     },
@@ -2396,20 +2429,20 @@
       "schemas": [],
       "nav": [
         {
-          "ttfb": 9.799999982118607,
-          "domContentLoaded": 92.5
+          "ttfb": 36.900000005960464,
+          "domContentLoaded": 272.80000001192093
         }
       ],
       "metrics": {
         "lcp": null,
-        "cls": 0,
+        "cls": 0.04410505366325379,
         "longTasks": []
       },
       "payload": {
-        "requests": 9,
-        "transferred": 71695,
+        "requests": 10,
+        "transferred": 83858,
         "js": 9760,
-        "css": 61144,
+        "css": 73307,
         "images": 791
       }
     }
@@ -2466,9 +2499,11 @@
       "scrollWidth": 390
     }
   ],
+  "homepageFieldStation": {
+    "before": "One cell · one compartment",
+    "after": "Frames · same cell"
+  },
   "simulation": {
-    "before": "2.14",
-    "after": "0.97",
     "pauseLabel": "RUN"
   },
   "staticKnowledgeLinksWithoutJS": 23,

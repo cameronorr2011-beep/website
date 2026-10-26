@@ -11,6 +11,10 @@ class DesignSystemTests(unittest.TestCase):
     def test_shared_shell_is_static_and_idempotent(self):
         header=(ROOT/'sections/header.html').read_text(encoding='utf-8').strip()
         for path in pages():
+            if path.relative_to(ROOT).as_posix().startswith('algae-growth/'):
+                # The field guide is an intentionally self-contained offline
+                # surface; it uses its own immersive shell and export path.
+                continue
             with self.subTest(page=str(path.relative_to(ROOT))):
                 text=path.read_text(encoding='utf-8')
                 self.assertIn(header,text)
@@ -18,7 +22,7 @@ class DesignSystemTests(unittest.TestCase):
                 self.assertEqual(text.count('id="mobileMenu"'),1)
                 self.assertEqual(text.count('<footer'),1)
                 self.assertEqual(text,apply(text))
-                for css in ('global','header','orr-home','animations'):
+                for css in ('global','header','orr-home','animations','site-redesign'):
                     self.assertEqual(len(re.findall(r'href="/css/'+css+r'\.css',text)),1)
                 self.assertNotIn('fonts.googleapis.com/css',text)
 
@@ -50,5 +54,11 @@ class DesignSystemTests(unittest.TestCase):
         self.assertNotIn('/papertrail/',text)
         self.assertNotIn('/game/',text)
         self.assertIn('role="status" aria-live="polite"',text)
+
+    def test_algaephyte_workflow_is_explicit(self):
+        text=(ROOT/'algaephyte/index.html').read_text(encoding='utf-8')
+        self.assertIn('SENSE', text)
+        self.assertIn('data-loop-step="verify"', text)
+        self.assertIn('<h3>Verify</h3>', text)
 
 if __name__=='__main__':unittest.main()

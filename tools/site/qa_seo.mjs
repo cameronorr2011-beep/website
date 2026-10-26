@@ -61,10 +61,10 @@ export default async function run(page) {
     await menu.click();
   }
   await page.goto(base + '/', {waitUntil: 'load'});
-  const before = await page.locator('#oBio').textContent();
-  await page.locator('[data-ctl="light"] input').evaluate(input => {input.value = '0.1'; input.dispatchEvent(new Event('input', {bubbles: true}));});
-  const after = await page.locator('#oBio').textContent();
-  if (before === after) throw new Error('Cultivation simulation did not respond to slider input');
+  const before = await page.locator('[data-home-chip-value]').textContent();
+  await page.getByRole('button', {name: 'Track', exact: true}).click();
+  const after = await page.locator('[data-home-chip-value]').textContent();
+  if (before === after) throw new Error('Homepage field station did not respond to stage input');
   await page.setViewportSize({width:1280, height:900});
   await page.goto(base + '/cyanoflow', {waitUntil: 'load'});
   const toggle = page.locator('#simToggle');
@@ -96,7 +96,7 @@ export default async function run(page) {
     }
   }
   const report = {testedAt: new Date().toISOString(), target: base, results, mobile,
-    simulation: {before, after, pauseLabel}, staticKnowledgeLinksWithoutJS: staticLinks,
+    homepageFieldStation: {before, after}, simulation: {pauseLabel}, staticKnowledgeLinksWithoutJS: staticLinks,
     redirects, errors, failures, fieldINP: 'Not available: these are lab/browser checks, not real-user field metrics'};
   mkdirSync('docs/seo', {recursive: true}); writeFileSync(out, JSON.stringify(report, null, 2));
   if (errors.length || (!live && failures.length)) throw new Error(`Browser errors: ${JSON.stringify({errors, failures})}`);

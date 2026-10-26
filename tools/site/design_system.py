@@ -2,7 +2,7 @@
 import re
 from seo_audit import ROOT, pages
 
-VERSION = '20261019'
+VERSION = '20261025'
 
 
 def migrate_legacy_application_links(text):
@@ -37,6 +37,25 @@ def migrate_legacy_application_links(text):
 
 def apply(text):
     text = migrate_legacy_application_links(text)
+    # Keep the Algaephyte workflow explicit in every generated copy. The page
+    # already has four legacy step cards; normalize their labels and append the
+    # verification gate without asking the scientific content author to repeat
+    # the same five-stage sequence in every generated build.
+    if 'class="algaephyte-loop-steps"' in text:
+        if '<h3>Observe</h3>' in text:
+            text = text.replace('<h3>Observe</h3>', '<h3>Sense</h3>', 1)
+            text = text.replace('<h3>Interpret</h3>', '<h3>Model</h3>', 1)
+            text = text.replace('<h3>Propose</h3>', '<h3>Check</h3>', 1)
+            text = text.replace('<h3>Guard</h3>', '<h3>Propose</h3>', 1)
+        marker = '<ol class="algaephyte-loop-steps">'
+        start = text.find(marker)
+        end = text.find('</ol>', start + len(marker)) if start >= 0 else -1
+        if start >= 0 and end >= 0 and 'data-loop-step="verify"' not in text:
+            verify = '<li data-loop-step="verify"><span>05</span><h3>Verify</h3><p>Compare the proposal with independent observations before any future action is considered.</p></li>'
+            text = text[:end] + verify + text[end:]
+        sequence = '<p class="algaephyte-loop-sequence">SENSE <span>→</span> MODEL <span>→</span> CHECK <span>→</span> PROPOSE <span>→</span> VERIFY</p>'
+        if 'class="algaephyte-loop-sequence"' not in text:
+            text = text.replace('<section class="algaephyte-loop">', '<section class="algaephyte-loop">' + sequence, 1)
     header = (ROOT / 'sections/header.html').read_text(encoding='utf-8').strip()
     footer = (ROOT / 'sections/footer.html').read_text(encoding='utf-8').strip()
     # All pages use the same static markup, including without JavaScript.
@@ -47,11 +66,11 @@ def apply(text):
     text = text.replace('</body>', footer + '\n</body>')
     # Eliminate per-page external font families and repeated token definitions.
     text = re.sub(r'<link[^>]+href="https://fonts.googleapis.com/[^>]+>\s*', '', text)
-    text = re.sub(r'<link[^>]+href="/?css/(?:global|header|animations)\.css[^>]+>\s*', '', text)
+    text = re.sub(r'<link[^>]+href="/?css/(?:global|header|animations|site-redesign)\.css[^>]+>\s*', '', text)
     text = re.sub(r'<script[^>]+src="/?js/animations\.js[^>]*>\s*</script>\s*', '', text)
     text = re.sub(r'<link[^>]+href="/?css/orr-home\.css[^>]+>\s*', '', text)
     text = re.sub(r'<link[^>]+href="/?css/home-premium\.css[^>]+>\s*', '', text)
-    css = '\n'.join(f'<link rel="stylesheet" href="/css/{name}.css?v={VERSION}">' for name in ('global', 'header', 'orr-home', 'animations'))
+    css = '\n'.join(f'<link rel="stylesheet" href="/css/{name}.css?v={VERSION}">' for name in ('global', 'header', 'orr-home', 'animations', 'site-redesign'))
     if 'class="orr-home' in text:
         css += f'\n<link rel="stylesheet" href="/css/home-premium.css?v={VERSION}">'
     text = text.replace('</head>', css + '\n</head>')
@@ -75,6 +94,12 @@ def apply(text):
 def build():
     count = 0
     for path in pages():
+        if path.relative_to(ROOT).as_posix().startswith('algae-growth/'):
+            # The pixel field guide is a deliberately self-contained immersive
+            # surface. Its own controls and offline export must not be wrapped
+            # in the editorial site shell or external page scripts.
+            count += 1
+            continue
         old = path.read_text(encoding='utf-8-sig')
         new = apply(old)
         if old != new:
