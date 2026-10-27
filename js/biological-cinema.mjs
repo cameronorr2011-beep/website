@@ -1109,8 +1109,11 @@ function attachAmbientField(canvas, config) {
   if (!renderer) return paintFallback(canvas, config.fallback || "volvox");
   renderer.toneMappingExposure = config.exposure ?? 0.95;
   const scene = new THREE.Scene();
-  const background = gradientBackTexture(config.background || [[0, "#04170e"], [0.55, "#0a3a22"], [1, "#03110c"]]);
-  scene.background = background;
+  let background = null;
+  if (config.background) {
+    background = gradientBackTexture(config.background);
+    scene.background = background;
+  }
   scene.fog = new THREE.FogExp2(config.fog ?? 0x05130c, config.fogDensity ?? 0.04);
   const camera = new THREE.PerspectiveCamera(44, 1, 0.1, 80);
   camera.position.set(0, 0, 9);
@@ -1147,16 +1150,48 @@ function attachAmbientField(canvas, config) {
   const structures = new THREE.Group();
   scene.add(structures);
 
+  /* Volumetric light shafts: slow additive planes catching the key light.
+     Present on every ambient field so even page backgrounds feel lit. */
+  const shaftCount = config.shaftCount ?? 4;
+  if (shaftCount > 0) {
+    const shaftSeeds = [];
+    const shaftGeometry = new THREE.PlaneGeometry(config.shaftWidth ?? 0.42, config.shaftHeight ?? 11);
+    for (let index = 0; index < shaftCount; index += 1) {
+      const material = new THREE.MeshBasicMaterial({
+        color: config.shaftColor ?? (config.keyColor ?? 0xd8ffd0),
+        transparent: true,
+        opacity: 0.02,
+        blending: THREE.AdditiveBlending,
+        depthWrite: false,
+        side: THREE.DoubleSide,
+      });
+      const shaft = new THREE.Mesh(shaftGeometry, material);
+      const placement = { x: (rnd() - 0.5) * spread * 1.35, tilt: (rnd() - 0.5) * 0.5, phase: rnd() * Math.PI * 2, z: -2.2 - rnd() * 5.5 };
+      shaft.position.set(placement.x, 1.4 + rnd() * 2, placement.z);
+      shaft.rotation.z = placement.tilt;
+      shaftSeeds.push({ shaft, placement, drift: 0.16 + rnd() * 0.34 });
+      structures.add(shaft);
+    }
+    updates.push((time) => {
+      shaftSeeds.forEach(({ shaft, placement, drift }) => {
+        shaft.rotation.z = placement.tilt + Math.sin(time * 0.05 + placement.phase) * 0.09;
+        shaft.position.x = placement.x + Math.sin(time * drift * 0.06 + placement.phase) * 0.9;
+        shaft.material.opacity = (config.shaftOpacity ?? 0.05) * (0.7 + 0.3 * Math.sin(time * 0.09 + placement.phase));
+      });
+    });
+  }
+
   if (variant === "colony") {
     /* Clustered microalgae colonies drifting in dark culture. */
     const clusterCount = config.clusters ?? 7;
+    const clusterRadius = config.clusterRadius ?? null;
     const centers = [];
     for (let index = 0; index < clusterCount; index += 1) {
       centers.push({
         x: (rnd() - 0.5) * spread * 1.9,
         y: (rnd() - 0.5) * spread * 0.75 + 0.9,
         z: -1.2 - rnd() * 7.5,
-        radius: 0.5 + rnd() * 0.55,
+        radius: clusterRadius || (0.5 + rnd() * 0.55),
         speed: 0.10 + rnd() * 0.16,
         phase: rnd() * Math.PI * 2,
       });
@@ -1169,18 +1204,41 @@ function attachAmbientField(canvas, config) {
       cellCount,
     );
     const cellSeeds = [];
+    const cellTints = [];
+    const tint = new THREE.Color();
     for (let index = 0; index < cellCount; index += 1) {
       const center = centers[index % clusterCount];
       const s = new THREE.Vector3(rnd() - 0.5, rnd() - 0.5, rnd() - 0.5);
       if (s.lengthSq() > 0) s.normalize().multiplyScalar(center.radius * (0.45 + rnd() * 0.6));
-      cellSeeds.push({ center, offset: s, size: 0.1 + rnd() * 0.16, phase: rnd() * Math.PI * 2, cluster: index % clusterCount });
+      cellSeeds.push({ center, offset: s, size: (config.cellSize ?? 0.1) + rnd() * (config.cellSize ?? 0.1) * 0.8, phase: rnd() * Math.PI * 2, cluster: index % clusterCount, glow: config.glowSpan ?? (0.34 + rnd() * 0.4) });
+      /* Subtle per-cell chemistry: hue and lightness jitter inside the
+         culture palette so instancing never reads as duplication. */
+      tint.setHSL(0.34 + (rnd() - 0.5) * 0.05, 0.5 + rnd() * 0.14, 0.34 + rnd() * 0.18);
+      cellTints.push(tint.r, tint.g, tint.b);
     }
+    cells.instanceColor = new THREE.InstancedBufferAttribute(new Float32Array(cellTints), 3);
     const halos = new THREE.InstancedMesh(
       new THREE.SphereGeometry(1, 18, 14),
       new THREE.MeshBasicMaterial({ color: config.cellEmissive ?? 0x9fe8a8, transparent: true, opacity: 0.05, blending: THREE.AdditiveBlending, depthWrite: false, side: THREE.BackSide }),
       clusterCount,
     );
     structures.add(cells, halos);
+    /* Per-cell bloom: an additive sprite cloud sharing the cell block, so
+       each cell reads as lit rather than as a flat silhouette. */
+    const glowGeometry = new THREE.BufferGeometry();
+    const glowPositions = new Float32Array(cellCount * 3);
+    glowGeometry.setAttribute("position", new THREE.Float32BufferAttribute(glowPositions, 3));
+    const cellGlow = new THREE.Points(glowGeometry, new THREE.PointsMaterial({
+      color: config.glowColor ?? (config.cellEmissive ?? 0x9fe8a8),
+      size: config.glowSize ?? 0.42,
+      map: softDot,
+      transparent: true,
+      opacity: config.glowOpacity ?? 0.34,
+      sizeAttenuation: true,
+      depthWrite: false,
+      blending: THREE.AdditiveBlending,
+    }));
+    structures.add(cellGlow);
     updates.push((time) => {
       centers.forEach((center, index) => {
         position.set(
@@ -1202,9 +1260,13 @@ function attachAmbientField(canvas, config) {
         cellScale.setScalar(seed.size * (1 + Math.sin(time * 0.7 + seed.phase) * 0.06));
         matrix.compose(position, quaternion, cellScale);
         cells.setMatrixAt(index, matrix);
+        glowPositions[index * 3] = position.x;
+        glowPositions[index * 3 + 1] = position.y;
+        glowPositions[index * 3 + 2] = position.z;
       });
       cells.instanceMatrix.needsUpdate = true;
       halos.instanceMatrix.needsUpdate = true;
+      glowGeometry.attributes.position.needsUpdate = true;
     });
   } else {
     /* Microfluidic stream: faint channels with droplets flowing through. */
@@ -1238,6 +1300,23 @@ function attachAmbientField(canvas, config) {
       });
     }
     structures.add(droplets);
+    /* Droplet bloom trails: additive sprites so the moving samples read as
+       lit fluid, not as grey puffs. */
+    const dropCount = config.cellCount ?? 64;
+    const dropGlowGeometry = new THREE.BufferGeometry();
+    const dropGlowPositions = new Float32Array(dropCount * 3);
+    dropGlowGeometry.setAttribute("position", new THREE.Float32BufferAttribute(dropGlowPositions, 3));
+    const dropGlow = new THREE.Points(dropGlowGeometry, new THREE.PointsMaterial({
+      color: config.glowColor ?? (config.cellEmissive ?? 0x7ae7d8),
+      size: config.glowSize ?? 0.5,
+      map: softDot,
+      transparent: true,
+      opacity: config.glowOpacity ?? 0.3,
+      sizeAttenuation: true,
+      depthWrite: false,
+      blending: THREE.AdditiveBlending,
+    }));
+    structures.add(dropGlow);
     const wrapLimit = spread * 2.6;
     updates.push((time) => {
       dropSeeds.forEach((seed, index) => {
@@ -1247,8 +1326,12 @@ function attachAmbientField(canvas, config) {
         cellScale.set(seed.size * stretchX, seed.size * stretchY, seed.size * stretchZ);
         matrix.compose(position, quaternion, cellScale);
         droplets.setMatrixAt(index, matrix);
+        dropGlowPositions[index * 3] = position.x;
+        dropGlowPositions[index * 3 + 1] = position.y;
+        dropGlowPositions[index * 3 + 2] = position.z;
       });
       droplets.instanceMatrix.needsUpdate = true;
+      dropGlowGeometry.attributes.position.needsUpdate = true;
     });
   }
 
@@ -1281,6 +1364,17 @@ function attachAmbientField(canvas, config) {
   const clock = new THREE.Clock();
   const pointerTarget = { x: 0, y: 0 };
   const pointerCurrent = { x: 0, y: 0 };
+  /* Scroll dolly: the field drifts perceptibly as the page scrolls, so the
+     background is a camera moving through a culture, not a wallpaper. */
+  let scrollTarget = 0;
+  let scrollCurrent = 0;
+  const onScroll = () => {
+    const scrollNode = document.scrollingElement || document.documentElement;
+    const span = Math.max(1, (scrollNode.scrollHeight || 0) - window.innerHeight);
+    scrollTarget = Math.min(1.35, Math.max(-0.35, (window.scrollY || 0) / span) * 2 - 0.35);
+  };
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
   const onPointer = (event) => {
     pointerTarget.x = (event.clientX / window.innerWidth - 0.5) * 2;
     pointerTarget.y = (event.clientY / window.innerHeight - 0.5) * 2;
@@ -1291,24 +1385,28 @@ function attachAmbientField(canvas, config) {
     updates.forEach((update) => update(time));
     pointerCurrent.x += (pointerTarget.x - pointerCurrent.x) * 0.045;
     pointerCurrent.y += (pointerTarget.y - pointerCurrent.y) * 0.045;
+    scrollCurrent += (scrollTarget - scrollCurrent) * 0.05;
     const array = moteAttribute.array;
     moteSeeds.forEach((seed, index) => {
       let y = seed.y + (variant === "colony" ? (time * seed.rise) % (spread * 1.2) : Math.sin(time * seed.rise * 6 + seed.phase) * 0.3) - (spread * 0.6);
       y = ((y + spread * 0.6 + spread * 1.2) % (spread * 1.2)) - spread * 0.6;
       array[index * 3] = seed.x + Math.sin(time * 0.3 + seed.phase) * seed.drift + time * seed.drift * 0.4;
       array[index * 3 + 1] = y;
+      array[index * 3 + 2] = seed.z + Math.sin(time * seed.rise * 3.1 + seed.phase) * 0.55;
     });
     moteAttribute.needsUpdate = true;
     motes.rotation.y = 0;
     camera.position.x = Math.sin(time * 0.055) * 0.3 + pointerCurrent.x * 0.55;
-    camera.position.y = Math.cos(time * 0.04) * 0.2 - pointerCurrent.y * 0.4;
-    camera.lookAt(0, 0, -2);
+    camera.position.y = Math.cos(time * 0.04) * 0.2 - pointerCurrent.y * 0.4 - scrollCurrent * (config.scrollDolly ?? 0.55);
+    camera.position.z = 9 - scrollCurrent * (config.scrollZoom ?? 0.6);
+    camera.lookAt(0, -scrollCurrent * 0.4 - pointerCurrent.y * 0.12, -2);
     renderer.render(scene, camera);
   };
   const stop = () => {
     window.removeEventListener("resize", resize);
     window.removeEventListener("pointermove", onPointer);
-    background.dispose();
+    window.removeEventListener("scroll", onScroll);
+    background?.dispose();
     disposeTree(scene);
     renderer.dispose();
   };
@@ -1390,8 +1488,7 @@ const mount = (canvasId, factory) => {
 };
 
 mount("#volvoxCanvas", attachVolvoxField);
-mount("#reactorCanvas", (canvas) => attachReactorStudy(canvas, document.querySelector("#reactor-study")));
-mount("#algaephyteInstrumentCanvas", makeCultivationScene);
+mount("#reactorCanvas", (canvas) => attachReactorStudy(canvas, document.querySelector("#reactor-study")));mount("#algaephyteInstrumentCanvas", makeCultivationScene);
 mount("#cyanoflowChipCanvas", makeChipScene);
 mount("#algaephyteHeroCanvas", (canvas) => attachAmbientField(canvas, {
   seed: 41, variant: "colony",
@@ -1411,4 +1508,29 @@ mount("#cyanoflowHeroCanvas", (canvas) => attachAmbientField(canvas, {
   keyColor: 0xbffff2, keyIntensity: 0.95, hemiSky: 0x2c6a66, hemiGround: 0x04100d,
   fallback: "chip",
 }));
+/* Sitewide living background. Any public page without a dedicated visual
+   gets its own quiet field: a transparent canvas holding a small colony
+   cluster and drift motes that reads on both the dark editorial theme and
+   the light guide pages, masked to fade before the article text. */
+(function mountSitewideField() {
+  if (document.querySelector("#volvoxCanvas,#reactorCanvas,#algaephyteInstrumentCanvas,#cyanoflowChipCanvas,#algaephyteHeroCanvas,#cyanoflowHeroCanvas")) return;
+  const canvas = document.createElement("canvas");
+  canvas.className = "ob-page-field";
+  canvas.setAttribute("aria-hidden", "true");
+  canvas.dataset.ambient = "page";
+  document.body.insertBefore(canvas, document.body.firstElementChild);
+  active.push(attachAmbientField(canvas, {
+    seed: 23, variant: "colony", transparent: true,
+    fog: 0x2a5c3c, fogDensity: 0.009, spread: 8.5,
+    cellCount: 130, clusters: 9, cellColor: 0x449a6a,
+    cellEmissive: 0xb4f4bc, cellEmissiveIntensity: 0.72, cellOpacity: 0.62,
+    clusterRadius: 1.2, cellSize: 0.21,
+    glowColor: 0xb8f2bc, glowSize: 0.46, glowOpacity: 0.4,
+    shaftCount: 5, shaftColor: 0xd8ffd0, shaftOpacity: 0.05,
+    moteColor: 0xb4ecb0, moteOpacity: 0.62, moteCount: 110, moteSize: 0.072,
+    exposure: 1.05, keyColor: 0xd8ffd0, keyIntensity: 1.05,
+    scrollDolly: 0.7, scrollZoom: 0.7,
+  }));
+})();
+
 window.addEventListener("pagehide", () => active.forEach((scene) => scene.stop?.()));

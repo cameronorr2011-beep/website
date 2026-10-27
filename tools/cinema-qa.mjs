@@ -22,7 +22,12 @@ const PAGES = [
   { route: "/cyanoflow", name: "cyanoflow", canvas: "#cyanoflowChipCanvas" },
   { route: "/research/", name: "research" },
   { route: "/blog/", name: "journal" },
+  { route: "/blog/spirulina-is-a-cyanobacterium", name: "journal-article" },
   { route: "/Simulation/", name: "simulation" },
+  { route: "/glossary", name: "glossary" },
+  { route: "/downloads/", name: "downloads" },
+  { route: "/algae-growth/", name: "algae-growth" },
+  { route: "/404.html", name: "404" },
 ];
 
 const VIEWPORTS = [
