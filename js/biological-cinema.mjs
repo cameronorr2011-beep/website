@@ -1086,10 +1086,240 @@ function makeChipScene(canvas) {
     };
     rig.add(cells);
   }, { cameraPosition: [2.6, 2.6, 4.4], threshold: 0.86 });
+}/* KIND 4: page-specific ambient hero fields. Full-bleed living
+   backgrounds so each product hero has its own environment under the
+   copy: a dark culture-colony field for Algaephyte, a microfluidic
+   droplet stream for Cyanoflow. No composer; instancing only. */
+function gradientBackTexture(stops) {
+  const strip = document.createElement("canvas");
+  strip.width = 2;
+  strip.height = 512;
+  const context = strip.getContext("2d");
+  const gradient = context.createLinearGradient(0, 0, 0, 512);
+  stops.forEach(([stop, color]) => gradient.addColorStop(stop, color));
+  context.fillStyle = gradient;
+  context.fillRect(0, 0, 2, 512);
+  const texture = new THREE.CanvasTexture(strip);
+  texture.colorSpace = THREE.SRGBColorSpace;
+  return texture;
+}
+
+function attachAmbientField(canvas, config) {
+  const renderer = rendererFor(canvas);
+  if (!renderer) return paintFallback(canvas, config.fallback || "volvox");
+  renderer.toneMappingExposure = config.exposure ?? 0.95;
+  const scene = new THREE.Scene();
+  const background = gradientBackTexture(config.background || [[0, "#04170e"], [0.55, "#0a3a22"], [1, "#03110c"]]);
+  scene.background = background;
+  scene.fog = new THREE.FogExp2(config.fog ?? 0x05130c, config.fogDensity ?? 0.04);
+  const camera = new THREE.PerspectiveCamera(44, 1, 0.1, 80);
+  camera.position.set(0, 0, 9);
+  scene.add(new THREE.HemisphereLight(config.hemiSky ?? 0x3a7a5c, config.hemiGround ?? 0x020a06, 0.62));
+  const key = new THREE.DirectionalLight(config.keyColor ?? 0xd8ffd0, config.keyIntensity ?? 1.05);
+  key.position.set(-2.2, 2.4, 3.4);
+  scene.add(key);
+
+  const rnd = seeded(config.seed ?? 7);
+  const matrix = new THREE.Matrix4();
+  const quaternion = new THREE.Quaternion();
+  const euler = new THREE.Euler();
+  const position = new THREE.Vector3();
+  const cellScale = new THREE.Vector3();
+  const [stretchX = 1, stretchY = 1, stretchZ = 1] = config.stretch || [];
+  const softDot = (() => {
+    const dot = document.createElement("canvas");
+    dot.width = dot.height = 64;
+    const context = dot.getContext("2d");
+    const gradient = context.createRadialGradient(32, 32, 0, 32, 32, 30);
+    gradient.addColorStop(0, "rgba(255,255,255,1)");
+    gradient.addColorStop(0.42, "rgba(255,255,255,.62)");
+    gradient.addColorStop(1, "rgba(255,255,255,0)");
+    context.fillStyle = gradient;
+    context.fillRect(0, 0, 64, 64);
+    const texture = new THREE.CanvasTexture(dot);
+    texture.colorSpace = THREE.SRGBColorSpace;
+    return texture;
+  })();
+
+  const variant = config.variant || "colony";
+  const spread = config.spread ?? 8.5;
+  const updates = [];
+  const structures = new THREE.Group();
+  scene.add(structures);
+
+  if (variant === "colony") {
+    /* Clustered microalgae colonies drifting in dark culture. */
+    const clusterCount = config.clusters ?? 7;
+    const centers = [];
+    for (let index = 0; index < clusterCount; index += 1) {
+      centers.push({
+        x: (rnd() - 0.5) * spread * 1.9,
+        y: (rnd() - 0.5) * spread * 0.75 + 0.9,
+        z: -1.2 - rnd() * 7.5,
+        radius: 0.5 + rnd() * 0.55,
+        speed: 0.10 + rnd() * 0.16,
+        phase: rnd() * Math.PI * 2,
+      });
+      centers[index].orbit = 0.35 + rnd() * 0.5;
+    }
+    const cellCount = config.cellCount ?? 112;
+    const cells = new THREE.InstancedMesh(
+      new THREE.SphereGeometry(1, 14, 10),
+      new THREE.MeshStandardMaterial({ color: config.cellColor ?? 0x356b4c, emissive: config.cellEmissive ?? 0x9fe8a8, emissiveIntensity: config.cellEmissiveIntensity ?? 0.5, roughness: 0.48, transparent: true, opacity: config.cellOpacity ?? 0.58 }),
+      cellCount,
+    );
+    const cellSeeds = [];
+    for (let index = 0; index < cellCount; index += 1) {
+      const center = centers[index % clusterCount];
+      const s = new THREE.Vector3(rnd() - 0.5, rnd() - 0.5, rnd() - 0.5);
+      if (s.lengthSq() > 0) s.normalize().multiplyScalar(center.radius * (0.45 + rnd() * 0.6));
+      cellSeeds.push({ center, offset: s, size: 0.1 + rnd() * 0.16, phase: rnd() * Math.PI * 2, cluster: index % clusterCount });
+    }
+    const halos = new THREE.InstancedMesh(
+      new THREE.SphereGeometry(1, 18, 14),
+      new THREE.MeshBasicMaterial({ color: config.cellEmissive ?? 0x9fe8a8, transparent: true, opacity: 0.05, blending: THREE.AdditiveBlending, depthWrite: false, side: THREE.BackSide }),
+      clusterCount,
+    );
+    structures.add(cells, halos);
+    updates.push((time) => {
+      centers.forEach((center, index) => {
+        position.set(
+          center.x + Math.sin(time * center.speed + center.phase) * center.orbit,
+          center.y + Math.cos(time * center.speed * 0.8 + center.phase * 1.3) * center.orbit * 0.55,
+          center.z,
+        );
+        cellScale.setScalar(center.radius * 2.6);
+        matrix.compose(position, quaternion.identity(), cellScale);
+        halos.setMatrixAt(index, matrix);
+      });
+      cellSeeds.forEach((seed, index) => {
+        const center = centers[seed.cluster];
+        position.set(
+          center.x + seed.offset.x + Math.sin(time * center.speed + seed.phase) * center.orbit + Math.sin(time * 0.5 + seed.phase) * 0.02,
+          center.y + seed.offset.y + Math.cos(time * center.speed * 0.8 + seed.phase * 1.3) * center.orbit * 0.55,
+          center.z + seed.offset.z,
+        );
+        cellScale.setScalar(seed.size * (1 + Math.sin(time * 0.7 + seed.phase) * 0.06));
+        matrix.compose(position, quaternion, cellScale);
+        cells.setMatrixAt(index, matrix);
+      });
+      cells.instanceMatrix.needsUpdate = true;
+      halos.instanceMatrix.needsUpdate = true;
+    });
+  } else {
+    /* Microfluidic stream: faint channels with droplets flowing through. */
+    const laneCount = config.lanes ?? 5;
+    const laneSeeds = [];
+    for (let index = 0; index < laneCount; index += 1) {
+      laneSeeds.push({ y: -2.9 + (index / Math.max(1, laneCount - 1)) * 5.8, z: -1.4 - rnd() * 3.4,        brightness: 0.05 + rnd() * 0.07 });
+    }
+    laneSeeds.forEach((lane) => {
+      const guide = new THREE.Mesh(
+        new THREE.BoxGeometry(spread * 5.2, 0.016, 0.1),
+        new THREE.MeshBasicMaterial({ color: config.laneColor ?? 0x5fdfd0, transparent: true, opacity: lane.brightness, blending: THREE.AdditiveBlending, depthWrite: false }),
+      );
+      guide.position.set(0, lane.y, lane.z);
+      structures.add(guide);
+    });
+    const droplets = new THREE.InstancedMesh(
+      new THREE.SphereGeometry(1, 14, 10),
+      new THREE.MeshStandardMaterial({ color: config.cellColor ?? 0x16847a, emissive: config.cellEmissive ?? 0x7ae7d8, emissiveIntensity: config.cellEmissiveIntensity ?? 0.55, roughness: 0.3, metalness: 0.05, transparent: true, opacity: config.cellOpacity ?? 0.62 }),
+      config.cellCount ?? 64,
+    );
+    const dropSeeds = [];
+    for (let index = 0; index < (config.cellCount ?? 64); index += 1) {
+      dropSeeds.push({
+        lane: laneSeeds[index % laneCount],
+        offset: (rnd() - 0.5) * spread * 4.6,
+        speed: 1.5 + rnd() * 2.1,
+        size: 0.09 + rnd() * 0.17,
+        wobble: rnd() * 0.24,
+        phase: rnd() * Math.PI * 2,
+      });
+    }
+    structures.add(droplets);
+    const wrapLimit = spread * 2.6;
+    updates.push((time) => {
+      dropSeeds.forEach((seed, index) => {
+        let x = seed.offset + time * seed.speed;
+        x = ((x + wrapLimit) % (wrapLimit * 2)) - wrapLimit;
+        position.set(x, seed.lane.y + Math.sin(time * 0.7 + seed.phase) * seed.wobble, seed.lane.z + 0.14);
+        cellScale.set(seed.size * stretchX, seed.size * stretchY, seed.size * stretchZ);
+        matrix.compose(position, quaternion, cellScale);
+        droplets.setMatrixAt(index, matrix);
+      });
+      droplets.instanceMatrix.needsUpdate = true;
+    });
+  }
+
+  /* Rising / drifting motes on top of the environment. */
+  const moteCount = config.moteCount ?? 110;
+  const moteSeeds = [];
+  const motePositions = [];
+  for (let index = 0; index < moteCount; index += 1) {
+    const x = (rnd() - 0.5) * spread * 3.9;
+    const y = (rnd() - 0.5) * spread * 1.15;
+    const z = -0.5 - rnd() * 9;
+    motePositions.push(x, y, z);
+    moteSeeds.push({ x, y, z, rise: variant === "colony" ? 0.22 + rnd() * 0.5 : 0.04 + rnd() * 0.09, drift: (rnd() - 0.5) * 0.18, phase: rnd() * Math.PI * 2 });
+  }
+  const moteGeometry = new THREE.BufferGeometry();
+  const moteAttribute = new THREE.Float32BufferAttribute(motePositions, 3);
+  moteGeometry.setAttribute("position", moteAttribute);
+  const motes = new THREE.Points(moteGeometry, new THREE.PointsMaterial({
+    color: config.moteColor,
+    size: (config.moteSize ?? 0.06),
+    map: softDot,
+    transparent: true,
+    opacity: (config.moteOpacity ?? 0.55),
+    sizeAttenuation: true,
+    depthWrite: false,
+    blending: THREE.AdditiveBlending,
+  }));
+  scene.add(motes);
+
+  const clock = new THREE.Clock();
+  const pointerTarget = { x: 0, y: 0 };
+  const pointerCurrent = { x: 0, y: 0 };
+  const onPointer = (event) => {
+    pointerTarget.x = (event.clientX / window.innerWidth - 0.5) * 2;
+    pointerTarget.y = (event.clientY / window.innerHeight - 0.5) * 2;
+  };
+  window.addEventListener("pointermove", onPointer, { passive: true });
+  const render = () => {
+    const time = clock.getElapsedTime();
+    updates.forEach((update) => update(time));
+    pointerCurrent.x += (pointerTarget.x - pointerCurrent.x) * 0.045;
+    pointerCurrent.y += (pointerTarget.y - pointerCurrent.y) * 0.045;
+    const array = moteAttribute.array;
+    moteSeeds.forEach((seed, index) => {
+      let y = seed.y + (variant === "colony" ? (time * seed.rise) % (spread * 1.2) : Math.sin(time * seed.rise * 6 + seed.phase) * 0.3) - (spread * 0.6);
+      y = ((y + spread * 0.6 + spread * 1.2) % (spread * 1.2)) - spread * 0.6;
+      array[index * 3] = seed.x + Math.sin(time * 0.3 + seed.phase) * seed.drift + time * seed.drift * 0.4;
+      array[index * 3 + 1] = y;
+    });
+    moteAttribute.needsUpdate = true;
+    motes.rotation.y = 0;
+    camera.position.x = Math.sin(time * 0.055) * 0.3 + pointerCurrent.x * 0.55;
+    camera.position.y = Math.cos(time * 0.04) * 0.2 - pointerCurrent.y * 0.4;
+    camera.lookAt(0, 0, -2);
+    renderer.render(scene, camera);
+  };
+  const stop = () => {
+    window.removeEventListener("resize", resize);
+    window.removeEventListener("pointermove", onPointer);
+    background.dispose();
+    disposeTree(scene);
+    renderer.dispose();
+  };
+  const resize = () => fitRenderer(renderer, null, camera, canvas);
+  resize();
+  window.addEventListener("resize", resize, { passive: true });
+  return exhibit(canvas, () => ({ frame: () => { render(); return !reducedMotion; }, render, stop }));
 }
 
 /* ------------------------------------------------------------------ */
-/* 2D fallbacks                                                        */
+/* 2D fallbacks                                                       */
 /* ------------------------------------------------------------------ */
 
 function paintFallback(canvas, kind) {
@@ -1163,4 +1393,22 @@ mount("#volvoxCanvas", attachVolvoxField);
 mount("#reactorCanvas", (canvas) => attachReactorStudy(canvas, document.querySelector("#reactor-study")));
 mount("#algaephyteInstrumentCanvas", makeCultivationScene);
 mount("#cyanoflowChipCanvas", makeChipScene);
+mount("#algaephyteHeroCanvas", (canvas) => attachAmbientField(canvas, {
+  seed: 41, variant: "colony",
+  background: [[0, "#03150d"], [0.5, "#0a3a22"], [1, "#030d08"]],
+  fog: 0x041108, fogDensity: 0.038, spread: 8.5, cellCount: 112, clusters: 7,
+  cellColor: 0x356b4c, cellEmissive: 0x9fe8a8, cellOpacity: 0.6, cellEmissiveIntensity: 0.52,
+  moteColor: 0xbff0c2, moteOpacity: 0.5, exposure: 0.98,
+  keyColor: 0xd8ffd0, keyIntensity: 1.05, fallback: "reactor",
+}));
+mount("#cyanoflowHeroCanvas", (canvas) => attachAmbientField(canvas, {
+  seed: 97, variant: "stream",
+  background: [[0, "#02201d"], [0.55, "#0b4a44"], [1, "#031412"]],
+  fog: 0x05201d, fogDensity: 0.048, spread: 8.5, cellCount: 68, lanes: 5,
+  cellColor: 0x16847a, cellEmissive: 0x7ae7d8, cellOpacity: 0.66, cellEmissiveIntensity: 0.6,
+  laneColor: 0x5fdfd0, moteColor: 0x9defd8, moteOpacity: 0.48, cellCount: 76,
+  stretch: [1.65, 0.9, 0.9], exposure: 1.0,
+  keyColor: 0xbffff2, keyIntensity: 0.95, hemiSky: 0x2c6a66, hemiGround: 0x04100d,
+  fallback: "chip",
+}));
 window.addEventListener("pagehide", () => active.forEach((scene) => scene.stop?.()));

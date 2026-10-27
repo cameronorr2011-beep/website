@@ -379,4 +379,9 @@ body.cyano-page .cyano{background:#05090e;color:#e7f6f1}.cyano-page .hero{backgr
 @media(max-width:640px){.cyano-page .hero{padding-top:76px}.cyano-page .hero .bgfade{background:linear-gradient(180deg,rgba(5,9,14,.9),rgba(5,9,14,.72) 42%,#05090e 94%)}.cyano-page .wrap{padding-inline:18px}.cyano-page .sim-card{margin-inline:-4px}.cyano-page .stats3{gap:9px}.cyano-page .stats3 dd{font-size:.78rem}}
 .cyanoflow-3d-stage{position:relative;min-height:230px;margin:0 -1px 12px;border:1px solid rgba(114,217,207,.22);border-radius:12px;overflow:hidden;background:radial-gradient(circle at 50% 42%,rgba(32,126,119,.38),transparent 56%),#061017}.cyanoflow-3d-stage canvas{display:block;width:100%;height:230px;touch-action:none;cursor:grab}.cyanoflow-3d-stage canvas:active{cursor:grabbing}.cyanoflow-3d-stage span{position:absolute;left:14px;bottom:10px;color:#9fc8c4;font:9px var(--mono);letter-spacing:.06em;text-transform:uppercase}
 @media(max-width:640px){.cyanoflow-3d-stage,.cyanoflow-3d-stage canvas{min-height:190px;height:190px}}
+
+/* Living hero field: procedural 3D cell drift under the hero copy & card. */
+.cyano-hero-field{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none;opacity:.8;-webkit-mask-image:linear-gradient(90deg,rgba(0,0,0,.42),rgba(0,0,0,.9) 55%);mask-image:linear-gradient(90deg,rgba(0,0,0,.42),rgba(0,0,0,.9) 55%)}
+.hero .wrap{position:relative;z-index:2}
+@media(prefers-reduced-motion:reduce){.cyano-hero-field{opacity:.5}}
 @media(max-width:639px){.stream .hidesm,.stream .hidemd{display:none}.stream table{width:100%;min-width:0;table-layout:fixed}.stream th,.stream td{padding-inline:7px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.stream th:last-child,.stream td:last-child{width:27%}}

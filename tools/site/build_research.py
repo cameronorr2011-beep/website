@@ -156,7 +156,7 @@ def build():
         if algaephyte:
             page += '<link rel="stylesheet" href="/css/extras.css?v=20261020">\n<link rel="stylesheet" href="/css/global.css?v=20261020">\n<link rel="stylesheet" href="/css/header.css?v=20261020">\n<link rel="stylesheet" href="/css/orr-home.css?v=20261020">\n<link rel="stylesheet" href="/css/animations.css?v=20261020">\n<link rel="stylesheet" href="/css/algaephyte.css?v=20261020">\n</head>\n<body class="art-body algaephyte-page">\n<a class="skip" href="#main">Skip to content</a>\n' + header
             page += algaephyte_surface(dek, body) + '\n' + footer
-            page += '<script src="/js/consent.js?v=20261020" defer></script>\n<script src="/js/navigation.js?v=20261020" defer></script>\n<script src="/js/algaephyte-app.js?v=20261020" defer></script>\n<script src="/js/biological-cinema.js?v=20261027" defer></script>\n</body>\n</html>\n'
+            page += '<script src="/js/consent.js?v=20261020" defer></script>\n<script src="/js/navigation.js?v=20261020" defer></script>\n<script src="/js/algaephyte-app.js?v=20261020" defer></script>\n<script src="/js/biological-cinema.js?v=20261028" defer></script>\n</body>\n</html>\n'
         else:
             page += '<link rel="stylesheet" href="/css/extras.css">\n<link rel="stylesheet" href="/css/header.css?v=20260926a">\n</head>\n<body class="art-body">\n' + header
             page += '<main class="art-shell"><nav class="art-top" aria-label="Breadcrumb"><a href="/">Orr Biologicals</a> / <a href="/research/">Research methods</a></nav>\n'

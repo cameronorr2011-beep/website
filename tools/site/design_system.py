@@ -2,7 +2,7 @@
 import re
 from seo_audit import ROOT, pages
 
-VERSION = '20261027'
+VERSION = '20261028'
 
 
 def migrate_legacy_application_links(text):
