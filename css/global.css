@@ -1,11 +1,11 @@
 /* Orr Biologicals · shared scientific interface. Tokens are defined only here.
    Art Direction: Living Botanical Monograph × Computational Bio-Intelligence */
 :root{
-  /* Editorial botanical paper (primary reading surface) */
-  --void:#f6f2e8;--void-2:#ebe4d4;--paper:#fdfbf6;--paper-2:#e3dbc7;
-  --ink:#111914;--ink-soft:#344238;--mute:#5c6b5f;--rule:#cfc6b3;
-  --leaf:#1b4d32;--leaf-2:#133824;--leaf-deep:#0f2e1d;--leaf-soft:#e2ebe3;
-  --cyan:#0c6268;--copper:#996124;--warn:#b54434;
+  /* Biological cinema: mineral darkness, culture green, fluorescence light. */
+  --void:#06100c;--void-2:#091a14;--paper:#0d2118;--paper-2:#143025;
+  --ink:#edf7ee;--ink-soft:#b8cdbb;--mute:#83a08b;--rule:rgba(159,214,169,.2);
+  --leaf:#8fcf8f;--leaf-2:#c8eb9c;--leaf-deep:#1d5135;--leaf-soft:rgba(143,207,143,.12);
+  --cyan:#8bded4;--copper:#d6a36a;--warn:#e07862;
   --sans:"Bricolage Grotesque","Space Grotesk","Avenir Next","Segoe UI",sans-serif;
   --serif:"Newsreader","Fraunces","Iowan Old Style","Baskerville",Georgia,serif;
   --mono:"IBM Plex Mono","Cascadia Mono",Consolas,monospace;

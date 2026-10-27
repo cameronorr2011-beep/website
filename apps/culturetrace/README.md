@@ -43,8 +43,8 @@ npm run dev
 ```
 
 `npm run dev` starts the browser-compatible renderer at the Vite development
-URL. The repository-level `npm run build` adds the Orr Biologicals shared shell
-to the generated public `/culturetrace/` route after the renderer build. To
+URL. The repository-level public-site build does not include this archival app or a
+public `/culturetrace/` route. To
 launch the packaged-style Electron shell locally:
 
 ```bash
@@ -52,9 +52,9 @@ npm run dev:electron
 ```
 
 The shell loads the locally built renderer; it does not load remote application
-content. `npm run build:web` writes the browser route to the repository-level
-`culturetrace/` directory. Electron packaging uses a separate `dist/` build so
-the packaged shell never depends on the public website's file tree.
+content. `npm run build:web` writes a private browser build to the app's own
+development output when needed. Electron packaging uses a separate `dist/`
+build and the app is not linked from the public website.
 
 ## Packaging
 

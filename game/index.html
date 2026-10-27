@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Cyanoflow: Single-Cell Discovery | Orr Biologicals</title>
+<meta name="description" content="Cyanoflow is Orr Biologicals' pixel-art single-cell discovery game. Explore synthetic biomes, sample unusual cells, tune classifiers, build a research lab, and archive fictional discoveries.">
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://orrbiologicals.com/game/">
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<link rel="stylesheet" href="css/biorealm.css?v=20261026">
+<link rel="stylesheet" href="/css/global.css?v=20261026">
+<link rel="stylesheet" href="/css/header.css?v=20261026">
+<link rel="stylesheet" href="/css/orr-home.css?v=20261026">
+<link rel="stylesheet" href="/css/animations.css?v=20261026">
+</head>
+<body class="biorealm-page">
+<header class="nav" id="nav">
+<div class="nav-in"><a class="mark" href="/" aria-label="Orr Biologicals home">
+<svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="14" fill="none" stroke="currentColor"/><path d="M9 23c6-3 0-14 7-14s1 11 7 14M8 15c4-5 12-5 16 0" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+<span><b>Orr Biologicals</b><small>ALGAE &amp; SINGLE-CELL RESEARCH</small></span></a>
+<nav class="nav-links" aria-label="Primary"><a href="/algaephyte/">Algaephyte</a><a href="/cyanoflow">Cyanoflow</a><a href="/research/">Research</a><a href="/blog/">Journal</a><a href="/game/" aria-current="page">Digital Lab</a><a class="btn-white" href="/#deploy">Contact</a></nav>
+<button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="mobileMenu">Menu</button></div></header>
+<nav class="mobile-menu" id="mobileMenu" aria-label="Mobile primary" hidden>
+<a href="/algaephyte/">Algaephyte / cultivation</a><a href="/cyanoflow">Cyanoflow / single cells</a><a href="/research/">Research methods</a><a href="/blog/">Research journal</a><a href="/game/">Digital Lab / synthetic models</a><a href="/downloads/">App downloads</a><a href="/#deploy">Contact the project</a></nav>
+<a class="skip-link" href="#gameView">Skip to laboratory</a>
+
+<div id="biorealmApp" class="biorealm-app">
+  <header class="game-topbar">
+    <a class="game-brand" href="/" aria-label="Return to Orr Biologicals"><span class="brand-seal">⌁</span><span><b>ORR BIOLOGICALS</b><small>BIOSPHERE / SYNTHETIC STUDY</small></span></a>
+    <div class="game-title"><span class="eyebrow">Cyanoflow · single-cell discovery</span><h1>Find the variation.</h1><p id="ambienceLabel">Freshwater · quiet current</p></div>
+    <div class="game-actions"><span class="synthetic-badge"><i></i>SYNTHETIC MODE</span><a class="leave-link" href="/">leave lab</a></div>
+  </header>
+  <section class="resource-bar" aria-label="Laboratory resources">
+    <div class="resource"><span>credits</span><b id="creditsReadout">95</b><small>available to reinvest</small></div><div class="resource"><span>income</span><b id="incomeReadout">0 / min</b><small>reactors only</small></div><div class="resource"><span>stored biomass</span><b id="biomassReadout">0</b><small>ready in glass</small></div><div class="resource"><span>living archive</span><b id="archiveReadout">1/27</b><small>species records</small></div><div class="condition"><span>ambient condition</span><b id="eventReadout">Settled Air</b><small>changes slowly · never punitive</small></div>
+  </section>
+  <div class="game-layout">
+    <aside class="game-sidebar">
+      <div class="sidebar-intro"><span class="eyebrow">one careful loop</span><p>Survey a place. Bring a living record home. Give it a vessel. Return to a room that has quietly grown.</p></div>
+      <nav class="game-nav" id="gameNav" aria-label="Laboratory workspaces">
+        <button class="side-nav-button is-active" data-view="lab" type="button"><span>01</span><b>Research lab</b><small>instruments &amp; daily rhythm</small></button>
+        <button class="side-nav-button" data-view="expedition" type="button"><span>02</span><b>Field atlas</b><small>biomes &amp; discoveries</small></button>
+        <button class="side-nav-button" data-view="scanner" type="button"><span>03</span><b>Single-cell scanner</b><small>classify &amp; recover candidates</small></button>
+        <button class="side-nav-button" data-view="reactors" type="button"><span>04</span><b>Culture chambers</b><small>cultivate useful candidates</small></button>
+        <button class="side-nav-button" data-view="collection" type="button"><span>05</span><b>Cell archive</b><small>specimen encyclopedia</small></button>
+        <button class="side-nav-button" data-view="research" type="button"><span>06</span><b>Research tree</b><small>meaningful specializations</small></button>
+        <button class="side-nav-button" data-view="settings" type="button"><span>07</span><b>Settings &amp; saves</b><small>audio, motion, export</small></button>
+      </nav>
+      <div class="sidebar-note"><span class="signal-dot"></span><div><b>local laboratory</b><small>Your progress lives in this browser. The world seed makes discoveries reproducible.</small></div></div>
+      <div class="sidebar-boundary"><b>Research boundary</b><p>Reference organism names are used for context. All rates, traits, outcomes, and equipment are fictional game mechanics.</p></div>
+    </aside>
+    <main id="gameView" class="game-main" tabindex="-1" aria-live="polite"></main>
+  </div>
+  <div class="game-toast" id="gameToast" role="status" aria-live="polite"></div>
+  <div class="reveal-modal" id="revealModal" hidden><div class="reveal-backdrop" data-action="close-reveal"></div><section class="reveal-dialog" role="dialog" aria-modal="true" aria-labelledby="revealTitle"><button class="modal-close" data-action="close-reveal" type="button" aria-label="Close discovery">×</button><div id="revealContent"><h2 id="revealTitle">A discovery is waiting.</h2></div></section></div>
+</div>
+<script type="module" src="dist/cyanoflow-A3XGVNTL.js"></script>
+<script defer src="/js/navigation.js?v=20261026"></script>
+<script defer src="/js/cell-cursor.js?v=20261026"></script>
+<footer class="science-footer"><div class="wrap footer-layout">
+<div><a class="footer-brand" href="/">Orr Biologicals</a><p>Algae cultivation. Individual cells.<br>Research in the open.</p><small>Research concepts in development.<br>No validated hardware performance claimed.</small></div>
+<nav aria-label="Footer platforms"><h2>Explore</h2><a href="/algaephyte/">Algaephyte</a><a href="/cyanoflow">Cyanoflow</a><a href="/game/">Digital Lab</a><a href="/demo/">Expedition demo</a><a href="/downloads/">App downloads</a></nav>
+<nav aria-label="Footer resources"><h2>Learn</h2><a href="/research/">Research methods</a><a href="/blog/">Research journal</a><a href="/glossary">Glossary</a><a href="/disclaimer">Scientific boundary</a><a href="/#deploy">Project correspondence</a></nav>
+<div><h2>Get in touch</h2><a href="mailto:service@orrbiologicals.com">service@orrbiologicals.com</a><p><a href="https://www.youtube.com/@OrrBiologicals" target="_blank" rel="noreferrer">Development on YouTube ↗</a></p></div>
+</div><div class="wrap footer-base"><span>© 2026 Orr Biologicals</span><nav aria-label="Legal"><a href="/privacy">Privacy</a><a href="/terms">Terms</a><a href="/disclaimer">Scientific disclaimer</a><a href="/LICENSE" download>MIT License</a></nav></div></footer>
+<script defer src="/js/animations.js?v=20261026"></script>
+</body>
+</html>

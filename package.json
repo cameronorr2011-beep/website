@@ -2,11 +2,15 @@
   "name": "orr-biologicals-site",
   "private": true,
   "scripts": {
-    "build": "npm --prefix apps/culturetrace run build:web && python3 tools/site/build_seo.py && npm run build:simulation",
-    "test": "node tools/test_all.mjs && npm --prefix apps/culturetrace test",
+    "build": "npm run build:cinema && python3 tools/site/build_seo.py && npm run build:simulation && npm run build:game",
+    "test": "node tools/test_all.mjs && npm run test:simulation && npm run test:game && npm --prefix apps/culturetrace test",
     "server:static": "node tools/static-server.mjs",
+    "build:cinema": "node tools/build_cinema.mjs",
     "build:simulation": "node tools/build_simulation.mjs",
+    "qa": "python3 tools/site/seo_audit.py --out docs/seo/current",
+    "build:game": "node tools/build_game.mjs",
     "test:simulation": "node tools/test_simulation_engine.mjs && node tools/test_simulation_persistence.mjs",
+    "test:game": "node tools/test_biorealm_engine.mjs && node tools/test_biorealm_atmosphere.mjs",
     "test:culturetrace": "npm --prefix apps/culturetrace test",
     "build:culturetrace": "npm --prefix apps/culturetrace run build:web",
     "package:culturetrace": "npm --prefix apps/culturetrace run package:win"

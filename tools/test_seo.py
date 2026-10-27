@@ -49,6 +49,7 @@ class SEOTests(unittest.TestCase):
         expected = [r['url'] for r in inventory() if r['indexability'] == 'indexable' and urlsplit(r['url']).path not in SITEMAP_EXCLUDED]
         self.assertCountEqual(urls, expected); self.assertEqual(len(urls), len(set(urls)))
         self.assertNotIn(SITE + '/game/', urls)
+        self.assertIn(SITE + '/Simulation/', urls)
         for path in SITEMAP_EXCLUDED: self.assertNotIn(SITE + path, urls)
         for n in xml.findall('.//s:lastmod', ns):
             self.assertRegex(n.text, r'^\d{4}-\d{2}-\d{2}$')
@@ -116,15 +117,16 @@ class SEOTests(unittest.TestCase):
         from build_home import render
         self.assertEqual((ROOT / 'index.html').read_text(encoding='utf-8'), render())
         h1 = Page(render()).headings['h1'][0].lower()
-        self.assertEqual(h1, 'read the living signal.')
-        self.assertIn('class="premium-hero"', render())
-        self.assertIn('class="premium-system-card', render())
+        self.assertEqual(h1, 'making living systems legible.')
+        self.assertIn('class="cinema-hero"', render())
+        self.assertIn('class="cinema-system', render())
         self.assertIn('Research concepts in development', render())
         for name in ('build.ps1', 'rebuild.ps1'):
             text = (ROOT / name).read_text(encoding='utf-8-sig')
             self.assertNotIn('SliceLines', text)
             self.assertNotIn('cssMarkers', text)
-        self.assertIn('build_seo.py', (ROOT / 'rebuild.ps1').read_text())
+        rebuild = (ROOT / 'rebuild.ps1').read_text()
+        self.assertIn('npm run build', rebuild)
 
     def test_pillars_and_species_are_connected(self):
         for slug in ('algae-biotechnology', 'microalgae-cultivation', 'photobioreactors', 'algaephyte'):
@@ -140,8 +142,10 @@ class SEOTests(unittest.TestCase):
         self.assertFalse((ROOT / 'applications/index.html').exists())
 
     def test_header_navigation_is_consistent(self):
-        expected = ('/research/', '/algaephyte/', '/cyanoflow', '/blog/', '/Simulation/', '/algae-growth/', '/#deploy')
+        expected = ('/research/', '/algaephyte/', '/cyanoflow', '/blog/', '/Simulation/', '/#deploy')
         for path in pages():
+            if path.relative_to(ROOT).as_posix().startswith('game/'):
+                continue
             text = path.read_text(encoding='utf-8-sig')
             m = re.search(r'<header class="nav"[^>]*>[\s\S]*?</header>', text)
             if not m: continue
@@ -149,7 +153,8 @@ class SEOTests(unittest.TestCase):
             with self.subTest(page=route(path)):
                 for href in expected:
                     self.assertIn('href="' + href + '"', header)
-                self.assertNotIn('href="/game/"', header)
+                self.assertIn('href="/Simulation/"', header)
+                self.assertNotIn('href="/culturetrace/"', header)
                 self.assertNotIn('href="/papertrail/"', header)
                 self.assertNotIn('href="/applications/', header)
                 self.assertNotIn('/#products', header)
@@ -158,7 +163,6 @@ class SEOTests(unittest.TestCase):
         home = (ROOT / 'index.html').read_text(encoding='utf-8')
         for href in ('/blog/', '/Simulation/', '/algaephyte/', '/cyanoflow'):
             self.assertIn('href="' + href + '"', home)
-        self.assertNotIn('/game/', home)
         self.assertNotIn('/papertrail/', home)
 
     def test_prose_links_are_not_underlined(self):

@@ -72,11 +72,11 @@ Redirect 301 /winter-home-growing-warmth               /blog/winter-home-growing
 RedirectMatch 301 ^/research$ /research/
 Redirect 301 /technology                               /#stack
 Redirect 301 /projects                                 /#stack
-# The former game and PaperTrail routes were retired rather than redirected to
-# unrelated pages. Preserve the old /lab bookmark as the retained digital lab.
-RedirectMatch 410 ^/game(?:/|$)
-RedirectMatch 410 ^/papertrail(?:/|$)
+# The restored Digital Lab remains the canonical simulation workspace. Keep
+# the short legacy bookmark useful without redirecting the canonical route.
 Redirect 301 /lab                                      /Simulation/
+RedirectMatch 410 ^/papertrail(?:/|$)
+RedirectMatch 410 ^/culturetrace(?:/|$)
 # Algaephyte now has a dedicated research pillar; preserve the no-slash alias.
 RedirectMatch 301 ^/algaephyte$ /algaephyte/
 # Applications was retired as a top-level content silo. Preserve old bookmarks

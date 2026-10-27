@@ -11,9 +11,8 @@ class DesignSystemTests(unittest.TestCase):
     def test_shared_shell_is_static_and_idempotent(self):
         header=(ROOT/'sections/header.html').read_text(encoding='utf-8').strip()
         for path in pages():
-            if path.relative_to(ROOT).as_posix().startswith('algae-growth/'):
-                # The field guide is an intentionally self-contained offline
-                # surface; it uses its own immersive shell and export path.
+            if path.relative_to(ROOT).as_posix().startswith(('algae-growth/', 'game/')):
+                # Immersive game/field-guide surfaces use their own shell.
                 continue
             with self.subTest(page=str(path.relative_to(ROOT))):
                 text=path.read_text(encoding='utf-8')
@@ -45,14 +44,15 @@ class DesignSystemTests(unittest.TestCase):
 
     def test_deep_links_and_scientific_qualifications_remain(self):
         text=(ROOT/'index.html').read_text(encoding='utf-8')
-        for anchor in ('main','top','thesis','systems','products','journal','deploy'):
+        for anchor in ('main','top','reactor-study','field-station','systems','products','method','journal','deploy'):
             self.assertIn('id="'+anchor+'"',text)
-        for qualification in ('Research concepts in development','Illustrative cultivation study','not measured telemetry','no commercial deployment'):
+        for qualification in ('procedural scientific visualization','Illustrative scene','not a deployed instrument','commercial deployment'):
             self.assertIn(qualification,text)
-        self.assertIn('premium-home',text)
-        self.assertIn('/css/home-premium.css',text)
+        self.assertIn('biological-cinema',text)
+        self.assertIn('/css/biological-cinema.css',text)
         self.assertNotIn('/papertrail/',text)
-        self.assertNotIn('/game/',text)
+        self.assertNotIn('/culturetrace/',text)
+        self.assertIn('/Simulation/',text)
         self.assertIn('role="status" aria-live="polite"',text)
 
     def test_algaephyte_workflow_is_explicit(self):

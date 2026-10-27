@@ -2,7 +2,7 @@
 import re
 from seo_audit import ROOT, pages
 
-VERSION = '20261025'
+VERSION = '20261026'
 
 
 def migrate_legacy_application_links(text):
@@ -19,11 +19,10 @@ def migrate_legacy_application_links(text):
     # articles that do not exist. The methodology hub is the honest fallback.
     text = re.sub(r'/applications/[^"\'\s<]+', '/research/', text)
     text = text.replace('/applications/', '/blog/')
-    text = text.replace('<a href="/game/">Play Algae Living</a>', '<a href="/research/">Read the research methods</a>')
-    text = text.replace('<a class="chip" href="/game/">Algae Living game</a>', '<a class="chip" href="/research/">Research methods</a>')
-    text = text.replace('/game/', '/research/')
+    text = text.replace('<a href="/game/">Play Algae Living</a>', '<a href="/game/">Play Cyanoflow</a>')
+    text = text.replace('<a class="chip" href="/game/">Algae Living game</a>', '<a class="chip" href="/game/">Cyanoflow game</a>')
     # Retarget anchors from the retired long-form homepage to the new
-    # editorial sections and the retained standalone simulation.
+    # editorial sections and the retained Digital Lab.
     text = text.replace('/#systemss', '/#systems')
     for old, new in (
         ('/#inside', '/#thesis'),
@@ -37,6 +36,9 @@ def migrate_legacy_application_links(text):
 
 def apply(text):
     text = migrate_legacy_application_links(text)
+    # CultureTrace is retained only as private source material. It is not part
+    # of the public Orr Biologicals portfolio or its crawlable navigation.
+    text = re.sub(r'<a\b[^>]*href=["\']/culturetrace/["\'][^>]*>.*?</a>', '', text, flags=re.S | re.I)
     # Keep the Algaephyte workflow explicit in every generated copy. The page
     # already has four legacy step cards; normalize their labels and append the
     # verification gate without asking the scientific content author to repeat
@@ -66,19 +68,23 @@ def apply(text):
     text = text.replace('</body>', footer + '\n</body>')
     # Eliminate per-page external font families and repeated token definitions.
     text = re.sub(r'<link[^>]+href="https://fonts.googleapis.com/[^>]+>\s*', '', text)
-    text = re.sub(r'<link[^>]+href="/?css/(?:global|header|animations|site-redesign)\.css[^>]+>\s*', '', text)
-    text = re.sub(r'<script[^>]+src="/?js/animations\.js[^>]*>\s*</script>\s*', '', text)
+    text = re.sub(r'<link[^>]+href="/?css/(?:global|header|animations|site-redesign|biological-cinema)\.css[^>]+>\s*', '', text)
+    text = re.sub(r'<script[^>]+src="/?js/(?:animations|navigation|cell-cursor)\.js[^>]*>\s*</script>\s*', '', text)
     text = re.sub(r'<link[^>]+href="/?css/orr-home\.css[^>]+>\s*', '', text)
     text = re.sub(r'<link[^>]+href="/?css/home-premium\.css[^>]+>\s*', '', text)
     css = '\n'.join(f'<link rel="stylesheet" href="/css/{name}.css?v={VERSION}">' for name in ('global', 'header', 'orr-home', 'animations', 'site-redesign'))
     if 'class="orr-home' in text:
         css += f'\n<link rel="stylesheet" href="/css/home-premium.css?v={VERSION}">'
+    if 'biological-cinema' in text:
+        css += f'\n<link rel="stylesheet" href="/css/biological-cinema.css?v={VERSION}">'
     text = text.replace('</head>', css + '\n</head>')
     text = text.replace('</body>', f'<script defer src="/js/animations.js?v={VERSION}"></script>\n</body>')
     if '/js/navigation.js' not in text and './navigation.js' not in text:
         text = text.replace('</body>', f'<script defer src="/js/navigation.js?v={VERSION}"></script>\n</body>')
+    if '/js/cell-cursor.js' not in text:
+        text = text.replace('</body>', f'<script defer src="/js/cell-cursor.js?v={VERSION}"></script>\n</body>')
     text = re.sub(r'(<(?:link|script)\b[^>]*(?:href|src)="/?(?:css|js)/[^"?]+)(?:\?[^" ]*)?("[^>]*>)', r'\1?v=' + VERSION + r'\2', text)
-    text = re.sub(r'(<meta name="theme-color" content=")[^"]+', r'\g<1>#f6f2e8', text)
+    text = re.sub(r'(<meta name="theme-color" content=")[^"]+', r'\g<1>#06100c', text)
     # Preserve existing main targets; older article pages used a div shell.
     if '<main' not in text:
         text = text.replace('<div class="art-shell">', '<main id="main" class="art-shell">', 1)
@@ -94,10 +100,10 @@ def apply(text):
 def build():
     count = 0
     for path in pages():
-        if path.relative_to(ROOT).as_posix().startswith('algae-growth/'):
-            # The pixel field guide is a deliberately self-contained immersive
-            # surface. Its own controls and offline export must not be wrapped
-            # in the editorial site shell or external page scripts.
+        relative = path.relative_to(ROOT).as_posix()
+        if relative.startswith(('algae-growth/', 'game/')):
+            # Immersive interactive surfaces own their shell, controls, and
+            # rendering loop. Do not wrap them in the editorial site shell.
             count += 1
             continue
         old = path.read_text(encoding='utf-8-sig')

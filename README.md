@@ -1,18 +1,20 @@
 # Orr Biologicals
 
 Orr Biologicals is a static, local-first research site about algae cultivation,
-single-cell observation, and citizen-science tools. **Algaephyte** and
+single-cell observation, and computational biology. **Algaephyte** and
 **Cyanoflow** are concept builds in development; the site does not claim
 validated hardware performance, species identification, food safety, or a
 finished product for sale.
 
-The public experience is intentionally spacious, quiet, and image-led. The
-homepage is assembled from authoritative partials and uses self-hosted,
-illustrative research imagery; it does not depend on a video CDN, AI image
-service, or external runtime. The Journal (`/blog/`) is the active source of
-truth for research notes. The former `/applications/`, `/game/`, and
-`/papertrail/` surfaces have been retired; legacy application URLs redirect to
-the Journal through `.htaccess`.
+The public experience is a dark biological cinema. The homepage is assembled
+from authoritative partials and combines self-hosted illustrative imagery with
+a procedural Three.js Volvox, photobioreactor, cultivation-apparatus, and
+microfluidic scenes. These scenes are scientific visualizations, not microscope
+observations or measured telemetry. The Journal (`/blog/`) is the active source
+of truth for research notes. The former `/applications/`, `/papertrail/`, and
+`/culturetrace/` public surfaces have been retired. `/Simulation/` is the
+canonical Algal Digital Lab workspace; `/game/` remains a separate no-index
+Cyanoflow field-study experiment.
 
 ## Requirements
 
@@ -22,14 +24,13 @@ the Journal through `.htaccess`.
 - Docker 24+ if you prefer the container workflow
 
 No API key, database, cloud account, or hardware is required for the static
-site, the simulation, or the research pages. Journal automation can use
+site, the Digital Lab, the Cyanoflow game, or the research pages. Journal automation can use
 `GROQ_API_KEY` in CI, but it is not needed for a local static build.
 
-CultureTrace is a separate, independently buildable Electron/React application
-under `apps/culturetrace/`. Its browser-compatible public route is built at
-`/culturetrace/`; the desktop app stores projects locally and keeps Groq behind
-the Electron main-process boundary. The default demonstration dataset and
-deterministic analysis work without a network or API key.
+The historical CultureTrace Electron/React source remains under
+`apps/culturetrace/` for archival/private development purposes only. It is not
+built into the static site, has no public route, and is not linked from the
+portfolio.
 
 ## Clean checkout: install, build, run
 
@@ -42,6 +43,9 @@ npm run build
 npm run server:static
 ```
 
+Run the static metadata/inventory QA with `npm run qa`. Browser-level route
+checks use the repository's Playwright runner and `tools/site/qa_redesign.mjs`.
+
 Open <http://127.0.0.1:8080/>. The static server is implemented with Node
 built-ins in `tools/static-server.mjs`; it serves directory indexes and clean
 `.html` routes without installing a web framework.
@@ -53,6 +57,7 @@ build steps directly. On Windows with multiple interpreters, use
 ```bash
 python tools/site/build_seo.py
 npm run build:simulation
+npm run build:game
 node tools/static-server.mjs
 ```
 
@@ -70,6 +75,7 @@ Useful focused checks:
 
 ```bash
 npm run test:simulation
+npm run test:game
 npm run test:culturetrace
 npm run build:culturetrace
 # Windows installer, when Electron packaging dependencies are available:
@@ -93,8 +99,8 @@ docker run --rm -p 8080:8080 orr-biologicals
 ```
 
 Open <http://127.0.0.1:8080/>. The `Dockerfile` installs the locked npm
-dependencies, regenerates the SEO/static outputs, rebuilds the simulation
-bundle, and then runs the built site on port 8080. No secrets are copied into
+dependencies, regenerates the SEO/static outputs, rebuilds the Digital Lab and
+Cyanoflow bundles, and then runs the built site on port 8080. No secrets are copied into
 the image.
 
 ## Project map
@@ -102,17 +108,21 @@ the image.
 ```text
 sections/                 authoritative homepage and shared shell partials
 css/                      shared editorial interface and motion tokens
-css/home-premium.css      homepage editorial redesign layer
+css/home-premium.css      retained homepage editorial layer
+css/biological-cinema.css homepage biological-cinema layer
 css/site-redesign.css     dark research-dossier layer for public reading routes
-js/                       shared navigation, disclosure, and page behaviors
+js/                       shared navigation, disclosure, cursor, and scene behaviors
 algaephyte/               Algaephyte product brief and research notes
 cyanoflow.html            Cyanoflow product brief and chip visualization
 blog/                     Journal source of truth and generated article index
 research/                 methodology hub
-Simulation/               simplified Algal Digital Lab workspace
+Simulation/              Algal Digital Lab and preserved deterministic engine
+game/                     Cyanoflow local-first pixel-art research game
 algae-growth/             standalone pixel-art algae growth field guide
-apps/culturetrace/        standalone React/Electron experiment analysis app
-culturetrace/             generated public CultureTrace browser route
+apps/culturetrace/        archived private React/Electron experiment source
+js/biological-cinema.mjs  procedural Three.js scene source and asset fallback
+tools/build_cinema.mjs    reproducible scene bundle build
+tools/build_simulation.mjs reproducible Digital Lab bundle build
 tools/site/               deterministic static/SEO assembly
 tools/static-server.mjs   dependency-free local production-like server
 tools/export_algae_growth.mjs  standalone HTML + MP4 export helper

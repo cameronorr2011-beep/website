@@ -61,10 +61,11 @@ export default async function run(page) {
     await menu.click();
   }
   await page.goto(base + '/', {waitUntil: 'load'});
-  const before = await page.locator('[data-home-chip-value]').textContent();
-  await page.getByRole('button', {name: 'Track', exact: true}).click();
-  const after = await page.locator('[data-home-chip-value]').textContent();
-  if (before === after) throw new Error('Homepage field station did not respond to stage input');
+  const homepageScene = await page.evaluate(() => ({
+    volvox: document.querySelector('#volvoxCanvas')?.getAttribute('aria-label') || '',
+    reactor: document.querySelector('#reactorCanvas')?.getAttribute('aria-label') || '',
+  }));
+  if (!homepageScene.volvox || !homepageScene.reactor) throw new Error('Homepage biological scenes are missing');
   await page.setViewportSize({width:1280, height:900});
   await page.goto(base + '/cyanoflow', {waitUntil: 'load'});
   const toggle = page.locator('#simToggle');
@@ -96,7 +97,7 @@ export default async function run(page) {
     }
   }
   const report = {testedAt: new Date().toISOString(), target: base, results, mobile,
-    homepageFieldStation: {before, after}, simulation: {pauseLabel}, staticKnowledgeLinksWithoutJS: staticLinks,
+    homepageScenes: homepageScene, simulation: {pauseLabel}, staticKnowledgeLinksWithoutJS: staticLinks,
     redirects, errors, failures, fieldINP: 'Not available: these are lab/browser checks, not real-user field metrics'};
   mkdirSync('docs/seo', {recursive: true}); writeFileSync(out, JSON.stringify(report, null, 2));
   if (errors.length || (!live && failures.length)) throw new Error(`Browser errors: ${JSON.stringify({errors, failures})}`);

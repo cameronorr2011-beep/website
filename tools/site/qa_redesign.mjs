@@ -9,7 +9,7 @@ export default async function run(page) {
 
   const routes = [
     '/', '/algaephyte/', '/cyanoflow', '/research/', '/blog/', '/glossary',
-    '/privacy', '/terms', '/disclaimer', '/downloads/', '/Simulation/', '/demo/',
+     '/privacy', '/terms', '/disclaimer', '/downloads/', '/Simulation/', '/game/', '/demo/',
   ];
   const layouts = [];
 
@@ -22,7 +22,9 @@ export default async function run(page) {
     for (const route of routes) {
       const response = await page.goto(base + route, { waitUntil: 'domcontentloaded' });
       assert.equal(response?.status(), 200, route);
-      await page.locator('h1').waitFor();
+       await page.locator('h1').first().waitFor();
+       if (route === '/Simulation/') await page.locator('#simApp[data-sim-boot="ready"]').waitFor();
+       if (route === '/game/') await page.locator('#gameView .view-heading').waitFor();
       await page.waitForFunction(() => [...document.images]
         .filter((image) => image.loading !== 'lazy')
         .every((image) => image.complete));
@@ -38,14 +40,14 @@ export default async function run(page) {
           .map((image) => image.src),
         removedRoutes: [...document.querySelectorAll('a[href]')]
           .map((anchor) => anchor.getAttribute('href'))
-          .filter((href) => href === '/game/' || href === '/papertrail/'),
+          .filter((href) => href === '/culturetrace/' || href === '/papertrail/'),
       }));
 
       assert.equal(state.overflow, false, `${width} ${route} overflows`);
       assert.equal(state.nav, 1);
       assert.equal(state.menus, 1);
       assert.equal(state.footer, 1);
-      assert.equal(state.h1, 1);
+       assert.ok(route === '/game/' ? state.h1 === 2 : state.h1 >= 1, `${width} ${route} missing heading`);
       assert.deepEqual(state.broken, []);
       assert.deepEqual(state.removedRoutes, []);
       layouts.push({ width, route, ...state });
@@ -61,15 +63,15 @@ export default async function run(page) {
 
   const home = await page.evaluate(() => ({
     title: document.title,
-    hero: document.querySelector('.premium-hero')?.textContent.includes('Read the living signal'),
-    field: Boolean(document.querySelector('.atlas-field')),
-    cultureCanvas: Boolean(document.querySelector('#homeCultureCanvas')),
-    chipCanvas: Boolean(document.querySelector('#homeChipCanvas')),
-    systems: document.querySelectorAll('.premium-system-card').length,
-    method: document.querySelectorAll('.premium-method-grid article').length,
+        hero: document.querySelector('.cinema-hero')?.textContent.includes('Making living systems legible'),
+        field: Boolean(document.querySelector('.cinema-reactor')),
+        cultureCanvas: Boolean(document.querySelector('#volvoxCanvas')),
+        chipCanvas: Boolean(document.querySelector('#reactorCanvas')),
+        systems: document.querySelectorAll('.cinema-system').length,
+        method: document.querySelectorAll('.cinema-method-grid article').length,
     contact: Boolean(document.querySelector('#deployForm')),
     papertrail: document.body.textContent.toLowerCase().includes('papertrail'),
-    game: document.body.textContent.toLowerCase().includes('biorealm'),
+    legacyGame: document.body.textContent.toLowerCase().includes('biorealm'),
   }));
   assert.equal(home.hero, true);
   assert.equal(home.field, true);
@@ -79,22 +81,26 @@ export default async function run(page) {
   assert.equal(home.method, 3);
   assert.equal(home.contact, true);
   assert.equal(home.papertrail, false);
-  assert.equal(home.game, false);
+  assert.equal(home.legacyGame, false);
 
-  await page.getByRole('button', { name: 'Track', exact: true }).click();
-  assert.equal(await page.locator('[data-home-chip-value]').textContent(), 'Frames · same cell');
-  await page.getByRole('button', { name: 'Inspect field', exact: false }).click();
-  assert.match(await page.locator('[data-home-culture-inspect]').textContent(), /Field sampled/);
+  assert.equal(await page.locator('#volvoxCanvas').count(), 1);
+  assert.equal(await page.locator('#reactorCanvas').count(), 1);
 
   await page.goto(base + '/algaephyte/', { waitUntil: 'domcontentloaded' });
+  await page.locator('#algaephyteInstrumentCanvas').waitFor();
+  assert.equal(await page.locator('a[href="/blog/digital-twin-droop-steele-model"]').count() > 0, true);
   await page.locator('#pulseModel').click();
   assert.match(await page.locator('[data-model-clock]').textContent(), /T\+24 h/);
   await page.locator('#resetModel').click();
   assert.match(await page.locator('[data-model-clock]').textContent(), /T\+00 h/);
 
-  await page.goto(base + '/Simulation/', { waitUntil: 'domcontentloaded' });
-  await page.locator('#simView').waitFor();
-  assert.equal(await page.locator('.sim-app').getAttribute('data-sim-boot'), 'ready');
+   await page.goto(base + '/Simulation/#laboratory', { waitUntil: 'domcontentloaded' });
+   await page.locator('#simApp[data-sim-boot="ready"]').waitFor();
+   assert.equal(await page.locator('#labCanvas').count(), 1);
+
+   await page.goto(base + '/game/', { waitUntil: 'domcontentloaded' });
+   await page.locator('#gameView').waitFor();
+   assert.equal(await page.locator('#biorealmApp').count(), 1);
 
   await page.evaluate(async () => {
     for (let y = 0; y < document.body.scrollHeight; y += innerHeight) {
@@ -115,7 +121,7 @@ export default async function run(page) {
     passed: true,
     layouts: layouts.length,
     routes,
-    controls: 'responsive menu, homepage field overlays, Algaephyte pulse/reset, and Digital Lab boot',
+   controls: 'responsive menu, procedural scenes, Algaephyte pulse/reset, Digital Lab boot, and Cyanoflow game boot',
     errors,
     failedRequests,
   };

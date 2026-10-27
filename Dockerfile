@@ -8,8 +8,10 @@ RUN apt-get update \
 COPY package.json package-lock.json ./
 RUN npm ci --ignore-scripts --no-audit --no-fund
 COPY . .
-RUN python3 tools/site/build_seo.py \
-  && npm run build:simulation
+RUN npm run build:cinema \
+  && python3 tools/site/build_seo.py \
+  && npm run build:simulation \
+  && npm run build:game
 
 FROM node:24-bookworm-slim AS runtime
 WORKDIR /site

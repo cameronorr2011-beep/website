@@ -1,5 +1,5 @@
 {
-  "testedAt": "2026-10-26T01:13:00.579Z",
+  "testedAt": "2026-10-27T01:14:34.043Z",
   "target": "http://127.0.0.1:8876",
   "results": [
     {
@@ -39,8 +39,8 @@
       ],
       "nav": [
         {
-          "ttfb": 24.69999998807907,
-          "domContentLoaded": 244.59999999403954
+          "ttfb": 30.099999994039536,
+          "domContentLoaded": 241.80000001192093
         }
       ],
       "metrics": {
@@ -49,10 +49,10 @@
         "longTasks": []
       },
       "payload": {
-        "requests": 10,
-        "transferred": 806067,
-        "js": 698420,
-        "css": 106856,
+        "requests": 11,
+        "transferred": 809225,
+        "js": 701529,
+        "css": 106905,
         "images": 791
       }
     },
@@ -100,8 +100,8 @@
       ],
       "nav": [
         {
-          "ttfb": 12.400000005960464,
-          "domContentLoaded": 106.69999998807907
+          "ttfb": 14.100000023841858,
+          "domContentLoaded": 128.7000000178814
         }
       ],
       "metrics": {
@@ -110,11 +110,39 @@
         "longTasks": []
       },
       "payload": {
-        "requests": 10,
-        "transferred": 83858,
-        "js": 9760,
-        "css": 73307,
+        "requests": 11,
+        "transferred": 87009,
+        "js": 12869,
+        "css": 73349,
         "images": 791
+      }
+    },
+    {
+      "path": "/algae-growth/",
+      "status": 200,
+      "title": "Algae Growth — Pixel Field Guide | Orr Biologicals",
+      "h1": [
+        "A tiny cell.A whole culture."
+      ],
+      "canonical": "https://orrbiologicals.com/algae-growth/",
+      "schemas": [],
+      "nav": [
+        {
+          "ttfb": 16.69999998807907,
+          "domContentLoaded": 167
+        }
+      ],
+      "metrics": {
+        "lcp": null,
+        "cls": 0,
+        "longTasks": []
+      },
+      "payload": {
+        "requests": 3,
+        "transferred": 62454,
+        "js": 45716,
+        "css": 16738,
+        "images": 0
       }
     },
     {
@@ -161,20 +189,22 @@
       ],
       "nav": [
         {
-          "ttfb": 22.30000001192093,
-          "domContentLoaded": 275.90000000596046
+          "ttfb": 28,
+          "domContentLoaded": 523.5999999940395
         }
       ],
       "metrics": {
-        "lcp": null,
+        "lcp": 288,
         "cls": 0,
-        "longTasks": []
+        "longTasks": [
+          259
+        ]
       },
       "payload": {
-        "requests": 12,
-        "transferred": 100587,
-        "js": 12753,
-        "css": 87043,
+        "requests": 15,
+        "transferred": 646010,
+        "js": 542101,
+        "css": 103118,
         "images": 791
       }
     },
@@ -233,20 +263,20 @@
       ],
       "nav": [
         {
-          "ttfb": 94.19999998807907,
-          "domContentLoaded": 323.2999999821186
+          "ttfb": 35.79999998211861,
+          "domContentLoaded": 295
         }
       ],
       "metrics": {
-        "lcp": 356,
+        "lcp": 336,
         "cls": 0.023498594164848327,
         "longTasks": []
       },
       "payload": {
-        "requests": 10,
-        "transferred": 83858,
-        "js": 9760,
-        "css": 73307,
+        "requests": 11,
+        "transferred": 87009,
+        "js": 12869,
+        "css": 73349,
         "images": 791
       }
     },
@@ -305,20 +335,20 @@
       ],
       "nav": [
         {
-          "ttfb": 31.19999998807907,
-          "domContentLoaded": 578.6999999880791
+          "ttfb": 30.80000001192093,
+          "domContentLoaded": 234.90000000596046
         }
       ],
       "metrics": {
-        "lcp": 644,
+        "lcp": 268,
         "cls": 0.015063201387723288,
         "longTasks": []
       },
       "payload": {
-        "requests": 10,
-        "transferred": 83858,
-        "js": 9760,
-        "css": 73307,
+        "requests": 11,
+        "transferred": 87009,
+        "js": 12869,
+        "css": 73349,
         "images": 791
       }
     },
@@ -377,21 +407,21 @@
       ],
       "nav": [
         {
-          "ttfb": 100.90000000596046,
-          "domContentLoaded": 677
+          "ttfb": 27.400000005960464,
+          "domContentLoaded": 195
         }
       ],
       "metrics": {
-        "lcp": 840,
+        "lcp": 232,
         "cls": 0.015063201387723288,
         "longTasks": []
       },
       "payload": {
-        "requests": 9,
-        "transferred": 83067,
-        "js": 9760,
-        "css": 73307,
-        "images": 0
+        "requests": 11,
+        "transferred": 87009,
+        "js": 12869,
+        "css": 73349,
+        "images": 791
       }
     },
     {
@@ -449,20 +479,20 @@
       ],
       "nav": [
         {
-          "ttfb": 88.10000002384186,
-          "domContentLoaded": 1027.1000000238419
+          "ttfb": 22.599999994039536,
+          "domContentLoaded": 257.5
         }
       ],
       "metrics": {
-        "lcp": 1116,
+        "lcp": 316,
         "cls": 0.023498594164848327,
         "longTasks": []
       },
       "payload": {
-        "requests": 10,
-        "transferred": 83858,
-        "js": 9760,
-        "css": 73307,
+        "requests": 11,
+        "transferred": 87009,
+        "js": 12869,
+        "css": 73349,
         "images": 791
       }
     },
@@ -521,20 +551,20 @@
       ],
       "nav": [
         {
-          "ttfb": 80.7999999821186,
-          "domContentLoaded": 822.7999999821186
+          "ttfb": 26.700000017881393,
+          "domContentLoaded": 246.2000000178814
         }
       ],
       "metrics": {
-        "lcp": 876,
+        "lcp": null,
         "cls": 0.023498594164848327,
         "longTasks": []
       },
       "payload": {
-        "requests": 10,
-        "transferred": 83858,
-        "js": 9760,
-        "css": 73307,
+        "requests": 11,
+        "transferred": 87009,
+        "js": 12869,
+        "css": 73349,
         "images": 791
       }
     },
@@ -593,20 +623,20 @@
       ],
       "nav": [
         {
-          "ttfb": 103,
-          "domContentLoaded": 1018.1999999880791
+          "ttfb": 23.5,
+          "domContentLoaded": 209.30000001192093
         }
       ],
       "metrics": {
-        "lcp": 1028,
+        "lcp": 236,
         "cls": 0.023498594164848327,
         "longTasks": []
       },
       "payload": {
-        "requests": 10,
-        "transferred": 83858,
-        "js": 9760,
-        "css": 73307,
+        "requests": 11,
+        "transferred": 87009,
+        "js": 12869,
+        "css": 73349,
         "images": 791
       }
     },
@@ -665,20 +695,20 @@
       ],
       "nav": [
         {
-          "ttfb": 78.2000000178814,
-          "domContentLoaded": 715.1000000238419
+          "ttfb": 26.799999982118607,
+          "domContentLoaded": 180.19999998807907
         }
       ],
       "metrics": {
-        "lcp": 764,
+        "lcp": null,
         "cls": 0.023498594164848327,
         "longTasks": []
       },
       "payload": {
-        "requests": 10,
-        "transferred": 83858,
-        "js": 9760,
-        "css": 73307,
+        "requests": 11,
+        "transferred": 87009,
+        "js": 12869,
+        "css": 73349,
         "images": 791
       }
     },
@@ -737,21 +767,21 @@
       ],
       "nav": [
         {
-          "ttfb": 63,
-          "domContentLoaded": 468.90000000596046
+          "ttfb": 25.19999998807907,
+          "domContentLoaded": 196.2999999821186
         }
       ],
       "metrics": {
-        "lcp": 524,
+        "lcp": null,
         "cls": 0.015063201387723288,
         "longTasks": []
       },
       "payload": {
         "requests": 10,
-        "transferred": 83858,
-        "js": 9760,
-        "css": 73307,
-        "images": 791
+        "transferred": 86218,
+        "js": 12869,
+        "css": 73349,
+        "images": 0
       }
     },
     {
@@ -809,20 +839,20 @@
       ],
       "nav": [
         {
-          "ttfb": 88.69999998807907,
-          "domContentLoaded": 509.40000000596046
+          "ttfb": 25.19999998807907,
+          "domContentLoaded": 197.5
         }
       ],
       "metrics": {
-        "lcp": 560,
+        "lcp": 228,
         "cls": 0.023498594164848327,
         "longTasks": []
       },
       "payload": {
-        "requests": 10,
-        "transferred": 83858,
-        "js": 9760,
-        "css": 73307,
+        "requests": 11,
+        "transferred": 87009,
+        "js": 12869,
+        "css": 73349,
         "images": 791
       }
     },
@@ -881,20 +911,20 @@
       ],
       "nav": [
         {
-          "ttfb": 79.09999999403954,
-          "domContentLoaded": 488.90000000596046
+          "ttfb": 26.400000005960464,
+          "domContentLoaded": 231.2000000178814
         }
       ],
       "metrics": {
-        "lcp": 524,
+        "lcp": 264,
         "cls": 0.023498594164848327,
         "longTasks": []
       },
       "payload": {
-        "requests": 10,
-        "transferred": 83858,
-        "js": 9760,
-        "css": 73307,
+        "requests": 11,
+        "transferred": 87009,
+        "js": 12869,
+        "css": 73349,
         "images": 791
       }
     },
@@ -953,21 +983,21 @@
       ],
       "nav": [
         {
-          "ttfb": 63.70000001788139,
-          "domContentLoaded": 435.7000000178814
+          "ttfb": 23.69999998807907,
+          "domContentLoaded": 209.7999999821186
         }
       ],
       "metrics": {
-        "lcp": null,
+        "lcp": 240,
         "cls": 0.015063201387723288,
         "longTasks": []
       },
       "payload": {
-        "requests": 9,
-        "transferred": 83067,
-        "js": 9760,
-        "css": 73307,
-        "images": 0
+        "requests": 11,
+        "transferred": 87009,
+        "js": 12869,
+        "css": 73349,
+        "images": 791
       }
     },
     {
@@ -989,20 +1019,22 @@
       ],
       "nav": [
         {
-          "ttfb": 75.19999998807907,
-          "domContentLoaded": 558.5999999940395
+          "ttfb": 29.299999982118607,
+          "domContentLoaded": 295.59999999403954
         }
       ],
       "metrics": {
-        "lcp": 620,
+        "lcp": 328,
         "cls": 0,
-        "longTasks": []
+        "longTasks": [
+          63
+        ]
       },
       "payload": {
-        "requests": 14,
-        "transferred": 640745,
-        "js": 9760,
-        "css": 73307,
+        "requests": 15,
+        "transferred": 643896,
+        "js": 12869,
+        "css": 73349,
         "images": 418121
       }
     },
@@ -1061,8 +1093,8 @@
       ],
       "nav": [
         {
-          "ttfb": 60.400000005960464,
-          "domContentLoaded": 397.40000000596046
+          "ttfb": 32.599999994039536,
+          "domContentLoaded": 251.89999997615814
         }
       ],
       "metrics": {
@@ -1071,10 +1103,10 @@
         "longTasks": []
       },
       "payload": {
-        "requests": 10,
-        "transferred": 83858,
-        "js": 9760,
-        "css": 73307,
+        "requests": 11,
+        "transferred": 87009,
+        "js": 12869,
+        "css": 73349,
         "images": 791
       }
     },
@@ -1133,20 +1165,20 @@
       ],
       "nav": [
         {
-          "ttfb": 31.099999994039536,
-          "domContentLoaded": 348.5
+          "ttfb": 28.5,
+          "domContentLoaded": 217.30000001192093
         }
       ],
       "metrics": {
-        "lcp": 388,
+        "lcp": 248,
         "cls": 0.015063201387723288,
         "longTasks": []
       },
       "payload": {
-        "requests": 10,
-        "transferred": 83858,
-        "js": 9760,
-        "css": 73307,
+        "requests": 11,
+        "transferred": 87009,
+        "js": 12869,
+        "css": 73349,
         "images": 791
       }
     },
@@ -1205,20 +1237,20 @@
       ],
       "nav": [
         {
-          "ttfb": 40.599999994039536,
-          "domContentLoaded": 353.30000001192093
+          "ttfb": 21.80000001192093,
+          "domContentLoaded": 204.09999999403954
         }
       ],
       "metrics": {
-        "lcp": null,
+        "lcp": 240,
         "cls": 0.023498594164848327,
         "longTasks": []
       },
       "payload": {
-        "requests": 10,
-        "transferred": 83858,
-        "js": 9760,
-        "css": 73307,
+        "requests": 11,
+        "transferred": 87009,
+        "js": 12869,
+        "css": 73349,
         "images": 791
       }
     },
@@ -1280,8 +1312,8 @@
       ],
       "nav": [
         {
-          "ttfb": 28.5,
-          "domContentLoaded": 283.40000000596046
+          "ttfb": 24.80000001192093,
+          "domContentLoaded": 230.10000002384186
         }
       ],
       "metrics": {
@@ -1290,10 +1322,10 @@
         "longTasks": []
       },
       "payload": {
-        "requests": 10,
-        "transferred": 83858,
-        "js": 9760,
-        "css": 73307,
+        "requests": 11,
+        "transferred": 87009,
+        "js": 12869,
+        "css": 73349,
         "images": 791
       }
     },
@@ -1352,20 +1384,20 @@
       ],
       "nav": [
         {
-          "ttfb": 72.09999999403954,
-          "domContentLoaded": 438.30000001192093
+          "ttfb": 29.5,
+          "domContentLoaded": 207
         }
       ],
       "metrics": {
-        "lcp": 508,
+        "lcp": 236,
         "cls": 0.023498594164848327,
         "longTasks": []
       },
       "payload": {
-        "requests": 10,
-        "transferred": 83858,
-        "js": 9760,
-        "css": 73307,
+        "requests": 11,
+        "transferred": 87009,
+        "js": 12869,
+        "css": 73349,
         "images": 791
       }
     },
@@ -1424,20 +1456,20 @@
       ],
       "nav": [
         {
-          "ttfb": 30.5,
-          "domContentLoaded": 328.19999998807907
+          "ttfb": 25.599999994039536,
+          "domContentLoaded": 219.40000000596046
         }
       ],
       "metrics": {
-        "lcp": null,
+        "lcp": 248,
         "cls": 0.015063201387723288,
         "longTasks": []
       },
       "payload": {
-        "requests": 10,
-        "transferred": 83858,
-        "js": 9760,
-        "css": 73307,
+        "requests": 11,
+        "transferred": 87009,
+        "js": 12869,
+        "css": 73349,
         "images": 791
       }
     },
@@ -1496,20 +1528,20 @@
       ],
       "nav": [
         {
-          "ttfb": 41,
-          "domContentLoaded": 297.10000002384186
+          "ttfb": 29.19999998807907,
+          "domContentLoaded": 205.39999997615814
         }
       ],
       "metrics": {
-        "lcp": null,
+        "lcp": 232,
         "cls": 0.015063201387723288,
         "longTasks": []
       },
       "payload": {
-        "requests": 10,
-        "transferred": 83858,
-        "js": 9760,
-        "css": 73307,
+        "requests": 11,
+        "transferred": 87009,
+        "js": 12869,
+        "css": 73349,
         "images": 791
       }
     },
@@ -1568,20 +1600,20 @@
       ],
       "nav": [
         {
-          "ttfb": 29.80000001192093,
-          "domContentLoaded": 297.80000001192093
+          "ttfb": 22.099999994039536,
+          "domContentLoaded": 181.59999999403954
         }
       ],
       "metrics": {
-        "lcp": 328,
+        "lcp": 208,
         "cls": 0.015063201387723288,
         "longTasks": []
       },
       "payload": {
-        "requests": 10,
-        "transferred": 83858,
-        "js": 9760,
-        "css": 73307,
+        "requests": 11,
+        "transferred": 87009,
+        "js": 12869,
+        "css": 73349,
         "images": 791
       }
     },
@@ -1640,20 +1672,20 @@
       ],
       "nav": [
         {
-          "ttfb": 24.80000001192093,
-          "domContentLoaded": 316.09999999403954
+          "ttfb": 30.80000001192093,
+          "domContentLoaded": 209.5
         }
       ],
       "metrics": {
-        "lcp": null,
+        "lcp": 244,
         "cls": 0.015063201387723288,
         "longTasks": []
       },
       "payload": {
-        "requests": 10,
-        "transferred": 83858,
-        "js": 9760,
-        "css": 73307,
+        "requests": 11,
+        "transferred": 87009,
+        "js": 12869,
+        "css": 73349,
         "images": 791
       }
     },
@@ -1712,20 +1744,20 @@
       ],
       "nav": [
         {
-          "ttfb": 50.099999994039536,
-          "domContentLoaded": 486.40000000596046
+          "ttfb": 24,
+          "domContentLoaded": 212.7999999821186
         }
       ],
       "metrics": {
-        "lcp": null,
+        "lcp": 236,
         "cls": 0.023498594164848327,
         "longTasks": []
       },
       "payload": {
-        "requests": 10,
-        "transferred": 83858,
-        "js": 9760,
-        "css": 73307,
+        "requests": 11,
+        "transferred": 87009,
+        "js": 12869,
+        "css": 73349,
         "images": 791
       }
     },
@@ -1784,20 +1816,20 @@
       ],
       "nav": [
         {
-          "ttfb": 43.30000001192093,
-          "domContentLoaded": 552
+          "ttfb": 30,
+          "domContentLoaded": 259.09999999403954
         }
       ],
       "metrics": {
-        "lcp": 588,
+        "lcp": null,
         "cls": 0.015063201387723288,
         "longTasks": []
       },
       "payload": {
-        "requests": 10,
-        "transferred": 83858,
-        "js": 9760,
-        "css": 73307,
+        "requests": 11,
+        "transferred": 87009,
+        "js": 12869,
+        "css": 73349,
         "images": 791
       }
     },
@@ -1856,8 +1888,8 @@
       ],
       "nav": [
         {
-          "ttfb": 44.69999998807907,
-          "domContentLoaded": 377.59999999403954
+          "ttfb": 25.599999994039536,
+          "domContentLoaded": 195.90000000596046
         }
       ],
       "metrics": {
@@ -1866,43 +1898,11 @@
         "longTasks": []
       },
       "payload": {
-        "requests": 10,
-        "transferred": 83858,
-        "js": 9760,
-        "css": 73307,
+        "requests": 11,
+        "transferred": 87009,
+        "js": 12869,
+        "css": 73349,
         "images": 791
-      }
-    },
-    {
-      "path": "/culturetrace/",
-      "status": 200,
-      "title": "CultureTrace | Evidence-first experiment analysis",
-      "h1": [
-        "Findings and evidence"
-      ],
-      "canonical": "https://orrbiologicals.com/culturetrace/",
-      "schemas": [],
-      "nav": [
-        {
-          "ttfb": 65.90000000596046,
-          "domContentLoaded": 566.5
-        }
-      ],
-      "metrics": {
-        "lcp": 772,
-        "cls": 0.8847222222222222,
-        "longTasks": [
-          79,
-          97,
-          62
-        ]
-      },
-      "payload": {
-        "requests": 12,
-        "transferred": 334472,
-        "js": 256836,
-        "css": 76735,
-        "images": 901
       }
     },
     {
@@ -1960,22 +1960,24 @@
       ],
       "nav": [
         {
-          "ttfb": 36.099999994039536,
-          "domContentLoaded": 1039.0999999940395
+          "ttfb": 25.299999982118607,
+          "domContentLoaded": 1717.199999988079
         }
       ],
       "metrics": {
-        "lcp": 872,
+        "lcp": 1312,
         "cls": 0,
         "longTasks": [
-          180
+          144,
+          610,
+          52
         ]
       },
       "payload": {
-        "requests": 14,
-        "transferred": 457557,
-        "js": 40758,
-        "css": 112799,
+        "requests": 17,
+        "transferred": 1001356,
+        "js": 570106,
+        "css": 127250,
         "images": 304000
       }
     },
@@ -1998,23 +2000,22 @@
       ],
       "nav": [
         {
-          "ttfb": 37,
-          "domContentLoaded": 676.1000000238419
+          "ttfb": 25.099999994039536,
+          "domContentLoaded": 520.5
         }
       ],
       "metrics": {
-        "lcp": 824,
-        "cls": 0.002267439550823636,
+        "lcp": 568,
+        "cls": 0.003732410298453437,
         "longTasks": [
-          172,
-          66
+          50
         ]
       },
       "payload": {
-        "requests": 15,
-        "transferred": 123647,
-        "js": 6366,
-        "css": 65937,
+        "requests": 16,
+        "transferred": 126798,
+        "js": 9475,
+        "css": 65979,
         "images": 0
       }
     },
@@ -2029,8 +2030,8 @@
       "schemas": [],
       "nav": [
         {
-          "ttfb": 30,
-          "domContentLoaded": 507.7999999821186
+          "ttfb": 26.599999994039536,
+          "domContentLoaded": 235.2000000178814
         }
       ],
       "metrics": {
@@ -2039,10 +2040,10 @@
         "longTasks": []
       },
       "payload": {
-        "requests": 10,
-        "transferred": 83858,
-        "js": 9760,
-        "css": 73307,
+        "requests": 11,
+        "transferred": 87009,
+        "js": 12869,
+        "css": 73349,
         "images": 791
       }
     },
@@ -2058,19 +2059,19 @@
       "nav": [
         {
           "ttfb": 47.5,
-          "domContentLoaded": 382.60000002384186
+          "domContentLoaded": 323.19999998807907
         }
       ],
       "metrics": {
-        "lcp": 492,
+        "lcp": null,
         "cls": 0,
         "longTasks": []
       },
       "payload": {
-        "requests": 9,
-        "transferred": 61241,
-        "js": 6366,
-        "css": 54084,
+        "requests": 10,
+        "transferred": 64392,
+        "js": 9475,
+        "css": 54126,
         "images": 791
       }
     },
@@ -2118,8 +2119,8 @@
       ],
       "nav": [
         {
-          "ttfb": 51.29999998211861,
-          "domContentLoaded": 389.09999999403954
+          "ttfb": 38.30000001192093,
+          "domContentLoaded": 258.30000001192093
         }
       ],
       "metrics": {
@@ -2128,10 +2129,10 @@
         "longTasks": []
       },
       "payload": {
-        "requests": 10,
-        "transferred": 83858,
-        "js": 9760,
-        "css": 73307,
+        "requests": 11,
+        "transferred": 87009,
+        "js": 12869,
+        "css": 73349,
         "images": 791
       }
     },
@@ -2140,7 +2141,7 @@
       "status": 200,
       "title": "Orr Biologicals | Read the living signal",
       "h1": [
-        "Read the living signal."
+        "Making living systems legible."
       ],
       "canonical": "https://orrbiologicals.com/",
       "schemas": [
@@ -2190,21 +2191,23 @@
       ],
       "nav": [
         {
-          "ttfb": 37.30000001192093,
-          "domContentLoaded": 774.5999999940395
+          "ttfb": 28.099999994039536,
+          "domContentLoaded": 996
         }
       ],
       "metrics": {
-        "lcp": 896,
+        "lcp": 432,
         "cls": 0,
-        "longTasks": []
+        "longTasks": [
+          659
+        ]
       },
       "payload": {
-        "requests": 15,
-        "transferred": 640858,
-        "js": 32438,
-        "css": 70126,
-        "images": 538294
+        "requests": 13,
+        "transferred": 627224,
+        "js": 542904,
+        "css": 83529,
+        "images": 791
       }
     },
     {
@@ -2251,20 +2254,20 @@
       ],
       "nav": [
         {
-          "ttfb": 49,
-          "domContentLoaded": 422.30000001192093
+          "ttfb": 32.69999998807907,
+          "domContentLoaded": 260.90000000596046
         }
       ],
       "metrics": {
-        "lcp": null,
+        "lcp": 284,
         "cls": 0.017473313609759015,
         "longTasks": []
       },
       "payload": {
-        "requests": 10,
-        "transferred": 83858,
-        "js": 9760,
-        "css": 73307,
+        "requests": 11,
+        "transferred": 87009,
+        "js": 12869,
+        "css": 73349,
         "images": 791
       }
     },
@@ -2312,20 +2315,20 @@
       ],
       "nav": [
         {
-          "ttfb": 33.80000001192093,
-          "domContentLoaded": 298.69999998807907
+          "ttfb": 24,
+          "domContentLoaded": 211.19999998807907
         }
       ],
       "metrics": {
-        "lcp": 340,
+        "lcp": null,
         "cls": 0.017473313609759015,
         "longTasks": []
       },
       "payload": {
-        "requests": 10,
-        "transferred": 83858,
-        "js": 9760,
-        "css": 73307,
+        "requests": 11,
+        "transferred": 87009,
+        "js": 12869,
+        "css": 73349,
         "images": 791
       }
     },
@@ -2340,8 +2343,8 @@
       "schemas": [],
       "nav": [
         {
-          "ttfb": 26,
-          "domContentLoaded": 253.5
+          "ttfb": 23.299999982118607,
+          "domContentLoaded": 213
         }
       ],
       "metrics": {
@@ -2350,10 +2353,10 @@
         "longTasks": []
       },
       "payload": {
-        "requests": 10,
-        "transferred": 83858,
-        "js": 9760,
-        "css": 73307,
+        "requests": 11,
+        "transferred": 87009,
+        "js": 12869,
+        "css": 73349,
         "images": 791
       }
     },
@@ -2401,8 +2404,8 @@
       ],
       "nav": [
         {
-          "ttfb": 30.400000005960464,
-          "domContentLoaded": 359.60000002384186
+          "ttfb": 27.099999994039536,
+          "domContentLoaded": 212.19999998807907
         }
       ],
       "metrics": {
@@ -2411,10 +2414,10 @@
         "longTasks": []
       },
       "payload": {
-        "requests": 10,
-        "transferred": 83858,
-        "js": 9760,
-        "css": 73307,
+        "requests": 11,
+        "transferred": 87009,
+        "js": 12869,
+        "css": 73349,
         "images": 791
       }
     },
@@ -2429,8 +2432,8 @@
       "schemas": [],
       "nav": [
         {
-          "ttfb": 36.900000005960464,
-          "domContentLoaded": 272.80000001192093
+          "ttfb": 27.299999982118607,
+          "domContentLoaded": 207.59999999403954
         }
       ],
       "metrics": {
@@ -2439,10 +2442,10 @@
         "longTasks": []
       },
       "payload": {
-        "requests": 10,
-        "transferred": 83858,
-        "js": 9760,
-        "css": 73307,
+        "requests": 11,
+        "transferred": 87009,
+        "js": 12869,
+        "css": 73349,
         "images": 791
       }
     }
@@ -2499,9 +2502,9 @@
       "scrollWidth": 390
     }
   ],
-  "homepageFieldStation": {
-    "before": "One cell · one compartment",
-    "after": "Frames · same cell"
+  "homepageScenes": {
+    "volvox": "Procedural scientific visualization of fluorescent Volvox-inspired colonies drifting through a dark microscopic field",
+    "reactor": "Interactive procedural 3D visualization of a proposed photobioreactor with culture volume, tubing, light bars, and structural frame"
   },
   "simulation": {
     "pauseLabel": "RUN"

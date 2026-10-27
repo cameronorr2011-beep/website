@@ -10,7 +10,7 @@ class Preview(SimpleHTTPRequestHandler):
     def do_GET(self):
         parsed = urlsplit(self.path)
         path = parsed.path
-        if any(path.startswith('/' + prefix + '/') for prefix in ('sections', 'tools', 'docs', '.git')):
+        if any(path.startswith('/' + prefix + '/') for prefix in ('sections', 'tools', 'docs', 'apps', 'culturetrace', '.git')):
             self.send_error(403); return
         file = ROOT / path.lstrip('/')
         if not file.exists() and not path.endswith('/') and file.with_suffix('.html').is_file():

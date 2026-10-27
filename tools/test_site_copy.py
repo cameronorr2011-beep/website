@@ -31,14 +31,15 @@ class Page(HTMLParser):
 class SiteCopyTests(unittest.TestCase):
     def test_home_origin_and_status(self):
         text = (ROOT / 'index.html').read_text(encoding='utf-8')
-        self.assertIn('Read the <em>living</em> signal.', text)
+        self.assertIn('Making living systems <em>legible.</em>', text)
         self.assertIn('biology in motion', text)
-        self.assertIn('class="atlas-field"', text)
-        self.assertIn('homeCultureCanvas', text)
-        self.assertIn('Research concepts in development', text)
-        self.assertIn('no commercial deployment', text)
+        self.assertIn('class="cinema-reactor"', text)
+        self.assertIn('id="volvoxCanvas"', text)
+        self.assertIn('id="reactorCanvas"', text)
+        self.assertIn('research concepts in development', text)
+        self.assertIn('commercial deployment', text)
         self.assertNotIn('/papertrail/', text)
-        self.assertNotIn('/game/', text)
+        self.assertIn('/Simulation/', text)
         self.assertNotRegex(text, r'AP-0[1-7]|PreOrder|orrSubscribeForm|orrSuccess')
 
     def test_home_metadata_is_valid_and_not_an_offer(self):
@@ -66,10 +67,14 @@ class SiteCopyTests(unittest.TestCase):
 
     def test_images_and_simulations_are_retained(self):
         text = (ROOT / 'index.html').read_text(encoding='utf-8')
-        for value in ('assets/images/hero.jpg', 'assets/cyano/culture.jpg', 'assets/images/instrument-photo.jpg', 'id="systems"', 'id="products"', 'id="deploy"'):
+        for value in ('assets/cyano/culture.jpg', 'assets/cyano/chip.jpg', 'id="volvoxCanvas"', 'id="reactorCanvas"', 'id="systems"', 'id="products"', 'id="deploy"'):
             self.assertIn(value, text)
         self.assertIn('id="chipSim"', (ROOT / 'cyanoflow.html').read_text(encoding='utf-8'))
         self.assertFalse((ROOT / 'applications/index.html').exists())
+        simulation = (ROOT / 'Simulation/index.html').read_text(encoding='utf-8')
+        self.assertIn('Algal Digital Lab', simulation)
+        self.assertIn('data-sim-boot="pending"', simulation)
+        self.assertNotIn('/culturetrace/', simulation)
 
     def test_blog_pipeline_and_data_contract(self):
         workflow = (ROOT / '.github/workflows/focus-of-the-day.yml').read_text(encoding='utf-8')
