@@ -19,7 +19,8 @@
     "three": "0.180.0"
   },
   "devDependencies": {
-    "esbuild": "0.25.10"
+    "esbuild": "0.25.10",
+    "puppeteer-core": "25.16.0"
   },
   "engines": {
     "node": ">=24 <25"

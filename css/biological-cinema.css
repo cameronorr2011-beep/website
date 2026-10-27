@@ -59,5 +59,16 @@
 .biological-cinema .science-footer{background:#040b07;color:#adc6b0;border-color:rgba(182,230,165,.15)}.biological-cinema .science-footer a,.biological-cinema .science-footer h2{color:#edf7ee}.biological-cinema .footer-base{border-color:rgba(182,230,165,.15)}
 @media(max-width:900px){.cinema-hero-inner{grid-template-columns:1fr;gap:30px}.cinema-status{justify-self:start}.cinema-reactor-copy{top:16%;left:24px;transform:none}.cinema-reactor-note{right:24px;bottom:12%}.cinema-study-grid{grid-template-columns:1fr}.cinema-study h2{max-width:9ch}.cinema-system-grid,.cinema-archive-grid{grid-template-columns:1fr}.cinema-system:nth-child(2){margin-top:0}.cinema-section-head{grid-template-columns:1fr}.cinema-method-grid{grid-template-columns:1fr 1fr}.cinema-contact-grid{grid-template-columns:1fr}}
 .cinema-honeypot{position:absolute!important;left:-9999px!important;width:1px!important;height:1px!important;opacity:0!important}
+
+/* Reactor scroll choreography: stage copy crossfade + projected hotspots */
+.cinema-reactor-copy{opacity:0;visibility:hidden;transform:translateY(-50%) translateY(16px);transition:opacity 460ms ease,transform 460ms ease,visibility 0s linear 460ms;pointer-events:none}
+.cinema-reactor-copy.is-active{opacity:1;visibility:visible;transform:translateY(-50%);transition-delay:0s;pointer-events:auto}
+.cinema-hotspot{position:absolute;left:0;top:0;z-index:3;display:grid;gap:7px;justify-items:start;transform:translate(-9999px,-9999px);will-change:transform}
+.cinema-hotspot i{display:block;width:9px;height:9px;border-radius:50%;background:#cdf2b3;box-shadow:0 0 12px rgba(200,235,156,.85),0 0 2px rgba(200,235,156,1)}
+.cinema-hotspot span{color:#dff0dd;font:500 9px/1 var(--mono);letter-spacing:.09em;text-transform:uppercase;background:rgba(4,14,10,.72);border:1px solid rgba(200,235,156,.34);padding:5px 9px;border-radius:999px;backdrop-filter:blur(4px)}
+.cinema-hotspot.is-live i{animation:cinema-hotspot-pulse 2.8s ease-in-out infinite}
+@keyframes cinema-hotspot-pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.35)}}
+@media(prefers-reduced-motion:reduce){.cinema-hotspot.is-live i{animation:none}}
+@media(max-width:600px){.cinema-hotspot span{padding:4px 7px;font-size:8px}}
 @media(max-width:600px){.cinema-hero-inner,.cinema-wrap{width:calc(100% - 36px)}.cinema-title{font-size:clamp(3.8rem,18vw,6rem)}.cinema-caption{right:16px;bottom:17px;display:grid;gap:4px}.cinema-reactor{min-height:145vh}.cinema-reactor-copy{top:12%;left:18px;max-width:220px}.cinema-reactor-copy h2{font-size:3.2rem}.cinema-reactor-note{right:18px;bottom:11%;max-width:180px}.cinema-principles{grid-template-columns:1fr;margin-top:58px}.cinema-principles article,.cinema-principles article+article{padding:20px 0;border-right:0;border-bottom:1px solid rgba(182,230,165,.2)}.cinema-principles article:last-child{border-bottom:0}.cinema-method-grid{grid-template-columns:1fr}.cinema-system-body{padding:24px 20px 28px}.cinema-archive-list p{font-size:20px}}
 @media(prefers-reduced-motion:reduce){.cinema-system,.cinema-system-media img,.cinema-text-link,.cinema-button{transition:none}.cinema-reactor{min-height:auto}.cinema-reactor-stage{position:relative;height:72svh}.cinema-reactor-copy{top:12%;transform:none}.cinema-reactor-note{bottom:10%}}

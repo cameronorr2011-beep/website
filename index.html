@@ -30,13 +30,13 @@
 {"@type":"CreativeWork","@id":"https://orrbiologicals.com/#cyanoflow","name":"Cyanoflow research concept","description":"A proposed microfluidic and single-cell discovery system for isolating, imaging, and investigating microalgae and cellular variation. In development; no validated hardware performance is claimed.","creator":{"@id":"https://orrbiologicals.com/#org"},"url":"https://orrbiologicals.com/cyanoflow"},
 {"@type":"CreativeWork","@id":"https://orrbiologicals.com/#algaephyte","name":"Algaephyte research concept","description":"A proposed microalgae cultivation and biological monitoring system combining sensors, physics-informed growth models, camera checks, and independent actuator limits. In development; no validated performance or purchase availability is claimed.","creator":{"@id":"https://orrbiologicals.com/#org"},"url":"https://orrbiologicals.com/algaephyte/"}]}
 </script>
-<link rel="stylesheet" href="/css/global.css?v=20261026">
-<link rel="stylesheet" href="/css/header.css?v=20261026">
-<link rel="stylesheet" href="/css/orr-home.css?v=20261026">
-<link rel="stylesheet" href="/css/animations.css?v=20261026">
-<link rel="stylesheet" href="/css/site-redesign.css?v=20261026">
-<link rel="stylesheet" href="/css/home-premium.css?v=20261026">
-<link rel="stylesheet" href="/css/biological-cinema.css?v=20261026">
+<link rel="stylesheet" href="/css/global.css?v=20261027">
+<link rel="stylesheet" href="/css/header.css?v=20261027">
+<link rel="stylesheet" href="/css/orr-home.css?v=20261027">
+<link rel="stylesheet" href="/css/animations.css?v=20261027">
+<link rel="stylesheet" href="/css/site-redesign.css?v=20261027">
+<link rel="stylesheet" href="/css/home-premium.css?v=20261027">
+<link rel="stylesheet" href="/css/biological-cinema.css?v=20261027">
 </head>
 <body class="orr-home biological-cinema">
 <a class="skip" href="#main">Skip to content</a>
@@ -63,7 +63,16 @@
   </section>
 
   <section class="cinema-reactor" id="reactor-study" aria-labelledby="reactor-title">
-    <div class="cinema-reactor-stage"><canvas id="reactorCanvas" aria-label="Interactive procedural 3D visualization of a proposed photobioreactor with culture volume, tubing, light bars, and structural frame"></canvas><div class="cinema-reactor-copy"><p class="cinema-kicker">02 / CULTURE VESSEL</p><h2 id="reactor-title">A vessel you can inspect.</h2><p>Scroll through a proposed photobioreactor study. The scene is built in Three.js from procedural geometry; it illustrates a research direction, not a deployed instrument.</p></div><p class="cinema-reactor-note"><strong>Illustrative scene</strong>Glass, culture volume, optical bars, fluid path, and frame. No measured telemetry or validated performance is shown.</p></div>
+    <div class="cinema-reactor-stage">
+      <canvas id="reactorCanvas" aria-label="Interactive procedural 3D visualization of a proposed photobioreactor with glass column, culture volume, airlift draft tube, sampling ports, condenser, pump loop, LED panel, and frame"></canvas>
+      <span class="cinema-hotspot" data-hotspot="0,2.52,0"><i aria-hidden="true"></i><span>Lid ports and probes</span></span>
+      <span class="cinema-hotspot" data-hotspot="0,-0.45,0"><i aria-hidden="true"></i><span>Lit culture volume</span></span>
+      <span class="cinema-hotspot" data-hotspot="-2.05,-0.6,-0.5"><i aria-hidden="true"></i><span>Pump loop</span></span>
+      <div class="cinema-reactor-copy is-active" data-stage-copy><p class="cinema-kicker">02 / CULTURE VESSEL</p><h2 id="reactor-title">A vessel you can inspect.</h2><p>Scroll through a proposed photobioreactor study. The scene is procedurally modeled in Three.js; it illustrates a research direction, not a deployed instrument.</p></div>
+      <div class="cinema-reactor-copy" data-stage-copy><p class="cinema-kicker">02 / THE HEAD WORKS</p><h2>Sensed, not guessed.</h2><p>A port cluster on the lid accepts probe stems and sample lines. The elbow above it is a condenser path, not decoration.</p></div>
+      <div class="cinema-reactor-copy" data-stage-copy><p class="cinema-kicker">02 / THE CIRCUIT</p><h2>The culture circulates.</h2><p>An airlift draft tube bubbles medium upward while a pump loop feeds media in from a bottle and draws harvest out. Light comes from a panel behind the vessel.</p></div>
+      <p class="cinema-reactor-note"><strong>Illustrative scene</strong>Glass, culture volume, draft tube, ports, pump loop, LED panel. No measured telemetry or validated performance is shown.</p>
+    </div>
   </section>
 
   <section class="cinema-study" id="field-station" aria-labelledby="field-title"><span id="thesis" class="cinema-anchor-alias" aria-hidden="true"></span><div class="cinema-wrap"><div class="cinema-study-grid"><div><p class="cinema-kicker">03 / THE QUESTION</p><h2 id="field-title">See the signal before it becomes a claim.</h2></div><div class="cinema-study-copy"><p>Living systems are not dashboards. They are changing cultures, individual cells, imperfect sensors, and observations that need context.</p><p><strong>Orr Biologicals works at the boundary between biology in motion and the people trying to understand it.</strong> The projects below are research concepts in development. Their visualizations are synthetic and their claims stay proportional to the evidence available.</p></div></div><div class="cinema-principles" aria-label="Research principles"><article><span>01</span><h3>Observe</h3><p>Turn cells, cultures, and changing environments into records that can be inspected.</p></article><article><span>02</span><h3>Model</h3><p>Use biological constraints and counterfactuals instead of confident black-box guesses.</p></article><article><span>03</span><h3>Verify</h3><p>Separate an interesting signal from a validated result before it becomes a decision.</p></article></div></div></section>
@@ -76,14 +85,14 @@
 
   <section class="cinema-contact" id="deploy" aria-labelledby="contact-title"><div class="cinema-wrap cinema-contact-grid"><div><p class="cinema-kicker">07 / RESEARCH CORRESPONDENCE</p><h2 id="contact-title">Have a biological question?</h2><p>Tell us what you are trying to observe, model, or validate. This form opens an email draft; nothing is sent until you choose to send it.</p></div><form class="cinema-form" id="deployForm"><label for="fName">Name / organization<input id="fName" type="text" placeholder="Name, lab, or organization"></label><label for="fPlace">Location<input id="fPlace" type="text" placeholder="City, country"></label><label for="fGrow">Research or cultivation objective<textarea id="fGrow" placeholder="What are you trying to understand?"></textarea></label><input id="fHp" type="text" tabindex="-1" autocomplete="off" aria-hidden="true" class="cinema-honeypot"><button class="cinema-button" type="submit">Open an email draft <span aria-hidden="true">↗</span></button><p class="cinema-form-status" id="formStatus" role="status" aria-live="polite"></p></form></div></section>
 </main>
-<script defer src="/js/home-experience.js?v=20261026"></script><script defer src="/js/biological-cinema.js?v=20261026"></script>
+<script defer src="/js/home-experience.js?v=20261027"></script><script defer src="/js/biological-cinema.js?v=20261027"></script>
 <footer class="science-footer"><div class="wrap footer-layout">
 <div><a class="footer-brand" href="/">Orr Biologicals</a><p>Where biotechnology meets AI.<br>Tools for observing, modeling, and investigating living systems.</p><small>Research concepts and computational tools in development.<br>No validated hardware performance or commercial deployment claimed.</small></div>
 <nav aria-label="Footer platforms"><h2>Research Portfolio</h2><a href="/algaephyte/">Algaephyte / Cultivation AI</a><a href="/cyanoflow">Cyanoflow / Single-Cell Discovery</a><a href="/Simulation/">Digital Lab / Synthetic Models</a><a href="/game/">Cyanoflow Field Lab / Synthetic Discovery</a><a href="/algae-growth/">Algae Growth / Field Guide</a><a href="/demo/">Expedition Demo</a><a href="/downloads/">App Downloads</a></nav>
 <nav aria-label="Footer resources"><h2>Knowledge &amp; Methods</h2><a href="/research/">Research Methodology</a><a href="/blog/">Research Journal</a><a href="/algae-biotechnology/">Algae Biotechnology</a><a href="/microalgae-cultivation/">Microalgae Cultivation</a><a href="/photobioreactors/">Photobioreactors</a><a href="/glossary">Scientific Glossary</a><a href="/#deploy">Project correspondence</a></nav>
 <div><h2>Correspondence</h2><a href="mailto:service@orrbiologicals.com">service@orrbiologicals.com</a><p><a href="https://www.youtube.com/@OrrBiologicals" target="_blank" rel="noreferrer">Research updates on YouTube ↗</a></p><small>Open research notes / MIT-licensed site code</small></div>
 </div><div class="wrap footer-base"><span>© 2026 Orr Biologicals / Biology × Artificial Intelligence</span><nav aria-label="Legal"><a href="/privacy">Privacy</a><a href="/terms">Terms</a><a href="/disclaimer">Scientific disclaimer</a><a href="/LICENSE" download>MIT License</a></nav></div></footer>
-<script defer src="/js/animations.js?v=20261026"></script>
-<script defer src="/js/navigation.js?v=20261026"></script>
-<script defer src="/js/cell-cursor.js?v=20261026"></script>
+<script defer src="/js/animations.js?v=20261027"></script>
+<script defer src="/js/navigation.js?v=20261027"></script>
+<script defer src="/js/cell-cursor.js?v=20261027"></script>
 </body></html>
