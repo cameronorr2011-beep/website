@@ -1,0 +1,53 @@
+{
+  "date": "2026-10-27",
+  "model": "openai/gpt-oss-120b",
+  "generated_at": "2026-10-27T23:23:44Z",
+  "picks": [
+    {
+      "pmid": "42933698",
+      "title": "Start&#x2011;up and functional performance assessment of electron-shuttling-driven microalgal-anammox process.",
+      "journal": "Bioresource technology",
+      "year": "2026",
+      "pub_date": "2026-10-26",
+      "url": "https://doi.org/10.1016/j.biortech.2026.136132",
+      "topic": "Biofuels",
+      "hook": "Electron-shuttling kickstarts a low‑energy microalgal‑anammox process for nitrogen removal.",
+      "article": "A recent study set out to see whether a partnership between a microalga and anammox bacteria could speed up the start‑up of the anammox process, which is prized for its low energy use and high nitrogen removal but usually takes a long time to become active.\n\nThe researchers built a symbiotic system using the microalga Chlorella vulgaris together with anammox bacteria, and they tested its performance in a laboratory reactor, measuring how quickly nitrogen and phosphorus were removed.\n\nThey found that the microalgal‑anammox system shortened the start‑up period and achieved removal of nitrogen and phosphorus, although the abstract does not give exact figures.\n\nThis is interesting because faster start‑up of anammox could make low‑energy nitrogen treatment more practical for real‑world water‑cleaning applications.",
+      "why": "Accelerating anammox start‑up with algae could lower costs and energy for wastewater nitrogen removal."
+    },
+    {
+      "pmid": "42923926",
+      "title": "Graphene family nanomaterials - atrazine - extracellular polymeric substances: a triangular interplay during short- and long-term exposure of marine microalgae <i>Chlorella</i> sp.",
+      "journal": "RSC advances",
+      "year": "2026",
+      "pub_date": "2026-10-22",
+      "url": "https://doi.org/10.1039/d6ra08448f",
+      "topic": "Pollution",
+      "hook": "Graphene nanomaterials alter Chlorella EPS, reshaping toxin dynamics in marine microalgae.",
+      "article": "A recent study set out to see how tiny graphene‑based materials and a common herbicide, atrazine, affect a marine microalga called Chlorella sp., both on their own and together. \n\nThe researchers grew the algae in laboratory cultures and exposed them for a short term of 72 hours and a longer term (duration not specified) to graphene, graphene oxide, reduced graphene oxide, and atrazine, measuring toxicity and changes in the algae’s extracellular polymeric substances – the sticky compounds algae release to protect themselves. \n\nThey found that the toxicity of the graphene family nanomaterials varied with type and that combining them with atrazine altered the impact on the algae, indicating a complex three‑way interaction between the nanomaterials, the pollutant, and the algae’s protective substances. \n\nUnderstanding these interactions is important because it helps predict how emerging nanomaterials might influence marine primary producers and the health of aquatic ecosystems.",
+      "why": "Insights into how nanomaterials and pollutants jointly affect algae can guide safer use of nanotech in marine environments."
+    },
+    {
+      "pmid": "42914797",
+      "title": "Interaction between the oxidative pentose phosphate pathway and chlororespiration sustains high-rate algal exoelectrogenesis.",
+      "journal": "Plant physiology and biochemistry : PPB",
+      "year": "2026",
+      "pub_date": "2026-10-20",
+      "url": "https://doi.org/10.1016/j.plaphy.2026.111876",
+      "topic": "Bioenergy",
+      "hook": "Linking pentose‑phosphate flux to chlororespiration boosts algal exoelectrogenic power output."
+    },
+    {
+      "pmid": "42912003",
+      "title": "Seasonal variation of cyanobacteria blooms and microcystin concentrations in an Amazonian river system.",
+      "journal": "Anais da Academia Brasileira de Ciencias",
+      "year": "2026",
+      "pub_date": "2026-10-19",
+      "url": "https://doi.org/10.1590/0001-3765202620260025",
+      "topic": "Blooms",
+      "hook": "Seasonal Amazon river data reveal spikes in cyanobacterial blooms and microcystin levels.",
+      "article": "A recent study set out to track how cyanobacterial blooms and the toxins they produce, called microcystins, change over the year in an Amazonian river system. Researchers collected water samples from the Tapajós River at different times of the year and measured the concentration of microcystins using standard chemical analysis techniques.\n\nThe analysis showed that microcystin levels varied seasonally, reflecting changes in nutrient availability and water temperature that drive bloom formation.\n\nUnderstanding these seasonal patterns is valuable because microcystins are harmful to both ecosystems and human health, and knowing when concentrations peak can help manage water quality and safety.",
+      "why": "Seasonal insight helps predict toxin spikes, protecting water supplies and ecosystem health."
+    }
+  ]
+}
