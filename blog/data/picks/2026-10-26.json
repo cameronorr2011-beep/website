@@ -1,0 +1,55 @@
+{
+  "date": "2026-10-26",
+  "model": "openai/gpt-oss-120b",
+  "generated_at": "2026-10-26T23:29:59Z",
+  "picks": [
+    {
+      "pmid": "42892548",
+      "title": "From oleaginous microalga to marine chassis: synthetic biology and process-aware biomanufacturing in Nannochloropsis.",
+      "journal": "Biotechnology advances",
+      "year": "2026",
+      "pub_date": "2026-10-17",
+      "url": "https://doi.org/10.1016/j.biotechadv.2026.109079",
+      "topic": "Engineering",
+      "hook": "Shows how Nannochloropsis can be re‑engineered as a marine chassis for sustainable biomanufacturing.",
+      "article": "A recent study set out to turn the oil‑rich microalga Nannochloropsis, traditionally valued for its EPA‑rich lipids, into a versatile platform for marine phototrophic biomanufacturing.\n\nThe researchers combined a broad suite of genetic tools—including genome‑wide resources, efficient nuclear transformation, homologous recombination, CRISPR/Cas editing, marker recycling, defined integration sites, and modular multigene assembly—to re‑engineer the organism.\n\nUsing these capabilities, they altered carbon allocation pathways in Nannochloropsis, demonstrating the chassis can be redirected toward new biosynthetic functions.\n\nThis work shows how a well‑studied algal species can be repurposed as a flexible, marine‑compatible production host, opening doors for sustainable bioprocesses.",
+      "why": "It illustrates how algae can be engineered to make valuable compounds, supporting greener marine biotech."
+    },
+    {
+      "pmid": "42932018",
+      "title": "Engineering symbiotic networks in microalgae-bacteria consortia for sustainable biohydrogen production: mechanisms, regulation, and perspectives.",
+      "journal": "World journal of microbiology &amp; biotechnology",
+      "year": "2026",
+      "pub_date": "2026-10-26",
+      "url": "https://doi.org/10.1007/s11274-026-05365-3",
+      "topic": "Biohydrogen",
+      "hook": "Details engineered microalgae‑bacteria consortia that boost hydrogen production beyond pure cultures.",
+      "article": "A recent study set out to understand how mixing microalgae with bacteria can boost the production of biohydrogen, a clean fuel. The researchers focused on the symbiotic relationships that form when the two types of microorganisms are grown together.\n\nThey examined a co‑culture of the alga Chlamydomonas reinhardtii and the bacterium Microbacterium forti, looking at how the partnership affects hydrogen output. The work was a review of existing quantitative data rather than a new experiment, summarising the shift from single‑species (mono‑culture) growth to mixed consortia.\n\nThe review highlights that this particular algal‑bacterial pairing can generate 11.27 g L⁻¹ of hydrogen, indicating a substantial increase over axenic (pure) algal cultures.\n\nUnderstanding these engineered symbiotic networks could help develop more efficient, sustainable biohydrogen production processes.",
+      "why": "Engineered algae‑bacteria partnerships may make biohydrogen a more viable renewable energy source."
+    },
+    {
+      "pmid": "42924962",
+      "title": "Hydroxypheophytin a Stereoisomers as Principal Bioactive Compounds from Spirulina for the Reduction of Lipids and Appetite.",
+      "journal": "Journal of natural products",
+      "year": "2026",
+      "pub_date": "",
+      "url": "https://doi.org/10.1021/acs.jnatprod.6c00721",
+      "topic": "Health",
+      "hook": "Identifies Spirulina hydroxypheophytin stereoisomers that curb appetite and lower blood lipids.",
+      "article": "A recent study set out to pinpoint the specific molecules in Spirulina that might help lower body fat and curb hunger. \n\nThe researchers grew the cyanobacterium Limnospira platensis, extracted its chemicals, and then used a bioassay‑guided approach – testing each fraction on zebrafish larvae – to home in on the active ingredients. \n\nThe work identified the stereoisomers of 132‑hydroxypheophytin a as the principal compounds responsible for the observed lipid‑reducing activity. \n\nThese findings are interesting because they provide concrete chemical leads that could be developed into natural weight‑management aids.",
+      "why": "Identifying Spirulina’s active lipids opens paths for algae‑based supplements that may help control weight."
+    },
+    {
+      "pmid": "42866663",
+      "title": "Contrasting fate and GHG emissions of algal vs. manure DOM under light and microbes in lakes.",
+      "journal": "iScience",
+      "year": "2026",
+      "pub_date": "2026-09-22",
+      "url": "https://doi.org/10.1016/j.isci.2026.117674",
+      "topic": "Climate",
+      "hook": "Compares greenhouse‑gas footprints of algal versus manure dissolved organic matter under lake conditions.",
+      "article": "A recent study set out to compare how dissolved organic matter (DOM) from algae and from livestock manure behaves in lake water when exposed to sunlight and microbes. The researchers used small-scale lake water experiments (microcosms) to track changes in the two DOM types under controlled light and microbial conditions.\n\nThey found that exposure to light reduced the availability of algal-derived DOM by 4.8%, mainly because it was broken down by competing substances and inhibited by reactive oxygen species, especially singlet oxygen. In contrast, light increased the availability of manure-derived DOM by 5.4%.\n\nThese contrasting responses show that sunlight can diminish the ecological role of algal organic inputs while enhancing that of manure inputs in lakes.\n\nUnderstanding these dynamics helps predict how nutrient sources influence lake ecosystems and greenhouse gas emissions.",
+      "why": "It reveals how light differently transforms algal and manure waste, informing lake management and carbon budgeting."
+    }
+  ]
+}
