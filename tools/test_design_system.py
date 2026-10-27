@@ -52,7 +52,7 @@ class DesignSystemTests(unittest.TestCase):
         self.assertIn('/css/biological-cinema.css',text)
         self.assertNotIn('/papertrail/',text)
         self.assertNotIn('/culturetrace/',text)
-        self.assertIn('/Simulation/',text)
+        self.assertNotIn('Digital Lab',text)
         self.assertIn('role="status" aria-live="polite"',text)
 
     def test_algaephyte_workflow_is_explicit(self):

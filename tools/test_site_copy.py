@@ -39,7 +39,7 @@ class SiteCopyTests(unittest.TestCase):
         self.assertIn('research concepts in development', text)
         self.assertIn('commercial deployment', text)
         self.assertNotIn('/papertrail/', text)
-        self.assertIn('/Simulation/', text)
+        self.assertNotIn('Digital Lab', text)
         self.assertNotRegex(text, r'AP-0[1-7]|PreOrder|orrSubscribeForm|orrSuccess')
 
     def test_home_metadata_is_valid_and_not_an_offer(self):

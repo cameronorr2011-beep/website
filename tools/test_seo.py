@@ -142,7 +142,7 @@ class SEOTests(unittest.TestCase):
         self.assertFalse((ROOT / 'applications/index.html').exists())
 
     def test_header_navigation_is_consistent(self):
-        expected = ('/research/', '/algaephyte/', '/cyanoflow', '/blog/', '/Simulation/', '/#deploy')
+        expected = ('/research/', '/algaephyte/', '/cyanoflow', '/blog/', '/#deploy')
         for path in pages():
             if path.relative_to(ROOT).as_posix().startswith('game/'):
                 continue
@@ -153,7 +153,7 @@ class SEOTests(unittest.TestCase):
             with self.subTest(page=route(path)):
                 for href in expected:
                     self.assertIn('href="' + href + '"', header)
-                self.assertIn('href="/Simulation/"', header)
+                self.assertNotIn('href="/Simulation/"', header)
                 self.assertNotIn('href="/culturetrace/"', header)
                 self.assertNotIn('href="/papertrail/"', header)
                 self.assertNotIn('href="/applications/', header)
@@ -161,7 +161,7 @@ class SEOTests(unittest.TestCase):
                 self.assertNotIn('Pilot access', header)
                 self.assertIn('>Contact</a>', header)
         home = (ROOT / 'index.html').read_text(encoding='utf-8')
-        for href in ('/blog/', '/Simulation/', '/algaephyte/', '/cyanoflow'):
+        for href in ('/blog/', '/algaephyte/', '/cyanoflow'):
             self.assertIn('href="' + href + '"', home)
         self.assertNotIn('/papertrail/', home)
 

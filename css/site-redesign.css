@@ -470,3 +470,15 @@ body.art-body .footer-base a:hover {
     opacity: .18;
   }
 }
+
+/* ---------- Cinema grade: editorial refinement (2026-10) ---------- */
+body.art-body .art-shell{padding-top:clamp(56px,8vw,110px)}
+body.art-body .art-cat{border-radius:999px}
+body.art-body h1{margin-bottom:26px}
+body.art-body .prose{border-radius:22px;box-shadow:0 46px 130px rgba(0,0,0,.3),inset 0 2px 0 rgba(255,255,255,.04)}
+body.art-body .prose p{line-height:1.85}
+[data-active]{border-radius:9px}
+body.art-body .rot-card{border-radius:14px;overflow:hidden;transition:transform 280ms var(--ease),box-shadow 280ms var(--ease)}
+body.art-body .rot-card:hover{transform:translateY(-4px);box-shadow:0 26px 60px -24px rgba(0,0,0,.55)}
+body.art-body .art-foot a{border-radius:999px}
+body.art-body .science-footer{padding:82px 0 34px}

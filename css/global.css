@@ -76,3 +76,12 @@ body:has(.sim-app) .sim-app{background:#06100c}
 body:has(.sim-app) .sim-sidebar{top:78px;height:calc(100vh - 78px)}
 body:has(.sim-app) .sim-main{background:#06100c}
 body:has(.sim-app) .sim-view{color:#eaf6ec}
+
+/* ---------- Cinema grade: shared refinement (2026-10) ---------- */
+/* Wider stage, taller air, slower rhythm: the monograph breathes. */
+.section,.orr-section{padding:clamp(96px,10.5vw,152px) 0}
+.h-display{font-size:clamp(2.1rem,4vw,3.4rem);letter-spacing:-.046em}
+body{font-size:17px}
+::selection{background:rgba(200,235,156,.92);color:#06100c}
+.biological-cinema,body.art-body{scrollbar-color:rgba(143,207,143,.34) #050d09}
+:focus-visible{outline-offset:4px;outline-color:#c8eb9c}
