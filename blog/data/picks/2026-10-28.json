@@ -1,0 +1,55 @@
+{
+  "date": "2026-10-28",
+  "model": "openai/gpt-oss-120b",
+  "generated_at": "2026-10-28T23:45:22Z",
+  "picks": [
+    {
+      "pmid": "42898701",
+      "title": "Microalgal Synthetic Biotechnology: From Genetic Models to Deployable Photosynthetic Chassis.",
+      "journal": "Research (Washington, D.C.)",
+      "year": "2026",
+      "pub_date": "2026-10-19",
+      "url": "https://doi.org/10.34133/research.1449",
+      "topic": "Synthetic Biotech",
+      "hook": "Shows how engineered microalgae can become versatile, deployable photosynthetic production platforms.",
+      "article": "A recent study set out to explore how microalgae can be turned into reliable, reusable platforms for making biochemicals and supporting environmental uses. The researchers examined the difficulty of engineering microalgal species that have evolved very differently and whose photosynthetic machinery is compartmentalized in ways that depend heavily on organelle organization.\n\nThey reviewed the current state of synthetic biotechnology tools applied to microalgae, focusing on how genetic models can be translated into practical, deployable photosynthetic chassis. The work highlights the need for predictable control over these cellular compartments to achieve consistent engineering outcomes.\n\nThe study found that the evolutionary diversity and compartmentalized nature of microalgal photosynthesis present major challenges for predictable engineering, emphasizing that organelle organization strongly influences behavior.\n\nUnderstanding these constraints is important for advancing algae‑based production systems and other biotechnological applications.",
+      "why": "Clarifying the engineering hurdles helps guide the development of robust algae platforms for sustainable biotech."
+    },
+    {
+      "pmid": "42918786",
+      "title": "Light-powered photosynthetic living actuator.",
+      "journal": "Nature communications",
+      "year": "2026",
+      "pub_date": "2026-10-22",
+      "url": "https://doi.org/10.1038/s41467-026-78653-z",
+      "topic": "Living Actuator",
+      "hook": "Describes a light‑driven, deformable bio‑hybrid that can act as a programmable soft robot.",
+      "article": "A recent study set out to create a soft, living actuator that moves when exposed to light, using a photosynthetic micro‑alga as the power source. The researchers combined the green micro‑alga Chlamydomonas reinhardtii with a polymer that changes its shape in response to pH shifts, forming a light‑driven composite material.\n\nThey built the actuator by embedding the algae within a pH‑responsive polymer made from poly(3-(acrylamido)phenylboronic acid‑acrylamide). When the algae perform photosynthesis under illumination, they alter the surrounding pH, causing the polymer to swell or contract and thus produce motion.\n\nThe resulting device demonstrated that light can directly power a soft actuator through the biological activity of the algae, without any external electrical input.\n\nThis approach shows promise for designing self‑powered, environmentally responsive soft robotics and bio‑integrated devices.",
+      "why": "It shows how algae can be harnessed to power soft, light‑responsive machines for sustainable robotics."
+    },
+    {
+      "pmid": "42913809",
+      "title": "High light alters biomacromolecule composition and enhances exopolysaccharide production in Porphyridium aerugineum.",
+      "journal": "Bioresource technology",
+      "year": "2026",
+      "pub_date": "2026-10-22",
+      "url": "https://doi.org/10.1016/j.biortech.2026.136112",
+      "topic": "Biofuel EPS",
+      "hook": "High‑light exposure boosts exopolysaccharide output in Porphyridium, a promising bio‑resource.",
+      "article": "A recent study examined how exposing the red microalga Porphyridium aerugineum to high light levels changes its internal makeup and boosts the production of sulfated exopolysaccharides, which are valuable biopolymers.\n\nThe researchers grew the algae under high‑light conditions and monitored them over time using physiological measurements, ultrastructural imaging (microscopy that reveals cell structures), and multi‑omics profiling, which looks at genes, proteins and metabolites together.\n\nThey found that high light markedly altered the composition of the algae’s biomacromolecules and led to a significant increase in exopolysaccharide output.\n\nThese results suggest that controlling light intensity could be a practical way to enhance the yield of commercially important polysaccharides from microalgae.",
+      "why": "Optimizing light exposure may help scale up algae‑derived biopolymers for sustainable industrial use."
+    },
+    {
+      "pmid": "42945839",
+      "title": "Evaluation of soybean meal bioactive peptides and Spirulina powder as antibiotic alternatives on growth performance, physiological responses, and intestinal gene expression in broilers.",
+      "journal": "Poultry science",
+      "year": "2026",
+      "pub_date": "2026-10-21",
+      "url": "https://doi.org/10.1016/j.psj.2026.108020",
+      "topic": "Spirulina Feed",
+      "hook": "Spirulina powder rivals antibiotics, improving growth and gut health in broiler chickens.",
+      "article": "A recent study set out to see whether soybean‑derived bioactive peptides and Spirulina powder could replace antibiotics in broiler chicken diets, looking at growth, gut health and related gene activity.\n\nThe researchers raised 250 one‑day‑old Ross 308 male and female chicks in a completely randomized design, assigning them to five dietary treatments with five replicates of ten birds each. They measured growth performance, amino acid digestibility, antioxidant status and intestinal gene expression.\n\nThe trial showed that the tested ingredients affected the measured parameters, with specific changes reported for growth and gut‑related gene expression.\n\nThese findings are interesting because they suggest plant‑based and algal products might serve as natural alternatives to antibiotics in poultry production.",
+      "why": "If effective, such alternatives could reduce antibiotic use in farming, supporting healthier food systems."
+    }
+  ]
+}
