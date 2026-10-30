@@ -1,0 +1,55 @@
+{
+  "date": "2026-10-30",
+  "model": "openai/gpt-oss-120b",
+  "generated_at": "2026-10-30T23:26:02Z",
+  "picks": [
+    {
+      "pmid": "42949860",
+      "title": "Extraction of unsaturated fatty acids from <i>Aurantiochytrium</i> sp. using amino acid-based deep eutectic solvents.",
+      "journal": "Natural product research",
+      "year": "2026",
+      "pub_date": "2026-10-28",
+      "url": "https://doi.org/10.1080/14786419.2026.2749081",
+      "topic": "Biofuels Method",
+      "hook": "Amino‑acid deep eutectic solvents pull out high‑value unsaturated fats from Aurantiochytrium.",
+      "article": "A recent study set out to see whether a specially designed liquid made from amino acids could pull valuable unsaturated fatty acids out of the microalga Aurantiochytrium sp.\n\nThe researchers mixed the algae with an amino‑acid‑based deep eutectic solvent, a type of green solvent that forms a liquid at room temperature, and then measured how much of the target fats were recovered.\n\nThey reported that the method succeeded in extracting unsaturated fatty acids, including docosapentaenoic acid and docosahexaenoic acid, from the microalgal biomass.\n\nFinding a mild, efficient way to isolate these health‑promoting oils is useful because they are in demand for biofuels, nutritional supplements, and cosmetics.",
+      "why": "Efficient extraction of DHA and DPA from algae could lower costs for sustainable fuels and health supplements."
+    },
+    {
+      "pmid": "42906209",
+      "title": "Polystyrene nanoplastics alter cadmium toxicity outcomes in Chlamydomonas reinhardtii: Physiological responses and multi-omics insights.",
+      "journal": "Aquatic toxicology (Amsterdam, Netherlands)",
+      "year": "2026",
+      "pub_date": "2026-10-21",
+      "url": "https://doi.org/10.1016/j.aquatox.2026.108052",
+      "topic": "Ecology Toxicology",
+      "hook": "Polystyrene nanoplastics reshape cadmium toxicity pathways in the green alga Chlamydomonas.",
+      "article": "A recent study set out to see how tiny polystyrene plastic particles influence the toxicity of the heavy metal cadmium in a common freshwater microalga. \n\nThe researchers grew the alga Chlamydomonas reinhardtii in laboratory cultures and exposed it to cadmium together with polystyrene nanoplastics of two different sizes, 500 nm and 202 nm, while measuring physiological, biochemical, microscopic and molecular responses. \n\nThey found that the presence of nanoplastics changed the way cadmium affected the algae, altering physiological and biochemical markers and triggering distinct changes at the ultrastructural and gene‑expression levels. \n\nThese results suggest that plastic particles can modify heavy‑metal toxicity in aquatic microbes, an insight that could help improve risk assessments for water quality and inform strategies for using algae in bioremediation.",
+      "why": "Understanding plastic‑metal interactions helps predict environmental risks and could enhance algae‑based cleanup of polluted waters."
+    },
+    {
+      "pmid": "42924932",
+      "title": "Paralytic shellfish toxin production in Alexandrium minutum (Dinophyceae): Insights from omics integration using toxigenic and nontoxigenic recombinant progeny.",
+      "journal": "Journal of phycology",
+      "year": "2026",
+      "pub_date": "2026-10-23",
+      "url": "https://doi.org/10.1111/jpy.70244",
+      "topic": "Blooms Toxins",
+      "hook": "Omics reveal how Alexandrium minutum switches on paralytic shellfish toxin production.",
+      "article": "A recent study set out to uncover how the harmful algae Alexandrium minutum makes paralytic shellfish toxins, by comparing toxin‑producing and non‑producing offspring. The researchers grew recombinant progeny of the dinoflagellate, then applied integrated omics—simultaneous analysis of genes (genomics), RNA messages (transcriptomics), and proteins (proteomics)—to see which molecular pathways were active.\n\nBy contrasting the toxigenic and nontoxigenic lines, they identified components of the toxin‑making pathway that differ between the two groups, providing new insight into the dinoflagellate version of the pathway that had previously been studied mainly in cyanobacteria.\n\nThe work shows that specific genes and proteins are linked to toxin production in Alexandrium minutum, highlighting differences from the well‑characterized cyanobacterial pathway.\n\nUnderstanding these molecular details could help develop strategies to monitor or mitigate harmful algal blooms that threaten seafood safety.",
+      "why": "Knowing the exact genes behind toxin production may enable better detection and control of harmful algae in marine environments."
+    },
+    {
+      "pmid": "42932018",
+      "title": "Engineering symbiotic networks in microalgae-bacteria consortia for sustainable biohydrogen production: mechanisms, regulation, and perspectives.",
+      "journal": "World journal of microbiology &amp; biotechnology",
+      "year": "2026",
+      "pub_date": "2026-10-26",
+      "url": "https://doi.org/10.1007/s11274-026-05365-3",
+      "topic": "Engineering Biohydrogen",
+      "hook": "Designing microalgae‑bacteria consortia boosts sustainable hydrogen generation.",
+      "article": "A recent study set out to understand how pairing microalgae with bacteria can boost the production of hydrogen gas, a clean energy carrier. The researchers focused on the mechanisms that make a mixed community work better than algae alone.\n\nThey examined a co‑culture of the microalga Chlamydomonas reinhardtii and the bacterium Microbacterium forti, measuring hydrogen output under laboratory conditions.\n\nThe consortium was found to produce 11.27 g L⁻¹ of hydrogen, indicating a substantial increase compared with axenic (single‑species) microalgal cultures.\n\nThese results suggest that engineering symbiotic networks between algae and bacteria could be a promising route to more efficient, sustainable biohydrogen production.",
+      "why": "Harnessing algae‑bacteria partnerships may make biohydrogen a viable clean‑energy source."
+    }
+  ]
+}
