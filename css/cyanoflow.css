@@ -380,6 +380,48 @@ body.cyano-page .cyano{background:#05090e;color:#e7f6f1}.cyano-page .hero{backgr
 .cyanoflow-3d-stage{position:relative;min-height:230px;margin:0 -1px 12px;border:1px solid rgba(114,217,207,.22);border-radius:12px;overflow:hidden;background:radial-gradient(circle at 50% 42%,rgba(32,126,119,.38),transparent 56%),#061017}.cyanoflow-3d-stage canvas{display:block;width:100%;height:230px;touch-action:none;cursor:grab}.cyanoflow-3d-stage canvas:active{cursor:grabbing}.cyanoflow-3d-stage span{position:absolute;left:14px;bottom:10px;color:#9fc8c4;font:9px var(--mono);letter-spacing:.06em;text-transform:uppercase}
 @media(max-width:640px){.cyanoflow-3d-stage,.cyanoflow-3d-stage canvas{min-height:190px;height:190px}}
 
+/* Botanical product exhibit: same material palette as the public site. */
+body.cyano-page{--void:#10251f;--void-2:#172f27;--paper:#1c352c;--ink:#f1efdf;--ink-soft:#c0ccbc;--mute:#9eafa0;--rule:rgba(205,219,192,.2);--teal:#a9c9bb;--cyan:#a9c9bb;--lime:#c8d9ab;--glass:#172f27;--ink2:var(--ink-soft);--muted:var(--mute);--line:var(--rule);--line2:var(--rule);background:var(--void);color:var(--ink)}
+body.cyano-page .cyano{background:transparent;color:var(--ink)}
+body.cyano-page .cyano .hero{background:transparent;padding:80px 0 100px;min-height:calc(100svh - 82px)}
+.cyano-page .hero .bgimg,.cyano-page .hero .bgfade,.cyano-page .hero .bggrid,.cyano-page .hero .blob1,.cyano-page .hero .blob2{display:none}
+.cyano-page .hero-grid{grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:5vw;align-items:center}
+.cyano-page .hero .eyebrow{border:0;border-radius:0;background:none;padding:0;color:var(--leaf);font:400 10px/1.7 var(--mono);letter-spacing:.1em}
+.cyano-page .hero h1{color:var(--ivory);font:400 clamp(3.3rem,5.6vw,6rem)/1.02 var(--serif);letter-spacing:-.045em;max-width:12ch;margin:24px 0}
+.cyano-page .hero h1 em{color:var(--leaf);font-weight:400}
+.cyano-page .hero .lead{color:var(--ink-soft);font:400 17px/1.8 var(--sans);max-width:46ch}
+.cyano-page .hero .sub{color:var(--mute);font:400 12px/1.8 var(--sans);max-width:50ch}
+.cyano-page .hero .sub strong{font-weight:400}
+.cyano-page .stats3{border-color:var(--rule);gap:12px;margin-top:30px}
+.cyano-page .stats3 dt{color:var(--mute);font-size:9px;letter-spacing:.07em}
+.cyano-page .stats3 dd{color:var(--ink-soft);margin-left:0;font-size:12px}
+.cyano-page .btn-cyano{background:var(--leaf);color:var(--void);box-shadow:none;border-radius:999px;font-size:12px;padding:15px 22px}
+.cyano-page .btn-ghost2{color:var(--ink);background:transparent;border-color:var(--rule);border-radius:999px;font-size:12px;padding:15px 22px}
+.cyano-page .glass{background:var(--void-2);border-color:var(--rule);border-radius:8px;box-shadow:none}
+.cyano-page .sim-card{padding:0;border:0;border-radius:8px;box-shadow:none}
+.cyano-page .sim-head{padding:20px 22px 0}.cyano-page .sim-head .t{color:var(--mute);font-weight:400;letter-spacing:.06em}
+.cyano-page .cyanoflow-3d-stage{border:0;border-radius:0;margin:0;background:radial-gradient(ellipse at 50% 40%,#627b4c3d,transparent 70%),var(--void-2);min-height:470px}
+.cyano-page .cyanoflow-3d-stage canvas{height:470px}
+.cyano-page .cyanoflow-3d-stage span{font:10px/1.7 var(--sans);color:var(--mute);letter-spacing:0;text-transform:none;max-width:90%}
+.cyano-page #chipSim{height:120px;display:block;border-radius:0}
+.cyano-page .chip-stats{padding:14px 20px;margin:0;border-top:1px solid var(--rule)}
+.cyano-page .cstat{background:transparent;border:0;padding:6px}
+.cyano-page .cstat .v{color:var(--cyan);font-size:16px}.cyano-page .cstat.acc .v{color:var(--leaf)}
+.cyano-page .sim-note{color:var(--mute);font:11px/1.6 var(--sans)}
+.cyano-page .sec{border-color:var(--rule);background:transparent}
+.cyano-page .sec h2{color:var(--ivory);font:400 clamp(2.1rem,3.6vw,3.8rem)/1.1 var(--serif);letter-spacing:-.035em}
+.cyano-page .sec-head2 .idx,.cyano-page .s-num,.cyano-page .panel .pk,.cyano-page .fg .k,.cyano-page .rulebox .rk{color:var(--leaf)}
+.cyano-page .sec-head2 p,.cyano-page .s-copy>p,.cyano-page .occ-note,.cyano-page .sort-note,.cyano-page .funnel-note,.cyano-page .final p{color:var(--ink-soft)}
+.cyano-page .stage{padding:clamp(24px,4vw,48px)}
+.cyano-page .stage h3{color:var(--ink);font:400 30px/1.2 var(--serif);letter-spacing:-.02em}
+.cyano-page .cstat,.cyano-page .occ-box,.cyano-page .ts-box,.cyano-page .funnel,.cyano-page .fg,.cyano-page .cmp2,.cyano-page .panel,.cyano-page .met,.cyano-page .rulebox{background:var(--paper);border-color:var(--rule)}
+.cyano-page .photo{border-color:var(--rule);border-radius:5px}.cyano-page .photo img{filter:saturate(.5)}
+.cyano-page .ho::before{background:linear-gradient(90deg,#10251fee,#10251f99)}
+.cyano-page .ho h3,.cyano-page .ho.lime h3{color:var(--ivory)}
+.cyano-page .final,.cyano-page .cyano-foot{background:var(--void-2);border-color:var(--rule)}
+@media(max-width:1023px){.cyano-page .hero-grid{grid-template-columns:1fr;gap:42px}.cyano-page .hero-grid>div{min-width:0}.cyano-page .hero .lead{max-width:58ch}}
+@media(max-width:640px){body.cyano-page .cyano .hero{padding:48px 0 64px}.cyano-page .cyanoflow-3d-stage,.cyano-page .cyanoflow-3d-stage canvas{height:340px;min-height:340px}.cyano-page .hero h1{font-size:clamp(3.3rem,13vw,5.5rem)}.cyano-page .wrap{padding-inline:0}.cyano-page .sim-card{margin:0}.cyano-page .stats3{grid-template-columns:repeat(3,minmax(0,1fr))}.cyano-page .sec h2{font-size:2.35rem}}
+
 /* Living hero field: procedural 3D cell drift under the hero copy & card. */
 .cyano-hero-field{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none;opacity:.8;-webkit-mask-image:linear-gradient(90deg,rgba(0,0,0,.42),rgba(0,0,0,.9) 55%);mask-image:linear-gradient(90deg,rgba(0,0,0,.42),rgba(0,0,0,.9) 55%)}
 .hero .wrap{position:relative;z-index:2}

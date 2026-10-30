@@ -9,7 +9,7 @@
   var notice=document.createElement('aside');
   notice.className="callout";
   notice.setAttribute('aria-label','Project status');
-  notice.textContent="Project status: Algaephyte and Cyanoflow are research concepts in development, not validated products. Platform descriptions in these educational notes describe proposed designs, not completed builds, measured performance or deployed systems. Images are illustrative unless explicitly documented otherwise. No reactor orders or reservations are offered.";
+  notice.textContent="Project status: Algaephyte and Cyanoflow are research concepts in development, not validated products. These notes explore ideas that still need testing. Images and simulations are illustrative unless stated otherwise. No products are currently offered for sale.";
   article.parentNode.insertBefore(notice,article);
 })();
 /* ---------- nav state ---------- */
@@ -44,14 +44,14 @@
   var form=document.getElementById("deployForm");
   if(!form)return;
   var status=document.getElementById("formStatus");
-  function say(msg,err){if(status){status.textContent=msg;status.style.color=err?"var(--warn)":"var(--leaf-deep)";}}
+  function say(msg,err){if(status){status.textContent=msg;status.style.color=err?"var(--warn)":"var(--leaf)";}}
   form.addEventListener("submit",function(e){
     e.preventDefault();
     var hp=document.getElementById("fHp");
     if(hp&&hp.value){return;}
     var fields=["fName","fPlace","fGrow"].map(function(id){return document.getElementById(id);});
     var missing=fields.filter(function(f){return !f.value.trim();});
-    if(missing.length){say("Please fill in "+missing.map(function(f){return f.previousElementSibling.textContent.toLowerCase();}).join(", ")+".",true);missing[0].focus();return;}
+    if(missing.length){say("Please fill in "+missing.map(function(f){return f.labels[0].childNodes[0].textContent.trim().toLowerCase();}).join(", ")+".",true);missing[0].focus();return;}
     var subject="Orr Biologicals research inquiry — " + fields[0].value.trim();
     var body="Name / organization: "+fields[0].value.trim()+
              "\nLocation: "+fields[1].value.trim()+

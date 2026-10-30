@@ -2,7 +2,7 @@
 import re
 from seo_audit import ROOT, pages
 
-VERSION = '20261031'
+VERSION = '20261101'
 
 
 def migrate_legacy_application_links(text):
@@ -53,7 +53,7 @@ def apply(text):
         start = text.find(marker)
         end = text.find('</ol>', start + len(marker)) if start >= 0 else -1
         if start >= 0 and end >= 0 and 'data-loop-step="verify"' not in text:
-            verify = '<li data-loop-step="verify"><span>05</span><h3>Verify</h3><p>Compare the proposal with independent observations before any future action is considered.</p></li>'
+            verify = '<li data-loop-step="verify"><span>05</span><h3>Verify</h3><p>Check what happened against separate observations before considering another change.</p></li>'
             text = text[:end] + verify + text[end:]
         sequence = '<p class="algaephyte-loop-sequence">SENSE <span>→</span> MODEL <span>→</span> CHECK <span>→</span> PROPOSE <span>→</span> VERIFY</p>'
         if 'class="algaephyte-loop-sequence"' not in text:
@@ -65,13 +65,16 @@ def apply(text):
     if 'id="nav"' not in text:
         text = re.sub(r'(<body\b[^>]*>)', lambda m: m[0] + '\n' + header, text, count=1)
     text = re.sub(r'\s*<footer\b[^>]*>.*?</footer>\s*', '', text, flags=re.S)
-    text = text.replace('</body>', footer + '</body>')
     # Eliminate per-page external font families and repeated token definitions.
     text = re.sub(r'<link[^>]+href="https://fonts.googleapis.com/[^>]+>\s*', '', text)
     text = re.sub(r'<link[^>]+href="/?css/(?:global|header|animations|site-redesign|biological-cinema)\.css[^>]+>\s*', '', text)
     text = re.sub(r'<script[^>]+src="/?js/(?:animations|navigation|cell-cursor|biological-cinema)\.js[^>]*>\s*</script>\s*', '', text)
     text = re.sub(r'<link[^>]+href="/?css/orr-home\.css[^>]+>\s*', '', text)
     text = re.sub(r'<link[^>]+href="/?css/home-premium\.css[^>]+>\s*', '', text)
+    # Normalize the footer seam after stripping shared scripts. Generated
+    # pages can place those scripts before the footer, so doing this earlier
+    # left a different newline on the first and second application.
+    text = re.sub(r'\s*</body>', lambda m: footer + '</body>', text, count=1)
     css = '\n'.join(f'<link rel="stylesheet" href="/css/{name}.css?v={VERSION}">' for name in ('global', 'header', 'orr-home', 'animations', 'site-redesign', 'biological-cinema'))
     if 'class="orr-home' in text:
         css += f'\n<link rel="stylesheet" href="/css/home-premium.css?v={VERSION}">'
@@ -87,7 +90,7 @@ def apply(text):
     # which historical build placed it elsewhere in the document.
     text = text.replace('</body>', f'<script defer src="/js/biological-cinema.js?v={VERSION}"></script>\n</body>')
     text = re.sub(r'(<(?:link|script)\b[^>]*(?:href|src)="/?(?:css|js)/[^"?]+)(?:\?[^" ]*)?("[^>]*>)', r'\1?v=' + VERSION + r'\2', text)
-    text = re.sub(r'(<meta name="theme-color" content=")[^"]+', r'\g<1>#06100c', text)
+    text = re.sub(r'(<meta name="theme-color" content=")[^"]+', r'\g<1>#10251f', text)
     # Preserve existing main targets; older article pages used a div shell.
     if '<main' not in text:
         text = text.replace('<div class="art-shell">', '<main id="main" class="art-shell">', 1)

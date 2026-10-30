@@ -31,8 +31,8 @@ class Page(HTMLParser):
 class SiteCopyTests(unittest.TestCase):
     def test_home_origin_and_status(self):
         text = (ROOT / 'index.html').read_text(encoding='utf-8')
-        self.assertIn('Making living systems <em>legible.</em>', text)
-        self.assertIn('biology in motion', text)
+        self.assertIn('Small life.<br><em>New possibilities.</em>', text)
+        self.assertIn('biology, engineering, and software', text)
         self.assertIn('class="cinema-reactor"', text)
         self.assertIn('id="volvoxCanvas"', text)
         self.assertIn('id="reactorCanvas"', text)

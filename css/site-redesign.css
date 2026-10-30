@@ -8,18 +8,18 @@
  */
 
 :root {
-  --research-void: #06120d;
-  --research-void-2: #0b1d15;
-  --research-panel: #10281d;
-  --research-line: rgba(165, 214, 173, .22);
-  --research-text: #edf5ec;
-  --research-muted: #9bb6a0;
-  --research-lime: #c8e89b;
-  --research-cyan: #8bded4;
-  --research-paper: #f4f0e5;
-  --research-paper-2: #e7e1d1;
-  --research-ink: #15251b;
-  --research-ink-soft: #405247;
+  --research-void: var(--void);
+  --research-void-2: var(--void-2);
+  --research-panel: var(--paper);
+  --research-line: var(--rule);
+  --research-text: var(--ink);
+  --research-muted: var(--mute);
+  --research-lime: var(--leaf);
+  --research-cyan: var(--cyan);
+  --research-paper: var(--ivory);
+  --research-paper-2: #e7e5d5;
+  --research-ink: var(--ivory-ink);
+  --research-ink-soft: var(--ivory-soft);
 }
 
 /* Shared shell rhythm: the brand mark and controls are intentionally quiet. */
@@ -44,9 +44,7 @@ body.art-body {
   position: relative;
   isolation: isolate;
   min-height: 100vh;
-  background:
-    radial-gradient(900px 520px at 84% -8%, rgba(70, 139, 89, .16), transparent 70%),
-    linear-gradient(180deg, var(--research-void) 0%, #071710 52%, #091b14 100%);
+  background: var(--research-void);
   color: var(--research-text);
   font-family: var(--sans);
 }
@@ -57,12 +55,8 @@ body.art-body::before {
   inset: 0;
   z-index: -1;
   pointer-events: none;
-  opacity: .28;
-  background-image:
-    linear-gradient(rgba(170, 222, 175, .04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(170, 222, 175, .04) 1px, transparent 1px);
-  background-size: 48px 48px;
-  mask-image: linear-gradient(180deg, #000, transparent 72%);
+  opacity: .35;
+  background: radial-gradient(ellipse at 85% 12%, #9db98230, transparent 60%);
 }
 
 body.art-body .nav {
@@ -164,9 +158,9 @@ body.art-body h1 {
   max-width: 16ch;
   margin: 22px 0 20px;
   color: var(--research-text);
-  font: 450 clamp(2.9rem, 6vw, 6.6rem)/.92 var(--serif);
-  letter-spacing: -.065em;
-  overflow-wrap: anywhere;
+  font: 400 clamp(2.9rem, 5.6vw, 5.8rem)/1.04 var(--serif);
+  letter-spacing: -.045em;
+  overflow-wrap: break-word;
 }
 
 body.art-body .art-meta {
@@ -471,14 +465,23 @@ body.art-body .footer-base a:hover {
   }
 }
 
-/* ---------- Cinema grade: editorial refinement (2026-10) ---------- */
-body.art-body .art-shell{padding-top:clamp(56px,8vw,110px)}
-body.art-body .art-cat{border-radius:999px}
+/* Botanical reading room: generous margins without a dashboard-card shell. */
+body.art-body .art-shell{padding-top:clamp(42px,6vw,82px)}
+body.art-body .art-top{margin-bottom:48px;font:500 10px/1.7 var(--mono)}
+body.art-body .art-cat{border:0;border-radius:0;background:none;padding:0;color:var(--leaf);font-weight:400;letter-spacing:.12em}
 body.art-body h1{margin-bottom:26px}
-body.art-body .prose{border-radius:22px;box-shadow:0 46px 130px rgba(0,0,0,.3),inset 0 2px 0 rgba(255,255,255,.04)}
+body.art-body .art-meta{color:var(--ink-soft);font:400 14px/1.8 var(--sans)}
+body.art-body .prose{border:0;border-radius:4px;box-shadow:none;background:var(--ivory);padding:clamp(26px,5vw,66px);max-width:960px}
 body.art-body .prose p{line-height:1.85}
-[data-active]{border-radius:9px}
-body.art-body .rot-card{border-radius:14px;overflow:hidden;transition:transform 280ms var(--ease),box-shadow 280ms var(--ease)}
-body.art-body .rot-card:hover{transform:translateY(-4px);box-shadow:0 26px 60px -24px rgba(0,0,0,.55)}
+body.art-body .prose h2{font:400 clamp(1.6rem,2.6vw,2.5rem)/1.16 var(--serif);letter-spacing:-.025em}
+body.art-body .prose .app-table-wrap{background:#e7e5d5;color:var(--ivory-ink);border-color:#233e3128}
+body.art-body .prose .app-table th,body.art-body .prose .app-table td{color:var(--ivory-ink);border-color:#233e3128}
+body.art-body .prose code{background:#233e3110;color:var(--ivory-ink)}
+body.art-body .callout{max-width:960px;background:transparent;border:0;border-left:1px solid var(--rule);padding:4px 0 4px 20px;color:var(--ink-soft);font:13px/1.8 var(--sans);margin:26px 0 36px}
+body.art-body:has(#kb) .rot-card{border-radius:6px;background:var(--paper);box-shadow:none}
+body.art-body:has(#kb) .rot-card:hover{background:var(--paper-2);box-shadow:none}
+body.art-body .rot-card{overflow:hidden;transition:transform 240ms var(--ease)}
+body.art-body .rot-card:hover{transform:translateY(-3px)}
 body.art-body .art-foot a{border-radius:999px}
 body.art-body .science-footer{padding:82px 0 34px}
+@media(max-width:720px){body.art-body h1,body.art-body:has(#kb) .art-shell>h1{max-width:18ch;font-size:clamp(2.6rem,10.5vw,4.5rem);line-height:1.06}body.art-body .prose{padding:28px 20px}}

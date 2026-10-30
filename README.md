@@ -6,11 +6,16 @@ single-cell observation, and computational biology. **Algaephyte** and
 validated hardware performance, species identification, food safety, or a
 finished product for sale.
 
-The public experience is a dark biological cinema. The homepage is assembled
+The public experience pairs forest green and sage with warm ivory reading
+surfaces, plain-language introductions, and sculptural biological studies.
+The homepage is assembled
 from authoritative partials and combines self-hosted illustrative imagery with
 a procedural Three.js Volvox, photobioreactor, cultivation-apparatus, and
 microfluidic scenes. These scenes are scientific visualizations, not microscope
-observations or measured telemetry. The Journal (`/blog/`) is the active source
+observations or measured telemetry. Procedural studio reflections make the
+instrument materials visible; motion pauses offscreen and in hidden tabs.
+Reduced-motion visitors get static scenes, and product models support arrow-key
+inspection (Home resets the view). The Journal (`/blog/`) is the active source
 of truth for research notes. The former `/applications/`, `/papertrail/`, and
 `/culturetrace/` public surfaces have been retired. `/Simulation/` is the
 canonical Algal Digital Lab workspace; `/game/` remains a separate no-index

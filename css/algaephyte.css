@@ -24,7 +24,39 @@ body.algaephyte-page .nav{background:rgba(232,236,224,.95);border-color:var(--ap
 .algaephyte-hero-field{position:absolute;top:-28px;left:-9%;width:115%;height:calc(100% + 58px);z-index:0;pointer-events:none;-webkit-mask-image:linear-gradient(180deg,rgba(0,0,0,.15),rgba(0,0,0,.75) 22%,rgba(0,0,0,.9) 70%);mask-image:linear-gradient(180deg,rgba(0,0,0,.15),rgba(0,0,0,.75) 22%,rgba(0,0,0,.9) 70%)}
 .algaephyte-hero-copy,.algaephyte-hero-figure{position:relative;z-index:1}
 @media(prefers-reduced-motion:reduce){.algaephyte-hero-field{opacity:.6}}
-body.algaephyte-page{--ap-bg:#06100c;--ap-paper:#0d2118;--ap-ink:#edf7ee;--ap-soft:#b8cdbb;--ap-mute:#83a08b;--ap-rule:rgba(159,214,169,.2);--ap-deep:#0b2118;--ap-moss:#9fdc9d;--ap-leaf:#c8eb9c;--ap-gold:#d6a36a;background:var(--ap-bg);color:var(--ap-ink)}
+body.algaephyte-page{--ap-bg:var(--void);--ap-paper:var(--paper);--ap-ink:var(--ink);--ap-soft:var(--ink-soft);--ap-mute:var(--mute);--ap-rule:var(--rule);--ap-deep:var(--void-2);--ap-moss:var(--leaf);--ap-leaf:var(--leaf);--ap-gold:var(--copper);background:var(--ap-bg);color:var(--ap-ink)}
 body.algaephyte-page .nav{background:rgba(6,16,12,.9);border-color:var(--ap-rule);color:var(--ap-ink)}body.algaephyte-page .mark{color:var(--ap-ink)}body.algaephyte-page .mark svg{color:var(--ap-leaf);background:rgba(200,235,156,.07);border-color:var(--ap-rule)}body.algaephyte-page .nav-links a{color:var(--ap-soft)}body.algaephyte-page .nav-links .btn-white{background:var(--ap-leaf);border-color:var(--ap-leaf);color:#06100c}body.algaephyte-page .mobile-menu{background:var(--ap-deep);border-color:var(--ap-rule)}body.algaephyte-page .mobile-menu a{color:var(--ap-ink)}
 .algaephyte-shell{background:var(--ap-bg)}.algaephyte-shell::before{background:radial-gradient(circle at 68% 16%,rgba(80,160,108,.24),transparent 64%)}.algaephyte-hero-figure{border-color:rgba(182,230,165,.2);box-shadow:0 30px 70px -34px rgba(0,0,0,.7)}.algaephyte-3d-stage{position:relative;min-height:430px;margin-top:16px;background:radial-gradient(circle at 50% 38%,rgba(64,145,101,.38),transparent 54%),#06110c;border-top:1px solid rgba(182,230,165,.14);border-bottom:1px solid rgba(182,230,165,.14)}#algaephyteInstrumentCanvas{display:block;width:100%;height:430px;touch-action:none;cursor:grab}#algaephyteInstrumentCanvas:active{cursor:grabbing}.algaephyte-3d-stage>span{position:absolute;left:18px;bottom:14px;color:#a7c5aa;font:9px var(--mono);letter-spacing:.08em;text-transform:uppercase}.algaephyte-schematic-label{padding-top:17px}.algaephyte-chamber-svg{filter:saturate(.72) brightness(.82)}.algaephyte-chamber-section,.algaephyte-reading{border-color:var(--ap-rule)}.algaephyte-section-intro h2,.algaephyte-reading-rail h2,.algaephyte-prose h2{color:var(--ap-ink)}.algaephyte-section-intro>p:not(.algaephyte-eyebrow),.algaephyte-reading-rail>p,.algaephyte-prose p{color:var(--ap-soft)}.algaephyte-console-panel{background:rgba(13,33,24,.88);border-color:var(--ap-rule)}.algaephyte-console-form legend,.algaephyte-range>span{color:var(--ap-ink)}.algaephyte-range{border-color:var(--ap-rule)}.algaephyte-range small,.algaephyte-small-note{color:var(--ap-mute)!important}.algaephyte-button-quiet{border-color:var(--ap-rule);color:var(--ap-soft)}.algaephyte-prose a{color:var(--ap-leaf)}body.algaephyte-page .science-footer{background:#040b07}
-@media(max-width:760px){.algaephyte-3d-stage{min-height:320px}#algaephyteInstrumentCanvas{height:320px}}
+/* A single product exhibit, not stacked 3D and fallback dashboards. */
+.algaephyte-shell{background:transparent;isolation:isolate}
+.algaephyte-shell::before{display:none}
+.algaephyte-hero{grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);padding:72px 0 100px;gap:5vw}
+body.algaephyte-page h1{max-width:11ch;font:400 clamp(3.3rem,5.6vw,6rem)/1.02 var(--serif);letter-spacing:-.045em;color:var(--ivory)}
+.algaephyte-hero-dek{font:400 17px/1.8 var(--sans);max-width:46ch}
+.algaephyte-hero h1 em{color:var(--leaf)}
+.algaephyte-hero-ledger{gap:10px}.algaephyte-hero-ledger dd{font-size:12px}
+.algaephyte-hero-status{display:block;max-width:52ch;color:var(--mute);font:11px/1.7 var(--sans)}
+.algaephyte-hero-status strong{font-weight:500;margin-right:5px}.algaephyte-status-dot{display:none}
+.algaephyte-hero-figure{border:0;border-radius:8px;background:var(--void-2);box-shadow:none}
+.algaephyte-figure-topline{font-weight:400;letter-spacing:.08em;color:var(--mute)}
+.algaephyte-3d-stage{margin-top:12px;min-height:520px;background:radial-gradient(ellipse at 50% 40%,#627b4c3d,transparent 70%),var(--void-2);border:0}
+#algaephyteInstrumentCanvas{height:520px}
+.algaephyte-3d-stage>span{max-width:90%;font:10px/1.7 var(--sans);color:var(--mute);letter-spacing:0;text-transform:none}
+.algaephyte-schematic-label,.algaephyte-chamber-svg{display:none}
+.algaephyte-hero-figure figcaption{background:transparent;color:var(--mute);font:11px/1.6 var(--sans)}
+.algaephyte-button-primary{background:var(--leaf);border-color:var(--leaf);color:var(--void)}
+.algaephyte-button{font-size:12px;padding:14px 20px}.algaephyte-button:hover{border-color:var(--ink)}
+.algaephyte-text-link{color:var(--leaf);font:500 12px var(--sans)}
+.algaephyte-console-panel{background:var(--paper);box-shadow:none;border-radius:8px}
+.algaephyte-loop{margin-inline:0;padding:52px 36px;border-radius:8px;background:var(--void-2)}
+.algaephyte-loop-heading h2{line-height:1.06;letter-spacing:-.035em}
+.algaephyte-loop-steps li{min-width:0;min-height:220px;padding-right:18px}.algaephyte-loop-steps li+li{padding-left:18px}
+.algaephyte-loop-steps p{font:14px/1.8 var(--sans)}
+.algaephyte-reading{padding-top:100px}
+.algaephyte-prose{background:var(--ivory);border-radius:4px;padding:clamp(24px,4vw,48px);max-width:none}
+.algaephyte-prose h2{color:var(--ivory-ink);border-color:#233e3128;font:400 clamp(1.5rem,2.5vw,2rem)/1.18 var(--serif)}
+.algaephyte-prose p{color:var(--ivory-soft)}.algaephyte-prose a{color:#365f43;text-decoration:underline;text-underline-offset:3px}
+.algaephyte-prose .app-table-wrap{background:#e7e5d5;border-color:#233e3128}
+.algaephyte-prose .app-table th,.algaephyte-prose .app-table td{color:var(--ivory-ink);border-color:#233e3128}
+@media(max-width:1020px){.algaephyte-hero{grid-template-columns:1fr;padding-top:48px;gap:36px}.algaephyte-hero-copy{max-width:640px}.algaephyte-reading{grid-template-columns:1fr;gap:24px}.algaephyte-reading-rail{position:static}}
+@media(max-width:760px){.algaephyte-3d-stage{min-height:380px}#algaephyteInstrumentCanvas{height:380px}.algaephyte-loop{margin:0;padding:36px 22px}.algaephyte-loop-sequence{font-size:8px;letter-spacing:.04em}.algaephyte-hero-ledger{grid-template-columns:repeat(3,minmax(0,1fr))}.algaephyte-hero-actions{flex-direction:row}.algaephyte-loop-steps li{min-height:auto;padding-bottom:24px}.algaephyte-loop-steps li+li{padding-left:0}}

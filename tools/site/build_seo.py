@@ -43,8 +43,8 @@ def build():
         ('/assets/cyano/hero-field.jpg', 'Illustrative single-cell algae field'),
         ('/assets/images/instrument-photo.jpg', 'Illustrative cultivation instrument'),
     ]
-    for key, label in (('algaephyte', 'Algaephyte — cultivation, sensing and bounded control'),
-                       ('cyanoflow', 'Cyanoflow and shared imaging methods')):
+    for key, label in (('algaephyte', 'Algaephyte — growing and understanding algae'),
+                       ('cyanoflow', 'Cyanoflow — a closer look at cells')):
         directory.append('<h3 class="kb-h">' + label + '</h3>\n<div class="rot-grid kb-grid">')
         for index, a in enumerate(kb[key]):
             image, alt = image_by_slug.get(a['slug'], fallback_images[index % len(fallback_images)])

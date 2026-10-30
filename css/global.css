@@ -2,14 +2,15 @@
    Art Direction: Living Botanical Monograph × Computational Bio-Intelligence */
 :root{
   /* Biological cinema: mineral darkness, culture green, fluorescence light. */
-  --void:#06100c;--void-2:#091a14;--paper:#0d2118;--paper-2:#143025;
-  --ink:#edf7ee;--ink-soft:#b8cdbb;--mute:#83a08b;--rule:rgba(159,214,169,.2);
-  --leaf:#8fcf8f;--leaf-2:#c8eb9c;--leaf-deep:#1d5135;--leaf-soft:rgba(143,207,143,.12);
-  --cyan:#8bded4;--copper:#d6a36a;--warn:#e07862;
-  --sans:"Bricolage Grotesque","Space Grotesk","Avenir Next","Segoe UI",sans-serif;
-  --serif:"Newsreader","Fraunces","Iowan Old Style","Baskerville",Georgia,serif;
+  --void:#10251f;--void-2:#172f27;--paper:#1c352c;--paper-2:#254236;
+  --ink:#f1efdf;--ink-soft:#c0ccbc;--mute:#9eafa0;--rule:rgba(205,219,192,.2);
+  --leaf:#c8d9ab;--leaf-2:#e1e8c8;--leaf-deep:#35634c;--leaf-soft:rgba(200,217,171,.1);
+  --cyan:#a9c9bb;--copper:#c6aa7e;--warn:#e8a38d;
+  --ivory:#f1efdf;--ivory-ink:#233e31;--ivory-soft:#526455;
+  --sans:"Avenir Next","Segoe UI",Arial,sans-serif;
+  --serif:"Iowan Old Style","Baskerville",Georgia,serif;
   --mono:"IBM Plex Mono","Cascadia Mono",Consolas,monospace;
-  --max:1280px;--radius:10px;--fast:140ms;--motion:240ms;--reveal:360ms;
+  --max:1320px;--radius:12px;--fast:140ms;--motion:240ms;--reveal:360ms;
   --ease:cubic-bezier(.2,.65,.3,1);
   /* Dark optical & computational instrument chassis (scoped to instrument/sim/notebook bands) */
   --dvoid:#07130f;--dvoid-2:#0c1e17;--dpanel:#10261d;--dpanel-2:#153226;
@@ -77,11 +78,9 @@ body:has(.sim-app) .sim-sidebar{top:78px;height:calc(100vh - 78px)}
 body:has(.sim-app) .sim-main{background:#06100c}
 body:has(.sim-app) .sim-view{color:#eaf6ec}
 
-/* ---------- Cinema grade: shared refinement (2026-10) ---------- */
-/* Wider stage, taller air, slower rhythm: the monograph breathes. */
-.section,.orr-section{padding:clamp(96px,10.5vw,152px) 0}
-.h-display{font-size:clamp(2.1rem,4vw,3.4rem);letter-spacing:-.046em}
-body{font-size:17px}
-::selection{background:rgba(200,235,156,.92);color:#06100c}
-.biological-cinema,body.art-body{scrollbar-color:rgba(143,207,143,.34) #050d09}
-:focus-visible{outline-offset:4px;outline-color:#c8eb9c}
+/* A restrained botanical palette, with warm paper for longer reading. */
+.section,.orr-section{padding:clamp(72px,9vw,128px) 0}
+.h-display{font-size:clamp(2.1rem,4vw,3.4rem);letter-spacing:-.04em}
+::selection{background:var(--leaf);color:var(--void)}
+html{scrollbar-color:#778f72 var(--void)}
+:focus-visible{outline-offset:4px;outline-color:var(--leaf)}

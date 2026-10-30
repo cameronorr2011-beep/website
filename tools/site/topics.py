@@ -4,7 +4,7 @@ PBR_REVIEW = 'https://pmc.ncbi.nlm.nih.gov/articles/PMC9731602/'
 MEASURE = 'https://pmc.ncbi.nlm.nih.gov/articles/PMC9368473/'
 
 BIOTECH = '''
-<p class="dek">Algae biotechnology uses algae and, in many applied contexts, cyanobacteria to investigate or produce useful biological materials and processes. Cultivation, organism selection, measurement and downstream use are separate problems: a promising organism is not automatically an economical or safe production process.</p>
+<p class="dek">Algae biotechnology explores what these small organisms can do—from producing pigments to supporting aquatic food webs. A useful idea starts with the right organism, suitable growing conditions, and careful measurements. A promising culture is not automatically safe or practical to use.</p>
 <h2>What counts as algae biotechnology?</h2>
 <p>The term includes studying photosynthetic cells, growing biomass, obtaining compounds such as pigments and lipids, and using cultures in live-feed or environmental research. Microalgae are not one taxonomic lineage; <a href="/blog/spirulina-is-a-cyanobacterium">Spirulina is a cyanobacterium</a>, whereas <a href="/applications/species/chlorella">Chlorella</a> is a eukaryotic green alga. Taxonomy, strain identity and the application determine which evidence is relevant.</p>
 <p>Benner et al. review laboratory systems for studying phototrophic organisms and discuss why experimental cultivation differs from full-scale production [1]. Chanquia et al. connect reactor choices to cultivation and synthesis applications [2]. These are published literature, not Orr Biologicals experimental results.</p>
@@ -91,7 +91,7 @@ REACTORS = '''
 '''
 
 ALGAEPHYTE = '''
-<p class="dek">Algaephyte is Orr Biologicals' proposed intelligent microalgae cultivation system. It combines culture-level sensors, a growth model, optional camera analysis and bounded control proposals. It is a research concept in development, not a validated reactor or commercially deployed product.</p>
+<p class="dek">Algaephyte brings sensors, cameras, and a growth model together to explore what helps algae grow. The goal is a clearer view of a culture as its conditions change. It is a research concept in development, not a validated reactor or finished product.</p>
 <h2>What question does Algaephyte address?</h2>
 <p>The question is whether documented observations and a calibrated model can help a grower understand changing conditions without handing unrestricted actuator control to an AI model. Unlike <a href="/cyanoflow">Cyanoflow's single-cell discovery workflow</a>, Algaephyte concerns the environment of a growing culture: chemistry, illumination, mixing and gas exchange.</p>
 <p><a href="/microalgae-cultivation/">Microalgae cultivation fundamentals</a> establish the biology; <a href="/photobioreactors/">photobioreactor design</a> establishes why vessel geometry and transport matter. The hardware/software proposals on the <a href="/#inside">interactive architecture page</a> still require assembly, calibration and fault testing.</p>
@@ -130,5 +130,5 @@ H1 = {
 'algae-biotechnology/index.html': 'Algae biotechnology: organisms, cultivation and research',
 'microalgae-cultivation/index.html': 'Microalgae cultivation: conditions and monitoring',
 'photobioreactors/index.html': 'Microalgae photobioreactors: design and measurement',
-'algaephyte/index.html': 'Algaephyte: AI-assisted microalgae cultivation research',
+'algaephyte/index.html': 'Algaephyte: a closer look at growth',
 }

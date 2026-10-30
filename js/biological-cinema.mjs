@@ -8,6 +8,7 @@ import { EffectComposer } from "three/addons/postprocessing/EffectComposer.js";
 import { RenderPass } from "three/addons/postprocessing/RenderPass.js";
 import { UnrealBloomPass } from "three/addons/postprocessing/UnrealBloomPass.js";
 import { OutputPass } from "three/addons/postprocessing/OutputPass.js";
+import { RoomEnvironment } from "three/addons/environments/RoomEnvironment.js";
 
 const reducedMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
 const clamp = (value, min = 0, max = 1) => Math.min(max, Math.max(min ?? 0, value));
@@ -22,16 +23,16 @@ const seeded = (seed) => {
 };
 
 const PALETTE = {
-  membrane: 0x9fd8b4,
-  cellGlow: 0x9fe89b,
-  cellWarm: 0xd6f7a4,
-  cyanoFlash: 0x6fe0cc,
-  culture: 0x2f7a55,
-  cultureGlow: 0x3fa468,
-  metal: 0x8a9d94,
-  darkMetal: 0x232f2a,
-  ledGlow: 0x9fe0a8,
-  tubing: 0xa7cbb9,
+  membrane: 0xc8d9ab,
+  cellGlow: 0x93b66c,
+  cellWarm: 0xe1e8c8,
+  cyanoFlash: 0xa9c9bb,
+  culture: 0x517d38,
+  cultureGlow: 0x54783b,
+  metal: 0xb9bca9,
+  darkMetal: 0x35483b,
+  ledGlow: 0xe1e8c8,
+  tubing: 0xc5cfba,
 };
 
 function fitRenderer(renderer, composer, camera, canvas) {
@@ -53,14 +54,14 @@ function rendererFor(canvas, clear = 0x06100c) {
     renderer.outputColorSpace = THREE.SRGBColorSpace;
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
     renderer.toneMappingExposure = 1.05;
+    canvas.dataset.renderer = "webgl";
     return renderer;
   } catch {
     return null;
   }
 }
 
-/* Bloom is applied selectively: only the emissive biological surfaces pass the
-   threshold, so glass/metal geometry stays legible. */
+/* A high bloom threshold keeps soft highlights from obscuring the geometry. */
 function makeComposer(renderer, scene, camera, { strength = 0.62, radius = 0.72, threshold = 0.82 } = {}) {
   try {
     const composer = new EffectComposer(renderer);
@@ -72,6 +73,19 @@ function makeComposer(renderer, scene, camera, { strength = 0.62, radius = 0.72,
   } catch {
     return null;
   }
+}
+
+/* Broad studio reflections give glass and brushed metal an actual surface.
+   Point lights alone left the old instruments almost black. */
+function studioLighting(renderer, scene) {
+  const pmrem = new THREE.PMREMGenerator(renderer);
+  const room = new RoomEnvironment();
+  const environment = pmrem.fromScene(room, 0.04);
+  room.dispose();
+  pmrem.dispose();
+  scene.environment = environment.texture;
+  scene.environmentIntensity = 0.7;
+  return () => environment.dispose();
 }
 
 function disposeTree(root) {
@@ -98,12 +112,23 @@ function exhibit(canvas, build) {
     if (again === false) { playing = false; return; }
     rafId = requestAnimationFrame(tick);
   };
-  const observer = new IntersectionObserver(([entry]) => {
-    playing = entry.isIntersecting;
+  let inView = false;
+  const updatePlayback = () => {
+    playing = inView && !document.hidden && !reducedMotion;
     cancelAnimationFrame(rafId);
-    if (playing && !reducedMotion) rafId = requestAnimationFrame(tick);
-  }, { rootMargin: "180px" });
+    if (playing) rafId = requestAnimationFrame(tick);
+  };
+  const observer = new IntersectionObserver(([entry]) => {
+    inView = entry.isIntersecting;
+    updatePlayback();
+  }, { rootMargin: "100px" });
   observer.observe(canvas);
+  document.addEventListener("visibilitychange", updatePlayback);
+  const resizeObserver = new ResizeObserver(() => {
+    handle.resize?.();
+    handle.render?.();
+  });
+  resizeObserver.observe(canvas);
   /* Draw one static frame immediately: background tabs, throttled rAF, and
      snapshot tools all render before the animation loop ever gets a tick. */
   if (typeof handle.render === "function") handle.render();
@@ -113,6 +138,8 @@ function exhibit(canvas, build) {
       playing = false;
       cancelAnimationFrame(rafId);
       observer.disconnect();
+      resizeObserver.disconnect();
+      document.removeEventListener("visibilitychange", updatePlayback);
       stop();
     },
   };
@@ -124,12 +151,12 @@ function exhibit(canvas, build) {
 
 function buildColony(rnd, { cells: count = 900, radius = 1 } = {}) {
   const colony = new THREE.Group();
-  const cellGeometry = new THREE.SphereGeometry(radius * 0.071, 10, 8);
+  const cellGeometry = new THREE.SphereGeometry(radius * 0.035, 12, 10);
   const cellMaterial = new THREE.MeshStandardMaterial({
-    color: 0x14251b,
-    emissive: PALETTE.cellGlow,
-    emissiveIntensity: 0.92,
-    roughness: 0.4,
+    color: 0xc5d8a2,
+    emissive: 0x334d22,
+    emissiveIntensity: 0.16,
+    roughness: 0.33,
     metalness: 0.02,
   });
   const cells = new THREE.InstancedMesh(cellGeometry, cellMaterial, count);
@@ -149,12 +176,12 @@ function buildColony(rnd, { cells: count = 900, radius = 1 } = {}) {
       jitter * Math.cos(phi),
       jitter * Math.sin(phi) * Math.sin(theta),
     );
-    quaternion.setFromEuler(new THREE.Euler(rnd() * Math.PI, rnd() * Math.PI, rnd() * Math.PI));
-    const cellScale = radius * (0.82 + rnd() * 0.46);
-    scale.setScalar(cellScale);
+    quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), position.clone().normalize());
+    const cellScale = 0.78 + rnd() * 0.38;
+    scale.set(cellScale, cellScale * 1.3, cellScale * 0.78);
     matrix.compose(position, quaternion, scale);
     cells.setMatrixAt(index, matrix);
-    color.setHSL(0.3 + rnd() * 0.03, 0.62, 0.3 + rnd() * 0.2);
+    color.setHSL(0.22 + rnd() * 0.045, 0.28 + rnd() * 0.15, 0.48 + rnd() * 0.21);
     cells.setColorAt(index, color);
   }
   cells.instanceMatrix.needsUpdate = true;
@@ -162,12 +189,14 @@ function buildColony(rnd, { cells: count = 900, radius = 1 } = {}) {
   colony.add(cells);  const membrane = new THREE.Mesh(
     new THREE.SphereGeometry(radius * 1.02, 44, 30),
     new THREE.MeshPhysicalMaterial({
-      color: 0x234434,
+      color: PALETTE.membrane,
       transparent: true,
-      opacity: 0.1,
-      roughness: 0.34,
+      opacity: 0.13,
+      roughness: 0.18,
       metalness: 0,
-      side: THREE.DoubleSide,
+      clearcoat: 1,
+      clearcoatRoughness: 0.12,
+      side: THREE.FrontSide,
       depthWrite: false,
     }),
   );
@@ -176,10 +205,10 @@ function buildColony(rnd, { cells: count = 900, radius = 1 } = {}) {
   const daughter = new THREE.Group();
   const daughterCellGeometry = new THREE.SphereGeometry(radius * 0.088, 8, 6);
   const daughterMaterial = new THREE.MeshStandardMaterial({
-    color: 0x182c22,
-    emissive: PALETTE.cyanoFlash,
-    emissiveIntensity: 0.5,
-    roughness: 0.46,
+    color: 0xa3ba76,
+    emissive: 0x3b5225,
+    emissiveIntensity: 0.16,
+    roughness: 0.35,
   });
   const daughterCells = new THREE.InstancedMesh(daughterCellGeometry, daughterMaterial, 13);
   const daughterCenter = new THREE.Vector3(rnd() - 0.5, rnd() - 0.5, rnd() - 0.5).multiplyScalar(radius * 0.42);
@@ -204,13 +233,15 @@ function buildColony(rnd, { cells: count = 900, radius = 1 } = {}) {
 function attachVolvoxField(canvas) {
   const renderer = rendererFor(canvas);
   if (!renderer) return paintFallback(canvas, "volvox");
-  renderer.toneMappingExposure = 0.95;
+  renderer.toneMappingExposure = 1.08;
   const scene = new THREE.Scene();
-  scene.fog = new THREE.FogExp2(0x03100a, 0.09);
+  scene.background = new THREE.Color(0x10251f);
+  scene.fog = new THREE.FogExp2(0x10251f, 0.045);
+  const disposeEnvironment = studioLighting(renderer, scene);
   const camera = new THREE.PerspectiveCamera(38, 1, 0.1, 80);
   camera.position.set(0, 0.12, 9);
-  scene.add(new THREE.HemisphereLight(0x2c5a44, 0x040f0a, 0.55));
-  const key = new THREE.DirectionalLight(0xbff5c8, 1.15);
+  scene.add(new THREE.HemisphereLight(0xe1e8c8, 0x10251f, 1.1));
+  const key = new THREE.DirectionalLight(0xf6efd4, 3.2);
   key.position.set(-3.4, 3.2, 4.4);
   scene.add(key);
   const rim = new THREE.PointLight(PALETTE.cyanoFlash, 4, 26);
@@ -218,37 +249,20 @@ function attachVolvoxField(canvas) {
   scene.add(rim);
 
   const rnd = seeded(2026);
-  const layers = [
-    { z: -7.5, scale: 1.05, drift: 0.09, emissive: 0.42, cells: 260 },
-    { z: -4.4, scale: 0.85, drift: 0.16, emissive: 0.72, cells: 380 },
-    { z: -1.2, scale: 0.66, drift: 0.24, emissive: 1.0, cells: 520 },
-    { z: 2.4, scale: 0.5, drift: 0.3, emissive: 1.18, cells: 420 },
+  /* One hero specimen, with two quieter colonies providing depth. */
+  const layout = [
+    { x: 2.45, y: 0.25, z: 0, radius: 1.85, cells: 1100, drift: 0.09 },
+    { x: 4.8, y: 2.2, z: -5, radius: 1.15, cells: 540, drift: 0.06 },
+    { x: -4.6, y: -2.5, z: -8, radius: 1.3, cells: 440, drift: 0.05 },
   ];
-  const colonies = [];
-  layers.forEach((layer, layerIndex) => {
-    const bucket = new THREE.Group();
-    /* Three deliberately placed colonies per depth band: dark water dominates,
-       and the left/centre column stays clear for the hero copy. */
-    const layout = [
-      [2.9, 1.5], [4.6, -1.4], [-2.9, -2.6],
-      [1.4, -2.3], [5.0, 2.3], [-5.2, 0.6],
-    ];
-    layout.forEach(([x, y], index) => {
-      if ((index + layerIndex) % 2 === 0) return; // 3 of 6 per layer
-      const seedShift = (rnd() - 0.5) * 0.34;
-      const colony = buildColony(rnd, {
-        cells: Math.max(120, Math.round(layer.cells * (0.6 + rnd() * 0.7))),
-        radius: layer.scale * (0.74 + rnd() * 0.5),
-      });
-      colony.position.set(x + seedShift, y + seedShift * 0.7, layer.z + (rnd() - 0.5) * 0.8);
-      colony.userData.layer = layer;
-      colony.userData.spin = 0.016 + rnd() * 0.03;
-      colony.userData.phase = rnd() * Math.PI * 2;
-      colony.userData.driftScale = layer.drift;
-      bucket.add(colony);
-      colonies.push(colony);
-    });
-    scene.add(bucket);
+  const colonies = layout.map((layer) => {
+    const colony = buildColony(rnd, layer);
+    colony.position.set(layer.x, layer.y, layer.z);
+    colony.userData.layer = layer;
+    colony.userData.spin = 0.035 + rnd() * 0.02;
+    colony.userData.phase = rnd() * Math.PI * 2;
+    scene.add(colony);
+    return colony;
   });
 
   /* Suspended matter in three depth bands — soft round sprites, never squares. */
@@ -287,14 +301,20 @@ function attachVolvoxField(canvas) {
     return points;
   };
   const motes = [
-    moteLayer(150, 11, 0.14, 0.32, 0x5b9e77),
-    moteLayer(260, 9, 0.06, 0.5, PALETTE.cellGlow),
-    moteLayer(180, 8, 0.04, 0.4, PALETTE.cyanoFlash),
+    moteLayer(70, 11, 0.08, 0.18, 0x7f9d73),
+    moteLayer(100, 9, 0.035, 0.25, PALETTE.cellWarm),
+    moteLayer(70, 8, 0.025, 0.2, PALETTE.cyanoFlash),
   ];
   motes.forEach((layer) => scene.add(layer));
 
-  const composer = makeComposer(renderer, scene, camera, { strength: 0.42, radius: 0.8, threshold: 0.86 });
-  const resize = () => fitRenderer(renderer, composer, camera, canvas);
+  const composer = makeComposer(renderer, scene, camera, { strength: 0.12, radius: 0.5, threshold: 1.25 });
+  const resize = () => {
+    fitRenderer(renderer, composer, camera, canvas);
+    const portrait = canvas.clientWidth < 900;
+    colonies[0].userData.layer.x = portrait ? 0.45 : 2.45;
+    colonies[0].userData.layer.y = portrait ? 2.0 : 0.25;
+    colonies[0].scale.setScalar(portrait ? 0.72 : 1);
+  };
   resize();
   window.addEventListener("resize", resize, { passive: true });
 
@@ -311,13 +331,13 @@ function attachVolvoxField(canvas) {
 
   const clock = new THREE.Clock();
   const render = () => {
-    const time = clock.getElapsedTime();
+    const time = reducedMotion ? 0 : clock.getElapsedTime();
     for (const colony of colonies) {
       const layer = colony.userData.layer;
       colony.rotation.y = time * colony.userData.spin;
       colony.rotation.z = Math.sin(time * 0.11 + colony.userData.phase) * 0.055;
-      colony.position.x += Math.sin(time * layer.drift + colony.userData.phase) * 0.00021;
-      colony.position.y += Math.cos(time * layer.drift * 0.82 + colony.userData.phase) * 0.00024;
+      colony.position.x = layer.x + Math.sin(time * layer.drift + colony.userData.phase) * 0.08;
+      colony.position.y = layer.y + Math.cos(time * layer.drift * 0.82 + colony.userData.phase) * 0.06;
       colony.userData.daughter.rotation.y = -time * colony.userData.spin * 1.5;
     }
     motes.forEach((layer, index) => {
@@ -334,10 +354,13 @@ function attachVolvoxField(canvas) {
   const stop = () => {
     window.removeEventListener("resize", resize);
     window.removeEventListener("pointermove", onPointerMove);
+    dotTexture.dispose();
+    disposeEnvironment();
+    composer?.dispose();
     disposeTree(scene);
     renderer.dispose();
   };
-  return exhibit(canvas, () => ({ frame: () => { render(); return !reducedMotion; }, render, stop }));
+  return exhibit(canvas, () => ({ frame: () => { render(); return !reducedMotion; }, render, resize, stop }));
 }
 
 /* ------------------------------------------------------------------ */
@@ -349,8 +372,8 @@ function glassMaterial(tint, opacity) {
     color: tint,
     transparent: true,
     opacity,
-    transmission: 0.62,
-    roughness: 0.09,
+    transmission: 0.3,
+    roughness: 0.14,
     metalness: 0,
     thickness: 0.24,
     clearcoat: 0.4,
@@ -377,8 +400,8 @@ function makeReactorRig(rnd) {
     new THREE.MeshStandardMaterial({
       color: PALETTE.culture,
       emissive: PALETTE.cultureGlow,
-      emissiveIntensity: 0.55,
-      roughness: 0.5,
+      emissiveIntensity: 0.12,
+      roughness: 0.38,
       metalness: 0,
       transparent: true,
       opacity: 0.68,
@@ -404,14 +427,13 @@ function makeReactorRig(rnd) {
   rig.add(draft);
 
   /* Rising bubbles. */
-  const bubbleGeometry = new THREE.SphereGeometry(1, 7, 5);
   const bubbleMaterial = new THREE.MeshBasicMaterial({ color: 0x9fe6b2, transparent: true, opacity: 0.5, depthWrite: false });
   const bubbleBands = [
     { count: 34, radius: 0.028, band: 0.66, speed: 0.62 },
     { count: 20, radius: 0.052, band: 0.3, speed: 0.4 },
   ].map((bandConfig) => {
     const instanced = new THREE.InstancedMesh(new THREE.SphereGeometry(1, 7, 5), bubbleMaterial, bandConfig.count);
-    instanced.scale.setScalar(bandConfig.radius);
+    instanced.frustumCulled = false;
     const seeds = [];
     const matrix = new THREE.Matrix4();
     for (let index = 0; index < bandConfig.count; index += 1) {
@@ -564,10 +586,12 @@ function attachReactorStudy(canvas, section) {
   const renderer = rendererFor(canvas);
   if (!renderer) return paintFallback(canvas, "reactor");
   const scene = new THREE.Scene();
-  scene.fog = new THREE.FogExp2(0x06130d, 0.028);
+  scene.background = new THREE.Color(0x10251f);
+  scene.fog = new THREE.FogExp2(0x10251f, 0.018);
+  const disposeEnvironment = studioLighting(renderer, scene);
   const camera = new THREE.PerspectiveCamera(30, 1, 0.1, 60);
-  const rig = makeReactorRig(seeded(77));
-  scene.add(rig);
+  const rig = makeReactorRig(seeded(77));    scene.add(rig);
+
 
   scene.add(new THREE.HemisphereLight(0x8fbf9e, 0x0a1a12, 0.55));
   const key = new THREE.DirectionalLight(0xe4ffe2, 2.6);
@@ -580,8 +604,13 @@ function attachReactorStudy(canvas, section) {
   groundGlow.position.set(0, -2.6, 1.6);
   scene.add(groundGlow);
 
-  const composer = makeComposer(renderer, scene, camera, { strength: 0.3, radius: 0.7, threshold: 0.8 });
-  const resize = () => fitRenderer(renderer, composer, camera, canvas);
+  const composer = makeComposer(renderer, scene, camera, { strength: 0.12, radius: 0.5, threshold: 1.2 });
+  const resize = () => {
+    fitRenderer(renderer, composer, camera, canvas);
+    const width = canvas.clientWidth || 1;
+    const height = canvas.clientHeight || 1;
+    camera.setViewOffset(width, height, width < 900 ? 0 : -width * 0.16, 0, width, height);
+  };
   resize();
   window.addEventListener("resize", resize, { passive: true });
 
@@ -606,19 +635,20 @@ function attachReactorStudy(canvas, section) {
       lerp(a.camera[1], b.camera[1], localT),
       lerp(a.camera[2], b.camera[2], localT),
     );
+    /* Pull back enough to retain the complete frame and side bottles. */
+    camera.position.multiplyScalar(canvas.clientWidth < 600 ? 1.55 : 1.22);
     const look = [
       lerp(a.look[0], b.look[0], localT),
       lerp(a.look[1], b.look[1], localT),
       lerp(a.look[2], b.look[2], localT),
     ];
-    const time = clock.getElapsedTime();
+    const time = reducedMotion ? 0 : clock.getElapsedTime();
     const idle = reducedMotion ? 0 : Math.sin(time * 0.24) * 0.03;
     rig.rotation.y = lerp(a.rigY, b.rigY, localT) + idle;
     camera.lookAt(look[0], look[1], look[2]);
     renderer.toneMappingExposure = lerp(a.exposure, b.exposure, localT);
     const swirlRig = rig.userData.swirl;
     if (swirlRig) swirlRig.rotation.z = time * (0.3 + p * 0.5);
-    if (reducedMotion) return;
     const bubbles = rig.userData.bubbles;
     bubbles.forEach((instanced, bandIndex) => {
       const { seeds, band, matrix } = instanced.userData;
@@ -630,7 +660,7 @@ function attachReactorStudy(canvas, section) {
         const z = Math.sin(seed.angle + seed.wobble) * radius * seed.orbit * 2.2;
         const scale = 1 - life * 0.6;
         matrix.makeTranslation(x, y + life * 0.2, z + 0.2);
-        matrix.scale(new THREE.Vector3(scale, scale, scale).multiplyScalar(band.radius * 5));
+        matrix.scale(new THREE.Vector3(scale, scale, scale).multiplyScalar(band.radius));
         instanced.setMatrixAt(index, matrix);
       });
       instanced.instanceMatrix.needsUpdate = true;
@@ -655,30 +685,34 @@ function attachReactorStudy(canvas, section) {
   };
   const projectHotspots = () => {
     if (!hotspots.length) return;
-    canvas.getBoundingClientRect(); /* force layout sync */
     const bounds = canvas.getBoundingClientRect();
     hotspots.forEach(({ node, anchor }) => {
       const vector = new THREE.Vector3(anchor[0], anchor[1], anchor[2]).applyMatrix4(rig.matrixWorld).project(camera);
       const x = (vector.x * 0.5 + 0.5) * bounds.width;
       const y = (-vector.y * 0.5 + 0.5) * bounds.height;
+      node.hidden = vector.z < -1 || vector.z > 1 || x < 0 || x > bounds.width || y < 0 || y > bounds.height;
       node.style.transform = `translate(${x.toFixed(1)}px, ${y.toFixed(1)}px)`;
     });
   };
-  if (section) {
-    const update = () => {
+  const update = () => {
+    if (section) {
       const bounds = section.getBoundingClientRect();
       const span = Math.max(1, bounds.height - window.innerHeight * 0.6);
       render.currentProgress = clamp((window.innerHeight * 0.35 - bounds.top) / span);
-    };
-    window.addEventListener("scroll", update, { passive: true });
-    update();
-  }
+      if (reducedMotion) render();
+    }
+  };
+  window.addEventListener("scroll", update, { passive: true });
+  update();
   const stop = () => {
     window.removeEventListener("resize", resize);
+    window.removeEventListener("scroll", update);
+    disposeEnvironment();
+    composer?.dispose();
     disposeTree(scene);
     renderer.dispose();
   };
-  return exhibit(canvas, () => ({ frame: () => { render(); return !reducedMotion; }, render, stop }));
+  return exhibit(canvas, () => ({ frame: () => { render(); return !reducedMotion; }, render, resize, stop }));
 }
 
 /* ------------------------------------------------------------------ */
@@ -689,21 +723,24 @@ function attachInspectableScene(canvas, build, { cameraPosition, threshold = 0.8
   const renderer = rendererFor(canvas, 0x071411);
   if (!renderer) return paintFallback(canvas, canvas.id.includes("Chip") ? "chip" : "reactor");
   const scene = new THREE.Scene();
-  scene.fog = new THREE.FogExp2(0x081812, 0.03);
+  scene.background = new THREE.Color(0x172f27);
+  scene.fog = new THREE.FogExp2(0x172f27, 0.012);
+  const disposeEnvironment = studioLighting(renderer, scene);
   const camera = new THREE.PerspectiveCamera(34, 1, 0.1, 60);
   camera.position.set(...(cameraPosition || [4.4, 2, 7]));
   const rig = new THREE.Group();
   scene.add(rig);
-  scene.add(new THREE.HemisphereLight(0x9dc9ab, 0x0a1a13, 0.6));
-  const key = new THREE.DirectionalLight(0xdfffe4, 2.4);
+
+  scene.add(new THREE.HemisphereLight(0xf1efdf, 0x23382a, 1.2));
+  const key = new THREE.DirectionalLight(0xfff1d3, 3.4);
   key.position.set(-3.4, 4.4, 5.6);
   scene.add(key);
-  const rim = new THREE.PointLight(0x63d9cf, 5.5, 18);
+  const rim = new THREE.PointLight(0xc8d9ab, 7, 18);
   rim.position.set(4, 1.6, 3);
   scene.add(rim);
   build(rig, scene);
 
-  const composer = makeComposer(renderer, scene, camera, { strength: 0.5, radius: 0.74, threshold });
+  const composer = makeComposer(renderer, scene, camera, { strength: 0.1, radius: 0.45, threshold: Math.max(1.2, threshold) });
   const resize = () => fitRenderer(renderer, composer, camera, canvas);
   resize();
   window.addEventListener("resize", resize, { passive: true });
@@ -727,6 +764,18 @@ function attachInspectableScene(canvas, build, { cameraPosition, threshold = 0.8
     targetPitch = clamp(targetPitch + (event.clientY - lastY) * 0.005, -0.62, 0.52);
     lastX = event.clientX;
     lastY = event.clientY;
+    if (reducedMotion) render();
+  });
+  canvas.addEventListener("keydown", (event) => {
+    const keys = ["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown", "Home"];
+    if (!keys.includes(event.key)) return;
+    event.preventDefault();
+    if (event.key === "Home") { targetYaw = -0.3; targetPitch = 0.03; }
+    if (event.key === "ArrowLeft") targetYaw -= 0.15;
+    if (event.key === "ArrowRight") targetYaw += 0.15;
+    if (event.key === "ArrowUp") targetPitch = clamp(targetPitch - 0.1, -0.62, 0.52);
+    if (event.key === "ArrowDown") targetPitch = clamp(targetPitch + 0.1, -0.62, 0.52);
+    if (reducedMotion) render();
   });
   const endDrag = () => { pointerId = null; };
   canvas.addEventListener("pointerup", endDrag);
@@ -734,23 +783,25 @@ function attachInspectableScene(canvas, build, { cameraPosition, threshold = 0.8
 
   const clock = new THREE.Clock();
   const render = () => {
-    const time = clock.getElapsedTime();
-    yaw = lerp(yaw, targetYaw, 0.09);
-    pitch = lerp(pitch, targetPitch, 0.09);
+    const time = reducedMotion ? 0 : clock.getElapsedTime();
+    yaw = reducedMotion ? targetYaw : lerp(yaw, targetYaw, 0.09);
+    pitch = reducedMotion ? targetPitch : lerp(pitch, targetPitch, 0.09);
     rig.rotation.y = yaw + (reducedMotion ? 0 : Math.sin(time * 0.14) * 0.02);
     rig.rotation.x = pitch;
     rig.position.y = reducedMotion ? 0 : Math.sin(time * 0.26) * 0.03;
     camera.lookAt(0, -0.1, 0);
+    rig.userData.animate?.(time);
     if (composer) composer.render();
     else renderer.render(scene, camera);
-    rig.userData.animate?.(time);
   };
   const stop = () => {
     window.removeEventListener("resize", resize);
+    disposeEnvironment();
+    composer?.dispose();
     disposeTree(scene);
     renderer.dispose();
   };
-  return exhibit(canvas, () => ({ frame: () => { render(); return !reducedMotion; }, render, stop }));
+  return exhibit(canvas, () => ({ frame: () => { render(); return !reducedMotion; }, render, resize, stop }));
 }
 
 function makeCultivationScene(canvas) {
@@ -813,8 +864,8 @@ function makeCultivationScene(canvas) {
       block.position.set(x, y, 0);
       rig.add(block);
     });
-    /* Five tie rods across the panel breadth. */
-    [-1.02, -0.51, 0, 0.51, 1.02].forEach((x) => {
+    /* Fasteners sit at the perimeter rather than piercing the culture window. */
+    [-1.02, 1.02].forEach((x) => {
       const rod = new THREE.Mesh(new THREE.CylinderGeometry(0.022, 0.022, 0.62, 8), metal);
       rod.rotation.x = Math.PI / 2;
       rod.position.set(x, 0.1, 0.24);
@@ -945,17 +996,17 @@ function makeChipScene(canvas) {
   return attachInspectableScene(canvas, (rig, scene) => {
     const substrate = new THREE.Mesh(
       new THREE.BoxGeometry(3.6, 0.14, 2.3),
-      new THREE.MeshPhysicalMaterial({ color: 0x16241f, metalness: 0.55, roughness: 0.34, clearcoat: 0.3, clearcoatRoughness: 0.3, transparent: true, opacity: 0.96 }),
+      new THREE.MeshPhysicalMaterial({ color: 0xa5b49a, metalness: 0.18, roughness: 0.3, clearcoat: 0.6, clearcoatRoughness: 0.2 }),
     );
     substrate.position.y = -0.07;
     rig.add(substrate);
 
     /* Recessed tray: cavity floor inside thin perimeter walls. */
-    const cavityMaterial = new THREE.MeshStandardMaterial({ color: 0x0a1411, metalness: 0.3, roughness: 0.55 });
+    const cavityMaterial = new THREE.MeshStandardMaterial({ color: 0x59745d, metalness: 0.1, roughness: 0.5 });
     const cavity = new THREE.Mesh(new THREE.BoxGeometry(3.32, 0.02, 2.02), cavityMaterial);
     cavity.position.y = -0.005;
     rig.add(cavity);
-    const wallMaterial = new THREE.MeshStandardMaterial({ color: 0x22332c, metalness: 0.5, roughness: 0.42 });
+    const wallMaterial = new THREE.MeshStandardMaterial({ color: 0xaab99b, metalness: 0.25, roughness: 0.36 });
     const wallPart = (w, h, d, x, y, z) => {
       const part = new THREE.Mesh(new THREE.BoxGeometry(w, h, d), wallMaterial);
       part.position.set(x, y, z);
@@ -968,8 +1019,8 @@ function makeChipScene(canvas) {
     wallPart(0.06, 0.09, 2.18, 1.72, 0.02, 0);
 
     /* Channels routed on the tray floor. */
-    const flowingFluid = new THREE.MeshStandardMaterial({ color: 0x9be3d8, emissive: 0x1f8e86, emissiveIntensity: 0.85, transparent: true, opacity: 0.52, roughness: 0.3 });
-    const candidateFluid = new THREE.MeshStandardMaterial({ color: 0xd6f7a6, emissive: 0x6fb04e, emissiveIntensity: 0.9, transparent: true, opacity: 0.55, roughness: 0.3 });
+    const flowingFluid = new THREE.MeshStandardMaterial({ color: 0x9be3d8, emissive: 0x1f8e86, emissiveIntensity: 0.22, transparent: true, opacity: 0.82, roughness: 0.3 });
+    const candidateFluid = new THREE.MeshStandardMaterial({ color: 0xd6f7a6, emissive: 0x6fb04e, emissiveIntensity: 0.24, transparent: true, opacity: 0.85, roughness: 0.3 });
     const channel = (points, radius, material) => {
       const curve = new THREE.CatmullRomCurve3(points);
       const mesh = new THREE.Mesh(new THREE.TubeGeometry(curve, 44, radius, 8, false), material);
@@ -1056,13 +1107,14 @@ function makeChipScene(canvas) {
 
     /* Droplets: instanced spheres easing along the channel network. */
     const dropletMaterial = new THREE.MeshStandardMaterial({ color: 0x6fc2ae, emissive: 0x1f8e86, emissiveIntensity: 0.4, transparent: true, opacity: 0.55, roughness: 0.28 });
-    const cells = new THREE.InstancedMesh(new THREE.SphereGeometry(0.045, 8, 6), new THREE.MeshStandardMaterial({ color: 0xe4fda9, emissive: 0x8ec456, emissiveIntensity: 1.1, roughness: 0.3 }), 5);
+    const cells = new THREE.InstancedMesh(new THREE.SphereGeometry(0.045, 12, 10), new THREE.MeshStandardMaterial({ color: 0xd5dfa4, emissive: 0x637c36, emissiveIntensity: 0.25, roughness: 0.3 }), 2);
     const matrix = new THREE.Matrix4();
+    const dropletRnd = seeded(97);
     const dropletsByCurve = [trunk, loopCurve, recoveryCurve].map((curve, pathIndex) => {
       const droplets = [];
       for (let index = 0; index < 5; index += 1) {
         const droplet = new THREE.Mesh(new THREE.SphereGeometry(0.04, 10, 8), dropletMaterial);
-        droplet.userData = { t: index / 7, pathIndex, speed: 0.022 + Math.random() * 0.01 };
+        droplet.userData = { t: index / 7, pathIndex, speed: 0.022 + dropletRnd() * 0.01 };
         rig.add(droplet);
         droplets.push(droplet);
       }
@@ -1079,7 +1131,7 @@ function makeChipScene(canvas) {
           if (pathIndex !== 2 || index % 3 !== 0) return;
           matrix.makeTranslation(point.x, point.y + 0.05, point.z);
           matrix.scale(new THREE.Vector3(0.55, 0.55, 0.55));
-          cells.setMatrixAt(index, matrix);
+          cells.setMatrixAt(index / 3, matrix);
         });
       });
       cells.instanceMatrix.needsUpdate = true;
@@ -1381,7 +1433,7 @@ function attachAmbientField(canvas, config) {
   };
   window.addEventListener("pointermove", onPointer, { passive: true });
   const render = () => {
-    const time = clock.getElapsedTime();
+    const time = reducedMotion ? 0 : clock.getElapsedTime();
     updates.forEach((update) => update(time));
     pointerCurrent.x += (pointerTarget.x - pointerCurrent.x) * 0.045;
     pointerCurrent.y += (pointerTarget.y - pointerCurrent.y) * 0.045;
@@ -1407,13 +1459,14 @@ function attachAmbientField(canvas, config) {
     window.removeEventListener("pointermove", onPointer);
     window.removeEventListener("scroll", onScroll);
     background?.dispose();
+    softDot.dispose();
     disposeTree(scene);
     renderer.dispose();
   };
   const resize = () => fitRenderer(renderer, null, camera, canvas);
   resize();
   window.addEventListener("resize", resize, { passive: true });
-  return exhibit(canvas, () => ({ frame: () => { render(); return !reducedMotion; }, render, stop }));
+  return exhibit(canvas, () => ({ frame: () => { render(); return !reducedMotion; }, render, resize, stop }));
 }
 
 /* ------------------------------------------------------------------ */
@@ -1492,28 +1545,28 @@ mount("#reactorCanvas", (canvas) => attachReactorStudy(canvas, document.querySel
 mount("#cyanoflowChipCanvas", makeChipScene);
 mount("#algaephyteHeroCanvas", (canvas) => attachAmbientField(canvas, {
   seed: 41, variant: "colony",
-  background: [[0, "#03150d"], [0.5, "#0a3a22"], [1, "#030d08"]],
+  background: [[0, "#10251f"], [0.5, "#294630"], [1, "#10251f"]],
   fog: 0x041108, fogDensity: 0.038, spread: 8.5, cellCount: 112, clusters: 7,
-  cellColor: 0x356b4c, cellEmissive: 0x9fe8a8, cellOpacity: 0.6, cellEmissiveIntensity: 0.52,
+  cellColor: 0x8caa72, cellEmissive: 0x6d874b, cellOpacity: 0.45, cellEmissiveIntensity: 0.14,
+  glowOpacity: 0.1, shaftCount: 0,
   moteColor: 0xbff0c2, moteOpacity: 0.5, exposure: 0.98,
   keyColor: 0xd8ffd0, keyIntensity: 1.05, fallback: "reactor",
 }));
 mount("#cyanoflowHeroCanvas", (canvas) => attachAmbientField(canvas, {
   seed: 97, variant: "stream",
-  background: [[0, "#02201d"], [0.55, "#0b4a44"], [1, "#031412"]],
-  fog: 0x05201d, fogDensity: 0.048, spread: 8.5, cellCount: 68, lanes: 5,
-  cellColor: 0x16847a, cellEmissive: 0x7ae7d8, cellOpacity: 0.66, cellEmissiveIntensity: 0.6,
-  laneColor: 0x5fdfd0, moteColor: 0x9defd8, moteOpacity: 0.48, cellCount: 76,
+  background: [[0, "#10251f"], [0.55, "#254438"], [1, "#10251f"]],
+  fog: 0x10251f, fogDensity: 0.035, spread: 8.5, lanes: 4,
+  cellColor: 0x81a890, cellEmissive: 0x6a8a71, cellOpacity: 0.45, cellEmissiveIntensity: 0.18,
+  glowOpacity: 0.08, shaftCount: 0,
+  laneColor: 0xa9c9bb, moteColor: 0xc8d9ab, moteOpacity: 0.24, cellCount: 42,
   stretch: [1.65, 0.9, 0.9], exposure: 1.0,
   keyColor: 0xbffff2, keyIntensity: 0.95, hemiSky: 0x2c6a66, hemiGround: 0x04100d,
   fallback: "chip",
 }));
-/* Sitewide living background. Any public page without a dedicated visual
-   gets its own quiet field: a transparent canvas holding a small colony
-   cluster and drift motes that reads on both the dark editorial theme and
-   the light guide pages, masked to fade before the article text. */
+/* A quiet field continues beyond the dedicated heroes on public pages.
+   Immersive workspaces keep their own rendering loop and palette. */
 (function mountSitewideField() {
-  if (document.querySelector("#volvoxCanvas,#reactorCanvas,#algaephyteInstrumentCanvas,#cyanoflowChipCanvas,#algaephyteHeroCanvas,#cyanoflowHeroCanvas")) return;
+  if (document.querySelector("#biorealmApp,.sim-app,.lab-shell")) return;
   const canvas = document.createElement("canvas");
   canvas.className = "ob-page-field";
   canvas.setAttribute("aria-hidden", "true");
@@ -1522,15 +1575,17 @@ mount("#cyanoflowHeroCanvas", (canvas) => attachAmbientField(canvas, {
   active.push(attachAmbientField(canvas, {
     seed: 23, variant: "colony", transparent: true,
     fog: 0x2a5c3c, fogDensity: 0.009, spread: 8.5,
-    cellCount: 130, clusters: 9, cellColor: 0x449a6a,
-    cellEmissive: 0xb4f4bc, cellEmissiveIntensity: 0.72, cellOpacity: 0.62,
-    clusterRadius: 1.2, cellSize: 0.21,
-    glowColor: 0xb8f2bc, glowSize: 0.46, glowOpacity: 0.4,
-    shaftCount: 5, shaftColor: 0xd8ffd0, shaftOpacity: 0.05,
-    moteColor: 0xb4ecb0, moteOpacity: 0.62, moteCount: 110, moteSize: 0.072,
+    cellCount: 64, clusters: 5, cellColor: 0x7b986b,
+    cellEmissive: 0x839e63, cellEmissiveIntensity: 0.12, cellOpacity: 0.45,
+    clusterRadius: 0.9, cellSize: 0.12,
+    glowColor: 0xc8d9ab, glowSize: 0.2, glowOpacity: 0.08,
+    shaftCount: 0,
+    moteColor: 0xc8d9ab, moteOpacity: 0.22, moteCount: 60, moteSize: 0.04,
     exposure: 1.05, keyColor: 0xd8ffd0, keyIntensity: 1.05,
     scrollDolly: 0.7, scrollZoom: 0.7,
   }));
 })();
 
-window.addEventListener("pagehide", () => active.forEach((scene) => scene.stop?.()));
+window.addEventListener("pagehide", (event) => {
+  if (!event.persisted) active.forEach((scene) => scene?.stop?.());
+});
