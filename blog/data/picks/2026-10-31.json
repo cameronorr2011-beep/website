@@ -1,0 +1,55 @@
+{
+  "date": "2026-10-31",
+  "model": "openai/gpt-oss-120b",
+  "generated_at": "2026-10-31T22:57:37Z",
+  "picks": [
+    {
+      "pmid": "42956850",
+      "title": "Strain-dependent carbon partitioning and community-level functional responses during microalgae-based dairy wastewater treatment under CO<sub>2</sub> enrichment.",
+      "journal": "Bioresource technology",
+      "year": "2026",
+      "pub_date": "2026-10-29",
+      "url": "https://doi.org/10.1016/j.biortech.2026.136162",
+      "topic": "Biofuels Wastewater",
+      "hook": "Strain-specific algae split dairy waste into carbon fuels under CO₂ enrichment.",
+      "article": "A recent study explored how different microalgae strains handle carbon when used to treat dairy wastewater that is enriched with CO₂. The researchers grew several microalgal strains in dairy wastewater under elevated CO₂ and measured how each strain allocated carbon into various biochemical products and how the surrounding microbial community responded.\n\nThey found that the way carbon was partitioned and the functional responses of the microbial community varied depending on the microalgal strain, and these strain‑dependent differences remain insufficiently resolved.\n\nUnderstanding which strains are most efficient at converting waste carbon into useful biomass could help improve algae‑based wastewater treatment systems.",
+      "why": "Identifying optimal algae strains can boost carbon capture and resource recovery in wastewater treatment."
+    },
+    {
+      "pmid": "42962564",
+      "title": "Dual-response whole-cell microalgae biosensor based on ALP-associated electrochemical sensing of heavy metal cations in freshwater.",
+      "journal": "Bioelectrochemistry (Amsterdam, Netherlands)",
+      "year": "2026",
+      "pub_date": "2026-10-28",
+      "url": "https://doi.org/10.1016/j.bioelechem.2026.109487",
+      "topic": "Sensors Heavy‑Metals",
+      "hook": "Whole‑cell microalgae sensor detects toxic metal cations electrochemically in fresh water.",
+      "article": "A recent study set out to create a whole‑cell microalgae biosensor that could detect heavy‑metal cations in freshwater while also giving a separate signal for another analyte. The researchers wanted a device that did more than just turn off when a toxin was present.\n\nThey built a chronamperometric (current‑measuring) sensor using living Scenedesmus sp. MN738556 cells that were immobilised on a glassy carbon electrode. The approach relied on the enzyme alkaline phosphatase (ALP) inside the cells to generate an electrochemical response.\n\nThe resulting biosensor was able to produce two distinct electrochemical signals: one linked to ALP activity that changed in the presence of heavy‑metal ions, and a second response that remained functional for other measurements. This dual‑response capability expands the analytical range of the device.\n\nSuch a dual‑signal microalgae sensor could improve monitoring of water quality by providing more information from a single, sustainable biological platform.",
+      "why": "It offers a greener, more informative way to track harmful metals in drinking‑water sources."
+    },
+    {
+      "pmid": "42924962",
+      "title": "Hydroxypheophytin a Stereoisomers as Principal Bioactive Compounds from Spirulina for the Reduction of Lipids and Appetite.",
+      "journal": "Journal of natural products",
+      "year": "2026",
+      "pub_date": "",
+      "url": "https://doi.org/10.1021/acs.jnatprod.6c00721",
+      "topic": "Health Nutrition",
+      "hook": "Spirulina hydroxypheophytin stereoisomers curb lipids and appetite in obesity models.",
+      "article": "A recent study set out to pinpoint which molecules in the blue‑green alga Spirulina are responsible for lowering fat levels and reducing appetite.\n\nThe researchers grew Limnospira platensis (the scientific name for Spirulina) and extracted its chemicals, then used a bioassay‑guided approach – testing each fraction for activity in zebrafish larvae – to zero in on the active ingredients.\n\nThe work identified stereoisomers of 132‑hydroxy‑pheophytin a as the principal bioactive compounds that showed lipid‑reducing effects in the zebrafish model.\n\nThese findings are interesting because they provide concrete molecular targets that could be explored for developing natural, algae‑based approaches to managing obesity.",
+      "why": "Identifying specific Spirulina compounds that cut fat in a living model opens pathways for algae‑derived weight‑management products."
+    },
+    {
+      "pmid": "42906383",
+      "title": "Sustainable microalgal biorefinery enabled by molecular dynamics-guided in-situ hydrothermal extraction using fatty-acid-based hydrophobic eutectic solvents: Integrated process performance and life-cycle assessment.",
+      "journal": "Journal of environmental management",
+      "year": "2026",
+      "pub_date": "2026-10-21",
+      "url": "https://doi.org/10.1016/j.jenvman.2026.131202",
+      "topic": "Biorefinery Extraction",
+      "hook": "Molecular‑dynamics‑guided eutectic solvents boost in‑situ lipid extraction for sustainable biofuel.",
+      "article": "A recent study set out to find a greener way to pull lipids out of microalgae, which are needed for sustainable biofuel production. The researchers introduced fatty‑acid‑based hydrophobic eutectic solvents (FHEs) to perform the extraction directly inside the algae under hydrothermal conditions, aiming to avoid the degradation that can happen with traditional post‑hydrothermal hexane methods.\n\nThey used molecular dynamics simulations to evaluate ten different FHE formulations that varied in fatty‑acid chain length, then tested the most promising candidates on microalgal biomass in a laboratory‑scale hydrothermal extraction setup.\n\nThe screening identified FHEs that could extract lipids in‑situ without the typical degradation observed with conventional solvents. The integrated process was further evaluated with a life‑cycle assessment, showing a reduced environmental impact compared with the standard approach.\n\nThis work is interesting because it points to a more sustainable route for turning algae into bio‑fuels, potentially lowering the ecological footprint of algal biorefineries.",
+      "why": "A greener extraction method could make algae‑based biofuels more environmentally friendly and cost‑effective."
+    }
+  ]
+}
