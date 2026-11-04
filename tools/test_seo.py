@@ -213,6 +213,31 @@ class SEOTests(unittest.TestCase):
         engine_row = (ROOT / 'index.html').read_text(encoding='utf-8')
         self.assertIn('/literature/', engine_row)
 
+    def test_neuroml_skeleton_states_its_limits(self):
+        neuro = (ROOT / 'neuroML/index.html').read_text(encoding='utf-8')
+        dev = (ROOT / 'developers/index.html').read_text(encoding='utf-8')
+        home = (ROOT / 'index.html').read_text(encoding='utf-8')
+        # The skeleton must not pretend data exists, and must say so plainly.
+        self.assertIn('No dataset has been ingested', neuro)
+        self.assertIn('0 of 5', neuro)
+        self.assertIn('not a whole-mouse-brain reconstruction', neuro)
+        self.assertIn('Nothing on this page responds yet', dev)
+        self.assertIn('/api/v1/neurons/{id}', dev)
+        self.assertNotIn('data-state="live">Live</span></p>\n<h2>Rules', dev)
+        # No fabricated biological quantities or completeness claims.
+        for text, label in ((neuro, 'neuroML'), (dev, 'developers')):
+            with self.subTest(page=label):
+                self.assertNotRegex(text, r'\b\d{1,3}(,\d{3})+\s+neurons')
+                self.assertNotIn('fully reconstructed', text)
+                self.assertNotIn('synaptic-resolution whole', text)
+        # Both surfaces are reachable from the shared shell and the funding
+        # destination is the authorised external campaign, not a payment page.
+        for page, text in (('home', home), ('neuroML', neuro), ('developers', dev)):
+            with self.subTest(link=page):
+                self.assertIn('/neuroML/', text)
+                self.assertIn('/developers/', text)
+        self.assertIn('experiment.com/projects/bfjitcgcfkiiaulsuyvx', neuro)
+
     def test_google_font_ranges_are_valid(self):
         for path in pages():
             text = path.read_text(encoding='utf-8-sig')

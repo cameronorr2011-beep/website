@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NeuroML — Mouse Brain &amp; Fruit Fly Connectomics Platform | Orr Biologicals</title>
+<meta name="description" content="NeuroML is the planned connectomics platform at Orr Biologicals: a mouse-brain registry built from public datasets and the published fruit-fly connectome. Interface skeleton; no datasets ingested yet.">
+<link rel="canonical" href="https://orrbiologicals.com/neuroML/">
+<meta property="og:title" content="NeuroML — Mouse Brain &amp; Fruit Fly Connectomics">
+<meta property="og:description" content="A planned connectomics platform: mouse-brain records from public datasets and the published fruit-fly connectome. Interface skeleton; no datasets ingested yet.">
+<meta property="og:url" content="https://orrbiologicals.com/neuroML/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://orrbiologicals.com/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="NeuroML — Mouse Brain &amp; Fruit Fly Connectomics">
+<meta name="twitter:description" content="A planned connectomics platform at Orr Biologicals. Interface skeleton; no datasets ingested yet.">
+<meta name="twitter:image" content="https://orrbiologicals.com/assets/og.png">
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="stylesheet" href="/css/neuro.css?v=20261101">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "name": "NeuroML — Mouse Brain & Fruit Fly Connectomics Platform",
+      "url": "https://orrbiologicals.com/neuroML/",
+      "description": "A planned connectomics platform for mouse-brain records from public datasets and the published fruit-fly connectome. Interface skeleton; no datasets ingested yet.",
+      "publisher": { "@type": "Organization", "name": "Orr Biologicals", "url": "https://orrbiologicals.com/" }
+    }
+  ]
+}
+</script>
+<style>.skip{position:absolute;left:-9999px}</style>
+<link rel="stylesheet" href="/css/global.css?v=20261101">
+<link rel="stylesheet" href="/css/header.css?v=20261101">
+<link rel="stylesheet" href="/css/orr-home.css?v=20261101">
+<link rel="stylesheet" href="/css/animations.css?v=20261101">
+<link rel="stylesheet" href="/css/site-redesign.css?v=20261101">
+<link rel="stylesheet" href="/css/biological-cinema.css?v=20261101">
+</head>
+<body class="art-body">
+<a class="skip" href="#main">Skip to content</a>
+<header class="nav" id="nav">
+<div class="nav-in"><a class="mark" href="/" aria-label="Orr Biologicals home">
+<svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="14" fill="none" stroke="currentColor"/><path d="M9 23c6-3 0-14 7-14s1 11 7 14M8 15c4-5 12-5 16 0" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+<span><b>Orr Biologicals</b><small>A CLOSER LOOK AT LIFE</small></span></a>
+<nav class="nav-links" aria-label="Primary"><a href="/algaephyte/">Algaephyte</a><a href="/cyanoflow">Cyanoflow</a><a href="/research/">Research</a><a href="/neuroML/">Neuroscience</a><a href="/literature/">Literature</a><a href="/blog/">Journal</a><a href="/developers/">Developers</a><a class="btn-white" href="/#deploy">Contact</a></nav>
+<button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="mobileMenu">Menu</button></div></header>
+<nav class="mobile-menu" id="mobileMenu" aria-label="Mobile primary" hidden>
+<a href="/algaephyte/">Algaephyte / cultivation</a><a href="/cyanoflow">Cyanoflow / single cells</a><a href="/research/">Our research</a><a href="/neuroML/">NeuroML / neuroscience</a><a href="/literature/">Literature search / DOI lookup</a><a href="/blog/">Journal / ideas &amp; notes</a><a href="/algae-growth/">Algae growth / field guide</a><a href="/downloads/">App downloads</a><a href="/developers/">Developers / API</a><a href="/#deploy">Contact the project</a></nav>
+<main id="main" class="art-shell"><nav class="art-top" aria-label="Breadcrumb"><a href="/">Orr Biologicals</a> / <span>NeuroML</span></nav>
+<p class="art-cat">Neuroscience · Interface skeleton</p>
+<h1>NeuroML</h1>
+<div class="prose">
+<p class="dek nml-lede">A research platform for connectomics and neural dynamics: mouse-brain records assembled from public datasets, and the published fruit-fly connectome. This page is the layout the research team will implement against. No dataset has been ingested, so no neuron, synapse or model result is displayed.</p>
+
+<p class="nml-status"><strong>Development status · layout only.</strong> Every panel below states what it will show and which dataset it must come from. Record counts are zero because none have been ingested yet — the zeros are the current true state, not a loading placeholder.</p>
+
+<div class="nml-tabs">
+<a href="#mouse"><span>Environment 01</span><b>Mouse brain</b><small>Public datasets, region by region. Not connected.</small></a>
+<a href="#fly"><span>Environment 02</span><b>Fruit fly</b><small>Published connectome. Integration pending.</small></a>
+</div>
+
+<h2 id="mouse">Mouse brain</h2>
+<p>No single public mouse dataset is a whole-brain synaptic reconstruction, so the platform must keep every source separate, versioned and labelled by what it actually measured. The registry below names the datasets the reconstruction will draw from and the access route each one requires.</p>
+
+<div class="nml-table-wrap" role="region" aria-label="Planned mouse dataset registry" tabindex="0">
+<table class="nml-table">
+<thead><tr><th scope="col">Dataset</th><th scope="col">What it provides</th><th scope="col">Access route</th><th scope="col">Status</th></tr></thead>
+<tbody>
+<tr><td>MICrONS<br><a href="https://www.microns-explorer.org/" rel="noreferrer">microns-explorer.org</a></td><td>Mouse visual cortex: electron microscopy, segmentation, synaptic annotations, reconstructed morphology, functional recordings with stimuli.</td><td>CAVEclient / CloudVolume; some access needs an authorised CAVE token.</td><td><span class="nml-badge" data-state="pending">Adapter not implemented</span></td></tr>
+<tr><td>Allen Brain Cell Atlas<br><a href="https://alleninstitute.github.io/abc_atlas_access/" rel="noreferrer">abc_atlas_access</a></td><td>Whole-mouse-brain transcriptomic cell types, spatially resolved molecular data, taxonomies, release labels including beta status.</td><td>Public Python package and hosted releases.</td><td><span class="nml-badge">Not connected</span></td></tr>
+<tr><td>Allen Mouse Brain Connectivity Atlas<br><a href="https://brain-map.org/support/documentation/api-allen-brain-connectivity-atlas" rel="noreferrer">Allen API</a></td><td>Injection experiments, axonal projections, anatomical targets and region annotations. Projection strength is not a proofread synaptic graph.</td><td>Public Allen API.</td><td><span class="nml-badge">Not connected</span></td></tr>
+<tr><td>Allen Cell Types Database<br><a href="https://celltypes.brain-map.org/" rel="noreferrer">celltypes.brain-map.org</a></td><td>Morphology, electrophysiology, transcriptomic annotation, GLIF and biophysical models, NWB recordings, SWC reconstructions.</td><td>Public downloads and API.</td><td><span class="nml-badge">Not connected</span></td></tr>
+<tr><td>DANDI Archive<br><a href="https://dandiarchive.org/" rel="noreferrer">dandiarchive.org</a></td><td>Standardised NWB neurophysiology recordings with experimental conditions and recording provenance.</td><td>Public DANDI API and client.</td><td><span class="nml-badge">Not connected</span></td></tr>
+</tbody>
+</table>
+</div>
+
+<h3>Coverage</h3>
+<div class="nml-grid">
+<div class="nml-card"><p class="nml-count">0<em>Neuron records ingested</em></p></div>
+<div class="nml-card"><p class="nml-count">0<em>Connection records ingested</em></p></div>
+<div class="nml-card"><p class="nml-count">0 of 5<em>Datasets connected</em></p></div>
+<div class="nml-card"><p class="nml-count">0<em>Model experiments run</em></p></div>
+</div>
+<p class="nml-note">Progress will be reported per dataset and per brain region. There is no defensible whole-brain completion percentage, because the datasets above differ in species preparation, resolution and experimental scope, so no such figure will be shown.</p>
+
+<h3>What a neuron record will carry</h3>
+<div class="nml-grid">
+<div class="nml-card"><h3>Identity and provenance</h3><p>Stable source identifier, internal identifier, dataset and release version, species, brain region, coordinate reference system, source publication, access location, proofreading and reconstruction status.</p></div>
+<div class="nml-card"><h3>Biology</h3><p>Cell type and how it was assigned, dendritic and axonal morphology, synaptic partners with measured synapse counts, electrophysiological properties, transcriptomic annotation, session and subject identifiers where public.</p></div>
+<div class="nml-card"><h3>Evidence</h3><p>An explicit evidence state on every record and every edge, plus a separate layer for predictions. A predicted connection is never written into the verified-connectome layer.</p></div>
+</div>
+
+<h3>Evidence states</h3>
+<p>Every visible neuron and connection must say which kind of statement it is. These are the categories the interface will use.</p>
+<ul class="nml-evidence">
+<li><b>Verified observation</b>Measured and recorded in a source dataset, traceable to that record.</li>
+<li><b>Curated observation</b>Reconstructed or annotated by dataset curators from measured material.</li>
+<li><b>Experimentally supported</b>Backed by an independent published experiment rather than one measurement.</li>
+<li><b>Computationally derived</b>Calculated by our software from measured inputs; reproducible, not observed.</li>
+<li><b>AI predicted</b>Output of a trained model, pending experimental support. Always a separate layer.</li>
+<li><b>Literature inferred</b>Drawn from published findings that may not apply to this animal or preparation.</li>
+<li><b>Conflicting evidence</b>Sources disagree; both are shown and neither is presented as settled.</li>
+<li><b>Unknown / unavailable</b>No data, or data we are not authorised to display. Shown as unavailable, never estimated.</li>
+</ul>
+
+<h2 id="fly">Fruit fly</h2>
+<p>The published fruit-fly connectome and the earlier fly viewer were built as a separate application. That work is not merged into this site, and this page does not reproduce any of its numbers.</p>
+<div class="nml-grid">
+<div class="nml-card"><h3>Preserved, not rebuilt</h3><p>The existing fly implementation stays intact while the platform is expanded. Integration starts with an audit of which dataset release and annotation version it actually loads.</p></div>
+<div class="nml-card"><h3>Dataset integrity first</h3><p>On integration the platform will state the release name, annotation status, neuron and connection counts, and the real graph coverage — quoted from the release, never rounded up.</p></div>
+<div class="nml-card"><h3>No fly figures quoted here</h3><p>No neuron or synapse totals appear on this page because none have been verified against the release that will be used. They appear only when read from a versioned dataset record.</p></div>
+</div>
+
+<h2>Public API and developer access</h2>
+<p>The platform is being designed to be usable outside this website: a versioned REST API, documented contracts and explicit status for anything not yet implemented. The endpoint plan and its rules are on <a href="/developers/">the developer contract page</a>. Nothing there responds yet.</p>
+
+<h2>Research support</h2>
+<p>NeuroML is a research programme in development. If you would like to support the work, the funding page is external and contribution there is voluntary: <a href="https://experiment.com/projects/bfjitcgcfkiiaulsuyvx" rel="noreferrer">support open research in computational biology and neuroscience ↗</a>. No fundraising target is claimed on this site. The alternative Lightning route is described on <a href="/support/">research support</a>.</p>
+
+<h2>What this page does not claim</h2>
+<ul>
+<li>It is not a whole-mouse-brain reconstruction at synaptic resolution. No such public dataset exists.</li>
+<li>It contains no simulated neural activity and no fabricated neurons. Panels are empty because the data is not ingested.</li>
+<li>Predictions, when they exist, will be labelled as predictions and kept apart from measured records.</li>
+<li>Nothing here is a medical device, diagnosis or clinical tool.</li>
+</ul>
+<p class="nml-note">Corrections and dataset suggestions: <a href="mailto:service@orrbiologicals.com">service@orrbiologicals.com</a>. Read the <a href="/disclaimer">scientific disclaimer</a> and the <a href="/literature/">literature search</a> used for source checking.</p>
+</div>
+</main><footer class="science-footer"><div class="wrap footer-layout">
+<div><a class="footer-brand" href="/">Orr Biologicals</a><p>Small life. New possibilities.<br>Tools and ideas for understanding a living world.</p><small>Research concepts in development.<br>No validated hardware or commercial deployment claimed.</small></div>
+<nav aria-label="Footer platforms"><h2>Explore our work</h2><a href="/algaephyte/">Algaephyte / Growing algae</a><a href="/cyanoflow">Cyanoflow / Individual cells</a><a href="/game/">Cyanoflow Field Lab / Synthetic Discovery</a><a href="/algae-growth/">Algae Growth / Field Guide</a><a href="/neuroML/">NeuroML / Mouse &amp; fly connectomics</a><a href="/demo/">Expedition Demo</a><a href="/downloads/">App Downloads</a></nav>
+<nav aria-label="Footer resources"><h2>Read &amp; discover</h2><a href="/research/">Our research approach</a><a href="/literature/">Literature search / DOI lookup</a><a href="/developers/">API for developers</a><a href="/blog/">Research Journal</a><a href="/algae-biotechnology/">Algae Biotechnology</a><a href="/microalgae-cultivation/">Microalgae Cultivation</a><a href="/photobioreactors/">Photobioreactors</a><a href="/glossary">Biology, explained</a><a href="/support/">Support research / Lightning</a><a href="/#deploy">Project correspondence</a></nav>
+<div><h2>Say hello</h2><a href="mailto:service@orrbiologicals.com">service@orrbiologicals.com</a><p><a href="https://www.youtube.com/@OrrBiologicals" target="_blank" rel="noreferrer">Research updates on YouTube ↗</a></p><small>Open research notes / MIT-licensed site code</small></div>
+</div><div class="wrap footer-base"><span>© 2026 Orr Biologicals / A closer look at life</span><nav aria-label="Legal"><a href="/privacy">Privacy</a><a href="/terms">Terms</a><a href="/disclaimer">Scientific disclaimer</a><a href="/LICENSE" download>MIT License</a></nav></div></footer><script defer src="/js/animations.js?v=20261101"></script>
+<script defer src="/js/navigation.js?v=20261101"></script>
+<script defer src="/js/cell-cursor.js?v=20261101"></script>
+<script defer src="/js/biological-cinema.js?v=20261101"></script>
+</body></html>

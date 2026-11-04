@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NeuroML API — Endpoint Contract for Developers | Orr Biologicals</title>
+<meta name="description" content="The planned NeuroML API: versioned endpoints for datasets, neurons, connections, predictions and literature, with honest implementation status. Design stage; no endpoint responds yet.">
+<link rel="canonical" href="https://orrbiologicals.com/developers/">
+<meta property="og:title" content="NeuroML API — Endpoint Contract for Developers">
+<meta property="og:description" content="Planned versioned endpoints for datasets, neurons, connections, predictions and literature, with honest implementation status. Design stage; nothing responds yet.">
+<meta property="og:url" content="https://orrbiologicals.com/developers/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://orrbiologicals.com/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="NeuroML API — Endpoint Contract for Developers">
+<meta name="twitter:description" content="A planned NeuroML API contract. Design stage; no endpoint responds yet.">
+<meta name="twitter:image" content="https://orrbiologicals.com/assets/og.png">
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="stylesheet" href="/css/neuro.css?v=20261101">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "name": "NeuroML API — Endpoint Contract for Developers",
+      "url": "https://orrbiologicals.com/developers/",
+      "description": "The planned NeuroML API contract: versioned endpoints for datasets, neurons, connections, predictions and literature, with honest implementation status.",
+      "publisher": { "@type": "Organization", "name": "Orr Biologicals", "url": "https://orrbiologicals.com/" }
+    }
+  ]
+}
+</script>
+<style>.skip{position:absolute;left:-9999px}</style>
+<link rel="stylesheet" href="/css/global.css?v=20261101">
+<link rel="stylesheet" href="/css/header.css?v=20261101">
+<link rel="stylesheet" href="/css/orr-home.css?v=20261101">
+<link rel="stylesheet" href="/css/animations.css?v=20261101">
+<link rel="stylesheet" href="/css/site-redesign.css?v=20261101">
+<link rel="stylesheet" href="/css/biological-cinema.css?v=20261101">
+</head>
+<body class="art-body">
+<a class="skip" href="#main">Skip to content</a>
+<header class="nav" id="nav">
+<div class="nav-in"><a class="mark" href="/" aria-label="Orr Biologicals home">
+<svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="14" fill="none" stroke="currentColor"/><path d="M9 23c6-3 0-14 7-14s1 11 7 14M8 15c4-5 12-5 16 0" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+<span><b>Orr Biologicals</b><small>A CLOSER LOOK AT LIFE</small></span></a>
+<nav class="nav-links" aria-label="Primary"><a href="/algaephyte/">Algaephyte</a><a href="/cyanoflow">Cyanoflow</a><a href="/research/">Research</a><a href="/neuroML/">Neuroscience</a><a href="/literature/">Literature</a><a href="/blog/">Journal</a><a href="/developers/">Developers</a><a class="btn-white" href="/#deploy">Contact</a></nav>
+<button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="mobileMenu">Menu</button></div></header>
+<nav class="mobile-menu" id="mobileMenu" aria-label="Mobile primary" hidden>
+<a href="/algaephyte/">Algaephyte / cultivation</a><a href="/cyanoflow">Cyanoflow / single cells</a><a href="/research/">Our research</a><a href="/neuroML/">NeuroML / neuroscience</a><a href="/literature/">Literature search / DOI lookup</a><a href="/blog/">Journal / ideas &amp; notes</a><a href="/algae-growth/">Algae growth / field guide</a><a href="/downloads/">App downloads</a><a href="/developers/">Developers / API</a><a href="/#deploy">Contact the project</a></nav>
+<main id="main" class="art-shell"><nav class="art-top" aria-label="Breadcrumb"><a href="/">Orr Biologicals</a> / <a href="/neuroML/">NeuroML</a> / <span>Developers</span></nav>
+<p class="art-cat">NeuroML · API contract, design stage</p>
+<h1>Developers</h1>
+<div class="prose">
+<p class="dek nml-lede">The NeuroML API is intended to make connectome records usable outside this website: a versioned REST contract with stable identifiers and explicit evidence states. This page is the contract skeleton. Every endpoint below is a plan with a declared status, not a running service.</p>
+
+<p class="nml-status"><strong>Nothing on this page responds yet.</strong> <code>/api/v1/*</code> returns 404 until an endpoint is implemented, tested and marked live here. No keys are issued, no SDK is published and no OpenAPI document is final.</p>
+
+<h2>Endpoint plan</h2>
+<div class="nml-table-wrap" role="region" aria-label="Planned API endpoints" tabindex="0">
+<table class="nml-table">
+<thead><tr><th scope="col">Method</th><th scope="col">Path</th><th scope="col">Purpose</th><th scope="col">Status</th></tr></thead>
+<tbody>
+<tr class="nml-group"><th colspan="4" scope="colgroup">Datasets and coverage</th></tr>
+<tr><td>GET</td><td><code>/api/v1/datasets</code></td><td>Registered datasets with release version, licence, scope and citation.</td><td><span class="nml-badge">Planned</span></td></tr>
+<tr><td>GET</td><td><code>/api/v1/organisms</code></td><td>Organisms the platform holds records for, with per-organism scope.</td><td><span class="nml-badge">Planned</span></td></tr>
+<tr><td>GET</td><td><code>/api/v1/connectomes</code></td><td>Available connectome releases and their annotation status.</td><td><span class="nml-badge">Planned</span></td></tr>
+<tr><td>GET</td><td><code>/api/v1/mouse/datasets</code></td><td>Mouse sources only, including the access route each requires.</td><td><span class="nml-badge">Planned</span></td></tr>
+<tr><td>GET</td><td><code>/api/v1/mouse/coverage</code></td><td>Record counts per dataset and region, served from the registry rather than estimated.</td><td><span class="nml-badge">Planned</span></td></tr>
+<tr class="nml-group"><th colspan="4" scope="colgroup">Neuroanatomy</th></tr>
+<tr><td>GET</td><td><code>/api/v1/brain-regions</code></td><td>Region identifiers, names and atlas provenance.</td><td><span class="nml-badge">Planned</span></td></tr>
+<tr><td>GET</td><td><code>/api/v1/cell-types</code></td><td>Cell-type taxonomy entries with the assignment method recorded.</td><td><span class="nml-badge">Planned</span></td></tr>
+<tr><td>GET</td><td><code>/api/v1/neurons/{id}</code></td><td>One neuron: identifiers, provenance, morphology, annotations, missing fields, evidence state.</td><td><span class="nml-badge">Planned</span></td></tr>
+<tr><td>GET</td><td><code>/api/v1/connections</code></td><td>Measured connections with synapse counts and annotation status; filterable by neuron, region and dataset.</td><td><span class="nml-badge">Planned</span></td></tr>
+<tr><td>GET</td><td><code>/api/v1/fly/neurons</code></td><td>Fruit-fly neuron records from the versioned connectome release.</td><td><span class="nml-badge">Planned</span></td></tr>
+<tr class="nml-group"><th colspan="4" scope="colgroup">Predictions and models</th></tr>
+<tr><td>POST</td><td><code>/api/v1/predictions/activity</code></td><td>Neural-activity forecast from a registered model version.</td><td><span class="nml-badge">Planned</span></td></tr>
+<tr><td>POST</td><td><code>/api/v1/predictions/connectivity</code></td><td>Ranked candidate connections, returned as hypotheses with calibration data.</td><td><span class="nml-badge">Planned</span></td></tr>
+<tr><td>GET</td><td><code>/api/v1/models</code></td><td>Model registry: purpose, training dataset versions, evaluation results, limitations.</td><td><span class="nml-badge">Planned</span></td></tr>
+<tr><td>GET</td><td><code>/api/v1/experiments</code></td><td>Experiment records with held-out metrics and reproduction instructions.</td><td><span class="nml-badge">Planned</span></td></tr>
+<tr><td>GET</td><td><code>/api/v1/jobs/{id}</code></td><td>Long-running job state: status, checkpoint, retries, produced artefacts.</td><td><span class="nml-badge">Planned</span></td></tr>
+<tr class="nml-group"><th colspan="4" scope="colgroup">Literature and journal</th></tr>
+<tr><td>GET</td><td><code>/api/v1/literature/search</code></td><td>Scholarly search across providers, with publication and retrieval dates kept separate.</td><td><span class="nml-badge">Planned</span></td></tr>
+<tr><td>GET</td><td><code>/api/v1/journal</code></td><td>Public research reports, each pointing at the evidence behind it.</td><td><span class="nml-badge">Planned</span></td></tr>
+</tbody>
+</table>
+</div>
+<p class="nml-note">An endpoint appears here only to declare intent. It will be marked <span class="nml-badge" data-state="live">Live</span> when it is implemented, covered by an integration test and verified against a real dataset record — not before.</p>
+
+<h2>Rules the contract must keep</h2>
+<ul>
+<li><strong>Versioned and additive.</strong> Breaking changes get a new major version; <code>/api/v1</code> will not be silently redefined.</li>
+<li><strong>Stable identifiers.</strong> Records carry their source identifier alongside any internal one, so an external system can trace a neuron back to its dataset.</li>
+<li><strong>Provenance on every record.</strong> Dataset, release version, coordinate system and access route travel with the data.</li>
+<li><strong>Observed and predicted layers stay separate.</strong> Predictions are returned in their own fields with the model version attached; they are never merged into verified connections.</li>
+<li><strong>Honest gaps.</strong> A missing property is returned as unknown or unavailable. The API will not interpolate a value to make a record look complete.</li>
+<li><strong>No secrets in clients.</strong> Read-only public records need no key. Any protected route requires a server-side key, with rate limits, request validation and audit logging.</li>
+<li><strong>Reproducibility.</strong> Every prediction response names the model version, the input dataset versions and the evaluation that bounds its accuracy.</li>
+<li><strong>Licence respect.</strong> Records are served only where the source licence and terms allow redistribution; otherwise the response points to the source and says so.</li>
+</ul>
+
+<h2>What a request will look like</h2>
+<p>Illustrative only. This call does not succeed today.</p>
+<pre class="nml-code"><b>GET</b> https://orrbiologicals.com/api/v1/neurons/{id}
+Accept: application/json
+
+{
+  "id": "…",
+  "source": { "dataset": "…", "release": "…", "source_id": "…" },
+  "region": { "id": "…", "name": "…", "atlas": "…" },
+  "evidence_state": "VERIFIED_OBSERVATION",
+  "missing": ["transcriptomic_annotation"],
+  "provenance": { "citation": "…", "access": "…" }
+}</pre>
+<p class="nml-note">Field names are provisional until the first endpoint is implemented. The shape will not change silently: this page and the OpenAPI document will be updated in the same change.</p>
+
+<h2>What works today</h2>
+<p>One public research surface is live: the <a href="/literature/">literature search and DOI lookup</a>, which queries Crossref and OpenAlex in the browser and labels open-access status from each provider's own metadata. It is not part of the versioned API and needs no key. Dataset ingestion, the neuron registry and every prediction route are still in design.</p>
+
+<h2>Questions and access requests</h2>
+<p>Dataset access questions, integration proposals and corrections: <a href="mailto:service@orrbiologicals.com">service@orrbiologicals.com</a>. If a future route needs an access token or a paid resource, that will be requested explicitly rather than worked around. See also the <a href="/neuroML/">NeuroML platform layout</a> and the <a href="/disclaimer">scientific disclaimer</a>.</p>
+</div>
+</main><footer class="science-footer"><div class="wrap footer-layout">
+<div><a class="footer-brand" href="/">Orr Biologicals</a><p>Small life. New possibilities.<br>Tools and ideas for understanding a living world.</p><small>Research concepts in development.<br>No validated hardware or commercial deployment claimed.</small></div>
+<nav aria-label="Footer platforms"><h2>Explore our work</h2><a href="/algaephyte/">Algaephyte / Growing algae</a><a href="/cyanoflow">Cyanoflow / Individual cells</a><a href="/game/">Cyanoflow Field Lab / Synthetic Discovery</a><a href="/algae-growth/">Algae Growth / Field Guide</a><a href="/neuroML/">NeuroML / Mouse &amp; fly connectomics</a><a href="/demo/">Expedition Demo</a><a href="/downloads/">App Downloads</a></nav>
+<nav aria-label="Footer resources"><h2>Read &amp; discover</h2><a href="/research/">Our research approach</a><a href="/literature/">Literature search / DOI lookup</a><a href="/developers/">API for developers</a><a href="/blog/">Research Journal</a><a href="/algae-biotechnology/">Algae Biotechnology</a><a href="/microalgae-cultivation/">Microalgae Cultivation</a><a href="/photobioreactors/">Photobioreactors</a><a href="/glossary">Biology, explained</a><a href="/support/">Support research / Lightning</a><a href="/#deploy">Project correspondence</a></nav>
+<div><h2>Say hello</h2><a href="mailto:service@orrbiologicals.com">service@orrbiologicals.com</a><p><a href="https://www.youtube.com/@OrrBiologicals" target="_blank" rel="noreferrer">Research updates on YouTube ↗</a></p><small>Open research notes / MIT-licensed site code</small></div>
+</div><div class="wrap footer-base"><span>© 2026 Orr Biologicals / A closer look at life</span><nav aria-label="Legal"><a href="/privacy">Privacy</a><a href="/terms">Terms</a><a href="/disclaimer">Scientific disclaimer</a><a href="/LICENSE" download>MIT License</a></nav></div></footer><script defer src="/js/animations.js?v=20261101"></script>
+<script defer src="/js/navigation.js?v=20261101"></script>
+<script defer src="/js/cell-cursor.js?v=20261101"></script>
+<script defer src="/js/biological-cinema.js?v=20261101"></script>
+</body></html>
