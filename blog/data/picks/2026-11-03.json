@@ -1,0 +1,55 @@
+{
+  "date": "2026-11-03",
+  "model": "openai/gpt-oss-120b",
+  "generated_at": "2026-11-04T00:18:58Z",
+  "picks": [
+    {
+      "pmid": "42971837",
+      "title": "Toward industrial microalgae-based monoclonal antibody production.",
+      "journal": "Trends in biotechnology",
+      "year": "2026",
+      "pub_date": "2026-11-02",
+      "url": "https://doi.org/10.1016/j.tibtech.2026.10.003",
+      "topic": "Bioengineering",
+      "hook": "Microalgae engineered to produce therapeutic monoclonal antibodies, opening a green platform for biotech drugs.",
+      "article": "A recent study explored whether tiny, fast‑growing algae could be used to make monoclonal antibodies, the protein medicines usually produced in mammalian cells. The researchers grew microalgae in light‑driven bioreactors and engineered them to express the antibody genes.\n\nThe work compared the algae system to the established Chinese hamster ovary (CHO) cell platform, which dominates antibody production but requires high operational and capital costs. By using photosynthetic algae, the team aimed to lower media expenses and simplify scale‑up.\n\nThe study found that microalgal systems can provide light‑driven growth, low‑cost media, and the potential for significant and efficient scalability, offering a promising alternative to mammalian cells.\n\nThis is interesting because it points to a greener, potentially cheaper way to manufacture high‑value therapeutic proteins.",
+      "why": "Algal antibody production could reduce costs and environmental impact of biopharmaceutical manufacturing."
+    },
+    {
+      "pmid": "42972863",
+      "title": "Systematic Evaluation of Cyanidioschyzon merolae Across Photobioreactor Systems: Linking Reactor Design to Biomass Production and Biochemical Composition.",
+      "journal": "Microbial biotechnology",
+      "year": "2026",
+      "pub_date": "",
+      "url": "https://doi.org/10.1111/1751-7915.70468",
+      "topic": "Cultivation",
+      "hook": "Comprehensive test of Cyanidioschyzon merolae across photobioreactor designs links reactor geometry to biomass yields.",
+      "article": "A recent study set out to compare how different photobioreactor designs affect the growth and composition of the extremophilic red microalga Cyanidioschyzon merolae, a species known for thriving in hot, acidic environments and producing stable phycobiliproteins and carbon‑rich biomass.\n\nThe researchers cultivated C. merolae in several laboratory‑scale photobioreactors, varying parameters such as reactor geometry and mixing, and measured resulting biomass yields and biochemical makeup.\n\nThey found that reactor‑specific factors significantly influenced both the amount of biomass produced and its biochemical composition, highlighting that design choices can alter growth performance and product profiles.\n\nUnderstanding these reactor effects is useful for optimizing algae‑based processes, helping to translate the promise of robust red microalgae into reliable biotechnological applications.",
+      "why": "Linking reactor design to algae productivity guides scalable, sustainable production of valuable algal compounds."
+    },
+    {
+      "pmid": "42949860",
+      "title": "Extraction of unsaturated fatty acids from <i>Aurantiochytrium</i> sp. using amino acid-based deep eutectic solvents.",
+      "journal": "Natural product research",
+      "year": "2026",
+      "pub_date": "2026-10-28",
+      "url": "https://doi.org/10.1080/14786419.2026.2749081",
+      "topic": "Biofuels",
+      "hook": "Amino‑acid deep eutectic solvents efficiently extract high‑value unsaturated fatty acids from Aurantiochytrium.",
+      "article": "A recent study explored whether a specially designed liquid made from amino acids could pull valuable unsaturated fatty acids out of the micro‑alga Aurantiochytrium sp. These fatty acids, such as docosapentaenoic acid and docosahexaenoic acid, are prized for uses ranging from biofuels to nutritional supplements.\n\nThe researchers mixed the algae with an amino‑acid‑based deep eutectic solvent (DES), a type of green solvent that forms a liquid at room temperature when two components are combined. They then measured how much of the target fatty acids could be recovered from the biomass.\n\nThe work showed that the DES was able to extract the unsaturated fatty acids from the micro‑alga, demonstrating an efficient method for recovering these compounds.\n\nDeveloping greener extraction techniques like this could make algae‑derived products more sustainable and affordable.",
+      "why": "Eco‑friendly extraction could lower costs and environmental impact of algae‑based fuels and health supplements."
+    },
+    {
+      "pmid": "42637196",
+      "title": "Engineering Chlorella-based consortia for sustainable food wastewater treatment: nutrient recovery, pollutant degradation and advanced harvesting.",
+      "journal": "Environmental research",
+      "year": "2026",
+      "pub_date": "2026-08-24",
+      "url": "https://doi.org/10.1016/j.envres.2026.125549",
+      "topic": "Environment",
+      "hook": "Engineered Chlorella consortia simultaneously clean wastewater, recover nutrients, and produce harvest‑ready biomass.",
+      "article": "A recent study set out to see whether different strains of the micro‑alga Chlorella could be used together to clean food‑processing wastewater while also producing useful biomass.\n\nThe researchers grew three geographically distinct Chlorella sp. strains in a semi‑continuous system that mimicked real‑world wastewater treatment conditions.\n\nAll strains showed substantial nutrient removal, achieving around 73 % reduction of key pollutants such as nitrate and phosphate, and they simultaneously generated a harvestable algal biomass.\n\nThese results suggest that tailored Chlorella consortia could make wastewater treatment more sustainable by turning waste streams into a source of food‑grade algae.",
+      "why": "The approach turns pollutant‑laden water into valuable algal biomass, linking waste cleanup to algae‑based food production."
+    }
+  ]
+}
