@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Scientific Literature Search &amp; DOI Lookup | Orr Biologicals</title>
+<meta name="description" content="Search Crossref and OpenAlex scholarly metadata, resolve DOIs and find verified open-access versions of research papers. A free research-intelligence tool by Orr Biologicals.">
+<link rel="canonical" href="https://orrbiologicals.com/literature/">
+<meta property="og:title" content="Scientific Literature Search &amp; DOI Lookup">
+<meta property="og:description" content="Resolve DOIs, discover papers and locate verified open-access versions using Crossref and OpenAlex metadata — a free research-intelligence tool.">
+<meta property="og:url" content="https://orrbiologicals.com/literature/">
+<meta property="og:type" content="website"><meta property="og:image" content="https://orrbiologicals.com/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Scientific Literature Search &amp; DOI Lookup">
+<meta name="twitter:description" content="Resolve DOIs and discover papers across Crossref and OpenAlex, with verified open-access availability.">
+<meta name="twitter:image" content="https://orrbiologicals.com/assets/og.png">
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="stylesheet" href="/css/literature.css?v=20261101">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "name": "Scientific Literature Search & DOI Lookup",
+      "url": "https://orrbiologicals.com/literature/",
+      "description": "Search Crossref and OpenAlex scholarly metadata, resolve DOIs and locate verified open-access versions of research papers.",
+      "publisher": { "@type": "Organization", "name": "Orr Biologicals", "url": "https://orrbiologicals.com/" },
+      "breadcrumb": { "@id": "https://orrbiologicals.com/literature/#breadcrumb" },
+      "applicationCategory": "Research Intelligence"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://orrbiologicals.com/literature/#breadcrumb",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://orrbiologicals.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Literature", "item": "https://orrbiologicals.com/literature/" }
+      ]
+    }
+  ]
+}
+</script>
+<link rel="stylesheet" href="/css/global.css?v=20261101">
+<link rel="stylesheet" href="/css/header.css?v=20261101">
+<link rel="stylesheet" href="/css/orr-home.css?v=20261101">
+<link rel="stylesheet" href="/css/animations.css?v=20261101">
+<link rel="stylesheet" href="/css/site-redesign.css?v=20261101">
+<link rel="stylesheet" href="/css/biological-cinema.css?v=20261101">
+</head><body class="lit-page">
+<header class="nav" id="nav">
+<div class="nav-in"><a class="mark" href="/" aria-label="Orr Biologicals home">
+<svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="14" fill="none" stroke="currentColor"/><path d="M9 23c6-3 0-14 7-14s1 11 7 14M8 15c4-5 12-5 16 0" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+<span><b>Orr Biologicals</b><small>A CLOSER LOOK AT LIFE</small></span></a>
+<nav class="nav-links" aria-label="Primary"><a href="/algaephyte/">Algaephyte</a><a href="/cyanoflow">Cyanoflow</a><a href="/research/">Research</a><a href="/literature/">Literature</a><a href="/blog/">Journal</a><a class="btn-white" href="/#deploy">Contact</a></nav>
+<button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="mobileMenu">Menu</button></div></header>
+<nav class="mobile-menu" id="mobileMenu" aria-label="Mobile primary" hidden>
+<a href="/algaephyte/">Algaephyte / cultivation</a><a href="/cyanoflow">Cyanoflow / single cells</a><a href="/research/">Our research</a><a href="/literature/">Literature search / DOI lookup</a><a href="/blog/">Journal / ideas &amp; notes</a><a href="/algae-growth/">Algae growth / field guide</a><a href="/downloads/">App downloads</a><a href="/#deploy">Contact the project</a></nav>
+<a class="skip" href="#main">Skip to content</a>
+<main id="main">
+<article class="art-shell lit-article">
+<header class="art-meta lit-hero">
+<p class="eyebrow">Research intelligence · Free tool</p>
+<h1>Search scientific literature and resolve DOIs</h1>
+<p class="lit-lede">This tool queries the live <a href="https://api.crossref.org/" rel="noopener">Crossref</a> and <a href="https://api.openalex.org/" rel="noopener">OpenAlex</a> scholarly metadata APIs directly from your browser. It is useful for resolving a DOI, finding papers on a topic, checking who published a work, and locating <strong>legitimate open-access copies</strong> — publisher-hosted or repository-hosted, as classified by OpenAlex. It does not create, summarize or predict results, and it never bypasses paywalls.</p>
+</header>
+
+<section class="lit-scope" aria-label="How the engine works">
+<ol class="prose">
+<li><strong>Metadata, not opinions.</strong> Every record shown is retrieved from Crossref or OpenAlex at search time. Nothing is pre-seeded, cached between users, or generated by Orr Biologicals.</li>
+<li><strong>Open-access, honestly labeled.</strong> When OpenAlex classifies a work as open access, the available version is linked with its host (publisher, repository, or archive) and version type. Records with no classified free copy are shown with availability metadata and a DOI link so you can access them through your institutional access.</li>
+<li><strong>Deduplicated results.</strong> When the same work appears twice across providers or pages, the duplicate DOI is removed.</li>
+<li><strong>Respect for rate limits.</strong> Searches are debounced, cached locally for 30 minutes and sent through the polite-pool contact identified in Crossref/OpenAlex documentation; the tool aborts stuck requests after 15 seconds.</li>
+</ol>
+</section>
+
+<section class="lit-app section" id="litApp" aria-label="Literature search form">
+<p class="eyebrow">Live engine</p>
+<div class="lit-controls">
+<form id="litForm" novalidate>
+<div class="lit-search-row">
+<div style="display:grid;gap:6px;flex:1">
+<label for="litQuery">Search · title, keyword, author text, or DOI</label>
+<input id="litQuery" name="q" type="text" inputmode="search" autocomplete="off" placeholder="e.g. Droop quota model — or paste 10.1038/171737a0">
+</div>
+<button class="lit-button" type="submit">Search</button>
+</div>
+<div class="lit-filters">
+<div style="display:grid;gap:6px">
+<label for="litSource">Source</label>
+<span class="lit-hint">Default: OpenAlex (includes open-access + citation counts)</span>
+<select id="litSource" style="max-width:280px">
+<option value="openalex">OpenAlex — discovery &amp; open-access status</option>
+<option value="crossref">Crossref — bibliographic register</option>
+</select>
+</div>
+<div style="display:grid;gap:6px">
+<label for="litAuthor">Author (optional)</label>
+<input id="litAuthor" type="text" autocomplete="off" placeholder="author surname, e.g. Gilbert" style="max-width:280px">
+</div>
+<div style="display:grid;gap:6px">
+<label for="litFrom">Year from</label>
+<input id="litFrom" type="text" inputmode="numeric" autocomplete="off" placeholder="1998" style="max-width:140px">
+</div>
+<div style="display:grid;gap:6px">
+<label for="litTo">Year to</label>
+<input id="litTo" type="text" inputmode="numeric" autocomplete="off" placeholder="2026" style="max-width:140px">
+</div>
+<div style="display:grid;gap:6px">
+<label for="litOA">Open access only</label>
+<span style="display:flex;align-items:center;gap:8px;min-height:44px">
+<input id="litOA" type="checkbox" checked>
+<span class="lit-hint">Only show records with a classified free copy</span>
+</span>
+</div>
+</div>
+</form>
+</div>
+<p class="lit-status" id="litStatus" data-testid="litStatus"></p>
+
+<div class="lit-empty" id="litEmpty" hidden>
+<h3>No indexed results</h3>
+<p>The selected sources returned no matching scholarly records. Check spelling, widen the year range, or try fewer keywords.</p>
+</div>
+<div class="lit-error" id="litError" hidden>
+<h3>Engine paused</h3>
+<p id="litErrorBody">The search failed safely. Nothing was displayed.</p>
+</div>
+<div class="lit-results" id="litResults" aria-live="polite" hidden></div>
+<div class="lit-more" id="litMoreRow"><button class="lit-button" type="button" id="litMore" hidden>Load more indexed records</button></div>
+<div class="lit-attribution">
+<p style="margin:0 0 8px"><strong>Data provenance.</strong> All records are retrieved at request time from:
+<a href="https://api.crossref.org/" rel="noopener">api.crossref.org</a> (Crossref REST API, CC-BY metadata, courtesy <code>mailto</code> parameter) and
+<a href="https://api.openalex.org/" rel="noopener">api.openalex.org</a> (OpenAlex — open scholarly index, CC0). Availability labels come from OpenAlex's own open-access classification. Orr Biologicals displays this metadata as-is; it does not vouch for, summarize or translate any abstract or result. No private keys are used; no queries are sent to a third-party analytics service.</p>
+<p style="margin:0">Records shown are research metadata, not conclusions or validated results. Paywalled works are identified honestly. A “no open-access copy classified” badge means only that no free version was found — the work may still be free elsewhere.</p>
+</div>
+</section>
+
+<section class="section" style="padding-top:56px">
+<p class="eyebrow">Plain-language scope</p>
+<h2>What this engine is — and is not</h2>
+<div class="lit-sources">
+<article class="lit-source-card">
+<h3>DOI resolver</h3>
+<p>Paste a DOI (with or without a doi.org link) and the engine resolves it against both Crossref, which holds the authoritative title, author list, venue and publication year, and OpenAlex, which supplies the citation count and open-access classification if available.</p>
+</article>
+<article class="lit-source-card">
+<h3>Open-access locator</h3>
+<p>Search OpenAlex and filter by open access to find publisher-hosted — not scraped or grey-hosted — copies, or green copies on reputable repositories. The linked version label (“submittedVersion”, “acceptedVersion”, “publishedVersion”) is shown from OpenAlex metadata where present.</p>
+</article>
+<article class="lit-source-card">
+<h3>Research question scoping</h3>
+<p>Filters include publication years, author, publication source and open-access status. The engine is deliberately narrow: it retrieves what the providers actually hold. It does not invent records or abstracts.</p>
+</article>
+<article class="lit-source-card">
+<h3>Not a paywall bypass, not a summarizer</h3>
+<p>If a paper has no classified free version, the tool says so plainly and shows legitimate access routes — the DOI's publisher record and your institutional access. Abstracts are reproduced from provider metadata as-is, not generated.</p>
+</article>
+</div>
+<p class="lit-lede" style="margin-top:32px">This is part of Orr Biologicals' research-intelligence work: building honest, useful discovery tools over public scientific data. Questions or corrections: <a href="mailto:service@orrbiologicals.com">service@orrbiologicals.com</a>.</p>
+</section>
+</article>
+</main>
+
+<script defer src="/js/literature.js?v=20261101"></script><footer class="science-footer"><div class="wrap footer-layout">
+<div><a class="footer-brand" href="/">Orr Biologicals</a><p>Small life. New possibilities.<br>Tools and ideas for understanding a living world.</p><small>Research concepts in development.<br>No validated hardware or commercial deployment claimed.</small></div>
+<nav aria-label="Footer platforms"><h2>Explore our work</h2><a href="/algaephyte/">Algaephyte / Growing algae</a><a href="/cyanoflow">Cyanoflow / Individual cells</a><a href="/game/">Cyanoflow Field Lab / Synthetic Discovery</a><a href="/algae-growth/">Algae Growth / Field Guide</a><a href="/demo/">Expedition Demo</a><a href="/downloads/">App Downloads</a></nav>
+<nav aria-label="Footer resources"><h2>Read &amp; discover</h2><a href="/research/">Our research approach</a><a href="/literature/">Literature search / DOI lookup</a><a href="/blog/">Research Journal</a><a href="/algae-biotechnology/">Algae Biotechnology</a><a href="/microalgae-cultivation/">Microalgae Cultivation</a><a href="/photobioreactors/">Photobioreactors</a><a href="/glossary">Biology, explained</a><a href="/support/">Support research / Lightning</a><a href="/#deploy">Project correspondence</a></nav>
+<div><h2>Say hello</h2><a href="mailto:service@orrbiologicals.com">service@orrbiologicals.com</a><p><a href="https://www.youtube.com/@OrrBiologicals" target="_blank" rel="noreferrer">Research updates on YouTube ↗</a></p><small>Open research notes / MIT-licensed site code</small></div>
+</div><div class="wrap footer-base"><span>© 2026 Orr Biologicals / A closer look at life</span><nav aria-label="Legal"><a href="/privacy">Privacy</a><a href="/terms">Terms</a><a href="/disclaimer">Scientific disclaimer</a><a href="/LICENSE" download>MIT License</a></nav></div></footer><script defer src="/js/animations.js?v=20261101"></script>
+<script defer src="/js/navigation.js?v=20261101"></script>
+<script defer src="/js/cell-cursor.js?v=20261101"></script>
+<script defer src="/js/biological-cinema.js?v=20261101"></script>
+</body></html>

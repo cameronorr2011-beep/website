@@ -1,0 +1,17 @@
+/* Orr Biologicals · Research support (voluntary Lightning contributions). */
+
+.cinema-support .support-band{width:min(100%,640px);margin-inline:auto}
+
+.support-hero{padding:clamp(56px,7vw,96px) 0 24px}
+.support-band{border:1px solid var(--rule);border-radius:18px;background:var(--paper);padding:28px;display:grid;gap:14px;max-width:640px;margin-top:32px}
+.support-band .band-label,.support-band-label{margin:14px 0 0;font:600 11px/1.6 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--leaf)}
+.support-address{display:block;font-family:var(--mono);font-size:clamp(15px,2.2vw,19px);font-weight:600;color:var(--ink);background:var(--void-2);border:1px solid var(--rule);border-radius:var(--radius);padding:14px 16px;overflow-wrap:anywhere;user-select:all}
+.support-copy-row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.support-button{min-height:48px;padding:0 22px;border:0;border-radius:var(--radius);background:var(--leaf);color:#fff;font-weight:600;letter-spacing:.02em}
+.support-button:hover{background:var(--leaf-deep)}
+.support-confirm{margin:0;min-height:1.4em;font-size:13.5px;color:var(--leaf-deep)}
+.support-steps{display:grid;gap:14px;margin-top:36px}
+.support-steps li{font-size:14.5px;line-height:1.7;color:var(--ink-soft)}
+.support-steps strong{color:var(--ink)}
+.support-note{border-left:3px solid var(--rule);padding:4px 0 4px 16px;margin-top:28px;color:var(--ink-soft);font-size:14px;line-height:1.7;max-width:64ch}
+.support-note strong{color:var(--ink)}

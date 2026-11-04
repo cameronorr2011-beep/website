@@ -5,14 +5,14 @@
   --sim-ink: #eaf6ec;
   --sim-ink-soft: #b9cdbd;
   --sim-mute: #8da696;
-  --sim-faint: #5e7666;
-  --sim-bg: #06100c;
-  --sim-bg-2: #091711;
-  --sim-panel: rgba(13, 29, 20, .84);
-  --sim-panel-strong: #0e2017;
-  --sim-panel-soft: rgba(18, 38, 26, .72);
-  --sim-border: rgba(163, 225, 170, .14);
-  --sim-border-strong: rgba(163, 225, 170, .28);
+  --sim-faint: #99b09f;
+  --sim-bg: #111b18;
+  --sim-bg-2: #17231e;
+  --sim-panel: #1b2a23;
+  --sim-panel-strong: #21332a;
+  --sim-panel-soft: #1e2e26;
+  --sim-border: #35483d;
+  --sim-border-strong: #5c7866;
   --sim-leaf: #91e49c;
   --sim-leaf-bright: #b5ffc0;
   --sim-leaf-deep: #3cae62;
@@ -20,11 +20,11 @@
   --sim-amber: #e2b16d;
   --sim-red: #f08e83;
   --sim-purple: #bd9eea;
-  --sim-sans: "Bricolage Grotesque", system-ui, -apple-system, "Segoe UI", sans-serif;
-  --sim-serif: "Source Serif 4", Georgia, serif;
+  --sim-sans: "Segoe UI", "Avenir Next", Arial, sans-serif;
+  --sim-serif: var(--sim-sans);
   --sim-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
   --sim-radius: 15px;
-  --sim-shadow: 0 24px 90px rgba(0, 0, 0, .28);
+  --sim-shadow: none;
 }
 
 * { box-sizing: border-box; }
@@ -509,25 +509,40 @@ button:disabled { cursor: not-allowed; opacity: .48; }
   .three-fields > :last-child { grid-column: span 2; }
 }
 
-/* Instrument polish: give the workspace a clear visual hierarchy instead of
-   making every panel compete at the same weight. */
-.sim-topbar { box-shadow: 0 12px 40px rgba(0,0,0,.14); }
-.sim-view { background: radial-gradient(900px 360px at 58% 2%, rgba(52,156,91,.10), transparent 72%); }
-.lab-title-bar { padding: 22px 24px; border: 1px solid rgba(145,228,156,.16); border-radius: 18px; background: linear-gradient(120deg, rgba(24,66,42,.62), rgba(7,21,14,.3)); box-shadow: 0 20px 70px rgba(0,0,0,.18); }
-.lab-title-bar h2 { font-size: clamp(30px, 4vw, 52px); }
-.lab-title-bar p { color: #bfd9c7; font-size: 14px; }
-.visual-panel { background: radial-gradient(circle at 55% 42%, rgba(50,164,95,.18), transparent 38%), #07130f; }
-.visual-panel::after { content: ""; position: absolute; inset: 18px; border: 1px solid rgba(145,228,156,.10); border-radius: 12px; background-image: linear-gradient(rgba(145,228,156,.06) 1px, transparent 1px), linear-gradient(90deg, rgba(145,228,156,.06) 1px, transparent 1px); background-size: 32px 32px; mask-image: linear-gradient(135deg,#000,transparent 85%); pointer-events: none; }
-.scene-kicker strong { text-shadow: 0 0 22px rgba(181,255,192,.28); }
-.settings-card code { color: var(--sim-cyan); font: 10px var(--sim-mono); }
+/* Modern biotech workspace: quiet chrome, readable controls, optical canvas. */
+.sim-topbar{background:var(--sim-bg-2);box-shadow:none;flex-wrap:wrap}
+.sim-sidebar{background:var(--sim-bg-2)}
+.sim-view{background:none}
+.sim-brand strong{font-size:16px}
+.sim-nav-item{min-height:46px;border-radius:8px}
+.sim-nav-item span:nth-child(2){font-size:14px}
+.sim-nav-item.is-active{background:#2a4435;border-color:var(--sim-border);box-shadow:inset 3px 0 var(--sim-leaf)}
+.sim-nav-item:hover{transform:none}
+.sim-top-actions{flex-wrap:wrap}
+.sim-button,.sim-top-action,.sim-run-action,.sim-icon-action{min-height:44px;font-size:13px}
+.sim-button.small{min-height:40px;font-size:12px}
+.sim-icon-action{width:44px}
+.sim-page-heading h1{font-size:clamp(30px,3.6vw,48px);line-height:1.1;letter-spacing:-.04em}
+.sim-page-subtitle{font-family:var(--sim-sans)}
+.lab-title-bar{padding:0 0 24px;border:0;border-bottom:1px solid var(--sim-border);border-radius:0;background:none;box-shadow:none}
+.lab-title-bar h2{font-size:clamp(28px,3.5vw,44px);letter-spacing:-.04em;line-height:1.15}
+.lab-title-bar p{color:var(--sim-ink-soft);font-size:14px}
+.visual-panel{background:#0b1510}
+.scene-kicker strong{text-shadow:none}
+.control-panel,.telemetry-panel,.dashboard-panel,.settings-card,.note-card{background:var(--sim-panel);box-shadow:none}
+.sim-field label,.sim-field .field-label{font-family:var(--sim-sans);font-size:12px}
+.sim-select,.sim-input,.sim-textarea{font-size:14px;min-height:44px}
+.settings-card code{color:var(--sim-cyan);font:11px var(--sim-mono)}
+@media(max-width:760px){body:has(.sim-app) .sim-sidebar{top:auto;height:auto}.sim-nav-item{min-height:44px}.sim-nav-item span:nth-child(2){font-size:12px}.sim-top-actions{justify-content:flex-start}.sim-view{padding-inline:18px}.sim-page-heading h1{font-size:32px}}
+
 
 /* The entry view is intentionally a short reading surface. The full model
    remains available from Run a model; the dashboard is not a control room. */
 .sim-nav-label-lower,.sim-nav-item[data-view="strains"],.sim-nav-item[data-view="experiments"],.sim-nav-item[data-view="assistant"],.sim-nav-item[data-view="notebook"],.sim-nav-item[data-view="settings"]{display:none}
 .dashboard-brief{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(240px,.6fr);gap:14px;margin-bottom:14px}
-.dashboard-brief-lead,.dashboard-brief-boundary,.dashboard-path,.dashboard-recent{padding:clamp(22px,3vw,38px);border:1px solid var(--sim-border);border-radius:var(--sim-radius);background:rgba(13,29,20,.72)}
-.dashboard-brief-lead{background:linear-gradient(120deg,rgba(36,87,53,.46),rgba(10,26,17,.74) 72%)}
-.dashboard-brief-lead h2{max-width:12ch;margin:13px 0;color:#f1fbf0;font-size:clamp(32px,4vw,56px);line-height:.96;letter-spacing:-.065em}
+.dashboard-brief-lead,.dashboard-brief-boundary,.dashboard-path,.dashboard-recent{padding:clamp(22px,3vw,38px);border:1px solid var(--sim-border);border-radius:var(--sim-radius);background:var(--sim-panel)}
+.dashboard-brief-lead{background:var(--sim-panel-strong)}
+.dashboard-brief-lead h2{max-width:12ch;margin:13px 0;color:#f1fbf0;font-size:clamp(32px,4vw,56px);line-height:1.08;letter-spacing:-.045em}
 .dashboard-brief-lead>p:not(.sim-eyebrow){max-width:54ch;margin:0;color:var(--sim-ink-soft);font:16px/1.6 var(--sim-serif)}
 .dashboard-brief-boundary{display:flex;flex-direction:column;justify-content:flex-end;min-height:220px}
 .dashboard-brief-boundary strong{margin-top:44px;color:var(--sim-leaf-bright);font-size:22px;letter-spacing:-.04em}

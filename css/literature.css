@@ -1,0 +1,54 @@
+/* Orr Biologicals · Research Intelligence literature discovery (Division 03). */
+
+.lit-hero{padding:clamp(56px,7vw,96px) 0 32px}
+.lit-lede{font-size:18px;line-height:1.7;color:var(--ink-soft);max-width:64ch}
+.lit-app{border:1px solid var(--rule);border-radius:18px;background:var(--paper);overflow:hidden}
+.lit-controls{display:grid;gap:14px;padding:24px;border-bottom:1px solid var(--rule);background:var(--void-2)}
+.lit-controls form{display:grid;gap:14px}
+.lit-controls label{font:600 11px/1.5 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--mute)}
+.lit-search-row{display:flex;gap:10px;align-items:stretch}
+.lit-search-row input{flex:1;min-height:48px;font-size:16px}
+.lit-button{min-height:48px;padding:0 22px;border:0;border-radius:var(--radius);background:var(--leaf);color:#fff;font-weight:600;letter-spacing:.02em}
+.lit-button:hover{background:var(--leaf-deep)}
+.lit-button:disabled{opacity:.55}
+.lit-filters{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center}
+.lit-filters label{font:400 12px/1.4 var(--mono);letter-spacing:.04em;text-transform:uppercase;color:var(--mute);display:flex;gap:8px;align-items:center}
+.lit-filters input[type=checkbox]{width:18px;height:18px;accent-color:var(--leaf)}
+.lit-hint{margin:0;font-size:13px;color:var(--mute)}
+.lit-status{padding:14px 24px;font-family:var(--mono);font-size:12px;letter-spacing:.03em;color:var(--mute);border-bottom:1px solid var(--rule);background:var(--void)}
+.lit-status[data-state=busy]{color:var(--cyan)}
+.lit-status[data-state=error]{color:var(--warn)}
+.lit-results{display:grid;gap:0;padding:0}
+.lit-card{padding:22px 24px;border-bottom:1px solid var(--rule);display:grid;gap:8px}
+.lit-card:last-child{border-bottom:0}
+.lit-card h3{margin:0;font-size:18px;line-height:1.4;color:var(--ink);max-width:48ch}
+.lit-card .lit-authors{margin:0;font-size:13.5px;color:var(--ink-soft)}
+.lit-card .lit-venue{margin:0;font:500 11px/1.6 var(--mono);letter-spacing:.06em;color:var(--mute)}
+.lit-badges{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.lit-badge{font:600 10px/1.8 var(--mono);letter-spacing:.09em;text-transform:uppercase;padding:3px 10px;border-radius:99px;border:1px solid var(--rule)}
+.lit-badge.oa{color:var(--leaf-deep);border-color:var(--leaf);background:var(--leaf-soft)}
+.lit-badge.paywalled{color:var(--ink-soft)}
+.lit-badge.plain{color:var(--mute)}
+.lit-read{font-size:13.5px;font-weight:600;color:var(--leaf-deep);text-decoration:none}
+.lit-read:hover{text-decoration:underline}
+.lit-card details{margin-top:4px}
+.lit-card details summary{font:600 12px/1.6 var(--mono);letter-spacing:.07em;text-transform:uppercase;color:var(--mute);list-style:none}
+.lit-card details summary::-webkit-details-marker{display:none}
+.lit-card details summary::after{content:" ▾"}
+.lit-card details[open] summary::after{content:" ▴"}
+.lit-card details p{margin:8px 0 0;font-size:14.5px;line-height:1.75;color:var(--ink-soft);max-width:70ch}
+.lit-more{display:grid;place-items:center;padding:20px;border-top:1px solid var(--rule)}
+.lit-empty,.lit-error{padding:44px 24px;text-align:center;display:grid;gap:10px;justify-items:center}
+.lit-empty h3,.lit-error h3{margin:0;font-size:20px}
+.lit-empty p,.lit-error p{margin:0;color:var(--ink-soft);max-width:52ch}
+.lit-attribution{padding:18px 24px;border-top:1px solid var(--rule);font-size:12px;line-height:1.7;color:var(--mute);background:var(--void)}
+.lit-attribution a{color:inherit;text-decoration:underline}
+.lit-sources{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));margin-top:32px}
+.lit-source-card{border:1px solid var(--rule);border-radius:var(--radius);padding:22px;background:var(--paper)}
+.lit-source-card h3{margin:0 0 8px;font-size:17px}
+.lit-source-card p{margin:0;font-size:14px;line-height:1.7;color:var(--ink-soft)}
+.lit-scope{display:grid;gap:16px;margin-top:32px}
+.lit-scope li{font-size:14.5px;line-height:1.7;color:var(--ink-soft)}
+.lit-scope strong{color:var(--ink)}
+@media(max-width:640px){.lit-search-row{flex-direction:column}.lit-card h3{font-size:16.5px}.lit-card{padding:18px 18px}}
+@media(prefers-reduced-motion:reduce){.lit-card,.lit-button{transition:none!important}}

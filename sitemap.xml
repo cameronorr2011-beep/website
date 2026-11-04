@@ -123,6 +123,9 @@
     <loc>https://orrbiologicals.com/</loc>
   </url>
   <url>
+    <loc>https://orrbiologicals.com/literature/</loc>
+  </url>
+  <url>
     <loc>https://orrbiologicals.com/microalgae-cultivation/</loc>
   </url>
   <url>
@@ -130,5 +133,8 @@
   </url>
   <url>
     <loc>https://orrbiologicals.com/research/</loc>
+  </url>
+  <url>
+    <loc>https://orrbiologicals.com/support/</loc>
   </url>
 </urlset>

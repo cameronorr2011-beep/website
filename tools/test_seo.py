@@ -171,6 +171,48 @@ class SEOTests(unittest.TestCase):
         self.assertTrue(m, '.prose a rule missing')
         self.assertNotIn('text-decoration', m.group(0))
 
+    def test_support_donation_transparency(self):
+        address = 'clumsyparsnip913@walletofsatoshi.com'
+        support = (ROOT / 'support/index.html').read_text(encoding='utf-8')
+        home = (ROOT / 'index.html').read_text(encoding='utf-8')
+        for label, text in (('support page', support), ('homepage', home)):
+            with self.subTest(page=label):
+                self.assertIn(address, text)
+                self.assertIn('data-copy="', text)
+                self.assertIn('/support/', text)
+                self.assertIn('voluntary', text)
+        # Transparency statements must be present, and the wallet identity
+        # must never be presented as a charity, a returning product or a QR.
+        self.assertIn('not a registered charity', support)
+        self.assertIn('not tax-deductible', support)
+        self.assertIn('seed phrase', support.lower())
+        # No misleading claims and no QR that we cannot verify ourselves.
+        self.assertNotIn('is a registered charity', support)
+        self.assertNotIn('guaranteed returns', support)
+        self.assertNotIn('qrcode', support.lower())
+
+    def test_literature_engine_wiring(self):
+        page = (ROOT / 'literature/index.html').read_text(encoding='utf-8')
+        js = (ROOT / 'js/literature.js').read_text(encoding='utf-8')
+        for host in ('api.crossref.org', 'api.openalex.org'):
+            with self.subTest(host=host):
+                self.assertIn(host, page)
+                self.assertIn(host, js)
+        # The engine must ship working states and no fabricated records.
+        self.assertIn('/js/literature.js', page)
+        self.assertIn('never bypasses paywalls', page)
+        self.assertIn('10.1038/171737a0', page)
+        self.assertIn('placeholder=', page[page.index('litQuery') - 400:page.index('litQuery') + 200])
+        self.assertNotIn('innerHTML', js)
+        self.assertIn('textContent', js)
+        self.assertIn('AbortController', js)
+        self.assertIn('sessionStorage', js)
+        self.assertIn('normalizeDoi', js)
+        self.assertIn('cited_by_count', js)
+        self.assertIn('best_oa_location', js)
+        engine_row = (ROOT / 'index.html').read_text(encoding='utf-8')
+        self.assertIn('/literature/', engine_row)
+
     def test_google_font_ranges_are_valid(self):
         for path in pages():
             text = path.read_text(encoding='utf-8-sig')
