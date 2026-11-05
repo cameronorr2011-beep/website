@@ -1,0 +1,55 @@
+{
+  "date": "2026-11-04",
+  "model": "openai/gpt-oss-120b",
+  "generated_at": "2026-11-05T00:41:02Z",
+  "picks": [
+    {
+      "pmid": "42710786",
+      "title": "Industrial effluent driven lipid induction in marine microalgae under mixotrophic growth: Comparative evaluation of defined carbon sources and non-sterile effluent environments.",
+      "journal": "Journal of microbiological methods",
+      "year": "2026",
+      "pub_date": "2026-09-08",
+      "url": "https://doi.org/10.1016/j.mimet.2026.107707",
+      "topic": "Biofuels",
+      "hook": "Marine microalgae boost lipid yields using cheap industrial effluent under mixotrophic conditions.",
+      "article": "A recent study explored whether marine microalgae could be grown using industrial waste water as a carbon source, aiming to boost the production of lipids that can be turned into renewable fuels.\n\nThe researchers cultivated a marine microalga under mixotrophic conditions – meaning the algae received both light and an external carbon source – and compared growth in defined pure carbon substrates with growth in non‑sterile industrial effluent.\n\nThey found that the algae were able to assimilate carbon from the unsterilized waste water and that this environment could trigger lipid accumulation, though the abstract does not give exact figures.\n\nThis work is interesting because it suggests a way to turn polluting waste streams into valuable bio‑fuel feedstock while reducing the need for costly sterile processing.",
+      "why": "Using waste water to grow lipid‑rich algae could lower biofuel costs and help clean industrial effluents."
+    },
+    {
+      "pmid": "42956850",
+      "title": "Strain-dependent carbon partitioning and community-level functional responses during microalgae-based dairy wastewater treatment under CO<sub>2</sub> enrichment.",
+      "journal": "Bioresource technology",
+      "year": "2026",
+      "pub_date": "2026-10-29",
+      "url": "https://doi.org/10.1016/j.biortech.2026.136162",
+      "topic": "Carbon Capture",
+      "hook": "Strain-specific carbon partitioning powers dairy wastewater treatment and CO₂‑enriched algal biofuel production.",
+      "article": "A recent study examined how different microalgae strains handle carbon when used to treat dairy wastewater that has been enriched with CO₂.\n\nThe researchers grew several microalgae species in laboratory reactors that received dairy wastewater under elevated CO₂ conditions, then measured how each strain allocated carbon into biomass versus other products and observed the resulting microbial community functions.\n\nThey found that while microalgae consortia can couple dairy‑wastewater treatment with carbon conversion, strain‑dependent differences in carbon partitioning and microbial functional responses remain insufficiently resolved.\n\nUnderstanding these strain‑specific behaviors is important for designing more efficient algae‑based wastewater treatment systems.",
+      "why": "Knowing which algae strains best convert waste carbon can improve sustainable wastewater treatment and bio‑product generation."
+    },
+    {
+      "pmid": "42498893",
+      "title": "Elemental Composition and Variability in Spirulina-derived Nutraceuticals: Implications for Nutritional Relevance and Health Risk.",
+      "journal": "Biological trace element research",
+      "year": "2026",
+      "pub_date": "2026-07-25",
+      "url": "https://doi.org/10.1007/s12011-026-05257-5",
+      "topic": "Health",
+      "hook": "Spirulina nutraceuticals contain trace elements that affect nutritional value and potential health risks.",
+      "article": "A recent study set out to measure the amounts of essential nutrients and potentially harmful trace elements in commercial Spirulina products from Argentina. The researchers collected a range of Spirulina-derived powders, capsules and tablets and analysed them for ten essential elements (Fe, Ca, Mg, Na, K, P, Mn, Cu and Li) and three toxic elements (As, Cd and Pb). Using standard elemental analysis techniques, they quantified the concentrations present in each product.\n\nThe analysis revealed that the Spirulina products contained measurable levels of the essential elements, but also detectable amounts of arsenic, cadmium and lead. The abstract does not provide specific concentration values, only that these toxic elements were present.\n\nThese findings highlight that while Spirulina can contribute valuable minerals to the diet, there is also a risk of exposure to harmful trace metals, underscoring the need for careful quality control in nutraceutical manufacturing.",
+      "why": "Understanding metal content helps ensure Spirulina supplements are safe and nutritionally beneficial."
+    },
+    {
+      "pmid": "42946192",
+      "title": "Cellular Responses of Microcystis aeruginosa to Environmentally Relevant PFBA Concentrations under Different Nutrient Conditions.",
+      "journal": "Environmental research",
+      "year": "2026",
+      "pub_date": "2026-10-27",
+      "url": "https://doi.org/10.1016/j.envres.2026.126026",
+      "topic": "Ecology",
+      "hook": "Microcystis aeruginosa shows distinct stress responses to PFBA, shedding light on bloom toxicity under nutrient shifts.",
+      "article": "A recent study set out to see how the common freshwater cyanobacterium Microcystis aeruginosa reacts when it encounters environmentally realistic levels of the chemical perfluorobutanoic acid (PFBA) under varying nutrient conditions.\n\nThe researchers grew cultures of M. aeruginosa in the lab and added PFBA at two concentrations, 0.2 µg L⁻¹ and 200 µg L⁻¹, while adjusting the amount of nutrients in the growth medium.\n\nThey observed that the cells showed distinct physiological and molecular changes depending on both the PFBA dose and the nutrient regime, indicating that PFBA can affect cyanobacterial health at concentrations found in natural waters.\n\nUnderstanding these responses helps clarify the ecological risk of PFBA, a short‑chain per‑ and poly‑fluoroalkyl substance that is increasingly detected in aquatic systems.",
+      "why": "The findings reveal how low‑level PFBA exposure may influence harmful algal blooms, informing water‑quality management."
+    }
+  ]
+}
