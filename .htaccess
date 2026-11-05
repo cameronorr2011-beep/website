@@ -1,4 +1,4 @@
-﻿# Orr Biologicals â€” orrbiologicals.com
+# Orr Biologicals â€” orrbiologicals.com
 # Canonical host: https://orrbiologicals.com (non-www, HTTPS)
 
 ErrorDocument 404 /404.html
@@ -31,6 +31,7 @@ RewriteEngine On
 # Redirects. Never add a prefix `Redirect 301 /docs ...` here or it would win
 # over this F rule (see the exact-match /docs redirect below).
 RewriteRule ^(?:sections|tools|docs)(?:/|$) - [F,L]
+RewriteRule ^orr-project(?:/|$) - [F,L]
 RewriteRule ^apps(?:/|$) - [F,L]
 RewriteRule ^(?:server|node_modules|\.git)(?:/|$) - [F,L]
 

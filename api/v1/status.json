@@ -1,0 +1,15 @@
+{
+  "service": "Orr Biologicals NeuroML data API (static, read-only)",
+  "api_version": "1",
+  "status": "early_implementation",
+  "updated_utc": "2026-11-05T01:50:00Z",
+  "notice": "Only files present under /api/v1/ are implemented. Absent endpoints are not silently empty — they 404. No neuron, connection, prediction, or literature-search endpoints exist yet.",
+  "implemented": [
+    "/api/v1/status.json",
+    "/api/v1/organisms.json",
+    "/api/v1/datasets.json"
+  ],
+  "hosting": "static file hosting; dynamic query endpoints require a runtime strategy (see orr-project/BLOCKERS.md B-004)",
+  "license_notes": "Dataset records carry their own license fields; API metadata is MIT-licensed with the site code. FlyWire data treated as CC BY-NC 4.0 pending rights-holder clarification.",
+  "contact": "service@orrbiologicals.com"
+}

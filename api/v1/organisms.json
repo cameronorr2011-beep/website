@@ -1,0 +1,23 @@
+{
+  "api_version": "1",
+  "updated_utc": "2026-11-05T01:50:00Z",
+  "organisms": [
+    {
+      "id": "drosophila_melanogaster",
+      "common_name": "fruit fly",
+      "scope": "adult female central brain and optic lobes (FAFB); ventral nerve cord excluded",
+      "records_available": true,
+      "record_location": "NeuroML application repository (game-website, neuro-ml branch), not this host",
+      "datasets": ["flywire-fafb-v783"]
+    },
+    {
+      "id": "mus_musculus",
+      "common_name": "house mouse",
+      "scope": "whole-brain atlas framework; dense synaptic data only where ingested (none yet)",
+      "records_available": false,
+      "record_location": null,
+      "datasets": ["microns-cortical-mm3", "allen-brain-cell-atlas", "allen-connectivity-atlas", "allen-cell-types", "dandi-nwb-scope"],
+      "note": "Dataset entries are registered for planning; zero records ingested. Any mouse neuron endpoint 404s until Sprint 1 exit condition is met."
+    }
+  ]
+}

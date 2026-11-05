@@ -1,0 +1,42 @@
+{
+  "checkpoint_id": "S0-20261104-01",
+  "updated_utc": "2026-11-05T01:50:00Z",
+  "branch": "arena/bfcb8601-website",
+  "base_commit": "a780ab7ab871952958f868e159433ddd2a712654",
+  "sprint": 0,
+  "sprint_status": "in_progress",
+  "completed_this_session": [
+    "environment discovery (2 CPU, 3.8GB RAM, no GPU, Debian, py3.11, node22)",
+    "website repo audit: tests green, 14/14 routes 200",
+    "game-website neuro-ml audit: fly asset SHA-256 verified, sleep docs reviewed",
+    "prior arena branches reviewed via git history (no live agents)",
+    "static server running on 0.0.0.0:8080 (process website-c19fd867)"
+  ],
+  "completed_this_session_extra": [
+    "13-file execution registry (T-003 done)",
+    "docs/INITIAL_SYSTEM_AUDIT.md",
+    "api/v1 status/organisms/datasets JSON, served 200 + application/json (T-005 done)",
+    "CAVE adapter scaffold + fixture + 8 mocked tests, all passing (T-004 done)",
+    ".htaccess orr-project block via separate rule (invariant test preserved)",
+    "full suite green: 35/35 py + sim + biorealm"
+  ],
+  "in_progress": [
+    "commit + push to arena/bfcb8601-website"
+  ],
+  "next_actions": [
+    "T-020 Allen abc_atlas_access survey (GitHub-reachable)",
+    "T-030 fly backend alignment decision",
+    "T-040 extensionless API routing decision",
+    "T-010/T-011 live MICrONS on open network (needs user machine or open egress)"
+  ],
+  "background_processes": [
+    {
+      "name": "Website",
+      "process_id": "website-c19fd867",
+      "command": "HOST=0.0.0.0 PORT=8080 node tools/static-server.mjs",
+      "note": "dev preview only; not a research job; safe to restart"
+    }
+  ],
+  "research_jobs": [],
+  "notes": "No long-running research jobs exist. No UI-session background persistence is assumed; resume via RESUME_INSTRUCTIONS.md."
+}

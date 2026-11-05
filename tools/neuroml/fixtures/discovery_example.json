@@ -1,0 +1,24 @@
+{
+  "_comment": "RECORDED-FORMAT EXAMPLE, not real CAVE data. Shape mirrors CAVEclient discovery responses so the manifest pipeline is testable offline. Replace with a --live recording at T-010.",
+  "datastack": "minnie65_public",
+  "datastack_info": {
+    "datastack": "minnie65_public",
+    "synapse_table": "synapses_pni_2",
+    "description": "EXAMPLE synapse table name; true value discovered at runtime"
+  },
+  "versions_available": [1850, 1900, 1926],
+  "schemas": {
+    "synapses_pni_2": {
+      "table": "synapses_pni_2",
+      "fields": ["pre_pt_root_id", "post_pt_root_id", "size", "ctr_pt_position"],
+      "note": "EXAMPLE fields; true schema discovered at runtime"
+    }
+  },
+  "rows": {
+    "synapses_pni_2": [
+      {"pre_pt_root_id": "111", "post_pt_root_id": "222", "size": 10, "_v": 1926},
+      {"pre_pt_root_id": "111", "post_pt_root_id": "333", "size": 4, "_v": 1926},
+      {"pre_pt_root_id": "444", "post_pt_root_id": "222", "size": 7, "_v": 1900}
+    ]
+  }
+}

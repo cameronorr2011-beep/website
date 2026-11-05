@@ -1,0 +1,102 @@
+{
+  "api_version": "1",
+  "updated_utc": "2026-11-05T01:50:00Z",
+  "evidence_states": ["VERIFIED_OBSERVATION", "CURATED_OBSERVATION", "EXPERIMENTALLY_SUPPORTED", "COMPUTATIONALLY_DERIVED", "AI_PREDICTED", "LITERATURE_INFERRED", "CONFLICTING_EVIDENCE", "UNKNOWN", "UNAVAILABLE"],
+  "datasets": [
+    {
+      "id": "flywire-fafb-v783",
+      "organism": "drosophila_melanogaster",
+      "name": "FlyWire FAFB whole-brain connectome, proofread release v783.0",
+      "version": "783.0",
+      "version_pinned": true,
+      "source": "https://zenodo.org/records/10676866",
+      "citation": "Dorkenwald et al., Nature 634, 124-138 (2024). https://doi.org/10.1038/s41586-024-07558-y",
+      "license": "CC BY-NC 4.0 treatment pending rights-holder clarification (Zenodo record states CC BY 4.0; flywire.ai guidelines state CC BY-NC 4.0)",
+      "status": "ingested_elsewhere_verified",
+      "ingest_location": "game-website repo, neuro-ml branch, public/data/flywire-v783.npz",
+      "asset_bytes": 48560472,
+      "asset_sha256": "ddf717f5c53883da1a131e7a2d71fbde3f900a2202ab087e796bcd2059632e5b",
+      "verified_counts": {
+        "neurons": 139255,
+        "directed_pairs": 15091983,
+        "anatomical_synapses": 54492922,
+        "self_connections": 0
+      },
+      "verified_by": "Orr Biologicals session 2026-11-04: local SHA-256 match + CSR inspection",
+      "known_gaps": ["cell-type annotations", "morphology", "per-neuron neuropil attribution", "receptor signs", "conduction delays", "physiology"],
+      "served_from_this_host": false
+    },
+    {
+      "id": "microns-cortical-mm3",
+      "organism": "mus_musculus",
+      "name": "MICrONS cortical cubic millimeter (functional connectomics, mouse visual cortex)",
+      "version": "dynamic_materialization_unpinned",
+      "version_pinned": false,
+      "source": "https://www.microns-explorer.org/cortical-mm3",
+      "citation": "MICrONS Consortium et al., Nature 640, 435-447 (2025). https://doi.org/10.1038/s41586-025-08790-w",
+      "license": "see source terms; verify before reuse",
+      "status": "registered_not_ingested",
+      "access_route": "CAVEclient, public datastack minnie65_public; materialization version must be discovered and pinned at runtime",
+      "published_description": "P87 mouse; VISp/VISlm/VISal/VISrl; ~200,000 cells; ~523M automated synapse detections; ~75,902 neurons with functional imaging (to re-verify at runtime; no 1:1 anatomy-function assumption)",
+      "verified_counts": null,
+      "served_from_this_host": false
+    },
+    {
+      "id": "allen-brain-cell-atlas",
+      "organism": "mus_musculus",
+      "name": "Allen Brain Cell Atlas (whole-mouse-brain transcriptomic + spatial)",
+      "version": "release_survey_pending",
+      "version_pinned": false,
+      "source": "https://github.com/AllenInstitute/abc_atlas_access",
+      "citation": "see release documentation at survey time",
+      "license": "see source terms; verify before reuse",
+      "status": "registered_not_ingested",
+      "access_route": "public Python package + hosted releases; GitHub-reachable portion surveyable in sandbox (T-020)",
+      "verified_counts": null,
+      "served_from_this_host": false
+    },
+    {
+      "id": "allen-connectivity-atlas",
+      "organism": "mus_musculus",
+      "name": "Allen Mouse Brain Connectivity Atlas (mesoscale projections)",
+      "version": "unsurveyed",
+      "version_pinned": false,
+      "source": "https://brain-map.org/support/documentation/api-allen-brain-connectivity-atlas",
+      "citation": "see source documentation",
+      "license": "see source terms; verify before reuse",
+      "status": "registered_not_ingested",
+      "access_route": "public Allen API (unreachable from sandbox; B-001)",
+      "evidence_warning": "Projection signal is NOT synapse-level connectivity and must never be converted into neuron-to-neuron edges.",
+      "verified_counts": null,
+      "served_from_this_host": false
+    },
+    {
+      "id": "allen-cell-types",
+      "organism": "mus_musculus",
+      "name": "Allen Cell Types Database (electrophysiology, morphology, models)",
+      "version": "unsurveyed",
+      "version_pinned": false,
+      "source": "https://celltypes.brain-map.org/",
+      "citation": "see source documentation",
+      "license": "see source terms; verify before reuse",
+      "status": "registered_not_ingested",
+      "access_route": "public downloads + API (unreachable from sandbox; B-001)",
+      "verified_counts": null,
+      "served_from_this_host": false
+    },
+    {
+      "id": "dandi-nwb-scope",
+      "organism": "mus_musculus",
+      "name": "DANDI / Neurodata Without Borders neurophysiology scope (to be scoped)",
+      "version": "unsurveyed",
+      "version_pinned": false,
+      "source": "https://dandiarchive.org/",
+      "citation": "per-dandiset, at selection time",
+      "license": "per-dandiset; verify before reuse",
+      "status": "registered_not_ingested",
+      "access_route": "public DANDI API + NWB readers (unreachable from sandbox; B-001)",
+      "verified_counts": null,
+      "served_from_this_host": false
+    }
+  ]
+}
