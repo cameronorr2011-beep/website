@@ -2,16 +2,16 @@
 <html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>NeuroML — Mouse Brain &amp; Fruit Fly Connectomics Platform | Orr Biologicals</title>
-<meta name="description" content="NeuroML is the planned connectomics platform at Orr Biologicals: a mouse-brain registry built from public datasets and the published fruit-fly connectome. Interface skeleton; no datasets ingested yet.">
+<meta name="description" content="NeuroML is the connectomics platform at Orr Biologicals: a mouse-brain registry built from public datasets and the published fruit-fly connectome. One verified MICrONS mouse neuron is connected, with its real skeleton and synaptic partners. This is not a whole-brain reconstruction.">
 <link rel="canonical" href="https://orrbiologicals.com/neuroML/">
 <meta property="og:title" content="NeuroML — Mouse Brain &amp; Fruit Fly Connectomics">
-<meta property="og:description" content="A planned connectomics platform: mouse-brain records from public datasets and the published fruit-fly connectome. Interface skeleton; no datasets ingested yet.">
+<meta property="og:description" content="A connectomics platform: mouse-brain records from public datasets and the published fruit-fly connectome. One verified MICrONS mouse neuron is connected, with its real skeleton and synaptic partners. This is not a whole-brain reconstruction.">
 <meta property="og:url" content="https://orrbiologicals.com/neuroML/">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://orrbiologicals.com/assets/og.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="NeuroML — Mouse Brain &amp; Fruit Fly Connectomics">
-<meta name="twitter:description" content="A planned connectomics platform at Orr Biologicals. Interface skeleton; no datasets ingested yet.">
+<meta name="twitter:description" content="A connectomics platform at Orr Biologicals. One verified MICrONS mouse neuron is connected; this is not a whole-brain reconstruction.">
 <meta name="twitter:image" content="https://orrbiologicals.com/assets/og.png">
 <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
@@ -24,13 +24,47 @@
       "@type": "WebPage",
       "name": "NeuroML — Mouse Brain & Fruit Fly Connectomics Platform",
       "url": "https://orrbiologicals.com/neuroML/",
-      "description": "A planned connectomics platform for mouse-brain records from public datasets and the published fruit-fly connectome. Interface skeleton; no datasets ingested yet.",
+      "description": "A connectomics platform for mouse-brain records from public datasets and the published fruit-fly connectome. One verified MICrONS mouse neuron is connected, with its real skeleton and synaptic partners; this is not a whole-brain reconstruction.",
       "publisher": { "@type": "Organization", "name": "Orr Biologicals", "url": "https://orrbiologicals.com/" }
     }
   ]
 }
 </script>
 <style>.skip{position:absolute;left:-9999px}</style>
+<style>
+.nml-neuron-badges { margin: 14px 0 0; display: flex; flex-wrap: wrap; gap: 6px; }
+.nml-neuron { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 18px; margin: 22px 0 0; align-items: start; }
+.nml-viewer { position: relative; min-height: 430px; border: 1px solid var(--rule); border-radius: 12px; background: radial-gradient(circle at 50% 45%, #17251f, #0a100d 72%); overflow: hidden; }
+.nml-viewer canvas { display: block; width: 100%; height: clamp(340px, 55vh, 540px); touch-action: none; cursor: grab; outline: none; }
+.nml-viewer canvas:focus-visible { box-shadow: inset 0 0 0 2px var(--leaf-2); }
+.nml-viewer-hud { position: absolute; top: 10px; left: 12px; right: 12px; display: flex; justify-content: space-between; gap: 10px; font-family: var(--mono); font-size: 10.5px; letter-spacing: .04em; color: #a9c9bb; pointer-events: none; }
+.nml-viewer-controls { position: absolute; right: 10px; bottom: 10px; display: flex; gap: 6px; }
+.nml-viewer-controls button { font: inherit; font-family: var(--mono); font-size: 10.5px; letter-spacing: .04em; color: #e9efe9; background: rgba(0, 0, 0, .65); border: 1px solid rgba(255, 255, 255, .22); border-radius: 999px; padding: 5px 10px; cursor: pointer; }
+.nml-viewer-controls button:hover, .nml-viewer-controls button:focus-visible { border-color: var(--leaf-2); }
+.nml-legend { position: absolute; left: 10px; bottom: 10px; margin: 0; padding: 8px 10px; list-style: none; display: grid; gap: 3px; font-size: 11px; color: #c9d6cf; background: rgba(0, 0, 0, .60); border: 1px solid rgba(255, 255, 255, .18); border-radius: 8px; pointer-events: none; }
+.nml-legend li { display: flex; align-items: center; gap: 6px; white-space: nowrap; }
+.nml-swatch { width: 12px; height: 2px; border-radius: 2px; display: inline-block; }
+.nml-swatch-axon { background: #e8a38d; }
+.nml-swatch-dendrite { background: #c8d9ab; }
+.nml-swatch-soma { background: #fff; height: 5px; width: 5px; border-radius: 50%; }
+.nml-swatch-out { background: #f2c14e; height: 5px; width: 5px; border-radius: 50%; }
+.nml-swatch-in { background: #7fd1c0; height: 5px; width: 5px; border-radius: 50%; }
+.nml-unavailable { position: absolute; inset: auto 14px 56px; margin: 0; padding: 12px 14px; border: 1px solid rgba(232, 163, 141, .4); border-radius: 10px; background: rgba(0, 0, 0, .78); color: var(--ink-soft); font-size: 13px; }
+.nml-unavailable[hidden] { display: none; }
+.nml-neuron-facts dl { gap: 8px; }
+.nml-neuron-facts code { word-break: break-all; }
+.nml-neuron-evidence { margin-top: 14px; }
+.nml-neuron-partners { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px; margin: 16px 0 0; }
+.nml-neuron-partners .nml-table-wrap { margin-top: 10px; }
+.nml-provenance { margin: 20px 0 0; border: 1px solid var(--rule); border-radius: 12px; padding: 14px 16px; background: rgba(0, 0, 0, .14); }
+.nml-provenance summary { cursor: pointer; font-family: var(--mono); font-size: 11.5px; letter-spacing: .06em; text-transform: uppercase; color: var(--ink); }
+.nml-provenance dl { margin: 14px 0 0; display: grid; gap: 8px; font-size: 13.5px; }
+.nml-provenance dt { color: var(--mute); font-family: var(--mono); font-size: 11px; letter-spacing: .06em; text-transform: uppercase; }
+.nml-provenance dd { margin: 0; color: var(--ink-soft); overflow-wrap: anywhere; }
+.nml-provenance code { font-size: 12px; }
+@media (max-width: 860px) { .nml-neuron { grid-template-columns: 1fr; } }
+@media (max-width: 520px) { .nml-viewer { min-height: 360px; } .nml-legend { font-size: 10px; padding: 6px 8px; } .nml-viewer-hud { font-size: 9.5px; } }
+</style>
 <link rel="stylesheet" href="/css/global.css?v=20261101">
 <link rel="stylesheet" href="/css/header.css?v=20261101">
 <link rel="stylesheet" href="/css/orr-home.css?v=20261101">
@@ -49,26 +83,26 @@
 <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile primary" hidden>
 <a href="/algaephyte/">Algaephyte / cultivation</a><a href="/cyanoflow">Cyanoflow / single cells</a><a href="/research/">Our research</a><a href="/neuroML/">NeuroML / neuroscience</a><a href="/literature/">Literature search / DOI lookup</a><a href="/blog/">Journal / ideas &amp; notes</a><a href="/algae-growth/">Algae growth / field guide</a><a href="/downloads/">App downloads</a><a href="/developers/">Developers / API</a><a href="/#deploy">Contact the project</a></nav>
 <main id="main" class="art-shell"><nav class="art-top" aria-label="Breadcrumb"><a href="/">Orr Biologicals</a> / <span>NeuroML</span></nav>
-<p class="art-cat">Neuroscience · Interface skeleton</p>
+<p class="art-cat">Neuroscience · Verified MICrONS record</p>
 <h1>NeuroML</h1>
 <div class="prose">
-<p class="dek nml-lede">A research platform for connectomics and neural dynamics: mouse-brain records assembled from public datasets, and the published fruit-fly connectome. This page is the layout the research team will implement against. No dataset has been ingested, so no neuron, synapse or model result is displayed.</p>
+<p class="dek nml-lede">A research platform for connectomics and neural dynamics: mouse-brain records assembled from public datasets, and the published fruit-fly connectome. The first verified record is a proofread MICrONS mouse neuron with its dataset skeleton and every detected presynaptic and postsynaptic partner. It is one neuron from a cubic-millimetre volume of visual cortex — not a whole-brain reconstruction.</p>
 
-<p class="nml-status"><strong>Development status · layout only.</strong> Every panel below states what it will show and which dataset it must come from. Record counts are zero because none have been ingested yet — the zeros are the current true state, not a loading placeholder.</p>
+<p class="nml-status"><strong>Live record · MICrONS/CAVE.</strong> One real neuron is read from the MICrONS data service, with its morphology, proofreading status and every presynaptic and postsynaptic record. The coverage counts below are filled from that published record; if it cannot be read, the page shows DATA UNAVAILABLE instead of a number. <a href="#verified-neuron">See the verified neuron ↓</a></p>
 
 <div class="nml-tabs">
-<a href="#mouse"><span>Environment 01</span><b>Mouse brain</b><small>Public datasets, region by region. Not connected.</small></a>
+<a href="#mouse"><span>Environment 01</span><b>Mouse brain</b><small>One verified MICrONS neuron. Connected.</small></a>
 <a href="#fly"><span>Environment 02</span><b>Fruit fly</b><small>Published connectome. Integration pending.</small></a>
 </div>
 
 <h2 id="mouse">Mouse brain</h2>
 <p>No single public mouse dataset is a whole-brain synaptic reconstruction, so the platform must keep every source separate, versioned and labelled by what it actually measured. The registry below names the datasets the reconstruction will draw from and the access route each one requires.</p>
 
-<div class="nml-table-wrap" role="region" aria-label="Planned mouse dataset registry" tabindex="0">
+<div class="nml-table-wrap" role="region" aria-label="Mouse dataset registry" tabindex="0">
 <table class="nml-table">
 <thead><tr><th scope="col">Dataset</th><th scope="col">What it provides</th><th scope="col">Access route</th><th scope="col">Status</th></tr></thead>
 <tbody>
-<tr><td>MICrONS<br><a href="https://www.microns-explorer.org/" rel="noreferrer">microns-explorer.org</a></td><td>Mouse visual cortex: electron microscopy, segmentation, synaptic annotations, reconstructed morphology, functional recordings with stimuli.</td><td>CAVEclient / CloudVolume; some access needs an authorised CAVE token.</td><td><span class="nml-badge" data-state="pending">Adapter not implemented</span></td></tr>
+<tr><td>MICrONS<br><a href="https://www.microns-explorer.org/" rel="noreferrer">microns-explorer.org</a></td><td>Mouse visual cortex: electron microscopy, segmentation, synaptic annotations, reconstructed morphology, functional recordings with stimuli.</td><td>CAVEclient / CloudVolume; some access needs an authorised CAVE token.</td><td><span class="nml-badge" data-state="pending" data-microns-status>Checking record…</span></td></tr>
 <tr><td>Allen Brain Cell Atlas<br><a href="https://alleninstitute.github.io/abc_atlas_access/" rel="noreferrer">abc_atlas_access</a></td><td>Whole-mouse-brain transcriptomic cell types, spatially resolved molecular data, taxonomies, release labels including beta status.</td><td>Public Python package and hosted releases.</td><td><span class="nml-badge">Not connected</span></td></tr>
 <tr><td>Allen Mouse Brain Connectivity Atlas<br><a href="https://brain-map.org/support/documentation/api-allen-brain-connectivity-atlas" rel="noreferrer">Allen API</a></td><td>Injection experiments, axonal projections, anatomical targets and region annotations. Projection strength is not a proofread synaptic graph.</td><td>Public Allen API.</td><td><span class="nml-badge">Not connected</span></td></tr>
 <tr><td>Allen Cell Types Database<br><a href="https://celltypes.brain-map.org/" rel="noreferrer">celltypes.brain-map.org</a></td><td>Morphology, electrophysiology, transcriptomic annotation, GLIF and biophysical models, NWB recordings, SWC reconstructions.</td><td>Public downloads and API.</td><td><span class="nml-badge">Not connected</span></td></tr>
@@ -79,14 +113,77 @@
 
 <h3>Coverage</h3>
 <div class="nml-grid">
-<div class="nml-card"><p class="nml-count">0<em>Neuron records ingested</em></p></div>
-<div class="nml-card"><p class="nml-count">0<em>Connection records ingested</em></p></div>
-<div class="nml-card"><p class="nml-count">0 of 5<em>Datasets connected</em></p></div>
-<div class="nml-card"><p class="nml-count">0<em>Model experiments run</em></p></div>
+<div class="nml-card"><p class="nml-count"><span data-count="neurons">—</span><em>Neuron records ingested</em></p></div>
+<div class="nml-card"><p class="nml-count"><span data-count="synapses">—</span><em>Connection records ingested</em></p></div>
+<div class="nml-card"><p class="nml-count"><span data-count="datasets">—</span> of 5<em>Datasets connected</em></p></div>
+<div class="nml-card"><p class="nml-count">0<em>Validated model experiments</em></p></div>
 </div>
-<p class="nml-note">Progress will be reported per dataset and per brain region. There is no defensible whole-brain completion percentage, because the datasets above differ in species preparation, resolution and experimental scope, so no such figure will be shown.</p>
+<p class="nml-note">Counts are read from the published neuron record, not typed into the page. Progress is reported per dataset and per brain region. There is no defensible whole-brain completion percentage, because the datasets above differ in species preparation, resolution and experimental scope, so no such figure is shown. A synthetic morphology baseline exists but is not counted here: it has not been validated against measured neurons.</p>
 
-<h3>What a neuron record will carry</h3>
+<h2 id="verified-neuron">Verified neuron — MICrONS</h2>
+<p class="nml-neuron-badges"><span class="nml-badge" data-state="live">Verified observation</span> <span class="nml-badge" data-neuron-root>record loading…</span></p>
+<p>One proofread neuron from the MICrONS <code>minnie65_public</code> volume, read at materialization version 1926. The skeleton is the dataset's own reconstruction; the synapses are the dataset's automated <code>synapses_pni_2</code> records with pre- and postsynaptic root ids. No synthetic morphology is used here.</p>
+
+<div class="nml-neuron">
+<div class="nml-viewer">
+<canvas id="nmlNeuronCanvas" width="800" height="480" tabindex="0" aria-label="Interactive 3D projection of the MICrONS neuron skeleton with incoming and outgoing synapses">Your browser does not support canvas; the record details and partner tables are still listed below.</canvas>
+<div class="nml-viewer-hud"><span>Drag to rotate · wheel to zoom · arrow keys</span><span id="nmlScaleLabel"></span></div>
+<div class="nml-viewer-controls">
+<button type="button" id="nmlReset">Reset view</button>
+<button type="button" id="nmlToggleSynapses" aria-pressed="true">Synapses on</button>
+</div>
+<ul class="nml-legend" aria-label="Viewer legend">
+<li><i class="nml-swatch nml-swatch-axon"></i>Axon (compartment 3)</li>
+<li><i class="nml-swatch nml-swatch-dendrite"></i>Dendrite (compartment 2)</li>
+<li><i class="nml-swatch nml-swatch-soma"></i>Soma (compartment 1)</li>
+<li><i class="nml-swatch nml-swatch-out"></i>Outgoing synapse</li>
+<li><i class="nml-swatch nml-swatch-in"></i>Incoming synapse</li>
+</ul>
+<p class="nml-unavailable" id="nmlNeuronError" hidden><strong>DATA UNAVAILABLE</strong> — the published neuron record could not be read. No counts are shown rather than an estimate.</p>
+</div>
+<div class="nml-card nml-neuron-facts">
+<h3>Record</h3>
+<dl>
+<dt>Root ID</dt><dd><code data-field="root">—</code></dd>
+<dt>Cell type</dt><dd data-field="cell-type">—</dd>
+<dt>Area</dt><dd data-field="area">—</dd>
+<dt>Proofreading</dt><dd data-field="proofreading">—</dd>
+<dt>Dataset</dt><dd data-field="dataset">—</dd>
+<dt>Nucleus</dt><dd data-field="nucleus">—</dd>
+<dt>Soma</dt><dd data-field="soma">—</dd>
+<dt>Morphology</dt><dd data-field="morphology">—</dd>
+<dt>Synapses</dt><dd data-field="synapses">—</dd>
+</dl>
+<p class="nml-note nml-neuron-evidence"><b>Evidence state.</b> Morphology and synapses are dataset records (verified observation of the source data); the cell type is a dataset classifier annotation, not a manual ground-truth label. Proofread dendrite and axon compartments are marked separately in the source table.</p>
+</div>
+</div>
+
+<div class="nml-neuron-partners">
+<div class="nml-card">
+<h3>Strongest outgoing partners</h3>
+<div class="nml-table-wrap"><table class="nml-table"><thead><tr><th scope="col">Partner root ID</th><th scope="col">Cell type</th><th scope="col">Synapses</th></tr></thead><tbody data-partners="outgoing"><tr><td colspan="3">Loading record…</td></tr></tbody></table></div>
+</div>
+<div class="nml-card">
+<h3>Strongest incoming partners</h3>
+<div class="nml-table-wrap"><table class="nml-table"><thead><tr><th scope="col">Partner root ID</th><th scope="col">Cell type</th><th scope="col">Synapses</th></tr></thead><tbody data-partners="incoming"><tr><td colspan="3">Loading record…</td></tr></tbody></table></div>
+</div>
+</div>
+
+<details class="nml-provenance">
+<summary>Query provenance, coordinates and limitations</summary>
+<dl>
+<dt>Materialization</dt><dd><code>minnie65_public</code> version <span data-field="version">—</span>, materialization server <code data-field="server">—</code></dd>
+<dt>Skeleton source</dt><dd><code data-field="skeleton-url">—</code></dd>
+<dt>Skeleton SHA-256</dt><dd><code data-field="skeleton-sha">—</code></dd>
+<dt>Synapse table</dt><dd><code>synapses_pni_2</code>; outgoing query <code>pre_ids = [root]</code>, incoming query <code>post_ids = [root]</code></dd>
+<dt>Retrieved</dt><dd data-field="retrieved">—</dd>
+<dt>Coordinates</dt><dd>Skeleton vertices in nanometres. Materialization positions are native voxels of the 4×4×40 nm aligned volume and were multiplied by <code>[4, 4, 40]</code> to nanometres. <span data-field="bbox-check">Unit check pending.</span></dd>
+<dt>Compare</dt><dd>Load root id <code data-field="root-2">—</code> at materialization 1926 in the <a href="https://www.microns-explorer.org/" rel="noreferrer">MICrONS Explorer</a>. The rendering above is built from the same skeleton and synapse records, so it can be compared with the source viewer.</dd>
+</dl>
+<p class="nml-note">Limitations: one neuron from a cubic-millimetre-scale volume, not a whole mouse brain. The automated synapse detector is accurate but not manually complete; the proofread compartments are marked “possibly incomplete” in the source table. Partner ids are only valid at materialization version 1926.</p>
+</details>
+
+<h3>What the neuron record carries</h3>
 <div class="nml-grid">
 <div class="nml-card"><h3>Identity and provenance</h3><p>Stable source identifier, internal identifier, dataset and release version, species, brain region, coordinate reference system, source publication, access location, proofreading and reconstruction status.</p></div>
 <div class="nml-card"><h3>Biology</h3><p>Cell type and how it was assigned, dendritic and axonal morphology, synaptic partners with measured synapse counts, electrophysiological properties, transcriptomic annotation, session and subject identifiers where public.</p></div>
@@ -122,9 +219,9 @@
 
 <h2>What this page does not claim</h2>
 <ul>
-<li>It is not a whole-mouse-brain reconstruction at synaptic resolution. No such public dataset exists.</li>
-<li>It contains no simulated neural activity and no fabricated neurons. Panels are empty because the data is not ingested.</li>
-<li>Predictions, when they exist, will be labelled as predictions and kept apart from measured records.</li>
+<li>It is not a whole-mouse-brain reconstruction at synaptic resolution. No such public dataset exists; the one verified neuron comes from a cubic-millimetre-scale MICrONS volume.</li>
+<li>It contains no fabricated neurons and no simulated activity. The displayed neuron, skeleton and synapses are read from the MICrONS record; the separate synthetic morphology baseline is not shown as evidence.</li>
+<li>Predictions, when they exist, will be labelled as predictions and kept apart from measured records; the cell-type label is a dataset classifier annotation.</li>
 <li>Nothing here is a medical device, diagnosis or clinical tool.</li>
 </ul>
 <p class="nml-note">Corrections and dataset suggestions: <a href="mailto:service@orrbiologicals.com">service@orrbiologicals.com</a>. Read the <a href="/disclaimer">scientific disclaimer</a> and the <a href="/literature/">literature search</a> used for source checking.</p>
@@ -138,4 +235,329 @@
 <script defer src="/js/navigation.js?v=20261101"></script>
 <script defer src="/js/cell-cursor.js?v=20261101"></script>
 <script defer src="/js/biological-cinema.js?v=20261101"></script>
+<script>
+(function () {
+  "use strict";
+
+  var canvas = document.getElementById("nmlNeuronCanvas");
+  var errorBox = document.getElementById("nmlNeuronError");
+  if (!canvas) return;
+
+  var ctx = canvas.getContext("2d");
+  var number = new Intl.NumberFormat("en-US");
+  var state = { yaw: 0.65, pitch: 0.35, zoom: 1, dragging: false, lastX: 0, lastY: 0, showSynapses: true };
+  var geometry = null;
+  var tmp = [0, 0, 0];
+
+  function fmt(value) { return number.format(value); }
+  function text(selector, value) {
+    var el = document.querySelector(selector);
+    if (el) el.textContent = value;
+  }
+  function dataText(name, value) { text('[data-field="' + name + '"]', value); }
+
+  function unavailable(reason) {
+    if (errorBox) {
+      errorBox.hidden = false;
+      errorBox.textContent = "DATA UNAVAILABLE — " + reason + " No counts are shown rather than an estimate.";
+    }
+    var badge = document.querySelector("[data-microns-status]");
+    if (badge) { badge.textContent = "Not connected"; badge.setAttribute("data-state", "pending"); }
+    ["neurons", "synapses", "datasets"].forEach(function (key) {
+      text('[data-count="' + key + '"]', "—");
+    });
+    ["outgoing", "incoming"].forEach(function (kind) {
+      var body = document.querySelector('[data-partners="' + kind + '"]');
+      if (!body) return;
+      body.textContent = "";
+      var row = document.createElement("tr");
+      var cell = document.createElement("td");
+      cell.colSpan = 3;
+      cell.textContent = "DATA UNAVAILABLE";
+      row.appendChild(cell);
+      body.appendChild(row);
+    });
+  }
+
+  function fillPartners(kind, rows) {
+    var body = document.querySelector('[data-partners="' + kind + '"]');
+    if (!body) return;
+    body.textContent = "";
+    if (!rows || !rows.length) {
+      var empty = document.createElement("tr");
+      var emptyCell = document.createElement("td");
+      emptyCell.colSpan = 3;
+      emptyCell.textContent = "No partner records";
+      empty.appendChild(emptyCell);
+      body.appendChild(empty);
+      return;
+    }
+    rows.slice(0, 8).forEach(function (partner) {
+      var tr = document.createElement("tr");
+      var id = document.createElement("td");
+      var code = document.createElement("code");
+      code.textContent = partner.root_id;
+      id.appendChild(code);
+      var type = document.createElement("td");
+      type.textContent = partner.cell_type ? partner.cell_type + (partner.classification_system ? " · " + partner.classification_system : "") : "not annotated";
+      var count = document.createElement("td");
+      count.textContent = fmt(partner.synapses);
+      tr.appendChild(id);
+      tr.appendChild(type);
+      tr.appendChild(count);
+      body.appendChild(tr);
+    });
+  }
+
+  function initGeometry(d) {
+    var morph = d.morphology;
+    var nodes = Float32Array.from(morph.nodes);
+    var edges = Uint32Array.from(morph.edges);
+    var compartments = morph.compartments ? Uint8Array.from(morph.compartments) : null;
+    var count = morph.stats.nodes;
+    if (nodes.length !== count * 3 || edges.length !== morph.stats.edges * 2) {
+      throw new Error("morphology array lengths do not match the recorded stats");
+    }
+    var minX = Infinity, minY = Infinity, minZ = Infinity, maxX = -Infinity, maxY = -Infinity, maxZ = -Infinity;
+    for (var i = 0; i < count; i++) {
+      var x = nodes[i * 3], y = nodes[i * 3 + 1], z = nodes[i * 3 + 2];
+      if (x < minX) minX = x; if (x > maxX) maxX = x;
+      if (y < minY) minY = y; if (y > maxY) maxY = y;
+      if (z < minZ) minZ = z; if (z > maxZ) maxZ = z;
+    }
+    var center = [(minX + maxX) / 2, (minY + maxY) / 2, (minZ + maxZ) / 2];
+    var radiusSq = 0;
+    for (var j = 0; j < count; j++) {
+      var dx = nodes[j * 3] - center[0], dy = nodes[j * 3 + 1] - center[1], dz = nodes[j * 3 + 2] - center[2];
+      var d2 = dx * dx + dy * dy + dz * dz;
+      if (d2 > radiusSq) radiusSq = d2;
+    }
+    function pack(rows) {
+      var n = rows ? rows.length : 0;
+      var pos = new Float32Array(n * 3), size = new Float32Array(n), partner = new Uint32Array(n);
+      for (var k = 0; k < n; k++) {
+        pos[k * 3] = rows[k][0]; pos[k * 3 + 1] = rows[k][1]; pos[k * 3 + 2] = rows[k][2];
+        size[k] = rows[k][3]; partner[k] = rows[k][4];
+      }
+      return { count: n, pos: pos, size: size, partner: partner };
+    }
+    return {
+      nodes: nodes, edges: edges, compartments: compartments, count: count,
+      center: center, radius: Math.sqrt(radiusSq) || 1,
+      out: pack(d.synapses.out), in: pack(d.synapses.in),
+      soma: d.identity.soma_position_nm ? Float32Array.from(d.identity.soma_position_nm) : null,
+      projected: new Float32Array(count * 3)
+    };
+  }
+
+  function project(x, y, z, out) {
+    var dx = x - geometry.center[0], dy = y - geometry.center[1], dz = z - geometry.center[2];
+    var cy = Math.cos(state.yaw), sy = Math.sin(state.yaw);
+    var X = dx * cy - dz * sy;
+    var Z = dx * sy + dz * cy;
+    var cp = Math.cos(state.pitch), sp = Math.sin(state.pitch);
+    out[0] = X;
+    out[1] = dy * cp - Z * sp;
+    out[2] = dy * sp + Z * cp;
+  }
+
+  function resize() {
+    if (!ctx) return;
+    var width = canvas.clientWidth || 800;
+    var height = canvas.clientHeight || 480;
+    var dpr = Math.min(window.devicePixelRatio || 1, 2);
+    var pw = Math.round(width * dpr), ph = Math.round(height * dpr);
+    if (canvas.width !== pw || canvas.height !== ph) {
+      canvas.width = pw;
+      canvas.height = ph;
+    }
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    draw();
+  }
+
+  function drawSynapses(set, color) {
+    if (!state.showSynapses || !set.count) return;
+    ctx.fillStyle = color;
+    for (var i = 0; i < set.count; i++) {
+      var idx = i * 3;
+      project(set.pos[idx], set.pos[idx + 1], set.pos[idx + 2], tmp);
+      var x = width / 2 + tmp[0] * scale;
+      var y = height / 2 - tmp[1] * scale;
+      var r = set.size[i] > 8000 ? 2.4 : set.size[i] > 3000 ? 1.8 : 1.3;
+      ctx.beginPath();
+      ctx.arc(x, y, r, 0, Math.PI * 2);
+      ctx.fill();
+    }
+  }
+
+  var width = 800, height = 480, scale = 1;
+
+  function draw() {
+    if (!geometry || !ctx) return;
+    width = canvas.clientWidth || 800;
+    height = canvas.clientHeight || 480;
+    if (!width || !height) return;
+    ctx.clearRect(0, 0, width, height);
+    scale = Math.min(width, height) * 0.42 / geometry.radius * state.zoom;
+    var ox = width / 2, oy = height / 2;
+    var projected = geometry.projected;
+    for (var i = 0; i < geometry.count; i++) {
+      project(geometry.nodes[i * 3], geometry.nodes[i * 3 + 1], geometry.nodes[i * 3 + 2], tmp);
+      projected[i * 3] = ox + tmp[0] * scale;
+      projected[i * 3 + 1] = oy - tmp[1] * scale;
+      projected[i * 3 + 2] = tmp[2];
+    }
+    if (typeof Path2D === "function") {
+      var paths = { 1: new Path2D(), 2: new Path2D(), 3: new Path2D() };
+      for (var e = 0; e < geometry.edges.length; e += 2) {
+        var a = geometry.edges[e], b = geometry.edges[e + 1];
+        var group = geometry.compartments ? (geometry.compartments[a] || geometry.compartments[b] || 2) : 2;
+        var path = paths[group] || paths[2];
+        path.moveTo(projected[a * 3], projected[a * 3 + 1]);
+        path.lineTo(projected[b * 3], projected[b * 3 + 1]);
+      }
+      ctx.lineWidth = 1.2;
+      ctx.strokeStyle = "rgba(232, 163, 141, .60)";
+      ctx.stroke(paths[3]);
+      ctx.strokeStyle = "rgba(200, 217, 171, .55)";
+      ctx.stroke(paths[2]);
+      ctx.strokeStyle = "rgba(255, 255, 255, .65)";
+      ctx.stroke(paths[1]);
+    }
+    drawSynapses(geometry.out, "rgba(242, 193, 78, .92)");
+    drawSynapses(geometry.in, "rgba(127, 209, 192, .92)");
+    if (geometry.soma) {
+      project(geometry.soma[0], geometry.soma[1], geometry.soma[2], tmp);
+      var sx = ox + tmp[0] * scale, sy = oy - tmp[1] * scale;
+      ctx.fillStyle = "#ffffff";
+      ctx.beginPath();
+      ctx.arc(sx, sy, 4, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.strokeStyle = "rgba(0, 0, 0, .65)";
+      ctx.lineWidth = 1;
+      ctx.stroke();
+    }
+    var barNm = 100000;
+    var barPx = barNm * scale;
+    if (barPx > 24 && barPx < width * 0.45) {
+      var bx = width - 18 - barPx, by = 42;
+      ctx.strokeStyle = "rgba(255, 255, 255, .55)";
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(bx, by);
+      ctx.lineTo(bx + barPx, by);
+      ctx.stroke();
+      ctx.fillStyle = "rgba(255, 255, 255, .65)";
+      ctx.font = "10px ui-monospace, monospace";
+      ctx.textAlign = "center";
+      ctx.fillText("100 µm", bx + barPx / 2, by - 5);
+    }
+  }
+
+  function load(d) {
+    if (!d || d.schema !== "neuroml.microns-neuron.v1") throw new Error("unexpected record schema");
+    if (!d.identity || !d.morphology || !d.synapses || !d.provenance) throw new Error("record is missing required sections");
+    var identity = d.identity;
+    var provenance = d.provenance;
+    var stats = d.morphology.stats;
+    var proof = identity.proofreading;
+    text('[data-count="neurons"]', "1");
+    text('[data-count="synapses"]', fmt(d.synapses.total));
+    text('[data-count="datasets"]', "1");
+    var status = document.querySelector("[data-microns-status]");
+    if (status) { status.textContent = "Connected · 1 neuron"; status.setAttribute("data-state", "live"); }
+    var rootBadge = document.querySelector("[data-neuron-root]");
+    if (rootBadge) rootBadge.textContent = "root " + identity.root_id;
+    dataText("root", identity.root_id);
+    dataText("root-2", identity.root_id);
+    dataText("cell-type", identity.cell_type ? identity.cell_type + " · " + (identity.classification_system || "unclassified") + " (dataset classifier)" : "not annotated");
+    dataText("area", identity.functional_area ? identity.functional_area + " (dataset assignment)" : "not assigned");
+    dataText("proofreading", proof ? "dendrite " + (proof.status_dendrite ? "TRUE" : "false") + " · axon " + (proof.status_axon ? "TRUE" : "false") + " (" + proof.strategy_dendrite + " / " + proof.strategy_axon + ")" : "not in the proofreading table");
+    dataText("dataset", identity.dataset + " · materialization " + identity.materialization_version);
+    dataText("nucleus", identity.nucleus_id ? fmt(identity.nucleus_id) + (identity.nucleus_volume_um3 != null ? " · " + identity.nucleus_volume_um3.toFixed(1) + " µm³" : "") : "not detected");
+    dataText("soma", identity.soma_position_nm ? identity.soma_position_nm.map(function (value) { return (value / 1000).toFixed(1); }).join(" × ") + " µm" : "DATA UNAVAILABLE");
+    dataText("morphology", fmt(stats.nodes) + " nodes · " + fmt(stats.total_length_um) + " µm · " + fmt(stats.tips) + " tips · " + fmt(stats.branch_points) + " branch points");
+    dataText("synapses", fmt(d.synapses.outgoing) + " outgoing · " + fmt(d.synapses.incoming) + " incoming · " + fmt(d.synapses.total) + " total · " + fmt(d.synapses.out_partners.length) + " / " + fmt(d.synapses.in_partners.length) + " unique partners");
+    dataText("version", String(identity.materialization_version));
+    dataText("server", identity.materialization_server || "—");
+    dataText("skeleton-url", provenance.skeleton_url || "—");
+    dataText("skeleton-sha", provenance.skeleton_sha256 || "—");
+    dataText("retrieved", provenance.retrieved_at_utc || "—");
+    dataText("bbox-check", d.synapses.unit_check ? fmt(d.synapses.unit_check.total) + " of " + fmt(d.synapses.total) + " converted synapse positions fall inside the skeleton bounding box." : "Unit check not recorded in this dataset.");
+    fillPartners("outgoing", d.partners.outgoing);
+    fillPartners("incoming", d.partners.incoming);
+    if (errorBox) errorBox.hidden = true;
+    geometry = initGeometry(d);
+    resize();
+  }
+
+  var reset = document.getElementById("nmlReset");
+  if (reset) reset.addEventListener("click", function () { state.yaw = 0.65; state.pitch = 0.35; state.zoom = 1; draw(); });
+  var toggle = document.getElementById("nmlToggleSynapses");
+  if (toggle) toggle.addEventListener("click", function () {
+    state.showSynapses = !state.showSynapses;
+    toggle.setAttribute("aria-pressed", String(state.showSynapses));
+    toggle.textContent = state.showSynapses ? "Synapses on" : "Synapses off";
+    draw();
+  });
+
+  canvas.addEventListener("pointerdown", function (event) {
+    state.dragging = true;
+    state.lastX = event.clientX;
+    state.lastY = event.clientY;
+    if (canvas.setPointerCapture) { try { canvas.setPointerCapture(event.pointerId); } catch (e) {} }
+    canvas.style.cursor = "grabbing";
+  });
+  canvas.addEventListener("pointermove", function (event) {
+    if (!state.dragging) return;
+    state.yaw += (event.clientX - state.lastX) * 0.008;
+    state.pitch += (event.clientY - state.lastY) * 0.008;
+    state.pitch = Math.max(-1.45, Math.min(1.45, state.pitch));
+    state.lastX = event.clientX;
+    state.lastY = event.clientY;
+    draw();
+  });
+  function endDrag(event) {
+    state.dragging = false;
+    canvas.style.cursor = "grab";
+    if (canvas.releasePointerCapture) { try { canvas.releasePointerCapture(event.pointerId); } catch (e) {} }
+  }
+  canvas.addEventListener("pointerup", endDrag);
+  canvas.addEventListener("pointercancel", endDrag);
+  canvas.addEventListener("wheel", function (event) {
+    event.preventDefault();
+    state.zoom *= Math.exp(-event.deltaY * 0.001);
+    state.zoom = Math.max(0.35, Math.min(8, state.zoom));
+    draw();
+  }, { passive: false });
+  canvas.addEventListener("keydown", function (event) {
+    var changed = true;
+    switch (event.key) {
+      case "ArrowLeft": state.yaw -= 0.12; break;
+      case "ArrowRight": state.yaw += 0.12; break;
+      case "ArrowUp": state.pitch = Math.max(-1.45, state.pitch - 0.12); break;
+      case "ArrowDown": state.pitch = Math.min(1.45, state.pitch + 0.12); break;
+      case "+": case "=": state.zoom = Math.min(8, state.zoom * 1.15); break;
+      case "-": case "_": state.zoom = Math.max(0.35, state.zoom / 1.15); break;
+      default: changed = false;
+    }
+    if (changed) { event.preventDefault(); draw(); }
+  });
+
+  var resizeTimer = null;
+  window.addEventListener("resize", function () {
+    if (resizeTimer) clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(resize, 120);
+  });
+  if (window.ResizeObserver) new ResizeObserver(function () { resize(); }).observe(canvas);
+
+  fetch("data/neuron.json", { cache: "no-store" })
+    .then(function (response) { if (!response.ok) throw new Error("HTTP " + response.status); return response.json(); })
+    .then(load)
+    .catch(function (error) {
+      if (window.console) console.error("NeuroML neuron record:", error);
+      unavailable(error.message);
+    });
+})();
+</script>
 </body></html>
