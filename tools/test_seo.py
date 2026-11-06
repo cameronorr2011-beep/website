@@ -217,10 +217,18 @@ class SEOTests(unittest.TestCase):
         neuro = (ROOT / 'neuroML/index.html').read_text(encoding='utf-8')
         dev = (ROOT / 'developers/index.html').read_text(encoding='utf-8')
         home = (ROOT / 'index.html').read_text(encoding='utf-8')
-        # The skeleton must not pretend data exists, and must say so plainly.
-        self.assertIn('No dataset has been ingested', neuro)
-        self.assertIn('0 of 5', neuro)
+        # The real record must state what it is and what it is not. Counts are
+        # loaded from data/neuron.json, so the static page must not bake them in.
+        self.assertIn('One real neuron is read from the MICrONS data service', neuro)
+        self.assertIn('of 5', neuro)
+        self.assertIn('DATA UNAVAILABLE', neuro)
+        self.assertIn('not a whole-brain reconstruction', neuro)
         self.assertIn('not a whole-mouse-brain reconstruction', neuro)
+        self.assertIn('materialization version 1926', neuro)
+        self.assertIn('synthetic morphology baseline', neuro)
+        self.assertIn('not counted here', neuro)
+        self.assertIn('automated synapse detector', neuro)
+        self.assertIn('Partner ids are only valid at materialization version 1926', neuro)
         self.assertIn('Nothing on this page responds yet', dev)
         self.assertIn('/api/v1/neurons/{id}', dev)
         self.assertNotIn('data-state="live">Live</span></p>\n<h2>Rules', dev)
