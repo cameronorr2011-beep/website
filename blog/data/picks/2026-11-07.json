@@ -1,0 +1,55 @@
+{
+  "date": "2026-11-07",
+  "model": "openai/gpt-oss-120b",
+  "generated_at": "2026-11-07T23:17:35Z",
+  "picks": [
+    {
+      "pmid": "42971837",
+      "title": "Toward industrial microalgae-based monoclonal antibody production.",
+      "journal": "Trends in biotechnology",
+      "year": "2026",
+      "pub_date": "2026-11-02",
+      "url": "https://doi.org/10.1016/j.tibtech.2026.10.003",
+      "topic": "Biotech",
+      "hook": "Microalgae can be engineered to produce therapeutic monoclonal antibodies at industrial scale.",
+      "article": "A recent study explored whether tiny, fast‑growing algae could be used to make monoclonal antibodies, the protein medicines usually produced in mammalian cells. The researchers grew microalgae in laboratory containers and introduced the genetic instructions for antibody production, testing the system at a modest scale.\n\nThe work showed that microalgal platforms can combine light‑driven growth, inexpensive media, and the potential for large‑scale production while meeting regulatory expectations for high‑value therapeutics.\n\nIf algae can reliably manufacture these complex proteins, they could offer a cheaper, more sustainable alternative to traditional cell factories for medical and biotechnological applications.",
+      "why": "Algal antibody production could lower costs and expand access to life‑saving biologics."
+    },
+    {
+      "pmid": "42972863",
+      "title": "Systematic Evaluation of Cyanidioschyzon merolae Across Photobioreactor Systems: Linking Reactor Design to Biomass Production and Biochemical Composition.",
+      "journal": "Microbial biotechnology",
+      "year": "2026",
+      "pub_date": "",
+      "url": "https://doi.org/10.1111/1751-7915.70468",
+      "topic": "Cultivation",
+      "hook": "Compares photobioreactor designs to boost biomass and valuable compounds in extremophilic red algae.",
+      "article": "A recent study set out to compare how different photobioreactor designs affect the growth and composition of the extremophilic red micro‑alga Cyanidioschyzon merolae, a species known for thriving in acidic, high‑temperature environments and for producing stable phycobiliproteins and carbon‑rich biomass.\n\nThe researchers grew C. merolae in several laboratory‑scale photobioreactors, varying key design features such as light distribution, mixing intensity, and temperature control, and measured the resulting biomass yields and biochemical profiles.\n\nThey found that reactor geometry and illumination strategy significantly influenced both the amount of biomass produced and the proportion of valuable compounds like phycobiliproteins, although the abstract does not give exact figures.\n\nThese insights are useful because they help pinpoint which reactor configurations can most efficiently harvest the algae’s nutritious and industrially relevant components.",
+      "why": "Optimizing reactor design can boost sustainable production of algae‑derived proteins and bio‑materials."
+    },
+    {
+      "pmid": "42994775",
+      "title": "Deuterium at environmentally relevant concentrations modulates metabolite production and protein synthesis in Chlorella sp.",
+      "journal": "Environmental research",
+      "year": "2026",
+      "pub_date": "2026-11-06",
+      "url": "https://doi.org/10.1016/j.envres.2026.126127",
+      "topic": "Health",
+      "hook": "Low‑level deuterium alters metabolite profiles and protein synthesis in Chlorella, hinting at nutritional impacts.",
+      "article": "A recent study set out to see how low‑level deuterium, a heavy form of hydrogen that naturally varies in water, affects the biology of a common microalga, Chlorella sp.\n\nThe researchers grew Chlorella in three types of water for eight days: deuterium‑depleted water (75 ppm), natural deuterium water (150 ppm), and moderately deuterium‑enriched water (195 ppm). They then measured changes in metabolite production and protein synthesis.\n\nThe experiment showed that even these environmentally relevant deuterium concentrations altered the alga’s metabolite profile and the rate at which it made proteins, indicating a physiological response to deuterium level changes.\n\nThese findings are interesting because they reveal that subtle shifts in water isotopic composition can influence algal metabolism, a factor that may matter for both natural ecosystems and biotechnological cultivation of algae.",
+      "why": "Understanding deuterium’s impact helps optimize algae growth conditions for bio‑production and informs ecosystem monitoring."
+    },
+    {
+      "pmid": "42680276",
+      "title": "Emulsifying properties of minimally processed Chlamydomonas reinhardtii microalgae ingredients.",
+      "journal": "Food research international (Ottawa, Ont.)",
+      "year": "2026",
+      "pub_date": "2026-07-10",
+      "url": "https://doi.org/10.1016/j.foodres.2026.119952",
+      "topic": "Food",
+      "hook": "Minimally processed Chlamydomonas ingredients act as natural emulsifiers for sustainable food formulations.",
+      "article": "A recent study set out to see how tiny green algae, when only lightly processed, could act as natural emulsifiers – substances that help mix oil and water. The researchers grew the model alga Chlamydomonas reinhardtii under two nitrogen conditions, then harvested the cells and applied a brief electric pulse to break them open and release their internal components.\n\nThey measured how much protein and lipid droplet (tiny fat storage particles) each preparation contained, and then tested the ability of these extracts to stabilize oil‑in‑water mixtures. The results showed that the minimally processed algae ingredients could form stable emulsions, indicating functional emulsifying properties.\n\nThese findings are interesting because they suggest that microalgae, a sustainable and fast‑growing biomass, could provide a plant‑based alternative to conventional emulsifiers used in foods and other products.",
+      "why": "Algal emulsifiers could replace synthetic additives, offering a greener option for food and cosmetic formulations."
+    }
+  ]
+}
