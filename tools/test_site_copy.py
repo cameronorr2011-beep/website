@@ -34,7 +34,7 @@ class SiteCopyTests(unittest.TestCase):
         self.assertIn('Open tools for<br> <em>biological discovery.</em>', text)
         self.assertIn('computational biology platforms', text)
         self.assertIn('class="hr-hero"', text)
-        self.assertIn('microns-neuron.svg', text)
+        self.assertIn('Explore Algae', text)
         self.assertIn('research concepts in development', text)
         self.assertIn('commercial deployment', text)
         self.assertNotIn('/papertrail/', text)
@@ -67,7 +67,7 @@ class SiteCopyTests(unittest.TestCase):
 
     def test_images_and_simulations_are_retained(self):
         text = (ROOT / 'index.html').read_text(encoding='utf-8')
-        for value in ('assets/cyano/culture.jpg', 'assets/cyano/chip.jpg', 'assets/images/microns-neuron.svg', 'id="systems"', 'id="products"', 'id="deploy"'):
+        for value in ('assets/cyano/culture.jpg', 'assets/cyano/chip.jpg', 'id="systems"', 'id="products"', 'id="deploy"'):
             self.assertIn(value, text)
         self.assertIn('id="chipSim"', (ROOT / 'cyanoflow.html').read_text(encoding='utf-8'))
         self.assertFalse((ROOT / 'applications/index.html').exists())

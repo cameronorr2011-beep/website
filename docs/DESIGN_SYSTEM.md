@@ -1,12 +1,13 @@
 # Orr Biologicals design system — 2026 rebrand
 
-Status: **second rebrand increment**, 2026-11-07. The editorial system is live
-on the local `/`, `/algae/`, `/neuroscience/`, `/cyanoflow` and `/algaephyte/`
-pages. The build emits 47 public pages and applies the shared header/footer to
-the editable shell; `/game/` and `/algae-growth/` intentionally keep their
-immersive shells. `/neuroML/`, `/blog/` and the remaining marketing and legal
-pages still use their earlier visual layers. This document records what exists;
-it does not claim a completed site-wide migration.
+Status: **neuroscience removal**, 2026-11-08. The editorial system is live
+on the local `/`, `/algae/`, `/cyanoflow` and `/algaephyte/` pages. The
+neuroscience and NeuroML surfaces were removed entirely: no pages, data,
+styles, imagery or links remain, and the homepage hero now leads with algae.
+The build emits 45 public pages and applies the shared header/footer to the
+editable shell; `/game/` and `/algae-growth/` intentionally keep their
+immersive shells. This document records what exists; it does not claim a
+completed site-wide migration.
 
 ## Direction
 
@@ -51,16 +52,13 @@ Mono labels are used sparingly; body copy remains in the sans.
 
 ## Composition
 
-- Hero: asymmetric editorial split. Real neuron specimen on the right, large
-  display type and a compact evidence ledger on the left. The specimen panel is
+- Hero: asymmetric editorial split. Algae culture scene on the right, large
+  display type and a compact focus ledger on the left. The specimen panel is
   a framed record, not a decorative floating object.
-- Homepage: three scales (connectomics, cultivation, single cells), a proof
-  section with verified counts, a method chain of custody, selected journal
-  notes, an open-by-design developer strip, voluntary support and a
-  correspondence form.
-- Division hubs: `/algae/` uses two product-scale cards; `/neuroscience/` uses a
-  wide specimen band followed by two explicitly different environment columns,
-  an evidence boundary and a next-milestone panel.
+- Homepage: two scales (cultivation, single cells), a proof section on
+  provenance, a method chain of custody, selected journal notes, an
+  open-by-design developer strip, voluntary support and a correspondence form.
+- Division hubs: `/algae/` uses two product-scale cards.
 - Shared rhythm: `clamp()` section padding, a 1360 px maximum measure, 1 px
   hairline rules, high contrast at display sizes and quieter technical labels.
 - Mobile: the hero top padding is at least 96 px so the fixed header cannot
@@ -69,11 +67,10 @@ Mono labels are used sparingly; body copy remains in the sans.
 
 ## Evidence as visual material
 
-The specimen image is generated deterministically from the measured skeleton of
-MICrONS root `864691135479404742` with `neuroml/make_neuron_preview.py`. It is a
-2D projection of measured data: 4,738 skeleton nodes, 4,737 edges and 2,056
-detected synapses. It is not microscopy, not a synthetic cell and not a
-whole-brain reconstruction. The image carries its source identifiers in the
+The hero specimen image is an illustrative algae culture scene. It carries no
+measured claims: it is not microscopy of a studied sample, not a deployed
+instrument and not a procedural scientific visualization. The caption says so
+in the
 page, not only in a hidden caption.
 
 Copy follows the same separation as the data:
@@ -90,13 +87,11 @@ Copy follows the same separation as the data:
 | File | Role |
 |---|---|
 | `sections/head.html` | Broad research metadata and organisation schema |
-| `sections/header.html` | Algae, Neuroscience, Research, Journal, Literature, Developers, About, Contact |
+| `sections/header.html` | Algae, Research, Journal, Literature, Developers, About, Contact |
 | `sections/footer.html` | Research, records, support and legal links |
 | `sections/home-body.html` | Homepage source partial |
 | `algae/index.html` | Algae division hub |
-| `neuroscience/index.html` | Neuroscience division hub |
 | `css/home-rebrand.css` | Scoped tokens, components and responsive rules |
-| `assets/images/microns-neuron.svg` | Generated 2D projection of the verified skeleton |
 | `tools/site/design_system.py` | Shared shell/CSS injection, rebrand stylesheet routing and ambient-script suppression |
 | `tools/site/build_seo.py` | Rebuilds homepage, shared shell and sitemap |
 | `tools/site/build_research.py` | Emits the Algaephyte surface and its `product-rebrand` body class |
@@ -104,10 +99,7 @@ Copy follows the same separation as the data:
 
 `design_system.py` skips the decorative cell cursor and ambient
 `biological-cinema.js` field on `.home-rebrand` pages. The ambient canvas remains
-available on the legacy pages where it already existed. The old
-`/neuroML/`, `/algaephyte/`, `/cyanoflow`, journal and legal pages were not
-restyled in this increment; preserving the verified NeuroML viewer was
-deliberate.
+available on the legacy pages where it already existed.
 
 ## Verified
 

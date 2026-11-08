@@ -119,6 +119,7 @@ body.home-rebrand .nav.solid {
 .hr-hero {
   position: relative;
   min-height: calc(100svh - 74px);
+  overflow: clip;
   display: flex;
   flex-direction: column;
   padding: clamp(54px, 7vw, 100px) 0 0;
@@ -127,12 +128,23 @@ body.home-rebrand .nav.solid {
 .hr-hero::before {
   content: "";
   position: absolute;
-  inset: -20% -10% auto;
-  height: 85%;
+  inset: -12% -8% auto;
+  height: 94%;
   z-index: -1;
   background:
-    radial-gradient(ellipse at 72% 48%, rgba(60, 240, 127, .07), transparent 59%),
-    radial-gradient(ellipse at 20% 15%, rgba(127, 224, 174, .06), transparent 42%);
+    radial-gradient(ellipse 60% 55% at 72% 46%, rgba(60, 240, 127, .14), transparent 65%),
+    radial-gradient(ellipse 45% 40% at 18% 12%, rgba(127, 224, 174, .11), transparent 60%),
+    radial-gradient(ellipse 35% 30% at 85% 92%, rgba(60, 240, 127, .07), transparent 60%);
+  pointer-events: none;
+}
+.hr-hero::after {
+  content: "";
+  position: absolute;
+  inset: auto -20% -25%;
+  height: 62%;
+  z-index: -1;
+  background:
+    radial-gradient(ellipse 55% 60% at 50% 100%, rgba(60, 240, 127, .09), transparent 65%);
   pointer-events: none;
 }
 .hr-hero-grid {
@@ -537,79 +549,6 @@ body.home-rebrand .nav.solid {
 .hr-page-note { max-width: 68ch; margin: 30px 0 0; color: var(--hr-mute); font-size: 12px; line-height: 1.65; }
 .hr-page-links { display: flex; gap: 14px 24px; flex-wrap: wrap; margin-top: 25px; }
 
-/* Neuroscience division page -------------------------------------------- */
-.nr-hero { padding-bottom: clamp(50px, 7vw, 92px); }
-.nr-hero-head { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(280px, .85fr); gap: 32px 8vw; align-items: end; }
-.nr-hero-head .hr-display { max-width: 13ch; font-size: clamp(3rem, 6.8vw, 7.1rem); }
-.nr-hero-head .hr-lede { max-width: 52ch; margin: 0; }
-.nr-specimen-band {
-  display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(320px, .9fr);
-  margin-top: clamp(38px, 5vw, 64px);
-  border: 1px solid var(--hr-line);
-  background: var(--hr-panel);
-  box-shadow: 0 30px 80px rgba(0, 0, 0, .26);
-}
-.nr-specimen-figure { display: flex; flex-direction: column; min-width: 0; margin: 0; border-right: 1px solid var(--hr-line); }
-.nr-figure-frame {
-  position: relative;
-  flex: 1;
-  min-height: 390px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 22px;
-  background:
-    radial-gradient(circle at 50% 48%, rgba(60, 240, 127, .17), transparent 62%),
-    #0a0d10;
-}
-.nr-figure-frame img { display: block; width: 100%; max-height: 530px; object-fit: contain; filter: drop-shadow(0 0 12px rgba(60, 240, 127, .12)); }
-.nr-figure-tag {
-  position: absolute;
-  right: 16px;
-  bottom: 14px;
-  padding: 5px 8px;
-  border: 1px solid rgba(60, 240, 127, .28);
-  background: rgba(5, 7, 9, .82);
-  color: var(--hr-green);
-  font: 600 8.5px/1.4 var(--mono);
-  letter-spacing: .1em;
-  text-transform: uppercase;
-}
-.nr-specimen-figure figcaption { padding: 16px 18px 18px; border-top: 1px solid var(--hr-line-soft); color: var(--hr-mute); font-size: 12px; line-height: 1.6; }
-.nr-specimen-data { display: flex; flex-direction: column; align-items: flex-start; justify-content: center; padding: clamp(24px, 3.5vw, 46px); }
-.nr-specimen-data .hr-kicker { margin-bottom: 14px; }
-.nr-specimen-title { max-width: 12ch; margin: 0; font-size: clamp(1.9rem, 3.4vw, 3.2rem); font-weight: 500; letter-spacing: -.055em; line-height: 1; }
-.nr-specimen-copy { margin: 18px 0 0; color: var(--hr-soft); font-size: 13.5px; line-height: 1.65; }
-.nr-specimen-copy code { color: var(--hr-green); font: 11.5px/1.5 var(--mono); overflow-wrap: anywhere; }
-.nr-counts { display: grid; grid-template-columns: repeat(3, 1fr); width: 100%; margin: 26px 0 16px; border-top: 1px solid var(--hr-line); }
-.nr-counts div { min-width: 0; padding: 13px 9px 0 0; border-right: 1px solid var(--hr-line); }
-.nr-counts div + div { padding-left: 12px; }
-.nr-counts div:last-child { border-right: 0; }
-.nr-counts dt { color: var(--hr-mute); font: 500 8.5px/1.4 var(--mono); letter-spacing: .11em; text-transform: uppercase; }
-.nr-counts dd { margin: 6px 0 0; color: var(--hr-ink); font-family: var(--serif); font-size: clamp(1.55rem, 2.5vw, 2.3rem); letter-spacing: -.05em; line-height: 1; }
-.nr-fine { margin: 0; color: var(--hr-mute); font: 500 9.5px/1.55 var(--mono); letter-spacing: .035em; }
-.nr-specimen-data .hr-link { margin-top: 19px; }
-.nr-env-grid { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--hr-line); }
-.nr-env { min-width: 0; padding: 28px 28px 30px 0; }
-.nr-env + .nr-env { padding-right: 0; padding-left: 28px; border-left: 1px solid var(--hr-line); }
-.nr-env-top { display: flex; align-items: center; justify-content: space-between; gap: 14px; color: var(--hr-mute); font: 500 9.5px/1.4 var(--mono); letter-spacing: .12em; text-transform: uppercase; }
-.nr-env h3 { margin: 22px 0 12px; font-size: clamp(2rem, 3.7vw, 3.6rem); font-weight: 500; letter-spacing: -.06em; line-height: .98; }
-.nr-env > p { max-width: 54ch; margin: 0; color: var(--hr-soft); font-size: 13.5px; line-height: 1.65; }
-.nr-facts { margin: 23px 0; padding: 0; list-style: none; border-top: 1px solid var(--hr-line); }
-.nr-facts li { display: flex; align-items: baseline; justify-content: space-between; gap: 14px; padding: 10px 0; border-bottom: 1px solid var(--hr-line); font-size: 12px; }
-.nr-facts span { color: var(--hr-mute); font: 500 9px/1.45 var(--mono); letter-spacing: .09em; text-transform: uppercase; }
-.nr-facts strong { color: var(--hr-ink); font-weight: 540; text-align: right; }
-.nr-evidence-section { background: var(--hr-panel); }
-.nr-evidence-list { border-top: 1px solid var(--hr-line); }
-.nr-evidence-row { display: grid; grid-template-columns: 160px minmax(0, 1fr); gap: 20px; padding: 20px 0; border-bottom: 1px solid var(--hr-line); }
-.nr-evidence-row > span { color: var(--hr-green); font: 600 9.5px/1.5 var(--mono); letter-spacing: .1em; text-transform: uppercase; }
-.nr-evidence-row p { margin: 0; color: var(--hr-soft); font-size: 13.5px; line-height: 1.65; }
-.nr-evidence-row b { color: var(--hr-ink); font: 600 10px/1.4 var(--mono); letter-spacing: .05em; }
-.nr-next { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: 32px 8vw; align-items: start; }
-.nr-next h2 { max-width: 11ch; }
-.nr-next h2 em { color: var(--hr-green); }
-.nr-next p { max-width: 52ch; margin: 0; color: var(--hr-soft); font-size: 14px; line-height: 1.7; }
 
 @media (max-width: 1120px) {
   .hr-domain { grid-template-columns: 28px 150px minmax(130px, .8fr) minmax(190px, 1.2fr) 120px 20px; gap: 16px; }
@@ -634,10 +573,6 @@ body.home-rebrand .nav.solid {
   .hr-domain-copy { grid-column: 3 / 5; grid-row: 2; margin-top: 32px; }
   .hr-domain-arrow { grid-column: 5; grid-row: 1; }
   .hr-page-grid { grid-template-columns: 1fr; }
-  .nr-hero-head, .nr-specimen-band, .nr-env-grid, .nr-next { grid-template-columns: 1fr; }
-  .nr-specimen-figure { border-right: 0; border-bottom: 1px solid var(--hr-line); }
-  .nr-env { padding-right: 0; }
-  .nr-env + .nr-env { padding-left: 0; border-top: 1px solid var(--hr-line); border-left: 0; }
 }
 @media (max-width: 620px) {
   .hr-wrap { width: calc(100% - 36px); }
@@ -675,16 +610,6 @@ body.home-rebrand .nav.solid {
   .hr-support code { display: inline-block; }
   .hr-page-hero { padding-top: 55px; }
   .hr-page-hero .hr-display { font-size: clamp(2.9rem, 14vw, 5rem); }
-  .nr-hero { padding-bottom: 50px; }
-  .nr-figure-frame { min-height: 280px; padding: 12px; }
-  .nr-figure-tag { right: 10px; bottom: 10px; font-size: 7.5px; }
-  .nr-specimen-data { padding: 22px; }
-  .nr-counts { grid-template-columns: 1fr; margin-top: 22px; }
-  .nr-counts div { display: flex; align-items: baseline; justify-content: space-between; padding: 10px 0; border-right: 0; border-bottom: 1px solid var(--hr-line); }
-  .nr-counts div + div { padding-left: 0; }
-  .nr-counts dd { margin: 0; font-size: 1.6rem; }
-  .nr-evidence-row { grid-template-columns: 1fr; gap: 7px; padding: 16px 0; }
-  .nr-next .hr-open-actions { align-items: flex-start; }
 }
 @media (prefers-reduced-motion: reduce) {
   .home-rebrand *, .home-rebrand *::before, .home-rebrand *::after,

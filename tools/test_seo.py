@@ -142,7 +142,7 @@ class SEOTests(unittest.TestCase):
         self.assertFalse((ROOT / 'applications/index.html').exists())
 
     def test_header_navigation_is_consistent(self):
-        expected = ('/algae/', '/neuroscience/', '/research/', '/blog/', '/#deploy')
+        expected = ('/algae/', '/research/', '/blog/', '/#deploy')
         for path in pages():
             if path.relative_to(ROOT).as_posix().startswith('game/'):
                 continue
@@ -161,7 +161,7 @@ class SEOTests(unittest.TestCase):
                 self.assertNotIn('Pilot access', header)
                 self.assertIn('>Contact</a>', header)
         home = (ROOT / 'index.html').read_text(encoding='utf-8')
-        for href in ('/blog/', '/algaephyte/', '/cyanoflow', '/neuroML/'):
+        for href in ('/blog/', '/algaephyte/', '/cyanoflow', '/algae/'):
             self.assertIn('href="' + href + '"', home)
         self.assertNotIn('/papertrail/', home)
 
@@ -213,38 +213,35 @@ class SEOTests(unittest.TestCase):
         engine_row = (ROOT / 'index.html').read_text(encoding='utf-8')
         self.assertIn('/literature/', engine_row)
 
-    def test_neuroml_skeleton_states_its_limits(self):
-        neuro = (ROOT / 'neuroML/index.html').read_text(encoding='utf-8')
+    def test_retired_neuro_surfaces_are_gone(self):
+        # The neuroscience and NeuroML surfaces were removed entirely: no
+        # pages, no data, no styles, no imagery and no links may remain.
+        self.assertFalse((ROOT / 'neuroML').exists())
+        self.assertFalse((ROOT / 'neuroscience').exists())
+        self.assertFalse((ROOT / 'css/neuro.css').exists())
+        self.assertFalse((ROOT / 'assets/images/microns-neuron.svg').exists())
         dev = (ROOT / 'developers/index.html').read_text(encoding='utf-8')
         home = (ROOT / 'index.html').read_text(encoding='utf-8')
-        # The real record must state what it is and what it is not. Counts are
-        # loaded from data/neuron.json, so the static page must not bake them in.
-        self.assertIn('One real neuron is read from the MICrONS data service', neuro)
-        self.assertIn('of 5', neuro)
-        self.assertIn('DATA UNAVAILABLE', neuro)
-        self.assertIn('not a whole-brain reconstruction', neuro)
-        self.assertIn('not a whole-mouse-brain reconstruction', neuro)
-        self.assertIn('materialization version 1926', neuro)
-        self.assertIn('synthetic morphology baseline', neuro)
-        self.assertIn('not counted here', neuro)
-        self.assertIn('automated synapse detector', neuro)
-        self.assertIn('Partner ids are only valid at materialization version 1926', neuro)
-        self.assertIn('Nothing on this page responds yet', dev)
-        self.assertIn('/api/v1/neurons/{id}', dev)
-        self.assertNotIn('data-state="live">Live</span></p>\n<h2>Rules', dev)
+        for text, label in ((dev, 'developers'), (home, 'home')):
+            with self.subTest(page=label):
+                self.assertNotIn('/neuroML/', text)
+                self.assertNotIn('/neuroscience/', text)
+                self.assertNotIn('NeuroML', text)
+                self.assertNotIn('Neuroscience', text)
+                self.assertNotIn('connectomics', text.lower())
         # No fabricated biological quantities or completeness claims.
-        for text, label in ((neuro, 'neuroML'), (dev, 'developers')):
+        for text, label in ((dev, 'developers'), (home, 'home')):
             with self.subTest(page=label):
                 self.assertNotRegex(text, r'\b\d{1,3}(,\d{3})+\s+neurons')
                 self.assertNotIn('fully reconstructed', text)
                 self.assertNotIn('synaptic-resolution whole', text)
-        # Both surfaces are reachable from the shared shell and the funding
-        # destination is the authorised external campaign, not a payment page.
-        for page, text in (('home', home), ('neuroML', neuro), ('developers', dev)):
-            with self.subTest(link=page):
-                self.assertIn('/neuroML/', text)
-                self.assertIn('/developers/', text)
-        self.assertIn('experiment.com/projects/bfjitcgcfkiiaulsuyvx', neuro)
+        # The developers page is honest about having no public API.
+        self.assertIn('Nothing here responds yet', dev)
+        self.assertNotIn('/api/v1/neurons/{id}', dev)
+        # The algae surface took the hero slot and both pages link each other.
+        self.assertIn('Explore Algae', home)
+        for text in (home, dev):
+            self.assertIn('/developers/', text)
 
     def test_google_font_ranges_are_valid(self):
         for path in pages():

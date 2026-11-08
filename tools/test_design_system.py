@@ -46,7 +46,7 @@ class DesignSystemTests(unittest.TestCase):
         text=(ROOT/'index.html').read_text(encoding='utf-8')
         for anchor in ('main','top','reactor-study','field-station','systems','products','method','journal','deploy'):
             self.assertIn('id="'+anchor+'"',text)
-        for qualification in ('procedural scientific visualization','Illustrative scene','not a deployed instrument','commercial deployment'):
+        for qualification in ('Illustrative scene','not a deployed instrument','commercial deployment'):
             self.assertIn(qualification,text)
         self.assertIn('biological-cinema',text)
         self.assertIn('/css/biological-cinema.css',text)
