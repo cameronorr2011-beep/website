@@ -67,7 +67,7 @@ def apply(text):
     text = re.sub(r'\s*<footer\b[^>]*>.*?</footer>\s*', '', text, flags=re.S)
     # Eliminate per-page external font families and repeated token definitions.
     text = re.sub(r'<link[^>]+href="https://fonts.googleapis.com/[^>]+>\s*', '', text)
-    text = re.sub(r'<link[^>]+href="/?css/(?:global|header|animations|site-redesign|biological-cinema)\.css[^>]+>\s*', '', text)
+    text = re.sub(r'<link[^>]+href="/?css/(?:global|header|animations|site-redesign|biological-cinema|home-rebrand)\.css[^>]+>\s*', '', text)
     text = re.sub(r'<script[^>]+src="/?js/(?:animations|navigation|cell-cursor|biological-cinema)\.js[^>]*>\s*</script>\s*', '', text)
     text = re.sub(r'<link[^>]+href="/?css/orr-home\.css[^>]+>\s*', '', text)
     text = re.sub(r'<link[^>]+href="/?css/home-premium\.css[^>]+>\s*', '', text)
@@ -78,19 +78,26 @@ def apply(text):
     css = '\n'.join(f'<link rel="stylesheet" href="/css/{name}.css?v={VERSION}">' for name in ('global', 'header', 'orr-home', 'animations', 'site-redesign', 'biological-cinema'))
     if 'class="orr-home' in text:
         css += f'\n<link rel="stylesheet" href="/css/home-premium.css?v={VERSION}">'
+    rebrand = 'class="home-rebrand' in text or 'product-rebrand' in text
+    if rebrand:
+        css += f'\n<link rel="stylesheet" href="/css/home-rebrand.css?v={VERSION}">'
     text = text.replace('</head>', css + '\n</head>')
     text = text.replace('</body>', f'<script defer src="/js/animations.js?v={VERSION}"></script>\n</body>')
     if '/js/navigation.js' not in text and './navigation.js' not in text:
         text = text.replace('</body>', f'<script defer src="/js/navigation.js?v={VERSION}"></script>\n</body>')
-    if '/js/cell-cursor.js' not in text:
+    if '/js/cell-cursor.js' not in text and not rebrand:
         text = text.replace('</body>', f'<script defer src="/js/cell-cursor.js?v={VERSION}"></script>\n</body>')
     # Every public page carries its own quiet living background field.
     # The script is stripped above and re-injected once, at the canonical end
     # position, so apply() remains idempotent for every page regardless of
     # which historical build placed it elsewhere in the document.
-    text = text.replace('</body>', f'<script defer src="/js/biological-cinema.js?v={VERSION}"></script>\n</body>')
+    # Product pages keep the shared ambient field: their own hero canvases are
+    # mounted by this script, so stripping it would leave a dead element.
+    if 'class="home-rebrand' not in text:
+        text = text.replace('</body>', f'<script defer src="/js/biological-cinema.js?v={VERSION}"></script>\n</body>')
     text = re.sub(r'(<(?:link|script)\b[^>]*(?:href|src)="/?(?:css|js)/[^"?]+)(?:\?[^" ]*)?("[^>]*>)', r'\1?v=' + VERSION + r'\2', text)
-    text = re.sub(r'(<meta name="theme-color" content=")[^"]+', r'\g<1>#10251f', text)
+    theme = '#070a08' if rebrand else '#10251f'
+    text = re.sub(r'(<meta name="theme-color" content=")[^"]+', r'\g<1>' + theme, text)
     # Preserve existing main targets; older article pages used a div shell.
     if '<main' not in text:
         text = text.replace('<div class="art-shell">', '<main id="main" class="art-shell">', 1)

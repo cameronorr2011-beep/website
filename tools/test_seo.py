@@ -116,10 +116,10 @@ class SEOTests(unittest.TestCase):
     def test_modular_home_sources_and_build_entrypoints(self):
         from build_home import render
         self.assertEqual((ROOT / 'index.html').read_text(encoding='utf-8'), render())
-        h1 = Page(render()).headings['h1'][0].lower()
-        self.assertEqual(h1, 'small life.new possibilities.')
-        self.assertIn('class="cinema-hero"', render())
-        self.assertIn('class="cinema-system', render())
+        h1 = ' '.join(Page(render()).headings['h1'][0].split()).lower()
+        self.assertEqual(h1, 'open tools for biological discovery.')
+        self.assertIn('class="hr-hero"', render())
+        self.assertIn('class="hr-domain', render())
         self.assertIn('Research concepts in development', render())
         for name in ('build.ps1', 'rebuild.ps1'):
             text = (ROOT / name).read_text(encoding='utf-8-sig')
@@ -142,7 +142,7 @@ class SEOTests(unittest.TestCase):
         self.assertFalse((ROOT / 'applications/index.html').exists())
 
     def test_header_navigation_is_consistent(self):
-        expected = ('/research/', '/algaephyte/', '/cyanoflow', '/blog/', '/#deploy')
+        expected = ('/algae/', '/neuroscience/', '/research/', '/blog/', '/#deploy')
         for path in pages():
             if path.relative_to(ROOT).as_posix().startswith('game/'):
                 continue
@@ -161,7 +161,7 @@ class SEOTests(unittest.TestCase):
                 self.assertNotIn('Pilot access', header)
                 self.assertIn('>Contact</a>', header)
         home = (ROOT / 'index.html').read_text(encoding='utf-8')
-        for href in ('/blog/', '/algaephyte/', '/cyanoflow'):
+        for href in ('/blog/', '/algaephyte/', '/cyanoflow', '/neuroML/'):
             self.assertIn('href="' + href + '"', home)
         self.assertNotIn('/papertrail/', home)
 

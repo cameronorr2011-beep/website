@@ -154,7 +154,7 @@ def build():
         if article: page += '<meta property="article:published_time" content="2026-10-04">\n<meta property="article:modified_time" content="2026-10-04">\n'
         page += '<script type="application/ld+json">' + json.dumps({'@context': 'https://schema.org', '@graph': graph}, ensure_ascii=False) + '</script>\n'
         if algaephyte:
-            page += '<link rel="stylesheet" href="/css/extras.css?v=20261020">\n<link rel="stylesheet" href="/css/global.css?v=20261020">\n<link rel="stylesheet" href="/css/header.css?v=20261020">\n<link rel="stylesheet" href="/css/orr-home.css?v=20261020">\n<link rel="stylesheet" href="/css/animations.css?v=20261020">\n<link rel="stylesheet" href="/css/algaephyte.css?v=20261020">\n</head>\n<body class="art-body algaephyte-page">\n<a class="skip" href="#main">Skip to content</a>\n' + header
+            page += '<link rel="stylesheet" href="/css/extras.css?v=20261020">\n<link rel="stylesheet" href="/css/global.css?v=20261020">\n<link rel="stylesheet" href="/css/header.css?v=20261020">\n<link rel="stylesheet" href="/css/orr-home.css?v=20261020">\n<link rel="stylesheet" href="/css/animations.css?v=20261020">\n<link rel="stylesheet" href="/css/algaephyte.css?v=20261020">\n</head>\n<body class="art-body algaephyte-page product-rebrand">\n<a class="skip" href="#main">Skip to content</a>\n' + header
             page += algaephyte_surface(dek, body) + '\n' + footer
             page += '<script src="/js/consent.js?v=20261020" defer></script>\n<script src="/js/navigation.js?v=20261020" defer></script>\n<script src="/js/algaephyte-app.js?v=20261020" defer></script>\n<script src="/js/biological-cinema.js?v=20261028" defer></script>\n</body>\n</html>\n'
         else:

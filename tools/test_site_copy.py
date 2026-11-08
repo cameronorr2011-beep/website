@@ -31,15 +31,15 @@ class Page(HTMLParser):
 class SiteCopyTests(unittest.TestCase):
     def test_home_origin_and_status(self):
         text = (ROOT / 'index.html').read_text(encoding='utf-8')
-        self.assertIn('Small life.<br><em>New possibilities.</em>', text)
-        self.assertIn('biology, engineering, and software', text)
-        self.assertIn('class="cinema-reactor"', text)
-        self.assertIn('id="volvoxCanvas"', text)
-        self.assertIn('id="reactorCanvas"', text)
+        self.assertIn('Open tools for<br> <em>biological discovery.</em>', text)
+        self.assertIn('computational biology platforms', text)
+        self.assertIn('class="hr-hero"', text)
+        self.assertIn('microns-neuron.svg', text)
         self.assertIn('research concepts in development', text)
         self.assertIn('commercial deployment', text)
         self.assertNotIn('/papertrail/', text)
-        self.assertNotIn('Digital Lab', text)
+        self.assertIn('Algal Digital Lab', text)
+        self.assertIn('/Simulation/', text)
         self.assertNotRegex(text, r'AP-0[1-7]|PreOrder|orrSubscribeForm|orrSuccess')
 
     def test_home_metadata_is_valid_and_not_an_offer(self):
@@ -67,7 +67,7 @@ class SiteCopyTests(unittest.TestCase):
 
     def test_images_and_simulations_are_retained(self):
         text = (ROOT / 'index.html').read_text(encoding='utf-8')
-        for value in ('assets/cyano/culture.jpg', 'assets/cyano/chip.jpg', 'id="volvoxCanvas"', 'id="reactorCanvas"', 'id="systems"', 'id="products"', 'id="deploy"'):
+        for value in ('assets/cyano/culture.jpg', 'assets/cyano/chip.jpg', 'assets/images/microns-neuron.svg', 'id="systems"', 'id="products"', 'id="deploy"'):
             self.assertIn(value, text)
         self.assertIn('id="chipSim"', (ROOT / 'cyanoflow.html').read_text(encoding='utf-8'))
         self.assertFalse((ROOT / 'applications/index.html').exists())

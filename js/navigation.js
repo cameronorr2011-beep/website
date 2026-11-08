@@ -55,7 +55,7 @@
     var subject="Orr Biologicals research inquiry — " + fields[0].value.trim();
     var body="Name / organization: "+fields[0].value.trim()+
              "\nLocation: "+fields[1].value.trim()+
-             "\nCultivation objective: "+fields[2].value.trim()+
+             "\nResearch question: "+fields[2].value.trim()+
              "\n\n(Drafted from the research contact form at orrbiologicals.com; no order or reservation)";
     say("Opening your email client…");
     window.location.href="mailto:service@orrbiologicals.com?subject="+encodeURIComponent(subject)+"&body="+encodeURIComponent(body);
