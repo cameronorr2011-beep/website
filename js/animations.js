@@ -1,8 +1,17 @@
 "use strict";
 (function () {
+  document.documentElement.classList.add('js');
   var reduced = matchMedia('(prefers-reduced-motion: reduce)');
   var count = document.getElementById('countUp');
   if (count) count.textContent = '2.34';
+  var targets = document.querySelectorAll('.section-reveal,.hr-section,.hr-domain,.hr-method-row,.hr-ledger>div,.hr-feature,.hr-journal-list a');
+  var seen = [];
+  targets.forEach(function (node) {
+    node.classList.add('rv');
+    var siblings = seen.filter(function (other) { return other.parentNode === node.parentNode; });
+    node.style.setProperty('--rv-d', Math.min(siblings.length, 5) * 70 + 'ms');
+    seen.push(node);
+  });
   if ('IntersectionObserver' in window && !reduced.matches) {
     var observer = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
@@ -10,9 +19,11 @@
         entry.target.classList.add('in');
         observer.unobserve(entry.target);
       });
-    }, {threshold: 0.08});
-    document.querySelectorAll('.section-reveal').forEach(function (node) { observer.observe(node); });
+    }, {threshold: 0.08, rootMargin: '0px 0px -6% 0px'});
+    targets.forEach(function (node) { observer.observe(node); });
     reduced.addEventListener('change', function () { if (reduced.matches) observer.disconnect(); });
+  } else {
+    targets.forEach(function (node) { node.classList.add('in'); });
   }
   document.querySelectorAll('details').forEach(function (details) {
     details.addEventListener('toggle', function () {

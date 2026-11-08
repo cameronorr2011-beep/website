@@ -7,3 +7,10 @@
 .scan-line,.hero-atmo,.noise{display:none}
 @media(prefers-reduced-motion:no-preference){.product-specs article{transition:border-color var(--fast) var(--ease),background var(--fast) var(--ease)}.product-specs article:hover{background:var(--paper-2)}}
 @media(prefers-reduced-motion:reduce){.section-reveal.in,.stage-enter{animation:none}}
+/* Scroll transitions: one calm ease, gentle rise, staggered beats. */
+html.js .rv,html.js .section-reveal{opacity:0;transform:translateY(26px);transition:opacity .8s var(--rv-ease) var(--rv-d,0ms),transform .8s var(--rv-ease) var(--rv-d,0ms)}
+html.js .rv.in,html.js .section-reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:no-preference){.home-rebrand .hr-hero::before{animation:hero-drift 46s ease-in-out infinite alternate;will-change:transform}}
+@keyframes hero-drift{from{transform:translate3d(-2.5%,-1.5%,0) scale(1.02)}to{transform:translate3d(2.5%,1.5%,0) scale(1.06)}}
+@media(prefers-reduced-motion:reduce){html.js .rv,html.js .section-reveal{opacity:1;transform:none;transition:none}.home-rebrand .hr-hero::before{animation:none}}
+
