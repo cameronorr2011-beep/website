@@ -1,0 +1,55 @@
+{
+  "date": "2026-11-08",
+  "model": "openai/gpt-oss-120b",
+  "generated_at": "2026-11-08T23:19:56Z",
+  "picks": [
+    {
+      "pmid": "42998114",
+      "title": "Decoding the first complete chloroplast genome of the Amazonian oleaginous microalga Ankistrodesmus falcatus: architecture, codon usage, and comparative genomics within the Sphaeropleales.",
+      "journal": "Planta",
+      "year": "2026",
+      "pub_date": "2026-11-07",
+      "url": "https://doi.org/10.1007/s00425-026-05215-4",
+      "topic": "Genomics",
+      "hook": "First complete chloroplast genome of Amazonian oleaginous microalga Ankistrodesmus falcatus unveiled.",
+      "article": "A recent study set out to decode the complete chloroplast genome of the Amazonian oil‑producing microalga Ankistrodesmus falcatus, aiming to reveal its genetic architecture and compare it with relatives.\n\nThe researchers sequenced the circular, quadripartite plastome, which is 139,633 base pairs long and contains 100 unique genes, using standard genome sequencing and assembly methods.\n\nThe plastome includes the typical chlorophyll‑producing gene set, shows evidence of a trans‑spliced psaA and rpl32, and contains an intron‑encoded LAGLIDADG homing endonuclease (crel). Its coding regions display a strong AT‑biased codon usage that exceeds expectations based on GC3‑driven mutation alone.\n\nThese findings provide the first full chloroplast blueprint for this oleaginous alga and highlight unusual codon preferences that may influence gene expression.\n\nUnderstanding this genome lays groundwork for future biotechnological work on algae that produce valuable oils.",
+      "why": "The genome map can help engineers tailor algae to produce bio‑fuels or nutraceuticals more efficiently."
+    },
+    {
+      "pmid": "42998563",
+      "title": "Impact of organic carbon on biogas valorization consortium: shift of intracellular storage and microbial succession.",
+      "journal": "Water research",
+      "year": "2026",
+      "pub_date": "2026-11-05",
+      "url": "https://doi.org/10.1016/j.watres.2026.127284",
+      "topic": "Bioenergy",
+      "hook": "Organic carbon shifts microbial succession, boosting biogas conversion by methanotrophic microalgae.",
+      "article": "A recent study set out to see how adding acetate, a simple organic carbon molecule, changes the way a methanotroph‑microalgae consortium turns methane and carbon dioxide into biomass. The researchers fed a continuously operated biogas-fed consortium with stepwise increases of acetate, using it as a model organic carbon source. They monitored reactor performance, carbon transformation and the composition of the resulting biomass.\n\nThe experiment showed that the consortium’s response to external organic carbon was not uniform; instead, the addition of acetate caused shifts in intracellular storage compounds and altered the succession of microbial groups within the community.\n\nThese findings highlight that supplying organic carbon can steer the internal chemistry and community dynamics of methane‑using microalgae systems, which may be useful for tailoring bioprocesses.",
+      "why": "Understanding carbon shifts helps optimise algae‑based biogas conversion for more efficient bio‑product generation."
+    },
+    {
+      "pmid": "42956850",
+      "title": "Strain-dependent carbon partitioning and community-level functional responses during microalgae-based dairy wastewater treatment under CO<sub>2</sub> enrichment.",
+      "journal": "Bioresource technology",
+      "year": "2026",
+      "pub_date": "2026-10-29",
+      "url": "https://doi.org/10.1016/j.biortech.2026.136162",
+      "topic": "Wastewater Treatment",
+      "hook": "Strain-specific carbon partitioning enhances dairy wastewater cleanup under CO₂ enrichment.",
+      "article": "A recent study examined how different microalgae strains handle carbon when they are used to treat dairy wastewater that has extra CO₂ added. The researchers grew several algal strains in wastewater reactors under CO₂ enrichment and measured how each strain allocated carbon into biomass versus other compounds, as well as how the overall microbial community responded.\n\nThey found that the way carbon was partitioned varied noticeably between strains, and that these strain-dependent differences led to distinct functional responses at the community level. However, the study notes that these differences remain insufficiently resolved.\n\nUnderstanding which algal strains best convert carbon in wastewater could help improve the efficiency of algae-based treatment systems.",
+      "why": "Identifying optimal strains can boost carbon capture and nutrient removal in algae-driven wastewater recycling."
+    },
+    {
+      "pmid": "42727414",
+      "title": "Synergistic reinforcement of chitosan coating films by Haematococcus pluvialis residue-derived protein and carbon dots for active food packaging.",
+      "journal": "Food chemistry",
+      "year": "2026",
+      "pub_date": "2026-09-09",
+      "url": "https://doi.org/10.1016/j.foodchem.2026.151109",
+      "topic": "Materials",
+      "hook": "Haematococcus residue protein and carbon dots reinforce chitosan films for active food packaging.",
+      "article": "A recent study explored whether waste left over after extracting astaxanthin from the microalga Haematococcus pluvialis could be turned into useful ingredients for food‑packaging films. The researchers turned the residue into two components – a protein and tiny fluorescent particles called carbon dots – and mixed them with chitosan, a natural polymer derived from shellfish shells, to make thin coating films.\n\nThe protein and carbon dots were added together into a chitosan matrix to create a dual‑function coating. The carbon dots, about 2.45 nm in size, showed strong oxygen and nitrogen functional groups, giving the film notable antioxidant (preventing oxidation) and antibacterial properties.\n\nThese findings suggest that an underused algal by‑product can be valorised into functional materials that help keep food fresher and safer.",
+      "why": "Turning algal waste into active packaging could extend shelf life while reducing waste."
+    }
+  ]
+}
