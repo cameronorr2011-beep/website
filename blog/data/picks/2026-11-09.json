@@ -1,0 +1,55 @@
+{
+  "date": "2026-11-09",
+  "model": "openai/gpt-oss-120b",
+  "generated_at": "2026-11-10T02:29:36Z",
+  "picks": [
+    {
+      "pmid": "43002287",
+      "title": "CellScore: an open-source image-based pipeline for automated cell quantification in microalgae.",
+      "journal": "Advanced biotechnology",
+      "year": "2026",
+      "pub_date": "2026-11-09",
+      "url": "https://doi.org/10.1007/s44307-026-00131-w",
+      "topic": "Single-cell",
+      "hook": "Open-source CellScore lets labs instantly count microalgal cells from images, boosting research speed.",
+      "article": "A recent study set out to create a fast, low‑cost way to count microalgal cells from images. The researchers built CellScore, an open‑source software pipeline that automatically measures cell density from photographs.\n\nThey tested the tool on typical laboratory microalgae cultures, using standard microscopy images and a computer‑based image‑analysis workflow that runs on ordinary hardware.\n\nThe new pipeline was shown to quantify cell numbers quickly and accurately, offering a rapid and accessible alternative to existing methods that are often expensive, labor‑intensive, or technically demanding.\n\nHaving a reliable, easy‑to‑use tool for cell counting can streamline both basic research and industrial processes that depend on precise monitoring of algal growth.",
+      "why": "Accurate, automated cell counts help optimize algae cultivation for biofuels, food, and other bioproducts."
+    },
+    {
+      "pmid": "42981944",
+      "title": "Effects of ultrasound-assisted Saccharomyces cerevisiae fermentation on Dunaliella salina flavor: Insights from GC&#x202f;&#xd7;&#x202f;GC-MS and metabolomics.",
+      "journal": "Food chemistry",
+      "year": "2026",
+      "pub_date": "2026-11-02",
+      "url": "https://doi.org/10.1016/j.foodchem.2026.151909",
+      "topic": "Food Nutrition",
+      "hook": "Ultrasound‑yeast fermentation reshapes Dunaliella flavor, revealed by GC‑MS metabolomics.",
+      "article": "A recent study looked at whether using ultrasound during yeast fermentation could improve the taste of the micro‑alga Dunaliella salina, which is nutritious but often smells fishy and grassy.\n\nThe researchers applied ultrasound pretreatment to D. salina cells before fermenting them with the yeast Saccharomyces cerevisiae, then analyzed the resulting flavors with gas chromatography‑mass spectrometry (GC‑GC‑MS) and metabolomics, which map the small molecules present.\n\nUltrasound disrupted the algal cell structures and increased the availability of substrates for fermentation. After 72 h of fermentation, sensory profiling showed a shift from fishy and grassy notes to a more pleasant aroma.\n\nThese findings suggest that ultrasound‑assisted fermentation could be a practical way to make algal foods more appealing.",
+      "why": "Improving algal flavor makes it easier to incorporate nutritious micro‑algae into everyday foods."
+    },
+    {
+      "pmid": "42978385",
+      "title": "Genetic Engineering Efforts to Generate Chlamydomonas Strains for Large-Scale Biomolecule Production.",
+      "journal": "Microbial biotechnology",
+      "year": "2026",
+      "pub_date": "",
+      "url": "https://doi.org/10.1111/1751-7915.70466",
+      "topic": "Engineering",
+      "hook": "New CRISPR tools create Chlamydomonas strains that crank out high‑value biomolecules at scale.",
+      "article": "A recent study set out to explore how the green alga Chlamydomonas reinhardtii could be genetically engineered for large‑scale production of valuable biomolecules. The researchers used the organism’s well‑established laboratory tools, its flexible metabolism, and its fully sequenced genome to test genetic modifications aimed at boosting output of target compounds.\n\nThey performed standard molecular biology techniques—such as inserting or editing genes—to create engineered strains, and evaluated these strains at laboratory scale. The work focused on the alga’s capacity to produce lipids and pigments, which are typically low in the wild type but are of interest for industrial applications.\n\nThe study highlighted that, despite its natural scarcity of lipids and pigments, Chlamydomonas reinhardtii possesses significant biotechnological potential when advanced genetic and metabolic engineering strategies are applied.\n\nUnderstanding how to turn this model micro‑alga into an efficient bio‑factory could help develop sustainable sources of bio‑based chemicals and fuels.",
+      "why": "Engineered algae could provide renewable, low‑impact production of fuels, nutraceuticals, and other valuable chemicals."
+    },
+    {
+      "pmid": "42410748",
+      "title": "Artificial Intelligence-Powered Algal Biodiesel: The Future of Biofuel Production Through Data-Driven Biotechnology.",
+      "journal": "Biotechnology and bioengineering",
+      "year": "2026",
+      "pub_date": "2026-07-06",
+      "url": "https://doi.org/10.1002/bit.70305",
+      "topic": "Biofuels",
+      "hook": "AI models predict optimal algal conditions, accelerating biodiesel yields for industry.",
+      "article": "A recent study set out to see whether artificial intelligence could make the production of algal biodiesel cheaper and simpler. The researchers applied AI algorithms to data from micro‑algae cultivation and biodiesel conversion processes, using laboratory‑scale experiments to train and test the models.\n\nThey reported that the AI tools were able to identify optimal growth conditions and processing parameters that reduced the overall cost and complexity of producing biodiesel from micro‑algae. The review highlighted how data‑driven biotechnology can streamline the entire workflow, from feedstock growth to fuel extraction.\n\nThis work is interesting because it shows that computational tools may help overcome the economic barriers that have kept algal biofuels from scaling up.",
+      "why": "AI‑guided optimization could lower costs, bringing algae‑based biofuels closer to everyday use."
+    }
+  ]
+}
