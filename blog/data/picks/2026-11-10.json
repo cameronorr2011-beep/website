@@ -1,0 +1,55 @@
+{
+  "date": "2026-11-10",
+  "model": "openai/gpt-oss-120b",
+  "generated_at": "2026-11-11T00:20:52Z",
+  "picks": [
+    {
+      "pmid": "42988128",
+      "title": "Mixotrophic culture of Chlorella sorokiniana enhances carotenoid and biostimulant production.",
+      "journal": "Bioresource technology",
+      "year": "2026",
+      "pub_date": "2026-11-05",
+      "url": "https://doi.org/10.1016/j.biortech.2026.136199",
+      "topic": "Biofuels & Biostimulants",
+      "hook": "Mixotrophic Chlorella sorokiniana boosts carotenoid yields and plant‑growth promoters, offering a dual‑use algae platform.",
+      "article": "A recent study explored whether feeding the microalga Chlorella sorokiniana with organic carbon sources while it also performed photosynthesis (a mixotrophic approach) could boost the production of valuable compounds. The researchers grew the algae in laboratory cultures, adding different carbon substrates to the growth medium and measuring biomass, carotenoid (pigment) levels, and biostimulant activity.\n\nThey found that complex organic carbon substrates increased carotenoid production and the potential of the algae to act as a biostimulant, although the overall effects on biomass and metabolite accumulation remained modest.\n\nThese results suggest that mixotrophic cultivation can enhance specific high‑value outputs of Chlorella sorokiniana, offering a possible route to more efficient algae‑based products.",
+      "why": "Enhanced carotenoids and biostimulants could improve algae-derived fertilizers and nutraceuticals."
+    },
+    {
+      "pmid": "42923926",
+      "title": "Graphene family nanomaterials - atrazine - extracellular polymeric substances: a triangular interplay during short- and long-term exposure of marine microalgae <i>Chlorella</i> sp.",
+      "journal": "RSC advances",
+      "year": "2026",
+      "pub_date": "2026-10-22",
+      "url": "https://doi.org/10.1039/d6ra08448f",
+      "topic": "Health & Nutrition",
+      "hook": "Spirulina nutraceuticals contain trace elements that may affect safety, highlighting the need for rigorous compositional checks.",
+      "article": "A recent study set out to see how tiny graphene‑based materials and a common herbicide, atrazine, affect a marine microalga, Chlorella sp., both alone and together. The researchers grew the algae in laboratory cultures and exposed them for a short period of 72 hours, testing pure graphene, graphene oxide, reduced graphene oxide, and atrazine in various combinations.\n\nThey measured how the algae’s growth and the substances they secrete outside the cell (extracellular polymeric substances) responded to these exposures. The results showed that the nanomaterials and atrazine each had toxic effects, and when combined, their impact on the algae was altered compared with individual exposures.\n\nThe work highlights that interactions between nanomaterials and pollutants can change how marine primary producers like microalgae cope with stress, which is important for understanding ecosystem health.\n\nWhy it matters: Knowing how graphene nanomaterials and herbicides together affect algae helps predict their combined impact on marine food webs and water quality.",
+      "why": "Understanding combined effects on algae informs safe use of nanomaterials and protects marine ecosystems."
+    },
+    {
+      "pmid": "42753894",
+      "title": "Valorization of waste activated sludge for microalgae cultivation: Differential roles and mechanisms of extracellular and intracellular substances.",
+      "journal": "Environmental research",
+      "year": "2026",
+      "pub_date": "2026-09-17",
+      "url": "https://doi.org/10.1016/j.envres.2026.125677",
+      "topic": "Waste Valorization",
+      "hook": "Activated sludge components selectively enhance microalgal growth, turning waste streams into high‑value algal biomass.",
+      "article": "A recent study set out to see whether different components of waste‑activated sludge could be used to grow the microalga Chlorella pyrenoidosa. The researchers compared three sludge fractions – completely crushed sludge extract (CCS), extracellular substances (ESS) that are released from cells, and intracellular substances (ISS) that remain inside the cells – as nutrient sources for the algae.\n\nThey grew the algae in laboratory‑scale cultures, adding each of the three sludge fractions separately and measuring how much algal biomass was produced and how much was harvested.\n\nThe results showed that ISS primaril…\n\nUnderstanding which part of sludge best supports algal growth helps turn a waste problem into a resource for sustainable biotechnology.",
+      "why": "Identifying the most effective sludge component can make algae production cheaper and greener."
+    },
+    {
+      "pmid": "43003314",
+      "title": "Valorization of livestock biogas slurry through indigenous Oocystis sp. cultivation for nutrient recovery and production of plant-beneficial biomass.",
+      "journal": "Bioresource technology",
+      "year": "2026",
+      "pub_date": "2026-11-09",
+      "url": "https://doi.org/10.1016/j.biortech.2026.136214",
+      "topic": "Cultivation & Nutrient Recovery",
+      "hook": "Oocystis sp. thrives on livestock biogas slurry, extracting nutrients while producing plant‑beneficial algal biomass.",
+      "article": "A recent study set out to see whether a native strain of the green micro‑alga Oocystis, taken from livestock biogas slurry, could be used to clean the waste water while turning it into useful biomass.\n\nThe researchers isolated the Oocystis sp. directly from the slurry and grew it in laboratory‑scale cultures, monitoring how well it removed nitrogen and phosphorus during the treatment.\n\nThe algae showed nutrient‑removal performance in the sequential bacteri‑microalgae coupling, indicating its ability to capture the abundant nitrogen and phosphorus from the waste stream.\n\nThis work suggests a way to turn a problematic by‑product of animal farming into a resource for agriculture or bio‑based products.",
+      "why": "It shows how algae can recover nutrients from farm waste, creating valuable biomass while cleaning water."
+    }
+  ]
+}
