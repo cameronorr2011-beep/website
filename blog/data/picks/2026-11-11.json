@@ -1,0 +1,55 @@
+{
+  "date": "2026-11-11",
+  "model": "openai/gpt-oss-120b",
+  "generated_at": "2026-11-12T01:45:53Z",
+  "picks": [
+    {
+      "pmid": "42315035",
+      "title": "Synergistic enhancement of microalgal fatty acids via Batch Bayesian Optimization-driven combinatorial additive engineering.",
+      "journal": "Bioresource technology",
+      "year": "2026",
+      "pub_date": "2026-06-18",
+      "url": "https://doi.org/10.1016/j.biortech.2026.135196",
+      "topic": "Biofuels",
+      "hook": "Bayesian optimization boosts microalgal fatty acid yields for greener fuel production.",
+      "article": "A recent study set out to boost the production of fatty acids in the microalga *Schizochytrium* sp. by finding the best mix of chemical additives without using genetic engineering. The researchers built a machine‑learning system that uses Bayesian optimization, a statistical method that suggests promising combinations based on previous results, to design experiments testing many additive mixtures. They ran a series of batch cultures of the algae, each with a different additive cocktail, and let the algorithm iteratively refine the choices.\n\nThe platform identified specific additive combinations that synergistically increased the fatty‑acid content compared with standard conditions. The study reports that this approach overcomes the difficulty of exploring the huge experimental space of multi‑additive formulations.\n\nBy efficiently pinpointing effective additive blends, the work shows a way to enhance algal lipid yields using a non‑genetic, data‑driven strategy.",
+      "why": "Optimizing additive mixes can raise algae oil output, helping make sustainable biofuels and nutraceuticals more viable."
+    },
+    {
+      "pmid": "42971837",
+      "title": "Toward industrial microalgae-based monoclonal antibody production.",
+      "journal": "Trends in biotechnology",
+      "year": "2026",
+      "pub_date": "2026-11-02",
+      "url": "https://doi.org/10.1016/j.tibtech.2026.10.003",
+      "topic": "Engineering",
+      "hook": "Microalgae become factories for monoclonal antibodies, opening a new biotech frontier.",
+      "article": "A recent study explored whether tiny algae could be used as tiny factories to make monoclonal antibodies, the protein medicines usually produced in mammalian cells. The researchers grew microalgae under light and used genetic engineering to insert the antibody‑producing genes, testing the system at a modest production scale. They found that microalgal platforms can grow using light, require low‑cost media, and have the potential for significant and efficient scalability. This suggests algae could become a cheaper, more flexible alternative for producing high‑value therapeutic proteins.\n\nThe work is interesting because it points to a greener, potentially lower‑cost way to make important medicines using algae.",
+      "why": "Algae‑based antibody production could lower costs and simplify manufacturing of vital therapeutics."
+    },
+    {
+      "pmid": "42994775",
+      "title": "Deuterium at environmentally relevant concentrations modulates metabolite production and protein synthesis in Chlorella sp.",
+      "journal": "Environmental research",
+      "year": "2026",
+      "pub_date": "2026-11-06",
+      "url": "https://doi.org/10.1016/j.envres.2026.126127",
+      "topic": "Ecology",
+      "hook": "Trace deuterium reshapes metabolite and protein profiles in Chlorella, hinting at subtle environmental impacts.",
+      "article": "A recent study set out to see how low levels of deuterium, a heavy form of hydrogen that naturally varies in water, affect the biology of a common micro‑alga, Chlorella sp.\n\nThe researchers grew the algae for eight days in three types of water: deuterium‑depleted water (about 202 ppm), normal water with natural deuterium levels (about 150 ppm), and water that was moderately enriched with deuterium. They then measured changes in metabolite production and protein synthesis.\n\nThe work showed that even these environmentally relevant deuterium concentrations altered the algae’s metabolite profile and the rate at which proteins were made, indicating a physiological response to deuterium levels.\n\nThese findings are interesting because they suggest that natural variations in water deuterium could influence algal metabolism, a factor worth considering in algae‑based biotechnologies.",
+      "why": "Understanding deuterium’s subtle effects helps optimize algae growth conditions for biofuel and nutraceutical production."
+    },
+    {
+      "pmid": "42696926",
+      "title": "Stage-dependent shifts in bacterial communities and nitrogen cycling during Pyropia cultivation on the west coast of Korea.",
+      "journal": "Marine environmental research",
+      "year": "2026",
+      "pub_date": "2026-09-03",
+      "url": "https://doi.org/10.1016/j.marenvres.2026.108391",
+      "topic": "Marine Ecology",
+      "hook": "Pyropia farms trigger stage‑specific bacterial shifts, altering nitrogen cycling in coastal waters.",
+      "article": "A recent study set out to understand how bacterial communities and nitrogen cycling change during the different stages of cultivating the seaweed Pyropia on Korea’s west coast.\n\nThe researchers sampled seawater‑based Pyropia farms at multiple points throughout the cultivation cycle, analyzing the bacterial assemblages and their potential for nitrogen transformation using standard molecular and chemical techniques.\n\nThey observed that both the composition of bacterial groups and the predicted capacity for nitrogen cycling varied across the cultivation stages, indicating stage‑dependent shifts in the microbial ecosystem.\n\nThese insights are useful because they help improve management of seaweed farms by linking microbial dynamics to nutrient availability, which can affect crop yields and environmental impact.",
+      "why": "Understanding microbial shifts can guide better nitrogen management in seaweed farming, boosting productivity and sustainability."
+    }
+  ]
+}
