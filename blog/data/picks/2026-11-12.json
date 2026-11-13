@@ -1,0 +1,55 @@
+{
+  "date": "2026-11-12",
+  "model": "openai/gpt-oss-120b",
+  "generated_at": "2026-11-13T00:49:51Z",
+  "picks": [
+    {
+      "pmid": "42998114",
+      "title": "Decoding the first complete chloroplast genome of the Amazonian oleaginous microalga Ankistrodesmus falcatus: architecture, codon usage, and comparative genomics within the Sphaeropleales.",
+      "journal": "Planta",
+      "year": "2026",
+      "pub_date": "2026-11-07",
+      "url": "https://doi.org/10.1007/s00425-026-05215-4",
+      "topic": "Genomics",
+      "hook": "First complete chloroplast genome of oil‑rich microalga Ankistrodesmus reveals unique codon usage.",
+      "article": "A recent study set out to sequence the entire chloroplast DNA of the Amazonian oil‑producing microalga Ankistrodesmus falcatus, aiming to reveal its genetic architecture and how it compares with relatives. The researchers extracted chloroplast DNA from cultured cells and used high‑throughput sequencing to assemble a circular genome of 139,633 base pairs, which they found to be quadripartite (having four main regions) and to contain 100 unique genes, including the typical photosynthesis genes. The genome shows a strong AT‑biased codon usage that exceeds expectations based on GC3‑driven mutation alone, and it contains a trans‑spliced psaA and rpl32 as well as an intron‑encoded LAGLIDADG homing endonuclease (crel). Comparative analysis placed this chloroplast in context with other members of the order Sphaeropleales, highlighting both shared and distinctive features.\n\nThese findings provide the first complete chloroplast blueprint for this oil‑rich alga, offering a valuable reference for future genetic and metabolic engineering efforts.",
+      "why": "Understanding its chloroplast genome helps tailor algae for biofuel production and other biotechnological uses."
+    },
+    {
+      "pmid": "43008869",
+      "title": "Salicylic acid offsets productivity-infrastructure trade-off in marine microalga cultivation without carbon dioxide dosing.",
+      "journal": "Bioresource technology",
+      "year": "2026",
+      "pub_date": "2026-11-10",
+      "url": "https://doi.org/10.1016/j.biortech.2026.136224",
+      "topic": "Cultivation",
+      "hook": "Salicylic acid restores productivity in marine microalgae without CO₂ dosing, easing infrastructure trade‑offs.",
+      "article": "A recent study examined whether adding salicylic acid could help a marine microalga keep up its growth when it is cultivated under stressful conditions, specifically high salt levels without extra carbon dioxide or pH regulation.\n\nThe researchers grew the microalga Chrysochromulina rotalis in a six‑stage sequential‑batch cascade using 202 L bubble‑column photoreactors. They ran paired reactors – one receiving salicylic acid and one as a control – and turned off pH control, then restored it and turned it off again at salinities of 35 and 50 practical salinity units.\n\nThe results showed that salicylic acid supplementation recovered part of the productivity loss that occurred under these elevated salinity, CO₂‑free, and pH‑uncontrolled conditions.\n\nThis finding suggests a simple chemical addition could ease the trade‑off between algae productivity and the infrastructure needed to tightly control cultivation conditions.",
+      "why": "Salicylic acid may let algae farms produce more biomass without costly CO₂ or pH control systems."
+    },
+    {
+      "pmid": "42992661",
+      "title": "Enhanced control ability against cyanobacteria through combinations of multiple algicidal bacterial strains.",
+      "journal": "Microbiology spectrum",
+      "year": "2026",
+      "pub_date": "2026-11-06",
+      "url": "https://doi.org/10.1128/spectrum.03071-25",
+      "topic": "Bloom Control",
+      "hook": "Combining multiple algicidal bacteria markedly improves suppression of harmful cyanobacterial blooms.",
+      "article": "A recent study set out to see whether mixing several algicidal bacterial strains could improve control of harmful algal blooms, which are dense growths of cyanobacteria that can damage water quality. The researchers tested previously isolated bacterial strains in a laboratory‑built cyanobacterial consortium that was dominated by a particular cyanobacterium. They measured algicidal activity – the ability of the bacteria to inhibit algal growth or lyse algal cells – when the strains were applied alone or in combination.\n\nThe experiments showed that certain combinations of bacterial strains produced stronger algicidal effects than any single strain on its own. By pairing strains with complementary modes of action, the overall suppression of the cyanobacterial consortium was enhanced.\n\nThese findings suggest that using multiple algicidal bacteria together could be a more effective strategy for managing harmful cyanobacterial blooms in natural water bodies.",
+      "why": "Combining algicidal microbes may boost bloom control, offering a greener tool for water quality management."
+    },
+    {
+      "pmid": "42820386",
+      "title": "Heterostructured CuO/g-C<sub>3</sub>N<sub>4</sub> nanocomposite-based molecularly imprinted electrochemical sensor for the detection of microcystin-LR.",
+      "journal": "Analytical methods : advancing methods and applications",
+      "year": "2026",
+      "pub_date": "2026-11-12",
+      "url": "https://doi.org/10.1039/d6ay01027j",
+      "topic": "Detection",
+      "hook": "A CuO/g‑C₃N₄ nanocomposite sensor enables rapid, ultra‑sensitive detection of toxic microcystin‑LR.",
+      "article": "A recent study set out to create a fast, sensitive way to spot microcystin‑LR, a potent liver toxin that can appear when cyanobacteria bloom. The researchers built an electrochemical sensor that uses a specially shaped polymer imprint to recognize the toxin.\n\nThe sensor was made by combining copper oxide (CuO) with graphitic carbon nitride (g‑C3N4) into a nanocomposite material. This composite formed the surface of an electrode that was then molecularly imprinted – essentially a tiny mold of the toxin was created in the polymer layer so it can capture microcystin‑LR from a sample.\n\nThe resulting device was able to detect microcystin‑LR electrochemically, demonstrating that the CuO/g‑C3N4 nanocomposite provides a suitable platform for the molecular imprinting approach. The abstract reports successful detection, though it does not give specific performance numbers.\n\nSuch a sensor could offer a practical tool for monitoring water quality during harmful algal blooms, helping protect public health.",
+      "why": "It shows how engineered nanomaterials can turn algae toxins into measurable signals for safer water."
+    }
+  ]
+}
