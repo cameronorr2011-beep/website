@@ -1,0 +1,55 @@
+{
+  "date": "2026-11-13",
+  "model": "openai/gpt-oss-120b",
+  "generated_at": "2026-11-14T00:35:21Z",
+  "picks": [
+    {
+      "pmid": "43002287",
+      "title": "CellScore: an open-source image-based pipeline for automated cell quantification in microalgae.",
+      "journal": "Advanced biotechnology",
+      "year": "2026",
+      "pub_date": "2026-11-09",
+      "url": "https://doi.org/10.1007/s44307-026-00131-w",
+      "topic": "Biotech Tool",
+      "hook": "Open-source CellScore pipeline automates microalgae cell counting for research and industry.",
+      "article": "A recent study set out to create a fast, low‑cost way to count microalgal cells from images. The researchers built CellScore, an open‑source software pipeline that automatically measures cell density from microscope pictures.\n\nThey tested the tool on typical microalgae cultures, using standard imaging equipment and comparing the automated counts to manual counts.\n\nCellScore produced cell density numbers that matched manual counting, while requiring far less time and labor.\n\nThis advancement could make routine monitoring of algae growth easier for both research labs and industrial producers.",
+      "why": "Accurate, automated cell counts streamline algae cultivation, helping scale up biofuel and bioproduct production."
+    },
+    {
+      "pmid": "43010413",
+      "title": "Twelve-Hour Dynamic Monitoring of Microalgae Response to Oxidative Stress by Single-Cell Metabolomics Analysis.",
+      "journal": "Analytical chemistry",
+      "year": "2026",
+      "pub_date": "",
+      "url": "https://doi.org/10.1021/acs.analchem.6c04519",
+      "topic": "Single-cell Metabolomics",
+      "hook": "Tracks microalgae oxidative stress responses every 12 hours at single‑cell resolution.",
+      "article": "A recent study set out to watch how individual microalgae cells change their chemistry over time when they are stressed by oxidation. The researchers built an online, label‑free workflow that uses a technique called CyESI‑MS, which couples a gentle spray ionization method with mass spectrometry, to continuously sample living cells. They applied this system to track single microalgae for a full twelve‑hour period, collecting minute‑scale snapshots from tens of thousands of cells.\n\nThe method allowed them to capture dynamic metabolic responses that are normally missed by traditional single‑cell metabolomics, which usually only provide isolated snapshots. By monitoring many cells over many minutes, they could see how metabolites fluctuated in real time during oxidative stress.\n\nThe study demonstrates that continuous, high‑resolution single‑cell metabolomics is feasible for large cell populations, opening a window onto the rapid biochemical shifts that underlie stress responses.\n\nThis capability could help scientists better understand and engineer algae for more resilient bio‑production processes.",
+      "why": "Real‑time metabolic maps can guide the design of algae strains that tolerate stress, boosting sustainable bioproduct yields."
+    },
+    {
+      "pmid": "42983092",
+      "title": "Synergy in viral-bacterial co-infection expedites algal bloom demise.",
+      "journal": "Nature",
+      "year": "2026",
+      "pub_date": "2026-11-04",
+      "url": "https://doi.org/10.1038/s41586-026-11243-7",
+      "topic": "Bloom Ecology",
+      "hook": "Shows how viruses and bacteria together accelerate the collapse of harmful algal blooms.",
+      "article": "A recent study set out to understand why algal blooms, which often collapse quickly, are driven by more than just viruses. The researchers measured how viruses, bacteria and the algae themselves interact in a lab‑grown community that mimics natural seawater.\n\nThey built a synthetic community containing the bloom‑forming alga Gephyrocapsa huxleyi, a bacterial strain, and a virus that infects the alga. By tracking infection rates and cell death, they quantified the three‑way (tripartite) interactions among these organisms.\n\nThe work showed that although fewer than 30 % of algal cells are directly infected by viruses, the presence of bacteria dramatically increases overall algal mortality, speeding up bloom demise.\n\nThis finding highlights that bacterial partners can amplify viral impacts, offering new angles for managing harmful algal blooms.",
+      "why": "Bacterial‑viral synergy could be harnessed to accelerate the breakdown of unwanted algal blooms."
+    },
+    {
+      "pmid": "43020147",
+      "title": "Rapid enrichment of auto-floating microalgae from river-derived microalgal communities.",
+      "journal": "Bioresource technology",
+      "year": "2026",
+      "pub_date": "2026-11-12",
+      "url": "https://doi.org/10.1016/j.biortech.2026.136255",
+      "topic": "Cultivation",
+      "hook": "Describes rapid enrichment of auto‑floating microalgae for low‑energy, chemical‑free biomass harvest.",
+      "article": "A recent study set out to find a faster way to pull out naturally buoyant micro‑algae from mixed river water samples. The researchers designed a selection method that exploits the algae’s tendency to avoid water, allowing them to be concentrated quickly.\n\nThey collected micro‑algal communities from a river and applied a hydrophobicity‑driven (water‑repelling) selection process, which preferentially retained cells that float on their own. The approach was tested at laboratory scale using the river‑derived samples.\n\nThe new strategy increased cell‑surface hydrophobicity, enabling rapid enrichment of the auto‑floating micro‑algae, though the abstract does not give exact numbers.\n\nThis is interesting because faster enrichment of buoyant algae could help develop low‑energy, chemical‑free methods for harvesting algae in wastewater treatment and other biotechnological applications.",
+      "why": "Quickly isolating floating algae could lower energy costs for algae‑based wastewater cleanup."
+    }
+  ]
+}
