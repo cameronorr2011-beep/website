@@ -1,0 +1,55 @@
+{
+  "date": "2026-11-14",
+  "model": "openai/gpt-oss-120b",
+  "generated_at": "2026-11-14T23:32:31Z",
+  "picks": [
+    {
+      "pmid": "43025515",
+      "title": "Transcriptome-guided overexpression of undecaprenyl-phosphate glucose phosphotransferase drives efficient lipid accumulation in Synechococcus elongatus.",
+      "journal": "Bioresource technology",
+      "year": "2026",
+      "pub_date": "2026-11-13",
+      "url": "https://doi.org/10.1016/j.biortech.2026.136264",
+      "topic": "Biofuels",
+      "hook": "Boosts lipid yields in Synechococcus by overexpressing a key glucose phosphotransferase.",
+      "article": "A recent study set out to boost oil production in a cyanobacterium by tweaking the genes that build its cell envelope, rather than relying on the usual nitrogen‑starvation trick.\n\nThe researchers used transcriptome data – a snapshot of all active genes – to identify targets and then over‑expressed a gene called undecaprenyl‑phosphate glucose phosphotransferase in Synechococcus elongatus PCC 7942, a model microalga.\n\nWhen grown under nitrogen‑deficient conditions, the engineered strain accumulated 40 % more lipids even though the expression of accD, which makes a key enzyme for fatty‑acid synthesis, dropped 2.7‑fold.\n\nThis shows that redirecting carbon flow at the cell‑envelope level can enhance oil yields without sacrificing overall biomass, offering a new lever for algal bio‑fuel production.",
+      "why": "Targeting envelope biosynthesis may raise algal oil yields while keeping growth rates high, useful for sustainable biofuel feedstocks."
+    },
+    {
+      "pmid": "43019982",
+      "title": "Microplastics and cyanobacterial harmful algal blooms: Mechanistic pathways, cyanotoxin dynamics, and quantitative evidence from polystyrene (PS)-Microcystis interactions.",
+      "journal": "Journal of hazardous materials",
+      "year": "2026",
+      "pub_date": "2026-11-10",
+      "url": "https://doi.org/10.1016/j.jhazmat.2026.144170",
+      "topic": "Blooms",
+      "hook": "Shows how microplastics intensify cyanobacterial HAB toxicity via plastic‑cyst toxin interactions.",
+      "article": "A recent study set out to clarify how tiny plastic particles called microplastics might influence harmful algal blooms caused by cyanobacteria, and how these interactions could affect toxin production.\n\nThe researchers examined the relationship between polystyrene microplastics and the cyanobacterium Microcystis using pure‑culture experiments, mixed‑community observations, and field‑based realistic conditions.\n\nThe review gathered evidence that microplastics and cyanobacterial blooms often co‑occur, but the mechanisms linking them remain inconsistent across studies, with no clear consensus on how microplastics alter bloom dynamics or toxin levels.\n\nUnderstanding these uncertain interactions is important because both microplastics and cyanobacterial toxins pose risks to water quality and ecosystem health.",
+      "why": "Clarifying microplastic‑cyanobacteria links helps manage water safety and protect ecosystems from combined pollution threats."
+    },
+    {
+      "pmid": "43007207",
+      "title": "Recombinase Polymerase Amplification Coupled with Graphene Oxide Nanomaterial-Assisted Purification and Target Signal Selection for Highly Sensitive and Rapid Harmful Algae Detection.",
+      "journal": "Environmental science &amp; technology",
+      "year": "2026",
+      "pub_date": "",
+      "url": "https://doi.org/10.1021/acs.est.6c07778",
+      "topic": "Detection",
+      "hook": "Rapid RPA‑graphene assay detects harmful algae with high sensitivity in minutes.",
+      "article": "A recent study set out to create a fast, highly sensitive test for harmful algal blooms, which can threaten ecosystems and health. The researchers combined a recombinase polymerase amplification (RPA) assay—a method that quickly copies DNA at a constant temperature—with graphene oxide and magnesium ions to clean up the sample and focus on the target signal.\n\nThey applied the technique to detect three problematic algae species: Heterosigma akashiwo, Prorocentrum minimum, and Akashiwo sanguinea, using conserved internal transcribed spacer DNA sequences as the detection target. The graphene oxide‑assisted purification and signal selection allowed rapid and ultrasensitive detection, though the abstract does not give exact detection limits.\n\nThe work demonstrates that integrating nanomaterial‑assisted purification with RPA can produce a rapid, accurate assay for monitoring harmful algae in water bodies.",
+      "why": "Such a quick, sensitive test could help water managers spot dangerous algal blooms before they cause major problems."
+    },
+    {
+      "pmid": "42992533",
+      "title": "<i>Chlorella vulgaris</i>-<i>Rhodobacter sphaeroides</i> co-culture for enhanced lactic acid fermentation wastewater treatment: optimization and metabolomic analysis.",
+      "journal": "Preparative biochemistry &amp; biotechnology",
+      "year": "2026",
+      "pub_date": "2026-11-06",
+      "url": "https://doi.org/10.1080/10826068.2026.2755294",
+      "topic": "Cultivation",
+      "hook": "Co‑culturing Chlorella with Rhodobacter improves wastewater treatment and yields valuable biomass.",
+      "article": "A recent study set out to improve the cleanup of wastewater generated by lactic‑acid fermentation by pairing two microorganisms – the bacterium Rhodobacter sphaeroides and the microalga Chlorella vulgaris – in a co‑culture.\n\nThe researchers grew the two species together, adjusting the growth environment by diluting the wastewater about 7.094‑fold, setting the carbon‑to‑nitrogen (C/N) ratio to 22.143 : 1, maintaining the pH at 7.566, and adding 0.1 mM potassium ions. They then examined how the combined algae‑bacteria system altered the mixture of metabolites using untargeted metabolomic analysis.\n\nThe results indicated that under those specific conditions the co‑culture achieved efficient treatment of the lactic‑acid fermentation wastewater.\n\nThis work is interesting because it shows how pairing algae with bacteria can enhance waste remediation, a step toward more sustainable bioprocessing.",
+      "why": "Algae‑bacteria co‑cultures could turn fermentation waste into a cleaner stream, supporting greener biotech operations."
+    }
+  ]
+}
