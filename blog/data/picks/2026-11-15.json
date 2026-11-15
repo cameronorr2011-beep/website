@@ -1,0 +1,55 @@
+{
+  "date": "2026-11-15",
+  "model": "openai/gpt-oss-120b",
+  "generated_at": "2026-11-15T23:40:53Z",
+  "picks": [
+    {
+      "pmid": "42988128",
+      "title": "Mixotrophic culture of Chlorella sorokiniana enhances carotenoid and biostimulant production.",
+      "journal": "Bioresource technology",
+      "year": "2026",
+      "pub_date": "2026-11-05",
+      "url": "https://doi.org/10.1016/j.biortech.2026.136199",
+      "topic": "Biofuels",
+      "hook": "Mixotrophic Chlorella boosts carotenoid yields and biostimulant output for greener agriculture.",
+      "article": "A recent study explored whether feeding the microalga Chlorella sorokiniana with organic carbon sources while it also performed photosynthesis (a mixotrophic approach) could boost its usefulness as a biostimulant and source of valuable pigments.\n\nThe researchers grew Chlorella sorokiniana in laboratory cultures, providing it with various complex organic carbon substrates in addition to light, and measured growth, biomass yield, pigment accumulation, and biostimulant activity.\n\nThey found that the addition of complex organic carbon substrates increased carotenoid (pigment) production and improved the algae’s biostimulant potential, although the effects on overall biomass productivity and metabolite accumulation were still not well understood.\n\nThese results suggest that tweaking the growth conditions of microalgae can enhance the production of high‑value compounds that support plant health.",
+      "why": "Enhanced carotenoid and biostimulant output could make algae‑based fertilizers more effective and sustainable."
+    },
+    {
+      "pmid": "43033999",
+      "title": "Protein-tunable microalgae fillers for the simultaneous carbon reduction and mechanical reinforcement of rigid polyurethane foam.",
+      "journal": "Bioresource technology",
+      "year": "2026",
+      "pub_date": "2026-11-14",
+      "url": "https://doi.org/10.1016/j.biortech.2026.136247",
+      "topic": "Engineering",
+      "hook": "Protein‑tuned microalgae act as fillers, cutting carbon while strengthening polyurethane foam.",
+      "article": "A recent study looked at whether the protein makeup of the microalga *Chlorella sorokiniana* could be used to improve rigid polyurethane (PU) foams while also capturing carbon. The researchers grew the algae under nitrogen‑limited and nitrogen‑replete conditions to produce biomass with low (PL), medium (PM), and high (PH) protein contents. This algae powder was then mixed into PU foam formulations and the resulting foams were evaluated for processing behavior and mechanical performance.\n\nThe study found that the protein content of the algal filler influenced both how the foam cured and its final strength, with variations observed among the low, medium, and high protein samples. These differences suggest that adjusting the biochemical composition of the algae can tune the properties of the resulting composite material.\n\nThe work shows that microalgae can serve a dual purpose: acting as a carbon‑negative feedstock and as a functional additive that strengthens polymer foams, offering a sustainable route to higher‑performance materials.",
+      "why": "Tailoring algae protein levels lets us make stronger, greener foam products, linking carbon capture to everyday materials."
+    },
+    {
+      "pmid": "43020148",
+      "title": "Low temperature promotes dimethylsulfoniopropionate synthesis in Phaeocystis globosa: mechanistic insights from transcriptomics and qPCR validation.",
+      "journal": "Bioresource technology",
+      "year": "2026",
+      "pub_date": "2026-11-12",
+      "url": "https://doi.org/10.1016/j.biortech.2026.136258",
+      "topic": "Climate",
+      "hook": "Cold snaps trigger Phaeocystis to crank up DMSP, influencing sulfur cycling and cloud formation.",
+      "article": "A recent study set out to find out how low temperatures affect the production of dimethylsulfonio­propionate (DMSP), a compound made by the marine microalga Phaeocystis globosa that influences sulfur cycling and climate.\n\nThe researchers grew P. globosa under low‑temperature conditions and examined changes in gene activity using transcriptomics, which measures all RNA messages, and confirmed key findings with quantitative PCR, a technique that quantifies specific gene expression.\n\nThey discovered that low temperature triggers a specific transcriptional response that up‑regulates the pathways responsible for DMSP synthesis, providing mechanistic insight into how temperature controls this metabolism.\n\nUnderstanding this temperature‑driven regulation helps explain how marine algae may respond to changing ocean climates and could inform strategies to harness or mitigate DMSP‑related processes.",
+      "why": "It reveals how cold oceans could boost algae‑derived compounds that affect climate, informing future biotechnological or environmental models."
+    },
+    {
+      "pmid": "42995316",
+      "title": "In vitro antibacterial and antibiofilm activity of phycocyanin against Klebsiella pneumoniae: effects on growth kinetics and antibiotic susceptibility.",
+      "journal": "International microbiology : the official journal of the Spanish Society for Microbiology",
+      "year": "2026",
+      "pub_date": "2026-11-07",
+      "url": "https://doi.org/10.1007/s10123-026-00921-1",
+      "topic": "Health",
+      "hook": "Phycocyanin fights Klebsiella pneumoniae, reducing growth and biofilm formation in lab tests.",
+      "article": "A recent study set out to see whether phycocyanin, a protein from cyanobacteria, can inhibit the growth of the troublesome bacterium Klebsiella pneumoniae and affect its ability to form protective biofilms.\n\nThe researchers tested purified phycocyanin against K. pneumoniae cultures in the lab, measuring bacterial growth over time and evaluating changes in susceptibility to standard antibiotics.\n\nThey found that phycocyanin displayed antibacterial activity and reduced biofilm formation, and it also altered the bacteria’s response to antibiotics.\n\nThese results suggest that a natural algal pigment could become a useful tool in the fight against resistant infections.",
+      "why": "Phycocyanin’s anti‑Klebsiella effects could help develop greener, algae‑based adjuncts to antibiotics."
+    }
+  ]
+}
