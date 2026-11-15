@@ -31,10 +31,10 @@ class Page(HTMLParser):
 class SiteCopyTests(unittest.TestCase):
     def test_home_origin_and_status(self):
         text = (ROOT / 'index.html').read_text(encoding='utf-8')
-        self.assertIn('Open tools for<br> <em>biological discovery.</em>', text)
-        self.assertIn('computational biology platforms', text)
+        self.assertIn('Microalgae cultivation,<br> <em>measured honestly.</em>', text)
+        self.assertIn('Light, carbon, nutrients, mixing and gas exchange', text)
         self.assertIn('class="hr-hero"', text)
-        self.assertIn('Explore Algae', text)
+        self.assertIn('Start with cultivation', text)
         self.assertIn('research concepts in development', text)
         self.assertIn('commercial deployment', text)
         self.assertNotIn('/papertrail/', text)
