@@ -132,8 +132,8 @@
 .kit-page-head{padding:8px 0 0}
 .kit-page-head h1{margin:10px 0 18px;font-size:clamp(2.3rem,4.8vw,3.7rem);line-height:1.04}
 .kit-page-dek{margin:0;max-width:60ch;color:var(--ink-soft);font-size:clamp(1rem,1.4vw,1.15rem);line-height:1.78}
-.kit-page-art{margin:34px 0 10px;overflow:hidden;border:1px solid rgba(214,222,209,.14);border-radius:22px;background:var(--void-2)}
-.kit-page-art img{width:100%;height:auto;max-height:440px;object-fit:cover;object-position:center 46%}
+.kit-page-art{display:flex;justify-content:center;margin:34px 0 10px;overflow:hidden;border:1px solid rgba(214,222,209,.14);border-radius:22px;background:var(--void-2)}
+.kit-page-art img{display:block;width:auto;max-width:100%;height:auto;max-height:360px;object-fit:contain}
 .kit-page-meta{display:flex;flex-wrap:wrap;gap:8px 22px;margin:14px 0 0;color:var(--mute);font:500 10px/1.5 var(--mono);letter-spacing:.1em;text-transform:uppercase}
 .kit-note-box{margin:26px 0;padding:18px 20px;border:1px solid rgba(215,168,166,.24);border-left:3px solid var(--rose);border-radius:0 16px 16px 0;background:var(--rose-soft);color:var(--ink-soft);font-size:14px;line-height:1.72}
 .kit-note-box strong{color:var(--ink)}
@@ -226,4 +226,112 @@ body.algaephyte-page .science-footer{background:var(--void)}
   .kit-page-head h1{font-size:clamp(2.1rem,9vw,2.9rem)}
   .kit-table{font-size:13px}
   .kit-table th,.kit-table td{padding:10px}
+}
+
+/* ---------------------------------------------------------- guide shelf -- */
+body.kit-guide .art-shell.kit-library{max-width:1180px}
+body.kit-guide .art-shell.kit-library,body.kit-guide .art-shell.kit-game-page{padding-top:clamp(18px,2.6vw,32px)}
+.kit-library .kit-page-dek{max-width:64ch}
+.kit-intro-grid{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(280px,.65fr);gap:28px 6vw;align-items:start;margin-top:2px}
+.kit-aside{padding:22px 22px 20px;border:1px solid rgba(214,222,209,.16);border-radius:18px;background:linear-gradient(160deg,rgba(166,196,169,.07),transparent 62%),var(--paper)}
+.kit-aside h2{margin:0 0 10px;font-family:var(--serif);font-weight:400;font-size:1.3rem;line-height:1.2}
+.kit-aside p{margin:0 0 10px;color:var(--ink-soft);font-size:13.2px;line-height:1.68}
+.kit-aside p:last-child{margin-bottom:0}
+.kit-aside strong{color:var(--ink);font-weight:600}
+.kit-aside ul{display:grid;gap:7px;margin:14px 0 0;padding:0;list-style:none}
+.kit-aside a{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:44px;padding:9px 12px;border:1px solid rgba(214,222,209,.16);border-radius:11px;color:var(--ink);font-size:13px;line-height:1.45;text-decoration:none}
+.kit-aside a:hover{border-color:var(--leaf);color:var(--leaf)}
+.kit-shelf-tools{display:grid;gap:14px;margin:30px 0 26px}
+.kit-chips{display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0;list-style:none}
+.kit-chip{min-height:40px;padding:9px 15px;border:1px solid rgba(214,222,209,.2);border-radius:999px;background:transparent;color:var(--ink-soft);font:600 10px/1.4 var(--mono);letter-spacing:.1em;text-transform:uppercase;transition:border-color 200ms var(--ease),color 200ms var(--ease),background 200ms var(--ease)}
+.kit-chip:hover{border-color:var(--leaf);color:var(--leaf)}
+.kit-chip[aria-pressed="true"]{border-color:var(--leaf);background:var(--leaf);color:var(--void)}
+.kit-search{display:grid;gap:7px;max-width:420px;color:var(--mute);font:500 9.5px/1.5 var(--mono);letter-spacing:.14em;text-transform:uppercase}
+.kit-search input{width:100%;min-height:46px;padding:11px 15px;border:1px solid rgba(214,222,209,.2);border-radius:14px;background:var(--void-2);color:var(--ink);font:400 15px/1.5 var(--sans);letter-spacing:0;text-transform:none}
+.kit-search input:focus{border-color:var(--leaf)}
+.kit-result-count{margin:0;color:var(--mute);font:500 10px/1.5 var(--mono);letter-spacing:.12em;text-transform:uppercase}
+.kit-guide-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.kit-guide-card{display:flex;flex-direction:column;gap:10px;padding:24px;border:1px solid rgba(214,222,209,.14);border-radius:20px;background:linear-gradient(160deg,rgba(255,255,255,.03),transparent 58%),var(--paper);transition:transform 300ms var(--ease),border-color 300ms var(--ease)}
+.kit-guide-card:hover{transform:translateY(-3px);border-color:rgba(166,196,169,.42)}
+.kit-guide-card[hidden]{display:none}
+.kit-guide-mark{color:var(--rose);font:600 9.5px/1.4 var(--mono);letter-spacing:.14em;text-transform:uppercase}
+.kit-guide-card h3{margin:2px 0 0;font-family:var(--serif);font-weight:400;font-size:1.42rem;line-height:1.18;letter-spacing:-.015em}
+.kit-guide-card h3 a{text-decoration:none}
+.kit-guide-card h3 a:hover{color:var(--leaf)}
+.kit-guide-card p{margin:0;color:var(--ink-soft);font-size:13.8px;line-height:1.72}
+.kit-guide-meta{display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:auto;padding-top:16px;border-top:1px solid rgba(214,222,209,.1);color:var(--mute);font:500 9.5px/1.5 var(--mono);letter-spacing:.1em;text-transform:uppercase}
+.kit-empty{margin:24px 0 0;padding:18px 20px;border:1px dashed rgba(214,222,209,.24);border-radius:16px;color:var(--ink-soft);font-size:14px}
+.kit-empty[hidden]{display:none}
+.kit-empty button{min-height:40px;margin-left:8px;padding:6px 12px;border:1px solid var(--leaf);border-radius:999px;background:transparent;color:var(--leaf);font:600 10px/1.4 var(--mono);letter-spacing:.08em;text-transform:uppercase}
+
+/* ------------------------------------------------------------- play page -- */
+body.kit-guide .art-shell.kit-game-page{max-width:1040px}
+.kit-play-title{margin:8px 0 16px;font-family:var(--serif);font-weight:400;font-size:clamp(2.2rem,4.6vw,3.5rem);line-height:1.05;letter-spacing:-.03em}
+.kit-play-title em{color:var(--leaf);font-style:italic}
+.kit-play-intro{max-width:62ch;color:var(--ink-soft);font-size:15px;line-height:1.78}
+.kit-game-nav{display:flex;flex-wrap:wrap;gap:8px;margin:26px 0 8px;padding:0;list-style:none}
+.kit-game-nav a{display:inline-flex;align-items:center;min-height:40px;padding:8px 14px;border:1px solid rgba(214,222,209,.2);border-radius:999px;color:var(--ink);font:600 10px/1.4 var(--mono);letter-spacing:.09em;text-transform:uppercase}
+.kit-game-nav a:hover{border-color:var(--leaf);color:var(--leaf)}
+.game-panel{scroll-margin-top:96px;margin:26px 0 0;padding:clamp(20px,3vw,30px);border:1px solid rgba(214,222,209,.14);border-radius:22px;background:linear-gradient(170deg,rgba(255,255,255,.03),transparent 55%),var(--paper)}
+.game-panel h2{margin:0;font-family:var(--serif);font-weight:400;font-size:clamp(1.5rem,2.4vw,2rem);line-height:1.12;letter-spacing:-.02em}
+.game-panel h2 em{color:var(--leaf);font-style:italic}
+.game-head{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:10px 18px;margin-bottom:6px}
+.game-kicker{margin:0;color:var(--rose);font:600 9.5px/1.4 var(--mono);letter-spacing:.14em;text-transform:uppercase}
+.game-dek{margin:10px 0 18px;max-width:62ch;color:var(--ink-soft);font-size:14px;line-height:1.72}
+.game-status{min-height:1.4em;margin:14px 0 0;color:var(--leaf);font-size:13px;line-height:1.6}
+.game-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.game-btn{min-height:44px;padding:10px 18px;border:1px solid rgba(214,222,209,.24);border-radius:999px;background:transparent;color:var(--ink);font:600 10.5px/1.4 var(--mono);letter-spacing:.08em;text-transform:uppercase;transition:border-color 200ms var(--ease),color 200ms var(--ease),background 200ms var(--ease)}
+.game-btn:hover{border-color:var(--leaf);color:var(--leaf)}
+.game-btn.solid{border-color:var(--leaf);background:var(--leaf);color:var(--void)}
+.game-btn.solid:hover{background:transparent;color:var(--leaf)}
+.match-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:0;padding:0;list-style:none}
+.match-card{position:relative;display:grid;place-items:center;width:100%;aspect-ratio:1;padding:10px;border:1px solid rgba(214,222,209,.2);border-radius:14px;background:repeating-linear-gradient(135deg,rgba(166,196,169,.035) 0 9px,transparent 9px 18px),var(--void-2);color:var(--ink);font:500 12px/1.35 var(--sans);text-align:center;overflow-wrap:anywhere;transition:border-color 200ms var(--ease),background 200ms var(--ease)}
+.match-card:hover{border-color:rgba(166,196,169,.5)}
+.match-card::after{content:"?";color:rgba(166,196,169,.8);font:400 26px/1 var(--serif)}
+.match-card[aria-pressed="true"]::after,.match-card.matched::after{content:""}
+.match-card[aria-pressed="true"]{border-color:var(--leaf);background:var(--paper-2)}
+.match-card.matched{border-color:rgba(166,196,169,.55);background:rgba(166,196,169,.1);cursor:default}
+.match-text{display:block}
+.order-chosen{display:grid;gap:8px;margin:0 0 16px;padding:0;list-style:none;counter-reset:order}
+.order-chosen li{display:flex;align-items:center;gap:10px;padding:10px 12px;border:1px solid rgba(166,196,169,.24);border-radius:12px;background:rgba(166,196,169,.06);color:var(--ink);font-size:13.5px;line-height:1.5}
+.order-chosen li::before{counter-increment:order;content:counter(order);flex:0 0 22px;color:var(--leaf);font:600 10px/1.4 var(--mono)}
+.order-chosen .order-undo{margin-left:auto;min-height:32px;padding:4px 10px;border:1px solid rgba(214,222,209,.2);border-radius:999px;background:transparent;color:var(--mute);font:600 9px/1.3 var(--mono);letter-spacing:.08em;text-transform:uppercase}
+.order-chosen .order-undo:hover{border-color:var(--rose);color:var(--rose)}
+.order-pool{display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0;list-style:none}
+.order-pool .kit-chip{max-width:100%;white-space:normal;text-align:left;text-transform:none;letter-spacing:0;font:400 13px/1.5 var(--sans);min-height:44px}
+.quiz-set{display:grid;gap:16px;margin:0;padding:0;border:0}
+.quiz-q{margin:0;padding:18px 20px;border:1px solid rgba(214,222,209,.14);border-radius:16px;background:var(--void-2)}
+.quiz-q legend{padding:0 6px;color:var(--ink);font-size:14.5px;line-height:1.5}
+.quiz-q legend b{color:var(--mute);font:600 9.5px/1.4 var(--mono);letter-spacing:.12em;text-transform:uppercase;margin-right:8px}
+.quiz-opt{display:flex;align-items:flex-start;gap:10px;padding:7px 0;color:var(--ink-soft);font-size:13.8px;line-height:1.55}
+.quiz-opt input{margin-top:4px;accent-color:var(--leaf)}
+.quiz-feedback{margin:12px 0 0;padding-top:10px;border-top:1px solid rgba(214,222,209,.12);color:var(--ink-soft);font-size:13px;line-height:1.65}
+.quiz-feedback[hidden]{display:none}
+.quiz-feedback strong{color:var(--ink)}
+.quiz-q[data-state="right"]{border-color:rgba(166,196,169,.5)}
+.quiz-q[data-state="wrong"]{border-color:rgba(215,168,166,.5)}
+.quiz-score{margin:16px 0 0;color:var(--ink);font-size:15px;line-height:1.6}
+.kit-play-note{margin:26px 0 0;color:var(--mute);font-size:12.5px;line-height:1.7}
+.kit-play-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.kit-play-band{background:linear-gradient(180deg,rgba(215,168,166,.06),transparent 52%)}
+.kit-guide-grid + .kit-actions{margin-top:26px}
+.kit-game{display:flex;flex-direction:column;gap:8px;padding:24px;border:1px solid rgba(214,222,209,.14);border-radius:20px;background:var(--paper);transition:transform 300ms var(--ease),border-color 300ms var(--ease)}
+.kit-game:hover{transform:translateY(-3px);border-color:rgba(166,196,169,.42)}
+.kit-game b{color:var(--rose);font:600 9.5px/1.4 var(--mono);letter-spacing:.14em;text-transform:uppercase}
+.kit-game h3{margin:2px 0 0;font-family:var(--serif);font-weight:400;font-size:1.35rem;line-height:1.2}
+.kit-game p{margin:0;color:var(--ink-soft);font-size:13.5px;line-height:1.7}
+.kit-game span{margin-top:auto;padding-top:14px;color:var(--leaf);font:600 9.5px/1.4 var(--mono);letter-spacing:.1em;text-transform:uppercase}
+
+@media(max-width:1024px){
+  .kit-guide-grid,.kit-play-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:900px){
+  .match-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .kit-intro-grid{grid-template-columns:1fr;align-items:start}
+}
+@media(max-width:640px){
+  .kit-guide-grid,.kit-play-grid{grid-template-columns:1fr}
+  .match-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .game-panel{padding:18px 16px}
+  .kit-game-nav a{min-height:44px}
 }
