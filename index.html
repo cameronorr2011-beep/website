@@ -4,14 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="referrer" content="strict-origin-when-cross-origin">
-<title>Orr Biologicals — Microalgae Cultivation Research &amp; Open Tools</title>
-<meta name="description" content="How microalgae cultivation works: light, carbon, nutrients and mixing, the sensors that measure them, and where the models stop. Algaephyte is one of the open tools.">
-<meta name="theme-color" content="#070a08">
+<title>Orr Biologicals — Sourdough, Kombucha &amp; Spirulina at Home</title>
+<meta name="description" content="A home cultivation notebook: sourdough starters, kombucha and spirulina, plus the open research instruments we are building. Guides, notes and honest limits.">
+<meta name="theme-color" content="#0f1512">
 <link rel="canonical" href="https://orrbiologicals.com/">
 <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
-<meta property="og:title" content="Orr Biologicals — Microalgae Cultivation Research &amp; Open Tools">
-<meta property="og:description" content="Microalgae cultivation, explained with the evidence attached: inputs, sensors, models and stated limits.">
+<meta property="og:title" content="Orr Biologicals — Sourdough, Kombucha &amp; Spirulina at Home">
+<meta property="og:description" content="Three quiet cultures, one counter: sourdough, kombucha and spirulina. Plus the open instruments we are building for the next step.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://orrbiologicals.com/">
 <meta property="og:image" content="https://orrbiologicals.com/assets/og.png">
@@ -20,208 +20,251 @@
 <meta property="og:site_name" content="Orr Biologicals">
 <meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Orr Biologicals — Microalgae Cultivation Research &amp; Open Tools">
-<meta name="twitter:description" content="Microalgae cultivation, explained with the evidence attached: inputs, sensors, models and stated limits.">
+<meta name="twitter:title" content="Orr Biologicals — Sourdough, Kombucha &amp; Spirulina at Home">
+<meta name="twitter:description" content="A home cultivation notebook: three quiet cultures, practical guides, and the open research instruments we are building.">
 <meta name="twitter:image" content="https://orrbiologicals.com/assets/og.png">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[
-{"@type":"Organization","@id":"https://orrbiologicals.com/#org","name":"Orr Biologicals","url":"https://orrbiologicals.com/","email":"service@orrbiologicals.com","logo":"https://orrbiologicals.com/assets/og.png","description":"Orr Biologicals publishes open research on microalgae cultivation: how light, carbon, nutrients and mixing interact, what sensors measure, and where models stop being evidence. Research concepts in development; no validated commercial deployment claimed.","knowsAbout":["Microalgae cultivation","Photobioreactors","Algae culture monitoring","Digital twins for biological systems"]},
+{"@type":"Organization","@id":"https://orrbiologicals.com/#org","name":"Orr Biologicals","url":"https://orrbiologicals.com/","email":"service@orrbiologicals.com","logo":"https://orrbiologicals.com/assets/og.png","description":"Orr Biologicals is a home cultivation notebook and open research project: sourdough starters, kombucha and spirulina cultivation explained from the kitchen up, alongside proposed cultivation and single-cell instruments. Educational notes only; no validated hardware or commercial deployment is claimed.","knowsAbout":["Sourdough starter cultivation","Kombucha fermentation","Spirulina and microalgae cultivation","Photobioreactors","Home fermentation"]},
 {"@type":"WebSite","@id":"https://orrbiologicals.com/#site","url":"https://orrbiologicals.com/","name":"Orr Biologicals","publisher":{"@id":"https://orrbiologicals.com/#org"}},
 {"@type":"CreativeWork","@id":"https://orrbiologicals.com/#algaephyte","name":"Algaephyte research concept","description":"A proposed microalgae cultivation and monitoring system combining sensors, physics-informed growth models, camera checks, and independent actuator limits. In development; no validated performance or purchase availability is claimed.","creator":{"@id":"https://orrbiologicals.com/#org"},"url":"https://orrbiologicals.com/algaephyte/"},
 {"@type":"CreativeWork","@id":"https://orrbiologicals.com/#cyanoflow","name":"Cyanoflow research concept","description":"A proposed microfluidic and single-cell observation system for isolating, imaging, and investigating microalgae and cellular variation. In development; no validated hardware performance is claimed.","creator":{"@id":"https://orrbiologicals.com/#org"},"url":"https://orrbiologicals.com/cyanoflow"}
 ]}
 </script>
-<link rel="stylesheet" href="/css/global.css?v=20261108">
-<link rel="stylesheet" href="/css/header.css?v=20261108">
-<link rel="stylesheet" href="/css/orr-home.css?v=20261108">
-<link rel="stylesheet" href="/css/animations.css?v=20261108">
-<link rel="stylesheet" href="/css/site-redesign.css?v=20261108">
-<link rel="stylesheet" href="/css/biological-cinema.css?v=20261108">
-<link rel="stylesheet" href="/css/home-rebrand.css?v=20261108">
+<link rel="stylesheet" href="/css/global.css?v=20261115">
+<link rel="stylesheet" href="/css/header.css?v=20261115">
+<link rel="stylesheet" href="/css/orr-home.css?v=20261115">
+<link rel="stylesheet" href="/css/animations.css?v=20261115">
+<link rel="stylesheet" href="/css/site-redesign.css?v=20261115">
+<link rel="stylesheet" href="/css/biological-cinema.css?v=20261115">
+<link rel="stylesheet" href="/css/home-rebrand.css?v=20261115">
+<link rel="stylesheet" href="/css/kitchen.css?v=20261115">
 </head>
-<body class="home-rebrand biological-cinema">
+<body class="home-rebrand kitchen">
 <a class="skip" href="#main">Skip to content</a>
 <header class="nav" id="nav">
 <div class="nav-in"><a class="mark" href="/" aria-label="Orr Biologicals home">
 <svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="14" fill="none" stroke="currentColor"/><path d="M9 23c6-3 0-14 7-14s1 11 7 14M8 15c4-5 12-5 16 0" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
-<span><b>Orr Biologicals</b><small>Open biological intelligence</small></span></a>
-<nav class="nav-links" aria-label="Primary"><a href="/microalgae-cultivation/">Cultivation</a><a href="/algaephyte/">Algaephyte</a><a href="/algae/">Algae</a><a href="/research/">Research</a><a href="/blog/">Journal</a><a href="/literature/">Literature</a><a href="/developers/">Developers</a><a href="/#about">About</a><a class="btn-white" href="/#deploy">Contact</a></nav>
+<span><b>Orr Biologicals</b><small>Home cultures · open research</small></span></a>
+<nav class="nav-links" aria-label="Primary"><a href="/sourdough/">Sourdough</a><a href="/kombucha/">Kombucha</a><a href="/microalgae-cultivation/">Spirulina</a><a href="/#advanced">Advanced tech</a><a href="/blog/">Journal</a><a href="/algae/">Algae</a><a href="/research/">Research</a><a class="btn-white" href="/#deploy">Contact</a></nav>
 <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="mobileMenu">Menu</button></div></header>
 <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile primary" hidden>
-<a href="/microalgae-cultivation/">Cultivation / light, carbon &amp; monitoring</a><a href="/algae/">Algae / cultures &amp; cells</a><a href="/algaephyte/">Algaephyte / cultivation tools</a><a href="/cyanoflow">Cyanoflow / single cells</a><a href="/research/">Our research</a><a href="/blog/">Journal / ideas &amp; notes</a><a href="/literature/">Literature search / DOI lookup</a><a href="/developers/">Developers / API notes</a><a href="/#about">About Orr Biologicals</a><a href="/#deploy">Contact the project</a>
+<a href="/sourdough/">Sourdough / starters &amp; feeding</a><a href="/kombucha/">Kombucha / tea, SCOBY &amp; timing</a><a href="/microalgae-cultivation/">Spirulina / light, water &amp; patience</a><a href="/#advanced">Advanced technologies / Algaephyte &amp; Cyanoflow</a><a href="/blog/">Journal / notes from the counter</a><a href="/algae/">Algae / cultures &amp; cells</a><a href="/research/">Our research approach</a><a href="/literature/">Literature search / DOI lookup</a><a href="/developers/">Developers / API notes</a><a href="/#about">About Orr Biologicals</a><a href="/#deploy">Contact the project</a>
 </nav><main id="main">
-  <section class="hr-hero" id="top" aria-labelledby="home-title">
+  <section class="kit-hero" id="top" aria-labelledby="home-title">
     <span id="reactor-study" class="hr-anchor" aria-hidden="true"></span>
-    <div class="hr-wrap">
-      <div class="hr-hero-grid">
-        <div class="hr-hero-copy">
-          <p class="hr-kicker">Orr Biologicals / Microalgae cultivation</p>
-          <h1 id="home-title">Microalgae cultivation,<br> <em>measured honestly.</em></h1>
-          <p class="hr-lede">Light, carbon, nutrients, mixing and gas exchange decide whether a culture grows. We explain how those inputs interact, what a sensor can actually tell you, and where a model stops being evidence.</p>
-          <div class="hr-actions">
-            <a class="hr-button" href="/microalgae-cultivation/">Start with cultivation <span aria-hidden="true">↗</span></a>
-            <a class="hr-link" href="#systems">See the research tools <span aria-hidden="true">↓</span></a>
+    <div class="kit-wrap">
+      <div class="kit-hero-grid">
+        <div class="kit-hero-copy">
+          <p class="kit-kicker">Orr Biologicals / <i>home cultures</i> and open research</p>
+          <h1 class="kit-h1" id="home-title">A kitchen for<br> <em>living things.</em></h1>
+          <p class="kit-lede">A sourdough starter, a jar of kombucha and a bottle of spirulina are the same quiet craft: give a living culture what it needs, watch closely, and write down what actually happened. This is where those notes live, along with the instruments we are building next.</p>
+          <div class="kit-actions">
+            <a class="kit-btn" href="/sourdough/">Start a sourdough starter <span aria-hidden="true">↗</span></a>
+            <a class="kit-link" href="#advanced">See the advanced work <span aria-hidden="true">↓</span></a>
           </div>
-          <dl class="hr-hero-ledger">
-            <div><dt>Field</dt><dd>Microalgae cultivation</dd></div>
-            <div><dt>Tools</dt><dd>Algaephyte · Cyanoflow</dd></div>
-            <div><dt>Standard</dt><dd>Evidence over assertion</dd></div>
+          <dl class="kit-ledger">
+            <div><dt>On the counter</dt><dd>Sourdough · kombucha · spirulina</dd></div>
+            <div><dt>In the workshop</dt><dd>Algaephyte · Cyanoflow</dd></div>
+            <div><dt>House rule</dt><dd>Write down what actually happened</dd></div>
           </dl>
         </div>
-        <figure class="hr-specimen">
-          <div class="hr-specimen-top"><span>Culture / live sample</span><span>Specimen 01</span></div>
-          <div class="hr-specimen-frame">
-            <img src="/assets/cyano/culture.jpg" width="1536" height="1024" alt="Illustrative algae cultures in glass vessels for the Algaephyte research concept.">
-            <span class="hr-specimen-tag">Culture / vessels</span>
-          </div>
-          <figcaption>
-            <p>Algae cultures in glass vessels, watched as a living system rather than averaged into a single number.</p>
-            <p class="hr-fine">Illustrative scene of the Algaephyte research concept · not a deployed instrument.</p>
-          </figcaption>
+        <figure class="kit-shelf">
+          <img src="/assets/kitchen/shelf.svg" width="1600" height="1120" alt="Illustration of a cloth-covered sourdough starter, a jar of kombucha and a bottle of spirulina on a dim kitchen shelf.">
+          <figcaption>Three cultures, one counter · illustration</figcaption>
         </figure>
       </div>
-      <div class="hr-hero-foot"><span>Scroll to trace the work</span><span>Cultivation · cells · instruments</span></div>
     </div>
   </section>
 
-  <section class="hr-section" id="systems" aria-labelledby="systems-title">
-    <div class="hr-wrap">
-      <div class="hr-section-head">
-        <div><p class="hr-kicker">01 / What we build</p><h2 class="hr-display" id="systems-title">Two scales.<br><em>One discipline.</em></h2></div>
-        <p class="hr-lede"><a href="/microalgae-cultivation/">Microalgae cultivation</a> is the starting point: light, carbon, nutrients, mixing and the measurements that show what changed. Algaephyte works at culture scale; Cyanoflow examines individual cells.</p>
+  <section class="kit-section" id="cultures" aria-labelledby="cultures-title">
+    <span id="field-station" class="hr-anchor" aria-hidden="true"></span>
+    <div class="kit-wrap">
+      <div class="kit-head">
+        <div>
+          <p class="kit-eyebrow">01 / What is on the counter</p>
+          <h2 class="kit-h2" id="cultures-title">Three cultures,<br> <em>one habit.</em></h2>
+        </div>
+        <p>Each one is a small ecosystem you feed and observe. None of them needs a laboratory. All of them reward the same things: clean vessels, steady conditions and a notebook beside the jar. <a href="/research/">Our research approach</a> explains how we separate an observation from a guess.</p>
       </div>
-      <div class="hr-domain-list" id="products">
-        <a class="hr-domain" href="/algaephyte/">
-          <span class="hr-domain-index">01</span>
-          <span class="hr-domain-visual"><img src="/assets/cyano/culture.jpg" width="1536" height="1024" loading="lazy" alt="Illustrative algae cultures in glass vessels used for the Algaephyte research concept."></span>
-          <span class="hr-domain-title"><h3>Algaephyte</h3><small>Microalgae cultivation / sensing + models</small></span>
-          <p class="hr-domain-copy">A proposed cultivation instrument that brings sensors, cameras and growth models into one clearer view of a changing culture. Illustrative scene: a proposed instrument, not a deployed instrument.</p>
-          <span class="hr-domain-meta"><span class="hr-state">Research concept</span><small>In development</small></span>
-          <span class="hr-domain-arrow" aria-hidden="true">↗</span>
+      <div class="kit-cards">
+        <a class="kit-card rose" href="/sourdough/">
+          <span class="kit-card-art"><img src="/assets/kitchen/starter.svg" width="900" height="1200" loading="lazy" alt="Illustration of a sourdough starter in a cloth-covered glass jar."></span>
+          <span class="kit-card-body">
+            <span class="kit-tag">Wild yeast</span>
+            <h3>Sourdough starter</h3>
+            <p>Flour and water, colonised by wild yeast and lactic acid bacteria. Feed it, watch the rise, and learn what a healthy jar looks and smells like.</p>
+            <span class="kit-card-foot"><b>Start &amp; keep a starter</b><span aria-hidden="true">↗</span></span>
+          </span>
         </a>
-        <a class="hr-domain" href="/cyanoflow">
-          <span class="hr-domain-index">02</span>
-          <span class="hr-domain-visual"><img src="/assets/cyano/chip.jpg" width="1536" height="1024" loading="lazy" alt="Illustrative microfluidic chip with small liquid channels for the Cyanoflow research concept."></span>
-          <span class="hr-domain-title"><h3>Cyanoflow</h3><small>Single cells / microfluidics</small></span>
-          <p class="hr-domain-copy">A proposed way to separate, photograph and follow individual cells so their differences are not lost in an average. Research design goals, not validated hardware performance.</p>
-          <span class="hr-domain-meta"><span class="hr-state">Research concept</span><small>In development</small></span>
-          <span class="hr-domain-arrow" aria-hidden="true">↗</span>
+        <a class="kit-card rose" href="/kombucha/">
+          <span class="kit-card-art"><img src="/assets/kitchen/kombucha.svg" width="900" height="1200" loading="lazy" alt="Illustration of amber kombucha with a pale pellicle floating in a wide glass jar."></span>
+          <span class="kit-card-body">
+            <span class="kit-tag">Symbiotic culture</span>
+            <h3>Kombucha</h3>
+            <p>Sweet tea, a SCOBY and time. The pellicle gets the attention, but the liquid underneath is the culture doing the work.</p>
+            <span class="kit-card-foot"><b>Brew &amp; bottle</b><span aria-hidden="true">↗</span></span>
+          </span>
+        </a>
+        <a class="kit-card" href="/microalgae-cultivation/">
+          <span class="kit-card-art"><img src="/assets/kitchen/spirulina.svg" width="900" height="1200" loading="lazy" alt="Illustration of deep green spirulina culture in a tall glass bottle."></span>
+          <span class="kit-card-body">
+            <span class="kit-tag">Cyanobacteria</span>
+            <h3>Spirulina</h3>
+            <p>An alkaline water culture that wants light, gentle mixing and patience. A green jar is a start, not proof of identity or food safety.</p>
+            <span class="kit-card-foot"><b>Cultivation basics</b><span aria-hidden="true">↗</span></span>
+          </span>
         </a>
       </div>
     </div>
   </section>
 
-  <section class="hr-section hr-proof" id="field-station" aria-labelledby="proof-title">
-    <span id="thesis" class="hr-anchor" aria-hidden="true"></span>
+  <section class="kit-section kit-tint" id="method" aria-labelledby="method-title">
     <span id="about" class="hr-anchor" aria-hidden="true"></span>
-    <div class="hr-wrap">
-      <div class="hr-proof-grid">
+    <span id="thesis" class="hr-anchor" aria-hidden="true"></span>
+    <div class="kit-wrap">
+      <div class="kit-head">
         <div>
-          <p class="hr-kicker">02 / The standard</p>
-          <h2 class="hr-display" id="proof-title">The unit of trust is a source,<br><em>not a screenshot.</em></h2>
-          <blockquote class="hr-proof-quote">A claim without a record is only a rendering.</blockquote>
+          <p class="kit-eyebrow">02 / How we keep them</p>
+          <h2 class="kit-h2" id="method-title">Nothing here needs<br> <em>a lab coat.</em></h2>
         </div>
-        <div class="hr-proof-copy">
-          <p>Orr Biologicals is built around provenance. Every record carries its source, version and limits alongside the result, so what was measured stays separate from what was computed.</p>
-          <p>We keep measured observations, curated metadata, computational models and predictions in separate evidence classes. These are research concepts in development; when a value is missing, the interface says <strong>DATA UNAVAILABLE</strong> rather than estimating a number and presenting it as biology.</p>
-          <a class="hr-link" href="/research/">Read the research approach <span aria-hidden="true">↗</span></a>
-        </div>
+        <p>Home fermentation is ordinary, forgiving and occasionally wrong. These three habits make it easier to tell the difference between a culture that is working and one that has quietly gone off.</p>
+      </div>
+      <div class="kit-steps">
+        <div class="kit-step"><span>01</span><h3>Clean, then dry.</h3><p>Wash jars, lids and spoons in hot soapy water and let them dry. You do not need a sterile field; a clean, dry vessel is enough for a home culture.</p></div>
+        <div class="kit-step"><span>02</span><h3>Keep conditions steady.</h3><p>Most failures are a change in temperature, feeding or airflow. Keep the jar out of direct sun, away from draughts, and give it a predictable spot.</p></div>
+        <div class="kit-step"><span>03</span><h3>Write it down.</h3><p>Date, flour or tea, temperature, what you changed, what you saw. A line a day turns a vague feeling into something you can actually compare.</p></div>
       </div>
     </div>
   </section>
 
-  <section class="hr-section" id="method" aria-labelledby="method-title">
-    <div class="hr-wrap">
-      <div class="hr-section-head">
-        <div><p class="hr-kicker">03 / How we work</p><h2 class="hr-display" id="method-title">Research is a<br><em>chain of custody.</em></h2></div>
-        <p class="hr-lede">The platform is a record of what was measured, what was computed and what remains unknown. That distinction is part of the product, not a disclaimer added at the end.</p>
+  <section class="kit-section kit-advanced" id="systems" aria-labelledby="advanced-title">
+    <span id="products" class="hr-anchor" aria-hidden="true"></span>
+    <span id="advanced" class="hr-anchor" aria-hidden="true"></span>
+    <div class="kit-wrap">
+      <div class="kit-head">
+        <div>
+          <p class="kit-eyebrow">03 / Advanced technologies</p>
+          <h2 class="kit-h2" id="advanced-title">Our inventions,<br> <em>kept separate.</em></h2>
+        </div>
+        <p>The kitchen notes are for anyone. This cabinet holds the two instruments we are inventing: one for growing cultures at scale, one for looking at single cells. Both are research concepts in development, not products you can buy.</p>
       </div>
-      <div class="hr-method-list">
-        <div class="hr-method-row"><span>01</span><h3>Start with the source.</h3><p>Dataset, version, query, table and retrieval time precede interpretation. A root id is not portable across versions without a mapping.</p></div>
-        <div class="hr-method-row"><span>02</span><h3>Separate observation from inference.</h3><p>Measured observations come from instrumented pipelines. Curated labels and model predictions retain their own evidence state.</p></div>
-        <div class="hr-method-row"><span>03</span><h3>Publish the limit with the result.</h3><p>An automated detector is not a complete manual curation. A model is not a measurement. A page that hides either is not finished.</p></div>
+      <div class="kit-adv">
+        <div class="kit-adv-row">
+          <span class="kit-adv-index">A–01</span>
+          <img src="/assets/cyano/culture.jpg" width="1536" height="1024" loading="lazy" alt="Illustrative algae cultures in glass vessels used for the Algaephyte research concept.">
+          <div class="kit-adv-copy">
+            <h3><a href="/algaephyte/">Algaephyte</a></h3>
+            <p>Sensors, cameras and a growth model brought into one clearer view of a changing culture. Illustrative scene: a proposed instrument and its readings, not a deployed instrument.</p>
+          </div>
+          <span class="kit-state">Research concept</span>
+        </div>
+        <div class="kit-adv-row">
+          <span class="kit-adv-index">A–02</span>
+          <img src="/assets/cyano/chip.jpg" width="1536" height="1024" loading="lazy" alt="Illustrative microfluidic chip with small liquid channels for the Cyanoflow research concept.">
+          <div class="kit-adv-copy">
+            <h3><a href="/cyanoflow">Cyanoflow</a></h3>
+            <p>A proposed way to separate, photograph and follow individual cells so their differences are not averaged away. Design goals and illustrative imagery, not validated hardware performance.</p>
+          </div>
+          <span class="kit-state">Research concept</span>
+        </div>
       </div>
+      <p class="kit-adv-note">Research concepts in development. No validated hardware performance and no commercial deployment is claimed. The <a href="/research/">research approach</a> defines how observations, models and proposals are labelled; <a href="/developers/">developer notes</a> describe what exists today.</p>
     </div>
   </section>
 
-  <section class="hr-section" id="journal" aria-labelledby="journal-title">
-    <div class="hr-wrap">
-      <div class="hr-section-head">
-        <div><p class="hr-kicker">04 / The Journal</p><h2 class="hr-display" id="journal-title">Notes from<br><em>the work.</em></h2></div>
-        <p class="hr-lede">Long-form notes on cultivation, imaging, single cells and the engineering choices behind the tools. Research notes are not peer-reviewed publications.</p>
+  <section class="kit-section" id="journal" aria-labelledby="journal-title">
+    <div class="kit-wrap">
+      <div class="kit-head">
+        <div>
+          <p class="kit-eyebrow">04 / From the notebook</p>
+          <h2 class="kit-h2" id="journal-title">Notes from<br> <em>the counter.</em></h2>
+        </div>
+        <p>Longer notes on cultivation, contamination, light and the small decisions that change a jar. The journal is a working record, not a peer-reviewed publication.</p>
       </div>
-      <div class="hr-journal-grid">
-        <a class="hr-feature" href="/blog/digital-twins-biological-cultivation">
-          <span class="hr-feature-top"><span>Modeling a living system</span><span>Research note</span></span>
-          <h3>Can a model help us understand a culture?</h3>
-          <p>What a digital version of a growing system can tell us, and where real observations still matter most.</p>
-          <span class="hr-link">Read the note <span aria-hidden="true">↗</span></span>
+      <div class="kit-notes">
+        <a class="kit-note" href="/blog/how-to-start-home-spirulina-culture">
+          <small>Cultivation / starter</small>
+          <h3>What a spirulina culture actually needs</h3>
+          <p>Water chemistry, light, warmth and a clean start — before any equipment.</p>
+          <span>Read the note</span>
         </a>
-        <div class="hr-journal-list">
-          <a href="/blog/single-cell-microalgae-microfluidics"><span>01</span><div><strong>A closer look at individual cells</strong><small>How tiny liquid channels help researchers study cells separately.</small></div><b aria-hidden="true">↗</b></a>
-          <a href="/blog/vision-contamination-detection"><span>02</span><div><strong>What can a camera really tell us?</strong><small>The promise, and the limits, of looking for change in images.</small></div><b aria-hidden="true">↗</b></a>
-          <a href="/blog/digital-twin-droop-steele-model"><span>03</span><div><strong>What shapes the way algae grow?</strong><small>Nutrients, light and the assumptions inside a growth model.</small></div><b aria-hidden="true">↗</b></a>
-          <a href="/blog/"><span>04</span><div><strong>Browse the Journal</strong><small>All notes, organized by research area.</small></div><b aria-hidden="true">↗</b></a>
-        </div>
+        <a class="kit-note" href="/blog/troubleshooting-contamination-crashes">
+          <small>Cultivation / failure</small>
+          <h3>When a culture goes wrong</h3>
+          <p>How to read the signs, what to discard, and why a smell test is not a diagnosis.</p>
+          <span>Read the note</span>
+        </a>
+        <a class="kit-note" href="/blog/reading-your-culture">
+          <small>Observation</small>
+          <h3>Learning to read a jar</h3>
+          <p>Colour, bubbles, smell and the limits of judging a culture by appearance.</p>
+          <span>Read the note</span>
+        </a>
+        <a class="kit-note" href="/blog/">
+          <small>The journal</small>
+          <h3>Every note, in one place</h3>
+          <p>Fermentation, algae cultivation, measurement and the tools behind them.</p>
+          <span>Browse the journal</span>
+        </a>
       </div>
     </div>
   </section>
 
-  <section class="hr-section" id="developers" aria-labelledby="open-title">
-    <div class="hr-wrap">
-      <div class="hr-open-grid">
+  <section class="kit-section" id="open" aria-labelledby="open-title">
+    <div class="kit-wrap">
+      <div class="kit-open">
         <div>
-          <p class="hr-kicker">05 / Open by design</p>
-          <h2 class="hr-display" id="open-title">Built in the open.<br><em>Reviewed in public.</em></h2>
-          <p class="hr-lede">Source code, schemas, provenance and limitations belong with the result. The literature search runs live in the browser today; anything beyond it is an engineering commitment, not an endpoint we pretend exists.</p>
-          <div class="hr-open-actions"><a class="hr-button hr-button-ghost" href="/developers/">Developer notes <span aria-hidden="true">↗</span></a><a class="hr-link" href="/research/">Research approach <span aria-hidden="true">↗</span></a></div>
+          <p class="kit-eyebrow">05 / Open by default</p>
+          <h2 class="kit-h2" id="open-title">Readable,<br> <em>and reachable.</em></h2>
+          <p>The site is built to be read by as many people as possible: real headings, keyboard focus that is visible, text that does not depend on colour alone, motion that stops when you ask it to. The site code is MIT-licensed.</p>
+          <p>If a page is hard to use with your setup, that is a bug. Write to us and we will fix it.</p>
+          <div class="kit-actions"><a class="kit-btn rose" href="/developers/">Developer notes <span aria-hidden="true">↗</span></a><a class="kit-link" href="/research/">Research approach <span aria-hidden="true">↗</span></a></div>
         </div>
         <div>
-          <pre class="hr-code"><span>GET</span> https://api.crossref.org/works/{doi}
-<span>200</span> open metadata · no key
-<span>source</span> Crossref + OpenAlex
-<span>state</span> live in the browser</pre>
-          <ul class="hr-open-list">
-            <li>Provenance before prose</li>
-            <li>Versioned dataset identity</li>
-            <li>Unavailable is a valid answer</li>
-            <li>Code and limits together</li>
+          <ul class="kit-list">
+            <li><b>01</b><span><strong>Keyboard first.</strong> Every control is reachable, and focus is never hidden.</span></li>
+            <li><b>02</b><span><strong>Contrast checked.</strong> Body text and controls are tested against the forest background.</span></li>
+            <li><b>03</b><span><strong>Motion optional.</strong> Animations stop under reduced-motion preferences.</span></li>
+            <li><b>04</b><span><strong>Honest alt text.</strong> Illustrations are labelled as illustrations, not photographs.</span></li>
+            <li><b>05</b><span><strong>MIT licensed.</strong> Site code, styles and build scripts are yours to read and reuse.</span></li>
           </ul>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="hr-section" id="support" aria-labelledby="support-title">
-    <div class="hr-wrap">
-      <div class="hr-support">
-        <p><strong id="support-title">Support independent biological research.</strong><br>Your voluntary contribution supports computational biology tools, scientific visualization and open research resources.</p>
-        <div class="hr-support-actions"><code id="homeLightning">clumsyparsnip913@walletofsatoshi.com</code><button type="button" data-copy="#homeLightning" data-status="#homeCopyStatus">Copy Lightning address</button><p role="status" aria-live="polite" id="homeCopyStatus"></p><a class="hr-link" href="/support/">About contributions ↗</a></div>
+  <section class="kit-section" id="support" aria-labelledby="support-title">
+    <div class="kit-wrap">
+      <div class="kit-support">
+        <p><strong id="support-title">Keep the notes free.</strong>Contributions are voluntary and support hosting, source books and the time to test recipes and correct mistakes. Nothing here is behind a paywall.</p>
+        <div class="kit-support-actions"><code id="homeLightning">clumsyparsnip913@walletofsatoshi.com</code><button class="kit-copy" type="button" data-copy="#homeLightning" data-status="#homeCopyStatus">Copy Lightning address</button><a class="kit-link" href="/support/">About contributions ↗</a><p role="status" aria-live="polite" id="homeCopyStatus"></p></div>
       </div>
     </div>
   </section>
 
-  <section class="hr-section" id="deploy" aria-labelledby="contact-title">
-    <div class="hr-wrap">
-      <div class="hr-contact">
-        <div><p class="hr-kicker">06 / Correspondence</p><h2 class="hr-display" id="contact-title">What are you<br><em>curious about?</em></h2><p>Have a research question, a dataset to compare or a different way of seeing things? This form opens an email draft; you decide when to send it.</p></div>
-        <form class="hr-form" id="deployForm">
-          <label for="fName">Your name or organization<input id="fName" type="text" required autocomplete="organization" placeholder="Who should we say hello to?"></label>
+  <section class="kit-section" id="deploy" aria-labelledby="contact-title">
+    <div class="kit-wrap">
+      <div class="kit-contact">
+        <div><p class="kit-eyebrow">06 / Correspondence</p><h2 class="kit-h2" id="contact-title">What are you<br> <em>making?</em></h2><p>A stubborn starter, a kombucha question, a correction to a note, or a research idea. This form opens an email draft; you decide when to send it.</p></div>
+        <form class="kit-form" id="deployForm">
+          <label for="fName">Your name or kitchen<input id="fName" type="text" required autocomplete="name" placeholder="Who should we say hello to?"></label>
           <label for="fPlace">Where you’re based<input id="fPlace" type="text" required autocomplete="country-name" placeholder="City, country"></label>
-          <label for="fGrow">What would you like to explore?<textarea id="fGrow" required placeholder="Tell us a little about your question."></textarea></label>
-          <input id="fHp" type="text" tabindex="-1" autocomplete="off" aria-hidden="true" class="hr-honeypot">
-          <button class="hr-button" type="submit">Start a conversation <span aria-hidden="true">↗</span></button>
-          <p class="hr-form-status" id="formStatus" role="status" aria-live="polite"></p>
+          <label for="fGrow">What are you curious about?<textarea id="fGrow" required placeholder="Tell us a little about your culture or question."></textarea></label>
+          <input id="fHp" type="text" tabindex="-1" autocomplete="off" aria-hidden="true" class="kit-honeypot">
+          <button class="kit-btn" type="submit">Start a conversation <span aria-hidden="true">↗</span></button>
+          <p class="kit-form-status" id="formStatus" role="status" aria-live="polite"></p>
         </form>
       </div>
     </div>
   </section>
 </main>
-<script defer src="/js/support.js?v=20261108"></script><footer class="science-footer"><div class="wrap footer-layout">
-<div><a class="footer-brand" href="/">Orr Biologicals</a><p>Microalgae cultivation, measured honestly.<br>Open research on cultivation, sensing and single cells.</p><small>Research concepts in development.<br>No validated hardware or commercial deployment claimed.</small></div>
-<nav aria-label="Footer research"><h2>Research</h2><a href="/microalgae-cultivation/">Microalgae cultivation / conditions &amp; monitoring</a><a href="/algae/">Algae / cultures &amp; single cells</a><a href="/algaephyte/">Algaephyte / cultivation</a><a href="/cyanoflow">Cyanoflow / microfluidics</a><a href="/research/">Research approach</a><a href="/blog/">Research Journal</a><a href="/literature/">Literature search / DOI lookup</a><a href="/developers/">Developers / API notes</a></nav>
-<nav aria-label="Footer resources"><h2>Platforms &amp; records</h2><a href="/Simulation/">Algal Digital Lab</a><a href="/game/">Cyanoflow Field Lab</a><a href="/algae-growth/">Algae Growth / Field Guide</a><a href="/downloads/">App Downloads</a><a href="/support/">Support research / Lightning</a><a href="/#about">About</a><a href="/glossary">Biology, explained</a><a href="/#deploy">Project correspondence</a></nav>
-<div><h2>Say hello</h2><a href="mailto:service@orrbiologicals.com">service@orrbiologicals.com</a><p><a href="https://www.youtube.com/@OrrBiologicals" target="_blank" rel="noreferrer">Research updates on YouTube ↗</a></p><small>Open research notes / MIT-licensed site code</small></div>
-</div><div class="wrap footer-base"><span>© 2026 Orr Biologicals / Open biological intelligence</span><nav aria-label="Legal"><a href="/privacy">Privacy</a><a href="/terms">Terms</a><a href="/disclaimer">Scientific disclaimer</a><a href="/LICENSE" download>MIT License</a></nav></div></footer><script defer src="/js/animations.js?v=20261108"></script>
-<script defer src="/js/navigation.js?v=20261108"></script>
+<script defer src="/js/support.js?v=20261115"></script><footer class="science-footer"><div class="wrap footer-layout">
+<div><a class="footer-brand" href="/">Orr Biologicals</a><p>Sourdough, kombucha and spirulina.<br>Home cultivation, measured honestly.</p><small>Educational notes, not food-safety certification.<br>Research concepts in development; no validated hardware or commercial deployment claimed.</small></div>
+<nav aria-label="Footer kitchen"><h2>The kitchen</h2><a href="/sourdough/">Sourdough starter / start &amp; keep</a><a href="/kombucha/">Kombucha / brew &amp; bottle</a><a href="/microalgae-cultivation/">Spirulina &amp; microalgae</a><a href="/blog/">Journal / notes from the counter</a><a href="/glossary">Biology, explained</a></nav>
+<nav aria-label="Footer advanced"><h2>Advanced technologies</h2><a href="/algaephyte/">Algaephyte / cultivation instruments</a><a href="/cyanoflow">Cyanoflow / single cells</a><a href="/#advanced">What we are building</a><a href="/Simulation/">Algal Digital Lab</a><a href="/algae-growth/">Algae Growth / field guide</a><a href="/research/">Research approach</a></nav>
+<nav aria-label="Footer open"><h2>Open &amp; accessible</h2><a href="/developers/">Developer notes</a><a href="/literature/">Literature search</a><a href="/downloads/">App downloads</a><a href="/support/">Support the work</a><a href="/LICENSE" download>MIT license</a><a href="/#deploy">Write to us</a></nav>
+<div><h2>Say hello</h2><a href="mailto:service@orrbiologicals.com">service@orrbiologicals.com</a><p><a href="https://www.youtube.com/@OrrBiologicals" target="_blank" rel="noreferrer">Research updates on YouTube ↗</a></p><small>Open source site code / built to be readable, keyboard-friendly and honest about what is not known.</small></div>
+</div><div class="wrap footer-base"><span>© 2026 Orr Biologicals / Home cultures &amp; open research</span><nav aria-label="Legal"><a href="/privacy">Privacy</a><a href="/terms">Terms</a><a href="/disclaimer">Scientific disclaimer</a><a href="/LICENSE" download>MIT License</a></nav></div></footer><script defer src="/js/animations.js?v=20261115"></script>
+<script defer src="/js/navigation.js?v=20261115"></script>
 </body></html>

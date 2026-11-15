@@ -117,9 +117,9 @@ class SEOTests(unittest.TestCase):
         from build_home import render
         self.assertEqual((ROOT / 'index.html').read_text(encoding='utf-8'), render())
         h1 = ' '.join(Page(render()).headings['h1'][0].split()).lower()
-        self.assertEqual(h1, 'microalgae cultivation, measured honestly.')
-        self.assertIn('class="hr-hero"', render())
-        self.assertIn('class="hr-domain', render())
+        self.assertEqual(h1, 'a kitchen for living things.')
+        self.assertIn('class="kit-hero"', render())
+        self.assertIn('class="kit-adv', render())
         self.assertIn('Research concepts in development', render())
         for name in ('build.ps1', 'rebuild.ps1'):
             text = (ROOT / name).read_text(encoding='utf-8-sig')
@@ -238,8 +238,8 @@ class SEOTests(unittest.TestCase):
         # The developers page is honest about having no public API.
         self.assertIn('Nothing here responds yet', dev)
         self.assertNotIn('/api/v1/neurons/{id}', dev)
-        # The algae surface took the hero slot and both pages link each other.
-        self.assertIn('Start with cultivation', home)
+        # The kitchen surface took the hero slot and both pages link each other.
+        self.assertIn('Start a sourdough starter', home)
         for text in (home, dev):
             self.assertIn('/developers/', text)
 

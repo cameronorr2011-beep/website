@@ -1,0 +1,229 @@
+/* Orr Biologicals · kitchen layer (2026-11-15)
+   The public face of the site is a warm, dim kitchen: sourdough, kombucha and
+   spirulina on one counter, with the research instruments kept in a separate
+   cabinet. This layer only adds structure; colours live in global.css. */
+
+.home-rebrand.kitchen{
+  --hr-bg:var(--void);--hr-panel:var(--paper);--hr-panel-2:var(--paper-2);
+  --hr-ink:var(--ink);--hr-soft:var(--ink-soft);--hr-mute:var(--mute);
+  --hr-line:rgba(214,222,209,.18);--hr-line-soft:rgba(214,222,209,.1);
+  --hr-green:var(--leaf);--hr-cyan:var(--cyan);--hr-gold:var(--copper);--hr-coral:var(--rose);
+  background:
+    radial-gradient(ellipse 62% 44% at 82% -6%,var(--rose-soft),transparent 62%),
+    radial-gradient(ellipse 50% 38% at 4% 4%,var(--leaf-soft),transparent 66%),
+    var(--void);
+}
+.home-rebrand.kitchen ::selection{background:var(--rose);color:var(--void)}
+.home-rebrand.kitchen :focus-visible{outline-color:var(--rose-2)}
+
+.kit-wrap{width:min(100% - 56px,1280px);margin-inline:auto}
+
+/* ---------------------------------------------------------------- hero -- */
+.kit-hero{position:relative;padding:clamp(48px,6.5vw,96px) 0 0;isolation:isolate}
+.kit-hero-grid{display:grid;grid-template-columns:minmax(0,1.04fr) minmax(300px,.96fr);gap:clamp(30px,5vw,68px);align-items:center}
+.kit-hero-copy{min-width:0}
+.kit-kicker{margin:0 0 20px;color:var(--leaf);font:600 10.5px/1.5 var(--mono);letter-spacing:.18em;text-transform:uppercase}
+.kit-kicker i{font-style:normal;color:var(--rose)}
+.kit-h1{margin:0;font-family:var(--serif);font-weight:400;font-size:clamp(2.9rem,6.2vw,6rem);line-height:1.01;letter-spacing:-.035em;text-wrap:balance}
+.kit-h1 em{display:block;margin-top:.06em;color:var(--leaf);font-style:italic;font-size:1.02em;line-height:1}
+.kit-lede{max-width:46ch;margin:26px 0 0;color:var(--ink-soft);font-size:clamp(1rem,1.4vw,1.16rem);line-height:1.78}
+.kit-actions{display:flex;flex-wrap:wrap;align-items:center;gap:12px 24px;margin-top:32px}
+.kit-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:50px;padding:14px 24px;border:1px solid var(--leaf);border-radius:999px;background:var(--leaf);color:var(--void);font:600 12px/1.2 var(--mono);letter-spacing:.07em;text-transform:uppercase;transition:background 200ms var(--ease),color 200ms var(--ease),border-color 200ms var(--ease),transform 200ms var(--ease)}
+.kit-btn:hover{background:transparent;color:var(--leaf);transform:translateY(-1px)}
+.kit-btn.rose{background:var(--rose);border-color:var(--rose);color:var(--void)}
+.kit-btn.rose:hover{background:transparent;color:var(--rose)}
+.kit-link{display:inline-flex;align-items:center;gap:8px;min-height:44px;color:var(--ink);font:600 12px/1.3 var(--mono);letter-spacing:.06em;text-transform:uppercase;text-decoration:underline;text-decoration-color:rgba(214,222,209,.3);text-underline-offset:6px}
+.kit-link:hover{color:var(--leaf);text-decoration-color:var(--leaf)}
+.kit-ledger{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin:clamp(32px,4.5vw,54px) 0 0;padding:20px 0 0;border-top:1px solid rgba(214,222,209,.14)}
+.kit-ledger dt{margin:0 0 5px;color:var(--mute);font:500 9px/1.4 var(--mono);letter-spacing:.14em;text-transform:uppercase}
+.kit-ledger dd{margin:0;color:var(--ink);font-size:13px;line-height:1.55}
+
+.kit-shelf{position:relative;margin:0;overflow:hidden;border:1px solid rgba(214,222,209,.12);border-radius:24px;background:#0b120e;box-shadow:0 48px 110px -52px rgba(0,0,0,.95)}
+.kit-shelf img{display:block;width:100%;height:auto}
+.kit-shelf figcaption{position:absolute;inset:auto 0 0;padding:16px 20px 15px;font:500 9.5px/1.5 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:rgba(241,236,225,.7);background:linear-gradient(transparent,rgba(9,14,11,.9))}
+
+/* ------------------------------------------------------------ sections -- */
+.kit-section{padding:clamp(60px,7.5vw,108px) 0;border-top:1px solid rgba(214,222,209,.09)}
+.kit-section.kit-tint{background:linear-gradient(180deg,var(--leaf-soft),transparent 55%)}
+.kit-head{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(250px,.92fr);gap:22px 7vw;align-items:end;margin-bottom:clamp(28px,4vw,46px)}
+.kit-eyebrow{margin:0 0 14px;color:var(--rose);font:600 10px/1.5 var(--mono);letter-spacing:.18em;text-transform:uppercase}
+.kit-h2{margin:0;font-family:var(--serif);font-weight:400;font-size:clamp(2rem,3.5vw,3.3rem);line-height:1.07;letter-spacing:-.025em;text-wrap:balance}
+.kit-h2 em{color:var(--leaf);font-style:italic}
+.kit-head p{margin:0;max-width:50ch;color:var(--ink-soft);font-size:15px;line-height:1.78}
+.kit-head p a{color:var(--ink);text-decoration:underline;text-decoration-color:rgba(214,222,209,.32);text-underline-offset:4px}
+.kit-head p a:hover{color:var(--leaf)}
+
+/* three cultures ---------------------------------------------------------- */
+.kit-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.kit-card{display:flex;flex-direction:column;overflow:hidden;border:1px solid rgba(214,222,209,.12);border-radius:22px;background:linear-gradient(180deg,rgba(255,255,255,.028),transparent 46%),var(--paper);transition:transform 420ms var(--ease),border-color 320ms var(--ease),box-shadow 420ms var(--ease)}
+.kit-card:hover{transform:translateY(-4px);border-color:rgba(166,196,169,.42);box-shadow:0 30px 60px -40px rgba(0,0,0,.9)}
+.kit-card-art{display:block;aspect-ratio:4/3;overflow:hidden;background:#0b120e}
+.kit-card-art img{width:100%;height:100%;object-fit:cover;transition:transform 800ms var(--ease)}
+.kit-card:hover .kit-card-art img{transform:scale(1.045)}
+.kit-card-body{display:flex;flex-direction:column;gap:10px;flex:1;padding:24px 24px 26px}
+.kit-tag{display:inline-flex;align-items:center;gap:7px;align-self:flex-start;padding:4px 9px;border:1px solid rgba(166,196,169,.28);border-radius:999px;color:var(--leaf);font:600 9px/1.3 var(--mono);letter-spacing:.12em;text-transform:uppercase}
+.kit-card.rose .kit-tag{border-color:rgba(215,168,166,.3);color:var(--rose)}
+.kit-card h3{margin:4px 0 0;font-family:var(--serif);font-weight:400;font-size:1.7rem;line-height:1.1;letter-spacing:-.02em}
+.kit-card p{margin:0;color:var(--ink-soft);font-size:14px;line-height:1.72}
+.kit-card-foot{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:auto;padding-top:18px;border-top:1px solid rgba(214,222,209,.1);color:var(--mute);font:500 10px/1.4 var(--mono);letter-spacing:.1em;text-transform:uppercase}
+.kit-card-foot b{color:var(--ink);font-weight:500}
+.kit-card:hover .kit-card-foot b{color:var(--leaf)}
+
+/* how a home culture works ------------------------------------------------- */
+.kit-steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;overflow:hidden;border:1px solid rgba(214,222,209,.12);border-radius:22px;background:rgba(214,222,209,.1)}
+.kit-step{padding:30px 28px;background:var(--paper)}
+.kit-step span{font:600 10px/1.4 var(--mono);letter-spacing:.16em;color:var(--rose)}
+.kit-step h3{margin:14px 0 8px;font-family:var(--serif);font-weight:400;font-size:1.32rem;line-height:1.2}
+.kit-step p{margin:0;color:var(--ink-soft);font-size:14px;line-height:1.72}
+
+/* advanced technologies ---------------------------------------------------- */
+.kit-advanced{background:linear-gradient(180deg,var(--rose-soft),transparent 62%),var(--void-2)}
+.kit-adv{border-top:1px solid rgba(214,222,209,.14)}
+.kit-adv-row{display:grid;grid-template-columns:46px 210px minmax(0,1fr) 168px;gap:24px;align-items:center;padding:26px 0;border-bottom:1px solid rgba(214,222,209,.14);transition:background 240ms var(--ease)}
+.kit-adv-row:hover{background:rgba(166,196,169,.04)}
+.kit-adv-index{align-self:start;padding-top:4px;color:var(--mute);font:500 10px/1.4 var(--mono);letter-spacing:.1em}
+.kit-adv-row img{width:210px;height:132px;object-fit:cover;border:1px solid rgba(214,222,209,.14);border-radius:16px}
+.kit-adv-copy h3{margin:0 0 8px;font-family:var(--serif);font-weight:400;font-size:clamp(1.4rem,2vw,2rem);line-height:1.1;letter-spacing:-.02em}
+.kit-adv-copy h3 a:hover{color:var(--leaf)}
+.kit-adv-copy p{margin:0;max-width:62ch;color:var(--ink-soft);font-size:14px;line-height:1.72}
+.kit-state{display:inline-flex;align-items:center;gap:8px;justify-self:end;padding:6px 11px;border:1px solid rgba(215,168,166,.32);border-radius:999px;color:var(--rose);font:600 9px/1.3 var(--mono);letter-spacing:.1em;text-transform:uppercase;white-space:nowrap}
+.kit-state::before{content:"";width:4px;height:4px;border-radius:50%;background:var(--rose)}
+.kit-adv-note{margin:20px 0 0;max-width:78ch;color:var(--mute);font-size:12.5px;line-height:1.7}
+
+/* journal ------------------------------------------------------------------ */
+.kit-notes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.kit-note{display:flex;flex-direction:column;gap:10px;padding:26px;border:1px solid rgba(214,222,209,.12);border-radius:20px;background:var(--paper);transition:border-color 260ms var(--ease),transform 260ms var(--ease)}
+.kit-note:hover{border-color:rgba(166,196,169,.4);transform:translateY(-2px)}
+.kit-note small{color:var(--rose);font:600 9.5px/1.4 var(--mono);letter-spacing:.12em;text-transform:uppercase}
+.kit-note h3{margin:0;font-family:var(--serif);font-weight:400;font-size:1.32rem;line-height:1.2}
+.kit-note p{margin:0;color:var(--ink-soft);font-size:13.5px;line-height:1.7}
+.kit-note span{margin-top:auto;padding-top:12px;color:var(--leaf);font:600 10px/1.4 var(--mono);letter-spacing:.1em;text-transform:uppercase}
+
+/* open + access ------------------------------------------------------------ */
+.kit-open{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);gap:34px 7vw;align-items:start}
+.kit-open p{color:var(--ink-soft);font-size:15px;line-height:1.78;margin:0 0 16px;max-width:52ch}
+.kit-list{display:grid;gap:0;margin:0;padding:0;list-style:none;border-top:1px solid rgba(214,222,209,.14)}
+.kit-list li{display:grid;grid-template-columns:22px 1fr;gap:10px;padding:13px 0;border-bottom:1px solid rgba(214,222,209,.14);color:var(--ink-soft);font-size:13.5px;line-height:1.65}
+.kit-list li b{color:var(--leaf);font:500 11px/1.6 var(--mono)}
+.kit-list strong{color:var(--ink);font-weight:600}
+
+/* support + contact -------------------------------------------------------- */
+.kit-support{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:22px 40px;padding:30px 32px;border:1px solid rgba(214,222,209,.14);border-radius:22px;background:linear-gradient(120deg,var(--rose-soft),transparent 60%),var(--paper)}
+.kit-support p{margin:0;max-width:56ch;color:var(--ink-soft);font-size:14px;line-height:1.7}
+.kit-support p strong{display:block;margin-bottom:4px;color:var(--ink);font-family:var(--serif);font-size:1.3rem;font-weight:400}
+.kit-support-actions{display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+.kit-support code{overflow-wrap:anywhere}
+.kit-copy{min-height:44px;padding:10px 16px;border:1px solid rgba(214,222,209,.2);border-radius:999px;background:transparent;color:var(--ink);font:500 11px/1.4 var(--mono);letter-spacing:.06em;text-transform:uppercase}
+.kit-copy:hover{border-color:var(--rose);color:var(--rose)}
+.kit-support [role=status]{flex-basis:100%;margin:0;color:var(--leaf);font-size:12px}
+
+.kit-contact{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:34px 7vw;align-items:start}
+.kit-contact p{color:var(--ink-soft);font-size:15px;line-height:1.78;max-width:44ch}
+.kit-form{display:grid;gap:14px}
+.kit-form label{display:grid;gap:6px;color:var(--mute);font:500 10px/1.5 var(--mono);letter-spacing:.12em;text-transform:uppercase}
+.kit-form input,.kit-form textarea{width:100%;padding:13px 15px;border:1px solid rgba(214,222,209,.18);border-radius:14px;background:var(--void-2);color:var(--ink);font:400 15px/1.5 var(--sans);letter-spacing:0;text-transform:none}
+.kit-form textarea{min-height:120px;resize:vertical}
+.kit-form input:focus,.kit-form textarea:focus{border-color:var(--leaf);outline-offset:2px}
+.kit-honeypot{position:absolute!important;left:-9999px!important;width:1px;height:1px;opacity:0}
+.kit-form-status{margin:0;min-height:1.2em;color:var(--leaf);font-size:13px}
+
+/* guide pages (/sourdough/, /kombucha/) ------------------------------------ */
+.kit-page{max-width:920px}
+.kit-page-head{padding:8px 0 0}
+.kit-page-head h1{margin:10px 0 18px;font-size:clamp(2.3rem,4.8vw,3.7rem);line-height:1.04}
+.kit-page-dek{margin:0;max-width:60ch;color:var(--ink-soft);font-size:clamp(1rem,1.4vw,1.15rem);line-height:1.78}
+.kit-page-art{margin:34px 0 10px;overflow:hidden;border:1px solid rgba(214,222,209,.14);border-radius:22px;background:var(--void-2)}
+.kit-page-art img{width:100%;height:auto;max-height:440px;object-fit:cover;object-position:center 46%}
+.kit-page-meta{display:flex;flex-wrap:wrap;gap:8px 22px;margin:14px 0 0;color:var(--mute);font:500 10px/1.5 var(--mono);letter-spacing:.1em;text-transform:uppercase}
+.kit-note-box{margin:26px 0;padding:18px 20px;border:1px solid rgba(215,168,166,.24);border-left:3px solid var(--rose);border-radius:0 16px 16px 0;background:var(--rose-soft);color:var(--ink-soft);font-size:14px;line-height:1.72}
+.kit-note-box strong{color:var(--ink)}
+.kit-table-wrap{overflow-x:auto;margin:22px 0;border:1px solid rgba(214,222,209,.14);border-radius:16px}
+.kit-table{width:100%;border-collapse:collapse;font-size:14px}
+.kit-table th,.kit-table td{padding:12px 14px;text-align:left;vertical-align:top;border-bottom:1px solid rgba(214,222,209,.12)}
+.kit-table th{background:var(--paper-2);color:var(--ink);font:600 10px/1.5 var(--mono);letter-spacing:.1em;text-transform:uppercase}
+.kit-table td{color:var(--ink-soft)}
+.kit-table tr:last-child td{border-bottom:0}
+.kit-next{display:flex;flex-wrap:wrap;gap:12px;margin:40px 0 0;padding-top:22px;border-top:1px solid rgba(214,222,209,.14)}
+.kit-next a{display:inline-flex;align-items:center;min-height:44px;padding:10px 18px;border:1px solid rgba(214,222,209,.2);border-radius:999px;color:var(--ink);font:500 11px/1.4 var(--mono);letter-spacing:.07em;text-transform:uppercase}
+.kit-next a:hover{border-color:var(--leaf);color:var(--leaf)}
+
+/* Guides read on the dark surface. The older editorial layer paints an ivory
+   reading panel; on these pages it would invert every colour we set here. */
+body.kit-guide{background:var(--void);color:var(--ink)}
+body.kit-guide .art-shell,body.kit-guide .prose{background:transparent;color:var(--ink-soft)}
+body.kit-guide .prose h2,body.kit-guide .prose h3,body.kit-guide .prose strong{color:var(--ink)}
+body.kit-guide .prose p,body.kit-guide .prose li,body.kit-guide .prose td,body.kit-guide .prose th{color:var(--ink-soft)}
+body.kit-guide .prose a{color:var(--leaf);text-decoration-color:rgba(166,196,169,.45)}
+body.kit-guide .prose a:hover{color:var(--leaf-2)}
+body.kit-guide .art-cat,body.kit-guide .art-top,body.kit-guide .art-meta{color:var(--mute)}
+body.kit-guide .art-top a{color:var(--leaf)}
+body.kit-guide .kit-note-box strong{color:var(--ink)}
+
+/* advanced product pages keep their instrument layouts but join the same room */
+body.product-rebrand{
+  --hr-bg:var(--void);--hr-panel:var(--paper);--hr-panel-2:var(--paper-2);
+  --hr-ink:var(--ink);--hr-soft:var(--ink-soft);--hr-mute:var(--mute);
+  --hr-line:rgba(214,222,209,.18);--hr-line-soft:rgba(214,222,209,.1);
+  --hr-green:var(--leaf);--hr-cyan:var(--cyan);--hr-coral:var(--rose);
+  background:var(--void);color:var(--ink);
+}
+body.product-rebrand .nav .nav-links .btn-white:hover{background:var(--leaf);border-color:var(--leaf);color:var(--void)}
+/* Algaephyte was authored against a light paper field; restate its tokens for
+   the dark room so its headings and body copy stay legible. */
+body.algaephyte-page{
+  --ap-bg:#0f1512;--ap-paper:#17211b;--ap-ink:#f1ece1;--ap-soft:#c6cbbf;
+  --ap-mute:#94a096;--ap-rule:rgba(214,222,209,.2);--ap-deep:#0b120e;
+  --ap-moss:#6d8f75;--ap-leaf:#a6c4a9;--ap-gold:#c9b195;
+  background:#0f1512;color:#f1ece1;
+}
+body.algaephyte-page h1,body.algaephyte-page h2,body.algaephyte-page h3,body.algaephyte-page h4{color:#f1ece1}
+body.algaephyte-page p,body.algaephyte-page li,body.algaephyte-page dd{color:#c6cbbf}
+body.algaephyte-page .algaephyte-kicker,body.algaephyte-page .algaephyte-eyebrow{color:#a6c4a9}
+body.algaephyte-page .algaephyte-prose a{color:var(--leaf)}
+body.algaephyte-page .algaephyte-prose a:hover{color:var(--leaf-2)}
+body.algaephyte-page .science-footer{background:var(--void)}
+
+/* the footer gained a column for the advanced tools */
+.science-footer .footer-layout{grid-template-columns:1.3fr .85fr .95fr .95fr 1fr;gap:32px}
+.science-footer .footer-brand{color:var(--ink)}
+.science-footer h2{color:var(--leaf)}
+@media(max-width:1024px){.science-footer .footer-layout{grid-template-columns:1.2fr 1fr 1fr;gap:30px 24px}}
+@media(max-width:640px){.science-footer .footer-layout{grid-template-columns:1fr 1fr}}
+
+/* -------------------------------------------------------------- responsive - */
+@media(max-width:1024px){
+  .kit-hero-grid{grid-template-columns:1fr;gap:36px}
+  .kit-shelf{max-width:640px}
+  .kit-cards{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .kit-adv-row{grid-template-columns:36px 168px minmax(0,1fr);row-gap:14px}
+  .kit-adv-row img{width:168px;height:106px}
+  .kit-state{grid-column:2 / -1;justify-self:start}
+}
+@media(max-width:900px){
+  .kit-wrap{width:calc(100% - 44px)}
+  .kit-head,.kit-open,.kit-contact{grid-template-columns:1fr;gap:18px}
+  .kit-head p{max-width:none}
+  .kit-steps{grid-template-columns:1fr}
+  .kit-notes{grid-template-columns:1fr}
+  .kit-adv-row{grid-template-columns:1fr;gap:16px;padding:24px 0}
+  .kit-adv-index{display:none}
+  .kit-adv-row img{width:100%;height:auto;aspect-ratio:16/9}
+  .kit-state{justify-self:start}
+}
+@media(max-width:640px){
+  .kit-wrap{width:calc(100% - 32px)}
+  .kit-h1{font-size:clamp(2.5rem,11.5vw,3.6rem)}
+  .kit-lede{font-size:1rem}
+  .kit-actions{display:grid;gap:10px}
+  .kit-actions .kit-btn,.kit-actions .kit-link{justify-content:space-between;width:100%}
+  .kit-ledger{grid-template-columns:1fr;gap:0;margin-top:28px;padding-top:0}
+  .kit-ledger>div{padding:12px 0;border-bottom:1px solid rgba(214,222,209,.1)}
+  .kit-cards{grid-template-columns:1fr}
+  .kit-card-art{aspect-ratio:16/10}
+  .kit-support{padding:24px 22px}
+  .kit-support-actions{width:100%}
+  .kit-support code{font-size:11px}
+  .kit-page-head h1{font-size:clamp(2.1rem,9vw,2.9rem)}
+  .kit-table{font-size:13px}
+  .kit-table th,.kit-table td{padding:10px}
+}

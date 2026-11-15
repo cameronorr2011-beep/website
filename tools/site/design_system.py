@@ -2,7 +2,7 @@
 import re
 from seo_audit import ROOT, pages
 
-VERSION = '20261108'
+VERSION = '20261115'
 
 
 def migrate_legacy_application_links(text):
@@ -67,7 +67,7 @@ def apply(text):
     text = re.sub(r'\s*<footer\b[^>]*>.*?</footer>\s*', '', text, flags=re.S)
     # Eliminate per-page external font families and repeated token definitions.
     text = re.sub(r'<link[^>]+href="https://fonts.googleapis.com/[^>]+>\s*', '', text)
-    text = re.sub(r'<link[^>]+href="/?css/(?:global|header|animations|site-redesign|biological-cinema|home-rebrand)\.css[^>]+>\s*', '', text)
+    text = re.sub(r'<link[^>]+href="/?css/(?:global|header|animations|site-redesign|biological-cinema|home-rebrand|kitchen)\.css[^>]+>\s*', '', text)
     text = re.sub(r'<script[^>]+src="/?js/(?:animations|navigation|cell-cursor|biological-cinema)\.js[^>]*>\s*</script>\s*', '', text)
     text = re.sub(r'<link[^>]+href="/?css/orr-home\.css[^>]+>\s*', '', text)
     text = re.sub(r'<link[^>]+href="/?css/home-premium\.css[^>]+>\s*', '', text)
@@ -81,6 +81,9 @@ def apply(text):
     rebrand = 'class="home-rebrand' in text or 'product-rebrand' in text
     if rebrand:
         css += f'\n<link rel="stylesheet" href="/css/home-rebrand.css?v={VERSION}">'
+    # The kitchen layer always loads last: it restates the home-rebrand tokens
+    # in the forest/rose palette and owns the public reading surface.
+    css += f'\n<link rel="stylesheet" href="/css/kitchen.css?v={VERSION}">'
     text = text.replace('</head>', css + '\n</head>')
     text = text.replace('</body>', f'<script defer src="/js/animations.js?v={VERSION}"></script>\n</body>')
     if '/js/navigation.js' not in text and './navigation.js' not in text:
@@ -96,7 +99,7 @@ def apply(text):
     if 'class="home-rebrand' not in text:
         text = text.replace('</body>', f'<script defer src="/js/biological-cinema.js?v={VERSION}"></script>\n</body>')
     text = re.sub(r'(<(?:link|script)\b[^>]*(?:href|src)="/?(?:css|js)/[^"?]+)(?:\?[^" ]*)?("[^>]*>)', r'\1?v=' + VERSION + r'\2', text)
-    theme = '#070a08' if rebrand else '#10251f'
+    theme = '#0f1512'
     text = re.sub(r'(<meta name="theme-color" content=")[^"]+', r'\g<1>' + theme, text)
     # Preserve existing main targets; older article pages used a div shell.
     if '<main' not in text:

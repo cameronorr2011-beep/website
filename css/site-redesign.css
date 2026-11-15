@@ -56,7 +56,7 @@ body.art-body::before {
   z-index: -1;
   pointer-events: none;
   opacity: .35;
-  background: radial-gradient(ellipse at 85% 12%, #3cf07f14, transparent 60%);
+  background: radial-gradient(ellipse at 85% 12%, var(--rose-soft), transparent 60%);
 }
 
 body.art-body .nav {
