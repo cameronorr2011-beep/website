@@ -6,7 +6,11 @@ from seo_audit import ROOT
 
 def block_for(path):
     if path.parent == ROOT / 'applications' and path.name == 'index.html':
-        return '<p>Choose a starting question: <a href="/algae-biotechnology/">what algae biotechnology includes</a>, <a href="/microalgae-cultivation/">how cultivation inputs interact</a>, or <a href="/photobioreactors/">how reactor geometry changes the environment</a>. Open an application above to connect that background to a repeatable bench protocol.</p>'
+        return '<p>Each dossier states mechanism, evidence, limits and sources. Open the live dossier (aquaculture live feeds) or follow the evidence map to <a href="/microalgae-cultivation/">cultivation fundamentals</a>, <a href="/photobioreactors/">reactor engineering</a> and <a href="/research/">our methodology</a>.</p>'
+    if path.parent == ROOT / 'diy' and path.name == 'index.html':
+        return '<p>Every project here is written to be repeated and improved. Fermentation and algae projects link onward to <a href="/microalgae-cultivation/">the cultivation science</a>, <a href="/research/">our methodology</a> and <a href="/diy/guides/">the searchable guide shelf</a>.</p>'
+    if ROOT / 'diy' in path.parents:
+        return '<p>This bench protocol connects to <a href="/diy/guides/">the guide shelf</a>, <a href="/microalgae-cultivation/">cultivation conditions and monitoring</a> and <a href="/research/">how we separate observations from guesses</a>. Protocols are educational starting points — not validated production protocols.</p>'
     if ROOT / 'applications' in path.parents:
         topic = path.parent.name
         current = html.escape(path.parent.parent.name + '/' + path.parent.name + '/', quote=False)
@@ -26,10 +30,11 @@ def section(inner):
 
 def build():
     paths = (sorted((ROOT / 'applications').rglob('*.html'))
+             + sorted((ROOT / 'diy').rglob('*.html'))
              + sorted((ROOT / 'blog').glob('*.html'))
              + [ROOT / 'microalgae-cultivation' / 'index.html'])
     for path in paths:
-        if path == ROOT / 'blog/index.html' or path.stem == 'single-cell-microalgae-microfluidics':
+        if path == ROOT / 'articles/index.html' or path.stem == 'single-cell-microalgae-microfluidics':
             continue
         text = path.read_text(encoding='utf-8')
         block = section(block_for(path))
@@ -41,7 +46,7 @@ def build():
                 raise ValueError('Missing topic insertion point: ' + str(path))
             text = text.replace(marker, block + marker, 1)
         path.write_text(text, encoding='utf-8')
-    print('Built contextual topic links across applications, pillars and supporting notes')
+    print('Built contextual topic links across applications, diy, blog and pillars')
 
 
 if __name__ == '__main__':

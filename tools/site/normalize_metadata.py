@@ -30,16 +30,16 @@ def build():
     for path in pages():
         text = path.read_text(encoding='utf-8-sig'); page = Page(text)
         if 'noindex' in page.robots: continue
-        if path == ROOT / 'blog/index.html':
+        if path == ROOT / 'articles/index.html':
             text = re.sub(r'<title>.*?</title>', '<title>Algae Cultivation Guides &amp; Research Notes | Orr Biologicals</title>', text, count=1)
             text = re.sub(r'<meta name="description" content="[^"]*">', '<meta name="description" content="Explore Spirulina cultivation, algae sensors, digital twins and single-cell imaging guides, plus clearly labeled AI-assisted research summaries.">', text, count=1)
         page = Page(text)
         values = {'og:title': page.title, 'og:description': page.description,
                   'og:url': page.canonical, 'og:site_name': 'Orr Biologicals',
-                  'og:image': page.meta.get('og:image', 'https://orrbiologicals.com/assets/og.png'),
+                  'og:image': page.meta.get('og:image', 'https://orrbiologicals.com/assets/og.jpg'),
                   'twitter:card': 'summary_large_image', 'twitter:title': page.title,
                   'twitter:description': page.description,
-                  'twitter:image': page.meta.get('og:image', 'https://orrbiologicals.com/assets/og.png')}
+                  'twitter:image': page.meta.get('og:image', 'https://orrbiologicals.com/assets/og.jpg')}
         for key, value in values.items():
             attr = 'property' if key.startswith('og:') else 'name'
             tag = '<meta ' + attr + '="' + key + '" content="' + html.escape(value, quote=True) + '">'

@@ -34,7 +34,7 @@ def build():
             if path.stem in SHARED:
                 context += '<a href="/blog/single-cell-microalgae-microfluidics">Single-cell microalgae microfluidics and validation</a> · <a href="/cyanoflow">The proposed Cyanoflow workflow</a>'
             else:
-                context += '<a href="/#inside">The proposed Algaephyte cultivation architecture</a> · <a href="/blog/#kb">All cultivation and control notes</a>'
+                context += '<a href="/#thesis">The proposed Algaephyte cultivation architecture</a> · <a href="/articles/#kb">All cultivation and control notes</a>'
             context += '</p><p><a href="/disclaimer">Scientific and safety limitations</a>: visual appearance and high pH do not certify culture identity or food safety.</p>\n<!-- SEO:CONTEXT:END --></section>\n'
             text = text.replace('  <nav class="art-foot"', context + '  <nav class="art-foot"', 1)
         # Existing commercial CTA conflicts with the current project status.
@@ -58,7 +58,7 @@ def build():
             text = text.replace('</head>', '<script type="application/ld+json">' + json.dumps(crumb, ensure_ascii=False) + '</script>\n</head>', 1)
         # Breadcrumbs must exist visibly, not only in JSON-LD.
         text = re.sub(r'<nav class="art-top" aria-label="Breadcrumb">.*?</nav>',
-            '<nav class="art-top" aria-label="Breadcrumb"><a href="/">Orr Biologicals</a> / <a href="/blog/">Research notes</a> / <span>' + html.escape(page.headings['h1'][0]) + '</span></nav>', text, count=1, flags=re.S)
+            '<nav class="art-top" aria-label="Breadcrumb"><a href="/">Orr Biologicals</a> / <a href="/articles/">Research notes</a> / <span>' + html.escape(page.headings['h1'][0]) + '</span></nav>', text, count=1, flags=re.S)
         path.write_text(text, encoding='utf-8')
     print('Enriched existing research notes without deleting routes or findings')
 

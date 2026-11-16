@@ -38,7 +38,7 @@ HUB = '''
 <p>Older notes are being reviewed: a source list provides a route to verification, not certification of every historical numerical or food-safety statement. Consult <a href="/disclaimer">the scientific and safety disclaimer</a>. Send a source-linked correction to <a href="mailto:service@orrbiologicals.com">service@orrbiologicals.com</a>.</p>
 <h2>Primary reading and next steps</h2>
 <ul><li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7467707/">Behrendt et al. (2020): PhenoChip single-cell photophysiology</a> — a separate research group's experimental work, not Cyanoflow validation.</li><li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9368473/">Schagerl et al. (2022): reliable microalgal biomass and vitality measurements</a> — why optical proxies require care.</li></ul>
-<p>Look up definitions in the <a href="/glossary">algae biotechnology glossary</a> or browse <a href="/blog/#kb">all cultivation and research notes</a>. The <a href="/#simulation">culture model</a> illustrates relationships; it cannot certify a real culture's safety.</p>
+<p>Look up definitions in the <a href="/glossary">algae biotechnology glossary</a> or browse <a href="/articles/#kb">all cultivation and research notes</a>. The <a href="/Simulation/">culture model</a> illustrates relationships; it cannot certify a real culture's safety.</p>
 '''
 
 GUIDE = '''
@@ -78,7 +78,7 @@ GUIDE = '''
 TERMS = [
 ('cyanobacteria', 'Cyanobacteria', 'Photosynthetic bacteria. Unlike eukaryotic algae, they do not have a membrane-bound nucleus or chloroplast. Some are unicellular and others filamentous; neither appearance nor a broad taxonomic label establishes food safety.', '/blog/spirulina-is-a-cyanobacterium', 'Why Spirulina is a cyanobacterium'),
 ('microalgae', 'Microalgae', 'A practical grouping of microscopic photosynthetic organisms, not a single taxonomic lineage. Applied literature sometimes includes cyanobacteria alongside eukaryotic microalgae. State which organism and strain a claim concerns.', '/applications/', 'Organisms and applications'),
-('arthrospira', 'Arthrospira and Spirulina', 'Spirulina is a common commercial name associated with filamentous cyanobacteria historically called Arthrospira. Scientific naming changes, so strain identity and the naming used by a source matter more than a market label alone.', '/applications/spirulina/', 'The spirulina protocol'),
+('arthrospira', 'Arthrospira and Spirulina', 'Spirulina is a common commercial name associated with filamentous cyanobacteria historically called Arthrospira. Scientific naming changes, so strain identity and the naming used by a source matter more than a market label alone.', '/diy/spirulina/', 'The spirulina protocol'),
 ('photobioreactor', 'Photobioreactor', 'A cultivation system that supplies light to photosynthetic organisms while managing culture conditions. Vessel geometry, light path, gas exchange, nutrients and temperature interact; enclosure alone does not guarantee sterility or productivity.', '/blog/what-is-main-plain-language', 'The proposed Algaephyte architecture'),
 ('optical-density', 'Optical density', 'A logarithmic measure of light attenuation through a sample relative to a reference. In cell suspensions it includes scattering as well as absorption. Record wavelength, path length, blank and dilution; converting it to biomass requires an appropriate calibration [2].', '/blog/six-culture-signals-main-senses', 'Interpreting the proposed sensor suite'),
 ('dissolved-oxygen', 'Dissolved oxygen', 'Oxygen present in solution, commonly reported as concentration or percent saturation. Temperature, salinity, calibration and gas exchange affect interpretation. A high value alone does not establish cell damage or a universal stress threshold.', '/blog/dissolved-oxygen-stress-signal', 'Dissolved oxygen in culture monitoring'),
@@ -154,7 +154,7 @@ def build():
         page = '<!doctype html>\n<html lang="en">\n<head>\n<meta charset="utf-8">\n<meta name="viewport" content="width=device-width, initial-scale=1">\n'
         page += '<title>' + e(title) + '</title>\n<meta name="description" content="' + e(description) + '">\n<link rel="canonical" href="' + url + '">\n'
         page += '<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">\n<meta property="og:type" content="' + ('article' if article else 'website') + '">\n'
-        og_image = SITE + ('/assets/kitchen/spirulina.jpg' if rel == 'microalgae-cultivation/index.html' else '/assets/og.png')
+        og_image = SITE + ('/assets/kitchen/spirulina.jpg' if rel == 'microalgae-cultivation/index.html' else '/assets/og.jpg')
         for key, value in [('og:title', title), ('og:description', description), ('og:url', url), ('og:image', og_image), ('og:site_name', 'Orr Biologicals')]:
             page += '<meta property="' + key + '" content="' + e(value) + '">\n'
         page += '<meta name="twitter:card" content="summary_large_image">\n<meta name="twitter:title" content="' + e(title) + '">\n<meta name="twitter:description" content="' + e(description) + '">\n<meta name="twitter:image" content="' + og_image + '">\n'
@@ -172,7 +172,7 @@ def build():
             if rel == 'microalgae-cultivation/index.html':
                 banner = '<div class="kit-page-art"><img src="/assets/kitchen/spirulina.jpg" width="768" height="1376" loading="lazy" alt="Generated image of a tall bottle of deep green spirulina culture beside a notebook on a wooden table."></div>\n<p class="kit-page-meta"><span>A home spirulina culture, at the bench</span><span>Generated image</span></p>\n'
             page += '<p class="art-meta">By <a href="/research/">Orr Biologicals</a> · Published <time datetime="2026-10-04">October 4, 2026</time></p>\n' + banner + '<div class="prose">' + body + '</div>\n'
-            page += '<nav class="art-foot" aria-label="Next reading"><a href="/research/">Research methods</a><a href="/glossary">Glossary</a><a href="/blog/">All research notes</a><a href="/cyanoflow">Cyanoflow</a><a href="/privacy">Privacy</a><a href="/terms">Terms</a></nav></main>\n<script src="/js/consent.js" defer></script>\n<script src="/js/navigation.js?v=20260930a" defer></script>\n</body>\n</html>\n'
+            page += '<nav class="art-foot" aria-label="Next reading"><a href="/research/">Research methods</a><a href="/glossary">Glossary</a><a href="/articles/">All research notes</a><a href="/cyanoflow">Cyanoflow</a><a href="/privacy">Privacy</a><a href="/terms">Terms</a></nav></main>\n<script src="/js/consent.js" defer></script>\n<script src="/js/navigation.js?v=20260930a" defer></script>\n</body>\n</html>\n'
         path = ROOT / rel; path.parent.mkdir(parents=True, exist_ok=True); path.write_text(page, encoding='utf-8')
     print('Built research hub, glossary, single-cell guide and four distinct topic pillars')
 

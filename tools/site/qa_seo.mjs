@@ -89,7 +89,7 @@ export default async function run(page) {
   await noJS.close();
   const redirects = [];
   if (live) {
-    for (const path of ['/index.html', '/blog/index.html', '/cyanoflow.html', '/control-loop-architecture', '/pavlova-lutheri', '/cyanoflow/', '/seo-audit-nonexistent-20261004']) {
+    for (const path of ['/index.html', '/articles/index.html', '/cyanoflow.html', '/control-loop-architecture', '/pavlova-lutheri', '/cyanoflow/', '/seo-audit-nonexistent-20261004']) {
       const response = await page.goto(base + path, {waitUntil: 'domcontentloaded'});
       const chain = []; let request = response.request();
       while (request) {chain.unshift(request.url()); request = request.redirectedFrom();}

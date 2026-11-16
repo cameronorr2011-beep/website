@@ -156,12 +156,12 @@
       "og:title": "Algae Biotechnology: Organisms, Cultivation & Research | Orr Biologicals",
       "og:description": "Understand algae biotechnology: organism selection, cultivation, photobioreactors, compounds and single-cell research, with evidence limits and source reading.",
       "og:url": "https://orrbiologicals.com/algae-biotechnology/",
-      "og:image": "https://orrbiologicals.com/assets/og.png",
+      "og:image": "https://orrbiologicals.com/assets/og.jpg",
       "og:site_name": "Orr Biologicals",
       "twitter:card": "summary_large_image",
       "twitter:title": "Algae Biotechnology: Organisms, Cultivation & Research | Orr Biologicals",
       "twitter:description": "Understand algae biotechnology: organism selection, cultivation, photobioreactors, compounds and single-cell research, with evidence limits and source reading.",
-      "twitter:image": "https://orrbiologicals.com/assets/og.png"
+      "twitter:image": "https://orrbiologicals.com/assets/og.jpg"
     }
   },
   {
@@ -297,12 +297,12 @@
       "og:title": "AI-Assisted Microalgae Cultivation Research | Algaephyte",
       "og:description": "Explore Algaephyte’s proposed sensor-based cultivation, digital twin and bounded automation. Research design goals, not validated hardware or deployed products.",
       "og:url": "https://orrbiologicals.com/algaephyte/",
-      "og:image": "https://orrbiologicals.com/assets/og.png",
+      "og:image": "https://orrbiologicals.com/assets/og.jpg",
       "og:site_name": "Orr Biologicals",
       "twitter:card": "summary_large_image",
       "twitter:title": "AI-Assisted Microalgae Cultivation Research | Algaephyte",
       "twitter:description": "Explore Algaephyte’s proposed sensor-based cultivation, digital twin and bounded automation. Research design goals, not validated hardware or deployed products.",
-      "twitter:image": "https://orrbiologicals.com/assets/og.png"
+      "twitter:image": "https://orrbiologicals.com/assets/og.jpg"
     }
   },
   {
@@ -3158,14 +3158,14 @@
       "og:description": "In Spirulina culture, pH is not a knob — it is the readout of the carbon budget. Why alkalinity is the real control variable, and what that means for automation.",
       "og:type": "article",
       "og:url": "https://orrbiologicals.com/blog/alkalinity-as-a-control-variable",
-      "og:image": "https://orrbiologicals.com/assets/og.png",
+      "og:image": "https://orrbiologicals.com/assets/og.jpg",
       "article:published_time": "2026-06-18",
       "twitter:card": "summary_large_image",
       "article:modified_time": "2026-10-04",
       "og:site_name": "Orr Biologicals",
       "twitter:title": "Alkalinity as a Control Variable | Orr Biologicals",
       "twitter:description": "In Spirulina culture, pH is not a knob — it is the readout of the carbon budget. Why alkalinity is the real control variable, and what that means for automation.",
-      "twitter:image": "https://orrbiologicals.com/assets/og.png"
+      "twitter:image": "https://orrbiologicals.com/assets/og.jpg"
     }
   },
   {
@@ -3261,14 +3261,14 @@
       "og:description": "Hard-limit validators, counterfactual simulation and firmware clamps: three independent layers that let an AI propose while never risking the culture.",
       "og:type": "article",
       "og:url": "https://orrbiologicals.com/blog/bounded-autonomy-safe-ai-proposals",
-      "og:image": "https://orrbiologicals.com/assets/og.png",
+      "og:image": "https://orrbiologicals.com/assets/og.jpg",
       "article:published_time": "2026-07-29",
       "twitter:card": "summary_large_image",
       "article:modified_time": "2026-10-04",
       "og:site_name": "Orr Biologicals",
       "twitter:title": "Bounded Autonomy: Keeping AI Proposals Safe | Orr Biologicals",
       "twitter:description": "Hard-limit validators, counterfactual simulation and firmware clamps: three independent layers that let an AI propose while never risking the culture.",
-      "twitter:image": "https://orrbiologicals.com/assets/og.png"
+      "twitter:image": "https://orrbiologicals.com/assets/og.jpg"
     }
   },
   {
@@ -3363,14 +3363,14 @@
       "og:description": "Sense → twin → propose → verify → act. The layered loop architecture that lets software participate in biology without ever owning the pumps.",
       "og:type": "article",
       "og:url": "https://orrbiologicals.com/blog/control-loop-architecture",
-      "og:image": "https://orrbiologicals.com/assets/og.png",
+      "og:image": "https://orrbiologicals.com/assets/og.jpg",
       "article:published_time": "2026-07-26",
       "twitter:card": "summary_large_image",
       "article:modified_time": "2026-10-04",
       "og:site_name": "Orr Biologicals",
       "twitter:title": "Control Loop Architecture for Living Systems | Orr Biologicals",
       "twitter:description": "Sense → twin → propose → verify → act. The layered loop architecture that lets software participate in biology without ever owning the pumps.",
-      "twitter:image": "https://orrbiologicals.com/assets/og.png"
+      "twitter:image": "https://orrbiologicals.com/assets/og.jpg"
     }
   },
   {
@@ -3469,14 +3469,14 @@
       "og:description": "The physics inside an algae digital twin: Droop quota kinetics, Steele's photoinhibition limb, Beer–Lambert self-shading and oxygen inhibition as state variables.",
       "og:type": "article",
       "og:url": "https://orrbiologicals.com/blog/digital-twin-droop-steele-model",
-      "og:image": "https://orrbiologicals.com/assets/og.png",
+      "og:image": "https://orrbiologicals.com/assets/og.jpg",
       "article:published_time": "2026-07-12",
       "twitter:card": "summary_large_image",
       "article:modified_time": "2026-10-04",
       "og:site_name": "Orr Biologicals",
       "twitter:title": "A Digital Twin Built on Droop and Steele | Orr Biologicals",
       "twitter:description": "The physics inside an algae digital twin: Droop quota kinetics, Steele's photoinhibition limb, Beer–Lambert self-shading and oxygen inhibition as state variables.",
-      "twitter:image": "https://orrbiologicals.com/assets/og.png"
+      "twitter:image": "https://orrbiologicals.com/assets/og.jpg"
     }
   },
   {
@@ -3567,14 +3567,14 @@
       "og:description": "What a digital twin of a living culture actually is: state variables, counterfactual testing of actions, and why simulation-first beats actuate-first.",
       "og:type": "article",
       "og:url": "https://orrbiologicals.com/blog/digital-twins-biological-cultivation",
-      "og:image": "https://orrbiologicals.com/assets/og.png",
+      "og:image": "https://orrbiologicals.com/assets/og.jpg",
       "article:published_time": "2026-08-10",
       "twitter:card": "summary_large_image",
       "article:modified_time": "2026-10-04",
       "og:site_name": "Orr Biologicals",
       "twitter:title": "Digital Twins for Biological Cultivation | Orr Biologicals",
       "twitter:description": "What a digital twin of a living culture actually is: state variables, counterfactual testing of actions, and why simulation-first beats actuate-first.",
-      "twitter:image": "https://orrbiologicals.com/assets/og.png"
+      "twitter:image": "https://orrbiologicals.com/assets/og.jpg"
     }
   },
   {
@@ -3667,14 +3667,14 @@
       "og:description": "Afternoon oxygen plateaus explained: supersaturation, self-poisoning of photosynthesis, and how a twin treats DO as a state variable rather than a footnote.",
       "og:type": "article",
       "og:url": "https://orrbiologicals.com/blog/dissolved-oxygen-stress-signal",
-      "og:image": "https://orrbiologicals.com/assets/og.png",
+      "og:image": "https://orrbiologicals.com/assets/og.jpg",
       "article:published_time": "2026-07-19",
       "twitter:card": "summary_large_image",
       "article:modified_time": "2026-10-04",
       "og:site_name": "Orr Biologicals",
       "twitter:title": "Dissolved Oxygen as a Stress Signal | Orr Biologicals",
       "twitter:description": "Afternoon oxygen plateaus explained: supersaturation, self-poisoning of photosynthesis, and how a twin treats DO as a state variable rather than a footnote.",
-      "twitter:image": "https://orrbiologicals.com/assets/og.png"
+      "twitter:image": "https://orrbiologicals.com/assets/og.jpg"
     }
   },
   {
@@ -3764,14 +3764,14 @@
       "og:description": "Why vision inference belongs on-device at ~2 W: latency, privacy of your lab bench, and the reliability story cloud loops cannot tell.",
       "og:type": "article",
       "og:url": "https://orrbiologicals.com/blog/edge-ai-biological-systems",
-      "og:image": "https://orrbiologicals.com/assets/og.png",
+      "og:image": "https://orrbiologicals.com/assets/og.jpg",
       "article:published_time": "2026-08-08",
       "twitter:card": "summary_large_image",
       "article:modified_time": "2026-10-04",
       "og:site_name": "Orr Biologicals",
       "twitter:title": "Edge AI for Biological Systems | Orr Biologicals",
       "twitter:description": "Why vision inference belongs on-device at ~2 W: latency, privacy of your lab bench, and the reliability story cloud loops cannot tell.",
-      "twitter:image": "https://orrbiologicals.com/assets/og.png"
+      "twitter:image": "https://orrbiologicals.com/assets/og.jpg"
     }
   },
   {
@@ -3859,14 +3859,14 @@
       "og:description": "Sharing fitted twin parameters instead of images or traces: MQTT topics, bounds-checking, last-will obituaries and vandal-resistant averaging.",
       "og:type": "article",
       "og:url": "https://orrbiologicals.com/blog/federated-learning-network",
-      "og:image": "https://orrbiologicals.com/assets/og.png",
+      "og:image": "https://orrbiologicals.com/assets/og.jpg",
       "article:published_time": "2026-08-17",
       "twitter:card": "summary_large_image",
       "article:modified_time": "2026-10-04",
       "og:site_name": "Orr Biologicals",
       "twitter:title": "A Federated Learning Network for Algae Reactors | Orr Biologicals",
       "twitter:description": "Sharing fitted twin parameters instead of images or traces: MQTT topics, bounds-checking, last-will obituaries and vandal-resistant averaging.",
-      "twitter:image": "https://orrbiologicals.com/assets/og.png"
+      "twitter:image": "https://orrbiologicals.com/assets/og.jpg"
     }
   },
   {
@@ -3962,14 +3962,14 @@
       "og:description": "When and how to harvest fresh Spirulina at home, simple screening and pressing methods, storage, and honest notes on freshness versus bottled supplements.",
       "og:type": "article",
       "og:url": "https://orrbiologicals.com/blog/harvesting-and-using-fresh-spirulina",
-      "og:image": "https://orrbiologicals.com/assets/og.png",
+      "og:image": "https://orrbiologicals.com/assets/og.jpg",
       "article:published_time": "2026-07-09",
       "twitter:card": "summary_large_image",
       "article:modified_time": "2026-10-04",
       "og:site_name": "Orr Biologicals",
       "twitter:title": "Harvesting and Using Fresh Spirulina | Orr Biologicals",
       "twitter:description": "When and how to harvest fresh Spirulina at home, simple screening and pressing methods, storage, and honest notes on freshness versus bottled supplements.",
-      "twitter:image": "https://orrbiologicals.com/assets/og.png"
+      "twitter:image": "https://orrbiologicals.com/assets/og.jpg"
     }
   },
   {
@@ -4059,14 +4059,14 @@
       "og:description": "Plain-language walkthrough of the two-check safety system plus physical backstops — and why doing nothing is usually the safe action.",
       "og:type": "article",
       "og:url": "https://orrbiologicals.com/blog/how-main-keeps-culture-safe",
-      "og:image": "https://orrbiologicals.com/assets/og.png",
+      "og:image": "https://orrbiologicals.com/assets/og.jpg",
       "article:published_time": "2026-08-01",
       "twitter:card": "summary_large_image",
       "article:modified_time": "2026-10-04",
       "og:site_name": "Orr Biologicals",
       "twitter:title": "How Algaephyte Keeps Your Culture Safe | Orr Biologicals",
       "twitter:description": "Plain-language walkthrough of the two-check safety system plus physical backstops — and why doing nothing is usually the safe action.",
-      "twitter:image": "https://orrbiologicals.com/assets/og.png"
+      "twitter:image": "https://orrbiologicals.com/assets/og.jpg"
     }
   },
   {
@@ -4165,14 +4165,14 @@
       "og:description": "A plain-language guide to starting Spirulina at home: what you need, live culture vs powder, light, warmth, alkalinity and the first signs your culture is thriving.",
       "og:type": "article",
       "og:url": "https://orrbiologicals.com/blog/how-to-start-home-spirulina-culture",
-      "og:image": "https://orrbiologicals.com/assets/og.png",
+      "og:image": "https://orrbiologicals.com/assets/og.jpg",
       "article:published_time": "2026-07-02",
       "twitter:card": "summary_large_image",
       "article:modified_time": "2026-10-04",
       "og:site_name": "Orr Biologicals",
       "twitter:title": "How to Start a Home Spirulina Culture (Without Guesswork) | Orr Biologicals",
       "twitter:description": "A plain-language guide to starting Spirulina at home: what you need, live culture vs powder, light, warmth, alkalinity and the first signs your culture is thriving.",
-      "twitter:image": "https://orrbiologicals.com/assets/og.png"
+      "twitter:image": "https://orrbiologicals.com/assets/og.jpg"
     }
   },
   {
@@ -4350,12 +4350,12 @@
       "og:description": "Explore Spirulina cultivation, algae sensors, digital twins and single-cell imaging guides, plus clearly labeled AI-assisted research summaries.",
       "og:type": "website",
       "og:url": "https://orrbiologicals.com/blog/",
-      "og:image": "https://orrbiologicals.com/assets/og.png",
+      "og:image": "https://orrbiologicals.com/assets/og.jpg",
       "twitter:card": "summary_large_image",
       "og:site_name": "Orr Biologicals",
       "twitter:title": "Algae Cultivation Guides & Research Notes | Orr Biologicals",
       "twitter:description": "Explore Spirulina cultivation, algae sensors, digital twins and single-cell imaging guides, plus clearly labeled AI-assisted research summaries.",
-      "twitter:image": "https://orrbiologicals.com/assets/og.png"
+      "twitter:image": "https://orrbiologicals.com/assets/og.jpg"
     }
   },
   {
@@ -4448,14 +4448,14 @@
       "og:description": "How irradiance, temperature band and mixing shape Spirulina growth rate — and why more of any one of them stops helping surprisingly early.",
       "og:type": "article",
       "og:url": "https://orrbiologicals.com/blog/light-temperature-mixing",
-      "og:image": "https://orrbiologicals.com/assets/og.png",
+      "og:image": "https://orrbiologicals.com/assets/og.jpg",
       "article:published_time": "2026-07-23",
       "twitter:card": "summary_large_image",
       "article:modified_time": "2026-10-04",
       "og:site_name": "Orr Biologicals",
       "twitter:title": "Light, Temperature and Mixing: The Three Physical Levers | Orr Biologicals",
       "twitter:description": "How irradiance, temperature band and mixing shape Spirulina growth rate — and why more of any one of them stops helping surprisingly early.",
-      "twitter:image": "https://orrbiologicals.com/assets/og.png"
+      "twitter:image": "https://orrbiologicals.com/assets/og.jpg"
     }
   },
   {
@@ -4543,14 +4543,14 @@
       "og:description": "How AI belongs in an algae photobioreactor: bounded proposals checked by hard limits and a physics twin — never direct control of pumps.",
       "og:type": "article",
       "og:url": "https://orrbiologicals.com/blog/photobioreactor-ai-optimization",
-      "og:image": "https://orrbiologicals.com/assets/og.png",
+      "og:image": "https://orrbiologicals.com/assets/og.jpg",
       "article:published_time": "2026-08-06",
       "twitter:card": "summary_large_image",
       "article:modified_time": "2026-10-04",
       "og:site_name": "Orr Biologicals",
       "twitter:title": "AI Optimization in Photobioreactors: Propose, Then Verify | Orr Biologicals",
       "twitter:description": "How AI belongs in an algae photobioreactor: bounded proposals checked by hard limits and a physics twin — never direct control of pumps.",
-      "twitter:image": "https://orrbiologicals.com/assets/og.png"
+      "twitter:image": "https://orrbiologicals.com/assets/og.jpg"
     }
   },
   {
@@ -4641,14 +4641,14 @@
       "og:description": "A no-lab guide to reading Spirulina health: blue-green color cues, spoon-depth density tests, smell diagnostics and the cheap measurements worth taking daily.",
       "og:type": "article",
       "og:url": "https://orrbiologicals.com/blog/reading-your-culture",
-      "og:image": "https://orrbiologicals.com/assets/og.png",
+      "og:image": "https://orrbiologicals.com/assets/og.jpg",
       "article:published_time": "2026-06-25",
       "twitter:card": "summary_large_image",
       "article:modified_time": "2026-10-04",
       "og:site_name": "Orr Biologicals",
       "twitter:title": "Reading Your Culture: Color, Density, Smell | Orr Biologicals",
       "twitter:description": "A no-lab guide to reading Spirulina health: blue-green color cues, spoon-depth density tests, smell diagnostics and the cheap measurements worth taking daily.",
-      "twitter:image": "https://orrbiologicals.com/assets/og.png"
+      "twitter:image": "https://orrbiologicals.com/assets/og.jpg"
     }
   },
   {
@@ -4757,12 +4757,12 @@
       "og:title": "Single-Cell Microalgae Analysis with Microfluidics | Orr Biologicals",
       "og:description": "Compare droplets and microwells for microalgae analysis. Learn how imaging, tracking, phenotype validation and recovery differ, with primary research references.",
       "og:url": "https://orrbiologicals.com/blog/single-cell-microalgae-microfluidics",
-      "og:image": "https://orrbiologicals.com/assets/og.png",
+      "og:image": "https://orrbiologicals.com/assets/og.jpg",
       "og:site_name": "Orr Biologicals",
       "twitter:card": "summary_large_image",
       "twitter:title": "Single-Cell Microalgae Analysis with Microfluidics | Orr Biologicals",
       "twitter:description": "Compare droplets and microwells for microalgae analysis. Learn how imaging, tracking, phenotype validation and recovery differ, with primary research references.",
-      "twitter:image": "https://orrbiologicals.com/assets/og.png",
+      "twitter:image": "https://orrbiologicals.com/assets/og.jpg",
       "article:published_time": "2026-10-04",
       "article:modified_time": "2026-10-04"
     }
@@ -4857,14 +4857,14 @@
       "og:description": "pH, temperature, wall irradiance, OD750, dissolved oxygen, conductivity — six channels each telling a different biological story about one culture.",
       "og:type": "article",
       "og:url": "https://orrbiologicals.com/blog/six-culture-signals-main-senses",
-      "og:image": "https://orrbiologicals.com/assets/og.png",
+      "og:image": "https://orrbiologicals.com/assets/og.jpg",
       "article:published_time": "2026-07-21",
       "twitter:card": "summary_large_image",
       "article:modified_time": "2026-10-04",
       "og:site_name": "Orr Biologicals",
       "twitter:title": "Six Culture Signals: What a Reactor Senses | Orr Biologicals",
       "twitter:description": "pH, temperature, wall irradiance, OD750, dissolved oxygen, conductivity — six channels each telling a different biological story about one culture.",
-      "twitter:image": "https://orrbiologicals.com/assets/og.png"
+      "twitter:image": "https://orrbiologicals.com/assets/og.jpg"
     }
   },
   {
@@ -4955,14 +4955,14 @@
       "og:description": "Arthrospira platensis is a photosynthetic bacterium, not an alga in the plant sense. What cyanobacteria are, and why it matters for cultivation.",
       "og:type": "article",
       "og:url": "https://orrbiologicals.com/blog/spirulina-is-a-cyanobacterium",
-      "og:image": "https://orrbiologicals.com/assets/og.png",
+      "og:image": "https://orrbiologicals.com/assets/og.jpg",
       "article:published_time": "2026-08-14",
       "twitter:card": "summary_large_image",
       "article:modified_time": "2026-10-04",
       "og:site_name": "Orr Biologicals",
       "twitter:title": "Spirulina Is a Cyanobacterium — What That Actually Means | Orr Biologicals",
       "twitter:description": "Arthrospira platensis is a photosynthetic bacterium, not an alga in the plant sense. What cyanobacteria are, and why it matters for cultivation.",
-      "twitter:image": "https://orrbiologicals.com/assets/og.png"
+      "twitter:image": "https://orrbiologicals.com/assets/og.jpg"
     }
   },
   {
@@ -5051,14 +5051,14 @@
       "og:description": "Field-guide style troubleshooting for home Spirulina: spotting grazers and competitors early, using high pH defensively, and recovering a crashed culture.",
       "og:type": "article",
       "og:url": "https://orrbiologicals.com/blog/troubleshooting-contamination-crashes",
-      "og:image": "https://orrbiologicals.com/assets/og.png",
+      "og:image": "https://orrbiologicals.com/assets/og.jpg",
       "article:published_time": "2026-07-30",
       "twitter:card": "summary_large_image",
       "article:modified_time": "2026-10-04",
       "og:site_name": "Orr Biologicals",
       "twitter:title": "Troubleshooting Spirulina Contamination and Crashes | Orr Biologicals",
       "twitter:description": "Field-guide style troubleshooting for home Spirulina: spotting grazers and competitors early, using high pH defensively, and recovering a crashed culture.",
-      "twitter:image": "https://orrbiologicals.com/assets/og.png"
+      "twitter:image": "https://orrbiologicals.com/assets/og.jpg"
     }
   },
   {
@@ -5145,14 +5145,14 @@
       "og:description": "Why pH climbs in a healthy Spirulina culture, when rising pH becomes carbon starvation, and how bicarbonate dosing restores both buffer and feed.",
       "og:type": "article",
       "og:url": "https://orrbiologicals.com/blog/troubleshooting-ph-and-carbon",
-      "og:image": "https://orrbiologicals.com/assets/og.png",
+      "og:image": "https://orrbiologicals.com/assets/og.jpg",
       "article:published_time": "2026-08-02",
       "twitter:card": "summary_large_image",
       "article:modified_time": "2026-10-04",
       "og:site_name": "Orr Biologicals",
       "twitter:title": "Troubleshooting pH and Carbon in Alkaline Culture | Orr Biologicals",
       "twitter:description": "Why pH climbs in a healthy Spirulina culture, when rising pH becomes carbon starvation, and how bicarbonate dosing restores both buffer and feed.",
-      "twitter:image": "https://orrbiologicals.com/assets/og.png"
+      "twitter:image": "https://orrbiologicals.com/assets/og.jpg"
     }
   },
   {
@@ -5244,14 +5244,14 @@
       "og:description": "What a microscope camera can and cannot classify: healthy helix vs fragment vs not-spirulina — flags that hold pumps, never ones that open them.",
       "og:type": "article",
       "og:url": "https://orrbiologicals.com/blog/vision-contamination-detection",
-      "og:image": "https://orrbiologicals.com/assets/og.png",
+      "og:image": "https://orrbiologicals.com/assets/og.jpg",
       "article:published_time": "2026-08-12",
       "twitter:card": "summary_large_image",
       "article:modified_time": "2026-10-04",
       "og:site_name": "Orr Biologicals",
       "twitter:title": "Vision-Based Contamination Detection, Honestly | Orr Biologicals",
       "twitter:description": "What a microscope camera can and cannot classify: healthy helix vs fragment vs not-spirulina — flags that hold pumps, never ones that open them.",
-      "twitter:image": "https://orrbiologicals.com/assets/og.png"
+      "twitter:image": "https://orrbiologicals.com/assets/og.jpg"
     }
   },
   {
@@ -5338,14 +5338,14 @@
       "og:description": "No-jargon tour of an AI-tended photobioreactor: what it senses, how it decides, why every proposal passes gates, and what the human still owns.",
       "og:type": "article",
       "og:url": "https://orrbiologicals.com/blog/what-is-main-plain-language",
-      "og:image": "https://orrbiologicals.com/assets/og.png",
+      "og:image": "https://orrbiologicals.com/assets/og.jpg",
       "article:published_time": "2026-08-04",
       "twitter:card": "summary_large_image",
       "article:modified_time": "2026-10-04",
       "og:site_name": "Orr Biologicals",
       "twitter:title": "What Is Algaephyte? (Plain Language) | Orr Biologicals",
       "twitter:description": "No-jargon tour of an AI-tended photobioreactor: what it senses, how it decides, why every proposal passes gates, and what the human still owns.",
-      "twitter:image": "https://orrbiologicals.com/assets/og.png"
+      "twitter:image": "https://orrbiologicals.com/assets/og.jpg"
     }
   },
   {
@@ -5434,14 +5434,14 @@
       "og:description": "Heaters, insulation and placement strategy for keeping Spirulina in its 30–37°C comfort band through cold months — warmth before anything else.",
       "og:type": "article",
       "og:url": "https://orrbiologicals.com/blog/winter-home-growing-warmth",
-      "og:image": "https://orrbiologicals.com/assets/og.png",
+      "og:image": "https://orrbiologicals.com/assets/og.jpg",
       "article:published_time": "2026-07-05",
       "twitter:card": "summary_large_image",
       "article:modified_time": "2026-10-04",
       "og:site_name": "Orr Biologicals",
       "twitter:title": "Keeping a Home Spirulina Culture Warm Through Winter | Orr Biologicals",
       "twitter:description": "Heaters, insulation and placement strategy for keeping Spirulina in its 30–37°C comfort band through cold months — warmth before anything else.",
-      "twitter:image": "https://orrbiologicals.com/assets/og.png"
+      "twitter:image": "https://orrbiologicals.com/assets/og.jpg"
     }
   },
   {
@@ -5533,14 +5533,14 @@
       "og:description": "The chemistry behind Zarrouk medium for Arthrospira: bicarbonate, nitrate, phosphate, trace metals — and why a pale culture is usually a hungry one.",
       "og:type": "article",
       "og:url": "https://orrbiologicals.com/blog/zarrouk-medium-and-nutrients",
-      "og:image": "https://orrbiologicals.com/assets/og.png",
+      "og:image": "https://orrbiologicals.com/assets/og.jpg",
       "article:published_time": "2026-07-16",
       "twitter:card": "summary_large_image",
       "article:modified_time": "2026-10-04",
       "og:site_name": "Orr Biologicals",
       "twitter:title": "Zarrouk Medium and Nutrients: Feeding a Spirulina Culture | Orr Biologicals",
       "twitter:description": "The chemistry behind Zarrouk medium for Arthrospira: bicarbonate, nitrate, phosphate, trace metals — and why a pale culture is usually a hungry one.",
-      "twitter:image": "https://orrbiologicals.com/assets/og.png"
+      "twitter:image": "https://orrbiologicals.com/assets/og.jpg"
     }
   },
   {
@@ -5764,9 +5764,9 @@
       "og:description": "Cyanoflow is a developing research platform by Orr Biologicals that combines microfluidics, automated microscopy, computer vision and AI to isolate, observe, measure and identify individual microalgal cells.",
       "og:url": "https://orrbiologicals.com/cyanoflow",
       "og:site_name": "Orr Biologicals",
-      "og:image": "https://orrbiologicals.com/assets/og.png",
+      "og:image": "https://orrbiologicals.com/assets/og.jpg",
       "twitter:card": "summary_large_image",
-      "twitter:image": "https://orrbiologicals.com/assets/og.png",
+      "twitter:image": "https://orrbiologicals.com/assets/og.jpg",
       "theme-color": "#faf6ec",
       "twitter:title": "Single-Cell Microalgae Research with Microfluidics | Cyanoflow",
       "twitter:description": "Cyanoflow is a developing research platform by Orr Biologicals that combines microfluidics, automated microscopy, computer vision and AI to isolate, observe, measure and identify individual microalgal cells."
@@ -5904,13 +5904,13 @@
       "og:description": "Orr Biologicals content is educational; cultivation and health claims are contextualized honestly.",
       "og:type": "website",
       "og:url": "https://orrbiologicals.com/disclaimer",
-      "og:image": "https://orrbiologicals.com/assets/og.png",
+      "og:image": "https://orrbiologicals.com/assets/og.jpg",
       "og:site_name": "Orr Biologicals",
       "og:locale": "en_US",
       "twitter:card": "summary_large_image",
       "twitter:title": "Scientific Disclaimer | Orr Biologicals",
       "twitter:description": "Orr Biologicals content is educational; cultivation and health claims are contextualized honestly.",
-      "twitter:image": "https://orrbiologicals.com/assets/og.png"
+      "twitter:image": "https://orrbiologicals.com/assets/og.jpg"
     }
   },
   {
@@ -6060,7 +6060,7 @@
       "og:description": "Start as one cell. End operating an ecosystem. A biological survival-and-tycoon game set inside a real photobioreactor.",
       "og:type": "website",
       "og:url": "https://orrbiologicals.com/game/",
-      "og:image": "https://orrbiologicals.com/assets/og.png",
+      "og:image": "https://orrbiologicals.com/assets/og.jpg",
       "twitter:card": "summary_large_image"
     }
   },
@@ -6235,12 +6235,12 @@
       "og:title": "Algae Biotechnology Glossary: Models, Sensors & Cells | Orr Biologicals",
       "og:description": "Understand microalgae, cyanobacteria, optical density, photobioreactors, digital twins, microfluidics and phenotyping, with limitations and deeper reading.",
       "og:url": "https://orrbiologicals.com/glossary",
-      "og:image": "https://orrbiologicals.com/assets/og.png",
+      "og:image": "https://orrbiologicals.com/assets/og.jpg",
       "og:site_name": "Orr Biologicals",
       "twitter:card": "summary_large_image",
       "twitter:title": "Algae Biotechnology Glossary: Models, Sensors & Cells | Orr Biologicals",
       "twitter:description": "Understand microalgae, cyanobacteria, optical density, photobioreactors, digital twins, microfluidics and phenotyping, with limitations and deeper reading.",
-      "twitter:image": "https://orrbiologicals.com/assets/og.png"
+      "twitter:image": "https://orrbiologicals.com/assets/og.jpg"
     }
   },
   {
@@ -6501,7 +6501,7 @@
       "og:description": "Explore algae biotechnology, microalgae cultivation and single-cell research: photobioreactors, sensing, microfluidics and microscopy, with clearly labeled concepts.",
       "og:type": "website",
       "og:url": "https://orrbiologicals.com/",
-      "og:image": "https://orrbiologicals.com/assets/og.png",
+      "og:image": "https://orrbiologicals.com/assets/og.jpg",
       "og:image:width": "1200",
       "og:image:height": "630",
       "og:site_name": "Orr Biologicals",
@@ -6509,7 +6509,7 @@
       "twitter:card": "summary_large_image",
       "twitter:title": "Algae Biotechnology, Cultivation & Single-Cell Research | Orr Biologicals",
       "twitter:description": "Explore algae biotechnology, microalgae cultivation and single-cell research: photobioreactors, sensing, microfluidics and microscopy, with clearly labeled concepts.",
-      "twitter:image": "https://orrbiologicals.com/assets/og.png"
+      "twitter:image": "https://orrbiologicals.com/assets/og.jpg"
     }
   },
   {
@@ -6659,12 +6659,12 @@
       "og:title": "Microalgae Cultivation: Light, Nutrients & Monitoring | Orr Biologicals",
       "og:description": "Learn how light, temperature, nutrients, carbon, mixing and monitoring interact in microalgae cultivation. Compare measurements and find species-specific guides.",
       "og:url": "https://orrbiologicals.com/microalgae-cultivation/",
-      "og:image": "https://orrbiologicals.com/assets/og.png",
+      "og:image": "https://orrbiologicals.com/assets/og.jpg",
       "og:site_name": "Orr Biologicals",
       "twitter:card": "summary_large_image",
       "twitter:title": "Microalgae Cultivation: Light, Nutrients & Monitoring | Orr Biologicals",
       "twitter:description": "Learn how light, temperature, nutrients, carbon, mixing and monitoring interact in microalgae cultivation. Compare measurements and find species-specific guides.",
-      "twitter:image": "https://orrbiologicals.com/assets/og.png"
+      "twitter:image": "https://orrbiologicals.com/assets/og.jpg"
     }
   },
   {
@@ -6796,12 +6796,12 @@
       "og:title": "Microalgae Photobioreactors: Design, Light & Sensors | Orr Biologicals",
       "og:description": "Compare photobioreactor geometries and understand light paths, mixing, gas exchange, sensors and scale-up limits using cited research and educational guides.",
       "og:url": "https://orrbiologicals.com/photobioreactors/",
-      "og:image": "https://orrbiologicals.com/assets/og.png",
+      "og:image": "https://orrbiologicals.com/assets/og.jpg",
       "og:site_name": "Orr Biologicals",
       "twitter:card": "summary_large_image",
       "twitter:title": "Microalgae Photobioreactors: Design, Light & Sensors | Orr Biologicals",
       "twitter:description": "Compare photobioreactor geometries and understand light paths, mixing, gas exchange, sensors and scale-up limits using cited research and educational guides.",
-      "twitter:image": "https://orrbiologicals.com/assets/og.png"
+      "twitter:image": "https://orrbiologicals.com/assets/og.jpg"
     }
   },
   {
@@ -6935,13 +6935,13 @@
       "og:description": "How Orr Biologicals handles information on orrbiologicals.com — what we collect, the cookies and local storage we use, and the choices you have.",
       "og:type": "website",
       "og:url": "https://orrbiologicals.com/privacy",
-      "og:image": "https://orrbiologicals.com/assets/og.png",
+      "og:image": "https://orrbiologicals.com/assets/og.jpg",
       "og:site_name": "Orr Biologicals",
       "og:locale": "en_US",
       "twitter:card": "summary_large_image",
       "twitter:title": "Privacy Policy | Orr Biologicals",
       "twitter:description": "How Orr Biologicals handles information on orrbiologicals.com — what we collect, the cookies and local storage we use, and the choices you have.",
-      "twitter:image": "https://orrbiologicals.com/assets/og.png"
+      "twitter:image": "https://orrbiologicals.com/assets/og.jpg"
     }
   },
   {
@@ -7103,12 +7103,12 @@
       "og:title": "Algae Cultivation & Single-Cell Research Methods | Orr Biologicals",
       "og:description": "Explore Algaephyte cultivation models, Cyanoflow single-cell methods, species guides and transparent research-status labels. Concepts are not validated results.",
       "og:url": "https://orrbiologicals.com/research/",
-      "og:image": "https://orrbiologicals.com/assets/og.png",
+      "og:image": "https://orrbiologicals.com/assets/og.jpg",
       "og:site_name": "Orr Biologicals",
       "twitter:card": "summary_large_image",
       "twitter:title": "Algae Cultivation & Single-Cell Research Methods | Orr Biologicals",
       "twitter:description": "Explore Algaephyte cultivation models, Cyanoflow single-cell methods, species guides and transparent research-status labels. Concepts are not validated results.",
-      "twitter:image": "https://orrbiologicals.com/assets/og.png"
+      "twitter:image": "https://orrbiologicals.com/assets/og.jpg"
     }
   },
   {
@@ -7246,13 +7246,13 @@
       "og:description": "Terms governing use of the Orr Biologicals website: informational content, open-source licensing, the Algae Living game, and limitation of liability.",
       "og:type": "website",
       "og:url": "https://orrbiologicals.com/terms",
-      "og:image": "https://orrbiologicals.com/assets/og.png",
+      "og:image": "https://orrbiologicals.com/assets/og.jpg",
       "og:site_name": "Orr Biologicals",
       "og:locale": "en_US",
       "twitter:card": "summary_large_image",
       "twitter:title": "Terms of Use | Orr Biologicals",
       "twitter:description": "Terms governing use of the Orr Biologicals website: informational content, open-source licensing, the Algae Living game, and limitation of liability.",
-      "twitter:image": "https://orrbiologicals.com/assets/og.png"
+      "twitter:image": "https://orrbiologicals.com/assets/og.jpg"
     }
   }
 ]

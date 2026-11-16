@@ -79,13 +79,20 @@ RedirectMatch 410 ^/papertrail(?:/|$)
 RedirectMatch 410 ^/culturetrace(?:/|$)
 # Algaephyte now has a dedicated research pillar; preserve the no-slash alias.
 RedirectMatch 301 ^/algaephyte$ /algaephyte/
-# Applications is a live public section again (2026-11). Old flat culture paths
-# moved under it; keep old bookmarks working.
-RedirectMatch 301 ^/sourdough/?$                      /applications/sourdough/
-RedirectMatch 301 ^/kombucha/?$                       /applications/kombucha/
-# The guide shelf moved under Applications (2026-11); keep old bookmarks working.
-RedirectMatch 301 ^/guides/?$                         /applications/guides/
-RedirectMatch 301 ^/blog$ /blog/
+# The bench protocols are DIY now (2026-11, rebrand). Old flat paths and the
+# short-lived /applications/ bench paths both point directly at /diy/ — no chains.
+RedirectMatch 301 ^/sourdough/?$                      /diy/sourdough/
+RedirectMatch 301 ^/kombucha/?$                       /diy/kombucha/
+RedirectMatch 301 ^/guides/?$                         /diy/guides/
+RedirectMatch 301 ^/applications/sourdough/?$          /diy/sourdough/
+RedirectMatch 301 ^/applications/sourdough/(.*)$       /diy/sourdough/$1
+RedirectMatch 301 ^/applications/kombucha/?$           /diy/kombucha/
+RedirectMatch 301 ^/applications/kombucha/(.*)$        /diy/kombucha/$1
+RedirectMatch 301 ^/applications/spirulina/?$          /diy/spirulina/
+RedirectMatch 301 ^/applications/spirulina/(.*)$       /diy/spirulina/$1
+RedirectMatch 301 ^/applications/guides/?$             /diy/guides/
+# Articles is the publisher index; article permalinks stay under /blog/ and do not move.
+RedirectMatch 301 ^/blog/?$                           /articles/
 Redirect 301 /what-is-main-plain-language              /blog/what-is-main-plain-language
 # Restored control-loop article redirect is defined above (never homepage).
 Redirect 301 /alkalinity-as-a-control-variable         /blog/alkalinity-as-a-control-variable

@@ -21,7 +21,7 @@ const PAGES = [
   { route: "/algaephyte/", name: "algaephyte", canvas: "#algaephyteInstrumentCanvas" },
   { route: "/cyanoflow", name: "cyanoflow", canvas: "#cyanoflowChipCanvas" },
   { route: "/research/", name: "research" },
-  { route: "/blog/", name: "journal" },
+  { route: "/articles/", name: "articles" },
   { route: "/blog/spirulina-is-a-cyanobacterium", name: "journal-article" },
   { route: "/Simulation/", name: "simulation" },
   { route: "/glossary", name: "glossary" },

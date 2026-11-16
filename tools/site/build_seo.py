@@ -55,7 +55,7 @@ def build():
                 + '<p>' + html.escape(a['dek']) + '</p><span class="rt-foot"><b>' + html.escape(a['date'])
                 + '</b><span class="rt-go">Read the note</span></span></span></a>')
         directory.append('</div>')
-    path = ROOT / 'blog/index.html'; text = path.read_text(encoding='utf-8')
+    path = ROOT / 'articles/index.html'; text = path.read_text(encoding='utf-8')
     text, n = re.subn(r'<!-- SEO:KNOWLEDGE:START -->.*?<!-- SEO:KNOWLEDGE:END -->',
         '<!-- SEO:KNOWLEDGE:START -->\n' + '\n'.join(directory) + '\n<!-- SEO:KNOWLEDGE:END -->', text, flags=re.S)
     if n != 1: raise ValueError('Blog requires exactly one static directory marker pair')
