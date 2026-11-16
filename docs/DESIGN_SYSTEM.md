@@ -1,23 +1,32 @@
-# Orr Biologicals design system — 2026 rebrand
+# Orr Biologicals design system — 2026 kitchen rework
 
-Status: **neuroscience removal**, 2026-11-08. The editorial system is live
-on the local `/`, `/algae/`, `/cyanoflow` and `/algaephyte/` pages. The
-neuroscience and NeuroML surfaces were removed entirely: no pages, data,
-styles, imagery or links remain, and the homepage hero now leads with algae.
-The build emits 45 public pages and applies the shared header/footer to the
-editable shell; `/game/` and `/algae-growth/` intentionally keep their
-immersive shells. This document records what exists; it does not claim a
-completed site-wide migration.
+Status: **home-kitchen direction**, 2026-11-15. The public site is a dim, cozy
+kitchen rather than a lab dossier: it leads with sourdough starter cultivation,
+then kombucha and spirulina, with a subtle toasted amber marking the yeast side
+of the counter. `/algae/`, `/cyanoflow` and `/algaephyte/` keep their product
+layouts but join the same faded forest palette. The build emits 49 public pages
+and applies the shared header/footer to the editable shell; `/game/` and
+`/algae-growth/` intentionally keep their immersive shells. This document
+records what exists; it does not claim a completed site-wide migration.
 
 ## Direction
 
-The visual target is minimal biotechnology editorial, not a dark SaaS
-dashboard: obsidian and near-black fields, warm paper ink, restrained
-chlorophyll green and cyan, real biological evidence, and large serif/sans
-contrasts. The page should look composed before it looks animated.
+The visual target is a warm, dark, photographic kitchen editorial — not a dark
+SaaS dashboard and not pure black: faded forest-green fields, warm paper ink,
+restrained sage green for the green side of the counter and a subtle
+toasted-crust amber for the yeast side, real photographic illustration of the
+cultures, and large serif/sans contrasts. The page should look composed before
+it looks animated.
 
-The reference is the restraint and editorial product framing of Neoplants, not
-its layout, identity or assets.
+Homey and citizen-science first; the advanced technologies — **Algaephyte** and
+**Cyanoflow**, the project's own inventions — live in a separate "Advanced
+technologies" section as research concepts in development, never as products.
+The whole site is MIT-licensed open source and built to be accessible.
+
+Imagery is self-hosted generated photographic editorial imagery labelled as such (never
+presented as a photograph of a real laboratory or a specific real culture). The reference is the
+restraint and editorial framing of Neoplants, not its layout, identity or
+assets.
 
 ## Tokens
 
@@ -34,16 +43,20 @@ simulation and the Algaephyte console keep working.
 
 | Token | Value | Use |
 |---|---|---|
-| `--hr-bg` | `#070a08` | Page field |
-| `--hr-panel` | `#0c120d` | Specimen and proof panels |
-| `--hr-ink` | `#f3f0e5` | Primary warm-white text |
-| `--hr-soft` | `#b8c3b6` | Secondary copy |
-| `--hr-mute` | `#839184` | Technical labels, limits |
-| `--hr-line` | `rgba(222, 232, 215, .18)` | Structural rules |
-| `--hr-green` | `#c6d9b0` | Editorial accent and live state |
-| `--hr-cyan` | `#9fd8cc` | Verified / connected state |
-| `--hr-gold` | `#e7be76` | Outgoing synapse mark |
-| `--hr-coral` | `#dca08a` | Axon mark |
+| `--void` | `#18211c` | Page field (faded forest, never black) |
+| `--void-2` | `#1d2721` | Alt bands |
+| `--paper` | `#212c25` | Cards and panels |
+| `--paper-2` | `#28352d` | Tables, raised panels |
+| `--ink` | `#ece7d8` | Primary warm text |
+| `--ink-soft` | `#c4cabc` | Secondary copy |
+| `--mute` | `#97a390` | Technical labels, limits |
+| `--rule` | `rgba(216, 224, 208, .15)` | Structural rules |
+| `--leaf` | `#a9c3ab` | Green-side accent / links |
+| `--leaf-2` | `#c9d9c5` | Hover state |
+| `--amber` / `--rose` | `#d0a267` | Yeast-side accent (toasted crust) |
+| `--amber-2` / `--rose-2` | `#e6c188` | Yeast hover / focus |
+| `--copper` | `#c9b195` | Instrument gold |
+| `--cyan` | `#a8c9c1` | Verified / connected state |
 
 Type: Avenir Next / Segoe UI sans for display and interface, Iowan Old Style /
 Baskerville serif for the italic display interruption and long-form voice, and

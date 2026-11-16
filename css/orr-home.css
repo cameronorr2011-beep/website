@@ -117,8 +117,8 @@
   font:10.5px/1.55 var(--mono);
   color:#bdd4c8;
   padding:14px 20px;
-  border-top:1px solid #29483a;
-  background:#06110c;
+  border-top:1px solid #2b392f;
+  background:#151e19;
   display:flex;
   justify-content:space-between;
   gap:16px;
@@ -128,7 +128,7 @@
   position:relative;
   min-height:510px;
   isolation:isolate;
-  background:#06120d;
+  background:#151e19;
 }
 .orr-hero-photo>img{
   position:absolute;
@@ -476,9 +476,9 @@
   height:136px;
   margin:0 0 22px;
   overflow:hidden;
-  border:1px solid #244434;
+  border:1px solid #2b392f;
   border-radius:8px;
-  background:linear-gradient(180deg,#0c2219,#07130f);
+  background:linear-gradient(180deg,#1a241f,#161f1a);
 }
 .spec-vessel{
   position:absolute;
@@ -507,7 +507,7 @@
   height:9px;
   border:1px solid #bde5c4;
   border-radius:50%;
-  background:#07130f;
+  background:#161f1a;
   box-shadow:0 0 0 6px rgba(148,210,159,.14);
 }
 .spec-signal.one{left:43%;top:30px}
@@ -522,7 +522,7 @@
   letter-spacing:.1em;
 }
 .cyano-diagram{
-  background:repeating-linear-gradient(90deg,transparent 0 36px,rgba(126,201,192,.08) 37px 38px),linear-gradient(180deg,#081d22,#061215);
+  background:repeating-linear-gradient(90deg,transparent 0 36px,rgba(126,201,192,.08) 37px 38px),linear-gradient(180deg,#161f1a,#151e19);
 }
 .spec-channel{
   position:absolute;
@@ -814,13 +814,13 @@
 /* ============ 08 / DEPLOY / CORRESPONDENCE & FOOTER ============ */
 #deploy{
   background:var(--dvoid);
-  --paper:#122b21;
-  --paper-2:#163529;
+  --paper:#1f2a24;
+  --paper-2:#26332c;
 }
 #deploy .wrap{max-width:960px}
 #deploy input,#deploy textarea{color:var(--dink);border-color:var(--drule)}
 .science-footer{
-  background:#06110c;
+  background:#151e19;
   color:var(--dink-soft);
   padding:68px 0 28px;
   font-family:var(--sans);
