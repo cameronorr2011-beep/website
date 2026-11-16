@@ -98,7 +98,7 @@ class SEOTests(unittest.TestCase):
         kb = json.loads((ROOT / 'blog/data/kb.json').read_text(encoding='utf-8'))
         al = {x['slug'] for x in kb['algaephyte']}
         self.assertTrue({'control-loop-architecture', 'digital-twin-droop-steele-model', 'six-culture-signals-main-senses'} <= al)
-        text = (ROOT / 'blog/index.html').read_text(encoding='utf-8')
+        text = (ROOT / 'articles/index.html').read_text(encoding='utf-8')
         for article in kb['algaephyte'] + kb['cyanoflow']:
             self.assertIn('href="' + article['url'] + '"', text)
         self.assertNotIn('fetch("/blog/data/kb.json")', text)
@@ -107,7 +107,7 @@ class SEOTests(unittest.TestCase):
         for article in kb['cyanoflow']: self.assertIn('href="' + article['url'] + '"', cyano)
 
     def test_build_is_deterministic_and_does_not_replace_home(self):
-        files = [ROOT / x for x in ('index.html', 'blog/index.html', 'cyanoflow.html', 'blog/data/kb.json', 'sitemap.xml')]
+        files = [ROOT / x for x in ('index.html', 'articles/index.html', 'cyanoflow.html', 'blog/data/kb.json', 'sitemap.xml')]
         digest = lambda: [hashlib.sha256(p.read_bytes()).hexdigest() for p in files]
         before = digest()
         subprocess.run([sys.executable, str(ROOT / 'tools/site/build_seo.py')], check=True, capture_output=True)
@@ -117,10 +117,10 @@ class SEOTests(unittest.TestCase):
         from build_home import render
         self.assertEqual((ROOT / 'index.html').read_text(encoding='utf-8'), render())
         h1 = ' '.join(Page(render()).headings['h1'][0].split()).lower()
-        self.assertEqual(h1, 'open-source biotechnology, for all.')
+        self.assertEqual(h1, 'biology, built in the open.')
         self.assertIn('class="kit-hero"', render())
         self.assertIn('class="kit-adv', render())
-        self.assertIn('research concepts in development', render())
+        self.assertIn('Concepts in development', render())
         for name in ('build.ps1', 'rebuild.ps1'):
             text = (ROOT / name).read_text(encoding='utf-8-sig')
             self.assertNotIn('SliceLines', text)
@@ -135,17 +135,20 @@ class SEOTests(unittest.TestCase):
             self.assertGreater(len(page.headings['h2']), 5)
             self.assertGreater(len(' '.join(page.text).split()), 400)
             self.assertIn('href="/research/"', text)
-        blog = (ROOT / 'blog/index.html').read_text(encoding='utf-8')
+        blog = (ROOT / 'articles/index.html').read_text(encoding='utf-8')
         self.assertLess(blog.index('id="picks"'), blog.index('id="kb"'))
         for public in ('/blog/', '/cyanoflow', '/assets/', '/blog/data/'):
             self.assertNotIn('Disallow: ' + public, (ROOT / 'robots.txt').read_text())
-        hub = (ROOT / 'applications/index.html').read_text(encoding='utf-8')
-        self.assertIn('Open-source biotechnology,', hub)
-        for route in ('sourdough', 'kombucha', 'spirulina', 'phytoplankton-for-bivalves'):
-            self.assertIn('href="/applications/%s/"' % route, hub)
+        app_hub = (ROOT / 'applications/index.html').read_text(encoding='utf-8')
+        self.assertIn('The mechanism, the evidence,', app_hub)
+        self.assertIn('href="/applications/phytoplankton-for-bivalves/"', app_hub)
+        self.assertIn('href="/diy/"', app_hub)
+        diy_hub = (ROOT / 'diy/index.html').read_text(encoding='utf-8')
+        for route in ('sourdough', 'kombucha', 'spirulina', 'guides'):
+            self.assertIn('href="/diy/%s/"' % route, diy_hub)
 
     def test_header_navigation_is_consistent(self):
-        expected = ('/algae/', '/research/', '/blog/', '/#deploy', '/applications/')
+        expected = ('/diy/', '/articles/', '/applications/', '/inventions/')
         for path in pages():
             if path.relative_to(ROOT).as_posix().startswith('game/'):
                 continue
@@ -160,11 +163,14 @@ class SEOTests(unittest.TestCase):
                 self.assertNotIn('href="/culturetrace/"', header)
                 self.assertNotIn('href="/papertrail/"', header)
                 self.assertIn('href="/applications/"', header)
+                self.assertIn('href="/inventions/"', header)
                 self.assertNotIn('/#products', header)
                 self.assertNotIn('Pilot access', header)
-                self.assertIn('>Contact</a>', header)
+                self.assertNotIn('href="/blog/"', header)
+        footer = (ROOT / 'sections/footer.html').read_text(encoding='utf-8')
+        self.assertIn('>Contact</a>', footer)
         home = (ROOT / 'index.html').read_text(encoding='utf-8')
-        for href in ('/blog/', '/algaephyte/', '/cyanoflow', '/algae/'):
+        for href in ('/articles/', '/algaephyte/', '/cyanoflow', '/algae/'):
             self.assertIn('href="' + href + '"', home)
         self.assertNotIn('/papertrail/', home)
 
@@ -242,7 +248,7 @@ class SEOTests(unittest.TestCase):
         self.assertIn('Nothing here responds yet', dev)
         self.assertNotIn('/api/v1/neurons/{id}', dev)
         # The home surface took the hero slot and both pages link each other.
-        self.assertIn('Explore the applications', home)
+        self.assertIn('Enter Applications', home)
         for text in (home, dev):
             self.assertIn('/developers/', text)
 

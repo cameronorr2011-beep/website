@@ -11,7 +11,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 SITE = 'https://orrbiologicals.com'
-ACCENT = '#18211c'
+ACCENT = '#111A15'
 
 
 def head(rel, title, desc, og_image, schema_type, crumbs):
@@ -86,8 +86,8 @@ def rel(*parts):
 
 # ------------------------------------------------------------- sourdough --
 def build_sourdough():
-    crumbs = [('Applications', APP), ('Sourdough', '/applications/sourdough/')]
-    page(rel='applications/sourdough/index.html',
+    crumbs = [('Applications', APP), ('Sourdough', '/diy/sourdough/')]
+    page(rel='diy/sourdough/index.html',
          title='Sourdough Starter: Start, Feed &amp; Keep One | Orr Biologicals',
          desc='A practical, honest guide to a sourdough starter: flour and water ratios, a seven-day rhythm, what a healthy jar looks like, and when to throw it out.',
          og_image='/assets/kitchen/loaf.jpg', schema_type='Article',
@@ -113,7 +113,7 @@ def build_sourdough():
 </tbody></table></div>
 <p>A starter is ready when it roughly doubles within four to eight hours of a feed and repeats that for several days. Slower usually means cooler ambient temperature, not failure.</p>
 <h2>The short version</h2>
-<ol><li><a href="/applications/sourdough/reading-your-starter/">Reading your starter — temperature, hydration and the peak</a></li><li><a href="/applications/sourdough/when-to-discard/">When to throw the jar out — hooch, streaks and mold</a></li></ol>
+<ol><li><a href="/diy/sourdough/reading-your-starter/">Reading your starter — temperature, hydration and the peak</a></li><li><a href="/diy/sourdough/when-to-discard/">When to throw the jar out — hooch, streaks and mold</a></li></ol>
 
 <div class="kit-note-box"><strong>Safety, plainly.</strong> This is an educational guide, not food-safety certification. Mould is not flavour. If you see fuzzy growth or pink/orange discolouration, discard the culture and clean the jar. Do not rely on smell alone to judge a ferment; when in doubt, discard it. Nothing here is a health claim or medical advice.</div>
 <h2>Sources</h2>
@@ -124,16 +124,16 @@ def build_sourdough():
 </ol>
 </div>''',
          next_links=[('/applications/', 'All applications'),
-                     ('/applications/kombucha/', 'Brew kombucha next'),
-                     ('/applications/spirulina/', 'Spirulina cultivation'),
+                     ('/diy/kombucha/', 'Brew kombucha next'),
+                     ('/diy/spirulina/', 'Spirulina cultivation'),
                      ('/blog/reading-your-culture', 'The journal: reading a jar')])
 
-    page(rel='applications/sourdough/reading-your-starter/index.html',
+    page(rel='diy/sourdough/reading-your-starter/index.html',
          title='Reading Your Starter: Temperature, Hydration and the Peak | Orr Biologicals',
          desc='How hydration ratio, ambient temperature and feeding rhythm change a sourdough starter’s timing and character — and the signs a feed has peaked.',
          og_image='/assets/kitchen/starter.jpg', schema_type='Article',
          cat='Applications · Sourdough / Reading it',
-         crumbs=[('Applications', APP), ('Sourdough', '/applications/sourdough/'), ('Reading your starter', '/applications/sourdough/reading-your-starter/')],
+         crumbs=[('Applications', APP), ('Sourdough', '/diy/sourdough/'), ('Reading your starter', '/diy/sourdough/reading-your-starter/')],
          body='''<h1>Reading your starter.</h1>
 <p class="kit-page-dek">Temperature and hydration move a starter’s clock more than flour brand does. Learn the two dials and the jar becomes predictable.</p>
 <div class="prose">
@@ -152,21 +152,21 @@ def build_sourdough():
 </tbody></table></div>
 <h2>A note on honesty</h2>
 <p>These are tendencies reported across sourdough literature and home practice, not guarantees for your particular flour. Winter flour, chlorine, and water hardness all shift the clock. Record your own timings; that record — not the internet’s median — is your starter’s specification.</p>
-<div class="kit-note-box"><strong>Not a diagnosis.</strong> Temperature and hydration tune a healthy starter. Fuzzy growth or pink/orange colour is not a “timing” problem — see <a href="/applications/sourdough/when-to-discard/">when to throw the jar out</a>.</div>
+<div class="kit-note-box"><strong>Not a diagnosis.</strong> Temperature and hydration tune a healthy starter. Fuzzy growth or pink/orange colour is not a “timing” problem — see <a href="/diy/sourdough/when-to-discard/">when to throw the jar out</a>.</div>
 <h2>Sources</h2>
 <ol>
 <li>De Vuyst L, Neysens P. “The sourdough microflora: biodiversity and metabolic interactions.” <em>Trends in Biotechnology</em>, 2005.</li>
 <li>Gobbetti M, Gänzle M (eds.). <em>Handbook on Sourdough Biotechnology.</em> Springer, 2013.</li>
 </ol>
 </div>''',
-         next_links=[('/applications/sourdough/', 'Back to the sourdough guide')])
+         next_links=[('/diy/sourdough/', 'Back to the sourdough guide')])
 
-    page(rel='applications/sourdough/when-to-discard/index.html',
+    page(rel='diy/sourdough/when-to-discard/index.html',
          title='When to Throw the Jar Out | Orr Biologicals',
          desc='Hooch is not death, but mold is mold: the plain rulebook for keeping — and abandoning — a sourdough starter, without false confidence.',
          og_image='/assets/kitchen/hero-portrait.jpg', schema_type='Article',
          cat='Applications · Sourdough / Safety',
-         crumbs=[('Applications', APP), ('Sourdough', '/applications/sourdough/'), ('When to discard', '/applications/sourdough/when-to-discard/')],
+         crumbs=[('Applications', APP), ('Sourdough', '/diy/sourdough/'), ('When to discard', '/diy/sourdough/when-to-discard/')],
          body='''<h1>When to throw the jar out.</h1>
 <p class="kit-page-dek">The complete rulebook fits in one line: if in doubt, discard. Here is what doubt looks like.</p>
 <div class="prose">
@@ -188,12 +188,12 @@ def build_sourdough():
 <li>Land-grant university extension guidance on home ferment safety — discard criteria for mould and colour changes.</li>
 </ol>
 </div>''',
-         next_links=[('/applications/sourdough/', 'Back to the sourdough guide')])
+         next_links=[('/diy/sourdough/', 'Back to the sourdough guide')])
 
 # -------------------------------------------------------------- kombucha --
 def build_kombucha():
-    crumbs = [('Applications', APP), ('Kombucha', '/applications/kombucha/')]
-    page(rel='applications/kombucha/index.html',
+    crumbs = [('Applications', APP), ('Kombucha', '/diy/kombucha/')]
+    page(rel='diy/kombucha/index.html',
          title='Kombucha: Brew &amp; Bottle It | Orr Biologicals',
          desc='Sweet tea, a SCOBY and time: a practical, honest kombucha guide — the first ferment, bottling without a geyser, and what a pellicle does and does not tell you.',
          og_image='/assets/kitchen/kombucha.jpg', schema_type='Article',
@@ -208,7 +208,7 @@ def build_kombucha():
 <h2>What the culture is doing</h2>
 <p>Yeasts convert tea sugars into ethanol and carbon dioxide; bacteria then oxidise that ethanol into organic acids — principally acetic and gluconic acids — producing kombucha’s tang. Two organisms are doing opposite halves of the work, and both are held together in a cellulose pellicle. Analysis of the drink’s composition across studies shows its chemistry tracks fermentation time and ingredients rather than any fixed recipe.</p>
 <h2>The short version</h2>
-<ol><li><a href="/applications/kombucha/first-ferment/">The first ferment, step by step — sugar, tea, temperature and the 7–10 day clock</a></li><li><a href="/applications/kombucha/mould-or-pellicle/">Mould or pellicle — reading the surface without guessing</a></li></ol>
+<ol><li><a href="/diy/kombucha/first-ferment/">The first ferment, step by step — sugar, tea, temperature and the 7–10 day clock</a></li><li><a href="/diy/kombucha/mould-or-pellicle/">Mould or pellicle — reading the surface without guessing</a></li></ol>
 <h2>Typical ranges, honestly labelled</h2>
 <div class="kit-table-wrap"><table class="kit-table">
 <thead><tr><th>Dial</th><th>Common practice range</th><th>Notes</th></tr></thead>
@@ -228,15 +228,15 @@ def build_kombucha():
 </ol>
 </div>''',
          next_links=[('/applications/', 'All applications'),
-                     ('/applications/sourdough/', 'Start a sourdough starter'),
-                     ('/applications/spirulina/', 'Spirulina cultivation')])
+                     ('/diy/sourdough/', 'Start a sourdough starter'),
+                     ('/diy/spirulina/', 'Spirulina cultivation')])
 
-    page(rel='applications/kombucha/first-ferment/index.html',
+    page(rel='diy/kombucha/first-ferment/index.html',
          title='The First Ferment, Step by Step | Orr Biologicals',
          desc='From kettle to jar: sugar quantities, tea choices, SCOBY handling, the 7–10 day clock, and bottling without a geyser.',
          og_image='/assets/kitchen/kombucha.jpg', schema_type='Article',
          cat='Applications · Kombucha / Protocol',
-         crumbs=[('Applications', APP), ('Kombucha', '/applications/kombucha/'), ('First ferment', '/applications/kombucha/first-ferment/')],
+         crumbs=[('Applications', APP), ('Kombucha', '/diy/kombucha/'), ('First ferment', '/diy/kombucha/first-ferment/')],
          body='''<h1>The first ferment, step by step.</h1>
 <p class="kit-page-dek">One reproducible loop, logged. If you can make tea, you can make kombucha — the skill is noticing the batch.</p>
 <div class="prose">
@@ -259,15 +259,15 @@ def build_kombucha():
 <li>Watawana MI, et al. “Health, wellness, and safety aspects of the consumption of kombucha.” <em>Journal of Chemistry</em>, 2015. DOI: <a href="https://doi.org/10.1155/2015/591869">10.1155/2015/591869</a>.</li>
 </ol>
 </div>''',
-         next_links=[('/applications/kombucha/', 'Back to the kombucha guide'),
-                     ('/applications/kombucha/mould-or-pellicle/', 'Mould or pellicle?')])
+         next_links=[('/diy/kombucha/', 'Back to the kombucha guide'),
+                     ('/diy/kombucha/mould-or-pellicle/', 'Mould or pellicle?')])
 
-    page(rel='applications/kombucha/mould-or-pellicle/index.html',
+    page(rel='diy/kombucha/mould-or-pellicle/index.html',
          title='Mould or Pellicle? Reading the Surface | Orr Biologicals',
          desc='A wet, wrinkled cellulose pellicle is normal; fuzzy, dry, coloured growth is not. How to tell them apart — and when to discard the batch.',
          og_image='/assets/kitchen/kombucha.jpg', schema_type='Article',
          cat='Applications · Kombucha / Safety',
-         crumbs=[('Applications', APP), ('Kombucha', '/applications/kombucha/'), ('Mould or pellicle', '/applications/kombucha/mould-or-pellicle/')],
+         crumbs=[('Applications', APP), ('Kombucha', '/diy/kombucha/'), ('Mould or pellicle', '/diy/kombucha/mould-or-pellicle/')],
          body='''<h1>Mould or pellicle?</h1>
 <p class="kit-page-dek">The surface tells you almost everything — if you know what you are looking at.</p>
 <div class="prose">
@@ -292,12 +292,12 @@ def build_kombucha():
 <li>Watawana MI, et al. “Health, wellness, and safety aspects of the consumption of kombucha.” <em>Journal of Chemistry</em>, 2015. DOI: <a href="https://doi.org/10.1155/2015/591869">10.1155/2015/591869</a>.</li>
 </ol>
 </div>''',
-         next_links=[('/applications/kombucha/', 'Back to the kombucha guide')])
+         next_links=[('/diy/kombucha/', 'Back to the kombucha guide')])
 
 # ------------------------------------------------------------- spirulina --
 def build_spirulina():
-    crumbs = [('Applications', APP), ('Spirulina', '/applications/spirulina/')]
-    page(rel='applications/spirulina/index.html',
+    crumbs = [('Applications', APP), ('Spirulina', '/diy/spirulina/')]
+    page(rel='diy/spirulina/index.html',
          title='Spirulina at Home: Start &amp; Keep It | Orr Biologicals',
          desc='An honest home guide to Arthrospira/Spirulina: what it is, alkaline water chemistry, light and feeding, realistic expectations, and food-safety limits.',
          og_image='/assets/kitchen/spirulina.jpg', schema_type='Article',
@@ -322,7 +322,7 @@ def build_spirulina():
 <tr><td>Medium</td><td>Zarrouk-type bicarbonate medium</td><td>See <a href="/blog/zarrouk-medium-and-nutrients">our medium notes</a></td></tr>
 </tbody></table></div>
 <h2>The short version</h2>
-<ol><li><a href="/applications/spirulina/first-culture/">Your first culture, weeks 1–4 — a documented inoculum and a feeding rhythm</a></li><li><a href="/applications/spirulina/reading-the-culture/">Reading the culture — colour, foam and sediment as field signs</a></li></ol>
+<ol><li><a href="/diy/spirulina/first-culture/">Your first culture, weeks 1–4 — a documented inoculum and a feeding rhythm</a></li><li><a href="/diy/spirulina/reading-the-culture/">Reading the culture — colour, foam and sediment as field signs</a></li></ol>
 <h2>What spirulina is not</h2>
 <p>It is not a protein shake you grow in a jam jar, not proof of safety by appearance, and not a licensed drug or supplement. Home cultures are a citizen-science exercise with a harvestable by-product; identity, purity and safety need laboratory verification. Treat homegrown biomass as an experiment, never as a tested supplement — especially if immunocompromised.</p>
 <div class="kit-note-box"><strong>Safety, plainly.</strong> Spirulina is a cyanobacterium; wild blooms can contain cyanotoxins. Do not harvest from unverified natural waters. Do not feed homegrown culture to infants or as medicine. Educational guide — not food-safety certification, identity verification or medical advice.</div>
@@ -337,12 +337,12 @@ def build_spirulina():
                      ('/microalgae-cultivation/', 'The technical cultivation pillar'),
                      ('/blog/spirulina-is-a-cyanobacterium', 'Journal: why spirulina is a cyanobacterium')])
 
-    page(rel='applications/spirulina/first-culture/index.html',
+    page(rel='diy/spirulina/first-culture/index.html',
          title='Your First Spirulina Culture, Weeks 1–4 | Orr Biologicals',
          desc='A realistic four-week start for home spirulina: inoculum sourcing, bicarbonate medium, light and warmth, and the doubling rhythm to expect.',
          og_image='/assets/kitchen/spirulina.jpg', schema_type='Article',
          cat='Applications · Spirulina / Protocol',
-         crumbs=[('Applications', APP), ('Spirulina', '/applications/spirulina/'), ('First culture', '/applications/spirulina/first-culture/')],
+         crumbs=[('Applications', APP), ('Spirulina', '/diy/spirulina/'), ('First culture', '/diy/spirulina/first-culture/')],
          body='''<h1>Your first culture.</h1>
 <p class="kit-page-dek">Four weeks, not four days. Spirulina rewards a weekly rhythm and a written record far more than gadgets.</p>
 <div class="prose">
@@ -366,15 +366,15 @@ def build_spirulina():
 <li><a href="/blog/zarrouk-medium-and-nutrients">Orr Biologicals — Zarrouk medium and nutrients</a> and <a href="/blog/how-to-start-home-spirulina-culture">starting a home culture</a>, our field notes.</li>
 </ol>
 </div>''',
-         next_links=[('/applications/spirulina/', 'Back to the spirulina guide'),
-                     ('/applications/spirulina/reading-the-culture/', 'Reading the culture')])
+         next_links=[('/diy/spirulina/', 'Back to the spirulina guide'),
+                     ('/diy/spirulina/reading-the-culture/', 'Reading the culture')])
 
-    page(rel='applications/spirulina/reading-the-culture/index.html',
+    page(rel='diy/spirulina/reading-the-culture/index.html',
          title='Reading the Spirulina Culture | Orr Biologicals',
          desc='Colour, foam, sediment and smell: the field signs of a working spirulina culture — and the limits of judging one by eye.',
          og_image='/assets/kitchen/spirulina.jpg', schema_type='Article',
          cat='Applications · Spirulina / Observation',
-         crumbs=[('Applications', APP), ('Spirulina', '/applications/spirulina/'), ('Reading the culture', '/applications/spirulina/reading-the-culture/')],
+         crumbs=[('Applications', APP), ('Spirulina', '/diy/spirulina/'), ('Reading the culture', '/diy/spirulina/reading-the-culture/')],
          body='''<h1>Reading the culture.</h1>
 <p class="kit-page-dek">Four field signs carry most of the information: colour, foam, sediment and smell. None of them certifies anything — they tell you where to look next.</p>
 <div class="prose">
@@ -396,7 +396,7 @@ def build_spirulina():
 <li><a href="/blog/troubleshooting-contamination-crashes">Orr Biologicals — spirulina culture failure modes</a>, field notes.</li>
 </ol>
 </div>''',
-         next_links=[('/applications/spirulina/', 'Back to the spirulina guide')])
+         next_links=[('/diy/spirulina/', 'Back to the spirulina guide')])
 
 # --------------------------------------------- phytoplankton for bivalves --
 BV_CRUMBS = [('Applications', APP), ('Phytoplankton for bivalves', '/applications/phytoplankton-for-bivalves/')]
@@ -442,7 +442,7 @@ def build_bivalves():
 </div>''',
          next_links=[('/applications/', 'All applications'),
                      ('/algae-biotechnology/', 'Algae biotechnology overview'),
-                     ('/applications/guides/', 'The guide shelf')])
+                     ('/diy/guides/', 'The guide shelf')])
 
     page(rel='applications/phytoplankton-for-bivalves/species-selection/index.html',
          title='Species Selection: Match the Cell to the Larva | Orr Biologicals',
@@ -569,37 +569,107 @@ def build_bivalves():
 </div>''',
          next_links=[('/applications/phytoplankton-for-bivalves/', 'Back to bivalves overview')])
 
-# ------------------------------------------------------------------- hub --
-def build_hub():
+# ------------------------------------------------------------ applications hub --
+def build_applications_hub():
     page(rel='applications/index.html',
-         title='Applications: Open-Source Biotechnology for the Bench | Orr Biologicals',
-         desc='Sourdough, kombucha, spirulina and phytoplankton for bivalves — practical, credited, honestly-bounded biotechnology protocols anyone can repeat. MIT-open code and notes.',
-         og_image='/assets/kitchen/hero-portrait.jpg', schema_type='WebPage',
-         cat='Applications · Open-source biotechnology',
+         title='Applications: Biotechnology for Real-World Problems | Orr Biologicals',
+         desc='Evidence-led application dossiers: aquaculture live feeds for bivalve hatcheries, and honest maps of bioprocessing, biological materials and environmental biotechnology — mechanism, evidence, limits, sources.',
+         og_image='/assets/kitchen/bivalves.jpg', schema_type='CollectionPage',
+         cat='Applications · Evidence-led dossiers',
          crumbs=[('Applications', APP)],
-         body='''<h1>Open-source biotechnology, <em>applied.</em></h1>
-<p class="kit-page-dek">Every protocol on this shelf is something a careful person can repeat at home with clean glassware, a notebook and patience — written down precisely, sourced honestly, and free to share. That is what open biotechnology means on a kitchen bench.</p>
-<div class="kit-cards kit-cards-4">
-  <a class="kit-card rose" href="/applications/sourdough/"><span class="kit-card-art"><img src="/assets/kitchen/starter.jpg" width="768" height="1376" loading="lazy" alt="Generated image of a sourdough starter in a cloth-covered glass jar, risen and bubbly, on a floured wooden counter."></span><span class="kit-card-body"><span class="kit-tag">Wild yeast · 01</span><h3>Sourdough</h3><p>Flour and water, a seven-day start, feeding ratios, and the plain rulebook for when to discard the jar.</p><span class="kit-card-foot"><b>Read the protocol</b><span aria-hidden="true">↗</span></span></span></a>
-  <a class="kit-card rose" href="/applications/kombucha/"><span class="kit-card-art"><img src="/assets/kitchen/kombucha.jpg" width="768" height="1376" loading="lazy" alt="Generated image of amber kombucha with a pale pellicle floating in a wide glass jar on a wooden counter."></span><span class="kit-card-body"><span class="kit-tag">Symbiosis · 02</span><h3>Kombucha</h3><p>Sweet tea, a SCOBY and time — the first ferment, bottling without a geyser, and reading the surface.</p><span class="kit-card-foot"><b>Read the protocol</b><span aria-hidden="true">↗</span></span></span></a>
-  <a class="kit-card" href="/applications/spirulina/"><span class="kit-card-art"><img src="/assets/kitchen/spirulina.jpg" width="768" height="1376" loading="lazy" alt="Generated image of a bottle of deep green spirulina culture on a wooden table beside a notebook."></span><span class="kit-card-body"><span class="kit-tag">Cyanobacteria · 03</span><h3>Spirulina</h3><p>Warm alkaline water, bicarbonate medium and patience — a documented culture start and field signs.</p><span class="kit-card-foot"><b>Read the protocol</b><span aria-hidden="true">↗</span></span></span></a>
-  <a class="kit-card" href="/applications/phytoplankton-for-bivalves/"><span class="kit-card-art"><img src="/assets/kitchen/bivalves.jpg" width="1376" height="768" loading="lazy" alt="Generated image of a shallow hatchery tray with young bivalves under a work lamp beside two small flasks of green live phytoplankton culture."></span><span class="kit-card-body"><span class="kit-tag">Aquaculture · 04</span><h3>Phytoplankton for bivalves</h3><p>Live microalgae for oyster, clam, scallop and mussel larvae — species, feeding and water discipline.</p><span class="kit-card-foot"><b>Read the protocol</b><span aria-hidden="true">↗</span></span></span></a>
-</div>
+         body='''<h1>The mechanism, the evidence, <em>the limits.</em></h1>
+<p class="kit-page-dek">Applications is where biology meets a job to be done. Every dossier here states the biological mechanism, what research has actually demonstrated, what has not, and what it would take — with primary literature, clearly attributed. Where a domain is only ready to be mapped, the dossier says so instead of performing depth it does not have.</p>
 <div class="prose">
-<h2>What every protocol here promises</h2>
-<ol>
-<li><strong>Repeatability.</strong> Steps a careful reader can follow on day one — quantities, temperatures, timing, and what to log.</li>
-<li><strong>Credited sources.</strong> Claims tie back to named literature or to our own field notes; nothing is asserted from nowhere.</li>
-<li><strong>Honest limits.</strong> Every page states what it cannot certify — identity, food safety, legal compliance — and where that line sits.</li>
-<li><strong>Open licence.</strong> The site, notes and build scripts are MIT-licensed. Fork this bench; we would like to see what you learn.</li>
-</ol>
-<h2>How this section connects</h2>
-<p>Applications are the home bench. The <a href="/research/">research approach</a> explains how we separate an observation from a guess; the <a href="/applications/guides/">guide shelf</a> collects every protocol in one searchable place; <a href="/play/">Play</a> offers three small puzzles built from the same material. The advanced instruments — our inventions, <a href="/algaephyte/">Algaephyte</a> and <a href="/cyanoflow">Cyanoflow</a> — live separately, and are listed under <a href="/#inventions">Inventions</a>.</p>
-<div class="kit-note-box"><strong>Educational, not certification.</strong> Nothing here is food-safety certification, veterinary advice, aquaculture licensing or a recipe for unregulated release. When in doubt, discard the batch — and read the safety line on the page you are using.</div>
+<p class="kit-div-note"><span class="mono">This division</span> Applications explains real problems and the evidence around them — if you want to build something on your bench, that is <a href="/diy/">DIY</a>; the literature index lives under <a href="/articles/">Articles</a>; our own engineering lives under <a href="/inventions/">Inventions</a>.</p>
+
+<div class="kit-dossier">
+  <a class="kit-dossier-row" href="/applications/phytoplankton-for-bivalves/">
+    <div><p class="kit-tag">01 · Aquaculture biotechnology <span class="kit-status live">Live dossier</span></p>
+    <h3>Phytoplankton for bivalve hatcheries</h3>
+    <p><strong>The problem:</strong> bivalve larvae only eat live microalgae, and hatcheries live or die on feed quality and stability. <strong>The mechanism:</strong> species, cell size and fatty-acid profile matched to larval stage. <strong>The evidence:</strong> established hatchery practice (FAO Fisheries Technical Paper 471). <strong>The limits:</strong> strain-dependent; not validated by Orr Biologicals; educational starting point, not a licensed hatchery protocol.</p>
+    </div><span class="kit-dossier-go" aria-hidden="true">↗</span>
+  </a>
+  <div class="kit-dossier-row static">
+    <div><p class="kit-tag">02 · Advanced microbiology &amp; bioprocessing <span class="kit-status map">Evidence map</span></p>
+    <h3>Microbial cultivation systems &amp; process monitoring</h3>
+    <p><strong>The mechanism:</strong> selection pressure, carbon and nitrogen management, gas exchange and mixing, monitored honestly. <strong>The evidence:</strong> lab-scale photobioreactor practice (Schagerl 2022; Benner 2022) and our <a href="/microalgae-cultivation/">cultivation pillar</a> and <a href="/photobioreactors/">reactor engineering explainer</a>. <strong>The limits:</strong> scale-up alters illumination and transport; no Orr Biologicals process is validated; see <a href="/research/">research approach</a>.</p>
+    </div><span class="kit-dossier-go dim" aria-hidden="true">○</span>
+  </div>
+  <div class="kit-dossier-row static">
+    <div><p class="kit-tag">03 · Spider silk &amp; biological materials <span class="kit-status dev">Dossier in development</span></p>
+    <h3>Recombinant silk proteins &amp; biological fiber engineering</h3>
+    <p><strong>The mechanism:</strong> spidroins combine crystalline strength with amorphous elasticity; recombinant expression (e.g. in <em>E. coli</em>) and protein assembly are the active engineering levers. <strong>The evidence:</strong> literature map only — start with Lewis, “Spider silk: the unraveling of a mystery,” <em>Accounts of Chemical Research</em>, 2006, and Kluge et al., “Spider silks and their applications,” <em>Trends in Biotechnology</em>, 2008. <strong>The limits:</strong> this page maps the field; it does not present Orr Biologicals results, protocols or products. A sourced dossier is written before it is published.</p>
+    </div><span class="kit-dossier-go dim" aria-hidden="true">○</span>
+  </div>
+  <div class="kit-dossier-row static">
+    <div><p class="kit-tag">04 · Environmental biotechnology <span class="kit-status dev">Dossier in development</span></p>
+    <h3>Microalgae and nutrient recovery</h3>
+    <p><strong>The mechanism:</strong> microalgae fix nitrogen and phosphorus from wastewater streams while producing harvestable biomass — the same organism treated as a nutrient sink and as a product. <strong>The evidence:</strong> literature map only — see Christenson &amp; Sims, “Production and harvesting of microalgae for wastewater treatment,” <em>Biotechnology Advances</em>, 2011. <strong>The limits:</strong> coupling ecology to engineered systems is hard; nothing here is a treatment system, and no removal percentage is claimed.</p>
+    </div><span class="kit-dossier-go dim" aria-hidden="true">○</span>
+  </div>
+</div>
+
+<div class="kit-note-box"><strong>A note on dossier maturity.</strong> A dossier ships when it can carry its claims: mechanism, evidence, limits and sources, or it stays labelled as a map. Aspiration is not evidence — the same rule we apply on bench protocols.</div>
+<p>Citations here are indexes into the literature, not verified measurements by Orr Biologicals. Verify before you rely on them; <a href="/literature/">literature search</a> checks a DOI against public records.</p>
 </div>''',
-         next_links=[('/applications/guides/', 'Search every protocol'),
+         next_links=[('/diy/', 'The DIY bench'),
+                     ('/articles/', 'Read the literature'),
+                     ('/research/', 'Our research approach')])
+
+
+# --------------------------------------------------------------- DIY hub --
+def build_diy_hub():
+    page(rel='diy/index.html',
+         title='DIY: Open-Source Experimental Biology | Orr Biologicals',
+         desc='Build it, grow it, keep the notes. Fermentation cultures, algae cultivation, and honest build sheets for open-source experimental biology — MIT-licensed, reproducible, educational.',
+         og_image='/assets/kitchen/hero.jpg', schema_type='CollectionPage',
+         cat='DIY · Open-source experimental biology',
+         crumbs=[('DIY', '/diy/')],
+         body='''<h1>Build it. Grow it. <em>Keep the notes.</em></h1>
+<p class="kit-page-dek">Open-source experimental biology for the people who want to hold the organism in their own hands. Four collections — build your own equipment, ferment living cultures, cultivate algae, and observe like an experimentalist. Everything is written to be repeated, attributed and improved under MIT.</p>
+<div class="kit-page-art"><img src="/assets/kitchen/hero.jpg" width="1584" height="672" alt="Generated image of an instrumented cultivation bench: a cloth-covered starter jar beside a brass scale, probe thermometer and a handwritten observation notebook on dark wood."></div>
+<p class="kit-page-meta"><span>The bench, open</span><span>Generated image</span></p>
+<div class="prose">
+<p class="kit-div-note"><span class="mono">This division</span> DIY is the hands-on side — if you want the evidence story behind a real-world problem, that is <a href="/applications/">Applications</a>; papers and field notes live under <a href="/articles/">Articles</a>; our own instruments under <a href="/inventions/">Inventions</a>.</p>
+
+<h2 id="fermentation">B · Fermentation &amp; living cultures</h2>
+<p>The fastest way in. Start something alive this week, learn to read it, and write down what you saw.</p>
+<div class="kit-cards kit-cards-4">
+  <a class="kit-card rose" href="/diy/sourdough/"><span class="kit-card-art"><img src="/assets/kitchen/starter.jpg" width="768" height="1376" loading="lazy" alt="Generated image of a sourdough starter in a cloth-covered glass jar beside a metal scale and feeding record."></span><span class="kit-card-body"><span class="kit-tag">Fermentation · Beginner</span><h3>Sourdough starter</h3><p>Flour and water, a seven-day start, ratios that scale, and the honest rules for when to discard.</p><span class="kit-card-foot"><b>Start &amp; keep <span aria-hidden="true">↗</span></b></span></span></a>
+  <a class="kit-card rose" href="/diy/kombucha/"><span class="kit-card-art"><img src="/assets/kitchen/kombucha.jpg" width="768" height="1376" loading="lazy" alt="Generated image of amber kombucha with a pale pellicle floating in a wide glass jar."></span><span class="kit-card-body"><span class="kit-tag">Fermentation · Beginner</span><h3>Kombucha</h3><p>Sweet tea, a SCOBY and time — first ferment, ready signs, bottling without a geyser.</p><span class="kit-card-foot"><b>Brew your first <span aria-hidden="true">↗</span></b></span></span></a>
+  <a class="kit-card" href="/diy/guides/"><span class="kit-card-art"><img src="/assets/kitchen/loaf.jpg" width="1376" height="768" loading="lazy" alt="Generated image of a scored sourdough boule on a wooden board beside a jar of leaven."></span><span class="kit-card-body"><span class="kit-tag">The shelf · Reference</span><h3>The guide shelf</h3><p>Every protocol in one searchable place, with reading tables and discard rules kept in.</p><span class="kit-card-foot"><b>Browse the shelf <span aria-hidden="true">↗</span></b></span></span></a>
+</div>
+
+<h2 id="algae">C · Algae &amp; aquatic biotechnology</h2>
+<p>Warm light, alkaline water and patience — with the measured context, not just the vibes.</p>
+<div class="kit-cards kit-cards-4">
+  <a class="kit-card" href="/diy/spirulina/"><span class="kit-card-art"><img src="/assets/kitchen/spirulina.jpg" width="768" height="1376" loading="lazy" alt="Generated image of a tall bottle of deep green spirulina culture beside a notebook."></span><span class="kit-card-body"><span class="kit-tag">Cyanobacteria · Patient</span><h3>Spirulina cultivation</h3><p>Warm alkaline water, bicarbonate medium, honest signs of a culture taking off — and of one that is not.</p><span class="kit-card-foot"><b>Start a culture <span aria-hidden="true">↗</span></b></span></span></a>
+  <a class="kit-card" href="/microalgae-cultivation/"><span class="kit-card-art"><img src="/assets/cyano/culture.jpg" width="1536" height="1024" loading="lazy" alt="Illustrative vessels of green microalgae culture in a cultivation setup."></span><span class="kit-card-body"><span class="kit-tag">Context · Research</span><h3>Why cultivation works</h3><p>Light, carbon, pH, mixing and gas exchange — the inputs, measured, in the cultivation pillar.</p><span class="kit-card-foot"><b>Read the pillar <span aria-hidden="true">↗</span></b></span></span></a>
+  <a class="kit-card" href="/applications/phytoplankton-for-bivalves/"><span class="kit-card-art"><img src="/assets/kitchen/bivalves.jpg" width="1376" height="768" loading="lazy" alt="Generated image of a hatchery tray of young bivalves under a work lamp beside flasks of green live feed."></span><span class="kit-card-body"><span class="kit-tag">Live feeds · Hatcheries</span><h3>Phytoplankton for bivalves</h3><p>When the bench matters at scale: the one complete live-feed dossier, for oyster, clam and mussel hatcheries.</p><span class="kit-card-foot"><b>Open the dossier <span aria-hidden="true">↗</span></b></span></span></a>
+</div>
+
+<h2 id="equipment">A · Build your own equipment</h2>
+<p>Instrumentation you can afford is the difference between “I think it grew” and “the log says it did.” Honest status, no catalog fiction:</p>
+<div class="kit-dossier">
+  <div class="kit-dossier-row static"><div><p class="kit-tag">01 · DIY incubators &amp; culture chambers <span class="kit-status dev">In development</span></p><p>Design notes for an insulated, light-controlled culture chamber and a warming incubator are being written. Nothing is published until a build is documented end-to-end — no dimension set ships without photographs of an actual build.</p></div><span class="kit-dossier-go dim" aria-hidden="true">○</span></div>
+  <div class="kit-dossier-row static"><div><p class="kit-tag">02 · Temperature &amp; monitoring for cultures <span class="kit-status map">Reading first</span></p><p>What to measure before you automate anything: temperature drift, light, pH — see <a href="/diy/spirulina/reading-the-culture/">reading the culture</a> and the <a href="/research/">research approach</a>. Build sheets for logging rigs follow the protocols; they are not rushed ahead of them.</p></div><span class="kit-dossier-go dim" aria-hidden="true">○</span></div>
+  <a class="kit-dossier-row" href="/inventions/"><div><p class="kit-tag">03 · System-scale instrumentation <span class="kit-status live">See inventions</span></p><p>Algaephyte and Cyanoflow — our own proposed cultivation-monitoring and single-cell observation systems. Research concepts in development; not validated hardware, not for sale.</p></div><span class="kit-dossier-go" aria-hidden="true">↗</span></a>
+</div>
+
+<h2 id="observation">D · Observation &amp; experimentation</h2>
+<p>The skill every bench depends on: seeing what is actually in the jar, and writing it down honestly.</p>
+<div class="kit-cards kit-cards-4">
+  <a class="kit-card" href="/blog/reading-your-culture"><span class="kit-card-body"><span class="kit-tag">Observation · Reference</span><h3>Learning to read a culture</h3><p>Colour, bubbles, smell — and the limits of judging by appearance alone.</p><span class="kit-card-foot"><b>Read the note <span aria-hidden="true">↗</span></b></span></span></a>
+  <a class="kit-card" href="/blog/troubleshooting-contamination-crashes"><span class="kit-card-body"><span class="kit-tag">Failure · Reference</span><h3>When a culture goes wrong</h3><p>What to discard, what to keep, and why a smell test is not a diagnosis.</p><span class="kit-card-foot"><b>Read the note <span aria-hidden="true">↗</span></b></span></span></a>
+  <a class="kit-card" href="/play/"><span class="kit-card-body"><span class="kit-tag">Practice · 5 minutes</span><h3>Three small puzzles</h3><p>Memory game, a starter week in order, and read-the-jar — training the eye without killing anything.</p><span class="kit-card-foot"><b>Play <span aria-hidden="true">↗</span></b></span></span></a>
+</div>
+
+<div class="kit-note-box"><strong>Scope, plainly.</strong> DIY here means home-scale, educational, openly licensed processes. It does not mean institutional facilities: nothing on this page substitutes for containment, supervision or regulation where those apply. Observe locally, discard honestly, ask before you scale.</div>
+<p>Everything here is MIT-licensed. Attribution is appreciated, improvements are welcome: the same open-source rule as the rest of the site — see <a href="/developers/">developer notes</a>.</p>
+</div>''',
+         next_links=[('/diy/guides/', 'The guide shelf'),
                      ('/research/', 'Our research approach'),
-                     ('/#inventions', 'Inventions: Algaephyte &amp; Cyanoflow')])
+                     ('/inventions/', 'Our inventions')])
 
 
 def build():
@@ -607,8 +677,9 @@ def build():
     build_kombucha()
     build_spirulina()
     build_bivalves()
-    build_hub()
-    print('Applications: hub + sourdough, kombucha, spirulina, phytoplankton-for-bivalves (15 pages)')
+    build_applications_hub()
+    build_diy_hub()
+    print('Applications hub (4 dossier rows) + DIY hub + 13 topic pages')
 
 
 if __name__ == '__main__':

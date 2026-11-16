@@ -359,3 +359,45 @@ body.kit-guide .art-shell.kit-game-page{max-width:1040px}
 @media(max-width:1200px){.kit-cards-4{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:900px){.kit-cards-4{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:640px){.kit-cards-4{grid-template-columns:1fr}.kit-strip span{white-space:normal}}
+
+/* Petrichor rebrand (2026-11) — divisions & evidence dossiers.
+   Same system, wider vocabulary. Brass and moss stay scarce. */
+.kit-div-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.kit-div{display:flex;align-items:flex-start;gap:18px;padding:22px 22px 20px;background:var(--paper);border:1px solid var(--rule);border-radius:var(--radius);transition:border-color var(--fast),transform var(--fast)}
+.kit-div:hover{border-color:var(--leaf-deep);transform:translateY(-2px);text-decoration:none}
+.kit-div-index{font:400 32px/1 var(--serif);color:var(--amber);letter-spacing:-.03em;min-width:42px}
+.kit-div-body h3{font-size:1.32rem;margin:0 0 6px}
+.kit-div-body p{margin:0 0 10px;color:var(--ink-soft);font-size:14.5px;max-width:52ch}
+.kit-div-body small{color:var(--mute);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;font-family:var(--mono)}
+.kit-div-body small b{color:var(--leaf);font-weight:600}
+.kit-div-go{margin-left:auto;color:var(--leaf);font-size:22px;flex-shrink:0}
+@media(max-width:768px){.kit-div-grid{grid-template-columns:1fr}}
+.kit-div-note{border-left:3px solid var(--leaf-deep);padding:10px 14px;color:var(--ink-soft);background:var(--leaf-soft);border-radius:8px;font-size:14.5px}
+.kit-div-note .mono{color:var(--leaf);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;margin-right:8px}
+.kit-dossier{display:flex;flex-direction:column;border:1px solid var(--rule);border-radius:var(--radius);overflow:hidden}
+.kit-dossier-row{display:flex;align-items:center;justify-content:space-between;gap:22px;padding:22px 24px;background:var(--paper);border-bottom:1px solid var(--rule);text-decoration:none}
+.kit-dossier-row:last-child{border-bottom:0}
+a.kit-dossier-row:hover{background:var(--paper-2)}
+.kit-dossier-row.static{opacity:.92}
+.kit-dossier-row h3{margin:4px 0 8px;font-size:1.22rem}
+.kit-dossier-row p{margin:0;color:var(--ink-soft);font-size:14px;max-width:78ch}
+.kit-status{display:inline-block;font:600 9.5px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;padding:4px 8px;border-radius:99px;vertical-align:2px;margin-left:8px;white-space:nowrap}
+.kit-status.live{background:var(--leaf-soft);color:var(--leaf-2);border:1px solid var(--leaf-deep)}
+.kit-status.map{background:var(--amber-soft);color:var(--amber-2);border:1px solid var(--amber)}
+.kit-status.dev{background:transparent;color:var(--mute);border:1px dashed var(--rule)}
+.kit-dossier-go{font-size:26px;color:var(--leaf);flex-shrink:0}
+.kit-dossier-go.dim{color:var(--mute);font-size:22px}
+.kit-next-line{margin:22px 0 0;font-family:var(--mono);font-size:12px;letter-spacing:.04em}
+.kit-next-line a{color:var(--leaf)}
+@media(max-width:768px){.kit-dossier-row{padding:16px}.kit-dossier-go{display:none}}
+
+/* Inventions workshop — status strips, diagrams, status columns */
+.pt-status-strip{font-family:var(--mono);font-size:10px;letter-spacing:.16em;color:var(--mut,#8B9A8C);border:1px solid var(--rule);border-radius:8px;padding:10px 14px;margin:18px 0 26px;color:var(--mute)}
+.pt-project-lede{font-size:1.25rem;font-family:var(--serif)}
+.pt-diagram{width:100%;height:auto;margin:14px 0 4px}
+.pt-status-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:22px 0}
+.pt-status-cols>div{background:var(--paper);border:1px solid var(--rule);border-radius:var(--radius);padding:16px 18px}
+.pt-status-cols h3{margin:0 0 10px;font-size:.95rem;letter-spacing:.06em;text-transform:uppercase;font-family:var(--mono);color:var(--leaf)}
+.pt-status-cols ul{margin:0;padding-left:18px;color:var(--ink-soft);font-size:13.5px}
+.pt-status-cols li{margin-bottom:8px}
+@media(max-width:900px){.pt-status-cols{grid-template-columns:1fr}}

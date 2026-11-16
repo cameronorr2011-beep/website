@@ -28,7 +28,7 @@ class DesignSystemTests(unittest.TestCase):
     def test_deployment_modules_and_brief_images(self):
         apache=(ROOT/'.htaccess').read_text(encoding='utf-8-sig')
         self.assertIn('AddType application/javascript .mjs',apache)
-        blog=(ROOT/'blog/index.html').read_text(encoding='utf-8')
+        blog=(ROOT/'articles/index.html').read_text(encoding='utf-8')
         self.assertNotIn('src=""',blog)
         self.assertIn('width="1600" height="900"',blog)
 

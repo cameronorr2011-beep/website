@@ -9,7 +9,7 @@ def migrate_legacy_application_links(text):
     """Applications returned as a public section (2026-11); retire only the
     pre-rebuild species slugs that never had a working page."""
     replacements = (
-        ('/applications/species/arthrospira', '/applications/spirulina/'),
+        ('/applications/species/arthrospira', '/diy/spirulina/'),
         ('/applications/species/chlorella', '/glossary#microalgae'),
         ('/applications/species/isochrysis-tisochrysis', '/applications/phytoplankton-for-bivalves/species-selection/'),
         ('/applications/#species', '/applications/'),
@@ -103,7 +103,7 @@ def apply(text):
     if 'class="home-rebrand' not in text:
         text = text.replace('</body>', f'<script defer src="/js/biological-cinema.js?v={VERSION}"></script>\n</body>')
     text = re.sub(r'(<(?:link|script)\b[^>]*(?:href|src)="/?(?:css|js)/[^"?]+)(?:\?[^" ]*)?("[^>]*>)', r'\1?v=' + VERSION + r'\2', text)
-    theme = '#18211c'
+    theme = '#111A15'
     text = re.sub(r'(<meta name="theme-color" content=")[^"]+', r'\g<1>' + theme, text)
     # Preserve existing main targets; older article pages used a div shell.
     if '<main' not in text:

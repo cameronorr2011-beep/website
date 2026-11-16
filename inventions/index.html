@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Inventions: Algaephyte &amp; Cyanoflow | Orr Biologicals</title>
+<meta name="description" content="Original Orr Biologicals engineering — open-source systems for understanding and monitoring microalgal cultures (Algaephyte) and studying variation at the single-cell scale (Cyanoflow). Research concepts in development; no validated hardware or commercial deployment claimed.">
+<meta name="theme-color" content="#111A15">
+<link rel="canonical" href="https://orrbiologicals.com/inventions/">
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Inventions: Algaephyte &amp; Cyanoflow">
+<meta property="og:description" content="Orr Biologicals’ own engineering — cultivation monitoring (Algaephyte) and single-cell observation (Cyanoflow). Concepts in development; not validated hardware; MIT-licensed.">
+<meta property="og:url" content="https://orrbiologicals.com/inventions/">
+<meta property="og:image" content="https://orrbiologicals.com/assets/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Inventions: Algaephyte &amp; Cyanoflow">
+<meta name="twitter:description" content="Open-source cultivation monitoring and single-cell tools — research concepts in development, not validated hardware.">
+<meta name="twitter:image" content="https://orrbiologicals.com/assets/og.jpg">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+{"@type":"CollectionPage","@id":"https://orrbiologicals.com/inventions/#page","url":"https://orrbiologicals.com/inventions/","name":"Inventions: Algaephyte & Cyanoflow","description":"Orr Biologicals’ original engineering: cultivation monitoring and single-cell observation systems. Research concepts in development.","isPartOf":{"@id":"https://orrbiologicals.com/#site"}},
+{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Orr Biologicals","item":"https://orrbiologicals.com/"},{"@type":"ListItem","position":2,"name":"Inventions","item":"https://orrbiologicals.com/inventions/"}]}
+]}
+</script>
+<link rel="stylesheet" href="/css/global.css?v=20261115">
+<link rel="stylesheet" href="/css/header.css?v=20261115">
+<link rel="stylesheet" href="/css/orr-home.css?v=20261115">
+<link rel="stylesheet" href="/css/animations.css?v=20261115">
+<link rel="stylesheet" href="/css/site-redesign.css?v=20261115">
+<link rel="stylesheet" href="/css/biological-cinema.css?v=20261115">
+<link rel="stylesheet" href="/css/kitchen.css?v=20261115">
+</head>
+<body class="art-body kit-guide">
+<a class="skip" href="#main">Skip to content</a>
+<header class="nav" id="nav">
+<div class="nav-in"><a class="mark" href="/" aria-label="Orr Biologicals home">
+<svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="14" fill="none" stroke="currentColor"/><path d="M9 23c6-3 0-14 7-14s1 11 7 14M8 15c4-5 12-5 16 0" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+<span><b>Orr Biologicals</b><small>Biology, built in the open</small></span></a>
+<nav class="nav-links" aria-label="Primary"><a href="/diy/">DIY</a><a href="/articles/">Articles</a><a href="/applications/">Applications</a><a href="/inventions/">Inventions</a></nav>
+<button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="mobileMenu">Menu</button></div></header>
+<nav class="mobile-menu" id="mobileMenu" aria-label="Mobile primary" hidden>
+<a href="/diy/">DIY / build &amp; grow living systems</a><a href="/articles/">Articles / the scientific publication</a><a href="/applications/">Applications / evidence-led dossiers</a><a href="/inventions/">Inventions / Algaephyte &amp; Cyanoflow</a><a href="/research/">Research methodology</a><a href="/developers/">Developer documentation</a><a href="/#about">About Orr Biologicals</a><a href="/#deploy">Contact the project</a>
+</nav>
+<main id="main" class="art-shell kit-page">
+<nav class="art-top" aria-label="Breadcrumb"><a href="/">Orr Biologicals</a> / <span aria-current="page">Inventions</span></nav>
+<p class="art-cat">Inventions · The workshop</p>
+<h1>The workshop.</h1>
+<p class="kit-page-dek">Orr Biologicals’ own engineering — instruments and methods aimed at biology’s hardest measurement problems. Two projects. Both open. Both in development. Nothing on this page is a product, and nothing here implies one.</p>
+<p class="pt-status-strip">STATUS&nbsp;·&nbsp;CONCEPT + SIMULATION ONLY&nbsp;&nbsp;|&nbsp;&nbsp;NOT VALIDATED HARDWARE&nbsp;&nbsp;|&nbsp;&nbsp;NOT FOR SALE&nbsp;&nbsp;|&nbsp;&nbsp;MIT-LICENSED</p>
+
+<div class="prose">
+<h2 id="algaephyte">I—01 · Algaephyte</h2>
+<p class="pt-project-lede"><strong>Open-source systems for understanding and monitoring microalgal cultures.</strong></p>
+<p><strong>The problem.</strong> Cultures fail quietly. pH, light, temperature and nutrients drift together, and by the time the jar looks wrong the experiment is already lost. Algaephyte asks whether affordable sensing, a camera and an honest growth model — with human-enforced limits — can turn silent drift into an observable, reproducible signal.</p>
+
+<svg class="pt-diagram" viewBox="0 0 760 150" role="img" aria-label="Proposed Algaephyte architecture: sensors and camera feed a logger, then a physics-informed growth model, then a human-in-the-loop decision gate; nothing actuates without a hard limit and a person.">
+  <g font-family="IBM Plex Mono, monospace" font-size="11" fill="#A6B7A5">
+    <rect x="4" y="40" width="140" height="66" rx="10" fill="#1C2A21" stroke="#687F69"/>
+    <text x="74" y="66" text-anchor="middle" fill="#D5DCD3">SENSORS</text>
+    <text x="74" y="84" text-anchor="middle" font-size="9">pH · temp · light · OD</text>
+    <rect x="164" y="40" width="140" height="66" rx="10" fill="#1C2A21" stroke="#687F69"/>
+    <text x="234" y="66" text-anchor="middle" fill="#D5DCD3">CAMERA</text>
+    <text x="234" y="84" text-anchor="middle" font-size="9">scheduled stills</text>
+    <rect x="324" y="40" width="130" height="66" rx="10" fill="#1C2A21" stroke="#687F69"/>
+    <text x="389" y="66" text-anchor="middle" fill="#D5DCD3">LOGGER</text>
+    <text x="389" y="84" text-anchor="middle" font-size="9">append-only record</text>
+    <rect x="474" y="40" width="130" height="66" rx="10" fill="#1C2A21" stroke="#687F69"/>
+    <text x="539" y="66" text-anchor="middle" fill="#D5DCD3">GROWTH MODEL</text>
+    <text x="539" y="84" text-anchor="middle" font-size="9">physics-informed</text>
+    <rect x="624" y="40" width="132" height="66" rx="10" fill="#141D17" stroke="#A58D69" stroke-dasharray="4 3"/>
+    <text x="690" y="66" text-anchor="middle" fill="#BFA87F">HUMAN GATE</text>
+    <text x="690" y="84" text-anchor="middle" font-size="9">nothing auto-actuates</text>
+    <line x1="144" y1="73" x2="164" y2="73" stroke="#687F69" stroke-width="1.5"/><polygon points="164,73 158,69 158,77" fill="#687F69"/>
+    <line x1="304" y1="73" x2="324" y2="73" stroke="#687F69" stroke-width="1.5"/><polygon points="324,73 318,69 318,77" fill="#687F69"/>
+    <line x1="454" y1="73" x2="474" y2="73" stroke="#687F69" stroke-width="1.5"/><polygon points="474,73 468,69 468,77" fill="#687F69"/>
+    <line x1="604" y1="73" x2="624" y2="73" stroke="#A58D69" stroke-width="1.5"/><polygon points="624,73 618,69 618,77" fill="#A58D69"/>
+  </g>
+</svg>
+<p class="kit-page-meta"><span>Proposed architecture — not implemented hardware</span><span>Diagram: original, MIT-licensed</span></p>
+
+<div class="pt-status-cols">
+  <div><h3>Exists today</h3><ul><li>The design rationale and software-model work, published in the open.</li><li><a href="/Simulation/">The Algal Digital Lab</a> — a working, browser-based cultivation simulator.</li><li><a href="/game/">BioRealm</a> — the field-study game that trains cultivation intuition (noindex experiment).</li></ul></div>
+  <div><h3>Proposed, not built</h3><ul><li>Off-the-shelf sensor integration (pH, temperature, optical density, light) on a logging backbone.</li><li>A physics-informed growth model (Droop–Steele family) fitted to honest culture data.</li><li>Camera-assisted vitality checks with a human sign-off gate for any actuation.</li></ul></div>
+  <div><h3>Planned before claims</h3><ul><li>A documented bench build with photographs, a bill of materials and known failures.</li><li>A validation protocol against blinded, separate observations.</li><li>MIT-licensed build sheets — only after the above, never before.</li></ul></div>
+</div>
+
+<p><strong>Development status, plainly.</strong> No bench prototype exists. No measurement has been validated. No performance number belongs in this document. The Algal Digital Lab is a simulation; the game is a simulation. Both are honest about it.</p>
+<p><strong>Known limitations.</strong> Growth models fit populations, not your particular culture; sensors drift; the most valuable output may simply be a better logbook. None of these are fatal — all are stated, because silence is not a feature.</p>
+<p><strong>Where this goes.</strong> 1 — simulation fidelity against published reactor literature; 2 — one boring, documented bench build; 3 — open validation data; 4 — build sheets, if the build survives its own notes.</p>
+<p><strong>Reference points.</strong> Schagerl et al. (2022), biomass and vitality estimation (PMC9368473); Benner et al. (2022), lab-scale photobioreactors (PMC9033726); Chanquia et al., single-cell methods (elsc.202100070) — literature, not our results. Full project page: <a href="/algaephyte/">Algaephyte</a>.</p>
+
+<h2 id="cyanoflow">I—02 · Cyanoflow</h2>
+<p class="pt-project-lede"><strong>Open-source tools for studying biological variation at the single-cell scale.</strong></p>
+<p><strong>The problem.</strong> Bulk assays average. In a culture crash or a selection experiment, the interesting biology often lives in the minority — the stressed cell, the survivor, the outlier. Cyanoflow asks whether affordable microfluidics and accessible imaging can make single-cell observation legible to working scientists outside core facilities.</p>
+
+<svg class="pt-diagram" viewBox="0 0 760 150" role="img" aria-label="Proposed Cyanoflow chain: sample enters a microfluidic device, cells are imaged and tracked, an analysis pipeline reports cell-to-cell variation with uncertainty.">
+  <g font-family="IBM Plex Mono, monospace" font-size="11" fill="#A6B7A5">
+    <rect x="4" y="40" width="150" height="66" rx="10" fill="#1C2A21" stroke="#687F69"/>
+    <text x="79" y="66" text-anchor="middle" fill="#D5DCD3">MICROFLUIDICS</text>
+    <text x="79" y="84" text-anchor="middle" font-size="9">isolate &amp; order cells</text>
+    <rect x="184" y="40" width="130" height="66" rx="10" fill="#1C2A21" stroke="#687F69"/>
+    <text x="249" y="66" text-anchor="middle" fill="#D5DCD3">IMAGING</text>
+    <text x="249" y="84" text-anchor="middle" font-size="9">stills + tracking</text>
+    <rect x="344" y="40" width="130" height="66" rx="10" fill="#1C2A21" stroke="#687F69"/>
+    <text x="409" y="66" text-anchor="middle" fill="#D5DCD3">ANALYSIS</text>
+    <text x="409" y="84" text-anchor="middle" font-size="9">variation, not average</text>
+    <rect x="504" y="40" width="130" height="66" rx="10" fill="#1C2A21" stroke="#687F69"/>
+    <text x="569" y="66" text-anchor="middle" fill="#D5DCD3">VALIDATION</text>
+    <text x="569" y="84" text-anchor="middle" font-size="9">blinded, strain-known</text>
+    <rect x="664" y="40" width="92" height="66" rx="10" fill="#141D17" stroke="#A58D69" stroke-dasharray="4 3"/>
+    <text x="710" y="66" text-anchor="middle" fill="#BFA87F">RELEASE</text>
+    <text x="710" y="84" text-anchor="middle" font-size="9">MIT sheets</text>
+    <line x1="154" y1="73" x2="184" y2="73" stroke="#687F69" stroke-width="1.5"/><polygon points="184,73 178,69 178,77" fill="#687F69"/>
+    <line x1="314" y1="73" x2="344" y2="73" stroke="#687F69" stroke-width="1.5"/><polygon points="344,73 338,69 338,77" fill="#687F69"/>
+    <line x1="474" y1="73" x2="504" y2="73" stroke="#687F69" stroke-width="1.5"/><polygon points="504,73 498,69 498,77" fill="#687F69"/>
+    <line x1="634" y1="73" x2="664" y2="73" stroke="#A58D69" stroke-width="1.5"/><polygon points="664,73 658,69 658,77" fill="#A58D69"/>
+  </g>
+</svg>
+<p class="kit-page-meta"><span>Proposed pipeline — not fabricated hardware</span><span>Diagram: original, MIT-licensed</span></p>
+
+<div class="pt-status-cols">
+  <div><h3>Exists today</h3><ul><li><a href="/cyanoflow">The interactive single-cell concept page</a> — the working demonstration of the approach.</li><li>Single-cell imaging brief: <a href="/blog/single-cell-microalgae-microfluidics">droplets vs microwells for microalgae</a>.</li><li><a href="/Simulation/">The Algal Digital Lab</a> for culture-scale context and teaching.</li></ul></div>
+  <div><h3>Proposed, not built</h3><ul><li>Microfluidic chips for cell isolation and ordered imaging (design goals, not layouts under NDA).</li><li>A tracking-and-phenotyping pipeline with explicit uncertainty, not vibes.</li><li>Blinded validation against known strains before any claim of detection.</li></ul></div>
+  <div><h3>Planned before claims</h3><ul><li>Fabrication-first reality check: channel geometry, bonding, fouling, cost per chip.</li><li>A blind two-strain test, reported with all failures included.</li><li>Open CAD/layout release — only when it survives the above.</li></ul></div>
+</div>
+
+<p><strong>Development status, plainly.</strong> We have not fabricated a device. We have not validated detection. The single-cell page is a demonstration of intent and interface, honest about its own limits.</p>
+<p><strong>Known limitations.</strong> Fouling, clogging and drift defeat most first chips; imaging quantifies variation but does not identify species; the field’s best results come from patient, boring replication.</p>
+<p><strong>Where this goes.</strong> 1 — chip design notes and a fabrication attempt, photographed; 2 — blind validation, reported fully; 3 — open toolchain, documented honestly; 4 — build sheets, if the chips deserve them.</p>
+<p><strong>Reference points.</strong> Chanquia et al., single-cell methods (elsc.202100070); Schagerl et al. (2022), vitality proxies (PMC9368473) — literature, not our results. Project page: <a href="/cyanoflow">Cyanoflow</a>.</p>
+
+<h2>Why these two</h2>
+<p>Algaephyte watches the culture; Cyanoflow watches the cell. Both ask the same question — can open engineering make biology legible? Neither asks you to trust us; both ask you to read the logbook. Future inventions will appear here only when they meet the same bar: documented, open, honest, or not published.</p>
+<h2>Licensing</h2>
+<p>Site text, diagrams and code are MIT-licensed. When hardware designs exist, they will be released under a permissive hardware licence with attribution. No patent fencing, no closed forks of public work. See <a href="/LICENSE">the license</a>.</p>
+<h2>A note on honesty</h2>
+<p>Neither invention has been built as a validated instrument. Illustrative renderings are labelled as such everywhere they appear. If you need a validated system today, do not wait for us — buy from whoever already ships one, and ask them the hard question about validation instead.</p>
+</div>
+<div class="kit-next"><a href="/diy/">The DIY bench</a><a href="/applications/">Applications</a><a href="/research/">Research methodology</a><a href="/developers/">Developer documentation</a></div>
+</main>
+<script defer src="/js/consent.js?v=20261115"></script><footer class="science-footer"><div class="wrap footer-layout">
+<div><a class="footer-brand" href="/">Orr Biologicals</a><p>Biology, built in the open.<br>Explore · Build · Apply · Invent.</p><small>Educational notes, not food-safety certification.<br>Inventions — Algaephyte and Cyanoflow — are research concepts in development; no validated hardware or commercial deployment claimed.</small></div>
+<nav aria-label="Footer DIY"><h2>DIY</h2><a href="/diy/">The DIY bench</a><a href="/diy/sourdough/">Sourdough starter / start &amp; keep</a><a href="/diy/kombucha/">Kombucha / tea, SCOBY &amp; timing</a><a href="/diy/spirulina/">Spirulina / light, warmth &amp; alkalinity</a><a href="/diy/guides/">All guides / the shelf</a><a href="/play/">Play / three puzzles</a></nav>
+<nav aria-label="Footer divisions"><h2>Divisions</h2><a href="/articles/">Articles / the scientific publication</a><a href="/applications/">Applications / evidence-led dossiers</a><a href="/applications/phytoplankton-for-bivalves/">Phytoplankton for bivalves / live feed</a><a href="/inventions/">Inventions / Algaephyte &amp; Cyanoflow</a><a href="/algaephyte/">Algaephyte / cultivation systems</a><a href="/cyanoflow">Cyanoflow / single-cell tools</a></nav>
+<nav aria-label="Footer open"><h2>Open &amp; accessible</h2><a href="/research/">Research methodology</a><a href="/literature/">Literature search / DOI lookup</a><a href="/developers/">Developer documentation</a><a href="/downloads/">App downloads</a><a href="/support/">Support the work</a><a href="/LICENSE" download>Licensing / MIT</a><a href="/#deploy">Contact</a></nav>
+<div><h2>Say hello</h2><a href="mailto:service@orrbiologicals.com">service@orrbiologicals.com</a><p><a href="https://www.youtube.com/@OrrBiologicals" target="_blank" rel="noreferrer">Research updates on YouTube ↗</a></p><small>Open source site code / built to be readable, keyboard-friendly and honest about what is not known.</small></div>
+</div><div class="wrap footer-base"><span>© 2026 Orr Biologicals / Biology, built in the open</span><nav aria-label="Legal"><a href="/privacy">Privacy</a><a href="/terms">Terms</a><a href="/disclaimer">Scientific disclaimer</a><a href="/LICENSE" download>MIT License</a></nav></div></footer><script defer src="/js/animations.js?v=20261115"></script>
+<script defer src="/js/navigation.js?v=20261115"></script>
+<script defer src="/js/cell-cursor.js?v=20261115"></script>
+<script defer src="/js/biological-cinema.js?v=20261115"></script>
+</body>
+</html>

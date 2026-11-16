@@ -168,7 +168,7 @@ def main():
     if config.live:
         urls = set(sitemap + [x['url'] for x in rows])
         urls.update(SITE + path for path in ('/robots.txt', '/sitemap.xml', '/seo-audit-nonexistent-20261004',
-            '/pavlova-lutheri', '/control-loop-architecture', '/faq', '/index.html', '/blog/index.html', '/cyanoflow.html',
+            '/pavlova-lutheri', '/control-loop-architecture', '/faq', '/index.html', '/articles/index.html', '/cyanoflow.html',
             '/cyanoflow/', '/blog/spirulina-is-a-cyanobacterium/', '/?utm_source=seo-audit'))
         urls.update(('http://orrbiologicals.com/', 'https://www.orrbiologicals.com/'))
         # Only public HTML routes: never probe secrets or submit forms.

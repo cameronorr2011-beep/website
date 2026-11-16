@@ -31,12 +31,12 @@ class Page(HTMLParser):
 class SiteCopyTests(unittest.TestCase):
     def test_home_origin_and_status(self):
         text = (ROOT / 'index.html').read_text(encoding='utf-8')
-        self.assertIn('Open-source biotechnology,<br> <em>for all.</em>', text)
+        self.assertIn('Biology,<br> <em>built in the open.</em>', text)
         self.assertIn('sourdough, kombucha, spirulina', text)
         self.assertIn('MIT-licensed', text)
         self.assertIn('class="kit-hero"', text)
-        self.assertIn('Explore the applications', text)
-        self.assertIn('research concepts in development', text)
+        self.assertIn('Enter Applications', text)
+        self.assertIn('Concepts in development', text)
         self.assertIn('commercial deployment', text)
         self.assertNotIn('/papertrail/', text)
         self.assertIn('Algal Digital Lab', text)
@@ -51,7 +51,7 @@ class SiteCopyTests(unittest.TestCase):
         self.assertNotIn('offers', data['@graph'][-1])
 
     def test_assets_and_local_anchors(self):
-        for name in ('index.html', 'cyanoflow.html', 'blog/index.html', 'disclaimer.html'):
+        for name in ('index.html', 'cyanoflow.html', 'articles/index.html', 'disclaimer.html'):
             with self.subTest(page=name):
                 page = Page((ROOT / name).read_text(encoding='utf-8'))
                 self.assertEqual(len(page.ids), len(set(page.ids)))
