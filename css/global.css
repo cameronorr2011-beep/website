@@ -1,12 +1,16 @@
 /* Orr Biologicals · shared interface. Tokens are defined only here.
    Art direction: a dim kitchen at dusk — faded forest walls, worn linen,
-   warm lamplight, and a single muted rose for the yeast side of the counter. */
+   warm lamplight, and a subtle toasted amber for the yeast side of the counter.
+   The field is a desaturated forest green, never pure black. */
 :root{
-  /* Forest field: deep green-grey, never pure black, with paper-warm text. */
-  --void:#0f1512;--void-2:#131c17;--paper:#17211b;--paper-2:#1d2921;
-  --ink:#f1ece1;--ink-soft:#c6cbbf;--mute:#94a096;--rule:rgba(214,222,209,.15);
-  --leaf:#a6c4a9;--leaf-2:#cadcc6;--leaf-deep:#6d8f75;--leaf-soft:rgba(166,196,169,.13);
-  --rose:#d7a8a6;--rose-2:#e8c6c2;--rose-soft:rgba(215,168,166,.13);
+  color-scheme:dark;
+  /* Forest field: faded green-grey, never pure black, with paper-warm text. */
+  --void:#18211c;--void-2:#1d2721;--paper:#212c25;--paper-2:#28352d;
+  --ink:#ece7d8;--ink-soft:#c4cabc;--mute:#97a390;--rule:rgba(216,224,208,.15);
+  --leaf:#a9c3ab;--leaf-2:#c9d9c5;--leaf-deep:#6f8f77;--leaf-soft:rgba(169,195,171,.13);
+  /* The yeast accent: a subtle toasted-crust amber, never neon, never red. */
+  --amber:#d0a267;--amber-2:#e6c188;--amber-soft:rgba(208,162,103,.13);
+  --rose:#d0a267;--rose-2:#e6c188;--rose-soft:rgba(208,162,103,.13);
   --cyan:#a8c9c1;--copper:#c9b195;--warn:#d9a68f;
   --ivory:#f4efe4;--ivory-ink:#1b221d;--ivory-soft:#535c54;
   --sans:"Avenir Next","Segoe UI",Arial,sans-serif;
@@ -15,9 +19,9 @@
   --max:1320px;--radius:16px;--fast:140ms;--motion:240ms;--reveal:360ms;
   --ease:cubic-bezier(.2,.65,.3,1);--rv-ease:cubic-bezier(.16,1,.3,1);
   /* The instrument bands keep a slightly deeper chassis, still forest-toned. */
-  --dvoid:#0c1210;--dvoid-2:#111a15;--dpanel:#16201a;--dpanel-2:#1c2820;
-  --dink:#f1ece1;--dink-soft:#c2c8bb;--d-mute:#8d998f;--drule:#26342b;
-  --dleaf:#a6c4a9;--dleaf-2:#cadcc6;
+  --dvoid:#151e19;--dvoid-2:#1a241f;--dpanel:#1f2a24;--dpanel-2:#26332c;
+  --dink:#ece7d8;--dink-soft:#c4cabc;--d-mute:#8d998e;--drule:#2b392f;
+  --dleaf:#a9c3ab;--dleaf-2:#c9d9c5;
   --orr-paper:var(--void);--orr-ink:var(--ink);--orr-ink-soft:var(--ink-soft);
   --orr-green:var(--leaf);--orr-lime:var(--leaf-2);--orr-line:var(--rule);
   --orr-hover:var(--leaf-deep);--orr-sans:var(--sans);--orr-mono:var(--mono);
@@ -64,25 +68,46 @@ input[type=number],input[type=text],input[type=email],textarea,select{max-width:
 /* Immersive workspaces opt out of the public reading surface. These scoped
    rules run after the shared shell so route-specific apps keep their own
    dark instrument palette. */
-body:has(.sim-app),body:has(.lab-shell),body:has(#biorealmApp){background:#0b110e;color:#f1ece1}
-body:has(.sim-app)> .nav,body:has(.lab-shell)> .nav,body:has(#biorealmApp)> .nav{background:rgba(11,17,14,.94);border-color:rgba(166,196,169,.14);backdrop-filter:blur(16px)}
-body:has(.sim-app)> .nav .mark,body:has(.lab-shell)> .nav .mark,body:has(#biorealmApp)> .nav .mark{color:#f1ece1}
-body:has(.sim-app)> .nav .mark svg,body:has(.lab-shell)> .nav .mark svg,body:has(#biorealmApp)> .nav .mark svg{color:#a6c4a9;background:rgba(166,196,169,.1);border-color:rgba(166,196,169,.24)}
-body:has(.sim-app)> .nav .mark small,body:has(.lab-shell)> .nav .mark small,body:has(#biorealmApp)> .nav .mark small{color:#94a096}
-body:has(.sim-app)> .nav .nav-links a,body:has(.lab-shell)> .nav .nav-links a,body:has(#biorealmApp)> .nav .nav-links a{color:#c6cbbf}
-body:has(.sim-app)> .nav .nav-links a:hover,body:has(.lab-shell)> .nav .nav-links a:hover,body:has(#biorealmApp)> .nav .nav-links a:hover,body:has(.sim-app)> .nav .nav-links a[aria-current=page],body:has(.lab-shell)> .nav .nav-links a[aria-current=page],body:has(#biorealmApp)> .nav .nav-links a[aria-current=page]{color:#cadcc6}
-body:has(.sim-app)> .nav .nav-links .btn-white,body:has(.lab-shell)> .nav .nav-links .btn-white,body:has(#biorealmApp)> .nav .nav-links .btn-white{background:#a6c4a9;color:#0f1512;border-color:#a6c4a9}
-body:has(.sim-app)> .nav .nav-toggle,body:has(.lab-shell)> .nav .nav-toggle,body:has(#biorealmApp)> .nav .nav-toggle{color:#f1ece1;border-color:rgba(166,196,169,.2)}
-body:has(.sim-app)> .mobile-menu,body:has(.lab-shell)> .mobile-menu,body:has(#biorealmApp)> .mobile-menu{background:#0b110e;border-color:rgba(166,196,169,.14);color:#f1ece1}
+body:has(.sim-app),body:has(.lab-shell),body:has(#biorealmApp){background:#151e19;color:#ece7d8}
+body:has(.sim-app)> .nav,body:has(.lab-shell)> .nav,body:has(#biorealmApp)> .nav{background:rgba(19,28,23,.94);border-color:rgba(169,195,171,.16);backdrop-filter:blur(16px)}
+body:has(.sim-app)> .nav .mark,body:has(.lab-shell)> .nav .mark,body:has(#biorealmApp)> .nav .mark{color:#ece7d8}
+body:has(.sim-app)> .nav .mark svg,body:has(.lab-shell)> .nav .mark svg,body:has(#biorealmApp)> .nav .mark svg{color:#a9c3ab;background:rgba(169,195,171,.12);border-color:rgba(169,195,171,.26)}
+body:has(.sim-app)> .nav .mark small,body:has(.lab-shell)> .nav .mark small,body:has(#biorealmApp)> .nav .mark small{color:#97a390}
+body:has(.sim-app)> .nav .nav-links a,body:has(.lab-shell)> .nav .nav-links a,body:has(#biorealmApp)> .nav .nav-links a{color:#c4cabc}
+body:has(.sim-app)> .nav .nav-links a:hover,body:has(.lab-shell)> .nav .nav-links a:hover,body:has(#biorealmApp)> .nav .nav-links a:hover,body:has(.sim-app)> .nav .nav-links a[aria-current=page],body:has(.lab-shell)> .nav .nav-links a[aria-current=page],body:has(#biorealmApp)> .nav .nav-links a[aria-current=page]{color:#c9d9c5}
+body:has(.sim-app)> .nav .nav-links .btn-white,body:has(.lab-shell)> .nav .nav-links .btn-white,body:has(#biorealmApp)> .nav .nav-links .btn-white{background:#a9c3ab;color:#18211c;border-color:#a9c3ab}
+body:has(.sim-app)> .nav .nav-toggle,body:has(.lab-shell)> .nav .nav-toggle,body:has(#biorealmApp)> .nav .nav-toggle{color:#ece7d8;border-color:rgba(169,195,171,.22)}
+body:has(.sim-app)> .mobile-menu,body:has(.lab-shell)> .mobile-menu,body:has(#biorealmApp)> .mobile-menu{background:#151e19;border-color:rgba(169,195,171,.16);color:#ece7d8}
 body:has(.sim-app)> .science-footer{display:none}
-body:has(.sim-app) .sim-app{background:#05070a}
+body:has(.sim-app) .sim-app{background:#101713}
 body:has(.sim-app) .sim-sidebar{top:78px;height:calc(100vh - 78px)}
-body:has(.sim-app) .sim-main{background:#05070a}
-body:has(.sim-app) .sim-view{color:#eef1f3}
+body:has(.sim-app) .sim-main{background:#101713}
+body:has(.sim-app) .sim-view{color:#e8ebe6}
 
 /* A restrained graphite palette, with cool paper for longer reading. */
 .section,.orr-section{padding:clamp(72px,9vw,128px) 0}
 .h-display{font-size:clamp(2.1rem,4vw,3.4rem);letter-spacing:-.04em}
 ::selection{background:var(--leaf);color:var(--void)}
-html{scrollbar-color:#3a4046 var(--void)}
+html{scrollbar-color:#3a4a3f var(--void)}
 :focus-visible{outline-offset:4px;outline-color:var(--leaf)}
+
+
+/* ---------- Finish pass (2026-11): tactile dark surface ---------- */
+html{scrollbar-width:thin;scrollbar-color:var(--paper-2) var(--void)}
+::-webkit-scrollbar{width:11px;height:11px}
+::-webkit-scrollbar-track{background:var(--void)}
+::-webkit-scrollbar-thumb{background:var(--paper-2);border:2px solid var(--void);border-radius:8px}
+::-webkit-scrollbar-thumb:hover{background:var(--leaf-deep)}
+*,*::before,*::after{-webkit-tap-highlight-color:transparent}
+body{font-feature-settings:"kern" 1,"liga" 1,"calt" 1}
+
+@media print{
+  :root{color-scheme:light}
+  body{background:#fff;color:#111;font-size:12pt}
+  .nav,.mobile-menu,.science-footer,.skip,.skip-link,.kit-actions,.kit-support-actions,.kit-form,.kit-copy{display:none!important}
+  a{color:#000;text-decoration:underline}
+  .section,.orr-section,.kit-section{padding:10pt 0;border:0}
+  .section.dark{background:#fff;color:#111;--ink:#111;--ink-soft:#222;--mute:#444}
+  .kit-shelf,.kit-card,.kit-game,.kit-guide-card,.kit-note,.kit-support{box-shadow:none!important;border:1px solid #bbb;break-inside:avoid}
+  .kit-h1,.kit-h2,h1,h2,h3{color:#111;text-shadow:none}
+}

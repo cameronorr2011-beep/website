@@ -99,7 +99,7 @@ def apply(text):
     if 'class="home-rebrand' not in text:
         text = text.replace('</body>', f'<script defer src="/js/biological-cinema.js?v={VERSION}"></script>\n</body>')
     text = re.sub(r'(<(?:link|script)\b[^>]*(?:href|src)="/?(?:css|js)/[^"?]+)(?:\?[^" ]*)?("[^>]*>)', r'\1?v=' + VERSION + r'\2', text)
-    theme = '#0f1512'
+    theme = '#18211c'
     text = re.sub(r'(<meta name="theme-color" content=")[^"]+', r'\g<1>' + theme, text)
     # Preserve existing main targets; older article pages used a div shell.
     if '<main' not in text:

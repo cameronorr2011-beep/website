@@ -31,10 +31,10 @@ class Page(HTMLParser):
 class SiteCopyTests(unittest.TestCase):
     def test_home_origin_and_status(self):
         text = (ROOT / 'index.html').read_text(encoding='utf-8')
-        self.assertIn('A kitchen for<br> <em>living things.</em>', text)
-        self.assertIn('A sourdough starter, a jar of kombucha and a bottle of spirulina', text)
+        self.assertIn('Good bread starts with<br> <em>a living thing.</em>', text)
+        self.assertIn('a sourdough starter first of all, a jar of kombucha, and a bottle of spirulina', text)
         self.assertIn('class="kit-hero"', text)
-        self.assertIn('Start a sourdough starter', text)
+        self.assertIn('Start your sourdough starter', text)
         self.assertIn('research concepts in development', text)
         self.assertIn('commercial deployment', text)
         self.assertNotIn('/papertrail/', text)

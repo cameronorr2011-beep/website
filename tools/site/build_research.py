@@ -154,9 +154,10 @@ def build():
         page = '<!doctype html>\n<html lang="en">\n<head>\n<meta charset="utf-8">\n<meta name="viewport" content="width=device-width, initial-scale=1">\n'
         page += '<title>' + e(title) + '</title>\n<meta name="description" content="' + e(description) + '">\n<link rel="canonical" href="' + url + '">\n'
         page += '<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">\n<meta property="og:type" content="' + ('article' if article else 'website') + '">\n'
-        for key, value in [('og:title', title), ('og:description', description), ('og:url', url), ('og:image', SITE + '/assets/og.png'), ('og:site_name', 'Orr Biologicals')]:
+        og_image = SITE + ('/assets/kitchen/spirulina.jpg' if rel == 'microalgae-cultivation/index.html' else '/assets/og.png')
+        for key, value in [('og:title', title), ('og:description', description), ('og:url', url), ('og:image', og_image), ('og:site_name', 'Orr Biologicals')]:
             page += '<meta property="' + key + '" content="' + e(value) + '">\n'
-        page += '<meta name="twitter:card" content="summary_large_image">\n<meta name="twitter:title" content="' + e(title) + '">\n<meta name="twitter:description" content="' + e(description) + '">\n<meta name="twitter:image" content="' + SITE + '/assets/og.png">\n'
+        page += '<meta name="twitter:card" content="summary_large_image">\n<meta name="twitter:title" content="' + e(title) + '">\n<meta name="twitter:description" content="' + e(description) + '">\n<meta name="twitter:image" content="' + og_image + '">\n'
         if article: page += '<meta property="article:published_time" content="2026-10-04">\n<meta property="article:modified_time" content="2026-10-04">\n'
         page += '<script type="application/ld+json">' + json.dumps({'@context': 'https://schema.org', '@graph': graph}, ensure_ascii=False) + '</script>\n'
         if algaephyte:
@@ -167,7 +168,10 @@ def build():
             page += '<link rel="stylesheet" href="/css/extras.css">\n<link rel="stylesheet" href="/css/header.css?v=20260926a">\n</head>\n<body class="art-body">\n' + header
             page += '<main class="art-shell"><nav class="art-top" aria-label="Breadcrumb"><a href="/">Orr Biologicals</a> / <a href="/research/">Research methods</a></nav>\n'
             page += '<p class="art-cat">Biology, explained · Research in development</p><h1>' + e(h1) + '</h1>\n'
-            page += '<p class="art-meta">By <a href="/research/">Orr Biologicals</a> · Published <time datetime="2026-10-04">October 4, 2026</time></p>\n<div class="prose">' + body + '</div>\n'
+            banner = ''
+            if rel == 'microalgae-cultivation/index.html':
+                banner = '<div class="kit-page-art"><img src="/assets/kitchen/spirulina.jpg" width="768" height="1376" loading="lazy" alt="Generated image of a tall bottle of deep green spirulina culture beside a notebook on a wooden table."></div>\n<p class="kit-page-meta"><span>A home spirulina culture, at the counter</span><span>Generated image</span></p>\n'
+            page += '<p class="art-meta">By <a href="/research/">Orr Biologicals</a> · Published <time datetime="2026-10-04">October 4, 2026</time></p>\n' + banner + '<div class="prose">' + body + '</div>\n'
             page += '<nav class="art-foot" aria-label="Next reading"><a href="/research/">Research methods</a><a href="/glossary">Glossary</a><a href="/blog/">All research notes</a><a href="/cyanoflow">Cyanoflow</a><a href="/privacy">Privacy</a><a href="/terms">Terms</a></nav></main>\n<script src="/js/consent.js" defer></script>\n<script src="/js/navigation.js?v=20260930a" defer></script>\n</body>\n</html>\n'
         path = ROOT / rel; path.parent.mkdir(parents=True, exist_ok=True); path.write_text(page, encoding='utf-8')
     print('Built research hub, glossary, single-cell guide and four distinct topic pillars')
