@@ -13,6 +13,7 @@ from build_kb_index import parse_articles
 from seo_audit import ROOT, SITE, Page, pages, route, SITEMAP_EXCLUDED
 from build_home import build as build_home
 from build_research import build as build_research
+from build_applications import build as build_applications
 from link_topics import build as link_topics
 from design_system import build as build_design
 
@@ -20,6 +21,7 @@ from design_system import build as build_design
 def build():
     build_home()
     build_research()
+    build_applications()
     link_topics()
     articles = parse_articles()
     kb = {'counts': {'algaephyte': sum(a['product'] != 'Cyanoflow' for a in articles),

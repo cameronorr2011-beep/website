@@ -1,30 +1,31 @@
 # Orr Biologicals
 
-Orr Biologicals is a static, local-first home-cultivation and citizen-science
-site: sourdough starters first, then kombucha and spirulina, with honest guides
-for each. **Algaephyte** and
-**Cyanoflow** are our advanced-technology inventions, concept builds in
+Orr Biologicals is a static, local-first open-source biotechnology site:
+**open-source biotechnology for all**, written down so anyone can repeat it.
+The Applications section (`/applications/`) carries the practical protocols —
+**sourdough**, **kombucha**, **spirulina** and **phytoplankton for bivalve
+hatcheries** — each with sub-articles, credited sources and honest limits.
+**Algaephyte** and **Cyanoflow** are our inventions, concept builds in
 development; the site does not claim
 validated hardware performance, species identification, food safety, or a
 finished product for sale.
 
-The public surface is a dim, cozy kitchen in faded forest-green (never
-pure black), led by sourdough starter cultivation, with kombucha and spirulina
-alongside, and a subtle toasted amber for the yeast side of the counter.
-Imagery is self-hosted, high-quality, AI-generated photographic editorial
-imagery kept honest
-by visible "generated image" labels; the counter guides are written for people,
-not laboratories — homey, practical citizen science. The advanced technologies
+The public surface is a dim field laboratory in faded forest-green (never
+pure black), led by the applications, with a subtle instrument amber on the
+bench accents.
+Imagery is self-hosted, high-quality, AI-generated editorial imagery kept honest
+by visible "generated image" labels; the guides are written for people who
+want to actually do the work — citizen science, done carefully. The inventions
 — **Algaephyte** (culture-scale cultivation instruments) and **Cyanoflow**
 (single-cell microfluidics) — are Orr Biologicals' own inventions and live in
-a separate "advanced technologies" section as research concepts in development.
+a separate "Inventions" section as research concepts in development.
 The whole site is MIT-licensed open source and built to be accessible: semantic
 headings, visible focus, honest alt text and reduced-motion support. The
 homepage is assembled from authoritative partials in `sections/`. Procedural
 Three.js instrument scenes are scientific visualizations, not microscope
 observations or measured telemetry; motion pauses offscreen and in hidden
 tabs, and reduced-motion visitors get static scenes. The Journal (`/blog/`) is
-the active source of truth for research notes. The former `/applications/`, `/papertrail/`, and
+the active source of truth for research notes. The `/papertrail/` and
 `/culturetrace/` public surfaces have been retired. `/Simulation/` is the
 canonical Algal Digital Lab workspace; `/game/` remains a separate no-index
 Cyanoflow field-study experiment.

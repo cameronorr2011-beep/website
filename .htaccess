@@ -1,4 +1,4 @@
-﻿# Orr Biologicals â€” orrbiologicals.com
+# Orr Biologicals â€” orrbiologicals.com
 # Canonical host: https://orrbiologicals.com (non-www, HTTPS)
 
 ErrorDocument 404 /404.html
@@ -79,9 +79,12 @@ RedirectMatch 410 ^/papertrail(?:/|$)
 RedirectMatch 410 ^/culturetrace(?:/|$)
 # Algaephyte now has a dedicated research pillar; preserve the no-slash alias.
 RedirectMatch 301 ^/algaephyte$ /algaephyte/
-# Applications was retired as a top-level content silo. Preserve old bookmarks
-# without keeping a second source of truth: the journal now owns active notes.
-RedirectMatch 301 ^/applications(?:/.*)?$ /blog/
+# Applications is a live public section again (2026-11). Old flat culture paths
+# moved under it; keep old bookmarks working.
+RedirectMatch 301 ^/sourdough/?$                      /applications/sourdough/
+RedirectMatch 301 ^/kombucha/?$                       /applications/kombucha/
+# The guide shelf moved under Applications (2026-11); keep old bookmarks working.
+RedirectMatch 301 ^/guides/?$                         /applications/guides/
 RedirectMatch 301 ^/blog$ /blog/
 Redirect 301 /what-is-main-plain-language              /blog/what-is-main-plain-language
 # Restored control-loop article redirect is defined above (never homepage).

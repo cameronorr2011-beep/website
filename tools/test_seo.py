@@ -117,10 +117,10 @@ class SEOTests(unittest.TestCase):
         from build_home import render
         self.assertEqual((ROOT / 'index.html').read_text(encoding='utf-8'), render())
         h1 = ' '.join(Page(render()).headings['h1'][0].split()).lower()
-        self.assertEqual(h1, 'good bread starts with a living thing.')
+        self.assertEqual(h1, 'open-source biotechnology, for all.')
         self.assertIn('class="kit-hero"', render())
         self.assertIn('class="kit-adv', render())
-        self.assertIn('Research concepts in development', render())
+        self.assertIn('research concepts in development', render())
         for name in ('build.ps1', 'rebuild.ps1'):
             text = (ROOT / name).read_text(encoding='utf-8-sig')
             self.assertNotIn('SliceLines', text)
@@ -139,10 +139,13 @@ class SEOTests(unittest.TestCase):
         self.assertLess(blog.index('id="picks"'), blog.index('id="kb"'))
         for public in ('/blog/', '/cyanoflow', '/assets/', '/blog/data/'):
             self.assertNotIn('Disallow: ' + public, (ROOT / 'robots.txt').read_text())
-        self.assertFalse((ROOT / 'applications/index.html').exists())
+        hub = (ROOT / 'applications/index.html').read_text(encoding='utf-8')
+        self.assertIn('Open-source biotechnology,', hub)
+        for route in ('sourdough', 'kombucha', 'spirulina', 'phytoplankton-for-bivalves'):
+            self.assertIn('href="/applications/%s/"' % route, hub)
 
     def test_header_navigation_is_consistent(self):
-        expected = ('/algae/', '/research/', '/blog/', '/#deploy')
+        expected = ('/algae/', '/research/', '/blog/', '/#deploy', '/applications/')
         for path in pages():
             if path.relative_to(ROOT).as_posix().startswith('game/'):
                 continue
@@ -156,7 +159,7 @@ class SEOTests(unittest.TestCase):
                 self.assertNotIn('href="/Simulation/"', header)
                 self.assertNotIn('href="/culturetrace/"', header)
                 self.assertNotIn('href="/papertrail/"', header)
-                self.assertNotIn('href="/applications/', header)
+                self.assertIn('href="/applications/"', header)
                 self.assertNotIn('/#products', header)
                 self.assertNotIn('Pilot access', header)
                 self.assertIn('>Contact</a>', header)
@@ -238,8 +241,8 @@ class SEOTests(unittest.TestCase):
         # The developers page is honest about having no public API.
         self.assertIn('Nothing here responds yet', dev)
         self.assertNotIn('/api/v1/neurons/{id}', dev)
-        # The kitchen surface took the hero slot and both pages link each other.
-        self.assertIn('Start your sourdough starter', home)
+        # The home surface took the hero slot and both pages link each other.
+        self.assertIn('Explore the applications', home)
         for text in (home, dev):
             self.assertIn('/developers/', text)
 

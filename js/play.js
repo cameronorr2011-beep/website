@@ -8,7 +8,7 @@
     .sort((a, b) => a[0] - b[0])
     .map(entry => entry[1]);
 
-  /* ------------------------------------------------------- counter match -- */
+  /* ------------------------------------------------------- bench match -- */
   const matchGrid = document.getElementById('matchGrid');
   if (matchGrid) {
     const pairs = [
@@ -76,7 +76,7 @@
         if (status) status.textContent = 'Matched. ' + matched + ' of 6 pairs found.';
         if (live) live.textContent = first.dataset.text + ' matched. ' + matched + ' of 6 pairs.';
         if (matched === pairs.length && live) {
-          live.textContent = 'All six pairs found in ' + tries + ' tries. That is the whole counter.';
+          live.textContent = 'All six pairs found in ' + tries + ' tries. That is the whole game.';
         }
         return;
       }

@@ -6,19 +6,23 @@ VERSION = '20261115'
 
 
 def migrate_legacy_application_links(text):
-    """Keep the journal as the living index after retiring /applications/."""
+    """Applications returned as a public section (2026-11); retire only the
+    pre-rebuild species slugs that never had a working page."""
     replacements = (
-        ('/applications/species/arthrospira', '/blog/spirulina-is-a-cyanobacterium'),
+        ('/applications/species/arthrospira', '/applications/spirulina/'),
         ('/applications/species/chlorella', '/glossary#microalgae'),
-        ('/applications/#species', '/blog/'),
-        ('/applications/#aquaculture', '/blog/'),
+        ('/applications/species/isochrysis-tisochrysis', '/applications/phytoplankton-for-bivalves/species-selection/'),
+        ('/applications/#species', '/applications/'),
+        ('/applications/#aquaculture', '/applications/phytoplankton-for-bivalves/'),
+        ('/applications/microalgal-biotechnology', '/algae-biotechnology/'),
+        ('/applications/phytoplankton-aquaculture-food-webs', '/applications/phytoplankton-for-bivalves/'),
+        ('/applications/how-to-start-a-phytoplankton-culture', '/applications/phytoplankton-for-bivalves/'),
+        ('/applications/how-to-grow-a-microalgae-culture', '/microalgae-cultivation/'),
+        ('/applications/how-to-scale-a-microalgae-culture', '/photobioreactors/'),
+        ('/applications/prevent-contamination-microalgae-cultures', '/blog/troubleshooting-contamination-crashes'),
     )
     for old, new in replacements:
         text = text.replace(old, new)
-    # Retire deep application slugs instead of manufacturing /blog/<slug>
-    # articles that do not exist. The methodology hub is the honest fallback.
-    text = re.sub(r'/applications/[^"\'\s<]+', '/research/', text)
-    text = text.replace('/applications/', '/blog/')
     text = text.replace('<a href="/game/">Play Algae Living</a>', '<a href="/game/">Play Cyanoflow</a>')
     text = text.replace('<a class="chip" href="/game/">Algae Living game</a>', '<a class="chip" href="/game/">Cyanoflow game</a>')
     # Retarget anchors from the retired long-form homepage to the new

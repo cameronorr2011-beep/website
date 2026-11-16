@@ -31,10 +31,11 @@ class Page(HTMLParser):
 class SiteCopyTests(unittest.TestCase):
     def test_home_origin_and_status(self):
         text = (ROOT / 'index.html').read_text(encoding='utf-8')
-        self.assertIn('Good bread starts with<br> <em>a living thing.</em>', text)
-        self.assertIn('a sourdough starter first of all, a jar of kombucha, and a bottle of spirulina', text)
+        self.assertIn('Open-source biotechnology,<br> <em>for all.</em>', text)
+        self.assertIn('sourdough, kombucha, spirulina', text)
+        self.assertIn('MIT-licensed', text)
         self.assertIn('class="kit-hero"', text)
-        self.assertIn('Start your sourdough starter', text)
+        self.assertIn('Explore the applications', text)
         self.assertIn('research concepts in development', text)
         self.assertIn('commercial deployment', text)
         self.assertNotIn('/papertrail/', text)
@@ -70,7 +71,7 @@ class SiteCopyTests(unittest.TestCase):
         for value in ('assets/cyano/culture.jpg', 'assets/cyano/chip.jpg', 'id="systems"', 'id="products"', 'id="deploy"'):
             self.assertIn(value, text)
         self.assertIn('id="chipSim"', (ROOT / 'cyanoflow.html').read_text(encoding='utf-8'))
-        self.assertFalse((ROOT / 'applications/index.html').exists())
+        self.assertTrue((ROOT / 'applications/index.html').exists())
         simulation = (ROOT / 'Simulation/index.html').read_text(encoding='utf-8')
         self.assertIn('Algal Digital Lab', simulation)
         self.assertIn('data-sim-boot="pending"', simulation)
