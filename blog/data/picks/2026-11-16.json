@@ -1,0 +1,55 @@
+{
+  "date": "2026-11-16",
+  "model": "openai/gpt-oss-120b",
+  "generated_at": "2026-11-17T02:43:23Z",
+  "picks": [
+    {
+      "pmid": "43035162",
+      "title": "High-throughput solvent screening for microalgae oil extraction based on multi-criteria decision analysis.",
+      "journal": "Bioresource technology",
+      "year": "2026",
+      "pub_date": "2026-11-15",
+      "url": "https://doi.org/10.1016/j.biortech.2026.136252",
+      "topic": "Biofuels Extraction",
+      "hook": "A decision‑analysis workflow ranks solvents for efficient microalgae oil recovery.",
+      "article": "A recent study set out to find safer, more efficient solvents for extracting oil from microalgae, which could improve the production of biofuels and chemicals. The researchers built a high‑throughput, multi‑step computational workflow that screened many candidate solvents based on several performance criteria. They applied this method to evaluate alternatives to the commonly used n‑hexane, a toxic, fossil‑based solvent.\n\nThe workflow combined computer‑based predictions of solvent toxicity, environmental impact, and oil‑extraction efficiency, allowing rapid comparison of many options without extensive lab work. By ranking solvents across these multiple factors, the team identified promising candidates that could replace n‑hexane.\n\nThe study demonstrates that multi‑criteria decision analysis can efficiently pinpoint greener solvents for microalgae oil extraction, offering a path toward more sustainable biofuel production.",
+      "why": "Finding safer, cheaper solvents could make algae‑based biofuels more viable and environmentally friendly."
+    },
+    {
+      "pmid": "43036251",
+      "title": "Energy and carbon reallocation underlie the growth-storage trade-off in Haematococcus lacustris.",
+      "journal": "Journal of experimental botany",
+      "year": "2026",
+      "pub_date": "2026-11-16",
+      "url": "https://doi.org/10.1093/jxb/erag576",
+      "topic": "Growth‑Storage Trade‑off",
+      "hook": "Shows how Haematococcus reallocates carbon to balance rapid growth and astaxanthin storage.",
+      "article": "A recent study set out to understand how the single‑celled alga Haematococcus lacustris reallocates its internal resources when it switches from rapid growth to building up storage compounds. The researchers followed the natural transition from fast‑growing motile cells to storage‑oriented palmella cells, which are the form the alga takes when it accumulates protective pigments.\n\nThey examined the algae at the cellular level, tracking changes in metabolism as the cells changed form. The work focused on the metabolic basis of the trade‑off between growth and storage, using the organism’s own life‑cycle transition as a model.\n\nThe investigation revealed that the shift involves a reallocation of energy and carbon within the cells, underpinning the observed growth‑storage trade‑off.\n\nUnderstanding this internal rebalancing is valuable because it sheds light on how algae manage resources, information that could help optimise algal production of valuable compounds.",
+      "why": "Insights into resource reallocation can guide more efficient algae cultivation for bioproducts."
+    },
+    {
+      "pmid": "43037205",
+      "title": "Phosphorus limitation shifts cellular phosphorus allocation toward polyphosphate by depleting other phosphorus pools in Synechococcus.",
+      "journal": "The ISME journal",
+      "year": "2026",
+      "pub_date": "2026-11-16",
+      "url": "https://doi.org/10.1093/ismejo/wrag285",
+      "topic": "Phosphorus Limitation",
+      "hook": "Synechococcus shifts phosphorus into polyphosphate when other pools run dry.",
+      "article": "A recent study investigated how limiting phosphorus (P) in the environment changes the way the marine cyanobacterium Synechococcus allocates its internal phosphorus. The researchers grew Synechococcus under phosphorus‑depleted conditions and compared its cellular phosphorus pools to those in phosphorus‑replete conditions. They measured the fractions of total particulate phosphorus (TPP) that were stored as polyphosphate, a polymer of many phosphate units, versus other phosphorus compounds.\n\nThe results showed that when external phosphorus was scarce, polyphosphate consistently made up a larger fraction of the cell’s total particulate phosphorus than when phosphorus was abundant. This shift occurred because the other intracellular phosphorus pools were depleted, leaving polyphosphate as the dominant form.\n\nThese findings clarify why polyphosphate, previously thought to be a luxury reserve that accumulates only when phosphorus is plentiful, actually serves as a primary storage form under nutrient‑limited conditions. Understanding this allocation helps explain how marine microbes cope with fluctuating nutrient supplies.",
+      "why": "Knowing that cyanobacteria store phosphorus as polyphosphate under scarcity can guide strategies to manage algal growth and nutrient recycling in biotechnological applications."
+    },
+    {
+      "pmid": "43008869",
+      "title": "Salicylic acid offsets productivity-infrastructure trade-off in marine microalga cultivation without carbon dioxide dosing.",
+      "journal": "Bioresource technology",
+      "year": "2026",
+      "pub_date": "2026-11-10",
+      "url": "https://doi.org/10.1016/j.biortech.2026.136224",
+      "topic": "Cultivation Boost",
+      "hook": "Salicylic acid restores productivity in marine microalgae without extra CO₂ dosing.",
+      "article": "A recent study explored whether adding salicylic acid could help a marine microalga keep growing well when the water’s salt level is raised and no extra carbon dioxide or pH adjustments are used. The researchers grew the species Chrysochromulina rotalis in a six‑stage sequential‑batch cascade using bubble‑column photoreactors, turning off pH control and then turning it back on at two different salinity levels (35 and 50 practical salinity units). They compared reactors that received salicylic acid with control reactors at each stage.\n\nThe addition of salicylic acid was found to recover part of the productivity loss that normally occurs under these stressed conditions. No specific percentage or yield figure was given in the abstract.\n\nThese results suggest a simple chemical supplement might ease the trade‑off between high‑salinity cultivation and algal productivity, which could be useful for large‑scale algae farming where carbon dioxide dosing and tight pH control are costly.",
+      "why": "Salicylic acid could make salty, low‑CO2 algae farms more productive, lowering operational costs."
+    }
+  ]
+}
