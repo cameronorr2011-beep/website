@@ -1,256 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="referrer" content="strict-origin-when-cross-origin">
-<title>Orr Biologicals — Biology, Built in the Open</title>
-<meta name="description" content="Orr Biologicals is an open-source biotechnology platform: DIY experiments anyone can repeat, a referenced scientific publication, evidence-led application dossiers, and original inventions — Algaephyte and Cyanoflow. MIT-open, honest about limits.">
-<meta name="theme-color" content="#111A15">
+<title>Live Microalgae for Bivalve Hatcheries | Orr Biologicals</title>
+<meta name="description" content="Live microalgae for bivalve hatcheries: weekly Nannochloropsis, five strains to order, f/2 concentrate, and a $59 culture kit. Grown in Vista, California.">
 <link rel="canonical" href="https://orrbiologicals.com/">
-<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
-<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
-<meta property="og:title" content="Orr Biologicals — Biology, Built in the Open">
-<meta property="og:description" content="DIY experiments, a referenced publication, evidence-led application dossiers, and original inventions — an open-source biotechnology platform. MIT-open; honest about what is not known.">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/styles.css">
+<meta name="theme-color" content="#082622">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://orrbiologicals.com/">
-<meta property="og:image" content="https://orrbiologicals.com/assets/og.jpg">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
 <meta property="og:site_name" content="Orr Biologicals">
+<meta property="og:title" content="Live microalgae for bivalve hatcheries | Orr Biologicals">
+<meta property="og:description" content="Live marine microalgae grown in Vista, California. Weekly Nannochloropsis batches, hatchery strains by arrangement, f/2 concentrate, and a $59 culture kit.">
+<meta property="og:url" content="https://orrbiologicals.com/">
 <meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Orr Biologicals — Biology, Built in the Open">
-<meta name="twitter:description" content="DIY experiments, scientific articles and original inventions — an open-source biotechnology platform. MIT-open, honest about limits.">
-<meta name="twitter:image" content="https://orrbiologicals.com/assets/og.jpg">
+<meta name="twitter:title" content="Live microalgae for bivalve hatcheries | Orr Biologicals">
+<meta name="twitter:description" content="Live marine microalgae for oyster, clam and scallop hatcheries. Bench-grown in Vista, California, shipped Monday to Wednesday.">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@graph":[
-{"@type":"Organization","@id":"https://orrbiologicals.com/#org","name":"Orr Biologicals","url":"https://orrbiologicals.com/","email":"service@orrbiologicals.com","logo":"https://orrbiologicals.com/assets/og.jpg","description":"Orr Biologicals is an open-source biotechnology platform: DIY experimental biology, a referenced scientific publication, evidence-led application dossiers (aquaculture live feeds, bioprocessing, biological materials, environmental biotechnology) and original inventions — Algaephyte and Cyanoflow. MIT-open; educational only; no validated hardware or commercial deployment is claimed.","knowsAbout":["DIY experimental biology","Sourdough starter cultivation","Kombucha fermentation","Spirulina and microalgae cultivation","Phytoplankton for bivalve hatcheries","Photobioreactors","Single-cell microfluidics","Scientific publishing"]},
-{"@type":"WebSite","@id":"https://orrbiologicals.com/#site","url":"https://orrbiologicals.com/","name":"Orr Biologicals","publisher":{"@id":"https://orrbiologicals.com/#org"}},
-{"@type":"CreativeWork","@id":"https://orrbiologicals.com/#algaephyte","name":"Algaephyte research concept","description":"A proposed microalgae cultivation and monitoring system combining sensors, physics-informed growth models, camera checks, and independent actuator limits. In development; no validated performance or purchase availability is claimed.","creator":{"@id":"https://orrbiologicals.com/#org"},"url":"https://orrbiologicals.com/algaephyte/"},
-{"@type":"CreativeWork","@id":"https://orrbiologicals.com/#cyanoflow","name":"Cyanoflow research concept","description":"A proposed microfluidic and single-cell observation system for isolating, imaging, and investigating microalgae and cellular variation. In development; no validated hardware performance is claimed.","creator":{"@id":"https://orrbiologicals.com/#org"},"url":"https://orrbiologicals.com/cyanoflow"}
-]}
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://orrbiologicals.com/#organization",
+      "name": "Orr Biologicals",
+      "url": "https://orrbiologicals.com/",
+      "logo": "https://orrbiologicals.com/favicon.svg",
+      "description": "Producer of live marine microalgae, f/2 nutrient concentrate and microalgae culture kits for bivalve hatcheries, laboratories, classrooms and hobbyists.",
+      "email": "service@orrbiologicals.com",
+      "foundingDate": "2026",
+      "founder": { "@type": "Person", "name": "Cameron Orr" },
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Vista",
+        "addressRegion": "CA",
+        "addressCountry": "US"
+      },
+      "areaServed": { "@type": "Country", "name": "United States" },
+      "knowsAbout": [
+        "microalgae culture",
+        "bivalve hatchery nutrition",
+        "Nannochloropsis oculata",
+        "Isochrysis aff. galbana",
+        "Chaetoceros muelleri",
+        "f/2 medium",
+        "live phytoplankton"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://orrbiologicals.com/#website",
+      "url": "https://orrbiologicals.com/",
+      "name": "Orr Biologicals",
+      "publisher": { "@id": "https://orrbiologicals.com/#organization" },
+      "inLanguage": "en-US"
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://orrbiologicals.com/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Do you ship live microalgae to hatcheries outside California?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, within the United States. Live cultures ship Monday to Wednesday by USPS Priority Mail in an insulated box with a gel pack, so nothing sits in a depot over a weekend. We do not ship live cultures internationally, because customs will destroy them."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What strains can I order?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Nannochloropsis oculata is in weekly production. Isochrysis aff. galbana (T-Iso), Pavlova lutheri, Chaetoceros muelleri, Thalassiosira pseudonana and Tetraselmis suecica are grown to order on a three to four week lead time, subject to confirming the culture."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much does hatchery algae cost?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Batch cultures are quoted per order because price depends on volume, strain and how often you need it. A standing weekly order costs less per litre than a one-off. Email the volume you feed per day and we will quote it."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is f/2 medium and how much do I dose?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "f/2 is the Guillard and Ryther (1962) enrichment medium used for nearly all marine microalgae culture. We ship it as a 500 times liquid concentrate dosed at 2 mL per litre of culture, so one litre of concentrate treats 500 litres of seawater."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can a beginner keep a culture alive?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, if you start with two bottles rather than one and split weekly. The $59 culture kit exists for exactly that: two 473 mL vessels, a counted starter culture, nutrient concentrate, marine salt, gentle aeration, a 6500 K light and a Secchi stick so you can measure growth instead of guessing."
+          }
+        }
+      ]
+    }
+  ]
+}
 </script>
-<link rel="stylesheet" href="/css/global.css?v=20261115">
-<link rel="stylesheet" href="/css/header.css?v=20261115">
-<link rel="stylesheet" href="/css/orr-home.css?v=20261115">
-<link rel="stylesheet" href="/css/animations.css?v=20261115">
-<link rel="stylesheet" href="/css/site-redesign.css?v=20261115">
-<link rel="stylesheet" href="/css/biological-cinema.css?v=20261115">
-<link rel="stylesheet" href="/css/home-rebrand.css?v=20261115">
-<link rel="stylesheet" href="/css/kitchen.css?v=20261115">
 </head>
-<body class="home-rebrand kitchen">
+<body>
 <a class="skip" href="#main">Skip to content</a>
-<header class="nav" id="nav">
-<div class="nav-in"><a class="mark" href="/" aria-label="Orr Biologicals home">
-<svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="14" fill="none" stroke="currentColor"/><path d="M9 23c6-3 0-14 7-14s1 11 7 14M8 15c4-5 12-5 16 0" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
-<span><b>Orr Biologicals</b><small>Biology, built in the open</small></span></a>
-<nav class="nav-links" aria-label="Primary"><a href="/diy/">DIY</a><a href="/articles/">Articles</a><a href="/applications/">Applications</a><a href="/inventions/">Inventions</a></nav>
-<button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="mobileMenu">Menu</button></div></header>
-<nav class="mobile-menu" id="mobileMenu" aria-label="Mobile primary" hidden>
-<a href="/diy/">DIY / build &amp; grow living systems</a><a href="/articles/">Articles / the scientific publication</a><a href="/applications/">Applications / evidence-led dossiers</a><a href="/inventions/">Inventions / Algaephyte &amp; Cyanoflow</a><a href="/research/">Research methodology</a><a href="/developers/">Developer documentation</a><a href="/#about">About Orr Biologicals</a><a href="/#deploy">Contact the project</a>
-</nav><main id="main">
-  <section class="kit-hero" id="top" aria-labelledby="home-title">
-    <span id="reactor-study" class="hr-anchor" aria-hidden="true"></span>
-    <div class="kit-wrap">
-      <div class="kit-hero-grid">
-        <div class="kit-hero-copy">
-          <p class="kit-kicker">Orr Biologicals / <i>biology, built in the open</i></p>
-          <h1 class="kit-h1" id="home-title">Biology,<br> <em>built in the open.</em></h1>
-          <p class="kit-lede">Orr Biologicals is an open-source biotechnology platform: scientific literature and honest protocols, practical experiments anyone can repeat, real-world applications weighed against their evidence, and original engineering — from a culture on your bench to the instruments built to study it. The goal never changes: make biology more understandable, accessible and reproducible.</p>
-          <div class="kit-actions">
-            <a class="kit-btn rose" href="/diy/">Explore DIY <span aria-hidden="true">↗</span></a>
-            <a class="kit-link" href="/articles/">Explore the research library <span aria-hidden="true">↗</span></a>
+
+<header class="site-head">
+  <div class="wrap head-in">
+    <a class="brand" href="/" aria-label="Orr Biologicals home">
+      <svg viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+        <circle cx="16" cy="16" r="14.4" fill="none" stroke="#2C5F47" stroke-width="1.3"/>
+        <circle cx="12" cy="13" r="3.1" fill="#2C5F47"/>
+        <circle cx="20.4" cy="14.6" r="2.2" fill="#2C5F47" opacity=".72"/>
+        <circle cx="15.4" cy="20.6" r="2.6" fill="#2C5F47" opacity=".86"/>
+      </svg>
+      <span>Orr Biologicals<small>Live microalgae · Vista, CA</small></span>
+    </a>
+    <nav class="nav" aria-label="Primary">
+      <a href="/hatcheries.html">Hatcheries</a>
+      <a href="/hatcheries.html#media">Nutrient media</a>
+      <a href="/kits.html">Culture kits</a>
+      <a href="/about.html">About</a>
+      <a class="btn" href="mailto:service@orrbiologicals.com?subject=Quote%20request">Request a quote</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div>
+          <p class="hero-mark">Marine microalgae, cultured in Vista, California</p>
+          <h1>Live microalgae, grown for bivalve hatcheries.</h1>
+          <p class="lead">Oyster, clam and scallop larvae eat live phytoplankton, and live phytoplankton is what we grow. Weekly batches of <i>Nannochloropsis oculata</i>, hatchery strains to order, f/2 concentrate, and a $59 kit for the classroom or the bench at home.</p>
+          <div class="btn-row">
+            <a class="btn" href="/hatcheries.html">Strains for hatcheries</a>
+            <a class="btn btn--ghost" href="/kits.html">The $59 culture kit</a>
+            <span class="note">Cultures ship Monday to Wednesday, US only.</span>
           </div>
-          <p class="kit-strip"><span>DIVISION 01 / DIY — THE BENCH</span><span>DIVISION 02 / ARTICLES — THE PUBLICATION</span><span>DIVISION 03 / APPLICATIONS — THE EVIDENCE</span><span>DIVISION 04 / INVENTIONS — THE WORKSHOP</span></p>
         </div>
-        <figure class="kit-shelf">
-          <img src="/assets/brand/petrichor-portrait.jpg" width="928" height="1152" fetchpriority="high" alt="Generated image of a hand-blown glass vessel of living green microalgae beside two seeded conical flasks on a rain-wet wooden bench, dark forest beyond the window.">
-          <figcaption>Fig. 01 — The culture bench, rain season · generated image</figcaption>
+
+        <figure class="plate">
+          <svg viewBox="0 0 430 520" role="img" aria-labelledby="plateTitle plateDesc">
+            <title id="plateTitle">Working drawing of a 473 mL culture vessel</title>
+            <desc id="plateDesc">A line drawing of a 473 mL bottle filled to 375 mL, with a vented cap, an air lift tube, rising bubbles, a light bar and a Secchi stick suspended in the culture.</desc>
+            <g fill="none" stroke="#1B2E29" stroke-width="1.15" stroke-linecap="round">
+              <path d="M152 46h96v30a4 4 0 0 1-4 4h-88a4 4 0 0 1-4-4z"/>
+              <path d="M152 57h96" stroke-opacity=".45"/>
+              <circle cx="200" cy="63" r="4.4" stroke-opacity=".8"/>
+              <path d="M191 63h18M200 54v18" stroke-opacity=".35" stroke-width=".8"/>
+              <path d="M163 80v26c0 12-58 16-58 42"/>
+              <path d="M237 80v26c0 12 58 16 58 42"/>
+              <path d="M105 148h190a16 16 0 0 1 16 16v286a16 16 0 0 1-16 16H105a16 16 0 0 1-16-16V164a16 16 0 0 1 16-16z"/>
+              <path d="M92 214h206" stroke="#2C5F47" stroke-dasharray="5 5" stroke-width="1.2"/>
+              <path d="M96 214h198v232a12 12 0 0 1-12 12H108a12 12 0 0 1-12-12z" fill="#2C5F47" fill-opacity=".13" stroke="none"/>
+              <path d="M140 96h16v356a8 8 0 0 1-16 0z" stroke-opacity=".9"/>
+              <path d="M148 96V52" stroke-opacity=".55"/>
+              <rect x="142" y="34" width="12" height="16" rx="2" stroke-opacity=".75"/>
+              <circle cx="148" cy="430" r="3.2" stroke-opacity=".8"/>
+              <circle cx="143" cy="402" r="2.2" stroke-opacity=".7"/>
+              <circle cx="153" cy="378" r="2.8" stroke-opacity=".7"/>
+              <circle cx="146" cy="352" r="1.9" stroke-opacity=".6"/>
+              <circle cx="152" cy="326" r="2.5" stroke-opacity=".6"/>
+              <circle cx="147" cy="300" r="1.7" stroke-opacity=".5"/>
+              <circle cx="151" cy="276" r="2.1" stroke-opacity=".45"/>
+              <path d="M258 96v300" stroke-opacity=".85"/>
+              <path d="M244 398a14 14 0 0 0 28 0z" fill="#1B2E29" fill-opacity=".85" stroke="none"/>
+              <circle cx="258" cy="398" r="14" stroke-opacity=".85"/>
+              <rect x="36" y="250" width="10" height="96" rx="4" stroke-opacity=".8"/>
+              <path d="M50 268h24M50 288h30M50 308h24M50 328h28" stroke-opacity=".3" stroke-width=".9"/>
+            </g>
+            <g font-family="Georgia, serif" font-size="11.5" fill="#4C5C56" letter-spacing=".04em">
+              <text x="322" y="236" font-style="italic">375 mL</text>
+              <text x="322" y="250" font-size="10" fill="#6D7B74">working volume</text>
+              <path d="M310 214h8M310 464h8M314 214v250" stroke="#6D7B74" stroke-width=".8"/>
+              <text x="322" y="452" font-style="italic">473 mL</text>
+              <text x="322" y="466" font-size="10" fill="#6D7B74">vessel</text>
+              <text x="148" y="504" text-anchor="middle" font-size="10" fill="#6D7B74">air lift, 12:12 light</text>
+            </g>
+          </svg>
+          <figcaption>Fig. 1 — The vessel we ship in. 375 mL of culture in a 473 mL bottle leaves headspace for gas and expansion; the vented cap passes air but not liquid.</figcaption>
         </figure>
       </div>
-    </div>
-  </section>
 
-  <section class="kit-section" id="divisions" aria-labelledby="divisions-title">
-    <div class="kit-wrap">
-      <div class="kit-head">
+      <dl class="specs">
         <div>
-          <p class="kit-eyebrow">The platform</p>
-          <h2 class="kit-h2" id="divisions-title">Four doors,<br> <em>one house of biology.</em></h2>
-        </div>
-        <p>Everything here hangs off four divisions, built for different readers — builders, students, engineers and inventors. Same organism, same standards: open, sourced, honest.</p>
-      </div>
-      <div class="kit-div-grid">
-        <a class="kit-div" href="/diy/"><span class="kit-div-index">01</span><span class="kit-div-body"><h3>DIY</h3><p>Open-source experimental biology. Grow, build and observe — sourdough, kombucha, spirulina, equipment build sheets and notebook craft.</p><small>For the hands-on · <b>Start a culture today</b></small></span><span class="kit-div-go" aria-hidden="true">↗</span></a>
-        <a class="kit-div" href="/articles/"><span class="kit-div-index">02</span><span class="kit-div-body"><h3>Articles</h3><p>The scientific publication. Research briefs, literature reviews, technical reports and field notes — labelled, referenced and dated.</p><small>For the reader · <b>Browse the library</b></small></span><span class="kit-div-go" aria-hidden="true">↗</span></a>
-        <a class="kit-div" href="/applications/"><span class="kit-div-index">03</span><span class="kit-div-body"><h3>Applications</h3><p>Biotechnology for real problems — the biological mechanism, the evidence, the engineering gap, and the honest limits.</p><small>For the engineer · <b>Open the dossier shelf</b></small></span><span class="kit-div-go" aria-hidden="true">↗</span></a>
-        <a class="kit-div" href="/inventions/"><span class="kit-div-index">04</span><span class="kit-div-body"><h3>Inventions</h3><p>Orr Biologicals’ own work: Algaephyte for cultivation monitoring, Cyanoflow for single-cell observation. Concepts, not claims.</p><small>For the builder-inventor · <b>Enter the workshop</b></small></span><span class="kit-div-go" aria-hidden="true">↗</span></a>
-      </div>
-    </div>
-  </section>
-
-  <section class="kit-section" id="diy" aria-labelledby="diy-title">
-    <span id="cultures" class="hr-anchor" aria-hidden="true"></span>
-    <div class="kit-wrap">
-      <div class="kit-head">
-        <div>
-          <p class="kit-eyebrow">01 / DIY</p>
-          <h2 class="kit-h2" id="diy-title">Biology you can<br> <em>hold in your hands.</em></h2>
-        </div>
-        <p>Featured bench projects — every one written to be repeated, credited and improved under MIT. Skill labels are real; nothing here is a party trick.</p>
-      </div>
-      <div class="kit-cards kit-cards-4">
-        <a class="kit-card rose" href="/diy/sourdough/"><span class="kit-card-art"><img src="/assets/kitchen/starter.jpg" width="768" height="1376" loading="lazy" alt="Generated image of a sourdough starter in a cloth-covered glass jar beside a small metal scale and feeding record."></span><span class="kit-card-body"><span class="kit-tag">Fermentation · Beginner</span><h3>Sourdough starter</h3><p>Flour and water, a seven-day start, and the honest rules for when to discard the jar.</p><span class="kit-card-foot"><b>Start &amp; keep <span aria-hidden="true">↗</span></b></span></span></a>
-        <a class="kit-card rose" href="/diy/kombucha/"><span class="kit-card-art"><img src="/assets/kitchen/kombucha.jpg" width="768" height="1376" loading="lazy" alt="Generated image of amber kombucha with a pale pellicle floating in a wide glass jar on a wooden bench."></span><span class="kit-card-body"><span class="kit-tag">Fermentation · Beginner</span><h3>Kombucha</h3><p>Sweet tea, a SCOBY and time — the first ferment and the bottling physics.</p><span class="kit-card-foot"><b>Brew your first <span aria-hidden="true">↗</span></b></span></span></a>
-        <a class="kit-card" href="/diy/spirulina/"><span class="kit-card-art"><img src="/assets/kitchen/spirulina.jpg" width="768" height="1376" loading="lazy" alt="Generated image of a tall bottle of deep green spirulina culture beside a notebook."></span><span class="kit-card-body"><span class="kit-tag">Cyanobacteria · Patient</span><h3>Spirulina culture</h3><p>Warm alkaline water, bicarbonate medium and the field signs that matter.</p><span class="kit-card-foot"><b>Start a culture <span aria-hidden="true">↗</span></b></span></span></a>
-      </div>
-      <p class="kit-next-line"><a href="/diy/">Enter DIY <span aria-hidden="true">↗</span> — build · ferment · cultivate · observe</a></p>
-    </div>
-  </section>
-
-  <section class="kit-section" id="articles" aria-labelledby="articles-title">
-    <div class="kit-wrap">
-      <div class="kit-head">
-        <div>
-          <p class="kit-eyebrow">02 / Articles</p>
-          <h2 class="kit-h2" id="articles-title">Read the<br> <em>living literature.</em></h2>
-        </div>
-        <p>Research briefs, technical reports and field notes — every page labelled by format, sourced and dated. Never masquerading as peer review.</p>
-      </div>
-      <div class="kit-notes">
-        <a class="kit-note" href="/blog/digital-twins-biological-cultivation"><small>Bioprocess · Research brief</small><h3>Digital Twins for Biological Cultivation</h3><p>State variables, counterfactual testing and simulate-first cultivation.</p><span>Read the brief</span></a>
-        <a class="kit-note" href="/blog/single-cell-microalgae-microfluidics"><small>Methods · Technical report</small><h3>Single-Cell Analysis with Microfluidics</h3><p>Droplets versus microwells for microalgae — tracking and phenotype validation.</p><span>Read the report</span></a>
-        <a class="kit-note" href="/blog/zarrouk-medium-and-nutrients"><small>Cultivation · Technical report</small><h3>Zarrouk’s medium, properly</h3><p>What the bicarbonate and nitrate actually do for a spirulina culture.</p><span>Read the report</span></a>
-        <a class="kit-note" href="/articles/"><small>The library</small><h3>All articles, one index</h3><p>Filter by subject, from foundational biology to instrumentation.</p><span>Browse the library</span></a>
-      </div>
-    </div>
-  </section>
-
-  <section class="kit-section" id="applications" aria-labelledby="applications-title">
-    <div class="kit-wrap">
-      <div class="kit-head">
-        <div>
-          <p class="kit-eyebrow">03 / Applications</p>
-          <h2 class="kit-h2" id="applications-title">Real problems,<br> <em>honestly weighed.</em></h2>
-        </div>
-        <p>Evidence-led dossiers: the mechanism, what research demonstrated, what it costs, what remains unproven — with primary sources and clear labels.</p>
-      </div>
-      <div class="kit-dossier">
-        <a class="kit-dossier-row" href="/applications/phytoplankton-for-bivalves/"><div><p class="kit-tag">Aquaculture · <span class="kit-status live">Live dossier</span></p><h3>Phytoplankton for bivalve hatcheries</h3><p>Live feed for oyster, clam, scallop and mussel larvae — species, stages, rations and water discipline. Evidence: established hatchery practice (FAO 471); limits: strain-dependent, educational.</p></div><span class="kit-dossier-go" aria-hidden="true">↗</span></a>
-        <div class="kit-dossier-row static"><div><p class="kit-tag">Biological materials · <span class="kit-status dev">Dossier in development</span></p><h3>Spider silk &amp; recombinant proteins</h3><p>The strongest fibers nature makes, and the slow recombinant path toward making them — a mapped dossier, published only when its sources are.</p></div><span class="kit-dossier-go dim" aria-hidden="true">○</span></div>
-        <div class="kit-dossier-row static"><div><p class="kit-tag">Environmental biotech · <span class="kit-status dev">Dossier in development</span></p><h3>Microalgae &amp; nutrient recovery</h3><p>Circular capture of nitrogen and phosphorus as harvestable biomass — an open research question, not a deployable system. Christenson &amp; Sims 2011, cited as literature.</p></div><span class="kit-dossier-go dim" aria-hidden="true">○</span></div>
-      </div>
-      <p class="kit-next-line"><a href="/applications/">Enter Applications <span aria-hidden="true">↗</span> — the evidence-led dossiers</a></p>
-    </div>
-  </section>
-
-  <section class="kit-section kit-advanced" id="systems" aria-labelledby="inventions-title">
-    <span id="inventions" class="hr-anchor" aria-hidden="true"></span><span id="products" class="hr-anchor" aria-hidden="true"></span>
-    <div class="kit-wrap">
-      <div class="kit-head">
-        <div>
-          <p class="kit-eyebrow">04 / Inventions</p>
-          <h2 class="kit-h2" id="inventions-title">Our own<br> <em>instruments.</em></h2>
-        </div>
-        <p>Orr Biologicals’ original engineering — biology’s monitoring and measurement problems, attacked with sensors, models and patience. Concepts in development; nothing claims validated performance or availability.</p>
-      </div>
-      <div class="kit-adv">
-        <div class="kit-adv-row">
-          <span class="kit-adv-index">I–01</span>
-          <img src="/assets/cyano/culture.jpg" width="1536" height="1024" loading="lazy" alt="Three flasks of bright green microalgae culture under cool LED light, foil caps and a hand-written date tag — a real culture, not a deployed monitor.">
-          <div class="kit-adv-copy">
-            <h3><a href="/algaephyte/">Algaephyte</a></h3>
-            <p>Open-source systems for understanding and monitoring microalgal cultures — sensors, a camera and a physics-informed model, with hard limits and an honest log. Illustrative scene of the concept at most — not a deployed instrument; no commercial deployment is claimed.</p>
-          </div>
-          <span class="kit-state">Our invention · in development</span>
-        </div>
-        <div class="kit-adv-row">
-          <span class="kit-adv-index">I–02</span>
-          <img src="/assets/cyano/chip.jpg" width="1536" height="1024" loading="lazy" alt="Illustrative microfluidic chip with etched channels and tubing, used for the Cyanoflow research concept.">
-          <div class="kit-adv-copy">
-            <h3><a href="/cyanoflow">Cyanoflow</a></h3>
-            <p>Open-source tools for studying biological variation at the single-cell scale — imaging, microfluidics and cell-to-cell differences, tracked instead of averaged away. Design goals, not validated hardware.</p>
-          </div>
-          <span class="kit-state">Our invention · in development</span>
-        </div>
-      </div>
-      <p class="kit-next-line"><a href="/inventions/">Enter Inventions <span aria-hidden="true">↗</span> — status, architecture and roadmaps</a> &nbsp;·&nbsp; <a href="/Simulation/">The Algal Digital Lab ↗</a></p>
-    </div>
-  </section>
-
-  <section class="kit-section" id="about" aria-labelledby="about-title">
-    <span id="thesis" class="hr-anchor" aria-hidden="true"></span><span id="field-station" class="hr-anchor" aria-hidden="true"></span><span id="method" class="hr-anchor" aria-hidden="true"></span>
-    <div class="kit-wrap">
-      <div class="kit-open">
-        <div>
-          <p class="kit-eyebrow">How we work</p>
-          <h2 class="kit-h2" id="about-title">Open knowledge,<br> <em>or it doesn’t count.</em></h2>
-          <p>Biology is a public good. Everything on this site — code, protocols, build scripts and corrections — is MIT-licensed: readable, reusable, forkable. When a claim is uncertain, the uncertainty is printed next to it, not hidden under marketing.</p>
-          <p>Algaephyte and Cyanoflow are our only inventions; everything else is open reference material. If a page is hard to use with your setup, that is a bug — write to us.</p>
-          <div class="kit-actions"><a class="kit-btn rose" href="/research/">Our research approach <span aria-hidden="true">↗</span></a><a class="kit-link" href="/developers/">Developer documentation <span aria-hidden="true">↗</span></a><a class="kit-link" href="/algae/">The algae overview ↗</a></div>
+          <dt>In weekly production</dt>
+          <dd><i>Nannochloropsis</i><span>2–3 µm, eustigmatophyte</span></dd>
         </div>
         <div>
-          <ul class="kit-list">
-            <li><b>01</b><span><strong>Keyboard first.</strong> Every control is reachable, and focus is never hidden.</span></li>
-            <li><b>02</b><span><strong>Contrast checked.</strong> Body text passes on the wet-forest background.</span></li>
-            <li><b>03</b><span><strong>Motion optional.</strong> Animations stop under reduced-motion preferences.</span></li>
-            <li><b>04</b><span><strong>Honest labelling.</strong> Generated imagery is marked; observation, simulation and proposal never mix silently.</span></li>
-            <li><b>05</b><span><strong>MIT-licensed.</strong> Site code, protocol notes and build scripts — yours to read, run and reuse.</span></li>
-          </ul>
+          <dt>Grown to order</dt>
+          <dd>5 more strains<span>3–4 week lead time</span></dd>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="kit-section" id="journal" aria-labelledby="journal-title">
-    <div class="kit-wrap">
-      <div class="kit-head">
         <div>
-          <p class="kit-eyebrow">Latest from the bench</p>
-          <h2 class="kit-h2" id="journal-title">Field notes,<br> <em>not press releases.</em></h2>
+          <dt>Culture volumes</dt>
+          <dd>50 mL – 2 L<span>larger by quote</span></dd>
         </div>
-        <p>Working notes on fermentation, cultivation and failure — a record, not a peer-reviewed publication. The full library lives under Articles.</p>
+        <div>
+          <dt>Media</dt>
+          <dd>f/2 at 500×<span>2 mL per litre</span></dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="supply-h">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="supply-h">Four things leave this bench</h2>
+        <p class="lead">Everything is cultured or mixed here, in small volumes, by one person who counts cells before anything ships. No repackaged imports, no paste, no powders relabelled as live.</p>
       </div>
-      <div class="kit-notes">
-        <a class="kit-note" href="/blog/how-to-start-home-spirulina-culture"><small>Cultivation · Field note</small><h3>What a spirulina culture actually needs</h3><p>Water chemistry, light, warmth and a clean start — before any equipment.</p><span>Read the note</span></a>
-        <a class="kit-note" href="/blog/troubleshooting-contamination-crashes"><small>Failure · Reference</small><h3>When a culture goes wrong</h3><p>How to read the signs, what to discard, and why a smell test is not a diagnosis.</p><span>Read the note</span></a>
-        <a class="kit-note" href="/blog/reading-your-culture"><small>Observation · Field note</small><h3>Learning to read a culture</h3><p>Colour, bubbles, smell and the limits of judging by appearance.</p><span>Read the note</span></a>
-        <a class="kit-note" href="/articles/"><small>The library</small><h3>Every note, in one place</h3><p>Fermentation, cultivation, measurement and the tools behind them.</p><span>Browse all articles</span></a>
+      <div class="figures">
+        <article>
+          <h3>Live batch cultures</h3>
+          <p class="small">500 mL and 1 L working cultures of <i>Nannochloropsis oculata</i> at roughly 2 × 10<sup>7</sup> cells per mL, harvested at seven days and shipped in the vessel they grew in. For hatcheries feeding veliger larvae and for anyone scaling a culture up from a starter.</p>
+        </article>
+        <article>
+          <h3>Starter cultures</h3>
+          <p class="small">50 mL of dense, actively dividing culture in a sealed tube — the cheapest way to begin a batch, restart after a crash, or keep a backup strain on the shelf. Also available as agar slants for labs that want a culture they can hold at room temperature.</p>
+        </article>
+        <article>
+          <h3>f/2 nutrient concentrate</h3>
+          <p class="small">Guillard and Ryther f/2 at 500×, liquid, in 60 mL, 250 mL and 1 L bottles. Dosed at 2 mL per litre. An acidic single-phase concentrate keeps the iron chelated and the vitamins stable, which dry salt blends do not. Silicate version available for diatoms.</p>
+        </article>
+      </div>
+      <div class="figures mt-2">
+        <article>
+          <h3>The $59 culture kit</h3>
+          <p class="small">Two vessels, a counted starter, nutrient, salt, air and light, and a Secchi stick — everything a student or hobbyist needs to grow a litre of live algae on a desk. <a href="/kits.html">What is in the box</a>.</p>
+        </article>
+        <article>
+          <h3>Strain isolation</h3>
+          <p class="small">Have a bloom, a tank strain or a wild sample you want cleaned up and put into culture? Single-cell isolation, antibiotic-free serial dilution and a verified unialgal culture, quoted per project.</p>
+        </article>
+        <article>
+          <h3>Protocol help</h3>
+          <p class="small">Media recipes, split schedules, contamination diagnosis and light and aeration settings. If your culture is turning the wrong colour, send a photograph and a Secchi reading and you will get an answer, customer or not.</p>
+        </article>
       </div>
     </div>
   </section>
 
-  <section class="kit-section" id="support" aria-labelledby="support-title">
-    <div class="kit-wrap">
-      <div class="kit-support">
-        <p><strong id="support-title">Keep the notes free.</strong>Contributions are voluntary and support hosting, source books and the time to test protocols and correct mistakes. Nothing here is behind a paywall.</p>
-        <div class="kit-support-actions"><code id="homeLightning">clumsyparsnip913@walletofsatoshi.com</code><button class="kit-copy" type="button" data-copy="#homeLightning" data-status="#homeCopyStatus">Copy Lightning address</button><a class="kit-link" href="/support/">About contributions ↗</a><p role="status" aria-live="polite" id="homeCopyStatus"></p></div>
+  <section class="section" aria-labelledby="strains-h">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="strains-h">What bivalve larvae actually eat</h2>
+        <p class="lead">Cell size is the constraint. A newly set veliger can only capture particles a few micrometres across, so the first feed is always the small flagellates — the diatoms come later, when the larvae can handle them.</p>
+      </div>
+      <div class="table-scroll">
+        <table>
+          <caption>Marine microalgae held or grown to order</caption>
+          <thead>
+            <tr><th scope="col">Strain</th><th scope="col">Cell size</th><th scope="col">Group</th><th scope="col">Typical use</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row"><i>Nannochloropsis oculata</i></th>
+              <td class="num">2–3 µm</td><td>Eustigmatophyte</td>
+              <td>Rotifer feed, green-water rearing, hardy holding strain, larval supplement</td>
+            </tr>
+            <tr>
+              <th scope="row"><i>Isochrysis</i> aff. <i>galbana</i> (T-Iso)</th>
+              <td class="num">4–6 µm</td><td>Haptophyte</td>
+              <td>The oyster and clam workhorse; DHA-rich, motile, fast to divide</td>
+            </tr>
+            <tr>
+              <th scope="row"><i>Pavlova lutheri</i></th>
+              <td class="num">4–6 µm</td><td>Haptophyte</td>
+              <td>DHA and EPA together; scallop and mussel larvae, broodstock conditioning</td>
+            </tr>
+            <tr>
+              <th scope="row"><i>Chaetoceros muelleri</i></th>
+              <td class="num">4–6 µm</td><td>Diatom</td>
+              <td>Chain-forming, silica-walled; late larvae and post-set, shrimp hatcheries</td>
+            </tr>
+            <tr>
+              <th scope="row"><i>Thalassiosira pseudonana</i> (3H)</th>
+              <td class="num">3–5 µm</td><td>Diatom</td>
+              <td>Small centric diatom for early larvae; needs silicate in the medium</td>
+            </tr>
+            <tr>
+              <th scope="row"><i>Tetraselmis suecica</i></th>
+              <td class="num">7–10 µm</td><td>Chlorophyte</td>
+              <td>Late larvae, broodstock, rotifer enrichment; too large for first feed</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="small mt-1">Sizes are typical live cell diameters, not preserved. <i>Nannochloropsis oculata</i> is in production every week; the other five are grown to order, so ask before you plan a spawning around them. <a href="/hatcheries.html">Hatchery ordering details</a>.</p>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="why-h">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="why-h">Live culture, or paste?</h2>
+        <p class="lead">Paste and concentrates earn their place in a hatchery: they keep for months, they need no light, and a busy week does not depend on a culture not crashing. Live earns its place differently.</p>
+      </div>
+      <div class="cols">
+        <div>
+          <h3>A live culture is a seed, not a ration</h3>
+          <p>Paste is feed. You buy it, you use it, you buy more. A live culture is feed plus the ability to make more feed — one 50 mL tube and a litre of seawater becomes two litres in a week, four the week after, without another purchase. For a hatchery that loses a batch at 2 a.m. before a spawn, that is the difference between a delay and a lost set.</p>
+          <p>Live also lets you verify what you are feeding. Motility, colour and a cell count under a haemocytometer tell you the culture is alive and unialgal. A paste tells you what the label says.</p>
+        </div>
+        <div>
+          <h3>Where paste wins, honestly</h3>
+          <p>If you feed 500 litres a day, buy concentrate by the drum; nobody grows that in bottles, and a small supplier cannot compete with a commercial algal paste plant on price per cell. We are a bench-scale producer and we say so.</p>
+          <p>What we are good for is the other end: a research spawn, a restoration project with forty broodstock, a classroom, a quarantine tank, or a hatchery that wants a backup strain in the fridge before the busy season rather than during it.</p>
+          <p class="small">Every batch is counted before it leaves. If a culture arrives dead, photograph it within 24 hours and it is replaced — that is the whole warranty, and it is the only one that matters with live material.</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="kit-section" id="deploy" aria-labelledby="contact-title">
-    <div class="kit-wrap">
-      <div class="kit-contact">
-        <div><p class="kit-eyebrow">Correspondence</p><h2 class="kit-h2" id="contact-title">What are you<br> <em>making?</em></h2><p>A stubborn starter, a kombucha question, a spirulina crash, a bivalve hatchery note, a correction to a paper, or a research idea. This form opens an email draft; you decide when to send it.</p></div>
-        <form class="kit-form" id="deployForm">
-          <label for="fName">Your name or bench<input id="fName" type="text" required autocomplete="name" placeholder="Who should we say hello to?"></label>
-          <label for="fPlace">Where you're based<input id="fPlace" type="text" required autocomplete="country-name" placeholder="City, country"></label>
-          <label for="fGrow">What are you curious about?<textarea id="fGrow" required placeholder="Tell us a little about your culture, your hatchery or your question."></textarea></label>
-          <input id="fHp" type="text" tabindex="-1" autocomplete="off" aria-hidden="true" class="kit-honeypot">
-          <button class="kit-btn" type="submit">Start a conversation <span aria-hidden="true">↗</span></button>
-          <p class="kit-form-status" id="formStatus" role="status" aria-live="polite"></p>
-        </form>
+  <section class="section" aria-labelledby="order-h">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="order-h">How an order runs</h2>
+        <p class="lead">There is no shopping cart for hatchery cultures, because volume, strain and timing change the price. The whole process is four steps and one email.</p>
+      </div>
+      <ol class="steps">
+        <li>
+          <h3>Tell us what you are feeding</h3>
+          <p>Species, stage, how many litres you feed per day, and the date you need it. If you are mid-spawn, say so — timing beats paperwork.</p>
+        </li>
+        <li>
+          <h3>We confirm strain and ship date</h3>
+          <p>You get a written quote with cell count, volume, price, and the exact Monday-to-Wednesday window the box will leave in. Nothing is charged until you approve it.</p>
+        </li>
+        <li>
+          <h3>We grow the batch</h3>
+          <p>Seven days at 20–24 °C, 12:12 light, gentle air. The day before shipping the culture is counted and checked for contamination, then split into the shipping vessel at 80% fill.</p>
+        </li>
+        <li>
+          <h3>It ships insulated, and it arrives alive</h3>
+          <p>Priority Mail, gel pack, double bag, absorbent pad, red live-culture label. If the destination forecast is above 32 °C we hold the order and tell you rather than ship into a heatwave.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="band" aria-labelledby="band-h">
+    <div class="wrap band-grid">
+      <div>
+        <h2 id="band-h">Every batch is counted before it ships.</h2>
+        <p class="lead">A haemocytometer count, a colour check and a contamination screen on the day of packing. The number goes on the label, because a cell count you cannot see is a claim, not a specification.</p>
+        <div class="btn-row">
+          <a class="btn btn--light" href="mailto:service@orrbiologicals.com?subject=Quote%20request">Email a quote request</a>
+          <a class="btn btn--ghost" style="color:#DCE7DE;border-color:rgba(255,255,255,.28)" href="/hatcheries.html">Strains and media</a>
+        </div>
+      </div>
+      <div>
+        <p class="quote">“The first thing a hatchery asks is not the price. It is whether the culture is still swimming when it opens the box.”</p>
+        <footer>Cameron Orr, founder — Vista, California</footer>
       </div>
     </div>
   </section>
-</main><footer class="science-footer"><div class="wrap footer-layout">
-<div><a class="footer-brand" href="/">Orr Biologicals</a><p>Biology, built in the open.<br>Explore · Build · Apply · Invent.</p><small>Educational notes, not food-safety certification.<br>Inventions — Algaephyte and Cyanoflow — are research concepts in development; no validated hardware or commercial deployment claimed.</small></div>
-<nav aria-label="Footer DIY"><h2>DIY</h2><a href="/diy/">The DIY bench</a><a href="/diy/sourdough/">Sourdough starter / start &amp; keep</a><a href="/diy/kombucha/">Kombucha / tea, SCOBY &amp; timing</a><a href="/diy/spirulina/">Spirulina / light, warmth &amp; alkalinity</a><a href="/diy/guides/">All guides / the shelf</a><a href="/play/">Play / three puzzles</a></nav>
-<nav aria-label="Footer divisions"><h2>Divisions</h2><a href="/articles/">Articles / the scientific publication</a><a href="/applications/">Applications / evidence-led dossiers</a><a href="/applications/phytoplankton-for-bivalves/">Phytoplankton for bivalves / live feed</a><a href="/inventions/">Inventions / Algaephyte &amp; Cyanoflow</a><a href="/algaephyte/">Algaephyte / cultivation systems</a><a href="/cyanoflow">Cyanoflow / single-cell tools</a></nav>
-<nav aria-label="Footer open"><h2>Open &amp; accessible</h2><a href="/research/">Research methodology</a><a href="/literature/">Literature search / DOI lookup</a><a href="/developers/">Developer documentation</a><a href="/downloads/">App downloads</a><a href="/support/">Support the work</a><a href="/LICENSE" download>Licensing / MIT</a><a href="/#deploy">Contact</a></nav>
-<div><h2>Say hello</h2><a href="mailto:service@orrbiologicals.com">service@orrbiologicals.com</a><p><a href="https://www.youtube.com/@OrrBiologicals" target="_blank" rel="noreferrer">Research updates on YouTube ↗</a></p><small>Open source site code / built to be readable, keyboard-friendly and honest about what is not known.</small></div>
-</div><div class="wrap footer-base"><span>© 2026 Orr Biologicals / Biology, built in the open</span><nav aria-label="Legal"><a href="/privacy">Privacy</a><a href="/terms">Terms</a><a href="/disclaimer">Scientific disclaimer</a><a href="/LICENSE" download>MIT License</a></nav></div></footer><script defer src="/js/animations.js?v=20261115"></script>
-<script defer src="/js/navigation.js?v=20261115"></script>
+
+  <section class="section" aria-labelledby="kit-teaser">
+    <div class="wrap buy">
+      <div>
+        <h2 id="kit-teaser">Not a hatchery? Start with a litre on the desk.</h2>
+        <p class="lead mt-1">The same organism, the same media, in a box a fourteen-year-old can run. Two vessels instead of one, because redundancy is the only thing that reliably gets a beginner to week three.</p>
+        <p class="small mt-1">Used in classrooms, science fairs and by reef keepers who want a live culture they can split instead of buying a bottle every month. Ages 13 and up.</p>
+        <div class="btn-row">
+          <a class="btn" href="/kits.html">See what is in the kit</a>
+        </div>
+      </div>
+      <div class="price">
+        <p class="amount"><sup>$</sup>59</p>
+        <p class="terms">Free shipping in the United States. Ships Monday to Wednesday.</p>
+        <ul>
+          <li>Two 473 mL culture vessels, vented caps</li>
+          <li>50 mL counted <i>N. oculata</i> starter</li>
+          <li>f/2 concentrate, 60 mL — about 40 weekly splits</li>
+          <li>Marine salt, air pump, tubing, 6500 K light</li>
+          <li>Secchi stick and a four-page protocol card</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="faq-h">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="faq-h">Questions that come up first</h2>
+        <p class="lead">If yours is not here, email it. Questions get answered whether or not an order follows.</p>
+      </div>
+      <div class="faq">
+        <details>
+          <summary>Do you ship live microalgae to hatcheries outside California?</summary>
+          <div class="answer"><p>Yes, within the United States. Live cultures ship Monday to Wednesday by USPS Priority Mail in an insulated box with a gel pack, so nothing sits in a depot over a weekend. We do not ship live cultures internationally, because customs will destroy them.</p></div>
+        </details>
+        <details>
+          <summary>What strains can I order?</summary>
+          <div class="answer"><p><i>Nannochloropsis oculata</i> is in weekly production. <i>Isochrysis</i> aff. <i>galbana</i> (T-Iso), <i>Pavlova lutheri</i>, <i>Chaetoceros muelleri</i>, <i>Thalassiosira pseudonana</i> and <i>Tetraselmis suecica</i> are grown to order on a three to four week lead time, subject to confirming the culture.</p></div>
+        </details>
+        <details>
+          <summary>How much does hatchery algae cost?</summary>
+          <div class="answer"><p>Batch cultures are quoted per order because price depends on volume, strain and how often you need it. A standing weekly order costs less per litre than a one-off. Email the volume you feed per day and we will quote it.</p></div>
+        </details>
+        <details>
+          <summary>What is f/2 medium and how much do I dose?</summary>
+          <div class="answer"><p>f/2 is the Guillard and Ryther (1962) enrichment medium used for nearly all marine microalgae culture. We ship it as a 500× liquid concentrate dosed at 2 mL per litre of culture, so one litre of concentrate treats 500 litres of seawater.</p></div>
+        </details>
+        <details>
+          <summary>Can a beginner keep a culture alive?</summary>
+          <div class="answer"><p>Yes, if you start with two bottles rather than one and split weekly. The $59 culture kit exists for exactly that: two 473 mL vessels, a counted starter culture, nutrient concentrate, marine salt, gentle aeration, a 6500 K light and a Secchi stick so you can measure growth instead of guessing.</p></div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="brand" href="/">
+          <svg viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+            <circle cx="16" cy="16" r="14.4" fill="none" stroke="#CBDE8C" stroke-width="1.3"/>
+            <circle cx="12" cy="13" r="3.1" fill="#CBDE8C"/>
+            <circle cx="20.4" cy="14.6" r="2.2" fill="#CBDE8C" opacity=".72"/>
+            <circle cx="15.4" cy="20.6" r="2.6" fill="#CBDE8C" opacity=".86"/>
+          </svg>
+          <span>Orr Biologicals<small>Live microalgae · Vista, CA</small></span>
+        </a>
+        <p>Marine microalgae, f/2 nutrient concentrate and culture kits, cultured in small batches in Vista, California. Shipping within the United States.</p>
+      </div>
+      <div>
+        <h2>Products</h2>
+        <ul>
+          <li><a href="/hatcheries.html">Live cultures for hatcheries</a></li>
+          <li><a href="/hatcheries.html#media">f/2 nutrient media</a></li>
+          <li><a href="/kits.html">Microalgae culture kit</a></li>
+          <li><a href="/hatcheries.html#strains">Strain list</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Company</h2>
+        <ul>
+          <li><a href="/about.html">About Orr Biologicals</a></li>
+          <li><a href="/about.html#quality">Culture quality</a></li>
+          <li><a href="/about.html#contact">Contact</a></li>
+          <li><a href="/sitemap.xml">Sitemap</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Contact</h2>
+        <ul>
+          <li><a href="mailto:service@orrbiologicals.com">service@orrbiologicals.com</a></li>
+          <li>Vista, California</li>
+          <li>Ships Mon–Wed</li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-legal">
+      <p>© 2026 Orr Biologicals. Live cultures are sold for aquaculture, research and educational use. Not for human consumption.</p>
+      <p>Prices in USD. US shipping only.</p>
+    </div>
+  </div>
+</footer>
 </body>
 </html>
