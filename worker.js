@@ -1,9 +1,10 @@
 // Orr Biologicals — static site Worker.
 //
-// Workers Assets rewrites "/hatcheries.html" to "/hatcheries" with a 307, which
-// would make every canonical URL a redirect. This Worker keeps the .html URL as
-// the canonical response (200), redirects only extensionless aliases that
-// actually exist, and serves the styled 404 page for everything else.
+// The canonical URLs are extension-less ("/hatcheries"), matching the
+// .htaccess clean-URL rules on orrbiologicals.com. Workers Assets rewrites an
+// .html request to the extension-less path with a 307, so this Worker keeps the
+// clean URL at 200, sends .html to it with a permanent redirect, and serves the
+// styled 404 page.
 
 const HTML_CACHE = "public, max-age=300, must-revalidate";
 const ASSET_CACHE = "public, max-age=31536000, immutable";
@@ -38,7 +39,6 @@ function withHeaders(response, url) {
   });
 }
 
-// Fetch a path through ASSETS without letting the platform redirect it.
 async function asset(request, env, path) {
   const url = new URL(request.url);
   url.pathname = path;
@@ -68,28 +68,18 @@ export default {
       });
     }
 
-    // Canonical home is "/".
-    if (pathname === "/index.html") {
+    // Home is "/", never "/index.html".
+    if (pathname === "/index.html" || pathname === "/index") {
       return Response.redirect(new URL("/", url).toString(), 301);
     }
 
-    // Extensionless alias -> canonical .html URL, but only if the page exists.
-    if (pathname !== "/" && !/\.[a-z0-9]+$/i.test(pathname)) {
-      const probe = await asset(request, env, pathname.replace(/\/$/, ""));
-      if (probe.status !== 200) return notFound(request, env);
-      url.pathname = `${pathname.replace(/\/$/, "")}.html`;
+    // ".html" is not the canonical form anywhere on the site.
+    if (pathname.endsWith(".html")) {
+      url.pathname = pathname.slice(0, -5);
       return Response.redirect(url.toString(), 301);
     }
 
-    let response;
-    if (pathname.endsWith(".html")) {
-      // Ask ASSETS for the extensionless path, which it serves, and answer at
-      // the .html URL so the canonical URL is not a redirect.
-      response = await asset(request, env, pathname.slice(0, -5) || "/");
-    } else {
-      response = await env.ASSETS.fetch(request);
-    }
-
+    const response = await env.ASSETS.fetch(request);
     if (response.status === 404) return notFound(request, env);
 
     return withHeaders(response, url);
