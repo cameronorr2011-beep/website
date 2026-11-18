@@ -136,6 +136,54 @@
 .alg-checks{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
 .alg-checks li{padding:.9rem 0;border-bottom:1px solid var(--line-soft);font-size:.96rem;color:var(--ink-2);line-height:1.6}
 .alg-checks strong{color:var(--ink);font-weight:650}
+
+/* ---------- motion ----------
+   One entrance, on load, for the argument at the top of the page. After that,
+   movement only answers a hand: a row wash, a price nudge, a slow push into
+   the photograph. Everything is gated behind prefers-reduced-motion. */
+@keyframes alg-rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@keyframes alg-fade{from{opacity:0}to{opacity:1}}
+
+@media (prefers-reduced-motion:no-preference){
+  .alg-hero__main > .alg-kicker,
+  .alg-hero__main > h1,
+  .alg-hero__main > .lead,
+  .alg-hero__main > .btn-row,
+  .alg-hero__main > .alg-facts,
+  .alg-hero__side{animation:alg-rise .5s cubic-bezier(.22,.68,.2,1) both}
+  .alg-hero__main > h1{animation-delay:.06s}
+  .alg-hero__main > .lead{animation-delay:.12s}
+  .alg-hero__main > .btn-row{animation-delay:.18s}
+  .alg-hero__main > .alg-facts{animation-delay:.24s}
+  .alg-hero__side{animation-delay:.16s}
+}
+
+/* in-page anchors land below the sticky header */
+#catalogue,#starter,#starters,#batch,#media,#slants,#isolation,#strains,#quality,#faq,
+.alg-note{scroll-margin-top:5.4rem}
+
+/* catalogue rows answer the pointer with a wash, not a lift */
+.alg-prod{transition:background-color .3s ease}
+.alg-prod__price{transition:transform .3s cubic-bezier(.22,.68,.2,1)}
+.alg-prod h3 a{transition:color .2s ease}
+@media (hover:hover){
+  .alg-prod:hover{background:rgba(242,179,61,.09)}
+  .alg-prod:hover .alg-prod__price{transform:translateY(-2px)}
+}
+
+/* photographs: a slow push in, never a bounce */
+.alg-strip figure{overflow:hidden}
+.alg-strip img{transition:transform .9s cubic-bezier(.22,.68,.2,1)}
+@media (hover:hover){
+  .alg-strip figure:hover img{transform:scale(1.035)}
+}
+
+/* links that sit inside ruled rows */
+.alg-prod__order,.alg-stock__foot a{transition:color .2s ease,text-underline-offset .2s ease}
+.alg-prod__order:hover{text-underline-offset:.28em}
+
+/* an opened answer arrives with its row, not after it */
+details[open] .answer{animation:alg-fade .24s ease both}
 </style>
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Orr Biologicals">
