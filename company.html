@@ -8,6 +8,12 @@
 <link rel="canonical" href="https://orrbiologicals.com/company">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="/styles.css">
+<style>
+.shot{margin:0;border:1px solid var(--line);background:var(--paper-2)}
+.shot img{display:block;width:100%;height:auto}
+.shot figcaption{font-family:var(--mono);font-size:.72rem;line-height:1.65;color:var(--ink-3);padding:.7rem .85rem;border-top:1px solid var(--line)}
+.shot figcaption b{color:var(--ink-2)}
+</style>
 <meta name="theme-color" content="#082622">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Orr Biologicals">
@@ -68,9 +74,9 @@
       <span>Orr Biologicals<small>Live microalgae · Vista, CA</small></span>
     </a>
     <nav class="nav" aria-label="Primary">
-      <a href="/hatcheries">Hatcheries</a>
-      <a href="/hatcheries#media">Nutrient media</a>
-      <a href="/kits">Culture kits</a>
+      <a href="/algae">Algae</a>
+      <a href="/articles/f2-medium">Nutrient media</a>
+      <a href="/culturekits">Culture kits</a>
       <a href="/articles">Articles</a>
       <a href="/company" aria-current="page">About</a>
       <a class="btn" href="mailto:service@orrbiologicals.com?subject=Hello">Email us</a>
@@ -85,6 +91,15 @@
     <h1>A small bench that grows one thing well.</h1>
     <p class="lead">Orr Biologicals cultures marine microalgae in Vista, California, and sells it live — to hatcheries feeding bivalve larvae, to labs that need a clean starter, and to anyone who wants a litre of phytoplankton growing on a desk.</p>
   </div>
+
+  <section class="section section--tight" aria-labelledby="bench-h">
+    <div class="wrap">
+      <figure class="shot">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/CSIRO_ScienceImage_2881_Algae_Cultures_in_Laboratory.jpg/960px-CSIRO_ScienceImage_2881_Algae_Cultures_in_Laboratory.jpg" width="960" height="650" loading="lazy" decoding="async" alt="A laboratory shelf of flasks holding microalgae cultures, lit from above and labelled by strain.">
+        <figcaption id="bench-h"><b>The bench this is modelled on.</b> A working algal culture laboratory: flasks on a lit shelf, each labelled with its strain and its medium. This one is a CSIRO laboratory, not ours — ours runs six vessels and a haemocytometer — but the equipment and the discipline are the same. Photo: Robert Kerton, CSIRO, <a href="https://commons.wikimedia.org/wiki/File:CSIRO_ScienceImage_2881_Algae_Cultures_in_Laboratory.jpg" rel="license noopener">CC BY 3.0</a>.</figcaption>
+      </figure>
+    </div>
+  </section>
 
   <section class="section" aria-labelledby="story-h">
     <div class="wrap cols">
@@ -102,10 +117,8 @@
             <g fill="none" stroke="#1B2E29" stroke-width="1.15" stroke-linecap="round">
               <path d="M24 78h250"/>
               <path d="M34 78v14M264 78v14"/>
-              <!-- light bar -->
               <path d="M36 40h226" stroke-width="3.4" stroke-opacity=".85"/>
               <path d="M46 46v10M96 46v10M146 46v10M196 46v10M246 46v10" stroke-opacity=".35"/>
-              <!-- vessels -->
               <path d="M52 100h34v62a8 8 0 0 1-8 8H60a8 8 0 0 1-8-8z"/>
               <path d="M52 126h34" stroke="#2C5F47" stroke-dasharray="3 3"/>
               <path d="M54 126h30v36a6 6 0 0 1-6 6H60a6 6 0 0 1-6-6z" fill="#2C5F47" fill-opacity=".2" stroke="none"/>
@@ -115,10 +128,8 @@
               <path d="M184 100h34v62a8 8 0 0 1-8 8h-18a8 8 0 0 1-8-8z"/>
               <path d="M184 108h34" stroke="#2C5F47" stroke-dasharray="3 3"/>
               <path d="M186 108h30v54a6 6 0 0 1-6 6h-18a6 6 0 0 1-6-6z" fill="#2C5F47" fill-opacity=".4" stroke="none"/>
-              <!-- manifold -->
               <path d="M40 196h200M40 196v-24M69 196v-26M135 196v-26M201 196v-26"/>
               <rect x="34" y="200" width="20" height="14" rx="3"/>
-              <!-- haemocytometer + log -->
               <rect x="286" y="150" width="60" height="42" rx="2"/>
               <path d="M298 158h36M298 168h36M298 178h28M310 150v42" stroke-opacity=".35"/>
               <rect x="360" y="132" width="46" height="60" rx="2"/>
@@ -197,6 +208,7 @@
                 <tr><th scope="row">Location</th><td>Vista, California, United States</td></tr>
                 <tr><th scope="row">Shipping</th><td>US only; cultures Monday to Wednesday</td></tr>
                 <tr><th scope="row">Quote turnaround</th><td>One business day</td></tr>
+                <tr><th scope="row">Starter culture</th><td class="num">16 oz, $22</td></tr>
                 <tr><th scope="row">Kit price</th><td class="num">$59, free shipping</td></tr>
                 <tr><th scope="row">Founder</th><td>Cameron Orr</td></tr>
               </tbody>
@@ -214,7 +226,7 @@
         <p class="lead">Media recipes, split schedules, why a culture went pale on day four — answered whether or not an order follows.</p>
         <div class="btn-row">
           <a class="btn btn--light" href="mailto:service@orrbiologicals.com?subject=Technical%20question">Email Orr Biologicals</a>
-          <a class="btn btn--ghost" style="color:#DCE7DE;border-color:rgba(255,255,255,.28)" href="/hatcheries#strains">Strain list</a>
+          <a class="btn btn--ghost" style="color:#DCE7DE;border-color:rgba(255,255,255,.28)" href="/algae#strains">Strain list</a>
         </div>
       </div>
       <div>
@@ -244,11 +256,11 @@
       <div>
         <h2>Products</h2>
         <ul>
-          <li><a href="/hatcheries">Live cultures for hatcheries</a></li>
-          <li><a href="/hatcheries#media">f/2 nutrient media</a></li>
-          <li><a href="/kits">Microalgae culture kit</a></li>
-          <li><a href="/hatcheries#strains">Strain list</a></li>
-          <li><a href="/hatcheries#starters">Start cultures, 50 mL</a></li>
+          <li><a href="/algae">Live algae, all products</a></li>
+          <li><a href="/articles/f2-medium">f/2 nutrient media</a></li>
+          <li><a href="/culturekits">Microalgae culture kit</a></li>
+          <li><a href="/algae#strains">Strain list</a></li>
+          <li><a href="/algae#starter">16 oz starter cultures</a></li>
         </ul>
       </div>
       <div>
