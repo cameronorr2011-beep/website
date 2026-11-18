@@ -1,6 +1,6 @@
 // Orr Biologicals — static site Worker.
 //
-// The canonical URLs are extension-less ("/hatcheries"), matching the
+// The canonical URLs are extension-less ("/algae", "/culturekits"), matching the
 // .htaccess clean-URL rules on orrbiologicals.com. Workers Assets rewrites an
 // .html request to the extension-less path with a 307, so this Worker keeps the
 // clean URL at 200, sends .html to it with a permanent redirect, and serves the
@@ -14,6 +14,13 @@ const SECURITY_HEADERS = {
   "Referrer-Policy": "strict-origin-when-cross-origin",
   "X-Frame-Options": "SAMEORIGIN",
   "Permissions-Policy": "geolocation=(), microphone=(), camera=()",
+};
+
+// Pages that were renamed. A permanent redirect keeps old links, bookmarks and
+// search results working after the move.
+const LEGACY_PATHS = {
+  "/hatcheries": "/algae",
+  "/kits": "/culturekits",
 };
 
 function secureHeaders(source, extra = {}) {
@@ -71,6 +78,12 @@ export default {
     // Home is "/", never "/index.html".
     if (pathname === "/index.html" || pathname === "/index") {
       return Response.redirect(new URL("/", url).toString(), 301);
+    }
+
+    // Renamed pages keep their old URLs alive as permanent redirects.
+    const legacyTarget = LEGACY_PATHS[pathname.replace(/\/$/, "")];
+    if (legacyTarget) {
+      return Response.redirect(new URL(legacyTarget, url).toString(), 301);
     }
 
     // A directory index is the trailing-slash URL: "/articles/", not
