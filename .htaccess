@@ -123,6 +123,14 @@ RedirectMatch 301 ^/CyanoFlow/?$ /cyanoflow
 # Legacy species page still appears in search results.
 RedirectMatch 301 ^/pavlova-lutheri(?:\.html)?/?$ /blog/
 
+# --- canonical shop pages -------------------------------------------------
+# A legacy empty directory at /algae/ makes mod_dir slash-redirect the clean
+# URL, which then ping-pongs with the leaf-slash rule above. Resolve both shop
+# pages to their real files here, before the generic clean-URL block refuses on
+# its !-d condition.
+RewriteRule ^algae/?$ /algae.html [END]
+RewriteRule ^culturekits/?$ /culturekits.html [END]
+
 # --- clean URLs: serve /slug -> slug.html (internal), and 301 the reverse --
 RewriteCond %{THE_REQUEST} \s/([^\s?]+)\.html[\s?] [NC]
 RewriteRule ^ /%1 [R=301,L]
