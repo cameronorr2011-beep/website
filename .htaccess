@@ -1,4 +1,4 @@
-# Orr Biologicals â€” orrbiologicals.com
+# Orr Biologicals — orrbiologicals.com
 # Canonical host: https://orrbiologicals.com (non-www, HTTPS)
 
 ErrorDocument 404 /404.html
@@ -60,7 +60,6 @@ Redirect 301 /troubleshooting-ph-and-carbon            /blog/troubleshooting-ph-
 Redirect 301 /photobioreactor-ai-optimization          /blog/photobioreactor-ai-optimization
 Redirect 301 /digital-twins-biological-cultivation     /blog/digital-twins-biological-cultivation
 Redirect 301 /spirulina-is-a-cyanobacterium            /blog/spirulina-is-a-cyanobacterium
-Redirect 301 /articles                                 /blog/
 RedirectMatch 301 ^/insights/?$ /blog/
 RedirectMatch 301 ^/control-loop-architecture(?:\.html)?/?$ /blog/control-loop-architecture
 Redirect 301 /cultivation                              /blog/
