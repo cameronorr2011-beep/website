@@ -1,26 +1,32 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-label="Orr Biologicals live microalgae culture kit contents">
   <rect width="1200" height="800" fill="#F5F7F2"/>
   <g fill="none" stroke="#1B2E29" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <!-- vessel A -->
     <path d="M300 230h40v46c0 22-62 26-62 66"/>
     <path d="M470 230h-40v46c0 22 62 26 62 66"/>
     <path d="M320 342h130a30 30 0 0 1 30 30v300a30 30 0 0 1-30 30H320a30 30 0 0 1-30-30V372a30 30 0 0 1 30-30z"/>
-    <path d="M290 430h190" stroke="#2C5F47" stroke-dasharray="12 10"/>
-    <path d="M296 430h178v212a24 24 0 0 1-24 24H320a24 24 0 0 1-24-24z" fill="#2C5F47" fill-opacity=".2" stroke="none"/>
+    <path d="M290 430h190" stroke="#1F5A44" stroke-dasharray="12 10"/>
+    <path d="M296 430h178v212a24 24 0 0 1-24 24H320a24 24 0 0 1-24-24z" fill="#1F5A44" fill-opacity=".2" stroke="none"/>
     <path d="M340 300v-70" stroke-opacity=".5"/>
+    <!-- vessel B -->
     <path d="M620 230h40v46c0 22-62 26-62 66"/>
     <path d="M790 230h-40v46c0 22 62 26 62 66"/>
     <path d="M640 342h130a30 30 0 0 1 30 30v300a30 30 0 0 1-30 30H640a30 30 0 0 1-30-30V372a30 30 0 0 1 30-30z"/>
-    <path d="M610 470h190" stroke="#2C5F47" stroke-dasharray="12 10"/>
-    <path d="M616 470h178v172a24 24 0 0 1-24 24H640a24 24 0 0 1-24-24z" fill="#2C5F47" fill-opacity=".1" stroke="none"/>
+    <path d="M610 470h190" stroke="#1F5A44" stroke-dasharray="12 10"/>
+    <path d="M616 470h178v172a24 24 0 0 1-24 24H640a24 24 0 0 1-24-24z" fill="#1F5A44" fill-opacity=".1" stroke="none"/>
+    <!-- air pump -->
     <rect x="880" y="560" width="120" height="86" rx="12"/>
     <circle cx="916" cy="602" r="14"/>
     <path d="M948 590h34M948 606h34M948 622h22" stroke-opacity=".5"/>
     <path d="M880 600c-28 0-40-22-40-46" stroke-opacity=".6"/>
+    <!-- light bar -->
     <rect x="880" y="300" width="26" height="180" rx="12"/>
     <path d="M920 340h44M920 380h56M920 420h44" stroke-opacity=".35"/>
+    <!-- secchi stick -->
     <path d="M1000 300v170" stroke-opacity=".7"/>
     <circle cx="1000" cy="500" r="40"/>
     <path d="M960 500a40 40 0 0 1 40-40v80a40 40 0 0 1-40-40z" fill="#1B2E29" fill-opacity=".8" stroke="none"/>
+    <!-- dropper bottle -->
     <path d="M1090 600h84v120h-84z"/>
     <path d="M1114 560h36v40h-36z"/>
   </g>

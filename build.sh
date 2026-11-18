@@ -5,7 +5,7 @@ set -e
 cd "$(dirname "$0")"
 rm -rf dist
 mkdir -p dist/assets dist/articles
-cp index.html algae.html culturekits.html company.html 404.html styles.css favicon.svg robots.txt sitemap.xml dist/
+cp index.html algae.html culturekits.html company.html 404.html styles.css site.js favicon.svg robots.txt sitemap.xml dist/
 cp articles/*.html dist/articles/
-cp assets/*.svg dist/assets/
+cp assets/* dist/assets/
 echo "dist built: $(find dist -type f | wc -l) files"
