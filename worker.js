@@ -73,6 +73,13 @@ export default {
       return Response.redirect(new URL("/", url).toString(), 301);
     }
 
+    // A directory index is the trailing-slash URL: "/articles/", not
+    // "/articles/index.html".
+    if (pathname.endsWith("/index.html")) {
+      url.pathname = pathname.slice(0, -"index.html".length);
+      return Response.redirect(url.toString(), 301);
+    }
+
     // ".html" is not the canonical form anywhere on the site.
     if (pathname.endsWith(".html")) {
       url.pathname = pathname.slice(0, -5);
@@ -80,7 +87,20 @@ export default {
     }
 
     const response = await env.ASSETS.fetch(request);
-    if (response.status === 404) return notFound(request, env);
+    if (response.status === 404) {
+      // Resolve clean URLs explicitly rather than relying on the asset layer's
+      // single guess: "/articles/foo" is served by "articles/foo.html", and
+      // "/articles/" by "articles/index.html".
+      if (!/\.[a-z0-9]+$/i.test(pathname)) {
+        const html = await asset(request, env, `${pathname}.html`);
+        if (html.status === 200) return withHeaders(html, url);
+
+        const dir = pathname.replace(/\/$/, "");
+        const index = await asset(request, env, `${dir}/index.html`);
+        if (index.status === 200) return withHeaders(index, url);
+      }
+      return notFound(request, env);
+    }
 
     return withHeaders(response, url);
   },
