@@ -1,240 +1,203 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="referrer" content="strict-origin-when-cross-origin">
-<title>Articles — The Orr Biologicals Publication</title>
-<meta name="description" content="The Orr Biologicals publication: labeled research briefs, literature reviews, technical reports and field notes across biology, biotechnology, microbiology, algal science, biomaterials and instrumentation — plus honest, labeled daily AI-assisted summaries of the research literature.">
+<title>Microalgae Culture Guides &amp; Notes | Orr Biologicals</title>
+<meta name="description" content="Practical guides to growing marine microalgae: using a 50 mL starter culture, Nannochloropsis oculata, feeding oyster larvae, f/2 dosing and diagnosing a crashed culture.">
 <link rel="canonical" href="https://orrbiologicals.com/articles/">
-<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
-<meta property="og:title" content="Articles — The Orr Biologicals Publication">
-<meta property="og:description" content="Labeled research briefs, literature reviews and field notes — the Orr Biologicals publication, MIT-open and honest about limits.">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/styles.css">
+<meta name="theme-color" content="#082622">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://orrbiologicals.com/articles/">
-<meta property="og:image" content="https://orrbiologicals.com/assets/og.jpg">
-<meta name="twitter:card" content="summary_large_image">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"Articles — The Orr Biologicals Publication","url":"https://orrbiologicals.com/articles/","description":"The Orr Biologicals publication: labeled research briefs, literature reviews, technical reports and field notes. Not peer reviewed; AI-assisted summaries are labeled as such and link their sources.","isPartOf":{"@id":"https://orrbiologicals.com/#site"}}</script>
-<link rel="stylesheet" href="/css/extras.css?v=20261115">
 <meta property="og:site_name" content="Orr Biologicals">
-<meta name="twitter:title" content="Articles — The Orr Biologicals Publication">
-<meta name="twitter:description" content="Labeled research briefs, literature reviews and field notes — MIT-open, honest about limits.">
-<meta name="twitter:image" content="https://orrbiologicals.com/assets/og.jpg">
-<link rel="stylesheet" href="/css/global.css?v=20261115">
-<link rel="stylesheet" href="/css/header.css?v=20261115">
-<link rel="stylesheet" href="/css/orr-home.css?v=20261115">
-<link rel="stylesheet" href="/css/animations.css?v=20261115">
-<link rel="stylesheet" href="/css/site-redesign.css?v=20261115">
-<link rel="stylesheet" href="/css/biological-cinema.css?v=20261115">
-<link rel="stylesheet" href="/css/kitchen.css?v=20261115">
-</head>
-<body class="art-body">
-<header class="nav" id="nav">
-<div class="nav-in"><a class="mark" href="/" aria-label="Orr Biologicals home">
-<svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="14" fill="none" stroke="currentColor"/><path d="M9 23c6-3 0-14 7-14s1 11 7 14M8 15c4-5 12-5 16 0" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
-<span><b>Orr Biologicals</b><small>Biology, built in the open</small></span></a>
-<nav class="nav-links" aria-label="Primary"><a href="/diy/">DIY</a><a href="/articles/">Articles</a><a href="/applications/">Applications</a><a href="/inventions/">Inventions</a></nav>
-<button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="mobileMenu">Menu</button></div></header>
-<nav class="mobile-menu" id="mobileMenu" aria-label="Mobile primary" hidden>
-<a href="/diy/">DIY / build &amp; grow living systems</a><a href="/articles/">Articles / the scientific publication</a><a href="/applications/">Applications / evidence-led dossiers</a><a href="/inventions/">Inventions / Algaephyte &amp; Cyanoflow</a><a href="/research/">Research methodology</a><a href="/developers/">Developer documentation</a><a href="/#about">About Orr Biologicals</a><a href="/#deploy">Contact the project</a>
-</nav>
-<div class="art-shell" style="max-width:1080px">
-  <p class="art-cat">THE PUBLICATION / EVERY ARTICLE LABELED</p>
-  <h1>The publication,<br><em>and the logbook.</em></h1>
-  <p class="art-meta">Research briefs, literature reviews, technical reports, field notes and explainers — each labeled with what it is, what it rests on, and what it does not know. Categories: foundational biology, biotechnology, microbiology, algal science, biomaterials, engineering &amp; instrumentation. Nothing here is peer reviewed; ordinary articles are never presented as discoveries. We also publish clearly labeled, AI-assisted summaries of four PubMed-indexed papers each day at <b>1:00 PM Pacific</b> — these use abstracts, not our own experiments, and can contain mistakes. Follow the source links and check a finding against the original.</p>
-
-  <!-- ============ TODAY'S FOUR ARTICLES ============ -->
-  <section id="picks" style="margin-top:72px">
-    <p class="art-cat" style="margin-top:0">Latest — AI-assisted literature summaries</p>
-    <h2 class="sec-h2">Fresh from the literature.</h2>
-    <p class="art-meta" style="margin-bottom:0">Selected from live PubMed search across biotech, health, climate, cultivation, blooms and single-cell methods — topical variety, real sources, no filler. <span id="pkUpdated" hidden></span></p>
-    <div class="rot-grid" id="pickGrid">
-      <article class="rot-card pick-card" id="pk0" hidden>
-        <span class="rot-thumb"><a class="pk-link" target="_blank" rel="noopener"><img class="pk-img" src="/assets/images/focus/focus-0.jpg" alt="Illustrative algae imagery; not a figure from the paper" width="1600" height="900" loading="lazy"></a><span class="rt-chip pk-topic"></span></span>
-        <span class="rt-body">
-          <h3 class="pk-title"><a class="pk-link" target="_blank" rel="noopener"></a></h3>
-          <p class="pk-hook"></p>
-          <div class="pk-article"></div>
-          <div class="pk-why" hidden><b>Why it matters —</b> <span class="pk-why-text"></span></div>
-          <span class="rt-foot"><b class="pk-src"></b><a class="pk-link rt-go" target="_blank" rel="noopener">Read the paper <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></span>
-        </span>
-      </article>
-      <article class="rot-card pick-card" id="pk1" hidden>
-        <span class="rot-thumb"><a class="pk-link" target="_blank" rel="noopener"><img class="pk-img" src="/assets/images/focus/focus-0.jpg" alt="Illustrative algae imagery; not a figure from the paper" width="1600" height="900" loading="lazy"></a><span class="rt-chip pk-topic"></span></span>
-        <span class="rt-body">
-          <h3 class="pk-title"><a class="pk-link" target="_blank" rel="noopener"></a></h3>
-          <p class="pk-hook"></p>
-          <div class="pk-article"></div>
-          <div class="pk-why" hidden><b>Why it matters —</b> <span class="pk-why-text"></span></div>
-          <span class="rt-foot"><b class="pk-src"></b><a class="pk-link rt-go" target="_blank" rel="noopener">Read the paper <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></span>
-        </span>
-      </article>
-      <article class="rot-card pick-card" id="pk2" hidden>
-        <span class="rot-thumb"><a class="pk-link" target="_blank" rel="noopener"><img class="pk-img" src="/assets/images/focus/focus-0.jpg" alt="Illustrative algae imagery; not a figure from the paper" width="1600" height="900" loading="lazy"></a><span class="rt-chip pk-topic"></span></span>
-        <span class="rt-body">
-          <h3 class="pk-title"><a class="pk-link" target="_blank" rel="noopener"></a></h3>
-          <p class="pk-hook"></p>
-          <div class="pk-article"></div>
-          <div class="pk-why" hidden><b>Why it matters —</b> <span class="pk-why-text"></span></div>
-          <span class="rt-foot"><b class="pk-src"></b><a class="pk-link rt-go" target="_blank" rel="noopener">Read the paper <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></span>
-        </span>
-      </article>
-      <article class="rot-card pick-card" id="pk3" hidden>
-        <span class="rot-thumb"><a class="pk-link" target="_blank" rel="noopener"><img class="pk-img" src="/assets/images/focus/focus-0.jpg" alt="Illustrative algae imagery; not a figure from the paper" width="1600" height="900" loading="lazy"></a><span class="rt-chip pk-topic"></span></span>
-        <span class="rt-body">
-          <h3 class="pk-title"><a class="pk-link" target="_blank" rel="noopener"></a></h3>
-          <p class="pk-hook"></p>
-          <div class="pk-article"></div>
-          <div class="pk-why" hidden><b>Why it matters —</b> <span class="pk-why-text"></span></div>
-          <span class="rt-foot"><b class="pk-src"></b><a class="pk-link rt-go" target="_blank" rel="noopener">Read the paper <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></span>
-        </span>
-      </article>
-    </div>
-    <div class="pk-fail" id="pkFail" hidden>
-      <span class="big">Today's paper picks haven't landed yet.</span>
-      <p>They are picked and written up once a day from live PubMed search at 1:00 PM Pacific — check back soon.</p>
-    </div>
-  </section>
-
-  <!-- ============ KNOWLEDGE BASE (static articles by product) ============ -->
-  <section id="kb" style="margin-top:56px">
-    <p class="art-cat" style="margin-top:0">Evergreen — the reading collection</p>
-    <h2 class="sec-h2">Follow your curiosity.</h2>
-    <nav aria-label="Evergreen topics"><p><a href="/microalgae-cultivation/">Cultivation fundamentals</a> · <a href="/photobioreactors/">Photobioreactors</a> · <a href="/algaephyte/">Algaephyte research</a> · <a href="/cyanoflow">Cyanoflow research</a> · <a href="/algae-biotechnology/">Biotechnology overview</a></p></nav>
-    <p class="art-meta" style="margin-bottom:0">Field notes and explainers from the <a href="/algaephyte/" style="color:var(--leaf-deep)">Algaephyte</a> cultivation program, and single-cell notes from <a href="/cyanoflow" style="color:var(--leaf-deep)">Cyanoflow</a>. Labels say what each piece is: research brief, literature review, technical report, field note or explainer — none of it peer reviewed, all of it checkable.</p>
-
-    <!-- SEO:KNOWLEDGE:START -->
-<h3 class="kb-h">Algaephyte — growing and understanding algae</h3>
-<div class="rot-grid kb-grid">
-<a class="rot-card kb-card" href="/blog/federated-learning-network"><span class="kb-media"><img src="/assets/images/microscopy/sim-field.jpg" alt="Illustrative algae microscopy field" loading="lazy" width="1536" height="1024"></span><span class="rt-body"><span class="kb-tag">Algaephyte field note</span><h3>A Federated Learning Network for Algae Reactors</h3><p>Sharing fitted twin parameters instead of images or traces: MQTT topics, bounds-checking, last-will obituaries and vandal-resistant averaging.</p><span class="rt-foot"><b>2026-08-17</b><span class="rt-go">Read the note</span></span></span></a>
-<a class="rot-card kb-card" href="/blog/spirulina-is-a-cyanobacterium"><span class="kb-media"><img src="/assets/cyano/hero-field.jpg" alt="Illustrative Spirulina microscopy field" loading="lazy" width="1536" height="1024"></span><span class="rt-body"><span class="kb-tag">Algaephyte field note</span><h3>Spirulina Is a Cyanobacterium — What That Actually Means</h3><p>Arthrospira platensis is a photosynthetic bacterium, not an alga in the plant sense. What cyanobacteria are, and why it matters for cultivation.</p><span class="rt-foot"><b>2026-08-14</b><span class="rt-go">Read the note</span></span></span></a>
-<a class="rot-card kb-card" href="/blog/digital-twins-biological-cultivation"><span class="kb-media"><img src="/assets/images/instrument-photo.jpg" alt="Illustrative algae cultivation instrument" loading="lazy" width="1536" height="1024"></span><span class="rt-body"><span class="kb-tag">Algaephyte field note</span><h3>Digital Twins for Biological Cultivation</h3><p>What a digital twin of a living culture actually is: state variables, counterfactual testing of actions, and why simulation-first beats actuate-first.</p><span class="rt-foot"><b>2026-08-10</b><span class="rt-go">Read the note</span></span></span></a>
-<a class="rot-card kb-card" href="/blog/photobioreactor-ai-optimization"><span class="kb-media"><img src="/assets/images/microscopy/sim-field.jpg" alt="Illustrative algae microscopy field" loading="lazy" width="1536" height="1024"></span><span class="rt-body"><span class="kb-tag">Algaephyte field note</span><h3>AI Optimization in Photobioreactors: Propose, Then Verify</h3><p>How AI belongs in an algae photobioreactor: bounded proposals checked by hard limits and a physics twin — never direct control of pumps.</p><span class="rt-foot"><b>2026-08-06</b><span class="rt-go">Read the note</span></span></span></a>
-<a class="rot-card kb-card" href="/blog/what-is-main-plain-language"><span class="kb-media"><img src="/assets/cyano/hero-field.jpg" alt="Illustrative single-cell algae field" loading="lazy" width="1536" height="1024"></span><span class="rt-body"><span class="kb-tag">Algaephyte field note</span><h3>What Is Algaephyte? (Plain Language)</h3><p>No-jargon tour of an AI-tended photobioreactor: what it senses, how it decides, why every proposal passes gates, and what the human still owns.</p><span class="rt-foot"><b>2026-08-04</b><span class="rt-go">Read the note</span></span></span></a>
-<a class="rot-card kb-card" href="/blog/troubleshooting-ph-and-carbon"><span class="kb-media"><img src="/assets/images/instrument-photo.jpg" alt="Illustrative cultivation instrument" loading="lazy" width="1536" height="1024"></span><span class="rt-body"><span class="kb-tag">Algaephyte field note</span><h3>Troubleshooting pH and Carbon in Alkaline Culture</h3><p>Why pH climbs in a healthy Spirulina culture, when rising pH becomes carbon starvation, and how bicarbonate dosing restores both buffer and feed.</p><span class="rt-foot"><b>2026-08-02</b><span class="rt-go">Read the note</span></span></span></a>
-<a class="rot-card kb-card" href="/blog/how-main-keeps-culture-safe"><span class="kb-media"><img src="/assets/images/microscopy/sim-field.jpg" alt="Illustrative algae microscopy field" loading="lazy" width="1536" height="1024"></span><span class="rt-body"><span class="kb-tag">Algaephyte field note</span><h3>How Algaephyte Keeps Your Culture Safe</h3><p>Plain-language walkthrough of the two-check safety system plus physical backstops — and why doing nothing is usually the safe action.</p><span class="rt-foot"><b>2026-08-01</b><span class="rt-go">Read the note</span></span></span></a>
-<a class="rot-card kb-card" href="/blog/troubleshooting-contamination-crashes"><span class="kb-media"><img src="/assets/cyano/hero-field.jpg" alt="Illustrative single-cell algae field" loading="lazy" width="1536" height="1024"></span><span class="rt-body"><span class="kb-tag">Algaephyte field note</span><h3>Troubleshooting Spirulina Contamination and Crashes</h3><p>Field-guide style troubleshooting for home Spirulina: spotting grazers and competitors early, using high pH defensively, and recovering a crashed culture.</p><span class="rt-foot"><b>2026-07-30</b><span class="rt-go">Read the note</span></span></span></a>
-<a class="rot-card kb-card" href="/blog/bounded-autonomy-safe-ai-proposals"><span class="kb-media"><img src="/assets/images/instrument-photo.jpg" alt="Illustrative cultivation instrument" loading="lazy" width="1536" height="1024"></span><span class="rt-body"><span class="kb-tag">Algaephyte field note</span><h3>Bounded Autonomy: Keeping AI Proposals Safe</h3><p>Hard-limit validators, counterfactual simulation and firmware clamps: three independent layers that let an AI propose while never risking the culture.</p><span class="rt-foot"><b>2026-07-29</b><span class="rt-go">Read the note</span></span></span></a>
-<a class="rot-card kb-card" href="/blog/control-loop-architecture"><span class="kb-media"><img src="/assets/images/instrument-photo.jpg" alt="Illustrative monitored culture vessel" loading="lazy" width="1536" height="1024"></span><span class="rt-body"><span class="kb-tag">Algaephyte field note</span><h3>Control Loop Architecture for Living Systems</h3><p>Sense → twin → propose → verify → act. The layered loop architecture that lets software participate in biology without ever owning the pumps.</p><span class="rt-foot"><b>2026-07-26</b><span class="rt-go">Read the note</span></span></span></a>
-<a class="rot-card kb-card" href="/blog/light-temperature-mixing"><span class="kb-media"><img src="/assets/cyano/culture.jpg" alt="Illustrative algae culture flasks" loading="lazy" width="1536" height="1024"></span><span class="rt-body"><span class="kb-tag">Algaephyte field note</span><h3>Light, Temperature and Mixing: The Three Physical Levers</h3><p>How irradiance, temperature band and mixing shape Spirulina growth rate — and why more of any one of them stops helping surprisingly early.</p><span class="rt-foot"><b>2026-07-23</b><span class="rt-go">Read the note</span></span></span></a>
-<a class="rot-card kb-card" href="/blog/six-culture-signals-main-senses"><span class="kb-media"><img src="/assets/images/hero.jpg" alt="Illustrative photobioreactor vessel" loading="lazy" width="1536" height="1024"></span><span class="rt-body"><span class="kb-tag">Algaephyte field note</span><h3>Six Culture Signals: What a Reactor Senses</h3><p>pH, temperature, wall irradiance, OD750, dissolved oxygen, conductivity — six channels each telling a different biological story about one culture.</p><span class="rt-foot"><b>2026-07-21</b><span class="rt-go">Read the note</span></span></span></a>
-<a class="rot-card kb-card" href="/blog/dissolved-oxygen-stress-signal"><span class="kb-media"><img src="/assets/images/microscopy/sim-field.jpg" alt="Illustrative algae microscopy field" loading="lazy" width="1536" height="1024"></span><span class="rt-body"><span class="kb-tag">Algaephyte field note</span><h3>Dissolved Oxygen as a Stress Signal</h3><p>Afternoon oxygen plateaus explained: supersaturation, self-poisoning of photosynthesis, and how a twin treats DO as a state variable rather than a footnote.</p><span class="rt-foot"><b>2026-07-19</b><span class="rt-go">Read the note</span></span></span></a>
-<a class="rot-card kb-card" href="/blog/zarrouk-medium-and-nutrients"><span class="kb-media"><img src="/assets/cyano/hero-field.jpg" alt="Illustrative single-cell algae field" loading="lazy" width="1536" height="1024"></span><span class="rt-body"><span class="kb-tag">Algaephyte field note</span><h3>Zarrouk Medium and Nutrients: Feeding a Spirulina Culture</h3><p>The chemistry behind Zarrouk medium for Arthrospira: bicarbonate, nitrate, phosphate, trace metals — and why a pale culture is usually a hungry one.</p><span class="rt-foot"><b>2026-07-16</b><span class="rt-go">Read the note</span></span></span></a>
-<a class="rot-card kb-card" href="/blog/digital-twin-droop-steele-model"><span class="kb-media"><img src="/assets/cyano/culture.jpg" alt="Illustrative green algae culture vessels" loading="lazy" width="1536" height="1024"></span><span class="rt-body"><span class="kb-tag">Algaephyte field note</span><h3>A Digital Twin Built on Droop and Steele</h3><p>The physics inside an algae digital twin: Droop quota kinetics, Steele&#x27;s photoinhibition limb, Beer–Lambert self-shading and oxygen inhibition as state variables.</p><span class="rt-foot"><b>2026-07-12</b><span class="rt-go">Read the note</span></span></span></a>
-<a class="rot-card kb-card" href="/blog/harvesting-and-using-fresh-spirulina"><span class="kb-media"><img src="/assets/images/microscopy/sim-field.jpg" alt="Illustrative algae microscopy field" loading="lazy" width="1536" height="1024"></span><span class="rt-body"><span class="kb-tag">Algaephyte field note</span><h3>Harvesting and Using Fresh Spirulina</h3><p>When and how to harvest fresh Spirulina at home, simple screening and pressing methods, storage, and honest notes on freshness versus bottled supplements.</p><span class="rt-foot"><b>2026-07-09</b><span class="rt-go">Read the note</span></span></span></a>
-<a class="rot-card kb-card" href="/blog/winter-home-growing-warmth"><span class="kb-media"><img src="/assets/cyano/hero-field.jpg" alt="Illustrative single-cell algae field" loading="lazy" width="1536" height="1024"></span><span class="rt-body"><span class="kb-tag">Algaephyte field note</span><h3>Keeping a Home Spirulina Culture Warm Through Winter</h3><p>Heaters, insulation and placement strategy for keeping Spirulina in its 30–37°C comfort band through cold months — warmth before anything else.</p><span class="rt-foot"><b>2026-07-05</b><span class="rt-go">Read the note</span></span></span></a>
-<a class="rot-card kb-card" href="/blog/how-to-start-home-spirulina-culture"><span class="kb-media"><img src="/assets/images/instrument-photo.jpg" alt="Illustrative cultivation instrument" loading="lazy" width="1536" height="1024"></span><span class="rt-body"><span class="kb-tag">Algaephyte field note</span><h3>How to Start a Home Spirulina Culture (Without Guesswork)</h3><p>A plain-language guide to starting Spirulina at home: what you need, live culture vs powder, light, warmth, alkalinity and the first signs your culture is thriving.</p><span class="rt-foot"><b>2026-07-02</b><span class="rt-go">Read the note</span></span></span></a>
-<a class="rot-card kb-card" href="/blog/reading-your-culture"><span class="kb-media"><img src="/assets/images/microscopy/sim-field.jpg" alt="Illustrative algae microscopy field" loading="lazy" width="1536" height="1024"></span><span class="rt-body"><span class="kb-tag">Algaephyte field note</span><h3>Reading Your Culture: Color, Density, Smell</h3><p>A no-lab guide to reading Spirulina health: blue-green color cues, spoon-depth density tests, smell diagnostics and the cheap measurements worth taking daily.</p><span class="rt-foot"><b>2026-06-25</b><span class="rt-go">Read the note</span></span></span></a>
-<a class="rot-card kb-card" href="/blog/alkalinity-as-a-control-variable"><span class="kb-media"><img src="/assets/cyano/hero-field.jpg" alt="Illustrative single-cell algae field" loading="lazy" width="1536" height="1024"></span><span class="rt-body"><span class="kb-tag">Algaephyte field note</span><h3>Alkalinity as a Control Variable</h3><p>In Spirulina culture, pH is not a knob — it is the readout of the carbon budget. Why alkalinity is the real control variable, and what that means for automation.</p><span class="rt-foot"><b>2026-06-18</b><span class="rt-go">Read the note</span></span></span></a>
-</div>
-<h3 class="kb-h">Cyanoflow — a closer look at cells</h3>
-<div class="rot-grid kb-grid">
-<a class="rot-card kb-card" href="/blog/single-cell-microalgae-microfluidics"><span class="kb-media"><img src="/assets/cyano/chip.jpg" alt="Illustrative microfluidic algae chip" loading="lazy" width="1536" height="1024"></span><span class="rt-body"><span class="kb-tag">Cyanoflow</span><h3>Single-Cell Microalgae Analysis with Microfluidics</h3><p>Compare droplets and microwells for microalgae analysis. Learn how imaging, tracking, phenotype validation and recovery differ, with primary research references.</p><span class="rt-foot"><b>2026-10-04</b><span class="rt-go">Read the note</span></span></span></a>
-<a class="rot-card kb-card" href="/blog/vision-contamination-detection"><span class="kb-media"><img src="/assets/cyano/microscope.jpg" alt="Illustrative microscope imaging setup" loading="lazy" width="1536" height="1024"></span><span class="rt-body"><span class="kb-tag">Cyanoflow</span><h3>Vision-Based Contamination Detection, Honestly</h3><p>What a microscope camera can and cannot classify: healthy helix vs fragment vs not-spirulina — flags that hold pumps, never ones that open them.</p><span class="rt-foot"><b>2026-08-12</b><span class="rt-go">Read the note</span></span></span></a>
-<a class="rot-card kb-card" href="/blog/edge-ai-biological-systems"><span class="kb-media"><img src="/assets/images/instrument-photo.jpg" alt="Illustrative cultivation instrument" loading="lazy" width="1536" height="1024"></span><span class="rt-body"><span class="kb-tag">Cyanoflow</span><h3>Edge AI for Biological Systems</h3><p>Why vision inference belongs on-device at ~2 W: latency, privacy of your lab bench, and the reliability story cloud loops cannot tell.</p><span class="rt-foot"><b>2026-08-08</b><span class="rt-go">Read the note</span></span></span></a>
-</div>
-<!-- SEO:KNOWLEDGE:END -->
-  </section>
-
-
-
-
-  <nav class="art-foot" aria-label="Site">
-    <a href="/">Biology, built in the open</a>
-    <a href="/diy/">The DIY bench</a>
-    <a href="/applications/">Application dossiers</a>
-    <a href="/inventions/">Inventions — Algaephyte &amp; Cyanoflow</a>
-    <a href="/research/">Read the research methods</a>
-  <a href="/privacy">Privacy</a><a href="/terms">Terms</a></nav>
-</div>
-
-<script>
-/* ---------- Blog: four AI-written paper articles ---------- */
-(function () {
-  "use strict";
-  var PICKS = "/blog/data/picks/";
-  function esc(s) { var d = document.createElement("div"); d.textContent = String(s == null ? "" : s); return d.innerHTML; }
-  function el(id) { return document.getElementById(id); }
-  function clean(s) { return String(s || "").replace(/<[^>]+>/g, ""); }
-
-  /* brand-treated photography, rotating by day of month (see
-     tools/blog/make_focus_thumbs.py) — real imagery, not stock */
-  var FOCUS_IMGS = [
-    "/assets/images/focus/focus-0.jpg",
-    "/assets/images/focus/focus-1.jpg",
-    "/assets/images/focus/focus-2.jpg",
-    "/assets/images/focus/focus-3.jpg"
-  ];
-
-  /* ---- today's four AI-written articles (fail-closed) ---- */
-  function renderPicks(idx) {
-    var days = (idx && idx.days) || [];
-    if (!days.length || !days[0].picks || !days[0].picks.length) { picksError(); return; }
-    var picks = days[0].picks.slice(0, 4);
-    var stamp = el("pkUpdated");
-    var sd = String(days[0].date || "").match(/^(\d{4})-(\d{2})-(\d{2})$/);
-    if (stamp && sd) {
-      var MONS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-      stamp.textContent = "Updated " + MONS[parseInt(sd[2], 10) - 1] + " " + parseInt(sd[3], 10) + ", " + sd[1] + ".";
-      stamp.hidden = false;
+<meta property="og:title" content="Microalgae culture guides and notes">
+<meta property="og:description" content="How to grow marine microalgae, from a 50 mL starter tube to a hatchery batch. Written from the bench in Vista, California.">
+<meta property="og:url" content="https://orrbiologicals.com/articles/">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://orrbiologicals.com/articles/#breadcrumb",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://orrbiologicals.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Articles", "item": "https://orrbiologicals.com/articles/" }
+      ]
+    },
+    {
+      "@type": "CollectionPage",
+      "@id": "https://orrbiologicals.com/articles/#collection",
+      "url": "https://orrbiologicals.com/articles/",
+      "name": "Microalgae culture guides and notes",
+      "description": "Practical guides to growing marine microalgae for bivalve hatcheries, classrooms and home culture.",
+      "isPartOf": { "@id": "https://orrbiologicals.com/#website" },
+      "publisher": { "@id": "https://orrbiologicals.com/#organization" },
+      "hasPart": [
+        { "@type": "Article", "name": "How to use a 50 mL microalgae starter culture", "url": "https://orrbiologicals.com/articles/starter-cultures" },
+        { "@type": "Article", "name": "Nannochloropsis oculata, the strain that forgives", "url": "https://orrbiologicals.com/articles/nannochloropsis-oculata" },
+        { "@type": "Article", "name": "Feeding oyster larvae, stage by stage", "url": "https://orrbiologicals.com/articles/feeding-oyster-larvae" },
+        { "@type": "Article", "name": "f/2 medium: what it is and how much to dose", "url": "https://orrbiologicals.com/articles/f2-medium" },
+        { "@type": "Article", "name": "Why a microalgae culture crashes", "url": "https://orrbiologicals.com/articles/culture-crash" }
+      ]
     }
-    var dayNum = parseInt(days[0].date.slice(8, 10), 10) || 0;
-    var shown = 0;
-    picks.forEach(function (p, i) {
-      var card = el("pk" + i);
-      if (!card || !p.title) return;
-      var url = String(p.url || "");
-      if (!/^https:\/\//i.test(url)) {
-        /* fail closed to PubMed unless the stored url is a clean https link */
-        url = "https://pubmed.ncbi.nlm.nih.gov/" + encodeURIComponent(String(p.pmid || "")) + "/";
-      }
-      card.querySelectorAll(".pk-link").forEach(function (a) { a.href = url; });
-      card.querySelector(".pk-title a").textContent = String(p.title || "").replace(/<[^>]+>/g, "");
-      var hook = card.querySelector(".pk-hook");
-      if (p.hook) { hook.textContent = p.hook; hook.style.display = ""; } else { hook.style.display = "none"; }
-      card.querySelector(".pk-topic").textContent = String(p.topic || "Research").replace(/<[^>]+>/g, "");
-      var srcText = String(p.journal || "PubMed").replace(/<[^>]+>/g, "");
-      var md = String(p.pub_date || "").match(/^(\d{4})-(\d{2})-(\d{2})$/);
-      if (md) {
-        var MON = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-        srcText += " · online " + MON[parseInt(md[2], 10) - 1] + " " + parseInt(md[3], 10) + ", " + md[1];
-      } else if (p.year) { srcText += " · " + p.year; }
-      card.querySelector(".pk-src").textContent = srcText;
-      var bodyDiv = card.querySelector(".pk-article");
-      var paras = String(p.article || "").split(/\n\s*\n/).map(function (par) { return "<p>" + esc(par) + "</p>"; }).join("");
-      if (paras) { bodyDiv.innerHTML = paras; } else { bodyDiv.remove(); }
-      var why = card.querySelector(".pk-why");
-      if (p.why && why) { why.querySelector(".pk-why-text").textContent = p.why; why.hidden = false; }
-      else if (why) { why.remove(); }
-      var img = card.querySelector(".pk-img");
-      img.src = FOCUS_IMGS[(dayNum + i) % FOCUS_IMGS.length];
-      img.alt = "Illustrative algae imagery accompanying a research summary; not a figure from the paper";
-      card.hidden = false;
-      shown++;
-    });
-    if (!shown) picksError();
-  }
-  function picksError() { el("pkFail").hidden = false; }
-
-  document.addEventListener("DOMContentLoaded", function () {
-    fetch(PICKS + "index.json")
-      .then(function (r) { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); })
-      .then(renderPicks)
-      .catch(picksError);
-
-    // The knowledge directory is built into the HTML, not fetched at runtime.
-  });
-})();
+  ]
+}
 </script>
-<script src="/js/consent.js?v=20261115" defer></script><footer class="science-footer"><div class="wrap footer-layout">
-<div><a class="footer-brand" href="/">Orr Biologicals</a><p>Biology, built in the open.<br>Explore · Build · Apply · Invent.</p><small>Educational notes, not food-safety certification.<br>Inventions — Algaephyte and Cyanoflow — are research concepts in development; no validated hardware or commercial deployment claimed.</small></div>
-<nav aria-label="Footer DIY"><h2>DIY</h2><a href="/diy/">The DIY bench</a><a href="/diy/sourdough/">Sourdough starter / start &amp; keep</a><a href="/diy/kombucha/">Kombucha / tea, SCOBY &amp; timing</a><a href="/diy/spirulina/">Spirulina / light, warmth &amp; alkalinity</a><a href="/diy/guides/">All guides / the shelf</a><a href="/play/">Play / three puzzles</a></nav>
-<nav aria-label="Footer divisions"><h2>Divisions</h2><a href="/articles/">Articles / the scientific publication</a><a href="/applications/">Applications / evidence-led dossiers</a><a href="/applications/phytoplankton-for-bivalves/">Phytoplankton for bivalves / live feed</a><a href="/inventions/">Inventions / Algaephyte &amp; Cyanoflow</a><a href="/algaephyte/">Algaephyte / cultivation systems</a><a href="/cyanoflow">Cyanoflow / single-cell tools</a></nav>
-<nav aria-label="Footer open"><h2>Open &amp; accessible</h2><a href="/research/">Research methodology</a><a href="/literature/">Literature search / DOI lookup</a><a href="/developers/">Developer documentation</a><a href="/downloads/">App downloads</a><a href="/support/">Support the work</a><a href="/LICENSE" download>Licensing / MIT</a><a href="/#deploy">Contact</a></nav>
-<div><h2>Say hello</h2><a href="mailto:service@orrbiologicals.com">service@orrbiologicals.com</a><p><a href="https://www.youtube.com/@OrrBiologicals" target="_blank" rel="noreferrer">Research updates on YouTube ↗</a></p><small>Open source site code / built to be readable, keyboard-friendly and honest about what is not known.</small></div>
-</div><div class="wrap footer-base"><span>© 2026 Orr Biologicals / Biology, built in the open</span><nav aria-label="Legal"><a href="/privacy">Privacy</a><a href="/terms">Terms</a><a href="/disclaimer">Scientific disclaimer</a><a href="/LICENSE" download>MIT License</a></nav></div></footer><script defer src="/js/animations.js?v=20261115"></script>
-<script defer src="/js/navigation.js?v=20261115"></script>
-<script defer src="/js/cell-cursor.js?v=20261115"></script>
-<script defer src="/js/biological-cinema.js?v=20261115"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-head">
+  <div class="wrap head-in">
+    <a class="brand" href="/" aria-label="Orr Biologicals home">
+      <svg viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+        <circle cx="16" cy="16" r="14.4" fill="none" stroke="#2C5F47" stroke-width="1.3"/>
+        <circle cx="12" cy="13" r="3.1" fill="#2C5F47"/>
+        <circle cx="20.4" cy="14.6" r="2.2" fill="#2C5F47" opacity=".72"/>
+        <circle cx="15.4" cy="20.6" r="2.6" fill="#2C5F47" opacity=".86"/>
+      </svg>
+      <span>Orr Biologicals<small>Live microalgae · Vista, CA</small></span>
+    </a>
+    <nav class="nav" aria-label="Primary">
+      <a href="/hatcheries">Hatcheries</a>
+      <a href="/hatcheries#media">Nutrient media</a>
+      <a href="/kits">Culture kits</a>
+      <a href="/articles" aria-current="page">Articles</a>
+      <a href="/company">About</a>
+      <a class="btn" href="mailto:service@orrbiologicals.com?subject=Quote%20request">Request a quote</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <div class="wrap page-head">
+    <p class="crumb"><a href="/">Home</a> / Articles</p>
+    <h1>Notes from the bench.</h1>
+    <p class="lead">Five guides to growing marine microalgae — the volumes, the doses, the failure modes and what to do about them. Written for hatchery staff first, and for anyone with one bottle on a desk.</p>
+  </div>
+
+  <section class="section" aria-labelledby="all-h">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="all-h">Every article</h2>
+        <p class="lead">No filler and no claims we cannot show you on a haemocytometer. If a number is typical rather than exact, the text says so.</p>
+      </div>
+
+      <div class="post-list">
+        <article>
+          <p class="note">Start cultures · 8 min</p>
+          <h2><a href="/articles/starter-cultures">How to use a 50 mL microalgae starter culture</a></h2>
+          <p class="small">What arrives in the tube, the dilution and f/2 dose for each step, how one tube becomes two litres, and the four things that kill a starter in its first week.</p>
+          <a class="more" href="/articles/starter-cultures">Read the guide</a>
+        </article>
+        <article>
+          <p class="note">Strain guide · 7 min</p>
+          <h2><a href="/articles/nannochloropsis-oculata"><i>Nannochloropsis oculata</i>, the strain that forgives</a></h2>
+          <p class="small">Why a 2–3 µm green cell with a thick wall ends up in nearly every hatchery and classroom, where it is the wrong feed, and how to keep it alive.</p>
+          <a class="more" href="/articles/nannochloropsis-oculata">Read the guide</a>
+        </article>
+        <article>
+          <p class="note">Hatchery · 9 min</p>
+          <h2><a href="/articles/feeding-oyster-larvae">Feeding oyster larvae, stage by stage</a></h2>
+          <p class="small">D-stage to pediveliger: which cell size fits which stage, why the mix changes, and how to read clearance in the tank instead of guessing at a ration.</p>
+          <a class="more" href="/articles/feeding-oyster-larvae">Read the guide</a>
+        </article>
+        <article>
+          <p class="note">Media · 7 min</p>
+          <h2><a href="/articles/f2-medium">f/2 medium: what it is and how much to dose</a></h2>
+          <p class="small">The 500× concentrate at 2 mL per litre, why dry salts precipitate the iron, when to ask for silicate, and what an under-dosed culture looks like on day four.</p>
+          <a class="more" href="/articles/f2-medium">Read the guide</a>
+        </article>
+        <article>
+          <p class="note">Troubleshooting · 8 min</p>
+          <h2><a href="/articles/culture-crash">Why a microalgae culture crashes</a></h2>
+          <p class="small">A diagnostic order that starts with temperature and ends with contamination, the signs that separate starvation from senescence, and how to restart from a backup.</p>
+          <a class="more" href="/articles/culture-crash">Read the guide</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tight" aria-labelledby="buy-h">
+    <div class="wrap buy">
+      <div>
+        <h2 id="buy-h">Start with a tube, not a case.</h2>
+        <p class="lead mt-1">Most orders here begin with a 50 mL start culture: a dense, dividing culture in a sealed tube, five to seven days old, that becomes 500 mL in a week. It is the cheapest way to begin a batch, restart after a crash, or keep a backup strain on the shelf.</p>
+        <p class="small mt-1">Hatcheries ordering weekly <i>Nannochloropsis</i> should look at batch cultures and standing orders instead. Classrooms and home culturists usually want the <a href="/kits">$59 kit</a>, which includes a counted starter and everything needed to run it.</p>
+        <div class="btn-row">
+          <a class="btn" href="mailto:service@orrbiologicals.com?subject=Starter%20culture%20order&amp;body=Strain%3A%0AQuantity%3A%0AShipping%20address%3A">Order a starter culture</a>
+          <a class="btn btn--ghost" href="/hatcheries">Hatchery cultures and media</a>
+        </div>
+      </div>
+      <div class="price">
+        <p class="terms">Start cultures, 50 mL</p>
+        <ul>
+          <li><i>Nannochloropsis oculata</i> from weekly stock, 2–4 days</li>
+          <li>Five further strains grown to order, 3–4 weeks</li>
+          <li>Agar slants for labs that need shelf life</li>
+          <li>Counted and labelled the day it ships</li>
+          <li>Replaced if it arrives dead — photograph within 24 hours</li>
+        </ul>
+        <p class="terms mt-1">Priced per tube by strain and quantity. Email for a quote and a ship date.</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="brand" href="/">
+          <svg viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+            <circle cx="16" cy="16" r="14.4" fill="none" stroke="#CBDE8C" stroke-width="1.3"/>
+            <circle cx="12" cy="13" r="3.1" fill="#CBDE8C"/>
+            <circle cx="20.4" cy="14.6" r="2.2" fill="#CBDE8C" opacity=".72"/>
+            <circle cx="15.4" cy="20.6" r="2.6" fill="#CBDE8C" opacity=".86"/>
+          </svg>
+          <span>Orr Biologicals<small>Live microalgae · Vista, CA</small></span>
+        </a>
+        <p>Marine microalgae, f/2 nutrient concentrate and culture kits, cultured in small batches in Vista, California. Shipping within the United States.</p>
+      </div>
+      <div>
+        <h2>Products</h2>
+        <ul>
+          <li><a href="/hatcheries">Live cultures for hatcheries</a></li>
+          <li><a href="/hatcheries#starters">Start cultures, 50 mL</a></li>
+          <li><a href="/hatcheries#media">f/2 nutrient media</a></li>
+          <li><a href="/kits">Microalgae culture kit</a></li>
+          <li><a href="/hatcheries#strains">Strain list</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Company</h2>
+        <ul>
+          <li><a href="/company">About Orr Biologicals</a></li>
+          <li><a href="/company#quality">Culture quality</a></li>
+          <li><a href="/company#contact">Contact</a></li>
+          <li><a href="/articles">Articles</a></li>
+          <li><a href="/sitemap.xml">Sitemap</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Contact</h2>
+        <ul>
+          <li><a href="mailto:service@orrbiologicals.com">service@orrbiologicals.com</a></li>
+          <li>Vista, California</li>
+          <li>Ships Mon–Wed</li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-legal">
+      <p>© 2026 Orr Biologicals. Live cultures are sold for aquaculture, research and educational use. Not for human consumption.</p>
+      <p>Prices in USD. US shipping only.</p>
+    </div>
+  </div>
+</footer>
 </body>
 </html>
