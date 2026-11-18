@@ -13,6 +13,35 @@
   window.addEventListener('scroll', onScroll, { passive: true });
 
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+  /* the kit plate answers a pointer with a few degrees of depth. Pointer
+     devices only, never under reduced motion, and it resets on leave. */
+  if (!reduced.matches && window.matchMedia('(hover: hover)').matches) {
+    Array.prototype.forEach.call(document.querySelectorAll('[data-tilt]'), function (el) {
+      var frame = 0;
+      var mx = 0;
+      var my = 0;
+
+      function apply() {
+        frame = 0;
+        el.style.transform = 'perspective(900px) rotateX(' + (-my * 4.2).toFixed(2) + 'deg) rotateY(' + (mx * 4.2).toFixed(2) + 'deg)';
+      }
+
+      el.addEventListener('pointermove', function (e) {
+        var r = el.getBoundingClientRect();
+        mx = (e.clientX - r.left) / r.width - 0.5;
+        my = (e.clientY - r.top) / r.height - 0.5;
+        if (!frame) frame = requestAnimationFrame(apply);
+      }, { passive: true });
+
+      el.addEventListener('pointerleave', function () {
+        mx = 0;
+        my = 0;
+        if (!frame) frame = requestAnimationFrame(apply);
+      }, { passive: true });
+    });
+  }
+
   if (reduced.matches || !('IntersectionObserver' in window)) return;
 
   var nodes = document.querySelectorAll([
