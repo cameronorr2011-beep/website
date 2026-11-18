@@ -1,0 +1,109 @@
+/* The stage — one living scene, everything else quiet.
+   Home only; loaded after /styles.css. */
+
+.stage{
+  position:relative;isolation:isolate;overflow:hidden;
+  display:flex;flex-direction:column;
+  min-height:calc(100svh - 4.5rem);
+  padding-block:clamp(2rem,4.2vh,3.2rem) 0;
+  color:var(--on-dark);
+  background:
+    radial-gradient(72% 58% at 74% 40%,rgba(45,112,80,.30) 0%,rgba(45,112,80,0) 68%),
+    radial-gradient(40% 42% at 88% 78%,rgba(217,164,65,.12) 0%,rgba(217,164,65,0) 70%),
+    linear-gradient(172deg,#0A1F19 0%,#071712 58%,#04100C 100%);
+  border-radius:0 0 30px 30px;
+}
+.stage__canvas{
+  position:absolute;inset:0;width:100%;height:100%;z-index:0;display:block;
+  opacity:0;transition:opacity 1.4s cubic-bezier(.22,.68,.2,1);
+}
+.stage.is-live .stage__canvas{opacity:1}
+.stage__glow{
+  position:absolute;inset:auto -10% 6% 40%;height:62%;z-index:0;pointer-events:none;
+  background:radial-gradient(closest-side,rgba(233,201,139,.12),rgba(233,201,139,0) 72%);
+  filter:blur(10px);
+}
+.stage::after{
+  content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:
+    linear-gradient(90deg,rgba(4,16,12,.74) 0%,rgba(4,16,12,.30) 46%,rgba(4,16,12,0) 72%),
+    linear-gradient(180deg,rgba(4,16,12,0) 62%,rgba(4,16,12,.66) 100%);
+}
+.stage__grid{
+  position:relative;z-index:2;flex:1;
+  display:grid;grid-template-columns:minmax(0,6.5fr) minmax(0,5.5fr);
+  gap:clamp(1.4rem,4vw,3rem);align-items:center;
+  padding-bottom:clamp(1.2rem,2.6vh,2rem);
+}
+.stage__copy{max-width:47rem}
+.stage__eyebrow{
+  display:flex;align-items:center;gap:.9rem;
+  font-family:var(--mono);font-size:.73rem;letter-spacing:.02em;
+  color:rgba(233,201,139,.92);margin:0 0 clamp(1.2rem,2.4vh,1.9rem);
+}
+.stage__eyebrow::before{content:"";width:clamp(1.6rem,3vw,2.6rem);height:1px;background:rgba(233,201,139,.7)}
+.stage h1{
+  color:#F8F3E6;font-size:clamp(2.7rem,5vw,4.7rem);text-wrap:wrap;
+  line-height:.94;letter-spacing:-.045em;max-width:18ch;font-weight:750;
+}
+.stage .lead{
+  color:#C3D3C4;margin:clamp(1.2rem,2.6vh,1.8rem) 0 0;
+  max-width:44ch;font-size:clamp(1.04rem,1.3vw,1.2rem);
+}
+.stage .btn-row{margin-top:clamp(1.4rem,3vh,2.1rem)}
+.stage .btn--ghost{color:var(--on-dark);border-color:rgba(255,255,255,.3)}
+.stage .btn--ghost:hover{color:#fff;border-color:var(--lime);background:transparent}
+.stage .btn-row .note{color:rgba(243,237,223,.6);max-width:22ch}
+.stage a:not(.btn){color:var(--lime)}
+.stage a:not(.btn):hover{color:#fff}
+.stage :focus-visible{outline-color:var(--lime)}
+.stage__note{justify-self:end;align-self:end;text-align:right;max-width:15rem;opacity:.8}
+.stage__note span{
+  display:block;font-family:var(--mono);font-size:.64rem;letter-spacing:.08em;
+  color:rgba(233,201,139,.8);margin-bottom:.5rem;
+}
+.stage__note p{font-family:var(--mono);font-size:.68rem;line-height:1.6;color:rgba(243,237,223,.62);margin:0}
+.stage__note i{font-family:var(--serif);font-style:italic}
+.stage__foot{position:relative;z-index:2;padding-bottom:clamp(.8rem,2vh,1.3rem)}
+.stage .specs{margin:0;border-top:1px solid rgba(233,201,139,.28);border-bottom:0}
+.stage .specs div{padding-block:.95rem 1.15rem}
+.stage__cue{
+  display:flex;align-items:center;gap:.7rem;margin:1rem 0 0;
+  font-family:var(--mono);font-size:.62rem;letter-spacing:.06em;text-transform:uppercase;
+  color:rgba(243,237,223,.42);
+}
+.stage__cue i{display:block;width:1px;height:1.6rem;background:linear-gradient(180deg,rgba(233,201,139,.7),rgba(233,201,139,0))}
+
+@media (max-width:900px){
+  .stage{min-height:auto;padding-block:0}
+  .stage .stage__canvas{height:54svh;width:100%}
+  .stage__grid{grid-template-columns:1fr;padding-top:calc(54svh - 4.5rem);padding-bottom:1.4rem}
+  .stage__note{display:none}
+  .stage h1{font-size:clamp(2.35rem,9.8vw,3.5rem);max-width:15ch}
+  .stage::after{background:linear-gradient(180deg,rgba(4,16,12,0) 0%,rgba(4,16,12,.12) 26%,rgba(4,16,12,.94) 48%,#04100C 64%)}
+  .stage.is-live .stage__canvas{opacity:.8}
+  .stage__glow{inset:-6% -18% auto 10%;height:46%}
+  .stage .specs{margin-top:0}
+  .stage__cue{display:none}
+}
+
+@media (prefers-reduced-motion:no-preference){
+  .stage__eyebrow,.stage h1,.stage .lead,.stage .btn-row{animation:rise .9s cubic-bezier(.22,.68,.2,1) both}
+  .stage h1{animation-delay:.08s}
+  .stage .lead{animation-delay:.16s}
+  .stage .btn-row{animation-delay:.24s}
+}
+
+/* the home nav fits without a fade; the hero carries the CTA on a phone */
+@media (max-width:760px){
+  .nav{gap:.7rem;-webkit-mask-image:none;mask-image:none}
+  .nav a:not(.btn){font-size:.86rem}
+}
+
+/* the working drawing answers the pointer, once, and only where there is one */
+[data-tilt]{transform-style:preserve-3d;transition:transform .25s cubic-bezier(.22,.68,.2,1)}
+@media (prefers-reduced-motion:reduce){[data-tilt]{transition:none}}
+
+@media print{
+  .stage{display:none}
+}
