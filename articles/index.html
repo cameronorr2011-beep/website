@@ -3,16 +3,20 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Microalgae Culture Guides &amp; Notes | Orr Biologicals</title>
-<meta name="description" content="Practical guides to growing marine microalgae: using a 50 mL starter culture, Nannochloropsis oculata, feeding oyster larvae, f/2 dosing and diagnosing a crashed culture.">
+<title>Microalgae Culture Guides by Audience | Orr Biologicals</title>
+<meta name="description" content="Practical guides to growing marine microalgae, labelled for hatchery staff, hobbyists and reef keepers, and classrooms and students: starters, f/2 dosing, feeding ratios and crash diagnosis.">
 <link rel="canonical" href="https://orrbiologicals.com/articles/">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="/styles.css">
+<style>
+.tag{display:inline-block;font-family:var(--mono);font-size:.66rem;letter-spacing:.09em;text-transform:uppercase;color:var(--live-dark);border:1px solid rgba(46,112,57,.34);background:rgba(62,142,78,.08);padding:.12rem .45rem;margin:0 .35rem .45rem 0;border-radius:2px}
+.tag--wild{color:var(--ink-2);border-color:var(--line);background:transparent}
+</style>
 <meta name="theme-color" content="#082622">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Orr Biologicals">
-<meta property="og:title" content="Microalgae culture guides and notes">
-<meta property="og:description" content="How to grow marine microalgae, from a 50 mL starter tube to a hatchery batch. Written from the bench in Vista, California.">
+<meta property="og:title" content="Microalgae culture guides, by audience">
+<meta property="og:description" content="How to grow marine microalgae, from a 50 mL starter tube to a hatchery batch. Labelled for hatchery staff, hobbyists, and classrooms.">
 <meta property="og:url" content="https://orrbiologicals.com/articles/">
 <meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">
@@ -36,11 +40,12 @@
       "isPartOf": { "@id": "https://orrbiologicals.com/#website" },
       "publisher": { "@id": "https://orrbiologicals.com/#organization" },
       "hasPart": [
-        { "@type": "Article", "name": "How to use a 50 mL microalgae starter culture", "url": "https://orrbiologicals.com/articles/starter-cultures" },
-        { "@type": "Article", "name": "Nannochloropsis oculata, the strain that forgives", "url": "https://orrbiologicals.com/articles/nannochloropsis-oculata" },
-        { "@type": "Article", "name": "Feeding oyster larvae, stage by stage", "url": "https://orrbiologicals.com/articles/feeding-oyster-larvae" },
-        { "@type": "Article", "name": "f/2 medium: what it is and how much to dose", "url": "https://orrbiologicals.com/articles/f2-medium" },
-        { "@type": "Article", "name": "Why a microalgae culture crashes", "url": "https://orrbiologicals.com/articles/culture-crash" }
+        { "@type": "Article", "name": "Microalgae feeding ratios by larval stage", "url": "https://orrbiologicals.com/articles/feeding-ratios", "audience": { "@type": "Audience", "audienceType": "Bivalve hatcheries" } },
+        { "@type": "Article", "name": "How to use a 50 mL microalgae starter culture", "url": "https://orrbiologicals.com/articles/starter-cultures", "audience": { "@type": "Audience", "audienceType": "Hobbyists and classrooms" } },
+        { "@type": "Article", "name": "Nannochloropsis oculata, the strain that forgives", "url": "https://orrbiologicals.com/articles/nannochloropsis-oculata", "audience": { "@type": "Audience", "audienceType": "Hobbyists and classrooms" } },
+        { "@type": "Article", "name": "Feeding oyster larvae, stage by stage", "url": "https://orrbiologicals.com/articles/feeding-oyster-larvae", "audience": { "@type": "Audience", "audienceType": "Bivalve hatcheries" } },
+        { "@type": "Article", "name": "f/2 medium: what it is and how much to dose", "url": "https://orrbiologicals.com/articles/f2-medium", "audience": { "@type": "Audience", "audienceType": "Hatcheries, hobbyists and classrooms" } },
+        { "@type": "Article", "name": "Why a microalgae culture crashes", "url": "https://orrbiologicals.com/articles/culture-crash", "audience": { "@type": "Audience", "audienceType": "Hobbyists and classrooms" } }
       ]
     }
   ]
@@ -62,9 +67,9 @@
       <span>Orr Biologicals<small>Live microalgae · Vista, CA</small></span>
     </a>
     <nav class="nav" aria-label="Primary">
-      <a href="/hatcheries">Hatcheries</a>
-      <a href="/hatcheries#media">Nutrient media</a>
-      <a href="/kits">Culture kits</a>
+      <a href="/algae">Algae</a>
+      <a href="/algae#media">Nutrient media</a>
+      <a href="/culturekits">Culture kits</a>
       <a href="/articles" aria-current="page">Articles</a>
       <a href="/company">About</a>
       <a class="btn" href="mailto:service@orrbiologicals.com?subject=Quote%20request">Request a quote</a>
@@ -77,46 +82,75 @@
   <div class="wrap page-head">
     <p class="crumb"><a href="/">Home</a> / Articles</p>
     <h1>Notes from the bench.</h1>
-    <p class="lead">Five guides to growing marine microalgae — the volumes, the doses, the failure modes and what to do about them. Written for hatchery staff first, and for anyone with one bottle on a desk.</p>
+    <p class="lead">Six guides to growing marine microalgae — the volumes, the doses, the failure modes and what to do about them. Each one is tagged for the reader it was written for: hatchery staff, hobbyists and reef keepers, or classrooms and students.</p>
   </div>
 
   <section class="section" aria-labelledby="all-h">
     <div class="wrap">
       <div class="section-head">
         <h2 id="all-h">Every article</h2>
-        <p class="lead">No filler and no claims we cannot show you on a haemocytometer. If a number is typical rather than exact, the text says so.</p>
+        <p class="lead">No filler and no claims we cannot show you on a haemocytometer. If a number is typical rather than exact, the text says so. Guides that suit more than one reader carry more than one tag.</p>
       </div>
 
       <div class="post-list">
         <article>
-          <p class="note">Start cultures · 8 min</p>
-          <h2><a href="/articles/starter-cultures">How to use a 50 mL microalgae starter culture</a></h2>
-          <p class="small">What arrives in the tube, the dilution and f/2 dose for each step, how one tube becomes two litres, and the four things that kill a starter in its first week.</p>
-          <a class="more" href="/articles/starter-cultures">Read the guide</a>
+          <p class="note"><span class="tag">Hatcheries</span> Feeding · 10 min</p>
+          <h2><a href="/articles/feeding-ratios">Microalgae feeding ratios by larval stage</a></h2>
+          <p class="small">The cell-volume rule that makes "50/50" mean something, the diatom-to-flagellate ratios published in the FAO hatchery manual, and the arithmetic that turns cells per microlitre into litres off the shelf.</p>
+          <a class="more" href="/articles/feeding-ratios">Read the guide</a>
         </article>
         <article>
-          <p class="note">Strain guide · 7 min</p>
-          <h2><a href="/articles/nannochloropsis-oculata"><i>Nannochloropsis oculata</i>, the strain that forgives</a></h2>
-          <p class="small">Why a 2–3 µm green cell with a thick wall ends up in nearly every hatchery and classroom, where it is the wrong feed, and how to keep it alive.</p>
-          <a class="more" href="/articles/nannochloropsis-oculata">Read the guide</a>
-        </article>
-        <article>
-          <p class="note">Hatchery · 9 min</p>
+          <p class="note"><span class="tag">Hatcheries</span> Larvae · 9 min</p>
           <h2><a href="/articles/feeding-oyster-larvae">Feeding oyster larvae, stage by stage</a></h2>
           <p class="small">D-stage to pediveliger: which cell size fits which stage, why the mix changes, and how to read clearance in the tank instead of guessing at a ration.</p>
           <a class="more" href="/articles/feeding-oyster-larvae">Read the guide</a>
         </article>
         <article>
-          <p class="note">Media · 7 min</p>
+          <p class="note"><span class="tag">Hobbyists</span> <span class="tag tag--wild">Classrooms</span> Start cultures · 8 min</p>
+          <h2><a href="/articles/starter-cultures">How to use a 50 mL microalgae starter culture</a></h2>
+          <p class="small">What arrives in the tube, the dilution and f/2 dose for each step, how one tube becomes two litres, and the four things that kill a starter in its first week.</p>
+          <a class="more" href="/articles/starter-cultures">Read the guide</a>
+        </article>
+        <article>
+          <p class="note"><span class="tag">Hobbyists</span> <span class="tag tag--wild">Classrooms</span> Strain guide · 7 min</p>
+          <h2><a href="/articles/nannochloropsis-oculata"><i>Nannochloropsis oculata</i>, the strain that forgives</a></h2>
+          <p class="small">Why a 2–3 µm green cell with a thick wall ends up in nearly every hatchery and classroom, where it is the wrong feed, and how to keep it alive.</p>
+          <a class="more" href="/articles/nannochloropsis-oculata">Read the guide</a>
+        </article>
+        <article>
+          <p class="note"><span class="tag">Hatcheries</span> <span class="tag tag--wild">Hobbyists</span> Media · 7 min</p>
           <h2><a href="/articles/f2-medium">f/2 medium: what it is and how much to dose</a></h2>
           <p class="small">The 500× concentrate at 2 mL per litre, why dry salts precipitate the iron, when to ask for silicate, and what an under-dosed culture looks like on day four.</p>
           <a class="more" href="/articles/f2-medium">Read the guide</a>
         </article>
         <article>
-          <p class="note">Troubleshooting · 8 min</p>
+          <p class="note"><span class="tag">Hobbyists</span> <span class="tag tag--wild">Hatcheries</span> Troubleshooting · 8 min</p>
           <h2><a href="/articles/culture-crash">Why a microalgae culture crashes</a></h2>
           <p class="small">A diagnostic order that starts with temperature and ends with contamination, the signs that separate starvation from senescence, and how to restart from a backup.</p>
           <a class="more" href="/articles/culture-crash">Read the guide</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tight" aria-labelledby="for-h">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="for-h">Where to start, by reader</h2>
+        <p class="lead">If you only read one, read the one written for you.</p>
+      </div>
+      <div class="figures">
+        <article>
+          <h3>Hatchery staff</h3>
+          <p class="small">Start with <a href="/articles/feeding-ratios">feeding ratios by stage</a>, then <a href="/articles/feeding-oyster-larvae">the husbandry around them</a>. The <a href="/algae">strain list</a> has the lead times that decide spawn planning.</p>
+        </article>
+        <article>
+          <h3>Hobbyists &amp; reef keepers</h3>
+          <p class="small">Start with <a href="/articles/starter-cultures">using a 50 mL starter</a>, keep <a href="/articles/culture-crash">the crash guide</a> open the first time something goes wrong, and read <a href="/articles/f2-medium">the f/2 guide</a> before buying a second bottle.</p>
+        </article>
+        <article>
+          <h3>Classrooms &amp; students</h3>
+          <p class="small">The <a href="/articles/starter-cultures">starter guide</a> plus <a href="/articles/nannochloropsis-oculata">the strain guide</a> covers a seven-day project from tube to log sheet. The <a href="/culturekits">$59 kit</a> has everything they assume.</p>
         </article>
       </div>
     </div>
@@ -127,10 +161,10 @@
       <div>
         <h2 id="buy-h">Start with a tube, not a case.</h2>
         <p class="lead mt-1">Most orders here begin with a 50 mL start culture: a dense, dividing culture in a sealed tube, five to seven days old, that becomes 500 mL in a week. It is the cheapest way to begin a batch, restart after a crash, or keep a backup strain on the shelf.</p>
-        <p class="small mt-1">Hatcheries ordering weekly <i>Nannochloropsis</i> should look at batch cultures and standing orders instead. Classrooms and home culturists usually want the <a href="/kits">$59 kit</a>, which includes a counted starter and everything needed to run it.</p>
+        <p class="small mt-1">Hatcheries ordering weekly <i>Nannochloropsis</i> should look at batch cultures and standing orders instead. Classrooms and home culturists usually want the <a href="/culturekits">$59 kit</a>, which includes a counted starter and everything needed to run it.</p>
         <div class="btn-row">
           <a class="btn" href="mailto:service@orrbiologicals.com?subject=Starter%20culture%20order&amp;body=Strain%3A%0AQuantity%3A%0AShipping%20address%3A">Order a starter culture</a>
-          <a class="btn btn--ghost" href="/hatcheries">Hatchery cultures and media</a>
+          <a class="btn btn--ghost" href="/algae">Algae, strains and media</a>
         </div>
       </div>
       <div class="price">
@@ -167,11 +201,11 @@
       <div>
         <h2>Products</h2>
         <ul>
-          <li><a href="/hatcheries">Live cultures for hatcheries</a></li>
-          <li><a href="/hatcheries#starters">Start cultures, 50 mL</a></li>
-          <li><a href="/hatcheries#media">f/2 nutrient media</a></li>
-          <li><a href="/kits">Microalgae culture kit</a></li>
-          <li><a href="/hatcheries#strains">Strain list</a></li>
+          <li><a href="/algae">Live algae, all strains</a></li>
+          <li><a href="/algae#starters">Start cultures, 50 mL</a></li>
+          <li><a href="/algae#media">f/2 nutrient media</a></li>
+          <li><a href="/culturekits">Microalgae culture kit</a></li>
+          <li><a href="/algae#strains">Strain list</a></li>
         </ul>
       </div>
       <div>
