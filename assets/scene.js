@@ -1,7 +1,7 @@
-/* Orr Biologicals — the culture, in suspension.
-   One WebGL scene behind the home hero: a lit cylinder of cells, framed by
-   brass rings. It loads only where the canvas exists and fails silently to
-   the CSS stage, so the page is complete without it.
+/* Orr Biologicals — one specimen, in suspension.
+   A tall column of flat-shaded cells inside a thin brass instrument frame.
+   No bokeh, no glow, no atmosphere: the page supplies the field, the scene
+   supplies the specimen.
 
    Performance: instanced geometry, one draw call for the cells, capped DPR,
    paused when offscreen or when the tab is hidden. With reduced motion the
@@ -33,77 +33,85 @@
 
       renderer.setClearColor(0x000000, 0);
       renderer.outputColorSpace = THREE.SRGBColorSpace;
-      renderer.toneMapping = THREE.ACESFilmicToneMapping;
-      renderer.toneMappingExposure = 1.12;
+      renderer.toneMapping = THREE.NoToneMapping;
 
       var scene = new THREE.Scene();
-      scene.fog = new THREE.FogExp2(0x04110d, 0.05);
-
-      var camera = new THREE.PerspectiveCamera(35, 1, 0.1, 40);
-      camera.position.set(0, 0.15, 7.2);
+      var camera = new THREE.PerspectiveCamera(30, 1, 0.1, 40);
+      camera.position.set(0, 0.1, 7.8);
 
       var vessel = new THREE.Group();
       scene.add(vessel);
 
-      /* ---------- light ---------- */
+      /* ---------- light: flat, even, no drama ---------- */
 
-      scene.add(new THREE.HemisphereLight(0xbfd6c0, 0x04110d, 1.0));
+      scene.add(new THREE.HemisphereLight(0xe8efe2, 0x06120d, 1.45));
 
-      var key = new THREE.DirectionalLight(0xf6dca8, 2.2);
-      key.position.set(3.5, 6, 4);
+      var key = new THREE.DirectionalLight(0xfff3d8, 1.55);
+      key.position.set(4, 6, 5);
       scene.add(key);
 
-      var fill = new THREE.PointLight(0x4c9c70, 14, 15, 2);
-      fill.position.set(-2.6, 1.4, 2.6);
-      scene.add(fill);
+      var rim = new THREE.DirectionalLight(0x6f9c79, 0.55);
+      rim.position.set(-5, 2, -3);
+      scene.add(rim);
 
-      var floor = new THREE.PointLight(0xd9a441, 7, 11, 2);
-      floor.position.set(1.4, -3.4, 2.2);
-      scene.add(floor);
+      /* ---------- the vessel: two rings and a hairline frame ---------- */
 
-      /* ---------- the vessel ---------- */
+      var R = 0.82;
+      var H = 1.78;
+      var brass = 0xc89b45;
 
-      var R = 0.86;
-      var HALF = 1.62;
       var ringMat = new THREE.MeshBasicMaterial({
-        color: 0xe9c98b,
+        color: brass,
         transparent: true,
         opacity: 0.42
       });
-      var ringGeo = new THREE.TorusGeometry(R, 0.0045, 8, 120);
+      var ringGeo = new THREE.TorusGeometry(R, 0.0035, 4, 128);
 
-      [-HALF, 0, HALF].forEach(function (y) {
+      [-H, H].forEach(function (y) {
         var ring = new THREE.Mesh(ringGeo, ringMat);
         ring.rotation.x = Math.PI / 2;
         ring.position.y = y;
         vessel.add(ring);
       });
 
-      var strandGeo = new THREE.BufferGeometry();
-      var strandPts = [];
-      var STRANDS = 20;
-      for (var s = 0; s < STRANDS; s++) {
-        var a = (s / STRANDS) * Math.PI * 2;
+      var edgePoints = [];
+      var EDGES = 8;
+      for (var e = 0; e < EDGES; e++) {
+        var a = (e / EDGES) * Math.PI * 2;
         var x = Math.cos(a) * R;
         var z = Math.sin(a) * R;
-        strandPts.push(x, -HALF, z, x, HALF, z);
+        edgePoints.push(x, -H, z, x, H, z);
       }
-      strandGeo.setAttribute('position', new THREE.Float32BufferAttribute(strandPts, 3));
+      var edgeGeo = new THREE.BufferGeometry();
+      edgeGeo.setAttribute('position', new THREE.Float32BufferAttribute(edgePoints, 3));
       vessel.add(new THREE.LineSegments(
-        strandGeo,
-        new THREE.LineBasicMaterial({ color: 0xe9c98b, transparent: true, opacity: 0.07 })
+        edgeGeo,
+        new THREE.LineBasicMaterial({ color: brass, transparent: true, opacity: 0.1 })
+      ));
+
+      /* a measuring rule beside the column, like a bench instrument */
+      var ruleX = R + 0.26;
+      var rulePoints = [ruleX, -H, 0, ruleX, H, 0];
+      for (var t = 0; t <= 4; t++) {
+        var ty = -H + (t / 4) * (H * 2);
+        rulePoints.push(ruleX, ty, 0, ruleX + 0.07, ty, 0);
+      }
+      var ruleGeo = new THREE.BufferGeometry();
+      ruleGeo.setAttribute('position', new THREE.Float32BufferAttribute(rulePoints, 3));
+      vessel.add(new THREE.LineSegments(
+        ruleGeo,
+        new THREE.LineBasicMaterial({ color: brass, transparent: true, opacity: 0.2 })
       ));
 
       /* ---------- cells: one instanced draw call ---------- */
 
-      var count = coarse ? 420 : 1050;
-      var cellGeo = new THREE.IcosahedronGeometry(0.047, 1);
+      var count = coarse ? 240 : 520;
+      var cellGeo = new THREE.IcosahedronGeometry(0.024, 0);
       var cellMat = new THREE.MeshStandardMaterial({
         color: 0xffffff,
-        roughness: 0.36,
-        metalness: 0.04,
-        emissive: 0x0a241a,
-        emissiveIntensity: 0.7
+        roughness: 0.9,
+        metalness: 0,
+        flatShading: true
       });
       var cells = new THREE.InstancedMesh(cellGeo, cellMat, count);
       cells.instanceMatrix.setUsage(THREE.DynamicDrawUsage);
@@ -111,16 +119,16 @@
 
       var dummy = new THREE.Object3D();
       var seeds = [];
-      var green = new THREE.Color(0x2e7a55);
-      var greenLight = new THREE.Color(0x6faa70);
-      var gold = new THREE.Color(0xd9a441);
-      var bone = new THREE.Color(0xe9c98b);
+      var greenDeep = new THREE.Color(0x2f6b4f);
+      var greenMid = new THREE.Color(0x5b8f62);
+      var greenPale = new THREE.Color(0x8faa6d);
+      var gold = new THREE.Color(0xc89b45);
 
       for (var i = 0; i < count; i++) {
         var angle = Math.random() * Math.PI * 2;
-        var radius = Math.sqrt(Math.random()) * (R - 0.08);
-        var y = (Math.random() * 2 - 1) * (HALF - 0.04);
-        var scale = 0.4 + Math.random() * 1.1;
+        var radius = Math.sqrt(Math.random()) * (R - 0.09);
+        var y = (Math.random() * 2 - 1) * (H - 0.05);
+        var scale = 0.55 + Math.random() * 0.95;
 
         seeds.push({
           x: Math.cos(angle) * radius,
@@ -128,16 +136,16 @@
           z: Math.sin(angle) * radius,
           s: scale,
           ph: Math.random() * Math.PI * 2,
-          amp: 0.02 + Math.random() * 0.05
+          amp: 0.015 + Math.random() * 0.04
         });
 
         var colour;
         var roll = Math.random();
-        if (roll < 0.055) colour = gold.clone();
-        else if (roll < 0.1) colour = bone.clone();
-        else if (roll < 0.55) colour = green.clone();
-        else colour = greenLight.clone();
-        colour.offsetHSL(0, 0, (Math.random() - 0.5) * 0.1);
+        if (roll < 0.025) colour = gold.clone();
+        else if (roll < 0.245) colour = greenPale.clone();
+        else if (roll < 0.725) colour = greenMid.clone();
+        else colour = greenDeep.clone();
+        colour.offsetHSL(0, 0, (Math.random() - 0.5) * 0.06);
 
         dummy.position.set(seeds[i].x, y, seeds[i].z);
         dummy.scale.setScalar(scale);
@@ -148,68 +156,28 @@
       cells.instanceMatrix.needsUpdate = true;
       if (cells.instanceColor) cells.instanceColor.needsUpdate = true;
 
-      /* ---------- out-of-focus motes ---------- */
-
-      function disc() {
-        var c = document.createElement('canvas');
-        c.width = c.height = 64;
-        var g = c.getContext('2d');
-        var grad = g.createRadialGradient(32, 32, 0, 32, 32, 32);
-        grad.addColorStop(0, 'rgba(243,237,223,.85)');
-        grad.addColorStop(0.35, 'rgba(233,201,139,.28)');
-        grad.addColorStop(1, 'rgba(233,201,139,0)');
-        g.fillStyle = grad;
-        g.fillRect(0, 0, 64, 64);
-        var tex = new THREE.CanvasTexture(c);
-        tex.colorSpace = THREE.SRGBColorSpace;
-        return tex;
-      }
-
-      var moteCount = coarse ? 50 : 120;
-      var motePos = [];
-      for (var m = 0; m < moteCount; m++) {
-        var ma = Math.random() * Math.PI * 2;
-        var mr = 0.2 + Math.random() * 1.5;
-        motePos.push(
-          Math.cos(ma) * mr,
-          (Math.random() * 2 - 1) * 2.5,
-          Math.sin(ma) * mr * 0.7
-        );
-      }
-      var moteGeo = new THREE.BufferGeometry();
-      moteGeo.setAttribute('position', new THREE.Float32BufferAttribute(motePos, 3));
-      var dust = new THREE.Points(moteGeo, new THREE.PointsMaterial({
-        color: 0xf3e7c9,
-        size: 0.12,
-        map: disc(),
-        transparent: true,
-        opacity: 0.5,
-        depthWrite: false,
-        sizeAttenuation: true,
-        blending: THREE.AdditiveBlending
-      }));
-      vessel.add(dust);
-
       /* ---------- layout ---------- */
 
-      var baseZ = 7.2;
-      var lookX = 0.55;
+      var baseZ = 8.8;
+      var lookX = 0;
+      var mobile = false;
 
       function layout() {
         var w = canvas.clientWidth || stage.clientWidth;
         var h = canvas.clientHeight || stage.clientHeight;
         if (!w || !h) return;
 
-        var mobile = w < 900;
-        renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, mobile ? 1.6 : 1.9));
+        mobile = w < 900;
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, mobile ? 1.55 : 1.75));
         renderer.setSize(w, h, false);
         camera.aspect = w / h;
         camera.updateProjectionMatrix();
 
-        vessel.position.x = mobile ? 0.28 : 1.52;
-        vessel.scale.setScalar(mobile ? 0.98 : 0.9);
-        lookX = mobile ? 0.18 : 0.5;
-        baseZ = mobile ? 8.4 : 7.2;
+        vessel.position.x = mobile ? 0 : 1.1;
+        vessel.position.y = mobile ? -0.05 : 0.12;
+        vessel.scale.setScalar(mobile ? 0.92 : 0.74);
+        lookX = mobile ? 0 : 0.05;
+        baseZ = mobile ? 9.0 : 8.8;
         camera.position.z = baseZ;
       }
 
@@ -221,32 +189,32 @@
       function placeCells(now, progress) {
         for (var j = 0; j < count; j++) {
           var d = seeds[j];
-          var bob = Math.sin(now * 0.00034 + d.ph) * d.amp;
+          var bob = Math.sin(now * 0.00022 + d.ph) * d.amp;
           dummy.position.set(
-            d.x + Math.cos(now * 0.00022 + d.ph) * 0.025,
+            d.x + Math.cos(now * 0.00016 + d.ph) * 0.018,
             d.y + bob,
-            d.z + Math.sin(now * 0.00019 + d.ph) * 0.025
+            d.z + Math.sin(now * 0.00014 + d.ph) * 0.018
           );
-          dummy.scale.setScalar(d.s * (1 + progress * 0.06));
+          dummy.scale.setScalar(d.s * (1 + progress * 0.04));
           dummy.updateMatrix();
           cells.setMatrixAt(j, dummy.matrix);
         }
         cells.instanceMatrix.needsUpdate = true;
       }
 
+      var pointer = { x: 0, y: 0 };
+      var pointerTarget = { x: 0, y: 0 };
+
       function render(now, progress) {
-        vessel.rotation.y = progress * 0.55 + pointer.x * 0.16;
-        vessel.rotation.x = -0.03 + progress * 0.05 + pointer.y * 0.06;
-        camera.position.z = baseZ - progress * 1.15;
-        camera.position.y = 0.15 + progress * 0.22;
+        vessel.rotation.y = now * 0.000025 + pointer.x * 0.07;
+        vessel.rotation.x = pointer.y * 0.025;
+        camera.position.z = baseZ - progress * 0.3;
+        camera.position.y = 0.1 + progress * 0.1;
         camera.lookAt(lookX, 0, 0);
-        dust.rotation.y = now * 0.000018;
         placeCells(now, progress);
         renderer.render(scene, camera);
       }
 
-      var pointer = { x: 0, y: 0 };
-      var pointerTarget = { x: 0, y: 0 };
       var raf = 0;
       var running = false;
       var last = 0;
@@ -256,8 +224,8 @@
         var dt = Math.min((now - last) / 1000, 0.05);
         last = now;
 
-        pointer.x += (pointerTarget.x - pointer.x) * Math.min(1, dt * 3.2);
-        pointer.y += (pointerTarget.y - pointer.y) * Math.min(1, dt * 3.2);
+        pointer.x += (pointerTarget.x - pointer.x) * Math.min(1, dt * 2.6);
+        pointer.y += (pointerTarget.y - pointer.y) * Math.min(1, dt * 2.6);
 
         render(now, scrollProgress());
       }
