@@ -1,0 +1,31 @@
+name: apply-redesign
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.redesign/payload.b64'
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Apply the redesign payload
+        run: |
+          set -euo pipefail
+          test -f .redesign/payload.b64
+          base64 -d .redesign/payload.b64 > /tmp/site.tar.xz
+          tar -xJf /tmp/site.tar.xz -C .
+          rm -rf .redesign
+          git config user.name "Cameron Orr"
+          git config user.email "cameronorr2011@gmail.com"
+          git add -A
+          if git diff --cached --quiet; then echo "nothing to apply"; exit 0; fi
+          git commit -m "feat(design): rebuild the site as a flat specimen sheet" -m "Replace the soft petrichor surfaces with a bone-paper specimen system: Instrument Serif display, Inter Tight body, IBM Plex Mono labels, hairline rules, square plates and a single brass accent. Rebuild the hero around one restrained WebGL culture column with a static reduced-motion render and a CSS fallback. Rework the algae, kit, about, article and 404 pages onto the same grid and type scale." -m "🤖 Generated with Codebuff" -m "Co-Authored-By: Codebuff <noreply@codebuff.com>"
+          git push origin HEAD:main
