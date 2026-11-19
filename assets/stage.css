@@ -93,15 +93,15 @@
 
 @media (max-width:900px){
   .stage{min-height:auto;padding-block:0}
-  .stage__canvas{height:46svh}
-  .stage__fallback{right:50%;transform:translateX(50%);top:9%;width:32%;height:30%}
+  .stage__canvas{height:32svh}
+  .stage__fallback{right:50%;transform:translateX(50%);top:7%;width:32%;height:24%}
   .stage__grid{
     grid-template-columns:1fr;gap:0;
-    padding-top:calc(46svh + 1.6rem);
+    padding-top:calc(32svh + 1.3rem);
     padding-bottom:1.5rem;
   }
   .stage__aside{display:none}
-  .stage h1{font-size:clamp(3rem,12vw,4.6rem);max-width:12ch}
+  .stage h1{font-size:clamp(2.7rem,11vw,4rem);max-width:12ch}
   .stage .lead{margin-top:1.5rem;font-size:1rem;line-height:1.65}
   .stage .btn-row{margin-top:1.8rem}
   .stage .specs{grid-template-columns:1fr 1fr}
@@ -122,6 +122,30 @@
   .nav{gap:.9rem;-webkit-mask-image:none;mask-image:none}
   .nav a:not(.btn){font-size:.8rem}
 }
+
+/* Collection-era stage: a black product field, not a specimen plate. */
+.stage{min-height:calc(100svh - 9rem);border-bottom-color:rgba(255,255,255,.14)}
+.stage h1{
+  font-family:var(--font-display);font-weight:700;
+  font-size:clamp(3.3rem,7vw,6.2rem);line-height:.92;letter-spacing:-.05em;
+}
+.stage__eyebrow{color:var(--lime)}
+.stage__eyebrow span{border-color:rgba(255,255,255,.35)}
+.stage .lead{color:rgba(255,255,255,.74)}
+.stage .btn{background:var(--white);border-color:var(--white);color:var(--ink)}
+.stage .btn:hover{background:var(--white);border-color:var(--white);color:var(--ink)}
+.stage .btn--ghost{background:transparent;border-color:rgba(255,255,255,.38);color:var(--white)}
+.stage .btn--ghost:hover{background:transparent;border-color:var(--white);color:var(--white)}
+.stage .btn-row .note{color:rgba(255,255,255,.54)}
+.stage__fallback{border-color:rgba(255,255,255,.26)}
+.stage__fallback::before,.stage__fallback::after{background:rgba(255,255,255,.26)}
+.stage .specs{border-top-color:rgba(255,255,255,.2)}
+.stage .specs div{border-right-color:rgba(255,255,255,.1)}
+.stage .specs dt{color:var(--lime)}
+.stage .specs dd{color:var(--white)}
+.stage .specs dd span{color:rgba(255,255,255,.5)}
+.stage__cue{color:rgba(255,255,255,.42)}
+.stage__cue i{background:var(--lime)}
 
 @media print{
   .stage{display:none}

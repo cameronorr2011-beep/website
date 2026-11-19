@@ -46,7 +46,7 @@
 
       scene.add(new THREE.HemisphereLight(0xe8efe2, 0x06120d, 1.45));
 
-      var key = new THREE.DirectionalLight(0xfff3d8, 1.55);
+      var key = new THREE.DirectionalLight(0xffffff, 1.45);
       key.position.set(4, 6, 5);
       scene.add(key);
 
@@ -58,12 +58,12 @@
 
       var R = 0.82;
       var H = 1.78;
-      var brass = 0xc89b45;
+      var brass = 0xffffff;
 
       var ringMat = new THREE.MeshBasicMaterial({
         color: brass,
         transparent: true,
-        opacity: 0.42
+        opacity: 0.28
       });
       var ringGeo = new THREE.TorusGeometry(R, 0.0035, 4, 128);
 
@@ -86,7 +86,7 @@
       edgeGeo.setAttribute('position', new THREE.Float32BufferAttribute(edgePoints, 3));
       vessel.add(new THREE.LineSegments(
         edgeGeo,
-        new THREE.LineBasicMaterial({ color: brass, transparent: true, opacity: 0.1 })
+        new THREE.LineBasicMaterial({ color: brass, transparent: true, opacity: 0.08 })
       ));
 
       /* a measuring rule beside the column, like a bench instrument */
@@ -100,7 +100,7 @@
       ruleGeo.setAttribute('position', new THREE.Float32BufferAttribute(rulePoints, 3));
       vessel.add(new THREE.LineSegments(
         ruleGeo,
-        new THREE.LineBasicMaterial({ color: brass, transparent: true, opacity: 0.2 })
+        new THREE.LineBasicMaterial({ color: brass, transparent: true, opacity: 0.14 })
       ));
 
       /* ---------- cells: one instanced draw call ---------- */
@@ -122,7 +122,7 @@
       var greenDeep = new THREE.Color(0x2f6b4f);
       var greenMid = new THREE.Color(0x5b8f62);
       var greenPale = new THREE.Color(0x8faa6d);
-      var gold = new THREE.Color(0xc89b45);
+      var gold = new THREE.Color(0xc7f36b);
 
       for (var i = 0; i < count; i++) {
         var angle = Math.random() * Math.PI * 2;
