@@ -6,7 +6,11 @@
 <title>Live Microalgae for Bivalve Hatcheries | Orr Biologicals</title>
 <meta name="description" content="Live microalgae for bivalve hatcheries and reef keepers: weekly Nannochloropsis, 16 oz starters, f/2 concentrate and a $59 culture kit. Vista, California.">
 <link rel="canonical" href="https://orrbiologicals.com/">
+<meta name="robots" content="max-image-preview:large">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=Instrument+Serif:ital@0;1&amp;family=Inter+Tight:wght@400;500;600&amp;display=swap">
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="stylesheet" href="/styles.css">
 <link rel="stylesheet" href="/assets/stage.css">
@@ -23,12 +27,19 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Orr Biologicals">
 <meta property="og:title" content="Live microalgae for bivalve hatcheries | Orr Biologicals">
-<meta property="og:description" content="Live marine microalgae grown in Vista, California. Weekly Nannochloropsis batches, hatchery strains by arrangement, f/2 concentrate, and a $59 kit for hobbyists, reef keepers and classrooms.">
+<meta property="og:description" content="Live marine microalgae grown in Vista, California: weekly Nannochloropsis, 16 oz starters, f/2 concentrate and a $59 culture kit for hatcheries and hobbyists.">
 <meta property="og:url" content="https://orrbiologicals.com/">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://orrbiologicals.com/assets/og-core.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Orr Biologicals homepage: live microalgae for bivalve hatcheries, with the culture column.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Live microalgae for bivalve hatcheries | Orr Biologicals">
-<meta name="twitter:description" content="Live marine microalgae for oyster, clam and scallop hatcheries. Bench-grown in Vista, California, shipped Monday to Wednesday.">
+<meta name="twitter:description" content="Live marine microalgae grown in Vista, California: weekly Nannochloropsis, 16 oz starters, f/2 concentrate and a $59 culture kit for hatcheries and hobbyists.">
+<meta name="twitter:image" content="https://orrbiologicals.com/assets/og-core.jpg">
+<meta name="twitter:image:alt" content="Orr Biologicals homepage: live microalgae for bivalve hatcheries, with the culture column.">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -38,7 +49,8 @@
       "@id": "https://orrbiologicals.com/#organization",
       "name": "Orr Biologicals",
       "url": "https://orrbiologicals.com/",
-      "logo": "https://orrbiologicals.com/favicon.svg",
+      "logo": "https://orrbiologicals.com/assets/logo-core.png",
+      "image": "https://orrbiologicals.com/assets/og-core.jpg",
       "description": "Producer of live marine microalgae, f/2 nutrient concentrate and microalgae culture kits for bivalve hatcheries, laboratories, classrooms and hobbyists.",
       "email": "service@orrbiologicals.com",
       "foundingDate": "2026",
@@ -144,7 +156,7 @@
       <a href="/algae">Algae</a>
       <a href="/algae#media">Nutrient media</a>
       <a href="/culturekits">Culture kits</a>
-      <a href="/articles">Articles</a>
+      <a href="/articles/">Articles</a>
       <a href="/company">About</a>
       <a class="btn" href="mailto:service@orrbiologicals.com?subject=Quote%20request">Request a quote</a>
     </nav>
@@ -154,8 +166,10 @@
 <main id="main">
 
   <section class="stage" id="stage" aria-labelledby="hero-h">
-    <canvas class="stage__canvas" data-culture aria-hidden="true"></canvas>
-    <div class="stage__fallback" aria-hidden="true"></div>
+    <div class="stage__media" aria-hidden="true">
+      <canvas class="stage__canvas" data-culture></canvas>
+      <div class="stage__fallback"></div>
+    </div>
 
     <div class="wrap stage__grid">
       <div class="stage__copy">
@@ -521,7 +535,7 @@
           <li><a href="/company">About Orr Biologicals</a></li>
           <li><a href="/company#quality">Culture quality</a></li>
           <li><a href="/company#contact">Contact</a></li>
-          <li><a href="/articles">Articles</a></li>
+          <li><a href="/articles/">Articles</a></li>
           <li><a href="/sitemap.xml">Sitemap</a></li>
         </ul>
       </div>

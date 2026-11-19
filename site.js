@@ -42,6 +42,20 @@
     });
   }
 
+  /* Parallax is an enhancement, not a dependency. React is downloaded after
+     idle, only on wide screens, and only when motion is welcome. */
+  var wide = window.matchMedia('(min-width: 861px)');
+  if (!reduced.matches && wide.matches && document.querySelector('.stage, .immersion, .petrichor, .alg-strip, .shot')) {
+    var loadParallax = function () {
+      import('/assets/parallax.js').catch(function () {});
+    };
+    if ('requestIdleCallback' in window) {
+      window.requestIdleCallback(loadParallax, { timeout: 1600 });
+    } else {
+      window.setTimeout(loadParallax, 900);
+    }
+  }
+
   if (reduced.matches || !('IntersectionObserver' in window)) return;
 
   var nodes = document.querySelectorAll([

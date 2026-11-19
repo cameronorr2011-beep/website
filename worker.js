@@ -33,7 +33,9 @@ function secureHeaders(source, extra = {}) {
 function withHeaders(response, url) {
   const headers = secureHeaders(response.headers);
 
-  if (/\.(?:css|svg|png|jpg|jpeg|webp|woff2?)$/i.test(url.pathname)) {
+  if (/\.(?:js|css)$/i.test(url.pathname)) {
+    headers.set("Cache-Control", "public, max-age=3600, must-revalidate");
+  } else if (/\.(?:svg|png|jpg|jpeg|webp|woff2?)$/i.test(url.pathname)) {
     headers.set("Cache-Control", ASSET_CACHE);
   } else if (headers.get("content-type")?.includes("text/html")) {
     headers.set("Cache-Control", HTML_CACHE);
@@ -59,6 +61,7 @@ async function notFound(request, env) {
     headers: secureHeaders(page.headers, {
       "Content-Type": "text/html; charset=utf-8",
       "Cache-Control": "no-store",
+      "X-Robots-Tag": "noindex",
     }),
   });
 }
@@ -86,6 +89,11 @@ export default {
       return Response.redirect(new URL(legacyTarget, url).toString(), 301);
     }
 
+    // A directory is the trailing-slash URL: "/articles/", not "/articles".
+    if (pathname === "/articles") {
+      return Response.redirect(new URL("/articles/", url).toString(), 301);
+    }
+
     // A directory index is the trailing-slash URL: "/articles/", not
     // "/articles/index.html".
     if (pathname.endsWith("/index.html")) {
@@ -98,6 +106,10 @@ export default {
       url.pathname = pathname.slice(0, -5);
       return Response.redirect(url.toString(), 301);
     }
+
+    // The error page lives at "/404"; requesting it directly must not become
+    // a cacheable 200 through the asset layer's clean-URL rewrite.
+    if (pathname === "/404") return notFound(request, env);
 
     const response = await env.ASSETS.fetch(request);
     if (response.status === 404) {

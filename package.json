@@ -3,6 +3,9 @@
   "private": true,
   "scripts": {
     "build": "npm run build:cinema && python3 tools/site/build_seo.py && npm run build:simulation && npm run build:game",
+    "build:site": "npm --prefix site run build",
+    "start": "node server.js",
+    "dev": "npm run build:site && node --watch server.js",
     "test": "node tools/test_all.mjs && npm run test:simulation && npm run test:game && npm --prefix apps/culturetrace test",
     "server:static": "node tools/static-server.mjs",
     "build:cinema": "node tools/build_cinema.mjs",
