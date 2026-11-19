@@ -4,7 +4,7 @@ on:
   push:
     branches: [main]
     paths:
-      - '.redesign/payload.b64'
+      - '.redesign/payload-*.b64'
 
 permissions:
   contents: write
@@ -19,8 +19,8 @@ jobs:
       - name: Apply the redesign payload
         run: |
           set -euo pipefail
-          test -f .redesign/payload.b64
-          base64 -d .redesign/payload.b64 > /tmp/site.tar.xz
+          test -f .redesign/payload-03.b64
+          cat .redesign/payload-*.b64 | base64 -d > /tmp/site.tar.xz
           tar -xJf /tmp/site.tar.xz -C .
           rm -rf .redesign
           git config user.name "Cameron Orr"
