@@ -1,0 +1,55 @@
+{
+  "date": "2026-11-18",
+  "model": "openai/gpt-oss-120b",
+  "generated_at": "2026-11-19T01:35:42Z",
+  "picks": [
+    {
+      "pmid": "43002287",
+      "title": "CellScore: an open-source image-based pipeline for automated cell quantification in microalgae.",
+      "journal": "Advanced biotechnology",
+      "year": "2026",
+      "pub_date": "2026-11-09",
+      "url": "https://doi.org/10.1007/s44307-026-00131-w",
+      "topic": "Single-cell",
+      "hook": "Open-source pipeline quantifies microalgal cell density automatically for research and industry.",
+      "article": "A recent study set out to create a fast, low‑cost way to count microalgal cells from images, because cell density tells researchers how well cultures are growing.\n\nThe authors built CellScore, an open‑source software pipeline that processes microscope or camera pictures of algae and automatically identifies and tallies individual cells. The tool was tested on typical laboratory‑scale cultures using standard imaging equipment.\n\nThe new pipeline was shown to quantify cell numbers rapidly and without the high expense or labor‑intensive steps of many existing methods.\n\nProviding an accessible, automated counting method can help both basic researchers and industrial growers monitor algal health more efficiently.",
+      "why": "Accurate, inexpensive cell counting speeds up algae research and production, supporting sustainable biotech applications."
+    },
+    {
+      "pmid": "43050583",
+      "title": "CRISPR/Cas for diatom gene editing: pitfalls, solutions, and emerging tools.",
+      "journal": "Plant physiology",
+      "year": "2026",
+      "pub_date": "2026-11-18",
+      "url": "https://doi.org/10.1093/plphys/kiag858",
+      "topic": "Biotech",
+      "hook": "Latest CRISPR tools and pitfalls for editing diatom genomes, unlocking new bio‑product potential.",
+      "article": "A recent study set out to examine how CRISPR/Cas gene‑editing tools can be applied to diatoms, a group of single‑cell photosynthetic microalgae that are gaining attention in biotechnology. The researchers described the challenges that arise from the complex evolutionary history of diatoms, which have many species‑specific genes whose functions are largely unknown, and they discussed possible solutions and new tools to overcome these obstacles.\n\nThe work focused on the use of CRISPR/Cas systems to edit diatom genomes, reviewing existing techniques and highlighting emerging approaches that could improve editing efficiency and specificity. No experimental work beyond literature review is reported in the abstract.\n\nThe authors conclude that CRISPR/Cas‑based editing offers a unique opportunity to uncover the roles of unknown diatom genes and to introduce desirable traits for biotechnological applications.\n\nUnderstanding and manipulating diatom genetics could accelerate the development of algae‑based products, from biofuels to high‑value compounds.",
+      "why": "Better gene tools for diatoms could speed up algae biotech, making sustainable fuels and chemicals more feasible."
+    },
+    {
+      "pmid": "43034000",
+      "title": "Medium acidification and redox imbalance drive triacylglycerol hyperaccumulation in Chlorella sorokiniana.",
+      "journal": "Bioresource technology",
+      "year": "2026",
+      "pub_date": "2026-11-14",
+      "url": "https://doi.org/10.1016/j.biortech.2026.136249",
+      "topic": "Biofuels",
+      "hook": "Acidic, redox‑imbalanced conditions trigger massive TAG buildup in Chlorella sorokiniana.",
+      "article": "A recent study set out to understand why the microalga Chlorella sorokiniana can accumulate large amounts of triacylglycerol (a storage fat) when grown with plenty of carbon and nitrogen but without nitrogen starvation. The researchers grew the strain UTE X 2714 in media containing glucose and ammonium, keeping ammonium uptake steady during the early growth phase, and then examined its physiology and metabolism.\n\nThey found that the hyperaccumulation of triacylglycerol was driven by two linked stresses: the medium becoming more acidic and an imbalance in the cell’s redox state (the balance of electron carriers). These conditions together triggered the algae to channel carbon into fat storage.\n\nThe work shows that manipulating pH and redox balance can boost lipid production in algae without needing to starve them of nitrogen, offering a potentially gentler way to increase bio‑oil yields.",
+      "why": "Controlling acidity and redox could raise algae oil output for sustainable biofuels."
+    },
+    {
+      "pmid": "43020147",
+      "title": "Rapid enrichment of auto-floating microalgae from river-derived microalgal communities.",
+      "journal": "Bioresource technology",
+      "year": "2026",
+      "pub_date": "2026-11-12",
+      "url": "https://doi.org/10.1016/j.biortech.2026.136255",
+      "topic": "Cultivation",
+      "hook": "Fast method isolates auto‑floating microalgae, a low‑energy route to biomass harvest.",
+      "article": "A recent study set out to develop a fast way to pull out naturally buoyant micro‑algae from mixed river samples, aiming to make large‑scale, low‑energy algae harvesting more practical. The researchers collected river water containing diverse algae and applied a hydrophobicity‑driven selection method, which favors cells that repel water and tend to float. This approach quickly enriched the auto‑floating micro‑algae, as shown by an increase in cell‑surface hydrophobicity.\n\nThe method involved screening the mixed community for those cells that naturally float, using the property that water‑repelling surfaces cause algae to rise to the surface. By focusing on this trait, the team was able to concentrate the desired floating strains without lengthy culturing steps.\n\nThe key finding was that the hydrophobicity‑based selection markedly boosted the proportion of auto‑floating algae, indicating a rapid enrichment pathway for these useful organisms.\n\nThis is interesting because it offers a simpler, energy‑saving route to harvest algae that can be used in wastewater treatment and bio‑product production.",
+      "why": "Enriching naturally buoyant algae could lower energy costs for large‑scale algae harvesting in biotechnological applications."
+    }
+  ]
+}
