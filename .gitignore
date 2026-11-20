@@ -12,3 +12,6 @@ node_modules/
 docs/lab-*.png
 docs/live-game.png
 docs/local-webgl.png
+
+# local visual audit captures
+artifacts/audit/
