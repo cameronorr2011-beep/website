@@ -61,7 +61,8 @@ GROQ_URL = "https://api.groq.com/openai/v1/chat/completions"
 
 TARGET_COUNT = 10
 WINDOW_DAYS = 14
-PER_BEAT = 12
+PER_BEAT = 10
+SCOUT_STAGGER_SECONDS = 8
 REPEAT_WINDOW_DAYS = 7
 
 EUTILS = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils"
@@ -334,7 +335,7 @@ def scout(beat: dict, records: list[dict], quiet: bool = False) -> list[dict]:
         lines.append(
             f"PMID {r['pmid']} | {r['pub_date'] or 'date not stated'} | {r['journal'][:70]}\n"
             f"    {r['title']}\n"
-            f"    {r['abstract'][:260]}"
+            f"    {r['abstract'][:220]}"
         )
     system = (
         "You are a scout on the Algae news desk at Orr Biologicals "
@@ -362,12 +363,12 @@ def scout(beat: dict, records: list[dict], quiet: bool = False) -> list[dict]:
     ]
     try:
         try:
-            result = groq(messages, "beat_picks", SCOUT_MODEL, max_tokens=1400)
+            result = groq(messages, "beat_picks", SCOUT_MODEL, max_tokens=900)
         except Exception as e:
             # The scout model is an optimisation, not a dependency: if it is
             # unavailable or rejects the schema, the editor model scouts too.
             log(f"scout {beat['key']}: {SCOUT_MODEL} failed ({e}); retrying on {MODEL}")
-            result = groq(messages, "beat_picks", MODEL, max_tokens=1400)
+            result = groq(messages, "beat_picks", MODEL, max_tokens=900)
     except Exception as e:
         log(f"scout {beat['key']}: failed ({e})")
         return []
@@ -568,9 +569,16 @@ def main() -> int:
         chosen = [{"pmid": r["pmid"], "topic": "Research",
                    "hook": first_sentence(r["abstract"])} for r in candidates[:TARGET_COUNT]]
     else:
+        # The free tier allows 8k tokens/minute per model, so the scouts are
+        # launched together but staggered by a few seconds each: they still
+        # finish inside a minute, without all five landing in one window.
+        def staggered(index: int, beat: dict) -> list[dict]:
+            time.sleep(index * SCOUT_STAGGER_SECONDS)
+            return scout(beat, by_beat[beat["key"]])
+
         scout_picks: list[dict] = []
         with ThreadPoolExecutor(max_workers=len(BEATS)) as pool:
-            futures = [pool.submit(scout, b, by_beat[b["key"]]) for b in BEATS]
+            futures = [pool.submit(staggered, i, b) for i, b in enumerate(BEATS)]
             for fut in futures:
                 scout_picks.extend(fut.result())
         log(f"scouts: {len(scout_picks)} pick(s) total")
