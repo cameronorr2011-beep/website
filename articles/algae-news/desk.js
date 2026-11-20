@@ -129,7 +129,7 @@
     busy(true);
     setStatus('Thinking', 'thinking');
 
-    fetch(endpoint + '/refresh', {
+    fetch(endpoint + '/api/algae-refresh', {
       method: 'POST',
       headers: { 'content-type': 'application/json' },
       body: JSON.stringify({ seen: seen })
