@@ -113,6 +113,27 @@ Repeat `--task` to run several concurrently (4 at a time by default, set
 logs every request and may use it in internal evaluation datasets unless you
 opt out at <https://logfare.ai/consent>.
 
+## Algae news daily digest
+
+`/articles/algae-news/` carries a ten-paper digest that refreshes every day at
+noon Pacific. Five Groq scout subagents (`openai/gpt-oss-20b`) read one PubMed
+beat each in parallel — cultivation, feed and food, carbon and water, pigments
+and materials, methods and ecology — and an editor call (`openai/gpt-oss-120b`)
+merges them into the day's ten. Only real PubMed records are published; the
+hooks are editorial sentences written from each abstract.
+
+`.github/workflows/algae-news-daily.yml` runs at 19:00, 20:00 and 21:00 UTC and
+publishes once the Pacific clock reaches noon, so the schedule survives DST. It
+needs `GROQ_API_KEY` as a repository secret.
+
+```bash
+npm run algae:daily -- --date 2026-11-20   # build one day's digest
+python3 tools/algae_news/daily.py --no-ai --dry-run   # pipeline check, no model calls
+```
+
+Output lands in `articles/algae-news/data/`: `<date>.json`, `latest.json` (what
+the page fetches) and `index.json`.
+
 ## Docker
 
 Build and run the same reproducible static site in a container:

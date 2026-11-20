@@ -1,0 +1,81 @@
+name: Algae news daily digest
+
+# Builds the ten-paper microalgae digest for /articles/algae-news/:
+#   PubMed (last 14 days, five beats)
+#     -> five GPT-OSS scouts on Groq, in parallel
+#     -> one GPT-OSS editor picks the day's ten
+#     -> articles/algae-news/data/<date>.json + latest.json + index.json
+#
+# Refresh time: noon Pacific, every day, DST-safe. GitHub cron is UTC-only
+# and runners are routinely delayed, so three slots cover noon year-round:
+# 19:00 UTC is 12:00 PDT (summer), 20:00 UTC is 12:00 PST (winter), and
+# 21:00 UTC is the backup slot. The gate publishes only once the Pacific
+# clock has reached 12 and only if today's file does not exist yet, so
+# whichever slot fires first in the noon window does the work and the rest
+# skip. Manual runs (workflow_dispatch) skip the gate.
+
+on:
+  schedule:
+    - cron: "0 19 * * *"
+    - cron: "0 20 * * *"
+    - cron: "0 21 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: algae-news-daily
+  cancel-in-progress: false
+
+jobs:
+  digest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Once per Pacific day, only after noon
+        id: gate
+        env:
+          TZ: America/Los_Angeles
+        run: |
+          TODAY=$(date +%F)
+          HOUR=$(date +%-H)
+          echo "Pacific now: $TODAY ${HOUR}:00"
+          echo "TODAY=$TODAY" >> "$GITHUB_ENV"
+          if [ "$GITHUB_EVENT_NAME" = "workflow_dispatch" ]; then
+            echo "Manual run -- skipping the gate."
+            exit 0
+          fi
+          if [ -f "articles/algae-news/data/$TODAY.json" ]; then
+            echo "Digest for $TODAY already exists -- nothing to do."
+            echo "skip=true" >> "$GITHUB_ENV"
+            exit 0
+          fi
+          if [ "$HOUR" -lt 12 ] || [ "$HOUR" -gt 17 ]; then
+            echo "Outside the noon window -- a later slot will publish."
+            echo "skip=true" >> "$GITHUB_ENV"
+          fi
+
+      - name: Assemble the ten-paper digest
+        if: ${{ env.skip != 'true' }}
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+        run: python tools/algae_news/daily.py --date "$TODAY"
+
+      - name: Commit the digest
+        if: ${{ env.skip != 'true' }}
+        run: |
+          git config user.name "algae-desk-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add articles/algae-news/data/
+          if git diff --cached --quiet; then
+            echo "Nothing new to commit"
+          else
+            git commit -m "Add algae news digest for $TODAY"
+            git push
+          fi
