@@ -103,6 +103,25 @@ while journal, methodology, education, legal and archive pages share the same
 navigation, typography, evidence-status treatment and responsive reading
 surface.
 
+## Delegated subagents (Logfare)
+
+`tools/logfare_agent.mjs` hands one or more tasks to a Logfare model over its
+OpenAI-compatible API, so review, drafting and cross-checking can run outside
+the main agent. Reads `LOGFARE_API_KEY` from the shell or from `.env.local`
+(gitignored; never commit it):
+
+```bash
+npm run logfare -- --task "Review js/site.js for runtime bugs" --file js/site.js
+npm run logfare -- --task "audit headings" --task "audit alt text" --plan "glm-5.3>glm-5.2:2" --effort max
+```
+
+Repeat `--task` to run several concurrently (4 at a time by default, set
+`LOGFARE_CONCURRENCY` to change it). `--file` attaches repository context,
+`--plan "model>fallback:count"` assigns models per task with fallbacks, and
+`--effort` sets reasoning effort where the model supports it. Note that Logfare
+logs every request and may use it in internal evaluation datasets unless you
+opt out at <https://logfare.ai/consent>.
+
 ## Docker
 
 Build and run the same reproducible static site in a container:
@@ -139,6 +158,7 @@ tools/build_cinema.mjs    reproducible scene bundle build
 tools/build_simulation.mjs reproducible Digital Lab bundle build
 tools/site/               deterministic static/SEO assembly
 tools/static-server.mjs   dependency-free local production-like server
+tools/logfare_agent.mjs   delegated Logfare subagent runner (npm run logfare)
 tools/export_algae_growth.mjs  standalone HTML + MP4 export helper
 Dockerfile                clean Linux build and run path
 ```

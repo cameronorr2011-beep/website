@@ -8,6 +8,7 @@
     "dev": "npm run build:site && node --watch server.js",
     "test": "node tools/test_all.mjs && npm run test:simulation && npm run test:game && npm --prefix apps/culturetrace test",
     "server:static": "node tools/static-server.mjs",
+    "logfare": "node tools/logfare_agent.mjs",
     "build:cinema": "node tools/build_cinema.mjs",
     "build:simulation": "node tools/build_simulation.mjs",
     "qa": "python3 tools/site/seo_audit.py --out docs/seo/current",
