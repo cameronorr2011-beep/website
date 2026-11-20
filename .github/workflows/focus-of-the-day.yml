@@ -65,7 +65,7 @@ jobs:
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
         run: |
           python tools/blog/build_kb_index.py
-          python tools/blog/pick_articles.py --date "$TODAY"
+          python tools/blog/pick_articles.py --date "2026-11-20"
 
       - name: Commit new post
         if: ${{ env.skip != 'true' }}
