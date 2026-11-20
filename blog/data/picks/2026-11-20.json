@@ -1,0 +1,55 @@
+{
+  "date": "2026-11-20",
+  "model": "openai/gpt-oss-120b",
+  "generated_at": "2026-11-20T04:19:20Z",
+  "picks": [
+    {
+      "pmid": "43035162",
+      "title": "High-throughput solvent screening for microalgae oil extraction based on multi-criteria decision analysis.",
+      "journal": "Bioresource technology",
+      "year": "2026",
+      "pub_date": "2026-11-15",
+      "url": "https://doi.org/10.1016/j.biortech.2026.136252",
+      "topic": "Biofuels",
+      "hook": "A decision‑analysis workflow ranks solvents for fast, high‑yield microalgae oil extraction.",
+      "article": "A recent study set out to find safer and more efficient solvents for extracting oil from microalgae, which could improve the production of biofuels and chemicals. The researchers built a high‑throughput, multi‑step computational workflow that screens many candidate solvents using multi‑criteria decision analysis, a method that weighs several performance factors at once. They applied the workflow to evaluate a large library of potential solvents, comparing each on criteria such as extraction efficiency, toxicity, and environmental impact. The study identified several promising alternatives to the commonly used n‑hexane solvent.\n\nThis work is interesting because it offers a systematic way to discover greener solvents that could make microalgae‑based biofuel production more viable and less harmful to the environment.",
+      "why": "Finding greener solvents could lower costs and reduce toxicity in algae oil extraction, advancing sustainable biofuel production."
+    },
+    {
+      "pmid": "43008869",
+      "title": "Salicylic acid offsets productivity-infrastructure trade-off in marine microalga cultivation without carbon dioxide dosing.",
+      "journal": "Bioresource technology",
+      "year": "2026",
+      "pub_date": "2026-11-10",
+      "url": "https://doi.org/10.1016/j.biortech.2026.136224",
+      "topic": "Cultivation",
+      "hook": "Salicylic acid restores productivity in marine microalgae without extra CO₂ dosing.",
+      "article": "A recent study looked at whether adding salicylic acid could help a marine microalga keep growing well when the water’s salt level is high and the system isn’t supplied with extra carbon dioxide or pH control.\n\nThe researchers grew the species Chrysochromulina rotalis in a six‑stage sequential‑batch cascade using 10‑L bubble‑column photoreactors. They ran paired reactors at each stage, one with salicylic acid added and one without, and they turned pH control off, then back on, at salinity levels of 35 and 50 practical salinity units.\n\nThey found that salicylic acid supplementation recovered part of the productivity loss that normally occurs under those stressful conditions.\n\nThis suggests a simple chemical tweak could make large‑scale algal cultivation more robust when carbon dioxide dosing or strict pH management is not feasible.",
+      "why": "Salicylic acid could help keep algae farms productive under high‑salinity, low‑CO2 conditions, easing operational demands."
+    },
+    {
+      "pmid": "43037205",
+      "title": "Phosphorus limitation shifts cellular phosphorus allocation toward polyphosphate by depleting other phosphorus pools in Synechococcus.",
+      "journal": "The ISME journal",
+      "year": "2026",
+      "pub_date": "2026-11-16",
+      "url": "https://doi.org/10.1093/ismejo/wrag285",
+      "topic": "Climate",
+      "hook": "Phosphorus scarcity forces Synechococcus to stockpile polyphosphate, reshaping cellular P use.",
+      "article": "A recent study examined how limiting phosphorus (P) in the environment changes the way the marine cyanobacterium Synechococcus distributes its internal phosphorus. The researchers grew Synechococcus under conditions with low phosphorus and compared it to growth in phosphorus‑rich conditions. They measured the amounts of different phosphorus pools inside the cells, focusing on polyphosphate, a chain‑like form of phosphorus that many organisms store.\n\nThe results showed that when external phosphorus was scarce, the cells shifted a larger fraction of their total particulate phosphorus (TPP) into polyphosphate, while the other phosphorus pools were depleted. This finding contrasts with the traditional view of polyphosphate as merely a luxury storage compound that accumulates only when phosphorus is abundant.\n\nThese observations suggest that polyphosphate may play a more active role in helping cyanobacteria cope with phosphorus limitation, a common situation in many ocean regions.",
+      "why": "Understanding polyphosphate dynamics could improve strategies for managing nutrient cycles in algal cultivation and marine ecosystems."
+    },
+    {
+      "pmid": "43020149",
+      "title": "Frustulin-mediated antimicrobial peptide display restricts ciliate contamination in Phaeodactylum tricornutum.",
+      "journal": "Bioresource technology",
+      "year": "2026",
+      "pub_date": "2026-11-12",
+      "url": "https://doi.org/10.1016/j.biortech.2026.136257",
+      "topic": "Biotech",
+      "hook": "Engineered frustulin displays antimicrobial peptides, keeping ciliates out of Phaeodactylum cultures.",
+      "article": "A recent study set out to create a built‑in defence for the microalga Phaeodactylum tricornutum, aiming to keep tiny ciliate predators from ruining large‑scale cultures.\n\nThe researchers engineered the diatom’s cells to display antimicrobial peptides – short proteins that kill microbes – on their outer wall using the native protein Frustulin 2 as an anchor, turning the algal surface into a living anti‑ciliate interface.\n\nThe engineered cells successfully presented the antimicrobial peptides at the cell boundary, providing a barrier that restricts ciliate contamination.\n\nThis approach could help make microalgal cultivation more reliable by reducing the need for external chemical treatments.",
+      "why": "Embedding antimicrobial peptides in algae may lower contamination risks, supporting more sustainable algal bioprocesses."
+    }
+  ]
+}
