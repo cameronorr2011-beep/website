@@ -41,11 +41,6 @@ No API key, database, cloud account, or hardware is required for the static
 site, the Digital Lab, the Cyanoflow game, or the research pages. Journal automation can use
 `GROQ_API_KEY` in CI, but it is not needed for a local static build.
 
-The historical CultureTrace Electron/React source remains under
-`apps/culturetrace/` for archival/private development purposes only. It is not
-built into the static site, has no public route, and is not linked from the
-portfolio.
-
 ## Clean checkout: install, build, run
 
 ```bash
@@ -90,10 +85,6 @@ Useful focused checks:
 ```bash
 npm run test:simulation
 npm run test:game
-npm run test:culturetrace
-npm run build:culturetrace
-# Windows installer, when Electron packaging dependencies are available:
-npm run package:culturetrace
 py -3.12 -m unittest tools.test_design_system tools.test_seo
 ```
 
@@ -152,7 +143,6 @@ research/                 methodology hub
 Simulation/              Algal Digital Lab and preserved deterministic engine
 game/                     Cyanoflow local-first pixel-art research game
 algae-growth/             standalone pixel-art algae growth field guide
-apps/culturetrace/        archived private React/Electron experiment source
 js/biological-cinema.mjs  procedural Three.js scene source and asset fallback
 tools/build_cinema.mjs    reproducible scene bundle build
 tools/build_simulation.mjs reproducible Digital Lab bundle build

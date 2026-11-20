@@ -120,8 +120,7 @@ On 2026-11-05, against base commit `96008ac` with the rebrand uncommitted:
 
 - `py -3.12 tools/site/build_seo.py`: 47 public pages, 42 canonical indexable
   sitemap URLs.
-- `npm test`: 27 Python tests and the simulation, game and CultureTrace suites
-  passed.
+- `npm test`: 27 Python tests and the simulation and game suites passed.
 - `npm run qa`: 47 pages, 45 indexable, 42 sitemap URLs; no missing
   descriptions, orphan pages or duplicate titles.
 - `docs/rebrand/qa-final.mjs`: 12/12 route × viewport checks returned HTTP 200,
