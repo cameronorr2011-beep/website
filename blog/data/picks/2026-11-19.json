@@ -1,0 +1,55 @@
+{
+  "date": "2026-11-19",
+  "model": "openai/gpt-oss-120b",
+  "generated_at": "2026-11-20T01:33:47Z",
+  "picks": [
+    {
+      "pmid": "43025515",
+      "title": "Transcriptome-guided overexpression of undecaprenyl-phosphate glucose phosphotransferase drives efficient lipid accumulation in Synechococcus elongatus.",
+      "journal": "Bioresource technology",
+      "year": "2026",
+      "pub_date": "2026-11-13",
+      "url": "https://doi.org/10.1016/j.biortech.2026.136264",
+      "topic": "Biofuels",
+      "hook": "Boosted lipid yields in Synechococcus by overexpressing a sugar‑phosphate transferase.",
+      "article": "A recent study set out to boost oil production in the cyanobacterium Synechococcus elongatus without sacrificing overall growth. The researchers used transcriptome data – a snapshot of all active genes – to identify a target enzyme in the cell envelope and then engineered the strain to overproduce that enzyme.\n\nThey worked with the laboratory strain Synechococcus elongatus PCC 7942, growing it under nitrogen‑deficient conditions, a common trigger for lipid buildup. By increasing the expression of undecaprenyl‑phosphate glucose phosphotransferase, they altered the cell’s metabolic pathways.\n\nThe engineered cells accumulated 40 % more lipid even though the expression of the accD gene, which encodes a key enzyme for fatty‑acid synthesis, dropped by 2.7‑fold.\n\nThis result shows that tweaking cell‑envelope biosynthesis can enhance oil yields in cyanobacteria while keeping biomass production high, a promising direction for algal biofuel research.",
+      "why": "Improving lipid yields without harming growth could make cyanobacterial biofuels more economically viable."
+    },
+    {
+      "pmid": "43020148",
+      "title": "Low temperature promotes dimethylsulfoniopropionate synthesis in Phaeocystis globosa: mechanistic insights from transcriptomics and qPCR validation.",
+      "journal": "Bioresource technology",
+      "year": "2026",
+      "pub_date": "2026-11-13",
+      "url": "https://doi.org/10.1016/j.biortech.2026.136258",
+      "topic": "Climate",
+      "hook": "Cold triggers higher DMSP production in Phaeocystis, linking temperature to sulfur cycling.",
+      "article": "A recent study set out to understand how low temperatures affect the production of dimethylsulfoniopropionate (DMSP), a compound that marine algae release and which can influence sulfur cycling and climate.\n\nThe researchers grew the marine microalga Phaeocystis globosa at reduced temperatures and examined changes in gene activity using transcriptomics, a technique that reads the whole set of RNA messages, and confirmed key findings with quantitative PCR (qPCR), which precisely measures specific gene expression.\n\nThey found that low temperature triggers a specific transcriptional response that up‑regulates the pathways responsible for DMSP synthesis, revealing the molecular mechanisms by which temperature controls this metabolism.\n\nThese insights are useful because they help explain how climate‑related temperature shifts could alter DMSP production in the oceans, with implications for sulfur emissions and climate feedbacks.",
+      "why": "Understanding temperature‑driven DMSP production could aid strategies to manage algae‑based carbon and sulfur cycles."
+    },
+    {
+      "pmid": "42805471",
+      "title": "Multifunctional potential of Bacillus vallismortis C-305 for cyanobacterial bloom suppression: Algicidal activity, organic matter transformation, and plant stress mitigation.",
+      "journal": "Environmental research",
+      "year": "2026",
+      "pub_date": "2026-09-28",
+      "url": "https://doi.org/10.1016/j.envres.2026.125788",
+      "topic": "Blooms",
+      "hook": "Bacillus vallismortis curbs cyanobacterial blooms while improving plant stress resilience.",
+      "article": "A recent study set out to see whether a bacterium called Bacillus vallismortis C‑305 could be used to curb harmful algal blooms, break down organic waste, and help plants cope with stress.\n\nThe researchers isolated the strain from the environment and tested its ability to inhibit the growth of the cyanobacterium Microcystis aeruginosa in laboratory cultures. They also examined how the bacterium transformed organic matter and whether it could reduce stress indicators in plants exposed to harmful algae.\n\nThe bacterium proved highly effective at suppressing Microcystis growth, altered the composition of dissolved organic matter, and lowered stress markers in test plants, indicating a multifunctional benefit.\n\nThese findings suggest a single microbial agent might offer a greener, multi‑purpose tool for managing water quality and supporting agricultural resilience.",
+      "why": "A single bacterium that both curbs toxic algae and eases plant stress could simplify sustainable water and crop management."
+    },
+    {
+      "pmid": "43033999",
+      "title": "Protein-tunable microalgae fillers for the simultaneous carbon reduction and mechanical reinforcement of rigid polyurethane foam.",
+      "journal": "Bioresource technology",
+      "year": "2026",
+      "pub_date": "2026-11-14",
+      "url": "https://doi.org/10.1016/j.biortech.2026.136247",
+      "topic": "Materials",
+      "hook": "Engineered microalgae fillers cut carbon footprint and strengthen polyurethane foam.",
+      "article": "A recent study explored whether changing the protein content of the microalga Chlorella sorokiniana could improve rigid polyurethane (PU) foams used for insulation. The researchers grew the algae under nitrogen‑limited conditions to produce biomass with low, medium, and high protein levels, then mixed these powders into the PU foam formulation.\n\nThey found that the algae fillers could be tuned by protein content to affect the foam’s processing and final properties. Specifically, the different protein levels altered the foam’s density, thermal conductivity, and compressive strength, showing that higher protein content gave stronger mechanical reinforcement while still contributing to carbon reduction.\n\nThe work demonstrates a way to turn microalgal biomass into a functional, low‑carbon additive for building materials, linking renewable biology with everyday products.",
+      "why": "Algal fillers can make insulation foams stronger and greener, turning carbon‑capturing microbes into useful building materials."
+    }
+  ]
+}
