@@ -1,0 +1,42 @@
+[
+  {
+    "out": "assets/algae-news/live-feed.jpg",
+    "prompt": "Photographic close view of a clear carboy of dense green microalgae beside a larval rearing tank, soft overhead light, dark forest-green laboratory, shallow depth of field, no text, no logos"
+  },
+  {
+    "out": "assets/algae-news/photobioreactor.jpg",
+    "prompt": "Photographic vertical glass photobioreactor tubes filled with bright green algae culture glowing under cool LED panels, dim industrial room, subtle condensation, editorial photography, no text, no logos"
+  },
+  {
+    "out": "assets/algae-news/spirulina.jpg",
+    "prompt": "Photographic shallow tray of deep teal spirulina culture with a wooden paddle resting on the rim, warm side light, dark workbench, natural muted tones, no text, no logos"
+  },
+  {
+    "out": "assets/algae-news/wastewater.jpg",
+    "prompt": "Photographic open raceway pond of green algae water at dusk, concrete edges, distant industrial silhouettes, soft fog, muted forest-green and grey palette, editorial documentary style, no text, no logos"
+  },
+  {
+    "out": "assets/algae-news/biofuel.jpg",
+    "prompt": "Photographic still life of a glass flask of green algal oil beside algae biomass in a petri dish on a dark bench, warm rim light, dim laboratory, no text, no logos"
+  },
+  {
+    "out": "assets/algae-news/bioplastics.jpg",
+    "prompt": "Photographic macro of translucent green-brown bioplastic film sheets curling on a dark surface, soft directional light, subtle texture detail, no text, no logos"
+  },
+  {
+    "out": "assets/algae-news/pigments.jpg",
+    "prompt": "Photographic vials of deep red astaxanthin and vivid blue phycocyanin pigment extracts on a dark wooden rack, soft side light, dim laboratory, no text, no logos"
+  },
+  {
+    "out": "assets/algae-news/single-cell.jpg",
+    "prompt": "Photographic macro of a transparent microfluidic chip with fine etched channels and droplets of green algae culture, cool blue-green light, dark background, shallow depth of field, no text, no logos"
+  },
+  {
+    "out": "assets/algae-news/cyanobacteria.jpg",
+    "prompt": "Photographic close-up of dark green cyanobacterial mats with visible bubble texture in a shallow glass vessel, low warm light, dim bench, natural muted palette, no text, no logos"
+  },
+  {
+    "out": "assets/algae-news/hygiene.jpg",
+    "prompt": "Photographic scene of gloved hands holding a cotton-plugged flask of green algae culture beside an alcohol wipe and a marker-labelled tube, dim laboratory, cool light, no faces, no text, no logos"
+  }
+]
