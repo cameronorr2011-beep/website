@@ -1,0 +1,55 @@
+{
+  "date": "2026-11-20",
+  "model": "openai/gpt-oss-120b",
+  "generated_at": "2026-11-21T01:00:48Z",
+  "picks": [
+    {
+      "pmid": "43062510",
+      "title": "Unlocking the potential of microalga (Arthrospira platensis) as a sustainable feed supplement for sheep: impacts on rumen dynamics, productive performance, health and product quality.",
+      "journal": "Tropical animal health and production",
+      "year": "2026",
+      "pub_date": "2026-11-20",
+      "url": "https://doi.org/10.1007/s11250-026-05510-y",
+      "topic": "Feed Nutrition",
+      "hook": "Arthrospira platensis boosts sheep growth, rumen health, and product quality as a sustainable feed.",
+      "article": "A recent study set out to see whether the microalga Arthrospira platensis could be used as a sustainable feed supplement for sheep, looking at its effects on rumen dynamics, performance, health and product quality.\n\nThe researchers fed sheep diets that included Arthrospira platensis and monitored various outcomes, but the abstract does not provide further details on the experimental design.\n\nBecause the abstract does not report specific results, no findings can be summarized.\n\nUnderstanding how microalgae can replace conventional feed ingredients could help develop more sustainable livestock production systems.",
+      "why": "If effective, algae feed could reduce reliance on traditional feeds and lower the environmental impact of sheep farming."
+    },
+    {
+      "pmid": "43057539",
+      "title": "Resolving carbon partitioning between organic biomass and calcite in Gephyrocapsa huxleyi using online gas monitoring and phase-resolved mass balances.",
+      "journal": "Bioresource technology",
+      "year": "2026",
+      "pub_date": "2026-11-19",
+      "url": "https://doi.org/10.1016/j.biortech.2026.136253",
+      "topic": "Carbon Partitioning",
+      "hook": "New gas‑monitoring method splits Gephyrocapsa huxleyi carbon between biomass and calcite.",
+      "article": "A recent study set out to measure how the marine alga Gephyrocapsa huxleyi splits the carbon it fixes between making organic biomass and forming calcium carbonate shells. The researchers grew the algae under controlled light conditions and used an online gas monitoring system together with phase‑resolved mass balances to track carbon in the gas, liquid and solid phases. They were able to integrate these measurements to quantify the partitioning of inorganic carbon into calcite versus organic material. Understanding this split is valuable because it helps improve models of carbon cycling and could inform strategies for using algae in carbon capture or bio‑product production.",
+      "why": "It clarifies how much carbon algae turn into useful biomass versus mineral shells, aiding both climate models and algae‑based biotechnologies."
+    },
+    {
+      "pmid": "43035162",
+      "title": "High-throughput solvent screening for microalgae oil extraction based on multi-criteria decision analysis.",
+      "journal": "Bioresource technology",
+      "year": "2026",
+      "pub_date": "2026-11-15",
+      "url": "https://doi.org/10.1016/j.biortech.2026.136252",
+      "topic": "Biofuels Extraction",
+      "hook": "High‑throughput solvent screen ranks oils for efficient microalgae biofuel production.",
+      "article": "A recent study set out to find safer and more efficient liquids for pulling oil out of micro‑algae, which are tiny plants being explored as a renewable source of fuels and chemicals. \n\nThe researchers built a high‑throughput, multi‑step computational workflow that evaluates many candidate solvents against several criteria, such as how well they dissolve lipids, their toxicity, and environmental impact. The approach screens potential solvents in silico, meaning on a computer, before any laboratory testing. \n\nUsing this method, they identified several promising alternatives to the commonly used n‑hexane, a toxic, fossil‑based solvent, although the abstract does not list the specific compounds or quantitative results. \n\nThe work shows how data‑driven screening can accelerate the search for greener extraction processes, potentially lowering the cost and environmental footprint of algae‑based biofuel production.",
+      "why": "Finding safer solvents could make algae oil extraction more sustainable and cheaper for biofuel production."
+    },
+    {
+      "pmid": "43020149",
+      "title": "Frustulin-mediated antimicrobial peptide display restricts ciliate contamination in Phaeodactylum tricornutum.",
+      "journal": "Bioresource technology",
+      "year": "2026",
+      "pub_date": "2026-11-12",
+      "url": "https://doi.org/10.1016/j.biortech.2026.136257",
+      "topic": "Engineering Defense",
+      "hook": "Frustulin‑linked antimicrobial peptides keep Phaeodactylum cultures free of contaminating ciliates.",
+      "article": "A recent study set out to create a built‑in defence for the microalga Phaeodactylum tricornutum against tiny predators called ciliates. The researchers engineered the algae to display antimicrobial peptides – short proteins that kill microbes – on their cell surface, turning the algae into a living anti‑ciliate barrier.\n\nThey used the protein frustulin 2 (Fru2) as a scaffold attached to the cell wall and fused it with antimicrobial peptides, then grew the modified algae in laboratory cultures to test whether ciliates could still attach and feed.\n\nThe engineered algae showed reduced ciliate contamination, indicating that the displayed peptides effectively blocked the predators.\n\nThis approach could help keep large‑scale algal farms cleaner without needing external chemicals.",
+      "why": "Embedding antimicrobial peptides in algal cells offers a self‑protecting strategy for sustainable algae cultivation."
+    }
+  ]
+}
