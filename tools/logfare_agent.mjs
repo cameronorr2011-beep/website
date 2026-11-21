@@ -81,7 +81,7 @@ async function loadEnvFile(file) {
 await loadEnvFile(path.join(ROOT, ".env.local"));
 await loadEnvFile(path.join(ROOT, ".env"));
 
-const apiKey = process.env.LOGFARE_API_KEY || process.env.logfare_api_key || process.env.lOGFAREAPIKEY;
+const apiKey = process.env.LOGFARE_API_KEY || process.env.LOGFAREAPIKEY || process.env.logfare_api_key || process.env.lOGFAREAPIKEY;
 if (!apiKey) {
   console.error("LOGFARE_API_KEY is not set. Add it to .env.local (or export it) after creating one at https://logfare.ai/register; never commit it.");
   process.exit(1);
