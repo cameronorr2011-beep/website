@@ -933,3 +933,51 @@ body::after{
 section[id],div[id],article[id]{scroll-margin-top:9rem}
 
 .kit-hero__text .eyebrow{color:var(--ink);opacity:.78}
+
+/* ---------- final pass: quieter header, tighter rhythm ---------- */
+
+.section{padding-block:clamp(3.5rem,6.4vw,6.25rem)}
+.section--tight{padding-block:clamp(2.7rem,4.2vw,3.75rem)}
+.section-head{margin-bottom:clamp(2.2rem,3.6vw,3.4rem)}
+.hero2__grid{padding-block:clamp(2.6rem,5.4vw,5rem)}
+
+.figures{align-items:stretch}
+.figures article{display:flex;flex-direction:column}
+.figures article:has(a) > p:last-child{margin-top:auto;padding-top:.9rem}
+
+.buy{align-items:center}
+.buy .price{width:100%}
+.buy .lead{max-width:44ch}
+
+@media (min-width:761px){
+  .announce{padding-block:.44rem;font-size:.72rem}
+  .head-in{
+    flex-direction:row;align-items:center;justify-content:space-between;
+    gap:1.6rem;min-height:4.35rem;padding-block:.65rem;
+  }
+  .brand{order:0;font-size:1.04rem}
+  .brand svg{width:24px;height:24px}
+  .nav{
+    order:0;width:auto;flex:0 1 auto;justify-content:flex-end;
+    flex-wrap:nowrap;gap:clamp(.9rem,1.7vw,1.55rem);
+  }
+  .nav a:not(.btn),.nav-drop>summary{font-size:.84rem;min-height:2.5rem}
+  .nav .btn{min-height:2.5rem;padding:.5rem .95rem;font-size:.8rem}
+}
+
+@media (max-width:760px){
+  .site-head{position:static}
+  .announce{padding-block:.5rem;font-size:.66rem}
+  .head-in{padding-block:.55rem .35rem;gap:.18rem}
+  .nav{padding-block:.08rem .28rem;gap:.7rem}
+  .hero2__grid{padding-block:2rem 2.4rem;gap:1.9rem}
+  .hero2 h1{font-size:clamp(2.5rem,10.4vw,3.35rem)}
+  .hero2 .lead{font-size:.98rem;line-height:1.58}
+  .hero2__actions{margin-top:1.4rem}
+  .hero2__chips{margin-top:1.2rem}
+}
+
+section[id],div[id],article[id]{scroll-margin-top:6rem}
+@media (max-width:760px){
+  section[id],div[id],article[id]{scroll-margin-top:1rem}
+}

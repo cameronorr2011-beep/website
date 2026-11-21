@@ -121,6 +121,11 @@ def build():
     count = 0
     for path in pages():
         relative = path.relative_to(ROOT).as_posix()
+        if relative == 'index.html':
+            # The homepage owns its redesigned shell. The legacy shared header
+            # and footer belong to the retired homepage and must not wrap it.
+            count += 1
+            continue
         if relative.startswith(('algae-growth/', 'game/')):
             # Immersive interactive surfaces own their shell, controls, and
             # rendering loop. Do not wrap them in the editorial site shell.
