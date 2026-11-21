@@ -1,0 +1,105 @@
+{
+  "date": "2026-11-21",
+  "generated_at": "2026-11-21T23:43:30Z",
+  "editor": "openai/gpt-oss-120b",
+  "scouts": [
+    "openai/gpt-oss-20b",
+    "openai/gpt-oss-20b",
+    "openai/gpt-oss-20b",
+    "openai/gpt-oss-20b",
+    "openai/gpt-oss-20b"
+  ],
+  "count": 10,
+  "items": [
+    {
+      "pmid": "43020149",
+      "title": "Frustulin-mediated antimicrobial peptide display restricts ciliate contamination in Phaeodactylum tricornutum.",
+      "journal": "Bioresource technology",
+      "pub_date": "2026-11-12",
+      "url": "https://doi.org/10.1016/j.biortech.2026.136257",
+      "topic": "cultivation",
+      "hook": "The study engineered a frustulin-based antimicrobial peptide display that limits ciliate contamination in Phaeodactylum tricornutum cultures."
+    },
+    {
+      "pmid": "43020147",
+      "title": "Rapid enrichment of auto-floating microalgae from river-derived microalgal communities.",
+      "journal": "Bioresource technology",
+      "pub_date": "2026-11-12",
+      "url": "https://doi.org/10.1016/j.biortech.2026.136255",
+      "topic": "cultivation",
+      "hook": "The paper reports a rapid enrichment protocol for auto‑floating microalgae from river communities, enabling low‑energy biomass harvesting."
+    },
+    {
+      "pmid": "43013647",
+      "title": "Integrating biomass production platform and identification approach for stereochemical assignment of super-carbon-chain compounds.",
+      "journal": "Science advances",
+      "pub_date": "2026-11-11",
+      "url": "https://doi.org/10.1126/sciadv.ael2086",
+      "topic": "cultivation",
+      "hook": "The authors integrated a biomass production platform with a stereochemical assignment approach to identify super‑carbon‑chain compounds from marine microalgae."
+    },
+    {
+      "pmid": "43043915",
+      "title": "Promotion of nisin production by developing a surfactant-assisted microalgae-bacteria symbiotic system.",
+      "journal": "Preparative biochemistry &amp; biotechnology",
+      "pub_date": "2026-11-17",
+      "url": "https://doi.org/10.1080/10826068.2026.2764938",
+      "topic": "feed",
+      "hook": "Developed a surfactant-assisted microalgae-bacteria system that boosts nisin production by Lactococcus lactis."
+    },
+    {
+      "pmid": "43039128",
+      "title": "Metal-based engineered nanoparticles and aquatic phototrophic microorganisms: From single-species to natural communities interactions.",
+      "journal": "Environmental pollution (Barking, Essex : 1987)",
+      "pub_date": "2026-11-16",
+      "url": "https://doi.org/10.1016/j.envpol.2026.129561",
+      "topic": "feed",
+      "hook": "Explored how metal-based engineered nanoparticles affect aquatic phototrophic microorganisms from single species to natural communities."
+    },
+    {
+      "pmid": "43064286",
+      "title": "Algal composition and toxigenic risk decouple from nutrient levels across eutrophic lakes.",
+      "journal": "Environmental pollution (Barking, Essex : 1987)",
+      "pub_date": "2026-11-21",
+      "url": "https://doi.org/10.1016/j.envpol.2026.129600",
+      "topic": "water",
+      "hook": "The study shows algal community structure and toxigenic risk vary along trophic gradients, decoupling from nutrient levels in eutrophic lakes."
+    },
+    {
+      "pmid": "43033926",
+      "title": "Functional analysis of the U-box ubiquitin E3 ligase gene Gracilariopsis lemaneiformis GlPRP19 in heat stress response.",
+      "journal": "Plant science : an international journal of experimental plant biology",
+      "pub_date": "2026-11-14",
+      "url": "https://doi.org/10.1016/j.plantsci.2026.113592",
+      "topic": "materials",
+      "hook": "The study shows that the U-box E3 ligase GlPRP19 in Gracilariopsis lemaneiformis is involved in heat stress response."
+    },
+    {
+      "pmid": "43033261",
+      "title": "Recurrent features of stress response in the unicellular zygnematophyte Mesotaenium: intracellular inclusions and vacuoles forming upon UV.",
+      "journal": "Protoplasma",
+      "pub_date": "2026-11-14",
+      "url": "https://doi.org/10.1007/s00709-026-02292-w",
+      "topic": "materials",
+      "hook": "The research demonstrates that Mesotaenium forms intracellular inclusions and vacuoles in response to UV stress."
+    },
+    {
+      "pmid": "43051405",
+      "title": "Emerging inhalation risks: Global distribution of airborne algal and cyanobacterial toxins.",
+      "journal": "Environmental research",
+      "pub_date": "2026-11-18",
+      "url": "https://doi.org/10.1016/j.envres.2026.126231",
+      "topic": "methods",
+      "hook": "Global distribution of airborne algal and cyanobacterial toxins shows emerging inhalation risks."
+    },
+    {
+      "pmid": "42900180",
+      "title": "Anabaena, a multicellular model for cyanobacterial cell biology and biotechnology.",
+      "journal": "Journal of bacteriology",
+      "pub_date": "2026-10-20",
+      "url": "https://doi.org/10.1128/jb.00376-26",
+      "topic": "methods",
+      "hook": "Anabaena serves as a multicellular model for cyanobacterial cell biology and biotechnology."
+    }
+  ]
+}

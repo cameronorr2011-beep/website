@@ -1,6 +1,6 @@
 {
-  "date": "2026-11-20",
-  "generated_at": "2026-11-21T00:38:59Z",
+  "date": "2026-11-21",
+  "generated_at": "2026-11-21T23:43:30Z",
   "editor": "openai/gpt-oss-120b",
   "scouts": [
     "openai/gpt-oss-20b",
@@ -9,124 +9,97 @@
     "openai/gpt-oss-20b",
     "openai/gpt-oss-20b"
   ],
-  "count": 13,
+  "count": 10,
   "items": [
     {
-      "pmid": "43034000",
-      "title": "Medium acidification and redox imbalance drive triacylglycerol hyperaccumulation in Chlorella sorokiniana.",
+      "pmid": "43020149",
+      "title": "Frustulin-mediated antimicrobial peptide display restricts ciliate contamination in Phaeodactylum tricornutum.",
       "journal": "Bioresource technology",
-      "pub_date": "2026-11-14",
-      "url": "https://doi.org/10.1016/j.biortech.2026.136249",
-      "topic": "Cultivation",
-      "hook": "Medium acidification and redox imbalance drive triacylglycerol hyperaccumulation in Chlorella sorokiniana."
-    },
-    {
-      "pmid": "43033999",
-      "title": "Protein-tunable microalgae fillers for the simultaneous carbon reduction and mechanical reinforcement of rigid polyurethane foam.",
-      "journal": "Bioresource technology",
-      "pub_date": "2026-11-14",
-      "url": "https://doi.org/10.1016/j.biortech.2026.136247",
-      "topic": "Cultivation",
-      "hook": "Protein-tunable microalgae fillers enable simultaneous carbon reduction and mechanical reinforcement of rigid polyurethane foam."
-    },
-    {
-      "pmid": "43033766",
-      "title": "Vortex-regulated transport enables rapid microalgae harvesting in a sponge-inspired flow system.",
-      "journal": "Water research",
       "pub_date": "2026-11-12",
-      "url": "https://doi.org/10.1016/j.watres.2026.127304",
-      "topic": "Cultivation",
-      "hook": "Vortex-regulated transport enables rapid microalgae harvesting in a sponge-inspired flow system."
+      "url": "https://doi.org/10.1016/j.biortech.2026.136257",
+      "topic": "cultivation",
+      "hook": "The study engineered a frustulin-based antimicrobial peptide display that limits ciliate contamination in Phaeodactylum tricornutum cultures."
     },
     {
-      "pmid": "43062510",
-      "title": "Unlocking the potential of microalga (Arthrospira platensis) as a sustainable feed supplement for sheep: impacts on rumen dynamics, productive performance, health and product quality.",
-      "journal": "Tropical animal health and production",
-      "pub_date": "2026-11-20",
-      "url": "https://doi.org/10.1007/s11250-026-05510-y",
-      "topic": "Feed",
-      "hook": "The study shows Arthrospira platensis as a sustainable feed supplement improves rumen dynamics, productivity, health, and product quality in sheep."
-    },
-    {
-      "pmid": "43014257",
-      "title": "Phycocyanin as a structuring agent enhances gel properties of soybean protein isolate hydrogels: Insights into noncovalent interactions involving hydrogen bonding.",
-      "journal": "Food chemistry",
-      "pub_date": "2026-11-10",
-      "url": "https://doi.org/10.1016/j.foodchem.2026.152080",
-      "topic": "Feed",
-      "hook": "Phycocyanin from Arthrospira platensis enhances gel properties of soybean protein isolate hydrogels through hydrogen bonding interactions."
-    },
-    {
-      "pmid": "42748704",
-      "title": "Comparative analysis of chemical composition and bioactive properties of green, honey, and white Chlorella vulgaris hydrolysates.",
-      "journal": "Food chemistry",
-      "pub_date": "2026-08-26",
-      "url": "https://doi.org/10.1016/j.foodchem.2026.150923",
-      "topic": "Feed",
-      "hook": "Comparative analysis of green, honey, and white Chlorella vulgaris hydrolysates reveals differences in chemical composition and bioactive properties among pigment variants."
-    },
-    {
-      "pmid": "43062245",
-      "title": "The ecological impact of Ulva prolifera green tide outbreaks: microbial connectivity and metabolic divergence.",
-      "journal": "mSystems",
-      "pub_date": "2026-11-20",
-      "url": "https://doi.org/10.1128/msystems.01133-26",
-      "topic": "Water",
-      "hook": "The study examined how Ulva prolifera green tide outbreaks influence microbial connectivity and metabolic divergence in coastal ecosystems."
-    },
-    {
-      "pmid": "42867242",
-      "title": "Phosphonate degradation through the C-P lyase pathway by a dinoflagellate-associated Mameliella alba enhances host growth under phosphate limitation.",
-      "journal": "Applied and environmental microbiology",
-      "pub_date": "2026-10-13",
-      "url": "https://doi.org/10.1128/aem.01846-26",
-      "topic": "Water",
-      "hook": "A dinoflagellate-associated Mameliella alba uses the C‑P lyase pathway to degrade phosphonates, boosting host growth under phosphate limitation."
-    },
-    {
-      "pmid": "42805474",
-      "title": "Ferric iron enhances granule densification and pollutant removal in microalgal-bacterial granular sludge via iron-homeostatic microbial rewiring.",
-      "journal": "Environmental research",
-      "pub_date": "2026-09-28",
-      "url": "https://doi.org/10.1016/j.envres.2026.125791",
-      "topic": "Water",
-      "hook": "Adding ferric iron to microalgal‑bacterial granular sludge enhances granule densification and pollutant removal through iron‑homeostatic microbial rewiring."
-    },
-    {
-      "pmid": "43025515",
-      "title": "Transcriptome-guided overexpression of undecaprenyl-phosphate glucose phosphotransferase drives efficient lipid accumulation in Synechococcus elongatus.",
+      "pmid": "43020147",
+      "title": "Rapid enrichment of auto-floating microalgae from river-derived microalgal communities.",
       "journal": "Bioresource technology",
-      "pub_date": "2026-11-13",
-      "url": "https://doi.org/10.1016/j.biortech.2026.136264",
-      "topic": "Materials",
-      "hook": "Transcriptome-guided overexpression of an undecaprenyl-phosphate glucose phosphotransferase in Synechococcus elongatus drives efficient lipid accumulation without nitrogen starvation."
+      "pub_date": "2026-11-12",
+      "url": "https://doi.org/10.1016/j.biortech.2026.136255",
+      "topic": "cultivation",
+      "hook": "The paper reports a rapid enrichment protocol for auto‑floating microalgae from river communities, enabling low‑energy biomass harvesting."
     },
     {
-      "pmid": "43025517",
-      "title": "Bovine serum albumin selectively inhibits Nannochloropsis growth and induces proteostasis-associated stress responses.",
-      "journal": "Bioresource technology",
-      "pub_date": "2026-11-13",
-      "url": "https://doi.org/10.1016/j.biortech.2026.136263",
-      "topic": "Materials",
-      "hook": "Bovine serum albumin alone inhibits Nannochloropsis growth and triggers proteostasis-associated stress responses, indicating it is not physiologically inert in cultures."
+      "pmid": "43013647",
+      "title": "Integrating biomass production platform and identification approach for stereochemical assignment of super-carbon-chain compounds.",
+      "journal": "Science advances",
+      "pub_date": "2026-11-11",
+      "url": "https://doi.org/10.1126/sciadv.ael2086",
+      "topic": "cultivation",
+      "hook": "The authors integrated a biomass production platform with a stereochemical assignment approach to identify super‑carbon‑chain compounds from marine microalgae."
     },
     {
-      "pmid": "42686004",
-      "title": "Effects of marine heatwaves and marine cold spells on toxin production in Alexandrium catenella.",
+      "pmid": "43043915",
+      "title": "Promotion of nisin production by developing a surfactant-assisted microalgae-bacteria symbiotic system.",
+      "journal": "Preparative biochemistry &amp; biotechnology",
+      "pub_date": "2026-11-17",
+      "url": "https://doi.org/10.1080/10826068.2026.2764938",
+      "topic": "feed",
+      "hook": "Developed a surfactant-assisted microalgae-bacteria system that boosts nisin production by Lactococcus lactis."
+    },
+    {
+      "pmid": "43039128",
+      "title": "Metal-based engineered nanoparticles and aquatic phototrophic microorganisms: From single-species to natural communities interactions.",
       "journal": "Environmental pollution (Barking, Essex : 1987)",
-      "pub_date": "2026-09-02",
-      "url": "https://doi.org/10.1016/j.envpol.2026.128957",
-      "topic": "Materials",
-      "hook": "Marine heatwaves and cold spells alter toxin production in Alexandrium catenella, with temperature extremes increasing the risk of harmful algal blooms."
+      "pub_date": "2026-11-16",
+      "url": "https://doi.org/10.1016/j.envpol.2026.129561",
+      "topic": "feed",
+      "hook": "Explored how metal-based engineered nanoparticles affect aquatic phototrophic microorganisms from single species to natural communities."
     },
     {
-      "pmid": "43059290",
-      "title": "Beyond the Well Boundary: Strain-Specific Ammonium Overflow Drives Cross-Well Nitrogen Transfer in Microalgal Cultures.",
-      "journal": "Plant, cell &amp; environment",
-      "pub_date": "2026-11-19",
-      "url": "https://doi.org/10.1111/pce.71049",
-      "topic": "Methods",
-      "hook": "A 48‑well microplate cross‑diffusion assay showed strain‑specific ammonium overflow drives nitrogen transfer across wells in microalgal cultures."
+      "pmid": "43064286",
+      "title": "Algal composition and toxigenic risk decouple from nutrient levels across eutrophic lakes.",
+      "journal": "Environmental pollution (Barking, Essex : 1987)",
+      "pub_date": "2026-11-21",
+      "url": "https://doi.org/10.1016/j.envpol.2026.129600",
+      "topic": "water",
+      "hook": "The study shows algal community structure and toxigenic risk vary along trophic gradients, decoupling from nutrient levels in eutrophic lakes."
+    },
+    {
+      "pmid": "43033926",
+      "title": "Functional analysis of the U-box ubiquitin E3 ligase gene Gracilariopsis lemaneiformis GlPRP19 in heat stress response.",
+      "journal": "Plant science : an international journal of experimental plant biology",
+      "pub_date": "2026-11-14",
+      "url": "https://doi.org/10.1016/j.plantsci.2026.113592",
+      "topic": "materials",
+      "hook": "The study shows that the U-box E3 ligase GlPRP19 in Gracilariopsis lemaneiformis is involved in heat stress response."
+    },
+    {
+      "pmid": "43033261",
+      "title": "Recurrent features of stress response in the unicellular zygnematophyte Mesotaenium: intracellular inclusions and vacuoles forming upon UV.",
+      "journal": "Protoplasma",
+      "pub_date": "2026-11-14",
+      "url": "https://doi.org/10.1007/s00709-026-02292-w",
+      "topic": "materials",
+      "hook": "The research demonstrates that Mesotaenium forms intracellular inclusions and vacuoles in response to UV stress."
+    },
+    {
+      "pmid": "43051405",
+      "title": "Emerging inhalation risks: Global distribution of airborne algal and cyanobacterial toxins.",
+      "journal": "Environmental research",
+      "pub_date": "2026-11-18",
+      "url": "https://doi.org/10.1016/j.envres.2026.126231",
+      "topic": "methods",
+      "hook": "Global distribution of airborne algal and cyanobacterial toxins shows emerging inhalation risks."
+    },
+    {
+      "pmid": "42900180",
+      "title": "Anabaena, a multicellular model for cyanobacterial cell biology and biotechnology.",
+      "journal": "Journal of bacteriology",
+      "pub_date": "2026-10-20",
+      "url": "https://doi.org/10.1128/jb.00376-26",
+      "topic": "methods",
+      "hook": "Anabaena serves as a multicellular model for cyanobacterial cell biology and biotechnology."
     }
   ]
 }
