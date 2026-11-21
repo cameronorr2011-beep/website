@@ -1,0 +1,132 @@
+{
+  "date": "2026-11-20",
+  "generated_at": "2026-11-21T00:38:59Z",
+  "editor": "openai/gpt-oss-120b",
+  "scouts": [
+    "openai/gpt-oss-20b",
+    "openai/gpt-oss-20b",
+    "openai/gpt-oss-20b",
+    "openai/gpt-oss-20b",
+    "openai/gpt-oss-20b"
+  ],
+  "count": 13,
+  "items": [
+    {
+      "pmid": "43034000",
+      "title": "Medium acidification and redox imbalance drive triacylglycerol hyperaccumulation in Chlorella sorokiniana.",
+      "journal": "Bioresource technology",
+      "pub_date": "2026-11-14",
+      "url": "https://doi.org/10.1016/j.biortech.2026.136249",
+      "topic": "Cultivation",
+      "hook": "Medium acidification and redox imbalance drive triacylglycerol hyperaccumulation in Chlorella sorokiniana."
+    },
+    {
+      "pmid": "43033999",
+      "title": "Protein-tunable microalgae fillers for the simultaneous carbon reduction and mechanical reinforcement of rigid polyurethane foam.",
+      "journal": "Bioresource technology",
+      "pub_date": "2026-11-14",
+      "url": "https://doi.org/10.1016/j.biortech.2026.136247",
+      "topic": "Cultivation",
+      "hook": "Protein-tunable microalgae fillers enable simultaneous carbon reduction and mechanical reinforcement of rigid polyurethane foam."
+    },
+    {
+      "pmid": "43033766",
+      "title": "Vortex-regulated transport enables rapid microalgae harvesting in a sponge-inspired flow system.",
+      "journal": "Water research",
+      "pub_date": "2026-11-12",
+      "url": "https://doi.org/10.1016/j.watres.2026.127304",
+      "topic": "Cultivation",
+      "hook": "Vortex-regulated transport enables rapid microalgae harvesting in a sponge-inspired flow system."
+    },
+    {
+      "pmid": "43062510",
+      "title": "Unlocking the potential of microalga (Arthrospira platensis) as a sustainable feed supplement for sheep: impacts on rumen dynamics, productive performance, health and product quality.",
+      "journal": "Tropical animal health and production",
+      "pub_date": "2026-11-20",
+      "url": "https://doi.org/10.1007/s11250-026-05510-y",
+      "topic": "Feed",
+      "hook": "The study shows Arthrospira platensis as a sustainable feed supplement improves rumen dynamics, productivity, health, and product quality in sheep."
+    },
+    {
+      "pmid": "43014257",
+      "title": "Phycocyanin as a structuring agent enhances gel properties of soybean protein isolate hydrogels: Insights into noncovalent interactions involving hydrogen bonding.",
+      "journal": "Food chemistry",
+      "pub_date": "2026-11-10",
+      "url": "https://doi.org/10.1016/j.foodchem.2026.152080",
+      "topic": "Feed",
+      "hook": "Phycocyanin from Arthrospira platensis enhances gel properties of soybean protein isolate hydrogels through hydrogen bonding interactions."
+    },
+    {
+      "pmid": "42748704",
+      "title": "Comparative analysis of chemical composition and bioactive properties of green, honey, and white Chlorella vulgaris hydrolysates.",
+      "journal": "Food chemistry",
+      "pub_date": "2026-08-26",
+      "url": "https://doi.org/10.1016/j.foodchem.2026.150923",
+      "topic": "Feed",
+      "hook": "Comparative analysis of green, honey, and white Chlorella vulgaris hydrolysates reveals differences in chemical composition and bioactive properties among pigment variants."
+    },
+    {
+      "pmid": "43062245",
+      "title": "The ecological impact of Ulva prolifera green tide outbreaks: microbial connectivity and metabolic divergence.",
+      "journal": "mSystems",
+      "pub_date": "2026-11-20",
+      "url": "https://doi.org/10.1128/msystems.01133-26",
+      "topic": "Water",
+      "hook": "The study examined how Ulva prolifera green tide outbreaks influence microbial connectivity and metabolic divergence in coastal ecosystems."
+    },
+    {
+      "pmid": "42867242",
+      "title": "Phosphonate degradation through the C-P lyase pathway by a dinoflagellate-associated Mameliella alba enhances host growth under phosphate limitation.",
+      "journal": "Applied and environmental microbiology",
+      "pub_date": "2026-10-13",
+      "url": "https://doi.org/10.1128/aem.01846-26",
+      "topic": "Water",
+      "hook": "A dinoflagellate-associated Mameliella alba uses the C‑P lyase pathway to degrade phosphonates, boosting host growth under phosphate limitation."
+    },
+    {
+      "pmid": "42805474",
+      "title": "Ferric iron enhances granule densification and pollutant removal in microalgal-bacterial granular sludge via iron-homeostatic microbial rewiring.",
+      "journal": "Environmental research",
+      "pub_date": "2026-09-28",
+      "url": "https://doi.org/10.1016/j.envres.2026.125791",
+      "topic": "Water",
+      "hook": "Adding ferric iron to microalgal‑bacterial granular sludge enhances granule densification and pollutant removal through iron‑homeostatic microbial rewiring."
+    },
+    {
+      "pmid": "43025515",
+      "title": "Transcriptome-guided overexpression of undecaprenyl-phosphate glucose phosphotransferase drives efficient lipid accumulation in Synechococcus elongatus.",
+      "journal": "Bioresource technology",
+      "pub_date": "2026-11-13",
+      "url": "https://doi.org/10.1016/j.biortech.2026.136264",
+      "topic": "Materials",
+      "hook": "Transcriptome-guided overexpression of an undecaprenyl-phosphate glucose phosphotransferase in Synechococcus elongatus drives efficient lipid accumulation without nitrogen starvation."
+    },
+    {
+      "pmid": "43025517",
+      "title": "Bovine serum albumin selectively inhibits Nannochloropsis growth and induces proteostasis-associated stress responses.",
+      "journal": "Bioresource technology",
+      "pub_date": "2026-11-13",
+      "url": "https://doi.org/10.1016/j.biortech.2026.136263",
+      "topic": "Materials",
+      "hook": "Bovine serum albumin alone inhibits Nannochloropsis growth and triggers proteostasis-associated stress responses, indicating it is not physiologically inert in cultures."
+    },
+    {
+      "pmid": "42686004",
+      "title": "Effects of marine heatwaves and marine cold spells on toxin production in Alexandrium catenella.",
+      "journal": "Environmental pollution (Barking, Essex : 1987)",
+      "pub_date": "2026-09-02",
+      "url": "https://doi.org/10.1016/j.envpol.2026.128957",
+      "topic": "Materials",
+      "hook": "Marine heatwaves and cold spells alter toxin production in Alexandrium catenella, with temperature extremes increasing the risk of harmful algal blooms."
+    },
+    {
+      "pmid": "43059290",
+      "title": "Beyond the Well Boundary: Strain-Specific Ammonium Overflow Drives Cross-Well Nitrogen Transfer in Microalgal Cultures.",
+      "journal": "Plant, cell &amp; environment",
+      "pub_date": "2026-11-19",
+      "url": "https://doi.org/10.1111/pce.71049",
+      "topic": "Methods",
+      "hook": "A 48‑well microplate cross‑diffusion assay showed strain‑specific ammonium overflow drives nitrogen transfer across wells in microalgal cultures."
+    }
+  ]
+}

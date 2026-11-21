@@ -1,6 +1,6 @@
 {
-  "date": "2026-11-19",
-  "generated_at": "2026-11-20T04:50:21Z",
+  "date": "2026-11-20",
+  "generated_at": "2026-11-21T00:38:59Z",
   "editor": "openai/gpt-oss-120b",
   "scouts": [
     "openai/gpt-oss-20b",
@@ -9,97 +9,124 @@
     "openai/gpt-oss-20b",
     "openai/gpt-oss-20b"
   ],
-  "count": 10,
+  "count": 13,
   "items": [
     {
-      "pmid": "43057539",
-      "title": "Resolving carbon partitioning between organic biomass and calcite in Gephyrocapsa huxleyi using online gas monitoring and phase-resolved mass balances.",
+      "pmid": "43034000",
+      "title": "Medium acidification and redox imbalance drive triacylglycerol hyperaccumulation in Chlorella sorokiniana.",
       "journal": "Bioresource technology",
-      "pub_date": "2026-11-19",
-      "url": "https://doi.org/10.1016/j.biortech.2026.136253",
-      "topic": "cultivation",
-      "hook": "The study used online gas monitoring and phase-resolved mass balances to resolve how the coccolithophore Gephyrocapsa huxleyi partitions carbon between organic biomass and calcite."
+      "pub_date": "2026-11-14",
+      "url": "https://doi.org/10.1016/j.biortech.2026.136249",
+      "topic": "Cultivation",
+      "hook": "Medium acidification and redox imbalance drive triacylglycerol hyperaccumulation in Chlorella sorokiniana."
     },
     {
-      "pmid": "43056026",
-      "title": "Early assessment of cyanobacteria growth in water reservoirs from high-frequency multispectral active fluorescence.",
-      "journal": "Environmental monitoring and assessment",
-      "pub_date": "2026-11-19",
-      "url": "https://doi.org/10.1007/s10661-026-16095-2",
-      "topic": "cultivation",
-      "hook": "Multispectral active fluorometry was applied to detect early cyanobacteria growth in water reservoirs, enabling early warning of blooms."
+      "pmid": "43033999",
+      "title": "Protein-tunable microalgae fillers for the simultaneous carbon reduction and mechanical reinforcement of rigid polyurethane foam.",
+      "journal": "Bioresource technology",
+      "pub_date": "2026-11-14",
+      "url": "https://doi.org/10.1016/j.biortech.2026.136247",
+      "topic": "Cultivation",
+      "hook": "Protein-tunable microalgae fillers enable simultaneous carbon reduction and mechanical reinforcement of rigid polyurethane foam."
     },
     {
-      "pmid": "43055816",
-      "title": "Dietary supplementation with Spirulina platensis and humic acid alleviates heat stress in broiler chickens: effects on growth performance, serum metabolites, immune responses, and antioxidant capacity.",
+      "pmid": "43033766",
+      "title": "Vortex-regulated transport enables rapid microalgae harvesting in a sponge-inspired flow system.",
+      "journal": "Water research",
+      "pub_date": "2026-11-12",
+      "url": "https://doi.org/10.1016/j.watres.2026.127304",
+      "topic": "Cultivation",
+      "hook": "Vortex-regulated transport enables rapid microalgae harvesting in a sponge-inspired flow system."
+    },
+    {
+      "pmid": "43062510",
+      "title": "Unlocking the potential of microalga (Arthrospira platensis) as a sustainable feed supplement for sheep: impacts on rumen dynamics, productive performance, health and product quality.",
       "journal": "Tropical animal health and production",
+      "pub_date": "2026-11-20",
+      "url": "https://doi.org/10.1007/s11250-026-05510-y",
+      "topic": "Feed",
+      "hook": "The study shows Arthrospira platensis as a sustainable feed supplement improves rumen dynamics, productivity, health, and product quality in sheep."
+    },
+    {
+      "pmid": "43014257",
+      "title": "Phycocyanin as a structuring agent enhances gel properties of soybean protein isolate hydrogels: Insights into noncovalent interactions involving hydrogen bonding.",
+      "journal": "Food chemistry",
+      "pub_date": "2026-11-10",
+      "url": "https://doi.org/10.1016/j.foodchem.2026.152080",
+      "topic": "Feed",
+      "hook": "Phycocyanin from Arthrospira platensis enhances gel properties of soybean protein isolate hydrogels through hydrogen bonding interactions."
+    },
+    {
+      "pmid": "42748704",
+      "title": "Comparative analysis of chemical composition and bioactive properties of green, honey, and white Chlorella vulgaris hydrolysates.",
+      "journal": "Food chemistry",
+      "pub_date": "2026-08-26",
+      "url": "https://doi.org/10.1016/j.foodchem.2026.150923",
+      "topic": "Feed",
+      "hook": "Comparative analysis of green, honey, and white Chlorella vulgaris hydrolysates reveals differences in chemical composition and bioactive properties among pigment variants."
+    },
+    {
+      "pmid": "43062245",
+      "title": "The ecological impact of Ulva prolifera green tide outbreaks: microbial connectivity and metabolic divergence.",
+      "journal": "mSystems",
+      "pub_date": "2026-11-20",
+      "url": "https://doi.org/10.1128/msystems.01133-26",
+      "topic": "Water",
+      "hook": "The study examined how Ulva prolifera green tide outbreaks influence microbial connectivity and metabolic divergence in coastal ecosystems."
+    },
+    {
+      "pmid": "42867242",
+      "title": "Phosphonate degradation through the C-P lyase pathway by a dinoflagellate-associated Mameliella alba enhances host growth under phosphate limitation.",
+      "journal": "Applied and environmental microbiology",
+      "pub_date": "2026-10-13",
+      "url": "https://doi.org/10.1128/aem.01846-26",
+      "topic": "Water",
+      "hook": "A dinoflagellate-associated Mameliella alba uses the C‑P lyase pathway to degrade phosphonates, boosting host growth under phosphate limitation."
+    },
+    {
+      "pmid": "42805474",
+      "title": "Ferric iron enhances granule densification and pollutant removal in microalgal-bacterial granular sludge via iron-homeostatic microbial rewiring.",
+      "journal": "Environmental research",
+      "pub_date": "2026-09-28",
+      "url": "https://doi.org/10.1016/j.envres.2026.125791",
+      "topic": "Water",
+      "hook": "Adding ferric iron to microalgal‑bacterial granular sludge enhances granule densification and pollutant removal through iron‑homeostatic microbial rewiring."
+    },
+    {
+      "pmid": "43025515",
+      "title": "Transcriptome-guided overexpression of undecaprenyl-phosphate glucose phosphotransferase drives efficient lipid accumulation in Synechococcus elongatus.",
+      "journal": "Bioresource technology",
+      "pub_date": "2026-11-13",
+      "url": "https://doi.org/10.1016/j.biortech.2026.136264",
+      "topic": "Materials",
+      "hook": "Transcriptome-guided overexpression of an undecaprenyl-phosphate glucose phosphotransferase in Synechococcus elongatus drives efficient lipid accumulation without nitrogen starvation."
+    },
+    {
+      "pmid": "43025517",
+      "title": "Bovine serum albumin selectively inhibits Nannochloropsis growth and induces proteostasis-associated stress responses.",
+      "journal": "Bioresource technology",
+      "pub_date": "2026-11-13",
+      "url": "https://doi.org/10.1016/j.biortech.2026.136263",
+      "topic": "Materials",
+      "hook": "Bovine serum albumin alone inhibits Nannochloropsis growth and triggers proteostasis-associated stress responses, indicating it is not physiologically inert in cultures."
+    },
+    {
+      "pmid": "42686004",
+      "title": "Effects of marine heatwaves and marine cold spells on toxin production in Alexandrium catenella.",
+      "journal": "Environmental pollution (Barking, Essex : 1987)",
+      "pub_date": "2026-09-02",
+      "url": "https://doi.org/10.1016/j.envpol.2026.128957",
+      "topic": "Materials",
+      "hook": "Marine heatwaves and cold spells alter toxin production in Alexandrium catenella, with temperature extremes increasing the risk of harmful algal blooms."
+    },
+    {
+      "pmid": "43059290",
+      "title": "Beyond the Well Boundary: Strain-Specific Ammonium Overflow Drives Cross-Well Nitrogen Transfer in Microalgal Cultures.",
+      "journal": "Plant, cell &amp; environment",
       "pub_date": "2026-11-19",
-      "url": "https://doi.org/10.1007/s11250-026-05461-4",
-      "topic": "feed",
-      "hook": "Dietary supplementation with Spirulina platensis and humic acid improves broiler chicken growth, immune responses, and antioxidant capacity under heat stress."
-    },
-    {
-      "pmid": "43049525",
-      "title": "Dietary protein sources shape the digestive-tract microbiota of white shrimp (Penaeus vannamei): differences among digestive organs.",
-      "journal": "Journal of applied microbiology",
-      "pub_date": "2026-11-18",
-      "url": "https://doi.org/10.1093/jambio/lxag282",
-      "topic": "feed",
-      "hook": "Alternative protein sources alter the digestive‑tract microbiota of white shrimp, with distinct effects across digestive organs."
-    },
-    {
-      "pmid": "43036251",
-      "title": "Energy and carbon reallocation underlie the growth-storage trade-off in Haematococcus lacustris.",
-      "journal": "Journal of experimental botany",
-      "pub_date": "2026-11-16",
-      "url": "https://doi.org/10.1093/jxb/erag576",
-      "topic": "water",
-      "hook": "Showed that Haematococcus lacustris reallocates energy and carbon between growth and storage during the growth‑storage trade‑off."
-    },
-    {
-      "pmid": "43035160",
-      "title": "Contrasting pH-mediated inhibitory effects of ammonium chloride and urea on Tetradesmus obliquus: Insights from physiology, transcriptomics, and targeted amino acid metabolomics.",
-      "journal": "Bioresource technology",
-      "pub_date": "2026-11-15",
-      "url": "https://doi.org/10.1016/j.biortech.2026.136272",
-      "topic": "water",
-      "hook": "Demonstrated that ammonium chloride and urea inhibit Tetradesmus obliquus growth via pH‑mediated effects, supported by physiology, transcriptomics, and metabolomics."
-    },
-    {
-      "pmid": "43039245",
-      "title": "Exploring ERF transcription factors from Haematococcus pluvialis and their regulatory function in carotenoids metabolism.",
-      "journal": "Bioresource technology",
-      "pub_date": "2026-11-16",
-      "url": "https://doi.org/10.1016/j.biortech.2026.136269",
-      "topic": "materials",
-      "hook": "Explores ERF transcription factors in Haematococcus pluvialis and their regulatory role in carotenoid metabolism."
-    },
-    {
-      "pmid": "43035162",
-      "title": "High-throughput solvent screening for microalgae oil extraction based on multi-criteria decision analysis.",
-      "journal": "Bioresource technology",
-      "pub_date": "2026-11-15",
-      "url": "https://doi.org/10.1016/j.biortech.2026.136252",
-      "topic": "materials",
-      "hook": "Develops a high‑throughput solvent screening approach for microalgae oil extraction based on multi‑criteria decision analysis."
-    },
-    {
-      "pmid": "43050583",
-      "title": "CRISPR/Cas for diatom gene editing: pitfalls, solutions, and emerging tools.",
-      "journal": "Plant physiology",
-      "pub_date": "2026-11-18",
-      "url": "https://doi.org/10.1093/plphys/kiag858",
-      "topic": "methods",
-      "hook": "Reviews pitfalls and solutions for CRISPR/Cas gene editing in diatoms, highlighting emerging tools for functional genomics."
-    },
-    {
-      "pmid": "43041200",
-      "title": "3D focused impedance spectroscopy for label-free profiling of thermal stress in microalgae.",
-      "journal": "Lab on a chip",
-      "pub_date": "2026-11-17",
-      "url": "https://doi.org/10.1039/d6lc00904b",
-      "topic": "methods",
-      "hook": "Introduces 3D focused impedance spectroscopy for rapid, label‑free profiling of thermal stress in microalgae cultures."
+      "url": "https://doi.org/10.1111/pce.71049",
+      "topic": "Methods",
+      "hook": "A 48‑well microplate cross‑diffusion assay showed strain‑specific ammonium overflow drives nitrogen transfer across wells in microalgal cultures."
     }
   ]
 }
