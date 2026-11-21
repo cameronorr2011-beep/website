@@ -39,6 +39,10 @@ def migrate_legacy_application_links(text):
 
 
 def apply(text):
+    if 'class="site-head"' in text:
+        # Commerce pages own their static header/footer. Applying the legacy
+        # shell injector here would replace that shell, so it is a no-op.
+        return text
     text = migrate_legacy_application_links(text)
     # CultureTrace is retained only as private source material. It is not part
     # of the public Orr Biologicals portfolio or its crawlable navigation.
@@ -121,9 +125,10 @@ def build():
     count = 0
     for path in pages():
         relative = path.relative_to(ROOT).as_posix()
-        if relative == 'index.html':
-            # The homepage owns its redesigned shell. The legacy shared header
-            # and footer belong to the retired homepage and must not wrap it.
+        if relative in ('index.html', 'hatcheries.html', 'kits.html'):
+            # The homepage owns its redesigned shell. The two legacy redirect
+            # stubs stay minimal so a 0-second redirect does not download the
+            # retired editorial chrome first.
             count += 1
             continue
         if relative.startswith(('algae-growth/', 'game/')):
@@ -132,6 +137,10 @@ def build():
             count += 1
             continue
         old = path.read_text(encoding='utf-8-sig')
+        if 'class="site-head"' in old:
+            # Commerce pages use the redesigned header/styles.css shell.
+            count += 1
+            continue
         new = apply(old)
         if old != new:
             path.write_text(new, encoding='utf-8')

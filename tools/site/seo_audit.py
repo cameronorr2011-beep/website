@@ -68,8 +68,9 @@ class Page(HTMLParser):
 
 
 def pages():
+    ignored = {'node_modules', 'sections', 'apps', 'dist', 'tools', 'admin', 'backend'}
     candidates = (p for p in ROOT.rglob('*.html') if not any(
-        part in ('sections', 'apps', 'dist', '.git', '.dev-tools', 'tools', 'admin', 'backend') for part in p.relative_to(ROOT).parts))
+        part.startswith('.') or part in ignored for part in p.relative_to(ROOT).parts))
     # Sort by the repository-relative POSIX path so generated output is identical
     # on Windows and Linux (Path ordering is case-insensitive on Windows).
     return sorted(candidates, key=lambda p: p.relative_to(ROOT).as_posix())

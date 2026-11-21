@@ -31,24 +31,29 @@ class Page(HTMLParser):
 class SiteCopyTests(unittest.TestCase):
     def test_home_origin_and_status(self):
         text = (ROOT / 'index.html').read_text(encoding='utf-8')
-        self.assertIn('Biology,<br> <em>built in the open.</em>', text)
-        self.assertIn('sourdough, kombucha, spirulina', text)
-        self.assertIn('MIT-licensed', text)
-        self.assertIn('class="kit-hero"', text)
-        self.assertIn('Enter Applications', text)
-        self.assertIn('Concepts in development', text)
-        self.assertIn('commercial deployment', text)
+        self.assertIn('Live microalgae', text)
+        self.assertIn('hatcheries', text)
+        self.assertIn('reef', text)
+        self.assertIn('16 oz', text)
+        self.assertIn('$15', text)
+        self.assertIn('$25', text)
+        self.assertIn('class="site-head"', text)
+        for href in ('/algae', '/culturekits', '/articles/', '/company'):
+            self.assertIn('href="' + href + '"', text)
         self.assertNotIn('/papertrail/', text)
-        self.assertIn('Algal Digital Lab', text)
-        self.assertIn('/Simulation/', text)
+        self.assertNotIn('/culturetrace/', text)
         self.assertNotRegex(text, r'AP-0[1-7]|PreOrder|orrSubscribeForm|orrSuccess')
 
     def test_home_metadata_is_valid_and_not_an_offer(self):
         text = (ROOT / 'index.html').read_text(encoding='utf-8')
         payload = re.search(r'<script type="application/ld\+json">(.*?)</script>', text, re.S)
         data = json.loads(payload.group(1))
-        self.assertEqual(data['@graph'][-1]['@type'], 'CreativeWork')
-        self.assertNotIn('offers', data['@graph'][-1])
+        types = [node.get('@type') for node in data['@graph']]
+        self.assertIn('Organization', types)
+        self.assertIn('FAQPage', types)
+        self.assertNotIn('Product', types)
+        for node in data['@graph']:
+            self.assertNotIn('offers', node)
 
     def test_assets_and_local_anchors(self):
         for name in ('index.html', 'cyanoflow.html', 'articles/index.html', 'disclaimer.html'):
@@ -68,7 +73,7 @@ class SiteCopyTests(unittest.TestCase):
 
     def test_images_and_simulations_are_retained(self):
         text = (ROOT / 'index.html').read_text(encoding='utf-8')
-        for value in ('assets/cyano/culture.jpg', 'assets/cyano/chip.jpg', 'id="systems"', 'id="products"', 'id="deploy"'):
+        for value in ('assets/strains/nannochloropsis-oculata.jpg', 'assets/real/ornl-cultures.jpg', 'id="top"', 'id="about"', 'id="systems"', 'id="deploy"'):
             self.assertIn(value, text)
         self.assertIn('id="chipSim"', (ROOT / 'cyanoflow.html').read_text(encoding='utf-8'))
         self.assertTrue((ROOT / 'applications/index.html').exists())

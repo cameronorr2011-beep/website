@@ -116,11 +116,13 @@ class SEOTests(unittest.TestCase):
     def test_modular_home_sources_and_build_entrypoints(self):
         from build_home import render
         self.assertEqual((ROOT / 'index.html').read_text(encoding='utf-8'), render())
-        h1 = ' '.join(Page(render()).headings['h1'][0].split()).lower()
-        self.assertEqual(h1, 'biology, built in the open.')
-        self.assertIn('class="kit-hero"', render())
-        self.assertIn('class="kit-adv', render())
-        self.assertIn('Concepts in development', render())
+        page = render()
+        h1 = ' '.join(Page(page).headings['h1'][0].split()).lower()
+        self.assertEqual(h1, 'live microalgae, for hatcheries and reef tanks.')
+        self.assertIn('class="site-head"', page)
+        self.assertIn('class="hero2"', page)
+        self.assertIn('What leaves this bench', page)
+        self.assertIn('$25', page)
         for name in ('build.ps1', 'rebuild.ps1'):
             text = (ROOT / name).read_text(encoding='utf-8-sig')
             self.assertNotIn('SliceLines', text)
@@ -170,7 +172,7 @@ class SEOTests(unittest.TestCase):
         footer = (ROOT / 'sections/footer.html').read_text(encoding='utf-8')
         self.assertIn('>Contact</a>', footer)
         home = (ROOT / 'index.html').read_text(encoding='utf-8')
-        for href in ('/articles/', '/algaephyte/', '/cyanoflow', '/algae/'):
+        for href in ('/articles/', '/algae', '/culturekits', '/company'):
             self.assertIn('href="' + href + '"', home)
         self.assertNotIn('/papertrail/', home)
 
@@ -183,13 +185,10 @@ class SEOTests(unittest.TestCase):
     def test_support_donation_transparency(self):
         address = 'clumsyparsnip913@walletofsatoshi.com'
         support = (ROOT / 'support/index.html').read_text(encoding='utf-8')
-        home = (ROOT / 'index.html').read_text(encoding='utf-8')
-        for label, text in (('support page', support), ('homepage', home)):
-            with self.subTest(page=label):
-                self.assertIn(address, text)
-                self.assertIn('data-copy="', text)
-                self.assertIn('/support/', text)
-                self.assertIn('voluntary', text)
+        self.assertIn(address, support)
+        self.assertIn('data-copy="', support)
+        self.assertIn('/support/', support)
+        self.assertIn('voluntary', support)
         # Transparency statements must be present, and the wallet identity
         # must never be presented as a charity, a returning product or a QR.
         self.assertIn('not a registered charity', support)
@@ -219,8 +218,8 @@ class SEOTests(unittest.TestCase):
         self.assertIn('normalizeDoi', js)
         self.assertIn('cited_by_count', js)
         self.assertIn('best_oa_location', js)
-        engine_row = (ROOT / 'index.html').read_text(encoding='utf-8')
-        self.assertIn('/literature/', engine_row)
+        footer = (ROOT / 'sections/footer.html').read_text(encoding='utf-8')
+        self.assertIn('/literature/', footer)
 
     def test_retired_neuro_surfaces_are_gone(self):
         # The neuroscience and NeuroML surfaces were removed entirely: no
@@ -247,10 +246,8 @@ class SEOTests(unittest.TestCase):
         # The developers page is honest about having no public API.
         self.assertIn('Nothing here responds yet', dev)
         self.assertNotIn('/api/v1/neurons/{id}', dev)
-        # The home surface took the hero slot and both pages link each other.
-        self.assertIn('Enter Applications', home)
-        for text in (home, dev):
-            self.assertIn('/developers/', text)
+        # The developers page remains reachable from the shared site navigation.
+        self.assertIn('/developers/', dev)
 
     def test_google_font_ranges_are_valid(self):
         for path in pages():

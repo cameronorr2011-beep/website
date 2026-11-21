@@ -17,7 +17,16 @@
 .shot{margin:0;border:1px solid var(--line);background:var(--paper-2)}
 .shot img{display:block;width:100%;height:auto}
 .shot figcaption{font-family:var(--font-mono);font-size:.68rem;line-height:1.7;color:var(--ink-3);padding:.9rem 1rem;border-top:1px solid var(--line)}
-.shot figcaption b{color:var(--ink-2);font-weight:500}</style>
+.shot figcaption b{color:var(--ink-2);font-weight:500}
+.kb-group + .kb-group{margin-top:2.6rem}
+.kb-h{font-family:var(--font-mono);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin:2.2rem 0 .7rem;font-weight:500}
+.kb-list{list-style:none;margin:0;padding:0;border-top:1px solid var(--ink);display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:clamp(2rem,4vw,4rem)}
+.kb-list li{border-bottom:1px solid var(--line-soft);min-width:0}
+.kb-list a{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;padding:.9rem 0;text-decoration:none;color:var(--ink)}
+.kb-list a:hover .kb-title{text-decoration:underline;text-underline-offset:.18em}
+.kb-title{font-family:var(--font-sans);font-size:.94rem;line-height:1.45;text-wrap:pretty}
+.kb-meta{font-family:var(--font-mono);font-size:.56rem;line-height:1.5;letter-spacing:.03em;color:var(--ink-3);white-space:nowrap}
+@media(max-width:760px){.kb-list{grid-template-columns:1fr}.kb-list a{gap:.75rem}.kb-meta{font-size:.52rem}}</style>
 <meta name="theme-color" content="#000000">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Orr Biologicals">
@@ -109,7 +118,7 @@
     <p class="lead">Six guides to growing marine microalgae — the volumes, the doses, the failure modes and what to do about them. Each one is tagged for the reader it was written for: hatchery staff, hobbyists and reef keepers, or classrooms and students.</p>
   </div>
 
-  <section class="section section--tight" aria-labelledby="desk-h">
+  <section class="section section--tight" id="picks" aria-labelledby="desk-h">
     <div class="wrap">
       <div class="section-head">
         <h2 id="desk-h">Algae news</h2>
@@ -173,6 +182,48 @@
           <a class="more" href="/articles/culture-crash">Read the guide</a>
         </article>
       </div>
+    </div>
+  </section>
+
+  <section class="section section--tight" id="kb" aria-labelledby="kb-h">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="kb-h">Notes from the knowledge base</h2>
+        <p class="lead">The longer working notes: cultivation, instrumentation, contamination and the questions that keep coming back. Every note is dated and tied to a strain or a bench problem.</p>
+      </div>
+      <!-- SEO:KNOWLEDGE:START -->
+<div class="kb-group">
+<h3 class="kb-h">Algaephyte — growing and understanding algae</h3>
+<ul class="kb-list">
+<li><a href="/blog/federated-learning-network"><span class="kb-title">A Federated Learning Network for Algae Reactors</span><span class="kb-meta">2026-08-17 · Algaephyte field note</span></a></li>
+<li><a href="/blog/spirulina-is-a-cyanobacterium"><span class="kb-title">Spirulina Is a Cyanobacterium — What That Actually Means</span><span class="kb-meta">2026-08-14 · Algaephyte field note</span></a></li>
+<li><a href="/blog/digital-twins-biological-cultivation"><span class="kb-title">Digital Twins for Biological Cultivation</span><span class="kb-meta">2026-08-10 · Algaephyte field note</span></a></li>
+<li><a href="/blog/photobioreactor-ai-optimization"><span class="kb-title">AI Optimization in Photobioreactors: Propose, Then Verify</span><span class="kb-meta">2026-08-06 · Algaephyte field note</span></a></li>
+<li><a href="/blog/what-is-main-plain-language"><span class="kb-title">What Is Algaephyte? (Plain Language)</span><span class="kb-meta">2026-08-04 · Algaephyte field note</span></a></li>
+<li><a href="/blog/troubleshooting-ph-and-carbon"><span class="kb-title">Troubleshooting pH and Carbon in Alkaline Culture</span><span class="kb-meta">2026-08-02 · Algaephyte field note</span></a></li>
+<li><a href="/blog/how-main-keeps-culture-safe"><span class="kb-title">How Algaephyte Keeps Your Culture Safe</span><span class="kb-meta">2026-08-01 · Algaephyte field note</span></a></li>
+<li><a href="/blog/troubleshooting-contamination-crashes"><span class="kb-title">Troubleshooting Spirulina Contamination and Crashes</span><span class="kb-meta">2026-07-30 · Algaephyte field note</span></a></li>
+<li><a href="/blog/bounded-autonomy-safe-ai-proposals"><span class="kb-title">Bounded Autonomy: Keeping AI Proposals Safe</span><span class="kb-meta">2026-07-29 · Algaephyte field note</span></a></li>
+<li><a href="/blog/control-loop-architecture"><span class="kb-title">Control Loop Architecture for Living Systems</span><span class="kb-meta">2026-07-26 · Algaephyte field note</span></a></li>
+<li><a href="/blog/light-temperature-mixing"><span class="kb-title">Light, Temperature and Mixing: The Three Physical Levers</span><span class="kb-meta">2026-07-23 · Algaephyte field note</span></a></li>
+<li><a href="/blog/six-culture-signals-main-senses"><span class="kb-title">Six Culture Signals: What a Reactor Senses</span><span class="kb-meta">2026-07-21 · Algaephyte field note</span></a></li>
+<li><a href="/blog/dissolved-oxygen-stress-signal"><span class="kb-title">Dissolved Oxygen as a Stress Signal</span><span class="kb-meta">2026-07-19 · Algaephyte field note</span></a></li>
+<li><a href="/blog/zarrouk-medium-and-nutrients"><span class="kb-title">Zarrouk Medium and Nutrients: Feeding a Spirulina Culture</span><span class="kb-meta">2026-07-16 · Algaephyte field note</span></a></li>
+<li><a href="/blog/digital-twin-droop-steele-model"><span class="kb-title">A Digital Twin Built on Droop and Steele</span><span class="kb-meta">2026-07-12 · Algaephyte field note</span></a></li>
+<li><a href="/blog/harvesting-and-using-fresh-spirulina"><span class="kb-title">Harvesting and Using Fresh Spirulina</span><span class="kb-meta">2026-07-09 · Algaephyte field note</span></a></li>
+<li><a href="/blog/winter-home-growing-warmth"><span class="kb-title">Keeping a Home Spirulina Culture Warm Through Winter</span><span class="kb-meta">2026-07-05 · Algaephyte field note</span></a></li>
+<li><a href="/blog/how-to-start-home-spirulina-culture"><span class="kb-title">How to Start a Home Spirulina Culture (Without Guesswork)</span><span class="kb-meta">2026-07-02 · Algaephyte field note</span></a></li>
+<li><a href="/blog/reading-your-culture"><span class="kb-title">Reading Your Culture: Color, Density, Smell</span><span class="kb-meta">2026-06-25 · Algaephyte field note</span></a></li>
+<li><a href="/blog/alkalinity-as-a-control-variable"><span class="kb-title">Alkalinity as a Control Variable</span><span class="kb-meta">2026-06-18 · Algaephyte field note</span></a></li>
+</ul></div>
+<div class="kb-group">
+<h3 class="kb-h">Cyanoflow — a closer look at cells</h3>
+<ul class="kb-list">
+<li><a href="/blog/single-cell-microalgae-microfluidics"><span class="kb-title">Single-Cell Microalgae Analysis with Microfluidics</span><span class="kb-meta">2026-10-04 · Cyanoflow</span></a></li>
+<li><a href="/blog/vision-contamination-detection"><span class="kb-title">Vision-Based Contamination Detection, Honestly</span><span class="kb-meta">2026-08-12 · Cyanoflow</span></a></li>
+<li><a href="/blog/edge-ai-biological-systems"><span class="kb-title">Edge AI for Biological Systems</span><span class="kb-meta">2026-08-08 · Cyanoflow</span></a></li>
+</ul></div>
+<!-- SEO:KNOWLEDGE:END -->
     </div>
   </section>
 
