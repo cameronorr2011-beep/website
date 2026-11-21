@@ -15,3 +15,6 @@ docs/local-webgl.png
 
 # local visual audit captures
 artifacts/audit/
+
+# Lighthouse CI output
+.lighthouseci/

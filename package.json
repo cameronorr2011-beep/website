@@ -15,12 +15,17 @@
     "qa": "python3 tools/site/seo_audit.py --out docs/seo/current",
     "build:game": "node tools/build_game.mjs",
     "test:simulation": "node tools/test_simulation_engine.mjs && node tools/test_simulation_persistence.mjs",
-    "test:game": "node tools/test_biorealm_engine.mjs && node tools/test_biorealm_atmosphere.mjs"
+    "test:game": "node tools/test_biorealm_engine.mjs && node tools/test_biorealm_atmosphere.mjs",
+    "audit:lh": "lhci autorun",
+    "audit:a11y": "node tools/a11y-audit.mjs",
+    "audit": "npm run audit:lh && npm run audit:a11y"
   },
   "dependencies": {
     "three": "0.180.0"
   },
   "devDependencies": {
+    "@axe-core/puppeteer": "^4.14.0",
+    "@lhci/cli": "^0.16.1",
     "esbuild": "0.25.10",
     "puppeteer-core": "25.16.0"
   },
