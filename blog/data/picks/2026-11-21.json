@@ -1,0 +1,55 @@
+{
+  "date": "2026-11-21",
+  "model": "openai/gpt-oss-120b",
+  "generated_at": "2026-11-22T00:00:55Z",
+  "picks": [
+    {
+      "pmid": "43043915",
+      "title": "Promotion of nisin production by developing a surfactant-assisted microalgae-bacteria symbiotic system.",
+      "journal": "Preparative biochemistry &amp; biotechnology",
+      "year": "2026",
+      "pub_date": "2026-11-17",
+      "url": "https://doi.org/10.1080/10826068.2026.2764938",
+      "topic": "Biotech",
+      "hook": "A surfactant‑assisted microalgae‑bacteria partnership boosts nisin antibiotic yields.",
+      "article": "A recent study set out to boost the production of nisin, a natural food preservative made by the bacterium Lactococcus lactis, by pairing the bacteria with a microalga. The researchers created a symbiotic system in which the microalga Chlorella pyrenoidosa (strain FACHB‑10) was grown together with the nisin‑producing bacteria, using a surfactant to help the two organisms interact.\n\nThe experiment was carried out at a laboratory scale, mixing cultures of the alga and the bacterium in the presence of a surfactant that facilitates close contact between the two cell types. The goal was to see whether this partnership could alleviate the environmental stresses that normally limit bacterial growth and nisin output.\n\nThe study found that the surfactant‑assisted algal‑bacterial symbiosis promoted nisin production, suggesting that the microalga helped the bacteria overcome stress‑related inhibition during fermentation.\n\nThis approach is interesting because it points to a way of using algae to improve the efficiency of microbial processes that generate valuable food‑grade compounds.",
+      "why": "Algae‑bacterial partnerships could make natural preservatives like nisin cheaper and more sustainable."
+    },
+    {
+      "pmid": "43036251",
+      "title": "Energy and carbon reallocation underlie the growth-storage trade-off in Haematococcus lacustris.",
+      "journal": "Journal of experimental botany",
+      "year": "2026",
+      "pub_date": "2026-11-16",
+      "url": "https://doi.org/10.1093/jxb/erag576",
+      "topic": "Biofuels",
+      "hook": "Haematococcus lacustris reallocates carbon to balance growth and astaxanthin storage.",
+      "article": "A recent study set out to understand how a single‑celled alga, Haematococcus lacustris, shifts its internal resources when it moves from a growth phase to a storage phase. The researchers focused on the natural transition from fast‑growing motile cells to storage‑rich palmella cells.\n\nThey examined the metabolic changes that accompany this shift, looking at how energy and carbon are reallocated within the cells. The work involved comparing the two cell types under conditions that naturally trigger the transition.\n\nThe study found that the trade‑off between growth and storage is driven by a reallocation of energy and carbon, revealing the metabolic basis of this fundamental biological trade‑off.\n\nUnderstanding this resource reallocation helps explain how algae balance rapid growth with the accumulation of valuable compounds, which is important for biotechnological applications.",
+      "why": "It shows how algae manage energy, informing ways to boost production of useful algal products."
+    },
+    {
+      "pmid": "43063787",
+      "title": "Distributions and sea-to-air fluxes of volatile halocarbons in the East China Sea and copper effects on their release by Skeletonema costatum.",
+      "journal": "Marine environmental research",
+      "year": "2026",
+      "pub_date": "2026-11-16",
+      "url": "https://doi.org/10.1016/j.marenvres.2026.108558",
+      "topic": "Climate",
+      "hook": "Skeletonema costatum releases volatile halocarbons, linking blooms to atmospheric chemistry.",
+      "article": "A recent study set out to map where several volatile halocarbons – gases that can affect climate and the ozone layer – are found in the East China Sea and to see how copper influences their release from the algae Skeletonia costatum.\n\nResearchers collected seawater samples across the East China Sea and measured concentrations of five halocarbons (CH₃I, CH₂Br₂, CHBrCl₂, CHBr₂Cl, and CHBr₃). They also examined how adding copper affected the algae’s emission of these compounds.\n\nThe measurements showed that all five halocarbons were present in the sea water and the overlying atmosphere of the region. The study further reported that copper exposure altered the release rates of these gases from Skeletonia costatum, though specific quantitative changes were not detailed in the abstract.\n\nUnderstanding the natural sources and controls of halocarbon emissions helps improve climate and ozone models, making this work relevant for predicting environmental change.",
+      "why": "It clarifies how marine algae and metal pollution together shape gases that influence climate and ozone health."
+    },
+    {
+      "pmid": "42716016",
+      "title": "A morphology-driven workflow to decipher 3D electron microscopy segmentation in diatoms.",
+      "journal": "Cell reports methods",
+      "year": "2026",
+      "pub_date": "2026-09-09",
+      "url": "https://doi.org/10.1016/j.crmeth.2026.101594",
+      "topic": "Single‑cell",
+      "hook": "A morphology‑driven workflow deciphers 3D EM segmentation of diatom ultrastructure.",
+      "article": "A recent study set out to make it easier to identify and separate the tiny structures inside diatom cells captured by three‑dimensional electron microscopy. The researchers built a workflow that uses the overall shape of cellular components to guide the segmentation process, which is the step of outlining each structure in the images.\n\nThey applied the method to diatom cells, using standard 3D electron microscopy data and training an artificial‑intelligence model to recognize morphological cues. The workflow combines the AI’s speed with expert input to produce accurate outlines of the diverse shapes and sizes seen in these microbes.\n\nThe study shows that morphology‑driven AI can speed up the labor‑intensive task of manually tracing cellular structures, while still capturing the fine details that reflect how cells adapt to their environments.\n\nThis approach could help researchers map the intricate architecture of algae more efficiently, supporting advances in bio‑fuel production and nanomaterial design.",
+      "why": "Faster, detailed cell maps can accelerate algae engineering for sustainable technologies."
+    }
+  ]
+}
