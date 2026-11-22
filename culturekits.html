@@ -62,7 +62,7 @@
 .kit-price span{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3)}
 .kit-hero__fig{margin:0;min-height:100%}
 .kit-hero__fig{display:flex;flex-direction:column;justify-content:center;padding:clamp(1.2rem,3vw,2.4rem);background:var(--paper-2)}
-.kit-hero__fig svg{display:block;width:100%;height:auto;border:1px solid var(--line);box-shadow:var(--lift-2);background:var(--paper-2)}
+.kit-hero__fig img{display:block;width:100%;height:auto;border:1px solid var(--line);box-shadow:var(--lift-2);background:var(--paper-2)}
 .kit-hero__fig figcaption{margin-top:.8rem;font-family:var(--font-mono);font-size:.6rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3)}
 .kit-band figure{margin:0;background:var(--paper-2);display:flex;flex-direction:column}
 .kit-band figure img{flex:1}
@@ -139,56 +139,9 @@
       <div class="kit-price"><b>$25</b><span>Everything below, one box</span></div>
       <p class="mt-2"><a class="btn" href="mailto:service@orrbiologicals.com?subject=Culture%20kit%20order&amp;body=Quantity%3A%0AShipping%20address%3A">Order the kit</a></p>
     </div>
-    <figure class="kit-hero__fig kit-hero__fig--diagram">
-      <svg class="kit-diagram" viewBox="0 0 760 680" role="img" aria-labelledby="kitDiagramTitle kitDiagramDesc">
-        <title id="kitDiagramTitle">Diagram of the eight parts in the one gallon culture kit</title>
-        <desc id="kitDiagramDesc">A carboy, a 16 oz culture bottle, a 50 mL bottle of f/2, a bag of salt, an air pump, airline, an LED light and a Secchi stick, drawn flat and numbered.</desc>
-        <rect width="760" height="680" fill="#F3EFE3"/>
-        <g fill="none" stroke="#0B0B0B" stroke-width="2" stroke-linejoin="round" stroke-linecap="round">
-          <!-- LED -->
-          <rect x="60" y="92" width="286" height="22" rx="4"/>
-          <line x1="60" y1="103" x2="38" y2="103"/>
-          <line x1="90" y1="128" x2="90" y2="142" stroke-dasharray="4 6" stroke-width="1.4"/>
-          <line x1="140" y1="128" x2="140" y2="142" stroke-dasharray="4 6" stroke-width="1.4"/>
-          <line x1="190" y1="128" x2="190" y2="142" stroke-dasharray="4 6" stroke-width="1.4"/>
-          <!-- pump -->
-          <rect x="500" y="86" width="126" height="62" rx="9"/>
-          <circle cx="626" cy="117" r="6"/>
-          <!-- airline to carboy -->
-          <path d="M500 117 C 420 117, 410 168, 300 196" stroke-dasharray="5 5" stroke-width="1.6"/>
-          <!-- carboy -->
-          <rect x="205" y="196" width="52" height="40" rx="5"/>
-          <path d="M222 196 v-16 h18 v16"/>
-          <rect x="128" y="236" width="206" height="300" rx="26"/>
-          <!-- culture bottle -->
-          <rect x="404" y="300" width="34" height="28" rx="4"/>
-          <rect x="380" y="328" width="82" height="170" rx="11"/>
-          <!-- f/2 -->
-          <rect x="512" y="322" width="28" height="26" rx="4"/>
-          <rect x="500" y="348" width="52" height="112" rx="7"/>
-          <!-- salt pouch -->
-          <path d="M604 330 h92 l12 34 v90 q0 10 -10 10 h-96 q-10 0 -10 -10 v-90 z"/>
-          <line x1="604" y1="366" x2="708" y2="366" stroke-dasharray="4 5" stroke-width="1.4"/>
-          <!-- secchi -->
-          <line x1="706" y1="250" x2="706" y2="450"/>
-          <circle cx="706" cy="232" r="22"/>
-        </g>
-        <path d="M706 210 a22 22 0 0 1 0 44 z" fill="#0B0B0B"/>
-        <path d="M134 348 q 60 -14 120 0 t 74 0 v 182 q -97 10 -194 0 z" fill="#C9FF4A" opacity=".45"/>
-        <path d="M386 400 q 34 -8 70 0 v 88 q -35 6 -70 0 z" fill="#C9FF4A" opacity=".55"/>
-        <path d="M506 400 q 20 -5 40 0 v 55 q -20 4 -40 0 z" fill="#0B0B0B" opacity=".18"/>
-        <g font-family="IBM Plex Mono, monospace" font-size="11" letter-spacing="1.2" fill="#0B0B0B">
-          <g><rect x="60" y="150" width="20" height="15" fill="#C9FF4A"/><text x="65" y="161">07</text><text x="88" y="161">LED LIGHT</text></g>
-          <g><rect x="500" y="164" width="20" height="15" fill="#C9FF4A"/><text x="505" y="175">05</text><text x="528" y="175">AIR PUMP</text></g>
-          <g><rect x="352" y="184" width="20" height="15" fill="#C9FF4A"/><text x="357" y="195">06</text><text x="380" y="195">AIRLINE</text></g>
-          <g><rect x="128" y="556" width="20" height="15" fill="#C9FF4A"/><text x="133" y="567">01</text><text x="156" y="567">CARBOY · 1 GAL</text></g>
-          <g><rect x="380" y="518" width="20" height="15" fill="#C9FF4A"/><text x="385" y="529">02</text><text x="408" y="529">CULTURE · 16 OZ</text></g>
-          <g><rect x="462" y="600" width="20" height="15" fill="#C9FF4A"/><text x="467" y="611">03</text><text x="490" y="611">f/2 · 50 mL</text></g>
-          <g><rect x="574" y="640" width="20" height="15" fill="#C9FF4A"/><text x="579" y="651">04</text><text x="602" y="651">SALT · 1 kg</text></g>
-          <g><rect x="676" y="600" width="20" height="15" fill="#C9FF4A"/><text x="681" y="611">08</text><text x="704" y="611" font-size="10">SECCHI</text></g>
-        </g>
-      </svg>
-      <figcaption>What's in the box · schematic, not to scale</figcaption>
+    <figure class="kit-hero__fig">
+      <img src="/assets/images/culturekit-hero.jpg" width="1024" height="1024" fetchpriority="high" decoding="async" alt="Generated image of a one-gallon microalgae culture kit on a pale wooden bench: a glass carboy of dense green algae with its air pump and airline, a bottle of live culture, an amber vial of f/2, a bag of marine salt, an LED bar light and a face-down Secchi disk on a wooden dowel.">
+      <figcaption>Generated image — illustrative, not a photograph of the exact kit</figcaption>
     </figure>
   </section>
 
@@ -233,7 +186,7 @@
         <li><div><b>LED light</b>A small bar on a clamp. The culture needs light more than it needs warmth.</div></li>
         <li><div><b>Secchi stick</b>A black and white disc on a stick. You lower it until it disappears and read the depth to judge density.</div></li>
       </ol>
-      <p class="kit-note">The diagram is a schematic of what ships. The photographs are real cultures, credited under each image.</p>
+      <p class="kit-note">The hero image is generated and illustrative. The photographs are real cultures, credited under each image.</p>
     </div>
   </section>
 
