@@ -1,0 +1,105 @@
+{
+  "date": "2026-11-22",
+  "generated_at": "2026-11-23T00:00:07Z",
+  "editor": "openai/gpt-oss-120b",
+  "scouts": [
+    "openai/gpt-oss-20b",
+    "openai/gpt-oss-20b",
+    "openai/gpt-oss-20b",
+    "openai/gpt-oss-20b",
+    "openai/gpt-oss-20b"
+  ],
+  "count": 10,
+  "items": [
+    {
+      "pmid": "42894757",
+      "title": "Gamma irradiation shapes high value metabolite responses across microbes microalgae and plants.",
+      "journal": "iScience",
+      "pub_date": "2026-10-09",
+      "url": "https://doi.org/10.1016/j.isci.2026.117824",
+      "topic": "Cultivation",
+      "hook": "Gamma irradiation alters redox and metabolic regulation in microalgae, affecting high‑value metabolite production."
+    },
+    {
+      "pmid": "43067451",
+      "title": "Concentration-dependent modulation of cadmium toxicity by molybdenum in Chlorella pyrenoidosa: Multi-endpoint evidence for an antioxidant compensation-to-overload transition.",
+      "journal": "Environmental research",
+      "pub_date": "2026-11-21",
+      "url": "https://doi.org/10.1016/j.envres.2026.126171",
+      "topic": "Feed",
+      "hook": "Shows how molybdenum modulates cadmium toxicity in Chlorella pyrenoidosa, revealing antioxidant compensation and overload transitions."
+    },
+    {
+      "pmid": "43012716",
+      "title": "Acyltransferases in Microbial Triacylglycerol Biosynthesis: Structure, Mechanisms, Regulation, and Engineering.",
+      "journal": "Journal of agricultural and food chemistry",
+      "pub_date": "2026-11-11",
+      "url": "https://doi.org/10.1021/acs.jafc.6c07776",
+      "topic": "Feed",
+      "hook": "Describes acyltransferases involved in microbial triacylglycerol biosynthesis, detailing structure, mechanisms, regulation, and engineering potential."
+    },
+    {
+      "pmid": "43067417",
+      "title": "From granulation to disintegration: role of filamentous microalgae and multi-community succession in microalgae-bacteria granular sludge reactor.",
+      "journal": "Bioresource technology",
+      "pub_date": "2026-11-21",
+      "url": "https://doi.org/10.1016/j.biortech.2026.136302",
+      "topic": "Water",
+      "hook": "Demonstrated that filamentous microalgae and community succession improve granulation and wastewater treatment performance in a microalgae-bacteria granular sludge reactor."
+    },
+    {
+      "pmid": "42637131",
+      "title": "Aqueous phase leachates from pure and commercial microplastics differentially affect the physiology and metabolism of Chlorella sp. MM3.",
+      "journal": "Environmental pollution (Barking, Essex : 1987)",
+      "pub_date": "2026-08-24",
+      "url": "https://doi.org/10.1016/j.envpol.2026.129014",
+      "topic": "Materials",
+      "hook": "Demonstrates that aqueous leachates from different microplastics alter the physiology and metabolism of Chlorella sp. MM3."
+    },
+    {
+      "pmid": "43057158",
+      "title": "Occurrence of potentially harmful phytoplankton and phycotoxins in eastern oysters within a coastal Alabama estuary.",
+      "journal": "Marine pollution bulletin",
+      "pub_date": "2026-11-19",
+      "url": "https://doi.org/10.1016/j.marpolbul.2026.120595",
+      "topic": "Methods",
+      "hook": "Occurrence of potentially harmful phytoplankton and phycotoxins was documented in eastern oysters within a coastal Alabama estuary, highlighting exposure risks."
+    },
+    {
+      "pmid": "42909240",
+      "title": "Phototrophs trade growth for defense through graded regulatory states under escalating oxidative stress.",
+      "journal": "iScience",
+      "pub_date": "2026-10-14",
+      "url": "https://doi.org/10.1016/j.isci.2026.117861",
+      "topic": "Methods",
+      "hook": "Synechococcus elongatus PCC 7942 was shown to trade growth for defense under escalating oxidative stress, revealing graded regulatory states."
+    },
+    {
+      "pmid": "43067610",
+      "title": "Genome-wide identification and characterization of Arabidopsis domain of unknown function 1995 (DUF1995) gene family.",
+      "journal": "Planta",
+      "pub_date": "2026-11-21",
+      "url": "https://doi.org/10.1007/s00425-026-05233-2",
+      "topic": "Research",
+      "hook": "DUF1995 is an ancient cyanobacteria-originated family."
+    },
+    {
+      "pmid": "43050987",
+      "title": "Environmental fate of antibiotics, microplastics, and heavy metals under algal-bloom conditions: A review of interactions and ecological risks.",
+      "journal": "Marine pollution bulletin",
+      "pub_date": "2026-11-18",
+      "url": "https://doi.org/10.1016/j.marpolbul.2026.120590",
+      "topic": "Research",
+      "hook": "The increasing co-occurrence of antibiotics, microplastics, and heavy metals in eutrophic waters has intensified concerns over combined pollution under algal-bloom conditions."
+    },
+    {
+      "pmid": "43051105",
+      "title": "Composition, sources, and fate of fluorescent dissolved organic matter in the East China Sea under contrasting river discharge regimes.",
+      "journal": "Marine environmental research",
+      "pub_date": "2026-11-17",
+      "url": "https://doi.org/10.1016/j.marenvres.2026.108560",
+      "topic": "Research",
+      "hook": "Understanding dissolved organic matter (DOM) dynamics in river-dominated marginal seas is essential for constraining coastal carbon budgets."
+    }
+  ]
+}
