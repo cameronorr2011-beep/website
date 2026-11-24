@@ -68,7 +68,10 @@ class Page(HTMLParser):
 
 
 def pages():
-    ignored = {'node_modules', 'sections', 'apps', 'dist', 'tools', 'admin', 'backend'}
+    # `orrtechnologies`, `videostack` and `studio-out` are sibling projects or
+    # generated exports that live in this workspace; they are not site pages.
+    ignored = {'node_modules', 'sections', 'apps', 'dist', 'tools', 'admin', 'backend',
+               'orrtechnologies', 'videostack', 'studio-out'}
     candidates = (p for p in ROOT.rglob('*.html') if not any(
         part.startswith('.') or part in ignored for part in p.relative_to(ROOT).parts))
     # Sort by the repository-relative POSIX path so generated output is identical
