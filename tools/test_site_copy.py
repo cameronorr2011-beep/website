@@ -36,7 +36,7 @@ class SiteCopyTests(unittest.TestCase):
         self.assertIn('reef', text)
         self.assertIn('16 oz', text)
         self.assertIn('$15', text)
-        self.assertIn('$25', text)
+        self.assertIn('$35', text)
         self.assertIn('class="site-head"', text)
         for href in ('/algae', '/culturekits', '/articles/', '/company'):
             self.assertIn('href="' + href + '"', text)
