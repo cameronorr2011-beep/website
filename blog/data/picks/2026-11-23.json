@@ -1,0 +1,55 @@
+{
+  "date": "2026-11-23",
+  "model": "openai/gpt-oss-120b",
+  "generated_at": "2026-11-24T04:32:36Z",
+  "picks": [
+    {
+      "pmid": "43070106",
+      "title": "Genome-wide mutations and responses of transposable elements to heavy-ion beam irradiation in the haptophyte Tisochrysis lutea.",
+      "journal": "DNA research : an international journal for rapid publication of reports on genes and genomes",
+      "year": "2026",
+      "pub_date": "2026-11-23",
+      "url": "https://doi.org/10.1093/dnares/dsag021",
+      "topic": "Genetic Engineering",
+      "hook": "Heavy-ion beams create mutation libraries in the haptophyte Tisochrysis lutea for strain improvement.",
+      "article": "A recent study set out to map how heavy‑ion beam irradiation changes the DNA of the marine microalga Tisochrysis lutea and how its mobile DNA elements, called transposable elements, respond.\n\nThe researchers grew twelve separate strains of T. lutea, exposed them to carbon‑ion beam irradiation, and then used DNA sequencing to catalogue mutations across the whole genome.\n\nThe analysis revealed a genome‑wide pattern of mutations and showed that transposable elements were also affected by the irradiation, although the abstract does not give specific numbers.\n\nUnderstanding these mutation patterns helps scientists gauge the usefulness of heavy‑ion beams for creating algal strains with desirable traits for industry.",
+      "why": "It shows how ion beams can safely generate genetic diversity in algae for biotechnological improvement."
+    },
+    {
+      "pmid": "43071249",
+      "title": "Microwave-assisted fractionation of Chlorella vulgaris using an ethylene glycol-modified deep eutectic solvent for nanocellulose production.",
+      "journal": "Bioresources and bioprocessing",
+      "year": "2026",
+      "pub_date": "2026-11-23",
+      "url": "https://doi.org/10.1186/s40643-026-01163-9",
+      "topic": "Materials",
+      "hook": "Microwave‑assisted deep eutectic solvent extracts nanocellulose from Chlorella vulgaris efficiently.",
+      "article": "A recent study set out to find a faster, greener way to break open the tiny algae Chlorella vulgaris so its useful cell walls could be turned into nanocellulose, a material with many high‑value applications. \n\nThe researchers combined two steps: first they used microwaves to heat the algae in the presence of a specially designed deep eutectic solvent, which is a mixture of ethylene glycol‑modified choline chloride and oxalic acid that can dissolve cell components. This integrated approach was applied at a laboratory scale to process the microalgal biomass.\n\nThe integrated microwave‑assisted fractionation successfully disrupted the recalcitrant cell wall and released the structural cellulose, making it available for nanocellulose production.\n\nThis work is interesting because it shows a potentially scalable, low‑energy method to convert abundant microalgae into valuable bioproducts.",
+      "why": "It offers a greener route to turn algae into nanocellulose, expanding sustainable material options."
+    },
+    {
+      "pmid": "43025515",
+      "title": "Transcriptome-guided overexpression of undecaprenyl-phosphate glucose phosphotransferase drives efficient lipid accumulation in Synechococcus elongatus.",
+      "journal": "Bioresource technology",
+      "year": "2026",
+      "pub_date": "2026-11-13",
+      "url": "https://doi.org/10.1016/j.biortech.2026.136264",
+      "topic": "Biofuels",
+      "hook": "Overexpressing a glucose phosphotransferase boosts lipid yields in Synechococcus elongatus under nitrogen stress.",
+      "article": "A recent study set out to boost oil production in a cyanobacterium without sacrificing overall growth. The researchers used a transcriptome (the full set of gene activity) to pinpoint a target enzyme in the cell envelope and then increased its production in Synechococcus elongatus PCC 7942.\n\nThey grew the engineered cyanobacteria under nitrogen‑deficient conditions, a common trigger for lipid buildup, and measured how much oil accumulated compared with normal cells.\n\nThe engineered strain accumulated 40 % more lipids even though the expression of accD, a gene that normally helps make fatty acids, fell 2.7‑fold.\n\nThis result shows that tweaking cell‑envelope pathways can enhance oil yields in microalgae, offering a new route for bio‑fuel or bioproduct generation.",
+      "why": "Redirecting carbon to lipids via envelope enzymes could improve algae‑based biofuel production without hurting biomass."
+    },
+    {
+      "pmid": "43068777",
+      "title": "Integrating algal-bacterial consortia and Daphnia magna cultivation for aquaculture wastewater treatment: Water polishing, pathogen control, and live feed production.",
+      "journal": "Bioresource technology",
+      "year": "2026",
+      "pub_date": "2026-11-22",
+      "url": "https://doi.org/10.1016/j.biortech.2026.136310",
+      "topic": "Wastewater Treatment",
+      "hook": "Algal‑bacterial consortia paired with Daphnia polish aquaculture waste while producing live feed.",
+      "article": "A recent study set out to create a combined treatment system that could clean aquaculture wastewater while also producing useful biomass and live feed. The researchers linked a light‑driven algal‑bacterial consortium with a culture of the tiny crustacean Daphnia magna.\n\nThey assembled three photobioreactors, each seeded with a different mix of microbial species, and then ran the algae‑bacteria together with Daphnia in a step‑wise treatment chain. The approach was tested on actual aquaculture effluent, allowing the organisms to grow and interact under controlled laboratory conditions.\n\nThe integrated system was able to polish the water, reduce pathogen levels, and generate both algal biomass and live Daphnia that could be harvested as feed. No quantitative results were given in the abstract.\n\nSuch a multi‑purpose solution is interesting because it tackles waste treatment, resource recovery, and feed production in a single, potentially cost‑effective process.",
+      "why": "It shows how algae‑bacterial mixes and tiny crustaceans can turn fish farm waste into clean water and nutritious feed."
+    }
+  ]
+}
