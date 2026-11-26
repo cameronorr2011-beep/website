@@ -1,0 +1,55 @@
+{
+  "date": "2026-11-25",
+  "model": "openai/gpt-oss-120b",
+  "generated_at": "2026-11-26T02:34:41Z",
+  "picks": [
+    {
+      "pmid": "43082092",
+      "title": "NaCl-Mediated Multilevel Regulation of Astaxanthin Biosynthesis in Haematococcus lacustris under High-Light Stress: Multiomics Mechanism Elucidation and Industrial-Scale Validation of Astaxanthin Production.",
+      "journal": "Journal of agricultural and food chemistry",
+      "year": "2026",
+      "pub_date": "",
+      "url": "https://doi.org/10.1021/acs.jafc.6c06175",
+      "topic": "Health Bioactive",
+      "hook": "Multiomics reveal how NaCl boosts astaxanthin in Haematococcus, with industrial‑scale proof.",
+      "article": "A recent study set out to understand how salt (NaCl) influences the way the microalga Haematococcus lacustris makes astaxanthin, a valuable natural pigment, when the cells are exposed to strong light.\n\nThe researchers grew the algae in outdoor photobioreactors and applied different levels of NaCl while exposing them to high light. They used multiomics—simultaneous analysis of genes, proteins and metabolites—and chemical genetics to map the regulatory pathways involved.\n\nThe work revealed that NaCl triggers a multi‑level regulatory network that enhances astaxanthin synthesis under high‑light stress, and the findings were confirmed in two‑ton scale outdoor reactors.\n\nUnderstanding this salt‑mediated control could help improve industrial production of natural astaxanthin from algae.",
+      "why": "It shows a way to boost algae‑derived astaxanthin, making this natural food ingredient more affordable and sustainable."
+    },
+    {
+      "pmid": "43072488",
+      "title": "Microalgae-bacteria co-culture further enhances microalgal biodiesel production under salt stress.",
+      "journal": "Bioresource technology",
+      "year": "2026",
+      "pub_date": "2026-11-23",
+      "url": "https://doi.org/10.1016/j.biortech.2026.136323",
+      "topic": "Biofuels",
+      "hook": "Co‑culturing microalgae with bacteria under salt stress lifts biodiesel yields.",
+      "article": "A recent study explored whether pairing a microalga with a bacterium could boost biodiesel yields when the algae are grown under salty conditions. The researchers grew the green alga Chlorella pyrenoidosa together with the bacterium Flavobacterium sp. in a simulated wastewater that contained 20 g L⁻¹ NaCl.\n\nThey monitored how the co‑culture performed compared with the alga alone, looking at growth, lipid (fat) accumulation and overall biomass production.\n\nThe co‑culture was found to further enhance microalgal biodiesel production under salt stress, overcoming the typical trade‑off between stress‑induced lipid synthesis and growth inhibition.\n\nThis result is interesting because it suggests a simple way to improve algae‑based biofuel production using natural microbial partnerships.",
+      "why": "Co‑culturing algae with bacteria may raise biofuel yields while using salty wastewater, making algae biodiesel more viable."
+    },
+    {
+      "pmid": "43067610",
+      "title": "Genome-wide identification and characterization of Arabidopsis domain of unknown function 1995 (DUF1995) gene family.",
+      "journal": "Planta",
+      "year": "2026",
+      "pub_date": "2026-11-21",
+      "url": "https://doi.org/10.1007/s00425-026-05233-2",
+      "topic": "Genetics Engineering",
+      "hook": "DUF1995 gene family traced to ancient cyanobacterial origins, expanding functional genomics.",
+      "article": "A recent study set out to map and understand a little‑known family of genes called DUF1995, which originated in ancient cyanobacteria and are present in the plant Arabidopsis.\n\nThe researchers examined the whole genome of Arabidopsis and compared it with the genomes of 29 key plant species spanning all major lineages, looking for members of the DUF1995 family and where they are active.\n\nThey found that five Arabidopsis DUF1995 genes are expressed in leaves and target the chloroplast, the cell organelle where photosynthesis occurs. One of these, named LPA3, is essential for chloroplast development and interacts with the photosystem II (PSII) proteins that capture light energy; the functions of the other members remain to be clarified.\n\nUnderstanding this ancient gene family helps reveal how chloroplasts and photosynthetic machinery have evolved, which could inform future efforts to engineer more efficient photosynthesis in crops.",
+      "why": "Insights into DUF1995 genes may guide algae or plant engineering for better photosynthetic performance."
+    },
+    {
+      "pmid": "43080070",
+      "title": "The Peripheral Endoplasmic Reticulum is a High-Capacity Calcium Conduit for Coccolithophore Calcification.",
+      "journal": "Advanced science (Weinheim, Baden-Wurttemberg, Germany)",
+      "year": "2026",
+      "pub_date": "2026-11-24",
+      "url": "https://doi.org/10.1002/advs.78667",
+      "topic": "Climate Carbon",
+      "hook": "Peripheral ER acts as a calcium highway enabling coccolithophore calcification, a key carbon sink.",
+      "article": "A recent study set out to discover how coccolithophores, the tiny marine algae that build calcium carbonate plates, move calcium ions inside their cells for calcification. The researchers examined the role of the peripheral endoplasmic reticulum, a membrane network that runs just beneath the cell surface, as a possible high‑capacity pathway for calcium transport.\n\nUsing cellular imaging and calcium‑sensitive probes, they tracked calcium movement in coccolithophore cells and compared it with known transport mechanisms. The work focused on the intracellular process of calcite scale formation, which requires rapid delivery of calcium while the cell maintains a low calcium concentration in the surrounding fluid.\n\nThe study found that the peripheral endoplasmic reticulum acts as a major conduit for calcium ions, providing the high‑capacity transport needed for efficient coccolith formation. This identifies a previously unrecognized organelle function in these algae.\n\nUnderstanding this calcium pathway could help improve biotechnological approaches that harness coccolithophores for carbon capture or biomaterial production.",
+      "why": "Revealing the calcium route in coccolithophores may enable better algae‑based carbon sequestration and material synthesis."
+    }
+  ]
+}
