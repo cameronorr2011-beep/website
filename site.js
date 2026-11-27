@@ -14,6 +14,49 @@
 
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
 
+  /* Scroll choreography: one passive listener, one frame at a time. The rail
+     reports progress, the hero drifts against the copy, and the dark sections
+     let their light move behind the still illustrations. The products never
+     animate on their own. */
+  var railFill = document.querySelector('.scroll-rail__fill');
+  var scrollScenes = document.querySelectorAll('[data-scroll]');
+  var heroLive = document.querySelector('.hero3');
+  var scrollQueued = false;
+
+  function paintScroll() {
+    scrollQueued = false;
+    var y = window.scrollY || 0;
+    var max = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+    var progress = Math.min(1, Math.max(0, y / max));
+    root.style.setProperty('--scroll', progress.toFixed(4));
+    if (railFill) railFill.style.transform = 'scaleX(' + progress.toFixed(4) + ')';
+
+    if (reduced.matches) return;
+
+    if (heroLive) {
+      var hp = Math.min(1, Math.max(0, y / Math.max(1, heroLive.offsetHeight)));
+      heroLive.style.setProperty('--hero-p', hp.toFixed(4));
+    }
+
+    for (var i = 0; i < scrollScenes.length; i++) {
+      var el = scrollScenes[i];
+      var rect = el.getBoundingClientRect();
+      if (rect.bottom < -160 || rect.top > window.innerHeight + 160) continue;
+      var q = (window.innerHeight - rect.top) / (window.innerHeight + rect.height);
+      el.style.setProperty('--p', Math.min(1, Math.max(0, q)).toFixed(4));
+    }
+  }
+
+  function queueScroll() {
+    if (scrollQueued) return;
+    scrollQueued = true;
+    window.requestAnimationFrame(paintScroll);
+  }
+
+  window.addEventListener('scroll', queueScroll, { passive: true });
+  window.addEventListener('resize', queueScroll);
+  paintScroll();
+
   /* the kit plate answers a pointer with a few degrees of depth. Pointer
      devices only, never under reduced motion, and it resets on leave. */
   if (!reduced.matches && window.matchMedia('(hover: hover)').matches) {
@@ -72,7 +115,12 @@
     'main .strain',
     'main .alg-prod',
     'main .table-scroll',
-    'main .orderbox'
+    'main .orderbox',
+    'main .live-stats__grid > div',
+    'main .culture-room__list li',
+    'main .morph__card',
+    'main .morph__foot',
+    'main .kit-stage__list li'
   ].join(','));
 
   var watched = [];

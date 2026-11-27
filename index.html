@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Live Microalgae for Hatcheries and Reef Tanks | Orr Biologicals</title>
-<meta name="description" content="Live microalgae for hatcheries and reef keepers: weekly Nannochloropsis, 16 oz starters, f/2 concentrate and a $35 culture kit. United States.">
+<title>Live Phytoplankton &amp; Culture Kits | Orr Biologicals</title>
+<meta name="description" content="Live marine phytoplankton, cultured in small batches and counted before shipping. Six strains in 16 oz bottles, $15, or the $35 culture kit. Ships in the US.">
 <link rel="canonical" href="https://orrbiologicals.com/">
 <meta name="robots" content="max-image-preview:large">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
@@ -14,6 +14,8 @@
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="stylesheet" href="/styles.css?v=20261120b">
 <link rel="stylesheet" href="/assets/hero.css?v=20261120b">
+<link rel="stylesheet" href="/assets/algae-life.css?v=20261123c">
+<link rel="stylesheet" href="/css/biological-cinema.css?v=20261123d">
 <meta name="theme-color" content="#000000">
 <style>
 /* photographs, credited in the caption */
@@ -26,8 +28,8 @@
 </style>
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Orr Biologicals">
-<meta property="og:title" content="Live microalgae for hatcheries and reef tanks | Orr Biologicals">
-<meta property="og:description" content="Live marine microalgae grown in the United States: weekly Nannochloropsis, 16 oz starters, f/2 concentrate and a $35 culture kit for hatcheries and hobbyists.">
+<meta property="og:title" content="Live phytoplankton, cultured in small batches | Orr Biologicals">
+<meta property="og:description" content="Six strains of live marine phytoplankton in 16 oz bottles, counted before they ship. $15 each, $20 with salt, or the $35 culture kit. United States.">
 <meta property="og:url" content="https://orrbiologicals.com/">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://orrbiologicals.com/assets/og-core.jpg">
@@ -36,8 +38,8 @@
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Orr Biologicals homepage: live microalgae for hatcheries and reef keepers, with the culture column.">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Live microalgae for hatcheries and reef tanks | Orr Biologicals">
-<meta name="twitter:description" content="Live marine microalgae grown in the United States: weekly Nannochloropsis, 16 oz starters, f/2 concentrate and a $35 culture kit for hatcheries and hobbyists.">
+<meta name="twitter:title" content="Live phytoplankton, cultured in small batches | Orr Biologicals">
+<meta name="twitter:description" content="Six strains of live marine phytoplankton in 16 oz bottles, counted before they ship. $15 each, $20 with salt, or the $35 culture kit. United States.">
 <meta name="twitter:image" content="https://orrbiologicals.com/assets/og-core.jpg">
 <meta name="twitter:image:alt" content="Orr Biologicals homepage: live microalgae for hatcheries and reef keepers, with the culture column.">
 <script type="application/ld+json">
@@ -137,6 +139,7 @@
 </script>
 </head>
 <body>
+<div class="scroll-rail" aria-hidden="true"><span class="scroll-rail__fill"></span></div>
 <div class="ambient" aria-hidden="true"></div>
 <a class="skip" href="#main">Skip to content</a>
 
@@ -172,50 +175,79 @@
 
 <main id="main">
 
-  <section class="hero2" id="top" aria-labelledby="hero-h">
-    <div class="hero2__field" aria-hidden="true">
-      <canvas data-cells></canvas>
-      <span class="hero2__blob hero2__blob--a"></span>
-      <span class="hero2__blob hero2__blob--b"></span>
+  <section class="hero3" id="top" aria-labelledby="hero-h">
+    <div class="hero3__field" data-algae-field aria-hidden="true">
+      <canvas id="heroFieldCanvas"></canvas>
     </div>
 
-    <div class="wrap hero2__grid">
-      <div class="hero2__copy">
-        <p class="hero2__kicker">Live marine microalgae · United States</p>
-        <h1 id="hero-h">Live microalgae, for hatcheries and reef tanks.</h1>
-        <p class="lead">A 16 oz bottle of live culture with 50 mL of f/2, counted before it ships. Feed a hatchery, a reef tank or a classroom. Six strains, one bottle size, $15. Add 1,000 g of marine salt and it's $20.</p>
-        <div class="hero2__actions">
-          <a class="btn" href="/algae">Shop the strains</a>
-          <a class="btn btn--ghost" href="/culturekits">The $35 kit</a>
-          <span class="note">Cultures ship Monday to Wednesday, US only.</span>
+    <div class="wrap hero3__grid">
+      <div class="hero3__copy">
+        <p class="hero3__kicker"><i aria-hidden="true"></i>Live marine phytoplankton · small batch · United States</p>
+        <h1 id="hero-h">Six strains. <span>One standard.</span> <em>Alive</em> on arrival.</h1>
+        <p class="lead">Live phytoplankton, cultured in small batches and counted the day before it ships. A 16 oz bottle with its f/2 is <b>$15</b>, or $20 with marine salt. The $35 kit puts the same culture on your bench.</p>
+        <div class="hero3__actions">
+          <a class="btn" href="/algae">Shop the six strains</a>
+          <a class="btn btn--ghost" href="/culturekits">The $35 culture kit</a>
+          <span class="note">Ships Monday to Wednesday, US only.</span>
         </div>
-        <ul class="hero2__chips">
+        <ul class="hero3__chips">
           <li>16 oz / 473 mL</li>
-          <li>f/2 included</li>
-          <li>Salt +$5</li>
+          <li>Six strains</li>
+          <li>Counted by hand</li>
           <li>Live arrival guaranteed</li>
         </ul>
       </div>
 
-      <figure class="specimen">
-        <div class="specimen__frame">
-          <img src="/assets/strains/nannochloropsis-oculata.jpg?v=20261120a" width="800" height="800" loading="eager" fetchpriority="high" decoding="async" alt="Light micrograph of Nannochloropsis oculata: many small round green cells across a pale field.">
-          <figcaption>Nannochloropsis oculata · 2–3 µm · H. Kargin, CC BY 4.0</figcaption>
+      <figure class="hero3__plate">
+        <div class="hero3__glass">
+          <canvas data-algae-scene="vessel" data-vessel="bottle" aria-hidden="true"></canvas>
+          <span class="hero3__badge">Live culture</span>
         </div>
-        <span class="specimen__tag">Specimen <b>01</b> / six strains</span>
-        <span class="specimen__stamp">Live · 16 oz</span>
+        <span class="hero3__plate-tag">Specimen 01 / 06</span>
+        <figcaption class="hero3__plate-foot">
+          <div>
+            <i>Nannochloropsis oculata</i>
+            <small>2–3 µm · 16 oz / 473 mL · f/2 included</small>
+          </div>
+          <p class="hero3__plate-price">$15<small>or $20 with salt</small></p>
+        </figcaption>
+        <p class="hero3__credit">Procedural illustration of the bottle — not a photograph. The cell is drawn, too; the credited micrographs are on <a href="/algae">the strain page</a>.</p>
       </figure>
     </div>
+  </section>
 
-    <div class="ticker" aria-hidden="true">
-      <div class="ticker__track">
-        <div class="ticker__group">
-          <span>16 oz of live microalgae</span><span>$15 with 50 mL f/2</span><span>$20 with 1,000 g salt</span><span>$35 culture kit</span><span>Six strains</span><span>Ships Monday to Wednesday</span><span>Live arrival guaranteed</span><span>US only</span>
-        </div>
-        <div class="ticker__group">
-          <span>16 oz of live microalgae</span><span>$15 with 50 mL f/2</span><span>$20 with 1,000 g salt</span><span>$35 culture kit</span><span>Six strains</span><span>Ships Monday to Wednesday</span><span>Live arrival guaranteed</span><span>US only</span>
-        </div>
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker__track">
+      <div class="ticker__group">
+        <span>Six live strains</span><span>16 oz of live culture</span><span>Counted before it ships</span><span>f/2 included</span><span>$15 each</span><span>$35 culture kit</span><span>Ships Monday to Wednesday</span><span>Live arrival guaranteed</span>
       </div>
+      <div class="ticker__group">
+        <span>Six live strains</span><span>16 oz of live culture</span><span>Counted before it ships</span><span>f/2 included</span><span>$15 each</span><span>$35 culture kit</span><span>Ships Monday to Wednesday</span><span>Live arrival guaranteed</span>
+      </div>
+    </div>
+  </div>
+
+  <section class="live-stats" aria-labelledby="standard-h">
+    <div class="wrap">
+      <p class="live-stats__head" id="standard-h">Alive, counted, and shipped inside a week</p>
+      <dl class="live-stats__grid">
+        <div>
+          <dt>Strains in rotation</dt>
+          <dd><b>06</b><span>each in the same 16 oz bottle</span></dd>
+        </div>
+        <div>
+          <dt>Split to ship</dt>
+          <dd><b>7</b><span>days under 12:12 light</span></dd>
+        </div>
+        <div>
+          <dt>At harvest</dt>
+          <dd><b>2<sup>×</sup>10<sup>7</sup></b><span>cells per mL, counted</span></dd>
+        </div>
+        <div>
+          <dt>If it arrives dead</dt>
+          <dd><b>24<sup>h</sup></b><span>to photograph it and be replaced</span></dd>
+        </div>
+      </dl>
     </div>
   </section>
 
@@ -242,6 +274,32 @@
           <p class="small mt-1"><a href="/culturekits">Kits for classrooms</a></p>
         </article>
       </div>
+    </div>
+  </section>
+
+  <section class="culture-room" data-scroll aria-labelledby="room-h">
+    <div class="wrap culture-room__grid">
+      <div>
+        <p class="eyebrow">The culture room</p>
+        <h2 id="room-h">Alive is a specification, not a slogan.</h2>
+        <p class="lead">A culture is not a powder you rehydrate. It is a population of dividing cells that has to be kept in light, in motion and at the right temperature from the day it is split to the day it is packed.</p>
+        <ul class="culture-room__list">
+          <li><b>01</b><div><strong>12:12 light</strong><p>Twelve hours on, twelve off, on a timer rather than a guess.</p></div></li>
+          <li><b>02</b><div><strong>20–24 °C</strong><p>Warm enough to divide, cool enough to stay clean.</p></div></li>
+          <li><b>03</b><div><strong>One count before packing</strong><p>A haemocytometer count, a colour check and a contamination screen on the day it leaves.</p></div></li>
+        </ul>
+      </div>
+      <figure class="culture-room__fig">
+        <div class="culture-room__frame" aria-hidden="true">
+          <canvas data-algae-scene="shelf" data-vessels="tube,tube,tube"></canvas>
+        </div>
+        <figcaption class="culture-room__labels">
+          <span><b>N. oculata</b>2–3 µm · weekly</span>
+          <span><b>T-Iso</b>4–6 µm · DHA-rich</span>
+          <span><b>C. muelleri</b>4–6 µm · chain</span>
+        </figcaption>
+        <p class="culture-room__cap">Procedural illustration of three cultures under light — not a photograph of a specific batch.</p>
+      </figure>
     </div>
   </section>
 
@@ -283,6 +341,51 @@
           <h3>Protocol help</h3>
           <p class="small">Media recipes, split schedules, contamination diagnosis and light and aeration settings. If your culture is turning the wrong colour, send a photograph and a Secchi reading and you will get an answer, customer or not.</p>
         </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section morph" data-scroll aria-labelledby="morph-h">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Morphology</p>
+          <h2 id="morph-h">Six cells, six architectures.</h2>
+        </div>
+        <p class="lead">Cell size is the constraint a hatchery feeds against: a newly set veliger can only capture particles a few micrometres across. These are the six shapes in the bottle, drawn at relative scale.</p>
+      </div>
+      <div class="morph__grid">
+        <a class="morph__card" href="/algae#strains">
+          <span class="morph__stage"><canvas data-algae-scene="strain" data-strain="nanno" aria-hidden="true"></canvas></span>
+          <span class="morph__body"><b>Nannochloropsis <i>oculata</i></b><small>2–3 µm · eustigmatophyte</small></span>
+        </a>
+        <a class="morph__card" href="/algae#strains">
+          <span class="morph__stage"><canvas data-algae-scene="strain" data-strain="tiso" aria-hidden="true"></canvas></span>
+          <span class="morph__body"><b>Isochrysis <i>aff. galbana</i></b><small>4–6 µm · haptophyte</small></span>
+        </a>
+        <a class="morph__card" href="/algae#strains">
+          <span class="morph__stage"><canvas data-algae-scene="strain" data-strain="pavlova" aria-hidden="true"></canvas></span>
+          <span class="morph__body"><b>Pavlova <i>lutheri</i></b><small>4–6 µm · haptophyte</small></span>
+        </a>
+        <a class="morph__card" href="/algae#strains">
+          <span class="morph__stage"><canvas data-algae-scene="strain" data-strain="chaeto" aria-hidden="true"></canvas></span>
+          <span class="morph__body"><b>Chaetoceros <i>muelleri</i></b><small>4–6 µm · chain diatom</small></span>
+        </a>
+        <a class="morph__card" href="/algae#strains">
+          <span class="morph__stage"><canvas data-algae-scene="strain" data-strain="thalassio" aria-hidden="true"></canvas></span>
+          <span class="morph__body"><b>Thalassiosira <i>pseudonana</i></b><small>3–5 µm · centric diatom</small></span>
+        </a>
+        <a class="morph__card" href="/algae#strains">
+          <span class="morph__stage"><canvas data-algae-scene="strain" data-strain="tetra" aria-hidden="true"></canvas></span>
+          <span class="morph__body"><b>Tetraselmis <i>suecica</i></b><small>7–10 µm · chlorophyte</small></span>
+        </a>
+      </div>
+      <div class="morph__foot">
+        <figure class="morph__real">
+          <img src="/assets/strains/nannochloropsis-oculata.jpg?v=20261120a" width="800" height="800" loading="lazy" decoding="async" alt="Light micrograph of Nannochloropsis oculata: many small round green cells across a pale field.">
+          <figcaption>Real specimen: <i>N. oculata</i>, light micrograph. H. Kargin, CC BY 4.0.</figcaption>
+        </figure>
+        <p class="morph__note">Cell forms drawn procedurally at relative scale from published live diameters. Illustrative, not micrographs — the credited micrographs are on each strain card.</p>
       </div>
     </div>
   </section>
@@ -413,20 +516,23 @@
     </div>
   </section>
 
-  <section class="section" aria-labelledby="kit-teaser">
-    <div class="wrap buy">
-      <div>
-        <h2 id="kit-teaser">Not a hatchery? Start with a gallon on the desk.</h2>
-        <p class="lead mt-1">The same organism, same media, one box. A gallon carboy, a counted starter, f/2, salt, air and light — everything the first culture needs, without a shopping list.</p>
-        <p class="small mt-1">Used in classrooms, science fairs and by reef keepers who want a live culture they can split instead of buying a bottle every month. Sold one at a time to a home address — no account, no minimum order. Ages 13 and up.</p>
-        <div class="btn-row">
-          <a class="btn" href="/culturekits">See what is in the kit</a>
+  <section class="kit-stage" data-scroll aria-labelledby="kit-teaser">
+    <div class="wrap kit-stage__grid">
+      <figure class="kit-stage__art">
+        <div class="kit-stage__frame" aria-hidden="true">
+          <canvas data-algae-scene="shelf" data-vessels="bottle,carboy,vial"></canvas>
         </div>
-      </div>
-      <div class="price">
-        <p class="amount"><sup>$</sup>35</p>
-        <p class="terms">One box. Ships Monday to Wednesday, US only.</p>
-        <ul>
+        <figcaption class="kit-stage__cap">Procedural illustration of the kit shelf: the 16 oz starter, the gallon carboy and the f/2 vial. Not a photograph.</figcaption>
+      </figure>
+      <div>
+        <p class="eyebrow">The culture kit</p>
+        <h2 id="kit-teaser">A gallon of living culture, in one box.</h2>
+        <p class="lead">A carboy, a counted starter, the f/2 to feed it, salt, air and light, and a Secchi stick to read density by eye. Everything the first gallon needs, packed as one — nothing to upgrade in a month.</p>
+        <div class="kit-stage__price">
+          <b>$35</b>
+          <span>One box. Ships Mon–Wed, US only.</span>
+        </div>
+        <ul class="kit-stage__list">
           <li>One gallon carboy with a drilled cap</li>
           <li>16 oz counted <i>N. oculata</i> starter</li>
           <li>50 mL f/2 concentrate — about 25 litres</li>
@@ -435,6 +541,10 @@
           <li>6,500 K LED light</li>
           <li>Secchi stick and protocol card</li>
         </ul>
+        <div class="btn-row">
+          <a class="btn" href="/culturekits">See what is in the box</a>
+          <span class="note">Ages 13 and up. Live arrival guaranteed.</span>
+        </div>
       </div>
     </div>
   </section>
@@ -527,7 +637,8 @@
     </div>
   </div>
 </footer>
-<script defer src="/assets/hero.js?v=20261120b"></script>
+<script defer src="/js/biological-cinema.js?v=20261123d"></script>
+<script defer src="/assets/algae-life.js?v=20261123b"></script>
 <script defer src="/site.js"></script>
 </body>
 </html>
