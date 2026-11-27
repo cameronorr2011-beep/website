@@ -13,6 +13,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=Questrial&amp;display=swap">
 <link rel="stylesheet" href="/styles.css?v=20261120b">
 <link rel="stylesheet" href="/assets/hero.css?v=20261120b">
+<link rel="stylesheet" href="/assets/algae-life.css?v=20261123b">
 <meta name="theme-color" content="#000000">
 <meta property="og:type" content="product">
 <meta property="og:site_name" content="Orr Biologicals">
@@ -134,15 +135,15 @@
 <main id="main">
   <section class="kit-hero">
     <div class="kit-hero__text">
-      <p class="eyebrow">The kit</p>
+      <p class="eyebrow">The culture kit</p>
       <h1>One box.<br>One gallon.<br>$35.</h1>
       <p>This is the whole bench, packed flat: a gallon carboy, a bottle of live algae, its food, the salt to make the water, an air pump, airline, a light and a Secchi stick. It's for a reef keeper or a teacher who wants to grow a gallon of feed on a kitchen counter without buying nine things from four shops.</p>
       <div class="kit-price"><b>$35</b><span>Everything below, one box</span></div>
       <p class="mt-2"><a class="btn" href="mailto:service@orrbiologicals.com?subject=Culture%20kit%20order&amp;body=Quantity%3A%0AShipping%20address%3A">Order the kit</a></p>
     </div>
     <figure class="kit-hero__fig">
-      <img src="/assets/images/culturekit-hero.jpg" width="1024" height="1024" fetchpriority="high" decoding="async" alt="Generated image of a one-gallon microalgae culture kit on a pale wooden bench: a glass carboy of dense green algae with its air pump and airline, a bottle of live culture, an amber vial of f/2, a bag of marine salt, an LED bar light and a face-down Secchi disk on a wooden dowel.">
-      <figcaption>Generated image — illustrative, not a photograph of the exact kit</figcaption>
+      <img src="/assets/images/culturekit-hero.jpg?v=20261127c" width="1024" height="1024" fetchpriority="high" decoding="async" alt="Cotton-plugged Erlenmeyer flasks of green and yellow-green microalgae cultures standing on a lit shelf.">
+      <figcaption>A working bench culture, photographed. The kit is the same idea at gallon scale. Photo: Oak Ridge National Laboratory, CC BY 2.0.</figcaption>
     </figure>
   </section>
 
@@ -152,6 +153,23 @@
       <div class="ticker__group"><span>$35 kit</span><span>One gallon carboy</span><span>16 oz live culture</span><span>50 mL f/2</span><span>1,000 g salt</span><span>Pump · airline · LED</span><span>Secchi stick</span><span>Ships Monday to Wednesday</span></div>
     </div>
   </div>
+
+  <section class="kit-live" aria-labelledby="kit-live-h">
+    <div class="wrap kit-live__grid">
+      <figure class="kit-live__fig">
+        <div class="kit-live__frame" aria-hidden="true">
+          <canvas data-algae-scene="shelf" data-vessels="bottle,carboy,vial"></canvas>
+        </div>
+        <figcaption>Procedural illustration of the three vessels in the box — the starter, the carboy and the f/2 vial. Not a photograph.</figcaption>
+      </figure>
+      <div>
+        <p class="eyebrow">Alive on arrival</p>
+        <h2 id="kit-live-h">It arrives as a culture, not a kit of parts.</h2>
+        <p>The bottle in the box is a living population, counted before it ships. Pour it into salted water with its f/2, add air and light, and the same cells keep dividing. That is the difference between a kit and a starter.</p>
+        <p class="small">Packed Monday to Wednesday, insulated, with a cold pack in warm months. Live arrival guaranteed — send a photograph within 24 hours and it is replaced.</p>
+      </div>
+    </div>
+  </section>
 
   <div class="kit-band">
     <figure>
@@ -181,13 +199,13 @@
         <li><div><b>One gallon carboy</b>Clear, wide-mouthed, with a drilled cap for the airline. This is the vessel the culture lives in.</div></li>
         <li><div><b>16 oz of live microalgae</b>One of the six strains, counted before it ships. You pick the strain when you order.</div></li>
         <li><div><b>50 mL of f/2</b>The nutrient concentrate, dosed at 2 mL per litre. Enough for about 25 litres of culture.</div></li>
-        <li><div><b>1000 g of marine salt</b>Makes 28–30 litres at 30 ppt — more than a gallon, with enough left for a split.</div></li>
+        <li><div><b>1000 g of marine salt</b>Makes about 33 litres at 30 g per litre — more than a gallon, with plenty left for splits. A gallon takes 114 g.</div></li>
         <li><div><b>Submersible air pump</b>Small, quiet, and it keeps the culture moving so the cells don't settle and die.</div></li>
         <li><div><b>Airline</b>Cut to length, with a check valve so water can't siphon back into the pump.</div></li>
         <li><div><b>LED light</b>A small bar on a clamp. The culture needs light more than it needs warmth.</div></li>
         <li><div><b>Secchi stick</b>A black and white disc on a stick. You lower it until it disappears and read the depth to judge density.</div></li>
       </ol>
-      <p class="kit-note">The hero image is generated and illustrative. The photographs are real cultures, credited under each image.</p>
+      <p class="kit-note">Every photograph on this page is a real culture, credited in its caption. The strain micrographs are the cells themselves, not stock images.</p>
     </div>
   </section>
 
@@ -203,7 +221,7 @@
       <div class="kit-week">
         <div>
           <h3>Mix the water</h3>
-          <p>Fill the carboy with tap water and stir in the salt. Check it reads 30 ppt with a refractometer or hydrometer, then let it stand until it's clear. If you don't have a meter, 1000 g into three litres of water is close enough to start.</p>
+          <p>Fill the carboy with tap water and stir in the salt. Check it reads 30 ppt with a refractometer or hydrometer, then let it stand until it's clear. If you don't have a meter, weigh 114 g into a gallon (3.8 L) of water — that is 30 g per litre.</p>
         </div>
         <div>
           <h3>Add f/2 and the culture</h3>
@@ -253,7 +271,7 @@
       <div class="faq">
         <details><summary>How long until it looks green?</summary><p>Three to five days at room temperature with light and air. If it's still pale after a week, check the salinity, the light and whether the pump is actually moving water.</p></details>
         <details><summary>Do I need the air pump?</summary><p>Yes, for a gallon. Without movement the cells settle into a dead layer at the bottom within a day or two. The included pump is sized for exactly this volume.</p></details>
-        <details><summary>How much water does the salt make?</summary><p>1000 g makes 28–30 litres at 30 ppt. The carboy is a gallon, so you'll mix a gallon and keep the rest sealed for the first split.</p></details>
+        <details><summary>How much water does the salt make?</summary><p>1000 g makes about 33 litres at 30 g per litre. The carboy is a gallon, which takes 114 g, so you'll mix a gallon and keep the rest sealed for the first splits.</p></details>
         <details><summary>What if the culture crashes?</summary><p>Send me a photo and the Secchi reading. Usually it's too much light, no air, or a contaminated split. If the bottle arrived dead, it's replaced.</p></details>
         <details><summary>When does it ship?</summary><p>Monday to Wednesday, US only, so it doesn't sit in a depot over a weekend. It goes out with a cold pack in warm months.</p></details>
       </div>
@@ -311,6 +329,7 @@
     </div>
   </div>
 </footer>
+<script defer src="/assets/algae-life.js?v=20261123b"></script>
 <script defer src="/site.js"></script>
 </body>
 </html>
