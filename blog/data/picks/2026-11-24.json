@@ -1,0 +1,55 @@
+{
+  "date": "2026-11-24",
+  "model": "openai/gpt-oss-120b",
+  "generated_at": "2026-11-25T03:17:18Z",
+  "picks": [
+    {
+      "pmid": "43035162",
+      "title": "High-throughput solvent screening for microalgae oil extraction based on multi-criteria decision analysis.",
+      "journal": "Bioresource technology",
+      "year": "2026",
+      "pub_date": "2026-11-15",
+      "url": "https://doi.org/10.1016/j.biortech.2026.136252",
+      "topic": "Biofuels",
+      "hook": "A decision‑analysis workflow ranks solvents for fast, high‑yield microalgae oil extraction.",
+      "article": "A recent study set out to find safer and more efficient solvents for extracting oil from micro‑algae, which could improve the production of biofuels and chemicals.\n\nThe researchers built a high‑throughput, multi‑step computational workflow that evaluates many candidate solvents using multi‑criteria decision analysis, a method that balances factors such as extraction efficiency, toxicity, and cost.\n\nThe work resulted in a new screening platform that can rapidly compare large numbers of solvents and highlight those that may outperform the traditional n‑hexane solvent.\n\nDeveloping greener extraction methods could make algae‑based biofuels more practical and environmentally friendly.",
+      "why": "A better solvent could lower costs and reduce toxicity in algae oil production, advancing sustainable biofuel technologies."
+    },
+    {
+      "pmid": "43076591",
+      "title": "Microalgae-Macrophage Hybrid Exosome-like Nanovesicles for Mitophagy Restoration and Wound Regeneration in Aging.",
+      "journal": "ACS nano",
+      "year": "2026",
+      "pub_date": "",
+      "url": "https://doi.org/10.1021/acsnano.5c21869",
+      "topic": "Health",
+      "hook": "Hybrid microalgae‑macrophage vesicles jump‑start mitophagy, speeding wound repair in aged skin.",
+      "article": "A recent study set out to improve wound healing in older individuals, where slow repair and chronic inflammation are common problems. The researchers created hybrid nanovesicles that combine components from microalgae and immune cells called macrophages, aiming to restore a process called mitophagy – the removal of damaged mitochondria – in senescent skin cells.\n\nThey produced these exosome‑like vesicles in the lab by fusing microalgal material with macrophage‑derived exosomes, then applied them to aged wound models. The approach was tested at the cellular level and in tissue‑level experiments to see how the vesicles affect mitochondrial quality control and inflammation.\n\nThe study found that the hybrid nanovesicles successfully restored mitophagy in senescent cells, which reduced the persistent release of pro‑inflammatory cytokines and promoted a healthier wound environment, leading to faster tissue regeneration.\n\nThese results suggest a promising new way to harness algae‑derived components for therapeutic nanocarriers that could help older patients heal wounds more efficiently.",
+      "why": "Restoring mitophagy with algae‑macrophage vesicles could speed up wound repair in the elderly, a key challenge in regenerative medicine."
+    },
+    {
+      "pmid": "42805471",
+      "title": "Multifunctional potential of Bacillus vallismortis C-305 for cyanobacterial bloom suppression: Algicidal activity, organic matter transformation, and plant stress mitigation.",
+      "journal": "Environmental research",
+      "year": "2026",
+      "pub_date": "2026-09-28",
+      "url": "https://doi.org/10.1016/j.envres.2026.125788",
+      "topic": "Blooms",
+      "hook": "Bacillus vallismortis C‑305 both kills cyanobacteria and turns their waste into plant‑friendly organic matter.",
+      "article": "A recent study set out to see whether a naturally occurring bacterium could curb harmful algal blooms caused by Microcystis aeruginosa, while also offering extra benefits for water quality and plant health.\n\nThe researchers isolated a strain of Bacillus vallismortis, labeled C‑305, and tested its ability to inhibit the growth of M. aeruginosa in laboratory experiments.\n\nThe bacterium proved to be highly efficient at suppressing the cyanobacterium, showing strong algicidal (algae‑killing) activity.\n\nBeyond killing the algae, the strain also transformed organic matter and helped mitigate stress in plants, suggesting multiple environmental advantages.\n\nThese findings point to a promising, biologically based tool for managing algal blooms that could be safer and more sustainable than chemical treatments.",
+      "why": "A bacterium that both stops bloom formation and improves water and plant health could make algae control greener and more effective."
+    },
+    {
+      "pmid": "42899684",
+      "title": "Temporal regulation of metabolic processes in the marine diazotroph <i>Crocosphaera watsonii</i> WH8501.",
+      "journal": "mSphere",
+      "year": "2026",
+      "pub_date": "2026-10-20",
+      "url": "https://doi.org/10.1128/msphere.00324-26",
+      "topic": "Climate",
+      "hook": "Time‑resolved profiling reveals how the marine diazotroph Crocosphaera syncs nitrogen fixation with daylight.",
+      "article": "A recent study set out to understand how the marine nitrogen‑fixing cyanobacterium Crocosphaera watsonii WH8501 separates its photosynthesis and nitrogen‑fixation activities over time. The researchers grew the organism in a high‑resolution diel (day‑night) culturing system and used mass‑spectrometry‑based proteomics, which measures the proteins present, to track changes.\n\nBy examining the protein patterns across the daily cycle, they identified tightly coordinated shifts in metabolic processes, showing that photosynthesis and diazotrophy (nitrogen fixation) are temporally separated.\n\nThese findings reveal the precise timing mechanisms that enable this cyanobacterium to contribute to oceanic nitrogen cycling while maintaining primary production.",
+      "why": "Understanding this timing helps optimize algae for sustainable nitrogen management in marine ecosystems."
+    }
+  ]
+}
