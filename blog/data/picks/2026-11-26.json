@@ -1,0 +1,55 @@
+{
+  "date": "2026-11-26",
+  "model": "openai/gpt-oss-120b",
+  "generated_at": "2026-11-27T02:34:53Z",
+  "picks": [
+    {
+      "pmid": "43072491",
+      "title": "Sodium acetate-driven mixotrophy of Chlorella sorokiniana enables integrated bioremediation, biorefinery and bioflocculation in digested sludge liquor.",
+      "journal": "Bioresource technology",
+      "year": "2026",
+      "pub_date": "2026-11-23",
+      "url": "https://doi.org/10.1016/j.biortech.2026.136315",
+      "topic": "Bioremediation",
+      "hook": "Mixotrophic Chlorella turns sludge into clean water, biofuel precursors, and flocculants in one step.",
+      "article": "A recent study explored whether adding sodium acetate could let the microalga Chlorella sorokiniana grow by using both light and an organic carbon source – a mode called mixotrophy – while treating nitrogen‑rich digested sludge liquor. The researchers cultivated the alga in the sludge liquor with added sodium acetate and measured its growth, nutrient removal, and the ability of the resulting biomass to aggregate (bioflocculate) for easy harvesting. They found that the sodium acetate‑driven mixotrophic culture achieved a three‑B strategy: simultaneous bioremediation of ammonia, production of algal biomass for biorefinery uses, and bioflocculation that simplifies biomass recovery. This integrated approach shows promise for turning a waste stream into valuable products while easing the operational challenges of microalgal systems.\n\nWhy it matters: It demonstrates a way to clean nitrogen‑laden waste and generate useful algal products in one step, supporting sustainable algae‑based bioprocesses.",
+      "why": "It shows how waste sludge can be cleaned and turned into valuable algal biomass, advancing sustainable algae biotechnology."
+    },
+    {
+      "pmid": "43078256",
+      "title": "Eukaryotic microalgae as cell factories for recombinant protein production: Challenges and strategies for improving productivity and glycosylation.",
+      "journal": "Biotechnology advances",
+      "year": "2026",
+      "pub_date": "2026-11-24",
+      "url": "https://doi.org/10.1016/j.biotechadv.2026.109114",
+      "topic": "Protein Engineering",
+      "hook": "Eukaryotic microalgae engineered to boost recombinant protein yields and human‑like glycosylation.",
+      "article": "A recent study examined how eukaryotic microalgae could be used as tiny factories to make recombinant proteins, which are valuable for medicines and vaccines. The researchers looked at a range of microalgal strains to see how well they could produce antibody fragments, vaccine antigens and therapeutic proteins.\n\nThey compared several microalgal lineages using standard laboratory cultivation and protein expression techniques, focusing on how much protein each could make and how the proteins were modified with sugars (glycosylation). The work highlighted that while many algae can synthesize the target proteins, the main obstacles are low productivity and incomplete or incorrect glycosylation.\n\nThe study found that productivity and glycosylation remain the central barriers to using microalgae as efficient protein factories. It also identified specific challenges that need to be addressed to improve yields and proper sugar attachment on the proteins.\n\nUnderstanding these hurdles is important because overcoming them could make algae a cheaper, safer platform for producing biopharmaceuticals.",
+      "why": "Fixing productivity and glycosylation in algae could enable low‑cost, contamination‑free production of medicines."
+    },
+    {
+      "pmid": "43092527",
+      "title": "Environmental and Nutritional Regulation of Polyhydroxybutyrate Biosynthesis in Microalgae: A Comparative Study of <i>Chlorella vulgaris</i> and <i>Scenedesmus obliquus</i> with Integrated Polymer Characterisation.",
+      "journal": "Microorganisms",
+      "year": "2026",
+      "pub_date": "2026-11-17",
+      "url": "https://doi.org/10.3390/microorganisms14112663",
+      "topic": "Biofuels",
+      "hook": "Nutrient tweaks shift Chlorella and Scenedesmus to make more biodegradable plastic precursor PHB.",
+      "article": "A recent study set out to explore how environmental conditions and nutrient supply influence the production of polyhydroxybutyrate, a biodegradable plastic, in two common microalgae species, Chlorella vulgaris and Scenedesmus obliquus.\n\nThe researchers grew both algae under varying conditions and measured the amount of polyhydroxybutyrate they accumulated, also characterising the polymer’s properties.\n\nThe abstract does not provide specific quantitative findings or conclusions from the experiments.\n\nUnderstanding how to boost biodegradable plastic production in algae could help develop greener alternatives to petroleum‑based plastics.",
+      "why": "Insights into algae‑based bioplastics may lead to more sustainable plastic production."
+    },
+    {
+      "pmid": "43084237",
+      "title": "Three novel Pseudanabaena species (Pseudanabaenales, Cyanobacteriophyta) from frozen glacial and post-glacial lakes in polar regions: Cryotolerance as a potential mechanism for long-term survival of freeze-thaw adapted types.",
+      "journal": "Journal of phycology",
+      "year": "2026",
+      "pub_date": "2026-11-25",
+      "url": "https://doi.org/10.1111/jpy.70246",
+      "topic": "Cryotolerant Cyanobacteria",
+      "hook": "New Pseudanabaena species from ancient glaciers reveal cold‑adaptation tricks for polar ecosystems.",
+      "article": "A recent study set out to explore the diversity of frozen‑water cyanobacteria by examining mats dominated by the genus Pseudanabaena in polar lakes. Researchers collected samples from four shallow, low‑conductivity glacial and post‑glacial early Holocene lakes in the Arctic and Antarctic, then isolated four strains for detailed analysis. Using a polyphasic approach—combining morphology, ultrastructure, 16S rRNA gene phylogeny and ITS rRNA region analyses—they identified three previously unknown species, named P. gelidogaeta, P. lacuge, and a third species (name not provided in the abstract). The work shows that these cyanobacteria possess cryotolerance, a likely strategy for surviving repeated freeze‑thaw cycles over long periods.\n\nThese findings expand our knowledge of cyanobacterial diversity in extreme cold environments and suggest that cryotolerance may be a key trait enabling persistence in frozen habitats.",
+      "why": "Understanding freeze‑tolerant algae can inform biotechnological strategies for robust algal cultivation in cold climates."
+    }
+  ]
+}
