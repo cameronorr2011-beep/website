@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Microalgae Culture Guides by Audience | Orr Biologicals</title>
-<meta name="description" content="Practical guides to growing marine microalgae for hatchery staff, hobbyists and classrooms: starters, f/2 dosing, feeding ratios and crash diagnosis.">
+<title>Microalgae Guides: Unpacking, Kits, Blends | Orr Biologicals</title>
+<meta name="description" content="Practical guides to growing marine microalgae for hatcheries, hobbyists and classrooms: unpacking, kit setup, splitting, blends, f/2 dosing and crash diagnosis.">
 <link rel="canonical" href="https://orrbiologicals.com/articles/">
 <meta name="robots" content="max-image-preview:large">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
@@ -26,12 +26,25 @@
 .kb-list a:hover .kb-title{text-decoration:underline;text-underline-offset:.18em}
 .kb-title{font-family:var(--font-sans);font-size:.94rem;line-height:1.45;text-wrap:pretty}
 .kb-meta{font-family:var(--font-mono);font-size:.56rem;line-height:1.5;letter-spacing:.03em;color:var(--ink-3);white-space:nowrap}
+.guide-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1.1rem;margin-top:2.2rem}
+.guide-card{display:flex;flex-direction:column;border:1px solid var(--line);background:var(--paper);transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s ease}
+.guide-card:hover{transform:translateY(-3px);box-shadow:var(--lift-2)}
+.guide-card__media{display:block;aspect-ratio:3/2;overflow:hidden;background:#0B0B0B}
+.guide-card__media img{width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.guide-card:hover .guide-card__media img{transform:scale(1.03)}
+.guide-card__body{display:flex;flex-direction:column;gap:.4rem;padding:.95rem 1rem 1.1rem;flex:1}
+.guide-card__body h3{font-size:1rem;line-height:1.35;margin:.15rem 0 0}
+.guide-card__body h3 a{text-decoration:none}
+.guide-card__body h3 a:hover{text-decoration:underline;text-underline-offset:.18em}
+.guide-card__body .small{margin:0;flex:1}
+@media(max-width:980px){.guide-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:560px){.guide-grid{grid-template-columns:1fr}}
 @media(max-width:760px){.kb-list{grid-template-columns:1fr}.kb-list a{gap:.75rem}.kb-meta{font-size:.52rem}}</style>
 <meta name="theme-color" content="#000000">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Orr Biologicals">
-<meta property="og:title" content="Microalgae culture guides, by audience">
-<meta property="og:description" content="How to grow marine microalgae, from a 16 oz starter bottle to a hatchery batch. Labelled for hatchery staff, hobbyists, and classrooms.">
+<meta property="og:title" content="How to use your order: microalgae guides">
+<meta property="og:description" content="Unpack it, set it up, split it, feed it. Four how-to guides plus six deep guides to growing marine microalgae, labelled for the reader.">
 <meta property="og:url" content="https://orrbiologicals.com/articles/">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://orrbiologicals.com/assets/og-core.jpg">
@@ -40,8 +53,8 @@
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Microalgae culture guides from Orr Biologicals, labelled by audience.">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Microalgae culture guides, by audience">
-<meta name="twitter:description" content="How to grow marine microalgae, from a 16 oz starter bottle to a hatchery batch. Labelled for hatchery staff, hobbyists, and classrooms.">
+<meta name="twitter:title" content="How to use your order: microalgae guides">
+<meta name="twitter:description" content="Unpack it, set it up, split it, feed it. Four how-to guides plus six deep guides to growing marine microalgae, labelled for the reader.">
 <meta name="twitter:image" content="https://orrbiologicals.com/assets/og-core.jpg">
 <meta name="twitter:image:alt" content="Microalgae culture guides from Orr Biologicals, labelled by audience.">
 <script type="application/ld+json">
@@ -70,7 +83,11 @@
         { "@type": "Article", "name": "Nannochloropsis oculata, the strain that forgives", "url": "https://orrbiologicals.com/articles/nannochloropsis-oculata", "audience": { "@type": "Audience", "audienceType": "Hobbyists and classrooms" } },
         { "@type": "Article", "name": "Feeding oyster larvae, stage by stage", "url": "https://orrbiologicals.com/articles/feeding-oyster-larvae", "audience": { "@type": "Audience", "audienceType": "Bivalve hatcheries" } },
         { "@type": "Article", "name": "f/2 medium: what it is and how much to dose", "url": "https://orrbiologicals.com/articles/f2-medium", "audience": { "@type": "Audience", "audienceType": "Hatcheries, hobbyists and classrooms" } },
-        { "@type": "Article", "name": "Why a microalgae culture crashes", "url": "https://orrbiologicals.com/articles/culture-crash", "audience": { "@type": "Audience", "audienceType": "Hobbyists and classrooms" } }
+        { "@type": "Article", "name": "Why a microalgae culture crashes", "url": "https://orrbiologicals.com/articles/culture-crash", "audience": { "@type": "Audience", "audienceType": "Hobbyists and classrooms" } },
+        { "@type": "HowTo", "name": "When your live algae arrives: how to unpack it", "url": "https://orrbiologicals.com/articles/unpacking-live-algae", "audience": { "@type": "Audience", "audienceType": "Hatcheries, hobbyists and classrooms" } },
+        { "@type": "HowTo", "name": "Setting up the one-gallon culture kit, day by day", "url": "https://orrbiologicals.com/articles/culture-kit-setup", "audience": { "@type": "Audience", "audienceType": "Hobbyists and classrooms" } },
+        { "@type": "HowTo", "name": "One bottle becomes two: how to split a microalgae culture", "url": "https://orrbiologicals.com/articles/splitting-a-culture", "audience": { "@type": "Audience", "audienceType": "Hatcheries and hobbyists" } },
+        { "@type": "HowTo", "name": "How to feed a blend to larvae and filter feeders", "url": "https://orrbiologicals.com/articles/feed-a-blend", "audience": { "@type": "Audience", "audienceType": "Bivalve hatcheries" } }
       ]
     }
   ]
@@ -115,7 +132,7 @@
   <div class="wrap page-head">
     <p class="crumb"><a href="/">Home</a> / Articles</p>
     <h1>Notes from the bench.</h1>
-    <p class="lead">Six guides to growing marine microalgae — the volumes, the doses, the failure modes and what to do about them. Each one is tagged for the reader it was written for: hatchery staff, hobbyists and reef keepers, or classrooms and students.</p>
+    <p class="lead">Ten guides to growing marine microalgae — four how-to walkthroughs that start where the box does, and six deep guides to the volumes, the doses and the failure modes. Each one is tagged for the reader it was written for: hatchery staff, hobbyists and reef keepers, or classrooms and students.</p>
   </div>
 
   <section class="section section--tight" id="picks" aria-labelledby="desk-h">
@@ -137,11 +154,62 @@
     </div>
   </section>
 
+  <section class="section section--paper2" id="howto" aria-labelledby="howto-h">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="howto-h">How to use your order</h2>
+        <p class="lead">Four guides that start where the box does: unpack it, set it up, split it, feed it. Each one is written for the bottle, kit or blend actually in front of you, and every order ships with a mini card that carries the same numbers.</p>
+      </div>
+      <div class="guide-grid">
+        <article class="guide-card">
+          <a class="guide-card__media" href="/articles/unpacking-live-algae" tabindex="-1" aria-hidden="true">
+            <img src="/assets/images/guides/unpacking.jpg" width="1248" height="832" loading="lazy" decoding="async" alt="An open insulated box on a dark bench with a bottle of green algae, a vial of nutrient and a cold pack.">
+          </a>
+          <div class="guide-card__body">
+            <p class="note">Arrival · 6 min</p>
+            <h3><a href="/articles/unpacking-live-algae">It arrives alive. Keep it that way.</a></h3>
+            <p class="small">What to check before you open the bottle, how long to let it settle, and what to photograph if it arrives dead.</p>
+          </div>
+        </article>
+        <article class="guide-card">
+          <a class="guide-card__media" href="/articles/culture-kit-setup" tabindex="-1" aria-hidden="true">
+            <img src="/assets/images/guides/kit-setup.jpg" width="1248" height="832" loading="lazy" decoding="async" alt="A gallon carboy of pale green water on a counter with an air pump, LED light and a bottle of algae.">
+          </a>
+          <div class="guide-card__body">
+            <p class="note">Setup · 9 min</p>
+            <h3><a href="/articles/culture-kit-setup">Setting up the one-gallon culture kit, day by day</a></h3>
+            <p class="small">The amounts for a gallon, the first Secchi reading, and what the first week should look like.</p>
+          </div>
+        </article>
+        <article class="guide-card">
+          <a class="guide-card__media" href="/articles/splitting-a-culture" tabindex="-1" aria-hidden="true">
+            <img src="/assets/images/guides/splitting.jpg" width="1248" height="832" loading="lazy" decoding="async" alt="Two carboys on a steel bench, one dark green with algae and one half full of pale green water.">
+          </a>
+          <div class="guide-card__body">
+            <p class="note">Splitting · 8 min</p>
+            <h3><a href="/articles/splitting-a-culture">One bottle becomes two</a></h3>
+            <p class="small">When to split, how much to keep back, and how to keep a spare without keeping two of everything.</p>
+          </div>
+        </article>
+        <article class="guide-card">
+          <a class="guide-card__media" href="/articles/feed-a-blend" tabindex="-1" aria-hidden="true">
+            <img src="/assets/images/guides/feed-blend.jpg" width="1248" height="832" loading="lazy" decoding="async" alt="A beaker of golden-green blended algae being poured into a shallow black rearing tank.">
+          </a>
+          <div class="guide-card__body">
+            <p class="note">Feeding · 9 min</p>
+            <h3><a href="/articles/feed-a-blend">How to feed a blend to larvae and filter feeders</a></h3>
+            <p class="small">Which mix fits which animal, how much to pour, and how to read clearance instead of guessing.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
   <section class="section" aria-labelledby="all-h">
     <div class="wrap">
       <div class="section-head">
-        <h2 id="all-h">Every article</h2>
-        <p class="lead">No filler and no claims we cannot show you on a haemocytometer. If a number is typical rather than exact, the text says so. Guides that suit more than one reader carry more than one tag.</p>
+        <h2 id="all-h">The six deep guides</h2>
+        <p class="lead">No filler and no claims we cannot show you on a haemocytometer. If a number is typical rather than exact, the text says so. These six go deeper into the science behind the how-to series above, and guides that suit more than one reader carry more than one tag.</p>
       </div>
 
       <div class="post-list">
