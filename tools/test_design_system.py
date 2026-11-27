@@ -60,7 +60,7 @@ class DesignSystemTests(unittest.TestCase):
             self.assertIn('id="'+anchor+'"',text)
         for qualification in ('Generated image','illustrative','not a photograph'):
             self.assertIn(qualification,text)
-        for asset in ('/styles.css','/assets/hero.css','/assets/hero.js','/site.js'):
+        for asset in ('/styles.css','/assets/hero.css','/assets/algae-life.css','/assets/algae-life.js','/site.js'):
             self.assertIn(asset,text)
         self.assertNotIn('/papertrail/',text)
         self.assertNotIn('/culturetrace/',text)

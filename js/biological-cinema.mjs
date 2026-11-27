@@ -1529,6 +1529,395 @@ function paintFallback(canvas, kind) {
 }
 
 /* ------------------------------------------------------------------ */
+/* The hero culture field                                            */
+/* ------------------------------------------------------------------ */
+
+/* The six cells are painted at texture resolution with the same visual
+   language as the 2D plates: a lit body, a darker chloroplast, a rim. */
+const CULTURE_KINDS = ["nanno", "tiso", "pavlova", "chaeto", "thalassio", "tetra"];
+
+function cellArtwork(kind) {
+  const size = 256;
+  const canvas = document.createElement("canvas");
+  canvas.width = canvas.height = size;
+  const c = canvas.getContext("2d");
+  if (!c) return null;
+  c.translate(size / 2, size / 2);
+  const R = 54;
+  const TAU = Math.PI * 2;
+
+  const glow = (radius, tint, alpha) => {
+    const gradient = c.createRadialGradient(0, 0, radius * 0.1, 0, 0, radius * 2.15);
+    gradient.addColorStop(0, `rgba(${tint},${alpha})`);
+    gradient.addColorStop(0.5, `rgba(${tint},${alpha * 0.33})`);
+    gradient.addColorStop(1, `rgba(${tint},0)`);
+    c.fillStyle = gradient;
+    c.beginPath();
+    c.arc(0, 0, radius * 2.15, 0, TAU);
+    c.fill();
+  };
+  const orb = (rx, ry, inner, mid, outer) => {
+    const gradient = c.createRadialGradient(-rx * 0.34, -ry * 0.38, rx * 0.04, 0, 0, Math.max(rx, ry) * 1.18);
+    gradient.addColorStop(0, inner);
+    gradient.addColorStop(0.52, mid);
+    gradient.addColorStop(1, outer);
+    c.fillStyle = gradient;
+    c.beginPath();
+    c.ellipse(0, 0, rx, ry, 0, 0, TAU);
+    c.fill();
+  };
+  const specular = (x, y, radius, alpha) => {
+    const gradient = c.createRadialGradient(x, y, 0, x, y, radius);
+    gradient.addColorStop(0, `rgba(255,255,244,${alpha})`);
+    gradient.addColorStop(1, "rgba(255,255,244,0)");
+    c.fillStyle = gradient;
+    c.beginPath();
+    c.arc(x, y, radius, 0, TAU);
+    c.fill();
+  };
+  const rim = (rx, ry, color, width) => {
+    c.strokeStyle = color;
+    c.lineWidth = width;
+    c.beginPath();
+    c.ellipse(0, 0, rx, ry, 0, 0, TAU);
+    c.stroke();
+  };
+  const flagella = (count, length, color) => {
+    c.strokeStyle = color;
+    c.lineWidth = 1.3;
+    c.lineCap = "round";
+    for (let f = 0; f < count; f += 1) {
+      const spread = count > 1 ? f / (count - 1) - 0.5 : 0;
+      c.beginPath();
+      c.moveTo(-R * 0.66, -R * 0.06 + spread * R * 0.2);
+      for (let i = 1; i <= 14; i += 1) {
+        const u = i / 14;
+        c.lineTo(
+          -R * 0.66 - u * length * R,
+          -R * 0.06 + spread * R * 0.22 + Math.sin(u * 7 + f * 2.1) * R * 0.19 * u,
+        );
+      }
+      c.stroke();
+    }
+  };
+  const rounded = (x, y, width, height, radius) => {
+    const r = Math.min(radius, width / 2, height / 2);
+    c.beginPath();
+    c.moveTo(x + r, y);
+    c.arcTo(x + width, y, x + width, y + height, r);
+    c.arcTo(x + width, y + height, x, y + height, r);
+    c.arcTo(x, y + height, x, y, r);
+    c.arcTo(x, y, x + width, y, r);
+    c.closePath();
+  };
+
+  if (kind === "nanno") {
+    glow(R, "170,226,86", 0.24);
+    orb(R, R, "#E9FFB8", "#9CD247", "#3C6A15");
+    c.globalAlpha = 0.32;
+    c.fillStyle = "#2F5710";
+    c.beginPath(); c.ellipse(-R * 0.2, R * 0.12, R * 0.46, R * 0.38, 0.5, 0, TAU); c.fill();
+    c.beginPath(); c.ellipse(R * 0.3, -R * 0.18, R * 0.26, R * 0.22, -0.4, 0, TAU); c.fill();
+    c.globalAlpha = 1;
+    specular(-R * 0.38, -R * 0.42, R * 0.44, 0.86);
+    rim(R * 0.985, R * 0.985, "rgba(235,255,190,.46)", 1.8);
+  } else if (kind === "tiso") {
+    glow(R, "226,214,132", 0.2);
+    flagella(2, 1.4, "rgba(248,242,198,.34)");
+    c.save();
+    c.rotate(-0.22);
+    orb(R, R * 0.72, "#F7F0C2", "#CDBC60", "#6C5B21");
+    c.globalAlpha = 0.3;
+    c.fillStyle = "#6F5D18";
+    c.beginPath(); c.ellipse(R * 0.3, R * 0.05, R * 0.34, R * 0.27, 0.35, 0, TAU); c.fill();
+    c.globalAlpha = 1;
+    specular(-R * 0.42, -R * 0.28, R * 0.26, 0.62);
+    rim(R * 0.99, R * 0.71, "rgba(255,250,212,.4)", 1.8);
+    c.restore();
+  } else if (kind === "pavlova") {
+    glow(R, "214,222,138", 0.2);
+    flagella(3, 1.15, "rgba(240,240,190,.3)");
+    c.save();
+    c.rotate(0.16);
+    orb(R * 0.92, R * 0.94, "#F4F2C0", "#C8CB6E", "#5F6420");
+    c.globalAlpha = 0.32;
+    c.fillStyle = "#5C5E18";
+    c.beginPath(); c.ellipse(R * 0.26, R * 0.2, R * 0.3, R * 0.26, 0.2, 0, TAU); c.fill();
+    c.globalAlpha = 1;
+    specular(-R * 0.3, -R * 0.34, R * 0.4, 0.7);
+    rim(R * 0.91, R * 0.93, "rgba(248,250,205,.38)", 1.8);
+    c.restore();
+  } else if (kind === "chaeto") {
+    glow(R * 0.9, "228,214,138", 0.18);
+    const cells = 4;
+    const cellH = R * 0.58;
+    const gap = R * 0.08;
+    const half = R * 0.6;
+    for (let i = 0; i < cells; i += 1) {
+      const y = (i - (cells - 1) / 2) * (cellH + gap);
+      const gradient = c.createLinearGradient(-half, y, half, y);
+      gradient.addColorStop(0, "#F2E6B4");
+      gradient.addColorStop(0.45, "#C9B75D");
+      gradient.addColorStop(1, "#796425");
+      c.fillStyle = gradient;
+      rounded(-half, y - cellH / 2, half * 2, cellH, R * 0.09);
+      c.fill();
+      c.strokeStyle = "rgba(255,248,214,.42)";
+      c.lineWidth = 1.6;
+      c.stroke();
+      c.strokeStyle = "rgba(232,222,170,.26)";
+      c.lineWidth = 1.2;
+      for (const dir of [-1, 1]) {
+        for (const side of [-1, 1]) {
+          c.beginPath();
+          c.moveTo(dir * half, y + side * cellH * 0.26);
+          c.quadraticCurveTo(dir * (half + R * 0.48), y + side * cellH * 0.9, dir * (half + R * 0.82), y + side * R * 0.6);
+          c.stroke();
+        }
+      }
+    }
+  } else if (kind === "thalassio") {
+    glow(R, "228,218,152", 0.2);
+    orb(R, R, "#FCF4D2", "#D7C879", "#89752D");
+    c.strokeStyle = "rgba(116,96,38,.4)";
+    c.lineWidth = 1.8;
+    c.beginPath(); c.arc(0, 0, R * 0.77, 0, TAU); c.stroke();
+    for (let ring = 0; ring < 2; ring += 1) {
+      const count = ring ? 16 : 9;
+      const radius = ring ? R * 0.54 : R * 0.86;
+      for (let i = 0; i < count; i += 1) {
+        const angle = (i / count) * TAU + ring * 0.3;
+        c.fillStyle = "rgba(104,88,36,.48)";
+        c.beginPath();
+        c.arc(Math.cos(angle) * radius, Math.sin(angle) * radius, 2.1, 0, TAU);
+        c.fill();
+      }
+    }
+    c.fillStyle = "rgba(120,102,44,.55)";
+    c.beginPath(); c.arc(0, 0, R * 0.085, 0, TAU); c.fill();
+    rim(R * 0.99, R * 0.99, "rgba(255,250,222,.4)", 1.8);
+  } else {
+    glow(R * 1.05, "168,224,96", 0.24);
+    flagella(3, 1.1, "rgba(214,255,168,.32)");
+    c.save();
+    c.rotate(0.12);
+    orb(R * 1.02, R * 0.8, "#DBFFA6", "#8CC140", "#32560E");
+    c.globalAlpha = 0.24;
+    c.strokeStyle = "#3F6B12";
+    c.lineWidth = 1.5;
+    for (let i = 0; i < 5; i += 1) {
+      const x = (-0.5 + i * 0.25) * R;
+      c.beginPath();
+      c.moveTo(x, -R * 0.58);
+      c.quadraticCurveTo(x + R * 0.1, 0, x, R * 0.58);
+      c.stroke();
+    }
+    c.globalAlpha = 1;
+    c.fillStyle = "rgba(242,255,206,.5)";
+    c.beginPath(); c.arc(R * 0.3, -R * 0.06, R * 0.16, 0, TAU); c.fill();
+    c.fillStyle = "rgba(206,84,38,.92)";
+    c.beginPath(); c.arc(R * 0.34, R * 0.14, R * 0.07, 0, TAU); c.fill();
+    rim(R * 1.01, R * 0.79, "rgba(228,255,178,.4)", 1.8);
+    c.restore();
+  }
+
+  const texture = new THREE.CanvasTexture(canvas);
+  texture.colorSpace = THREE.SRGBColorSpace;
+  texture.anisotropy = 4;
+  return texture;
+}
+
+/* The sales hero. The drawn cells are billboarded into a lit water column:
+   far cells sit in fog, mid cells carry the detail, a few large foreground
+   cells sit at the edges as depth-of-field. The scroll dollies the camera,
+   the pointer tilts it, and nothing in the product illustration moves. */
+function attachCultureField(canvas) {
+  const renderer = rendererFor(canvas);
+  if (!renderer) return paintFallback(canvas, "volvox");
+  /* Sprites are unlit artwork: keep their drawn colour instead of ACES. */
+  renderer.toneMapping = THREE.NoToneMapping;
+  renderer.setClearColor(0x050806, 0);
+  const scene = new THREE.Scene();
+  scene.fog = new THREE.FogExp2(0x050806, 0.018);
+  const camera = new THREE.PerspectiveCamera(42, 1, 0.1, 100);
+  camera.position.set(0, 0, 10);
+
+  const artworks = CULTURE_KINDS
+    .map((kind) => ({ kind, texture: cellArtwork(kind) }))
+    .filter((entry) => entry.texture);
+  const featureArt = artworks.filter((entry) => entry.kind === "tiso" || entry.kind === "tetra" || entry.kind === "chaeto");
+  /* Nanno is the base of the culture; T-Iso carries it. Chains and diatoms
+     stay occasional, as they are in the bloom. */
+  const weightedArt = [];
+  artworks.forEach((entry) => {
+    const weight = entry.kind === "nanno" ? 4 : entry.kind === "tiso" ? 2 : 1;
+    for (let i = 0; i < weight; i += 1) weightedArt.push(entry);
+  });
+  const rnd = seeded(81);
+  const TAU = Math.PI * 2;
+  const cells = [];
+
+  const softDot = (() => {
+    const dot = document.createElement("canvas");
+    dot.width = dot.height = 64;
+    const context = dot.getContext("2d");
+    const gradient = context.createRadialGradient(32, 32, 0, 32, 32, 30);
+    gradient.addColorStop(0, "rgba(255,255,255,1)");
+    gradient.addColorStop(0.4, "rgba(255,255,255,.55)");
+    gradient.addColorStop(1, "rgba(255,255,255,0)");
+    context.fillStyle = gradient;
+    context.fillRect(0, 0, 64, 64);
+    const texture = new THREE.CanvasTexture(dot);
+    texture.colorSpace = THREE.SRGBColorSpace;
+    return texture;
+  })();
+
+  const layers = [
+    { count: 84, z: [-26, -15], size: [0.5, 1.25], opacity: [0.55, 0.8], near: false },
+    { count: 46, z: [-14, -4], size: [0.7, 1.45], opacity: [0.6, 0.85], near: false },
+    { count: 10, z: [-2.5, 0.5], size: [1.4, 2.4], opacity: [0.14, 0.26], near: true },
+  ];
+  layers.forEach((layer) => {
+    const pool = layer.near && featureArt.length ? featureArt : weightedArt;
+    for (let i = 0; i < layer.count; i += 1) {
+      const map = pool[Math.floor(rnd() * pool.length)].texture;
+      if (!map) continue;
+      const material = new THREE.SpriteMaterial({
+        map, transparent: true, depthWrite: false,
+        opacity: layer.opacity[0] + rnd() * (layer.opacity[1] - layer.opacity[0]),
+      });
+      const sprite = new THREE.Sprite(material);
+      const z = layer.z[0] + rnd() * (layer.z[1] - layer.z[0]);
+      let nx = (rnd() - 0.5) * 2.25;
+      let ny = (rnd() - 0.5) * 2.1;
+      if (layer.near) {
+        nx = (rnd() > 0.5 ? 1 : -1) * (0.8 + rnd() * 0.55);
+        ny = (rnd() - 0.5) * 1.7;
+      }
+      sprite.userData = {
+        nx, ny, z,
+        size: layer.size[0] + rnd() * (layer.size[1] - layer.size[0]),
+        rank: rnd(),
+        ax: 0.1 + rnd() * 0.45,
+        ay: 0.08 + rnd() * 0.3,
+        sx: 0.016 + rnd() * 0.04,
+        sy: 0.014 + rnd() * 0.036,
+        rr: 0.03 + rnd() * 0.06,
+        px: rnd() * TAU,
+        py: rnd() * TAU,
+        rot: (rnd() - 0.5) * 0.8,
+        ra: 0.05 + rnd() * 0.1,
+        pulse: 0.02 + rnd() * 0.03,
+      };
+      sprite.material.rotation = sprite.userData.rot;
+      sprite.position.z = z;
+      scene.add(sprite);
+      cells.push(sprite);
+    }
+  });
+
+  /* Fine motes tie the layers together and give the column scale. */
+  const moteCount = 84;
+  const motePositions = new Float32Array(moteCount * 3);
+  const moteSeeds = [];
+  for (let i = 0; i < moteCount; i += 1) {
+    moteSeeds.push({
+      x: (rnd() - 0.5) * 24,
+      y: (rnd() - 0.5) * 14,
+      z: -22 + rnd() * 24,
+      rise: 0.12 + rnd() * 0.3,
+      phase: rnd() * TAU,
+    });
+  }
+  const moteGeometry = new THREE.BufferGeometry();
+  const moteAttribute = new THREE.BufferAttribute(motePositions, 3).setUsage(THREE.DynamicDrawUsage);
+  moteGeometry.setAttribute("position", moteAttribute);
+  const motes = new THREE.Points(moteGeometry, new THREE.PointsMaterial({
+    color: 0xc9ff4a, size: 0.05, map: softDot, transparent: true,
+    opacity: 0.32, depthWrite: false, blending: THREE.AdditiveBlending, sizeAttenuation: true,
+  }));
+  scene.add(motes);
+
+  const tanHalf = Math.tan(THREE.MathUtils.degToRad(camera.fov / 2));
+  const layout = () => {
+    const aspect = camera.aspect || 1;
+    const density = aspect < 0.6 ? 0.42 : aspect < 0.95 ? 0.66 : 1;
+    cells.forEach((sprite) => {
+      const d = sprite.userData;
+      const halfH = tanHalf * Math.max(2, 10 - d.z);
+      const halfW = halfH * aspect;
+      d.baseX = d.nx * halfW * 1.1;
+      d.baseY = d.ny * halfH * 1.05;
+      sprite.position.x = d.baseX;
+      sprite.position.y = d.baseY;
+      sprite.scale.setScalar(d.size);
+      sprite.visible = d.rank < density;
+    });
+  };
+
+  const clock = new THREE.Clock();
+  const pointerTarget = { x: 0, y: 0 };
+  const pointerCurrent = { x: 0, y: 0 };
+  let scrollTarget = 0;
+  let scrollCurrent = 0;
+  const onScroll = () => {
+    const rect = canvas.getBoundingClientRect();
+    scrollTarget = Math.min(1.15, Math.max(0, -rect.top / Math.max(1, rect.height)));
+  };
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+  const onPointer = (event) => {
+    pointerTarget.x = (event.clientX / window.innerWidth - 0.5) * 2;
+    pointerTarget.y = (event.clientY / window.innerHeight - 0.5) * 2;
+  };
+  window.addEventListener("pointermove", onPointer, { passive: true });
+
+  const render = () => {
+    const time = reducedMotion ? 0 : clock.getElapsedTime();
+    cells.forEach((sprite) => {
+      const d = sprite.userData;
+      sprite.position.x = d.baseX + Math.sin(time * d.sx + d.px) * d.ax;
+      sprite.position.y = d.baseY + Math.cos(time * d.sy + d.py) * d.ay;
+      sprite.material.rotation = d.rot + Math.sin(time * d.rr + d.px) * d.ra;
+      sprite.scale.setScalar(d.size * (1 + Math.sin(time * d.pulse + d.py) * 0.03));
+    });
+    const positions = moteAttribute.array;
+    moteSeeds.forEach((seed, index) => {
+      let y = seed.y + time * seed.rise;
+      y = ((y + 7) % 14) - 7;
+      positions[index * 3] = seed.x + Math.sin(time * 0.18 + seed.phase) * 0.35;
+      positions[index * 3 + 1] = y;
+      positions[index * 3 + 2] = seed.z;
+    });
+    moteAttribute.needsUpdate = true;
+    pointerCurrent.x += (pointerTarget.x - pointerCurrent.x) * 0.045;
+    pointerCurrent.y += (pointerTarget.y - pointerCurrent.y) * 0.045;
+    scrollCurrent += (scrollTarget - scrollCurrent) * 0.06;
+    camera.position.x = Math.sin(time * 0.05) * 0.35 + pointerCurrent.x * 0.7;
+    camera.position.y = Math.cos(time * 0.04) * 0.18 - pointerCurrent.y * 0.45 - scrollCurrent * 0.8;
+    camera.position.z = 10 - scrollCurrent * 1.3;
+    camera.lookAt(0, -scrollCurrent * 0.35 - pointerCurrent.y * 0.12, -4);
+    renderer.render(scene, camera);
+  };
+  const resize = () => {
+    fitRenderer(renderer, null, camera, canvas);
+    layout();
+  };
+  const stop = () => {
+    window.removeEventListener("resize", resize);
+    window.removeEventListener("pointermove", onPointer);
+    window.removeEventListener("scroll", onScroll);
+    artworks.forEach(({ texture }) => texture.dispose());
+    softDot.dispose();
+    disposeTree(scene);
+    renderer.dispose();
+  };
+  resize();
+  window.addEventListener("resize", resize, { passive: true });
+  return exhibit(canvas, () => ({ frame: () => { render(); return !reducedMotion; }, render, resize, stop }));
+}
+
+/* ------------------------------------------------------------------ */
 /* Mount                                                               */
 /* ------------------------------------------------------------------ */
 
@@ -1563,10 +1952,13 @@ mount("#cyanoflowHeroCanvas", (canvas) => attachAmbientField(canvas, {
   keyColor: 0xbffff2, keyIntensity: 0.95, hemiSky: 0x2c6a66, hemiGround: 0x04100d,
   fallback: "chip",
 }));
+/* The sales hero: drawn cells in a lit, moving water column. */
+mount("#heroFieldCanvas", attachCultureField);
+
 /* A quiet field continues beyond the dedicated heroes on public pages.
    Immersive workspaces keep their own rendering loop and palette. */
 (function mountSitewideField() {
-  if (document.querySelector("#biorealmApp,.sim-app,.lab-shell")) return;
+  if (document.querySelector("#heroFieldCanvas,#biorealmApp,.sim-app,.lab-shell")) return;
   const canvas = document.createElement("canvas");
   canvas.className = "ob-page-field";
   canvas.setAttribute("aria-hidden", "true");
