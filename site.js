@@ -14,6 +14,35 @@
 
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
 
+  /* Anchor landing. html{scroll-behavior:smooth} leaves the browser's jump to
+     a #section unfinished on some browsers, so /algae#media and the store's
+     /#blends opened at the top of the page. Land instantly instead, then land
+     once more after the images settle if the reader has not scrolled since. */
+  var landedY = null;
+
+  function jumpToHash() {
+    var hash = window.location.hash;
+    if (!hash) return;
+    var id;
+    try { id = decodeURIComponent(hash.slice(1)); } catch (error) { return; }
+    var target = document.getElementById(id);
+    if (!target) return;
+    var prior = root.style.scrollBehavior;
+    root.style.scrollBehavior = 'auto';
+    try { target.scrollIntoView({ block: 'start', behavior: 'instant' }); }
+    catch (error) { target.scrollIntoView(true); }
+    root.style.scrollBehavior = prior;
+    landedY = window.scrollY;
+  }
+
+  if (window.location.hash) {
+    jumpToHash();
+    window.addEventListener('load', function () {
+      if (landedY === null || Math.abs(window.scrollY - landedY) < 4) jumpToHash();
+    });
+  }
+  window.addEventListener('hashchange', function () { window.setTimeout(jumpToHash, 0); });
+
   /* Scroll choreography: one passive listener, one frame at a time. The rail
      reports progress, the hero drifts against the copy, and the dark sections
      let their light move behind the still illustrations. The products never
