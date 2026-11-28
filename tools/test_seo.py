@@ -118,9 +118,9 @@ class SEOTests(unittest.TestCase):
         self.assertEqual((ROOT / 'index.html').read_text(encoding='utf-8'), render())
         page = render()
         h1 = ' '.join(Page(page).headings['h1'][0].split()).lower()
-        self.assertEqual(h1, 'two strains. one standard. alive on arrival.')
+        self.assertEqual(h1, 'live microalgae, for hatcheries and reef tanks.')
         self.assertIn('class="site-head"', page)
-        self.assertIn('class="hero3"', page)
+        self.assertIn('class="hero2"', page)
         self.assertIn('What leaves this bench', page)
         self.assertIn('$35', page)
         for name in ('build.ps1', 'rebuild.ps1'):
