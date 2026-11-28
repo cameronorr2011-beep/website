@@ -236,7 +236,7 @@
 }
 .culture-room__frame canvas{display:block;width:100%;height:100%}
 .culture-room__labels{
-  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
   gap:1px;background:rgba(243,238,224,.14);margin-top:1px;
 }
 .culture-room__labels span{
