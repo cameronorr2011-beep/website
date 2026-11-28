@@ -1,6 +1,6 @@
 {
-  "date": "2026-11-22",
-  "generated_at": "2026-11-23T00:00:07Z",
+  "date": "2026-11-27",
+  "generated_at": "2026-11-28T01:46:58Z",
   "editor": "openai/gpt-oss-120b",
   "scouts": [
     "openai/gpt-oss-20b",
@@ -12,94 +12,94 @@
   "count": 10,
   "items": [
     {
-      "pmid": "42894757",
-      "title": "Gamma irradiation shapes high value metabolite responses across microbes microalgae and plants.",
-      "journal": "iScience",
-      "pub_date": "2026-10-09",
-      "url": "https://doi.org/10.1016/j.isci.2026.117824",
-      "topic": "Cultivation",
-      "hook": "Gamma irradiation alters redox and metabolic regulation in microalgae, affecting high‑value metabolite production."
+      "pmid": "43086539",
+      "title": "Hydrogen production by alginate-immobilized Chlorella vulgaris under nutrient-replete conditions.",
+      "journal": "Biotechnology letters",
+      "pub_date": "2026-11-26",
+      "url": "https://doi.org/10.1007/s10529-026-03809-2",
+      "topic": "cultivation",
+      "hook": "Demonstrated hydrogen production by alginate-immobilized Chlorella vulgaris under nutrient-replete conditions, avoiding nutrient-starvation steps."
     },
     {
-      "pmid": "43067451",
-      "title": "Concentration-dependent modulation of cadmium toxicity by molybdenum in Chlorella pyrenoidosa: Multi-endpoint evidence for an antioxidant compensation-to-overload transition.",
-      "journal": "Environmental research",
-      "pub_date": "2026-11-21",
-      "url": "https://doi.org/10.1016/j.envres.2026.126171",
-      "topic": "Feed",
-      "hook": "Shows how molybdenum modulates cadmium toxicity in Chlorella pyrenoidosa, revealing antioxidant compensation and overload transitions."
+      "pmid": "43085286",
+      "title": "Light quality regulates extracellular polymeric substances and cell wall compositions to trigger distinct auto-flocculation strategies for Tetradesmus obliquus.",
+      "journal": "Water research",
+      "pub_date": "2026-11-24",
+      "url": "https://doi.org/10.1016/j.watres.2026.127414",
+      "topic": "cultivation",
+      "hook": "Showed that light quality regulates extracellular polymeric substances and cell wall composition, enabling distinct auto-flocculation strategies for Tetradesmus obliquus."
     },
     {
-      "pmid": "43012716",
-      "title": "Acyltransferases in Microbial Triacylglycerol Biosynthesis: Structure, Mechanisms, Regulation, and Engineering.",
-      "journal": "Journal of agricultural and food chemistry",
-      "pub_date": "2026-11-11",
-      "url": "https://doi.org/10.1021/acs.jafc.6c07776",
-      "topic": "Feed",
-      "hook": "Describes acyltransferases involved in microbial triacylglycerol biosynthesis, detailing structure, mechanisms, regulation, and engineering potential."
-    },
-    {
-      "pmid": "43067417",
-      "title": "From granulation to disintegration: role of filamentous microalgae and multi-community succession in microalgae-bacteria granular sludge reactor.",
+      "pmid": "43072491",
+      "title": "Sodium acetate-driven mixotrophy of Chlorella sorokiniana enables integrated bioremediation, biorefinery and bioflocculation in digested sludge liquor.",
       "journal": "Bioresource technology",
-      "pub_date": "2026-11-21",
-      "url": "https://doi.org/10.1016/j.biortech.2026.136302",
-      "topic": "Water",
-      "hook": "Demonstrated that filamentous microalgae and community succession improve granulation and wastewater treatment performance in a microalgae-bacteria granular sludge reactor."
+      "pub_date": "2026-11-23",
+      "url": "https://doi.org/10.1016/j.biortech.2026.136315",
+      "topic": "cultivation",
+      "hook": "Sodium acetate-driven mixotrophy of Chlorella sorokiniana enabled integrated bioremediation, biorefinery and bioflocculation in digested sludge liquor."
     },
     {
-      "pmid": "42637131",
-      "title": "Aqueous phase leachates from pure and commercial microplastics differentially affect the physiology and metabolism of Chlorella sp. MM3.",
-      "journal": "Environmental pollution (Barking, Essex : 1987)",
-      "pub_date": "2026-08-24",
-      "url": "https://doi.org/10.1016/j.envpol.2026.129014",
-      "topic": "Materials",
-      "hook": "Demonstrates that aqueous leachates from different microplastics alter the physiology and metabolism of Chlorella sp. MM3."
+      "pmid": "43096020",
+      "title": "Transcriptomic insights into fermented Spirulina-mediated remodelling of lipid homeostasis to alleviate glucose-induced hyperlipidemia.",
+      "journal": "Food &amp; function",
+      "pub_date": "2026-11-26",
+      "url": "https://doi.org/10.1039/d6fo03271k",
+      "topic": "feed",
+      "hook": "Transcriptomic analysis shows Spirulina fermentation remodels lipid metabolism to reduce glucose-induced hyperlipidemia."
     },
     {
-      "pmid": "43057158",
-      "title": "Occurrence of potentially harmful phytoplankton and phycotoxins in eastern oysters within a coastal Alabama estuary.",
+      "pmid": "43094198",
+      "title": "Physical and Chemical Characteristics of Fat From Different Tissues Obtained by Pigs Fed Diets With a Partial to Total Replacement of Soybean Meal With Spirulina Powder.",
+      "journal": "Journal of animal physiology and animal nutrition",
+      "pub_date": "2026-11-25",
+      "url": "https://doi.org/10.1111/jpn.70131",
+      "topic": "feed",
+      "hook": "Replacing soybean meal with Spirulina powder alters physicochemical properties of pig fat from different tissues."
+    },
+    {
+      "pmid": "43082092",
+      "title": "NaCl-Mediated Multilevel Regulation of Astaxanthin Biosynthesis in Haematococcus lacustris under High-Light Stress: Multiomics Mechanism Elucidation and Industrial-Scale Validation of Astaxanthin Production.",
+      "journal": "Journal of agricultural and food chemistry",
+      "pub_date": "2026-11-25",
+      "url": "https://doi.org/10.1021/acs.jafc.6c06175",
+      "topic": "feed",
+      "hook": "High‑salinity stress enhances astaxanthin production in Haematococcus lacustris, validated at industrial scale."
+    },
+    {
+      "pmid": "43097749",
+      "title": "Lipidomic insights into algal responses to environmental stress: Analytical advances and ecotoxicological perspectives.",
+      "journal": "Journal of environmental management",
+      "pub_date": "2026-11-26",
+      "url": "https://doi.org/10.1016/j.jenvman.2026.131449",
+      "topic": "water",
+      "hook": "The study used lipidomic profiling to reveal how micro and macroalgae alter lipid composition in response to environmental stress."
+    },
+    {
+      "pmid": "43085162",
+      "title": "Co-metabolic removal of perfluorooctanoic acid and perfluorooctanesulfonic acid by marine diatom Chaetoceros calcitrans MZB-1 using positively-charged organic compounds and common carbon sources.",
       "journal": "Marine pollution bulletin",
-      "pub_date": "2026-11-19",
-      "url": "https://doi.org/10.1016/j.marpolbul.2026.120595",
-      "topic": "Methods",
-      "hook": "Occurrence of potentially harmful phytoplankton and phycotoxins was documented in eastern oysters within a coastal Alabama estuary, highlighting exposure risks."
+      "pub_date": "2026-11-25",
+      "url": "https://doi.org/10.1016/j.marpolbul.2026.120659",
+      "topic": "water",
+      "hook": "Co-metabolism with positively-charged organic compounds and common carbon sources enabled the marine diatom Chaetoceros calcitrans to remove perfluorooctanoic and perfluorooctanesulfonic acids."
     },
     {
-      "pmid": "42909240",
-      "title": "Phototrophs trade growth for defense through graded regulatory states under escalating oxidative stress.",
-      "journal": "iScience",
-      "pub_date": "2026-10-14",
-      "url": "https://doi.org/10.1016/j.isci.2026.117861",
-      "topic": "Methods",
-      "hook": "Synechococcus elongatus PCC 7942 was shown to trade growth for defense under escalating oxidative stress, revealing graded regulatory states."
+      "pmid": "43071249",
+      "title": "Microwave-assisted fractionation of Chlorella vulgaris using an ethylene glycol-modified deep eutectic solvent for nanocellulose production.",
+      "journal": "Bioresources and bioprocessing",
+      "pub_date": "2026-11-23",
+      "url": "https://doi.org/10.1186/s40643-026-01163-9",
+      "topic": "materials",
+      "hook": "Microwave-assisted fractionation of Chlorella vulgaris with an ethylene glycol-modified deep eutectic solvent produces nanocellulose from algal biomass."
     },
     {
-      "pmid": "43067610",
-      "title": "Genome-wide identification and characterization of Arabidopsis domain of unknown function 1995 (DUF1995) gene family.",
-      "journal": "Planta",
-      "pub_date": "2026-11-21",
-      "url": "https://doi.org/10.1007/s00425-026-05233-2",
-      "topic": "Research",
-      "hook": "DUF1995 is an ancient cyanobacteria-originated family."
-    },
-    {
-      "pmid": "43050987",
-      "title": "Environmental fate of antibiotics, microplastics, and heavy metals under algal-bloom conditions: A review of interactions and ecological risks.",
-      "journal": "Marine pollution bulletin",
-      "pub_date": "2026-11-18",
-      "url": "https://doi.org/10.1016/j.marpolbul.2026.120590",
-      "topic": "Research",
-      "hook": "The increasing co-occurrence of antibiotics, microplastics, and heavy metals in eutrophic waters has intensified concerns over combined pollution under algal-bloom conditions."
-    },
-    {
-      "pmid": "43051105",
-      "title": "Composition, sources, and fate of fluorescent dissolved organic matter in the East China Sea under contrasting river discharge regimes.",
-      "journal": "Marine environmental research",
-      "pub_date": "2026-11-17",
-      "url": "https://doi.org/10.1016/j.marenvres.2026.108560",
-      "topic": "Research",
-      "hook": "Understanding dissolved organic matter (DOM) dynamics in river-dominated marginal seas is essential for constraining coastal carbon budgets."
+      "pmid": "43072488",
+      "title": "Microalgae-bacteria co-culture further enhances microalgal biodiesel production under salt stress.",
+      "journal": "Bioresource technology",
+      "pub_date": "2026-11-23",
+      "url": "https://doi.org/10.1016/j.biortech.2026.136323",
+      "topic": "materials",
+      "hook": "Microalgae-bacteria co-culture under salt stress enhances microalgal biodiesel production by balancing lipid accumulation and growth."
     }
   ]
 }

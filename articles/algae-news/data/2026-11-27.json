@@ -1,0 +1,105 @@
+{
+  "date": "2026-11-27",
+  "generated_at": "2026-11-28T01:46:58Z",
+  "editor": "openai/gpt-oss-120b",
+  "scouts": [
+    "openai/gpt-oss-20b",
+    "openai/gpt-oss-20b",
+    "openai/gpt-oss-20b",
+    "openai/gpt-oss-20b",
+    "openai/gpt-oss-20b"
+  ],
+  "count": 10,
+  "items": [
+    {
+      "pmid": "43086539",
+      "title": "Hydrogen production by alginate-immobilized Chlorella vulgaris under nutrient-replete conditions.",
+      "journal": "Biotechnology letters",
+      "pub_date": "2026-11-26",
+      "url": "https://doi.org/10.1007/s10529-026-03809-2",
+      "topic": "cultivation",
+      "hook": "Demonstrated hydrogen production by alginate-immobilized Chlorella vulgaris under nutrient-replete conditions, avoiding nutrient-starvation steps."
+    },
+    {
+      "pmid": "43085286",
+      "title": "Light quality regulates extracellular polymeric substances and cell wall compositions to trigger distinct auto-flocculation strategies for Tetradesmus obliquus.",
+      "journal": "Water research",
+      "pub_date": "2026-11-24",
+      "url": "https://doi.org/10.1016/j.watres.2026.127414",
+      "topic": "cultivation",
+      "hook": "Showed that light quality regulates extracellular polymeric substances and cell wall composition, enabling distinct auto-flocculation strategies for Tetradesmus obliquus."
+    },
+    {
+      "pmid": "43072491",
+      "title": "Sodium acetate-driven mixotrophy of Chlorella sorokiniana enables integrated bioremediation, biorefinery and bioflocculation in digested sludge liquor.",
+      "journal": "Bioresource technology",
+      "pub_date": "2026-11-23",
+      "url": "https://doi.org/10.1016/j.biortech.2026.136315",
+      "topic": "cultivation",
+      "hook": "Sodium acetate-driven mixotrophy of Chlorella sorokiniana enabled integrated bioremediation, biorefinery and bioflocculation in digested sludge liquor."
+    },
+    {
+      "pmid": "43096020",
+      "title": "Transcriptomic insights into fermented Spirulina-mediated remodelling of lipid homeostasis to alleviate glucose-induced hyperlipidemia.",
+      "journal": "Food &amp; function",
+      "pub_date": "2026-11-26",
+      "url": "https://doi.org/10.1039/d6fo03271k",
+      "topic": "feed",
+      "hook": "Transcriptomic analysis shows Spirulina fermentation remodels lipid metabolism to reduce glucose-induced hyperlipidemia."
+    },
+    {
+      "pmid": "43094198",
+      "title": "Physical and Chemical Characteristics of Fat From Different Tissues Obtained by Pigs Fed Diets With a Partial to Total Replacement of Soybean Meal With Spirulina Powder.",
+      "journal": "Journal of animal physiology and animal nutrition",
+      "pub_date": "2026-11-25",
+      "url": "https://doi.org/10.1111/jpn.70131",
+      "topic": "feed",
+      "hook": "Replacing soybean meal with Spirulina powder alters physicochemical properties of pig fat from different tissues."
+    },
+    {
+      "pmid": "43082092",
+      "title": "NaCl-Mediated Multilevel Regulation of Astaxanthin Biosynthesis in Haematococcus lacustris under High-Light Stress: Multiomics Mechanism Elucidation and Industrial-Scale Validation of Astaxanthin Production.",
+      "journal": "Journal of agricultural and food chemistry",
+      "pub_date": "2026-11-25",
+      "url": "https://doi.org/10.1021/acs.jafc.6c06175",
+      "topic": "feed",
+      "hook": "High‑salinity stress enhances astaxanthin production in Haematococcus lacustris, validated at industrial scale."
+    },
+    {
+      "pmid": "43097749",
+      "title": "Lipidomic insights into algal responses to environmental stress: Analytical advances and ecotoxicological perspectives.",
+      "journal": "Journal of environmental management",
+      "pub_date": "2026-11-26",
+      "url": "https://doi.org/10.1016/j.jenvman.2026.131449",
+      "topic": "water",
+      "hook": "The study used lipidomic profiling to reveal how micro and macroalgae alter lipid composition in response to environmental stress."
+    },
+    {
+      "pmid": "43085162",
+      "title": "Co-metabolic removal of perfluorooctanoic acid and perfluorooctanesulfonic acid by marine diatom Chaetoceros calcitrans MZB-1 using positively-charged organic compounds and common carbon sources.",
+      "journal": "Marine pollution bulletin",
+      "pub_date": "2026-11-25",
+      "url": "https://doi.org/10.1016/j.marpolbul.2026.120659",
+      "topic": "water",
+      "hook": "Co-metabolism with positively-charged organic compounds and common carbon sources enabled the marine diatom Chaetoceros calcitrans to remove perfluorooctanoic and perfluorooctanesulfonic acids."
+    },
+    {
+      "pmid": "43071249",
+      "title": "Microwave-assisted fractionation of Chlorella vulgaris using an ethylene glycol-modified deep eutectic solvent for nanocellulose production.",
+      "journal": "Bioresources and bioprocessing",
+      "pub_date": "2026-11-23",
+      "url": "https://doi.org/10.1186/s40643-026-01163-9",
+      "topic": "materials",
+      "hook": "Microwave-assisted fractionation of Chlorella vulgaris with an ethylene glycol-modified deep eutectic solvent produces nanocellulose from algal biomass."
+    },
+    {
+      "pmid": "43072488",
+      "title": "Microalgae-bacteria co-culture further enhances microalgal biodiesel production under salt stress.",
+      "journal": "Bioresource technology",
+      "pub_date": "2026-11-23",
+      "url": "https://doi.org/10.1016/j.biortech.2026.136323",
+      "topic": "materials",
+      "hook": "Microalgae-bacteria co-culture under salt stress enhances microalgal biodiesel production by balancing lipid accumulation and growth."
+    }
+  ]
+}
